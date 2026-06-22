@@ -68,12 +68,12 @@ body{ margin:0; }
 </style>
 <style>
 .comic-page{text-align:center;margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;display:flex;align-items:center;justify-content:center;min-height:100vh;}
-.comic-page img{max-width:100%;width:100%;display:block;}
+.comic-page img{width:100%;height:100vh;object-fit:cover;display:block;}
 .extra-img{text-align:center;margin:24px 0;}
 .extra-img img{max-width:80%;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.15);}
 @media print{
-  .comic-page{min-height:auto;height:100vh;padding:0;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .comic-page img{max-height:100vh;width:auto;max-width:100%;object-fit:contain;}
+  .comic-page{min-height:auto;height:100vh;padding:0;margin:0;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid;}
+  .comic-page img{width:100%;height:100vh;object-fit:cover;}
   .libro-portada img{max-width:80% !important;}
 }
 </style>
@@ -81,22 +81,22 @@ body{ margin:0; }
 <button class="toggle-idx" onclick="document.querySelector('.libro-idx').classList.toggle('open')">Indice</button>
 <nav class="libro-idx"><h2>La Senda de <em>Los Errantes</em></h2>
 <a href="#cap1" class="">PRÓLOGO — El origen</a>
-<a href="#cap2" class="">CAPÍTULO 0 — INTRODUCCIÓN</a>
-<a href="#cap3" class=""><span class="idx-num">01</span>CAPÍTULO 1 — EL UNIVERSO</a>
-<a href="#cap4" class=""><span class="idx-num">02</span>CAPÍTULO 2 — CREACIÓN DE PERSONAJES</a>
-<a href="#cap5" class=""><span class="idx-num">03</span>CAPÍTULO 3 — MECÁNICAS DEL SISTEMA</a>
-<a href="#cap6" class=""><span class="idx-num">04</span>ANEXO CAP03 — Tabla Completa de Blindajes y Armaduras</a>
-<a href="#cap7" class=""><span class="idx-num">05</span>CAP04 — TECNOLOGÍA Y DISTORSIÓN</a>
-<a href="#cap8" class=""><span class="idx-num">06</span>CAP04b — DISTORSIÓN: ESCUELAS Y PODERES</a>
-<a href="#cap9" class=""><span class="idx-num">07</span>CAPÍTULO 4d — EL TALLER DEL ERRANTE</a>
-<a href="#cap10" class=""><span class="idx-num">08</span>CAP04e - LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</a>
-<a href="#cap11" class=""><span class="idx-num">09</span>CAP05 — EXPLORACIÓN Y VIAJE</a>
-<a href="#cap12" class=""><span class="idx-num">10</span>CAP05b — VEHÍCULOS</a>
-<a href="#cap13" class=""><span class="idx-num">11</span>CAP06 — EL NARRADOR</a>
-<a href="#cap14" class=""><span class="idx-num">12</span>CAP07 — BESTIARIO Y RAZAS</a>
-<a href="#cap15" class=""><span class="idx-num">13</span>CAP08 — AVENTURAS EN EL MOSAICO (Parte 1/2)</a>
-<a href="#cap16" class="sub"><span class="idx-num">13b</span>CAP08 — AVENTURAS EN EL MOSAICO (Parte 2/2)</a>
-<a href="#cap17" class=""><span class="idx-num">14</span>CAP09 — TU PRIMERA SENDA</a>
+<a href="#cap2" class="">INTRODUCCIÓN</a>
+<a href="#cap3" class=""><span class="idx-num">01</span>EL UNIVERSO</a>
+<a href="#cap4" class=""><span class="idx-num">02</span>CREACIÓN DE PERSONAJES</a>
+<a href="#cap5" class=""><span class="idx-num">03</span>MECÁNICAS DEL SISTEMA</a>
+<a href="#cap6" class=""><span class="idx-num">04</span>Tabla Completa de Blindajes y Armaduras</a>
+<a href="#cap7" class=""><span class="idx-num">05</span>TECNOLOGÍA Y DISTORSIÓN</a>
+<a href="#cap8" class=""><span class="idx-num">06</span>DISTORSIÓN: ESCUELAS Y PODERES</a>
+<a href="#cap9" class=""><span class="idx-num">07</span>EL TALLER DEL ERRANTE</a>
+<a href="#cap10" class=""><span class="idx-num">08</span>LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</a>
+<a href="#cap11" class=""><span class="idx-num">09</span>EXPLORACIÓN Y VIAJE</a>
+<a href="#cap12" class=""><span class="idx-num">10</span>VEHÍCULOS</a>
+<a href="#cap13" class=""><span class="idx-num">11</span>EL NARRADOR</a>
+<a href="#cap14" class=""><span class="idx-num">12</span>BESTIARIO Y RAZAS</a>
+<a href="#cap15" class=""><span class="idx-num">13</span>AVENTURAS EN EL MOSAICO (Parte 1/2)</a>
+<a href="#cap16" class="sub"><span class="idx-num">13b</span>AVENTURAS EN EL MOSAICO (Parte 2/2)</a>
+<a href="#cap17" class=""><span class="idx-num">14</span>TU PRIMERA SENDA</a>
 <a href="#cap18" class=""><span class="idx-num">A1</span>ANEXO — Generador de Asentamientos y Estaciones para el DJ</a>
 </nav>
 <div class="libro-portada"><div class="pt-la">La Senda de</div>
@@ -105,24 +105,43 @@ body{ margin:0; }
 <div class="pt-sub">Manual de juego - borrador de trabajo</div></div>
 <div class="libro-toc-print"><h2>Índice</h2>
 <div class="toc-entry"><span class="toc-num"></span><span class="toc-title">PRÓLOGO — El origen</span></div>
-<div class="toc-entry"><span class="toc-num"></span><span class="toc-title">CAPÍTULO 0 — INTRODUCCIÓN</span></div>
-<div class="toc-entry"><span class="toc-num">01</span><span class="toc-title">CAPÍTULO 1 — EL UNIVERSO</span></div>
-<div class="toc-entry"><span class="toc-num">02</span><span class="toc-title">CAPÍTULO 2 — CREACIÓN DE PERSONAJES</span></div>
-<div class="toc-entry"><span class="toc-num">03</span><span class="toc-title">CAPÍTULO 3 — MECÁNICAS DEL SISTEMA</span></div>
-<div class="toc-entry"><span class="toc-num">04</span><span class="toc-title">ANEXO CAP03 — Tabla Completa de Blindajes y Armaduras</span></div>
-<div class="toc-entry"><span class="toc-num">05</span><span class="toc-title">CAP04 — TECNOLOGÍA Y DISTORSIÓN</span></div>
-<div class="toc-entry"><span class="toc-num">06</span><span class="toc-title">CAP04b — DISTORSIÓN: ESCUELAS Y PODERES</span></div>
-<div class="toc-entry"><span class="toc-num">07</span><span class="toc-title">CAPÍTULO 4d — EL TALLER DEL ERRANTE</span></div>
-<div class="toc-entry"><span class="toc-num">08</span><span class="toc-title">CAP04e - LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</span></div>
-<div class="toc-entry"><span class="toc-num">09</span><span class="toc-title">CAP05 — EXPLORACIÓN Y VIAJE</span></div>
-<div class="toc-entry"><span class="toc-num">10</span><span class="toc-title">CAP05b — VEHÍCULOS</span></div>
-<div class="toc-entry"><span class="toc-num">11</span><span class="toc-title">CAP06 — EL NARRADOR</span></div>
-<div class="toc-entry"><span class="toc-num">12</span><span class="toc-title">CAP07 — BESTIARIO Y RAZAS</span></div>
-<div class="toc-entry"><span class="toc-num">13</span><span class="toc-title">CAP08 — AVENTURAS EN EL MOSAICO (Parte 1/2)</span></div>
-<div class="toc-entry"><span class="toc-num">13b</span><span class="toc-title">CAP08 — AVENTURAS EN EL MOSAICO (Parte 2/2)</span></div>
-<div class="toc-entry"><span class="toc-num">14</span><span class="toc-title">CAP09 — TU PRIMERA SENDA</span></div>
+<div class="toc-entry"><span class="toc-num"></span><span class="toc-title">INTRODUCCIÓN</span></div>
+<div class="toc-entry"><span class="toc-num">01</span><span class="toc-title">EL UNIVERSO</span></div>
+<div class="toc-entry"><span class="toc-num">02</span><span class="toc-title">CREACIÓN DE PERSONAJES</span></div>
+<div class="toc-entry"><span class="toc-num">03</span><span class="toc-title">MECÁNICAS DEL SISTEMA</span></div>
+<div class="toc-entry"><span class="toc-num">04</span><span class="toc-title">Tabla Completa de Blindajes y Armaduras</span></div>
+<div class="toc-entry"><span class="toc-num">05</span><span class="toc-title">TECNOLOGÍA Y DISTORSIÓN</span></div>
+<div class="toc-entry"><span class="toc-num">06</span><span class="toc-title">DISTORSIÓN: ESCUELAS Y PODERES</span></div>
+<div class="toc-entry"><span class="toc-num">07</span><span class="toc-title">EL TALLER DEL ERRANTE</span></div>
+<div class="toc-entry"><span class="toc-num">08</span><span class="toc-title">LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</span></div>
+<div class="toc-entry"><span class="toc-num">09</span><span class="toc-title">EXPLORACIÓN Y VIAJE</span></div>
+<div class="toc-entry"><span class="toc-num">10</span><span class="toc-title">VEHÍCULOS</span></div>
+<div class="toc-entry"><span class="toc-num">11</span><span class="toc-title">EL NARRADOR</span></div>
+<div class="toc-entry"><span class="toc-num">12</span><span class="toc-title">BESTIARIO Y RAZAS</span></div>
+<div class="toc-entry"><span class="toc-num">13</span><span class="toc-title">AVENTURAS EN EL MOSAICO (Parte 1/2)</span></div>
+<div class="toc-entry"><span class="toc-num">13b</span><span class="toc-title">AVENTURAS EN EL MOSAICO (Parte 2/2)</span></div>
+<div class="toc-entry"><span class="toc-num">14</span><span class="toc-title">TU PRIMERA SENDA</span></div>
 <div class="toc-entry"><span class="toc-num">A1</span><span class="toc-title">ANEXO — Generador de Asentamientos y Estaciones para el DJ</span></div>
 </div>
+
+<div class="libro-guia-rapida" style="page-break-before:always;">
+<h2 style="font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:14px;margin-bottom:12px;">Guía rápida — ¿Dónde busco qué?</h2>
+<p style="font-size:11px;color:#94a3b8;margin-bottom:10px;font-style:italic;">Este manual se lee en orden la primera vez. En la mesa, usa esta guía para saltar a lo que necesites.</p>
+<table style="width:100%;border-collapse:collapse;font-size:10px;">
+<tr style="background:#0f1115;color:#fff;"><th style="text-align:left;padding:4px 8px;">Quiero...</th><th style="text-align:left;padding:4px 8px;">Ve a...</th></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Crear un personaje</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 02 (atributos, profesiones, méritos) · Cap. 08 (implantes iniciales)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Comprar equipo y armas</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Catálogo Norton, precios) · Cap. 04 (tabla de blindajes)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Fabricar algo a medida</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Taller a Medida, Tron, runas)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Resolver un combate</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 03 (mecánicas, turnos, daño) · Cap. 04 (blindajes por zona)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Usar distorsión o poderes</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 05 (resumen) · Cap. 06 (escuelas, perlas, poderes) · Cap. 08 (Humanidad/Alma)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Instalar implantes</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 08 (catálogo Ibis-Forge, costes, Humanidad)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Viajar entre teselas</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 09 (exploración, pulseras, Helio-3) · Cap. 10 (vehículos de cruce)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Gestionar tiempo muerto</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (contratos, economía, construcción de bases)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Dirigir una partida (DJ)</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 11 (consejos) · Cap. 13 (aventuras y ganchos) · Cap. 14 (primera senda) · Anexo A1 (generador)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Conocer el universo</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Prólogo (tono) · Cap. 01 (mosaico, teselas, corps) · Cap. 12 (razas, bestiario)</td></tr>
+</table>
+</div>
+
 <main class="libro-main">
 <section class="libro-cap cap-anchor" id="cap1"><div class="document-container"><div class="extra-img"><img src="img/Seawolf frente al portal_texto en ingles.jpg" alt=""></div>
 <h1>PRÓLOGO — El origen</h1>
@@ -3474,6 +3493,7 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 </tr>
 </tbody>
 </table></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap7"><div class="document-container"><h1>CAP04 — TECNOLOGÍA Y DISTORSIÓN</h1>
 <blockquote>
 <p><em>"No es que hayas atrapado la distorsión. Es que le has convencido de que se quede quieta un momento."</em></p>
@@ -8521,6 +8541,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <p><em>Referenciado desde: CAP02 Paso 7 (resultado 10 Objeto Especial) · CAP07 §5</em></p>
 <hr />
 <p><em>Para implantes, Necrochips, Rack de Chips y Sistema Humanidad-Alma, ver CAP04e (La Carne y el Metal).</em></p></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap10"><div class="document-container"><h1>CAP04e - LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</h1>
 <blockquote>
 <p><em>"La primera mejora es gratis. La segunda cuesta dinero. La tercera cuesta algo de ti."</em></p>
@@ -9506,6 +9527,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 </table>
 <p>Ambos caminos son lentos, visibles y reversibles en sus primeras etapas. En las etapas avanzadas, la reversión requiere intervención extraordinaria — la Cristalización en el caso de la Humanidad, un Maestro de Portales en el caso de la Deriva.</p>
 <hr /></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap11"><div class="document-container"><h1>CAP05 — EXPLORACIÓN Y VIAJE</h1>
 <blockquote>
 <p><em>"Una junta del Mosaico. Donde dos realidades se conectan. Normalmente están estabilizadas por portales o tecnología arcanita, pero esta... está salvaje."</em><br />
