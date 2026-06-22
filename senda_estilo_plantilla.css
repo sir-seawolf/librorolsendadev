@@ -1,0 +1,75 @@
+/* ============================================================
+   SENDA_ESTILO — Plantilla CSS modelo de La Senda de los Errantes
+   Versión PLANTILLA (modelo de referencia). 09/06/2026.
+
+   USO: este archivo es el MODELO de estilo común para los
+   documentos del proyecto (Quickstart, fichas, pregenerados,
+   y en el futuro el manual y los módulos).
+
+   De momento cada HTML lleva su CSS embebido. Cuando se decida
+   centralizar, se enlazará este archivo con:
+       <link rel="stylesheet" href="senda_estilo.css">
+   y se borrará el <style> embebido de cada HTML.
+
+   Paleta y tipografías son las que ya usan las fichas y el Quickstart.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root{
+  --bg-dark:#0f1115;      /* negro de cabeceras */
+  --border:#2a303c;
+  --accent:#ff3b3b;       /* rojo de marca (titulos, linea superior) */
+  --accent2:#1d6fa3;      /* azul de valores calculados/base */
+  --accent-neon:#ff3b3b;  /* acento para citas destacadas */
+  --muted:#94a3b8;        /* gris texto secundario */
+  --auto-bg:#dbeafe;      /* fondo azul claro de casillas autocalculadas */
+  --input-bg:#fffef5;     /* fondo crema de campos rellenables */
+  --soft:#f1f5f9;         /* gris muy claro de cajas */
+}
+
+/* --- Tipografias de marca ---
+   Orbitron  -> titulos (h1, h2, nombres)
+   Share Tech Mono -> etiquetas, formulas, datos tecnicos
+   Rajdhani  -> texto general / cuerpo
+*/
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Rajdhani',sans-serif;color:#1e293b;}
+
+h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;color:#000;
+   border-bottom:3px solid var(--accent);letter-spacing:1px;}
+h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;
+   text-transform:uppercase;letter-spacing:1px;}
+.subtitle,.mono{font-family:'Share Tech Mono',monospace;color:var(--accent);text-transform:uppercase;}
+
+/* Campos rellenables */
+input{font-family:'Rajdhani',sans-serif;border:1px solid var(--border);
+      border-radius:3px;background:var(--input-bg);}
+/* Quitar flechas (spinners) de los campos numericos: tapan los numeros */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+input[type=number]{-moz-appearance:textfield;appearance:textfield;text-align:center;}
+
+/* Casillas calculadas automaticamente */
+.auto-cell,.total{background:var(--auto-bg);font-weight:700;text-align:center;
+                  border:1px solid #93b4d8;border-radius:3px;}
+/* Base de categoria (azul solido, texto blanco) */
+.cat-base{font-family:'Share Tech Mono',monospace;color:#fff;background:var(--accent2);
+          text-align:center;border-radius:2px;font-weight:700;}
+
+/* Cajas suaves */
+.soft-box{background:var(--soft);border-radius:3px;}
+
+/* Cita / texto en voz alta (para modulos y quickstart) */
+blockquote{border-left:4px solid var(--accent);background:var(--soft);
+           padding:8px 12px;border-radius:0 4px 4px 0;font-style:italic;}
+
+/* Nota del Director de Juego */
+.dj-note,.master-note{background:#eef6fb;border-left:3px solid var(--accent2);
+                      padding:6px 10px;border-radius:0 4px 4px 0;font-size:0.9em;}
+
+/* Impresion: respetar colores de fondo */
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
