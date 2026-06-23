@@ -67,16 +67,19 @@ body{ margin:0; }
 }
 </style>
 <style>
-.comic-page{margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;overflow:hidden;min-height:50vh;}
+.comic-page{margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;overflow:hidden;}
 .comic-page img{display:block;width:200%;height:auto;}
 .comic-page.comic-left img{margin-left:0;}
 .comic-page.comic-right img{margin-left:-100%;}
 .extra-img{text-align:center;margin:24px 0;}
 .extra-img img{max-width:80%;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.15);}
 @media print{
-  .comic-page{min-height:auto;padding:0;margin:0;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid;}
+  .comic-page{height:100vh;overflow:hidden;padding:0;margin:0;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid;}
   .comic-page img{width:200%;height:auto;}
+  .libro-portada{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
   .libro-portada img{max-width:80% !important;}
+  .libro-guia-rapida{page-break-before:always;}
+  .libro-cap:first-of-type{page-break-before:always;}
 }
 </style>
 </head><body>
@@ -126,10 +129,11 @@ body{ margin:0; }
 <div class="toc-entry"><span class="toc-num">A1</span><span class="toc-title">ANEXO — Generador de Asentamientos y Estaciones para el DJ</span></div>
 </div>
 
-<div class="libro-guia-rapida" style="page-break-before:always;">
+<div class="libro-guia-rapida" style="page-break-before:always;max-width:700px;margin:40px auto;padding:0 20px;">
 <h2 style="font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:14px;margin-bottom:12px;">Guía rápida — ¿Dónde busco qué?</h2>
 <p style="font-size:11px;color:#94a3b8;margin-bottom:10px;font-style:italic;">Este manual se lee en orden la primera vez. En la mesa, usa esta guía para saltar a lo que necesites.</p>
-<table style="width:100%;border-collapse:collapse;font-size:10px;">
+<table style="width:100%;border-collapse:collapse;font-size:10px;table-layout:fixed;">
+<colgroup><col style="width:35%;"><col style="width:65%;"></colgroup>
 <tr style="background:#0f1115;color:#fff;"><th style="text-align:left;padding:4px 8px;">Quiero...</th><th style="text-align:left;padding:4px 8px;">Ve a...</th></tr>
 <tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Crear un personaje</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 02 (atributos, profesiones, méritos) · Cap. 08 (implantes iniciales)</td></tr>
 <tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Comprar equipo y armas</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Catálogo Norton, precios) · Cap. 04 (tabla de blindajes)</td></tr>
