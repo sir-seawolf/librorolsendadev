@@ -67,13 +67,17 @@ body{ margin:0; }
 }
 </style>
 <style>
-.comic-page{text-align:center;margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.comic-page{text-align:center;margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;display:flex;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;}
 .comic-page img{width:100%;height:100vh;object-fit:cover;display:block;}
+.comic-page.comic-left img{object-position:left center;}
+.comic-page.comic-right img{object-position:right center;}
 .extra-img{text-align:center;margin:24px 0;}
 .extra-img img{max-width:80%;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.15);}
 @media print{
   .comic-page{min-height:auto;height:100vh;padding:0;margin:0;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid;}
-  .comic-page img{width:100%;height:100vh;object-fit:cover;}
+  .comic-page img{width:200%;height:100vh;object-fit:cover;}
+  .comic-page.comic-left img{object-position:left center;margin-left:0;}
+  .comic-page.comic-right img{object-position:right center;margin-left:-100%;}
   .libro-portada img{max-width:80% !important;}
 }
 </style>
@@ -195,7 +199,8 @@ body{ margin:0; }
 <p><em>David Dolf dirigió las primeras sesiones. Solo jugó unos meses, pero fue él quien sostuvo el mundo mientras yo aprendía a habitarlo. Sin esa semilla, no habría árbol.</em></p>
 <p><em>Bienvenido al mosaico.</em></p>
 <p>— <em>Miguel Pascual, A. Seawolf</em></p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap2"><div class="document-container"><h1>CAPÍTULO 0 — INTRODUCCIÓN</h1>
 <blockquote>
 <p><em>"Sin el juego nunca había pensado qué posibilidades de sobrevivir tendría una chica como yo de 16 años en un universo como aquel."</em><br />
@@ -417,7 +422,8 @@ Un d6 para ciertos daños secundarios. Un d4 para algunas tiradas de mejora de h
 El glosario completo está al final del manual. Para el resto: "No lo sé ahora mismo, lo decidimos y lo apuntamos." Los juegos de rol sobreviven perfectamente a las reglas improvisadas.</p>
 </blockquote>
 <p><em>"El multiverso no espera a que lo entiendas todo. Solo espera a que des el primer paso."</em></p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol2.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol2.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol2.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap3"><div class="document-container"><h1>CAPÍTULO 1 — EL UNIVERSO</h1>
 <h2>El Mosaico, los Ciclos y sus habitantes</h2>
 <blockquote>
@@ -539,7 +545,8 @@ El glosario completo está al final del manual. Para el resto: "No lo sé ahora 
 <p>Fuera de la capital, en lo que deberia ser selva virgen, hay una mansion victoriana que no deberia existir. <strong>Totovia</strong> lleva aqui mas tiempo del que cualquiera recuerda. Habla idiomas que nadie reconoce. Tiene una biblioteca con libros que no se encuentran en ninguna otra tesela.</p>
 <p>Cuando le preguntan de donde vino, sonrie. Cuando le preguntan por que se quedo, dice: <em>Alguien tenia que cuidar este lugar.</em></p>
 <p>Su jardin no es decorativo: es <em>funcional</em>. Algunas plantas curan. Algunas matan. Algunas hacen cosas que no se pueden describir con palabras. Totovia no explica. Totovia ofrece te.</p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol3.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol3.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol3.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap4"><div class="document-container"><h1>CAPÍTULO 2 — CREACIÓN DE PERSONAJES</h1>
 <blockquote>
 <p><em>"Los personajes somos nosotros mismos. Incluso hicimos pruebas para evaluar nuestras capacidades."</em><br />
@@ -839,6 +846,41 @@ Seis zonas: Cabeza (10/00) / Torso (9-5) / Brazo D (4) / Brazo I (3) / Pierna D 
 <blockquote>
 <p><em>Detalle de rangos, ganchos de aventura y estatus por nivel → ver sección de Profesiones.</em></p>
 </blockquote>
+<hr />
+<h3>Maestro de Drones (Especialización)</h3>
+<blockquote>
+<p><em>"Uno no es nada. Cinco son un problema. Veinte son una pesadilla."</em></p>
+</blockquote>
+<p>Disponible para Técnicos y Combatientes. Un Maestro de Drones controla pequeños enjambres de unidades de baja IA. No son personajes — son herramientas con un mínimo de autonomía.</p>
+<p><strong>Unidad individual:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stat</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atributos base</td>
+<td>10 (todos)</td>
+</tr>
+<tr>
+<td>Especialidad</td>
+<td>+10 en una habilidad según tipo</td>
+</tr>
+<tr>
+<td>Tipos</td>
+<td>Espía (Vigilar), Escudo (Blindaje +1), Ataque (Distancia o CC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Enjambre (hasta 5 unidades):</strong></p>
+<p>La habilidad del enjambre se calcula como 10 de base + 10 por cada unidad que lo compone. Un enjambre de 3 unidades de ataque tiene 40% en su habilidad de combate. Cinco unidades: 60%.</p>
+<p>Los enjambres de escudo suman su blindaje: cada unidad aporta +1 al blindaje de la zona que cubren, tanto al droide maestro como a un aliado designado.</p>
+<p><strong>En el campo:</strong></p>
+<p>Un Maestro puede controlar un enjambre como acción menor. Más enjambres simultáneos requieren tirada de Programación o Liderazgo (−10 por enjambre adicional). Los veteranos llevan contenedores de transporte con decenas de unidades que despliegan al inicio del combate — cada contenedor libera un enjambre completo como acción de preparación.</p>
+<p><strong>Coste:</strong> las unidades individuales se compran o fabrican como equipo. Precio, reparación y modificación por el Catálogo Norton o el Taller a Medida.</p>
 <hr />
 <h2>Concentrar te equipa mejor — y te paga más</h2>
 <p>Cada profesión rinde un <strong>ingreso</strong> y un <strong>equipo base</strong>. Concentrar (2× la misma) <strong>dobla como mínimo el ingreso</strong> y sube el equipo de "lo imprescindible" a "lo bueno" — siempre dentro del material normal.</p>
@@ -2040,40 +2082,6 @@ esta tabla — es una categoría propia, de doble filo.</p>
 </tbody>
 </table>
 <hr />
-<h3>Maestro de Drones (Especialización)</h3>
-<blockquote>
-<p><em>"Uno no es nada. Cinco son un problema. Veinte son una pesadilla."</em></p>
-</blockquote>
-<p>Disponible para Técnicos y Combatientes. Un Maestro de Drones controla pequeños enjambres de unidades de baja IA. No son personajes — son herramientas con un mínimo de autonomía.</p>
-<p><strong>Unidad individual:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Stat</th>
-<th>Valor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Atributos base</td>
-<td>10 (todos)</td>
-</tr>
-<tr>
-<td>Especialidad</td>
-<td>+10 en una habilidad según tipo</td>
-</tr>
-<tr>
-<td>Tipos</td>
-<td>Espía (Vigilar), Escudo (Blindaje +1), Ataque (Distancia o CC)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Enjambre (hasta 5 unidades):</strong></p>
-<p>La habilidad del enjambre se calcula como 10 de base + 10 por cada unidad que lo compone. Un enjambre de 3 unidades de ataque tiene 40% en su habilidad de combate. Cinco unidades: 60%.</p>
-<p>Los enjambres de escudo suman su blindaje: cada unidad aporta +1 al blindaje de la zona que cubren, tanto al droide maestro como a un aliado designado.</p>
-<p><strong>En el campo:</strong></p>
-<p>Un Maestro puede controlar un enjambre como acción menor. Más enjambres simultáneos requieren tirada de Programación o Liderazgo (−10 por enjambre adicional). Los veteranos llevan contenedores de transporte con decenas de unidades que despliegan al inicio del combate — cada contenedor libera un enjambre completo como acción de preparación.</p>
-<p><strong>Coste:</strong> las unidades individuales se compran o fabrican como equipo. Precio, reparación y modificación por el Catálogo Norton o el Taller a Medida.</p>
 <h3>Chernos</h3>
 <blockquote>
 <p><em>"No necesitan luz para vivir. Necesitan aire limpio, y eso es lo unico que no tienen."</em></p>
@@ -2090,7 +2098,8 @@ esta tabla — es una categoría propia, de doble filo.</p>
 <h2>Para el Narrador</h2>
 <p>El proceso de creación es también el primer momento de juego. No lo conviertas en papeleo.</p>
 <p>Deja que los jugadores hablen de sus personajes mientras los crean. Que cuenten por qué saben lo que saben, de dónde vienen, qué llevan encima. Esas conversaciones son el trasfondo — y el trasfondo es lo que hace que las decisiones en mesa importen.</p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol4.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol4.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol4.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap5"><div class="document-container"><h1>CAPÍTULO 3 — MECÁNICAS DEL SISTEMA</h1>
 <blockquote>
 <p><em>"En algún momento los años de amistad y trabajo en equipo dieron su fruto."</em><br />
@@ -3795,7 +3804,8 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 </tr>
 </tbody>
 </table></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap7"><div class="document-container"><h1>CAP04 — TECNOLOGÍA Y DISTORSIÓN</h1>
 <blockquote>
 <p><em>"No es que hayas atrapado la distorsión. Es que le has convencido de que se quede quieta un momento."</em></p>
@@ -3916,7 +3926,8 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 <p><em>Ver CAP04b y CAP04d para Sublimar la Distorsion y Tron.</em></p>
 <h2>13. Tabla Completa de Implantes</h2>
 <p><em>Ver CAP04e (La Carne y el Metal) para catalogo completo de implantes Ibis-Forge.</em></p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol6.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol6.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol6.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap8"><div class="document-container"><div class="extra-img"><img src="img/Sistema runico-lengua errantes.png" alt=""></div>
 <h1>CAP04b — DISTORSIÓN: ESCUELAS Y PODERES</h1>
 <blockquote>
@@ -6943,7 +6954,8 @@ Festividad popular en MadCity y ciudades despertadas. Se celebra el día en que,
 <hr />
 <p><em>Actualizado: 26 mayo 2026 — v3: Hechicería ampliada con cinco elementos (Floss/Dross/Fuss/Velos/Cibus), alcances de Proyección, referencias a anexos.</em><br />
 <em>Actualizado: 11 junio 2026 — v3.1: economía unificada en cargas (resuelve D-06), doble vía de pago PV/distorsión (resuelve D-13), sección 8 Maestrías de la Distorsión. Ver CAP04b seccion Maestrias en archivo de proyecto.</em></p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol7.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol7.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol7.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap9"><div class="document-container"><h1>CAPÍTULO 4d — EL TALLER DEL ERRANTE</h1>
 <h2>(Taller, Chatarra y Fabricación)</h2>
 <h2>1. La cultura del reciclaje</h2>
@@ -8843,7 +8855,8 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <p><em>Referenciado desde: CAP02 Paso 7 (resultado 10 Objeto Especial) · CAP07 §5</em></p>
 <hr />
 <p><em>Para implantes, Necrochips, Rack de Chips y Sistema Humanidad-Alma, ver CAP04e (La Carne y el Metal).</em></p></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap10"><div class="document-container"><h1>CAP04e - LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</h1>
 <blockquote>
 <p><em>"La primera mejora es gratis. La segunda cuesta dinero. La tercera cuesta algo de ti."</em></p>
@@ -9829,7 +9842,8 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 </table>
 <p>Ambos caminos son lentos, visibles y reversibles en sus primeras etapas. En las etapas avanzadas, la reversión requiere intervención extraordinaria — la Cristalización en el caso de la Humanidad, un Maestro de Portales en el caso de la Deriva.</p>
 <hr /></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap11"><div class="document-container"><h1>CAP05 — EXPLORACIÓN Y VIAJE</h1>
 <blockquote>
 <p><em>"Una junta del Mosaico. Donde dos realidades se conectan. Normalmente están estabilizadas por portales o tecnología arcanita, pero esta... está salvaje."</em><br />
@@ -10513,7 +10527,8 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <p><em>Una pulsera que lleva a cualquier sitio es una herramienta. Una pulsera que lleva exactamente donde quieres ir es un activo estratégico. La diferencia es por qué Primus no quiere que cualquiera las tenga.</em></p>
 </blockquote>
 <hr /></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol10.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol10.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol10.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap12"><div class="document-container"><div class="extra-img"><img src="img/VOlando en moto.png" alt=""></div>
 <h1>CAP05b — VEHÍCULOS</h1>
 <blockquote>
@@ -11638,7 +11653,8 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <p>Un motor de AV funcional recuperado de un pecio vale ~4.800 PC en el mercado negro (N2 estandar x 40% x 40% x 1,1). El chatarrero paga 1.200 PC sin preguntas.</p>
 </blockquote>
 <hr /></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol11.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol11.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol11.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap13"><div class="document-container"><h1>CAP06 — EL NARRADOR</h1>
 <blockquote>
 <p><em>"No hay un solo camino en La Senda de los Errantes."</em></p>
@@ -11960,7 +11976,8 @@ Algunos son ciertos. Algunos son propaganda. Ninguno viene con etiqueta.</p>
 </tbody>
 </table>
 <hr /></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol12.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol12.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol12.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap14"><div class="document-container"><h1>CAP07 — BESTIARIO Y RAZAS</h1>
 <blockquote>
 <p><em>"Ángeles, demonios, alienígenas, fantasmas y robots podrían ser tus compañeros de viaje."</em></p>
@@ -12468,7 +12485,8 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 </tbody>
 </table>
 <hr /></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol13.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol13.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol13.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap15"><div class="document-container"><h1>CAP08 — AVENTURAS EN EL MOSAICO (Parte 1/2)</h1>
 <blockquote>
 <p><em>"No diseñes lo que va a pasar. Diseña el lugar donde algo puede pasar."</em></p>
@@ -12620,7 +12638,8 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 <h3>Paso 6 — Giro de la Aventura (1D10)</h3>
 <p>1 Todo es lo que parece / 2 Encuentro aleatorio / 3 Los PJs son usados como distracción / 4 El patrón es asesinado / 5 Descubren algo que cambia su alineamiento / 6 Los PJs están siendo engañados / 7 El patrón intentará matarlos al terminar / 8 El objetivo entra en conflicto con la personalidad de un PJ / 9 El enemigo manipula a los PJs contra su patrón / 10 El patrón muere antes de revelar la misión; los enemigos persiguen a los PJs</p>
 <hr /></div></section>
-<div class="comic-page"><img src="img/ComicJuegoRol14.png" alt="Cómic"></div>
+<div class="comic-page comic-left"><img src="img/ComicJuegoRol14.png" alt="Cómic"></div>
+<div class="comic-page comic-right"><img src="img/ComicJuegoRol14.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap17"><div class="document-container"><h1>CAP09 — TU PRIMERA SENDA</h1>
 <h2>Módulo introductorio para nuevos jugadores</h2>
 <blockquote>
