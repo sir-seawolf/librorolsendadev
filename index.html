@@ -13,14 +13,16 @@ body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;min-heig
 .hero img{max-width:320px;border-radius:12px;margin-bottom:30px;box-shadow:0 0 60px rgba(255,59,59,.15);}
 h1{font-family:'Orbitron',sans-serif;font-size:clamp(28px,5vw,48px);text-transform:uppercase;letter-spacing:3px;margin-bottom:4px;}
 h1 em{color:#ff3b3b;font-style:normal;}
-.sub{font-family:'Share Tech Mono',monospace;color:#94a3b8;font-size:14px;margin-bottom:40px;}.nav{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
-.nav a{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:14px;letter-spacing:2px;padding:14px 32px;border:2px solid #ff3b3b;color:#fff;text-decoration:none;border-radius:4px;transition:all .2s;}
+.sub{font-family:'Share Tech Mono',monospace;color:#94a3b8;font-size:14px;margin-bottom:40px;}
+.nav{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.nav a{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:2px;padding:12px 24px;border:2px solid #ff3b3b;color:#fff;text-decoration:none;border-radius:4px;transition:all .2s;}
 .nav a:hover{background:#ff3b3b;color:#000;}
 .nav a.alt{border-color:#1d6fa3;}
 .nav a.alt:hover{background:#1d6fa3;}
 .footer{text-align:center;padding:30px;font-size:12px;color:#475569;font-family:'Share Tech Mono',monospace;}
 .footer a{color:#94a3b8;text-decoration:none;}
 .desc{max-width:600px;text-align:center;color:#94a3b8;font-size:15px;line-height:1.6;margin-bottom:36px;}
+@media(max-width:600px){.nav a{font-size:11px;padding:10px 16px;letter-spacing:1px;}}
 </style>
 </head>
 <body>
@@ -32,12 +34,19 @@ h1 em{color:#ff3b3b;font-style:normal;}
   <div class="nav">
     <a href="manual.html">Leer el Manual</a>
     <a href="quickstart.html" class="alt">Quickstart</a>
+    <a href="lore.html" class="alt">Lore</a>
     <a href="blog/index.html" class="alt">Blog</a>
     <a href="galeria.html" class="alt">Galería</a>
   </div>
 </div>
 <div class="footer">
-  <a href="https://elpeciodeseawolf.blogspot.com">El Pecio de Seawolf</a> · Borrador v1 · 2026
+  <a href="https://elpeciodeseawolf.blogspot.com">El Pecio de Seawolf</a> · Borrador v1 ·
+  <span id="builddate">2026</span>
 </div>
+<script>
+fetch('build_date.txt').then(r=>r.text()).then(t=>{
+  document.getElementById('builddate').textContent='Actualizado: '+t.trim();
+}).catch(()=>{});
+</script>
 </body>
 </html>

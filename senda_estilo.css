@@ -38,7 +38,6 @@ body {
     background: #ffffff;
 }
 
-/* ===== TIPOGRAFIA Y BLOQUES DEL DOCUMENTO ===== */
 h1 {
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
@@ -148,7 +147,8 @@ tr:nth-child(even) { background-color: #f8fafc; }
     padding:10px 15px; margin: 15px 0; border-radius:4px;
 }
 
-/* ===== FICHAS DE PREGENERADOS (prefijo .pg-) ===== */
+img { max-width: 100%; height: auto; }
+
 .pg-page{max-width:780px;margin:0 auto 18px;background:#fff;display:flex;flex-direction:column;gap:10px;}
 .pg-card{border:2px solid var(--bg-dark);border-radius:6px;padding:10px 12px;display:flex;gap:12px;flex:1;}
 .pg-portrait{flex:0 0 150px;display:flex;flex-direction:column;}
@@ -181,6 +181,23 @@ tr:nth-child(even) { background-color: #f8fafc; }
 .pg-grupo-box .gb-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px;}
 .pg-grupo-box .pg-grid{flex:1;background-image:linear-gradient(#eef1f5 1px,transparent 1px),linear-gradient(90deg,#eef1f5 1px,transparent 1px);background-size:18px 18px;border:1px solid #e2e8f0;border-radius:4px;min-height:380px;}
 .pg-note{font-size:9px;color:var(--text-muted);font-style:italic;text-align:center;}
+
+/* ===== RESPONSIVE MOVIL ===== */
+@media (max-width: 768px) {
+    .document-container { padding: 16px 12px; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 14px; padding: 6px 10px; }
+    h3 { font-size: 13px; }
+    p { font-size: 14px; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+    .pg-card { flex-direction: column; align-items: center; }
+    .pg-portrait { flex: none; }
+    .pg-portrait img { width: 200px; }
+    .pg-attrs { grid-template-columns: repeat(4, 1fr); }
+    .pg-head { flex-direction: column; }
+    .margin-note { float: none; width: 100%; margin: 12px 0; }
+    blockquote, .read-aloud, .master-note { padding: 10px 12px; font-size: 13px; }
+}
 
 @media print {
     body { background: #ffffff; color: #000000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
