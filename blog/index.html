@@ -2,70 +2,40 @@
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>El Pecio de Seawolf - Blog</title><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet"><style>
 body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;margin:0;padding:0;}
-.topnav{background:#12141a;border-bottom:2px solid #ff3b3b;padding:8px 20px;display:flex;justify-content:space-between;align-items:center;font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px;position:sticky;top:0;z-index:100;}
+.topnav{background:#12141a;border-bottom:2px solid #ff3b3b;padding:8px 20px;display:flex;
+  justify-content:space-between;align-items:center;font-family:'Orbitron',sans-serif;
+  font-size:11px;text-transform:uppercase;letter-spacing:1px;position:sticky;top:0;z-index:100;}
 .topnav a{color:#94a3b8;text-decoration:none;padding:4px 10px;}
 .topnav a:hover{color:#fff;}
 .topnav .brand{color:#ff3b3b;font-weight:700;font-size:12px;}
 .content{max-width:750px;margin:0 auto;padding:40px 20px 60px;line-height:1.8;font-size:16px;}
 .content h1{font-family:'Orbitron',sans-serif;font-size:22px;color:#ff3b3b;margin-bottom:6px;}
+.content h2,.content h3{font-family:'Orbitron',sans-serif;color:#cbd5e1;}
 .content hr{border:none;border-top:1px solid #2a303c;margin:20px 0;}
-.content blockquote{border-left:3px solid #ff3b3b;margin:16px 0;padding:8px 16px;color:#94a3b8;font-style:italic;}
+.content blockquote{border-left:3px solid #ff3b3b;margin:16px 0;padding:8px 16px;
+  color:#94a3b8;font-style:italic;}
 .content em{color:#cbd5e1;}
 .content strong{color:#fff;}
 .content img{max-width:100%;border-radius:6px;margin:12px 0;}
-.bottomnav{display:flex;justify-content:space-between;align-items:center;max-width:750px;margin:0 auto;padding:20px;font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;}
-.bottomnav a{color:#94a3b8;text-decoration:none;padding:8px 16px;border:1px solid #2a303c;border-radius:4px;}
+.content p{margin:12px 0;}
+.bottomnav{display:flex;justify-content:space-between;align-items:center;
+  max-width:750px;margin:0 auto;padding:20px;font-family:'Orbitron',sans-serif;
+  font-size:11px;text-transform:uppercase;}
+.bottomnav a{color:#94a3b8;text-decoration:none;padding:8px 16px;
+  border:1px solid #2a303c;border-radius:4px;}
 .bottomnav a:hover{border-color:#ff3b3b;color:#fff;}
-.bottomnav .disabled{color:#333;pointer-events:none;border-color:#1a1a1a;}
+.bottomnav .disabled{color:#333;border-color:#1a1a1a;}
 .chapter-list{max-width:750px;margin:0 auto;padding:20px;}
-.chapter-list a{display:block;padding:10px 16px;color:#e2e8f0;text-decoration:none;border-bottom:1px solid #1e293b;transition:background .15s;}
+.chapter-list a{display:block;padding:10px 16px;color:#e2e8f0;text-decoration:none;
+  border-bottom:1px solid #1e293b;transition:background .15s;}
 .chapter-list a:hover{background:#1a1c25;}
-.chapter-list .num{color:#ff3b3b;font-family:'Orbitron',sans-serif;font-size:12px;margin-right:12px;}
+.chapter-list .num{color:#ff3b3b;font-family:'Orbitron',sans-serif;
+  font-size:12px;margin-right:12px;}
+.chapter-list .draft{display:block;padding:10px 16px;color:#475569;
+  border-bottom:1px solid #1e293b;}
+.chapter-list .draft .num{color:#333;}
 </style></head><body>
-<div class="topnav">
-<a class="brand" href="../index.html">La Senda</a>
-<div>
-<a href="../index.html">Inicio</a>
-<a href="../manual.html">Manual</a>
-<a href="index.html">Blog</a>
-<a href="../galeria.html">Galeria</a>
-</div></div>
-<div class="content"><h1>El Pecio de Seawolf en la Senda de Teseo</h1>
-<p style="color:#94a3b8;font-style:italic;">Cronicas de las partidas desde 2022. Primera persona. Universo real.</p><hr></div>
-<div class="chapter-list"><a href="cap_02.html"><span class="num">02</span>Capítulo 02: El Zippo I</a>
-<a href="cap_03.html"><span class="num">03</span>Capítulo 03: EL Zippo II</a>
-<a href="cap_04.html"><span class="num">04</span>Capítulo 04: Sonríe, esto no es una broma.</a>
-<a href="cap_05.html"><span class="num">05</span>Capítulo 05: La mansión del bosque.</a>
-<a href="cap_06.html"><span class="num">06</span>Capítulo 06: El regreso</a>
-<a href="cap_07.html"><span class="num">07</span>Capítulo 07: Ruinas y Sombras</a>
-<a href="cap_08.html"><span class="num">08</span>Capítulo 08: El Rescate</a>
-<a href="cap_09.html"><span class="num">09</span>Capítulo 09: El Taller del Carnicero</a>
-<a href="cap_10.html"><span class="num">10</span>Capítulo 10: Raíces en Oasis - Parte I</a>
-<a href="cap_11.html"><span class="num">11</span>Capítulo 11: Raíces en Oasis - Parte II</a>
-<a href="cap_12.html"><span class="num">12</span>Capítulo 12: El Asedio - Parte I</a>
-<a href="cap_13.html"><span class="num">13</span>Capítulo 13: El Asedio - Parte II</a>
-<a href="cap_14.html"><span class="num">14</span>Capitulo 14: Recepción en las nubes</a>
-<a href="cap_15.html"><span class="num">15</span>Capítulo 15: Consecuencias y Nuevos Horizontes</a>
-<a href="cap_16.html"><span class="num">16</span>Capítulo 16: Dos meses entre las estrellas</a>
-<a href="cap_17.html"><span class="num">17</span>Capítulo: 17 La Fiesta de Ladino</a>
-<a href="cap_18.html"><span class="num">18</span>Capítulo 18: Los bajos fondos</a>
-<a href="cap_19.html"><span class="num">19</span>Capítulo 19: Cuatro Teselas, Cuatro Verdades</a>
-<a href="cap_20.html"><span class="num">20</span>Capítulo 20: La Trampa del Desierto</a>
-<a href="cap_21.html"><span class="num">21</span>Capítulo 21: El viaje del hacedor</a>
-<a href="cap_22.html"><span class="num">22</span>Capítulo 22: Separados</a>
-<a href="cap_23.html"><span class="num">23</span>Capítulo 23: La colmena emergente</a>
-<a href="cap_24.html"><span class="num">24</span>Capítulo 24: Los Kawalapiti</a>
-<a href="cap_25.html"><span class="num">25</span>Capítulo 25: Las Minas y el Despertar</a>
-<a href="cap_26.html"><span class="num">26</span>Capítulo 26: Reciclaje y Preparación</a>
-<a href="cap_27.html"><span class="num">27</span>Capítulo 27: EP-9: Segunda Visita</a>
-<a href="cap_28.html"><span class="num">28</span>Capítulo 28: El Hombre de Negro</a>
-<a href="cap_29.html"><span class="num">29</span>Capítulo 29: Explosión en el Vacío</a>
-<a href="cap_30.html"><span class="num">30</span>Capítulo 30: La Comandante</a>
-<a href="cap_31.html"><span class="num">31</span>Capítulo 31: Cristalización</a>
-<a href="cap_32.html"><span class="num">32</span>Capítulo 32: Cruce de Teselas</a>
-<a href="cap_33.html"><span class="num">33</span>Capítulo 33: Encuentro en EP-7</a>
-<a href="cap_34.html"><span class="num">34</span>Capítulo 34: Consolidación en EP-7</a>
-<a href="cap_35.html"><span class="num">35</span>Capítulo 35: Las Profundidades — La Bajada</a>
-<a href="cap_36.html"><span class="num">36</span>Capítulo 36: Las Profundidades — Las Sabandijas</a>
-</div>
+<div class="topnav"><a class="brand" href="../index.html">La Senda</a><div><a href="../index.html">Inicio</a><a href="../manual.html">Manual</a><a href="index.html">Blog</a><a href="../galeria.html">Galeria</a></div></div>
+<div class="content"><h1>El Pecio de Seawolf</h1><p style="color:#94a3b8;font-style:italic;">Cronicas de las partidas desde 2022.</p><hr></div>
+<div class="chapter-list"></div>
 </body></html>
