@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Senda de los Errantes — Ficha de Personaje</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
+  :root{
+    --bg-dark:#0f1115; --border:#2a303c;
+    --accent:#ff3b3b; --accent2:#1d6fa3; --muted:#94a3b8;
+    --auto-bg:#dbeafe; --input-bg:#fffef5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Rajdhani',sans-serif;background:#e9edf2;color:#1e293b;padding:10px;font-size:12px;}
+  .sheet{max-width:1480px;margin:0 auto;background:#fff;padding:12px 16px;border:1px solid #cbd5e1;}
+  .header{display:flex;align-items:baseline;gap:14px;}
+  h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:16px;color:#000;border-bottom:3px solid var(--accent);padding-bottom:2px;letter-spacing:1px;}
+  .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:10px;text-transform:uppercase;}
+  h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:2px 7px;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin:5px 0 3px;display:flex;justify-content:space-between;align-items:center;}
+  .row{display:flex;gap:10px;align-items:flex-start;}
+  .col-left{flex:0 0 250px;}
+  .col-g2,.col-g3{flex:1;min-width:0;}
+  .col-g4{flex:0 0 250px;}
+  .ident{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:5px 0 4px;}
+  .ident label{display:flex;flex-direction:column;font-size:8.5px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+  input{font-family:'Rajdhani',sans-serif;font-size:12px;padding:1px 4px;border:1px solid var(--border);border-radius:3px;background:var(--input-bg);width:100%;}
+  input[type=number]{width:36px;text-align:center;padding:1px;}
+  /* Quitar las flechas (spinners) de los campos numericos: estorban y tapan el numero */
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  input[type=number]{-moz-appearance:textfield;appearance:textfield;}
+  .auto-cell{background:var(--auto-bg);font-weight:700;text-align:center;border-radius:3px;padding:1px;border:1px solid #93b4d8;min-width:32px;}
+  .attrs{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;}
+  .attr{display:flex;align-items:center;justify-content:space-between;background:#f1f5f9;padding:1px 6px;border-radius:3px;}
+  .attr span{font-weight:700;text-transform:uppercase;font-size:10px;}
+  table{width:100%;border-collapse:collapse;font-size:10.5px;margin-bottom:2px;table-layout:fixed;}
+  th{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:1px 3px;text-align:center;}
+  th.skill-h{text-align:left;padding-left:6px;}
+  td{padding:0 2px;border-bottom:1px solid #eef1f5;line-height:1.25;}
+  td.skill{text-align:left;padding-left:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+  .cat-base{font-family:'Share Tech Mono',monospace;font-size:10px;color:#fff;background:var(--accent2);text-align:center;border-radius:2px;font-weight:700;}
+  .cat-formula{font-family:'Share Tech Mono',monospace;font-size:8px;color:#9fd;font-weight:400;}
+  .total{font-weight:700;text-align:center;background:var(--auto-bg);border:1px solid #93b4d8;border-radius:2px;}
+  .skilltbl col.c-num{width:30px;}
+  .skilltbl input[type=number]{width:26px;}
+  .lifebox{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:4px;margin-bottom:4px;}
+  .lifegrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:3px;text-align:center;font-size:10px;}
+  .lifegrid .hd{font-family:'Share Tech Mono',monospace;font-size:7.5px;color:var(--muted);text-transform:uppercase;}
+  .lifegrid .v{background:var(--auto-bg);font-weight:700;border-radius:2px;padding:1px;border:1px solid #93b4d8;}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:3px;font-size:10px;}
+  .metrics div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
+  .note{font-size:8px;color:var(--muted);font-style:italic;margin-top:2px;line-height:1.2;}
+  .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;font-size:9px;}
+  .loc-cell{background:#f1f5f9;padding:2px 5px;border-radius:3px;}
+  .loc-cell .lname{font-family:'Share Tech Mono',monospace;font-size:7.5px;text-transform:uppercase;color:var(--muted);}
+  .loc-cell .lrow{display:flex;gap:4px;margin-top:1px;align-items:center;}
+  .loc-cell .lrow label{font-size:7.5px;color:var(--muted);}
+  .loc-cell input{width:36px;}
+  h2 .toggle{font-family:'Share Tech Mono',monospace;font-size:8px;padding:0 7px;background:var(--accent2);color:#fff;border:none;border-radius:3px;cursor:pointer;text-transform:none;}
+  .portrait-box{border:1px dashed #93b4d8;border-radius:4px;min-height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f8fafc;text-align:center;font-size:9px;color:var(--muted);cursor:pointer;margin-top:3px;}
+  .portrait-box img{width:100%;height:100%;object-fit:cover;}
+  .hidden{display:none;}
+  .disc-band{margin-top:4px;}
+  .disc-inner{display:flex;gap:10px;align-items:flex-start;}
+  .disc-inner > div{flex:1;min-width:0;}
+  .pegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;font-size:9.5px;}
+  .pegrid div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
+  .btns{margin:8px 0;display:flex;gap:8px;}
+  button{font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;padding:6px 14px;border:none;border-radius:4px;cursor:pointer;background:var(--bg-dark);color:#fff;}
+  button.alt{background:var(--accent2);}
+  .footnote{font-size:9px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:8px;padding-top:4px;page-break-inside:avoid;break-inside:avoid;}
+  @media print{
+    @page{size:A4 landscape;margin:5mm;}
+    html,body{width:297mm;}
+    body{background:#fff;padding:0;font-size:8.5px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sheet{border:none;max-width:100%;padding:0;overflow:hidden;}
+    .btns{display:none;}
+    .footnote{display:none;}
+    h2{margin:2px 0 1px;font-size:8.5px;padding:1px 6px;} h2 .toggle{display:none;}
+    h1{font-size:12px;}
+    table{font-size:8px;}
+    .note{font-size:7px;margin-top:1px;}
+    .row{gap:7px;}
+    td{line-height:1.0;padding:0 2px;}
+    th{padding:0 3px;}
+    input{border-color:#ccc;padding:0 3px;line-height:1.0;}
+    .lifebox{padding:2px;margin-bottom:2px;}
+    .attrs{gap:2px;} .metrics{gap:2px;} .loc-grid{gap:2px;}
+    .ident{margin:2px 0;}
+    .col-left{flex:0 0 230px;} .col-g4{flex:0 0 235px;}
+    .footnote{margin-top:4px;font-size:7px;}
+    h2{break-after:avoid;page-break-after:avoid;}
+    tr{break-inside:avoid;page-break-inside:avoid;}
+    /* compresion fina para caber en 1 pagina apaisada */
+    td{line-height:0.95;padding:0 2px;}
+    th{padding:0 3px;line-height:1.0;}
+    input{line-height:0.95;}
+    input[type=number]{padding:0;}
+    h2{margin:1px 0 0;padding:0 6px;line-height:1.35;}
+    .lifebox{padding:1px;margin-bottom:1px;}
+    .note{font-size:6.5px;margin-top:0;line-height:1.1;}
+    .attr{padding:0 6px;}
+    .metrics div,.pegrid div,.loc-cell{padding:0 4px;}
+    .ident{margin:1px 0;}
+    table{margin-bottom:1px;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>La Senda de los Errantes</h1>
+    <span class="subtitle">Ficha de personaje · autocalculada</span>
+  </div>
+
+  <div class="ident">
+    <label>Jugador<input type="text"></label>
+    <label>Personaje<input type="text" id="personaje"></label>
+    <label>Nivel Tecnológico<input type="text"></label>
+    <label>Naturaleza / Tipo<input type="text"></label>
+    <label>Corporación<input type="text"></label>
+    <label>Puntos Épicos<input type="text"></label>
+  </div>
+
+  <div class="row">
+    <!-- COLUMNA 1: atributos, vida, métricas, carga, méritos -->
+    <div class="col-left">
+      <h2>Atributos</h2>
+      <div class="attrs">
+        <div class="attr"><span>Car</span><input type="number" id="Ca" oninput="calc()"></div>
+        <div class="attr"><span>Agi</span><input type="number" id="A" oninput="calc()"></div>
+        <div class="attr"><span>Per</span><input type="number" id="P" oninput="calc()"></div>
+        <div class="attr"><span>Con</span><input type="number" id="C" oninput="calc()"></div>
+        <div class="attr"><span>Int</span><input type="number" id="I" oninput="calc()"></div>
+        <div class="attr"><span>Fue</span><input type="number" id="F" oninput="calc()"></div>
+        <div class="attr"><span>Vol</span><input type="number" id="V" oninput="calc()"></div>
+        <div class="attr"><span>Hab</span><input type="number" id="H" oninput="calc()"></div>
+      </div>
+
+      <h2>Vida por zona — 3 niveles</h2>
+      <div class="lifebox">
+        <div class="lifegrid">
+          <div class="hd"></div><div class="hd">Leve(0)</div><div class="hd">Medio(−10)</div><div class="hd">Grave(−20)</div>
+          <div class="hd" style="text-align:left;">PV/niv</div>
+          <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
+        </div>
+        <div class="note">PV/nivel=(A+C+F)/6. Total zona=<span id="vidaTotal">0</span>. Desbordar Grave: muerte (cabeza/torso) o desmembr. 1d6 (extremidad).</div>
+      </div>
+
+      <h2>Métricas</h2>
+      <div class="metrics">
+        <div><span>Humanidad</span><input type="number" style="width:44px;"></div>
+        <div><span>Techo(Alma×10)</span><span class="auto-cell" id="techoHum">—</span></div>
+        <div><span>S. Mental</span><input type="number" style="width:44px;"></div>
+        <div><span>Alma</span><input type="number" id="alma" style="width:44px;" oninput="calc()"></div>
+        <div><span>Deriva</span><input type="number" style="width:44px;"></div>
+        <div><span>Dinero(I×100)</span><span class="auto-cell" id="dinero">0</span></div>
+      </div>
+      <div class="note">SM: Crisis a SM ≤ Voluntad; Quiebra a SM ≤ Voluntad/2.</div>
+
+      <h2>Carga</h2>
+      <div class="metrics">
+        <div><span>Libre ≤(F+C)/4</span><span class="auto-cell" id="cargaLibre">0</span></div>
+        <div><span>−20% (F+C)/2</span><span class="auto-cell" id="carga20">0</span></div>
+        <div><span>−40% (F+C)×2</span><span class="auto-cell" id="carga40">0</span></div>
+      </div>
+
+      <h2>Méritos y Defectos / Rasgos</h2>
+      <table><colgroup><col><col style="width:55px;"><col></colgroup>
+        <tr><th class="skill-h">Nombre</th><th>Tipo</th><th>Efecto</th></tr>
+        <tbody id="meritTable"></tbody>
+      </table>
+
+      <h2>Bitácora de Puntos Épicos</h2>
+      <table><colgroup><col style="width:30px;"><col></colgroup>
+        <tr><th>#</th><th class="skill-h">Uso (cuándo y para qué)</th></tr>
+        <tbody id="epicTable"></tbody>
+      </table>
+      <div class="note">Ej: «parecía que había muerto» contra el Inquisidor · +50 a una tirada clave.</div>
+    </div>
+
+    <!-- GRID 2: Académicas + Atlética -->
+    <div class="col-g2">
+      <div id="catA"></div>
+      <div id="catC"></div>
+    </div>
+
+    <!-- GRID 3: Tecnológica + Social -->
+    <div class="col-g3">
+      <div id="catB"></div>
+      <div id="catD"></div>
+    </div>
+
+    <!-- GRID 4: Combate + Armas + Armadura + Retrato -->
+    <div class="col-g4">
+      <h2>Combate</h2>
+      <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
+        <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
+        <tbody id="combatTable"></tbody>
+      </table>
+      <h2>Armas</h2>
+      <table><colgroup><col><col style="width:24px;"><col style="width:28px;"><col style="width:24px;"></colgroup>
+        <tr><th class="skill-h">Nombre</th><th>%</th><th>Dñ</th><th>Pen</th></tr>
+        <tbody id="armasTable"></tbody>
+      </table>
+      <h2>Armadura / PV por zona</h2>
+      <div class="loc-grid" id="locGrid"></div>
+      <h2>Retrato</h2>
+      <div class="portrait-box" id="portraitBox" onclick="document.getElementById('imgInput').click()">Pulsa para cargar imagen</div>
+      <input type="file" id="imgInput" accept="image/*" class="hidden" onchange="loadImg(event)">
+    </div>
+  </div>
+
+  <!-- BANDA INFERIOR: Iniciados / Distorsión + Implantes -->
+  <div class="disc-band">
+    <h2>Iniciados / Distorsión · Implantes <button class="toggle" onclick="toggle('discBlock')">ocultar ▾</button></h2>
+    <div id="discBlock" class="disc-inner">
+      <div>
+        <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
+          <tr><th class="skill-h">Disciplina</th><th>Bas</th><th>Hab</th><th>Mod</th><th>Tot</th></tr>
+          <tbody id="discTable"></tbody>
+        </table>
+      </div>
+      <div>
+        <div class="pegrid">
+          <div><span>Tinta temp</span><input type="number" style="width:38px;"></div>
+          <div><span>Tinta perm</span><input type="number" style="width:38px;"></div>
+          <div><span>Perlas blancas</span><input type="number" style="width:38px;"></div>
+          <div><span>Perlas grises</span><input type="number" style="width:38px;"></div>
+        </div>
+        <table style="margin-top:3px;"><colgroup><col><col style="width:38px;"><col></colgroup>
+          <tr><th class="skill-h">Runa</th><th>Niv</th><th>Nota</th></tr><tbody id="runaTable"></tbody></table>
+        <div class="note">Maestros/Marcas usan su atributo como base. Hechicería arranca en 0 (solo Hab+Mod). Perlas: blancas=100, grises=1000.</div>
+      </div>
+      <div>
+        <table><colgroup><col><col><col style="width:42px;"></colgroup>
+          <tr><th class="skill-h">Implante</th><th>Efecto</th><th>C.Hum</th></tr>
+          <tbody id="implTable"></tbody>
+        </table>
+        <div class="metrics" style="margin-top:3px;">
+          <div><span>Necrochip</span><input type="text" placeholder="Sí/No" style="width:54px;"></div>
+          <div><span>NT</span><input type="text" style="width:54px;"></div>
+        </div>
+        <table style="margin-top:3px;"><colgroup><col></colgroup>
+          <tr><th class="skill-h">Notas (necrochip, implantes, casco…)</th></tr>
+          <tbody id="notasTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">Uso: escribe los 8 atributos y se calculan solas las casillas resaltadas. En cada habilidad: Base de categoría (auto) + Apr. (aprendido) + Mod. (implante/chip/objeto) = Total. Para imprimir, pon orientación Horizontal; entra en 1 folio A4 apaisado.</div>
+
+  <div class="btns">
+    <button onclick="guardar()">Guardar (descargar)</button>
+    <button class="alt" onclick="window.print()">Imprimir / PDF</button>
+    <button class="alt" onclick="limpiar()" style="background:#888;">Limpiar habilidades</button>
+  </div>
+</div>
+
+<script>
+const raw = id => { const v = document.getElementById(id).value.trim(); return v === '' ? NaN : parseInt(v); };
+const num = id => { const v = raw(id); return isNaN(v) ? 0 : v; };
+const filled = (...ids) => ids.every(id => !isNaN(raw(id)));
+const round = x => Math.round(x);
+
+const CATS = [
+  { name:"Académicas", formula:"(I+V)/2", base:()=>round((num('I')+num('V'))/2),
+    skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Esconderse/Evadirse","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—"] },
+  { name:"Tecnológica", formula:"(H+P)/2", base:()=>round((num('H')+num('P'))/2),
+    skills:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Manualidades","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","—"] },
+  { name:"Atlética", formula:"(A+F)/2", base:()=>round((num('A')+num('F'))/2),
+    skills:["Acrobacias","Conducir","Resistir","Proezas","Pilotar","Trajes Servoasistidos","Sigilo","—","—"] },
+  { name:"Social", formula:"(Ca+P)/2", base:()=>round((num('Ca')+num('P'))/2),
+    skills:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo","—"] },
+];
+const COMBAT = [
+  { name:"Iniciativa", base:()=>round((num('A')+num('P'))/2) },
+  { name:"Alerta", base:()=>round((num('P')+num('I'))/2) },
+  { name:"Esquivar", base:()=>round((num('A')+num('H'))/2) },
+  { name:"Distancia", base:()=>round((num('A')+num('H')+num('P'))/3) },
+  { name:"Sin Armas", base:()=>round((num('F')+num('C')+num('A'))/3) },
+  { name:"Arma CC", base:()=>round((num('F')+num('A')+num('H'))/3) },
+];
+
+function catTableHTML(cat, ci){
+  let h = `<h2><span>${cat.name}</span><span class="cat-formula">${cat.formula}</span></h2>`;
+  h += `<table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup><tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>`;
+  cat.skills.forEach((sk,si)=>{
+    const blank = sk==="—";
+    const nm = blank ? `<input type="text" placeholder="(añadir)" style="font-size:11px;">` : sk;
+    h += `<tr><td class="skill" title="${blank?'':sk}">${nm}</td><td class="cat-base catbase-${ci}">0</td><td><input type="number" class="apr" data-cat="${ci}" data-sk="${si}" oninput="calc()"></td><td><input type="number" class="mod" data-cat="${ci}" data-sk="${si}" oninput="calc()"></td><td class="total" id="tot-${ci}-${si}">0</td></tr>`;
+  });
+  return h + `</table>`;
+}
+function buildSkills(){
+  document.getElementById('catA').innerHTML = catTableHTML(CATS[0],0); // Académicas
+  document.getElementById('catC').innerHTML = catTableHTML(CATS[2],2); // Atlética
+  document.getElementById('catB').innerHTML = catTableHTML(CATS[1],1); // Tecnológica
+  document.getElementById('catD').innerHTML = catTableHTML(CATS[3],3); // Social
+}
+function buildCombat(){
+  const tb=document.getElementById('combatTable');tb.innerHTML='';
+  COMBAT.forEach((c,i)=>{tb.innerHTML+=`<tr><td class="skill">${c.name}</td><td class="cat-base combatbase-${i}">0</td><td><input type="number" class="capr" data-i="${i}" oninput="calc()"></td><td><input type="number" class="cmod" data-i="${i}" oninput="calc()"></td><td class="total" id="ctot-${i}">0</td></tr>`;});
+}
+function buildArmas(){
+  const tb=document.getElementById('armasTable');tb.innerHTML='';
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>`;
+}
+function buildLoc(){
+  const z=["Cabeza","Torso","Brazo Izq","Brazo Der","Pierna Izq","Pierna Der"];
+  const g=document.getElementById('locGrid');g.innerHTML='';
+  z.forEach(n=>{g.innerHTML+=`<div class="loc-cell"><div class="lname">${n}</div><div class="lrow"><label>Bld</label><input type="number"><label>PV</label><input type="number"></div></div>`;});
+}
+const DISC=[
+  {n:"Det/ident distorsión",attr:"P"},{n:"Manipular distorsión",attr:"V"},{n:"Camino de los portales",attr:null},
+  {n:"Tatuador Rúnico",attr:"Ca"},{n:"Herrero Rúnico",attr:"V"},
+  {n:"Proyección energía",attr:"ZERO"},{n:"Protección energía",attr:"ZERO"},{n:"Invocación energía",attr:"ZERO"},
+];
+function buildDisc(){
+  const tb=document.getElementById('discTable');tb.innerHTML='';
+  DISC.forEach((d,i)=>{tb.innerHTML+=`<tr><td class="skill" title="${d.n}">${d.n}</td><td class="cat-base discbase-${i}">0</td><td><input type="number" class="dhab" data-i="${i}" oninput="calc()"></td><td><input type="number" class="dmod" data-i="${i}" oninput="calc()"></td><td class="total" id="dtot-${i}">0</td></tr>`;});
+}
+function buildImpl(){
+  const tb=document.getElementById('implTable');tb.innerHTML='';
+  for(let i=0;i<7;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td></tr>`;
+}
+function buildRuna(){
+  const tb=document.getElementById('runaTable');tb.innerHTML='';
+  for(let i=0;i<7;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="text" style="font-size:10px;"></td></tr>`;
+}
+function buildEpic(){
+  const tb=document.getElementById('epicTable');tb.innerHTML='';
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td style="text-align:center;color:#94a3b8;font-size:9px;">${i+1}</td><td><input type="text" style="font-size:11px;"></td></tr>`;
+}
+function buildNotas(){
+  const tb=document.getElementById('notasTable');tb.innerHTML='';
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td></tr>`;
+}
+function toggle(id){document.getElementById(id).classList.toggle('hidden');}
+function loadImg(ev){
+  const f=ev.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{document.getElementById('portraitBox').innerHTML='<img src="'+e.target.result+'">';};
+  r.readAsDataURL(f);
+}
+function calc(){
+  const vidaOk=filled('A','C','F');
+  const pv=vidaOk?round((num('A')+num('C')+num('F'))/6):'';
+  document.getElementById('vidaLeve').textContent=pv;
+  document.getElementById('vidaMedio').textContent=pv;
+  document.getElementById('vidaGrave').textContent=pv;
+  document.getElementById('vidaTotal').textContent=vidaOk?(pv*3):'';
+  document.getElementById('techoHum').textContent=filled('alma')?(num('alma')*10):'—';
+  document.getElementById('dinero').textContent=filled('I')?(num('I')*100)+' PC':'';
+  const fcOk=filled('F','C');
+  const fc=num('F')+num('C');
+  document.getElementById('cargaLibre').textContent=fcOk?round(fc/4):'';
+  document.getElementById('carga20').textContent=fcOk?round(fc/2):'';
+  document.getElementById('carga40').textContent=fcOk?fc*2:'';
+  CATS.forEach((cat,ci)=>{
+    const deps=cat.formula.match(/[A-Z][a-z]?/g)||[];
+    const ok=deps.length>0&&filled(...deps);
+    const base=ok?cat.base():'';
+    document.querySelectorAll('.catbase-'+ci).forEach(el=>el.textContent=base);
+    cat.skills.forEach((sk,si)=>{
+      const apr=document.querySelector(`.apr[data-cat="${ci}"][data-sk="${si}"]`);if(!apr)return;
+      const mod=document.querySelector(`.mod[data-cat="${ci}"][data-sk="${si}"]`);
+      const a=parseInt(apr.value)||0,m=parseInt(mod.value)||0;
+      const hasInput=ok||apr.value.trim()!==''||mod.value.trim()!=='';
+      document.getElementById(`tot-${ci}-${si}`).textContent=hasInput?(ok?cat.base():0)+a+m:'';
+    });
+  });
+  COMBAT.forEach((c,i)=>{
+    const base=c.base();
+    const anyAttr=filled('A','P','I','H','F','C');
+    document.querySelectorAll('.combatbase-'+i).forEach(el=>el.textContent=anyAttr?base:'');
+    const a=parseInt(document.querySelector(`.capr[data-i="${i}"]`).value)||0;
+    const m=parseInt(document.querySelector(`.cmod[data-i="${i}"]`).value)||0;
+    const hasInput=anyAttr||a!==0||m!==0;
+    document.getElementById('ctot-'+i).textContent=hasInput?base+a+m:'';
+  });
+  DISC.forEach((d,i)=>{
+    let base=0;let ok=false;
+    if(d.attr&&d.attr!=="ZERO"){base=num(d.attr);ok=filled(d.attr);}
+    document.querySelector('.discbase-'+i).textContent=ok?base:'';
+    const h=parseInt(document.querySelector(`.dhab[data-i="${i}"]`).value)||0;
+    const m=parseInt(document.querySelector(`.dmod[data-i="${i}"]`).value)||0;
+    const hasInput=ok||h!==0||m!==0;
+    document.getElementById('dtot-'+i).textContent=hasInput?base+h+m:'';
+  });
+}
+function limpiar(){document.querySelectorAll('.apr,.mod,.capr,.cmod,.dhab,.dmod').forEach(el=>el.value='');calc();}
+function guardar(){
+  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:'text/html'});const a=document.createElement('a');
+  const n=document.getElementById('personaje').value||'personaje';
+  a.href=URL.createObjectURL(blob);a.download='Ficha_'+n.replace(/\s+/g,'_')+'.html';a.click();
+}
+function buildMerit(){
+  const tb=document.getElementById('meritTable');tb.innerHTML='';
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td></tr>`;
+}
+buildSkills();buildCombat();buildArmas();buildLoc();buildDisc();buildImpl();buildMerit();buildRuna();buildEpic();buildNotas();calc();
+</script>
+</body>
+</html>
