@@ -70,9 +70,41 @@
   button{font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;padding:6px 14px;border:none;border-radius:4px;cursor:pointer;background:var(--bg-dark);color:#fff;}
   button.alt{background:var(--accent2);}
   .footnote{font-size:9px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:8px;padding-top:4px;page-break-inside:avoid;break-inside:avoid;}
+  @media screen and (max-width: 900px){
+    body{padding:6px;font-size:13px;}
+    .sheet{padding:8px 10px;}
+    .row{flex-direction:column;gap:8px;}
+    .col-left,.col-g2,.col-g3,.col-g4{flex:none;width:100%;min-width:0;}
+    .ident{grid-template-columns:repeat(2,1fr);}
+    .attrs{grid-template-columns:repeat(4,1fr);}
+    .attr{padding:2px 6px;}
+    .lifegrid{grid-template-columns:1.2fr 1fr 1fr 1fr;}
+    .metrics{grid-template-columns:repeat(2,1fr);}
+    .loc-grid{grid-template-columns:repeat(3,1fr);}
+    .pegrid{grid-template-columns:repeat(2,1fr);}
+    table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    input{font-size:13px;padding:3px 5px;}
+    input[type=number]{width:44px;}
+    .disc-inner{flex-direction:column;gap:8px;}
+    .disc-inner > div{width:100%;}
+    h2{font-size:11px;}
+    .portrait-box{min-height:160px;}
+    .btns{flex-wrap:wrap;}
+    button{font-size:12px;padding:8px 16px;}
+  }
+  @media screen and (max-width: 480px){
+    .ident{grid-template-columns:1fr 1fr;}
+    .attrs{grid-template-columns:repeat(2,1fr);}
+    .loc-grid{grid-template-columns:repeat(2,1fr);}
+    .metrics{grid-template-columns:1fr;}
+    .pegrid{grid-template-columns:1fr 1fr;}
+    h1{font-size:13px;}
+    input{font-size:14px;padding:4px 6px;}
+    input[type=number]{width:52px;}
+    .auto-cell{min-width:44px;font-size:13px;}
+  }
   @media print{
     @page{size:A4 landscape;margin:5mm;}
-    html,body{width:297mm;}
     body{background:#fff;padding:0;font-size:8.5px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .sheet{border:none;max-width:100%;padding:0;overflow:hidden;}
     .btns{display:none;}
