@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teselas Expandidas — La Senda de los Errantes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+:root {
+  --dlc-accent: #e8001c;
+  --dlc-bg: #0f1115;
+  --dlc-idx-w: 260px;
+}
+body { margin: 0; background: #f8f9fa; }
+.dlc-idx {
+  position: fixed; top: 0; left: 0; width: var(--dlc-idx-w);
+  height: 100vh; overflow-y: auto; background: var(--dlc-bg);
+  padding: 20px 0; box-sizing: border-box; z-index: 100;
+}
+.dlc-idx h2 {
+  font-family: 'Orbitron', sans-serif; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 3px;
+  color: #94a3b8; padding: 0 18px 12px; margin: 0;
+  border-bottom: 1px solid #1e2433;
+}
+.dlc-idx a {
+  display: block; color: #cbd5e1; text-decoration: none;
+  padding: 6px 18px; font-size: 12px;
+  border-left: 3px solid transparent; transition: all .15s;
+}
+.dlc-idx a:hover { background: #1a1f2b; color: #fff; border-left-color: var(--dlc-accent); }
+.dlc-idx a.tesela { font-size: 11px; color: #64748b; padding-left: 30px; }
+.dlc-idx .idx-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; color: var(--dlc-accent); margin-right: 6px;
+}
+.dlc-main { margin-left: var(--dlc-idx-w); }
+.dlc-portada {
+  margin-left: var(--dlc-idx-w); background: var(--dlc-bg);
+  color: #fff; text-align: center; padding: 100px 40px;
+  border-bottom: 4px solid var(--dlc-accent);
+}
+.dlc-portada .pt-sup {
+  font-family: 'Orbitron', sans-serif; font-size: 11px;
+  letter-spacing: 6px; text-transform: uppercase; color: #94a3b8;
+}
+.dlc-portada .pt-title {
+  font-family: 'Orbitron', sans-serif; font-size: 48px;
+  font-weight: 900; text-transform: uppercase;
+  line-height: .95; margin: 10px 0;
+}
+.dlc-portada .pt-title em { color: var(--dlc-accent); font-style: normal; }
+.dlc-portada .pt-sub {
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #64748b; margin-top: 14px;
+}
+.dlc-portada .pt-badge {
+  display: inline-block; margin-top: 24px;
+  background: var(--dlc-accent); color: #fff;
+  font-family: 'Orbitron', sans-serif; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 3px;
+}
+.toggle-idx {
+  position: fixed; top: 10px; right: 10px; z-index: 1100;
+  background: var(--dlc-accent); color: #fff; border: none;
+  border-radius: 4px; padding: 8px 12px; cursor: pointer;
+  font-family: 'Orbitron', sans-serif; font-size: 11px;
+  text-transform: uppercase;
+}
+.dlc-section { padding: 0 8px; }
+.dlc-sep { border: none; border-top: 1px dashed #cbd5e1; margin: 0; }
+.cap-anchor { scroll-margin-top: 10px; }
+.dlc-tesela-header {
+  background: var(--dlc-bg); color: #fff;
+  margin-left: calc(-1 * var(--dlc-idx-w)); padding: 60px 60px 40px;
+  border-left: var(--dlc-idx-w) solid var(--dlc-bg);
+}
+@media screen and (max-width: 900px) {
+  :root { --dlc-idx-w: 0px; }
+  .dlc-idx {
+    transform: translateX(-100%); transition: transform .3s;
+    width: 80vw; max-width: 300px;
+  }
+  .dlc-idx.open { transform: translateX(0); }
+  .dlc-main, .dlc-portada { margin-left: 0 !important; }
+  .dlc-portada .pt-title { font-size: 28px; }
+  .dlc-portada { padding: 60px 20px; }
+  .toggle-idx { display: block !important; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  .dlc-idx { display: none; }
+  .toggle-idx { display: none; }
+  .dlc-main, .dlc-portada { margin-left: 0; }
+  .dlc-section { page-break-before: always; }
+  .dlc-section:first-child { page-break-before: avoid; }
+}
+</style>
+</head><body>
+<button class="toggle-idx" onclick="document.querySelector('.dlc-idx').classList.toggle('open')">Índice</button>
+<nav class="dlc-idx">
+  <h2>Teselas Expandidas</h2>
+  <a href="#tesela1"><span class="idx-num">T01</span>SUPLEMENTO — TESELAS EXPANDIDAS</a>
+<a href="#tesela2"><span class="idx-num">T02</span>TESELA 01 — MUNDO CHATARRA: EL VERTEDERO</a>
+<a href="#tesela3"><span class="idx-num">T03</span>TESELA 02 — MAZMORRAS DE LOS ANTIGUOS: LAS TESELAS ANIDADAS</a>
+<a href="#tesela4"><span class="idx-num">T04</span>TESELA 03 — [PENDIENTE]</a>
+  <div style="padding:20px 18px;margin-top:20px;border-top:1px solid #1e2433;">
+    <a href="LIBRO_COMPLETO.html" style="color:#64748b;font-size:11px;">← Manual base</a>
+  </div>
+</nav>
+<div class="dlc-portada">
+  <div class="pt-sup">La Senda de los Errantes</div>
+  <div class="pt-title">Teselas <em>Expandidas</em></div>
+  <div class="pt-sub">Suplemento para el Narrador</div>
+  <div class="pt-badge">Material adicional · No requerido para jugar</div>
+</div>
+<main class="dlc-main">
+<section class="dlc-section cap-anchor" id="tesela1"><div class="document-container"><h1>SUPLEMENTO — TESELAS EXPANDIDAS</h1>
+<h2>La Senda de los Errantes — Material adicional para el Narrador</h2>
+<blockquote>
+<p><em>Este suplemento amplía el mosaico. No es necesario para jugar — es para quienes quieren más.</em><br />
+Cada tesela es autocontenida: fauna, facciones, criaturas y aventura incluidas.<br />
+No necesitas el manual base abierto para usarlo en mesa.</p>
+</blockquote>
+<hr />
+<h2>ÍNDICE</h2>
+<ul>
+<li><strong>Tesela 01 — Mundo Chatarra: El Vertedero</strong></li>
+<li><strong>Tesela 02 — Mazmorras de los Antiguos: Las Teselas Anidadas</strong></li>
+<li><strong>Tesela 03 — [Pendiente]</strong></li>
+</ul>
+<hr /></div></section>
+<hr class="dlc-sep"><section class="dlc-section cap-anchor" id="tesela2"><div class="document-container"><h1>TESELA 01 — MUNDO CHATARRA: EL VERTEDERO</h1>
+<p><em>"No hay mapas del Vertedero. Los que lo intentaron murieron o enloquecieron."</em><br />
+— <em>Inscripción en la entrada de Edivan</em></p>
+<hr />
+<h2>1. QUÉ ES MUNDO CHATARRA</h2>
+<p>Mundo Chatarra no es un mundo que fue destruido. Es un mundo que <strong>nunca terminó de ser</strong>.</p>
+<p>Milenios de tecnología obsoleta, naves estrelladas, restos de civilizaciones caídas, desechos de corporaciones que ya no existen — todo ha venido a parar aquí. No por accidente. Por diseño. Alguien, en algún Ciclo olvidado, decidió que el multiverso necesitaba un lugar donde tirar lo que ya no servía.</p>
+<p>El planeta es una costra de metal sobre un núcleo que nadie ha visto. No hay continentes naturales — solo cadenas de chatarra apilada que alcanzan el cielo gris. No hay océanos — solo cuencas de líquido imposible. No hay estaciones — solo una penumbra perpetua atravesada por tormentas de óxido.</p>
+<p>Y sin embargo, hay vida. Siempre la hay.</p>
+<hr />
+<h2>2. GEOGRAFÍA</h2>
+<h3>El Vertedero Central</h3>
+<p>La mayor parte del planeta es inhabitable. Montañas de chatarra que se mueven solas. Cruzarlo sin vehículo adecuado es suicidio. Con vehículo adecuado, sigue siendo una apuesta.</p>
+<h3>El Norte — Tierra de las Bestias</h3>
+<p>Zona de altura con microclima amable: volcanes termales, fuentes de agua caliente, arrozales en terrazas de metal oxidado. Algo bajo la chatarra mantiene la zona estable — los monjes dicen que es el equilibrio, los técnicos dicen que es una falla en los sistemas climáticos enterrados.</p>
+<h3>El Este — El Páramo de la Desesperación</h3>
+<p>Llanura de chatarra plana y cortante, azotada por vientos que llevan fragmentos de metal a velocidad de bala. Las Bestias lo conocen. Los Errantes lo evitan.</p>
+<h3>El Sur — Zona Volcánica</h3>
+<p>Inestable. Corrientes de metal fundido bajo la superficie. Un Coloso cayó dentro de un volcán activo aquí. Inaccesible.</p>
+<h3>El Oeste — Fondos del Abismo</h3>
+<p>Donde la chatarra se hundió hace milenios. Uno de los doce Colosos cayó aquí. Nadie ha bajado a buscarlo.</p>
+<hr />
+<h2>3. SUPERVIVENCIA EN EL VERTEDERO</h2>
+<h3>Interferencia del mosaico</h3>
+<ul>
+<li><strong>Comunicaciones:</strong> rango máximo 50 metros o contacto visual.</li>
+<li><strong>Sensores:</strong> escáneres fallan o muestran fantasmas. Percepción = sentidos biológicos.</li>
+<li><strong>Tecnología sensible:</strong> cada pifia causa "calado de óxido" — tirada de Mecánica o pierde una carga.</li>
+</ul>
+<h3>Terreno inestable</h3>
+<p>Moverse con carga: tirada de Acrobacias o Supervivencia. El ruido atrae peligros — suma al Contador de Vibración del Coloso (ver §4).</p>
+<h3>Economía de trueque</h3>
+<p>Las PC no valen nada aquí. Trueque puro: piezas funcionales, comida, agua, polvo de Tron, información sobre rutas seguras.</p>
+<h3>Distorsión ambiental</h3>
+<p>Zonas de cristales de perlas explotadas: +1 Deriva acumulada por hora. Tirada de Supervivencia o Detección de Distorsión (−10) para identificar áreas peligrosas. Cristales recolectables: 1d6 = 1 perla blanca parcial (50 PD).</p>
+<hr />
+<h2>4. LOS COLOSOS</h2>
+<p>Hay doce. Solo seis están localizados. Los Colosos no son máquinas ni criaturas — son algo <strong>anterior a ambas categorías</strong>. Se alzan entre la chatarra como dioses dormidos. Consumen lo que tienen alrededor para repararse. No atacan. No defienden. Simplemente son.</p>
+<p>El más conocido: <strong>78 metros</strong> en el centro del Vertedero habitable. Paneles oxidados que son carne y metal, cables como tendones, ojos que no son ojos pero que miran.</p>
+<h3>Los otros once</h3>
+<ul>
+<li><strong>Dos</strong> localizados pero detenidos — no consumen, no se mueven. ¿Muertos o esperando?</li>
+<li><strong>Uno</strong> en una sima profunda. Inaccesible.</li>
+<li><strong>Uno</strong> en el fondo marino del oeste.</li>
+<li><strong>Uno</strong> dentro de un volcán activo del sur.</li>
+<li><strong>Cinco</strong> sin localizar. Sus siluetas aparecen en tormentas de óxido.</li>
+</ul>
+<blockquote>
+<p><strong>Para el Narrador:</strong> los Colosos son <strong>eventos de campaña</strong>, no encuentros de combate. Despertar uno — o descubrir qué son — puede ser el arco completo de una crónica. El Coloso del norte se movió 3 metros durante el encuentro con Ren. Algo lo está despertando.</p>
+</blockquote>
+<h3>Mecánica: Contador de Vibración (0 a 10)</h3>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Caminar con sigilo</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Hablar en voz alta / correr</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Herramientas de corte / soldadura</td>
+<td>+3</td>
+</tr>
+<tr>
+<td>Armas de energía / explosivos</td>
+<td>+5</td>
+</tr>
+<tr>
+<td>Distorsión de alta intensidad / runas</td>
+<td>+4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Al llegar a 10:</strong> el Coloso cambia de ruta hacia la fuente.</p>
+<h3>Efectos de proximidad</h3>
+<ul>
+<li><strong>Paso cercano:</strong> suelo colapsa. Esquivar o Acrobacias. Fallo = herida Grave + equipo aplastado.</li>
+<li><strong>Pulso electromagnético:</strong> equipos no blindados se apagan. Mecánica para reiniciar.</li>
+</ul>
+<h3>Cómo sobrevivir al Coloso</h3>
+<p>No se le mata. Se le esquiva, distrae (generadores de ruido a kilómetros) o evita (cuevas de metal denso bloquean vibraciones).</p>
+<h3>Stats (si los jugadores insisten en combatir)</h3>
+<ul>
+<li>Enjambres defensivos — ver Bestiario §6</li>
+<li>Descargas eléctricas: 1d6×6 eléctrico, 2m radio. Solo protege escudo energético.</li>
+<li>PV: 10.000 por zona | Blindaje: 10 (vehículos) / 100 (armas personales)</li>
+<li>Ataques energéticos: los absorbe y se recarga.</li>
+</ul>
+<hr />
+<h2>5. FACCIONES Y HABITANTES</h2>
+<h3>Los Chatarreros</h3>
+<p>Red informal de recicladores, mecánicos y comerciantes. Viven de lo que el Vertedero escupe. No tienen líder — tienen reputación.</p>
+<h3>Voss — El Mecánico</h3>
+<p>El poblado más grande se llama como su mecánico: <strong>Voss</strong>. Décadas en el Vertedero. Las manos más dañadas que nadie ha visto, el taller más ordenado de todo el Vertedero. No pregunta de dónde vienes. Solo pregunta qué necesitas reparar.</p>
+<p><strong>Stats Voss</strong> (si hay conflicto): F35/A30/P50 | PV 18/9/18 | Bld 1 | Mecánica 90% | Combate 40% — prefiere hablar. Siempre.</p>
+<h3>Edivan — La Nave Enterrada</h3>
+<p>Nave colonial semienterrada donde los poblados se reúnen. No tiene ley — tiene costumbre: no robes dentro, no mates sin testigos, no traiciones a quien te dio techo. La expulsión en el Vertedero es una sentencia.</p>
+<h3>Los Nakel del Vertedero</h3>
+<p>Más salvajes y territoriales que los de MadCity. Conocen rutas que ningún escáner puede mapear. Comercian con quien demuestre valor. Las armas no impresionan — las piezas funcionales, sí.</p>
+<h3>Presencia Corporativa</h3>
+<ul>
+<li><strong>TecnoStealer:</strong> contactos entre chatarreros. Compran tecnología recuperada.</li>
+<li><strong>Mort:</strong> opera en Edivan. Mercado negro discreto.</li>
+<li><strong>Chafry:</strong> envió sondas al norte buscando "anomalías genéticas". Las Bestias lo saben.</li>
+</ul>
+<hr />
+<h2>6. BESTIARIO DEL VERTEDERO</h2>
+<p>Fichas: <code>F / A / P | PV | Bld | Ataque% | Daño | Especial</code><br />
+PV en formato Sano/Herido/Tullido cuando aplica. Daño = base × éxitos netos.</p>
+<p><strong>Sombras de la Noche</strong> F50/A65/P70 | PV 25/12/25 | Bld 3 | 65% (Pen 2, Zarpazo) | Daño 3+5F | Esquiva 75% (+10 en oscuridad total)<br />
+Mezcla de pantera y reptil de seis extremidades. Tentáculos sensoriales en lugar de ojos — detecta calor, vibración y distorsión. Solo activa de noche. No hostil salvo con crías cerca. Sentidos tentaculares: sin penalizadores por oscuridad; en luz diurna intensa −20 a todas las tiradas. Sigilo nocturno: +20. Si hay crías: ataque sin tirada previa, Daño +2.</p>
+<blockquote>
+<p>Solo ataca si se siente acorralada. Tirada de Naturaleza o Percepción para reconocer que no es agresiva.</p>
+</blockquote>
+<p><strong>Sabandija del Pecio</strong> F40/A30/P30 | PV 40/10 | Bld 5 | 50% (Antena de Óxido) | Daño 3+4F | Esquiva 40%<br />
+Antena de Óxido: por cada éxito, +1 Blindaje al objetivo (destruye su metal). Ignora el Blindaje del objetivo al calcular el impacto. 2 éxitos para materiales no metálicos.</p>
+<p><strong>Enjambre Defensivo del Coloso</strong> F30/A40/P40 | PV 8 por unidad (grupos de 5) | Bld 2 | 40% (Pen 1) | Daño 3 | Esquiva 55%<br />
+Por cada unidad eliminada: −10% al Ataque del enjambre. Con 1 unidad restante: no hace daño. Las sueltas se reorganizan en nuevo enjambre tras 1d6 turnos. Solo aparecen si el Coloso es amenazado directamente.</p>
+<p><strong>Carroñero Metálico</strong> F20/A30/P40 | PV 10/5 | Bld 4 | 30% (solo si amenazado, Pen 3 contra metal) | Daño 2 | Esquiva 60%<br />
+Insecto del tamaño de un perro con exoesqueleto de aleación. Come metal. No ataca orgánicos por iniciativa propia. Una armadura brillante actúa como cebo. Mordisco solo contra metal — ignora carne y plástico.</p>
+<p><strong>Mimic de Chatarra</strong> F45/A20/P50 | PV 20/20 | Bld 5 | 70% (60+10 Sorpresa primer turno) | Daño 3+4F, Pen 2 | Esquiva 30%<br />
+Acumulación de cables con núcleo bioluminiscente que imita chatarra inerte. Indetectable en reposo: Percepción −20 para identificarlo. Pierde el bonificador de sorpresa si es detectado. No persigue — defiende su zona.</p>
+<p><strong>Fauna Mecánica Autoreplicante</strong> F35/A35/P30 | PV 15/15 | Bld 4 | 50% (Pen 2) | Daño 3+3F | Esquiva 45%<br />
+Máquinas que se autorreparan y reproducen. Comportamiento de caza. Infección IA: al contacto físico con un droide aliado, tirada de Voluntad o Tecnología (−10). Fallo = droide actúa de forma errática 1d6 turnos. Si matas 3+, el resto huye y reagrupa. Vuelven en 1d6 horas con refuerzos.</p>
+<hr />
+<h2>7. LAS BESTIAS DEL NORTE (Raza Jugable)</h2>
+<h3>Origen</h3>
+<p>Producto fallido de una subsidiaria tapadera de <strong>Chafry</strong> hace ~500 años. Intentaban replicar el éxito de los Hombres y Mujeres Gato. Fracasaron. Chafry ordenó su destrucción. Un grupo las liberó — en la huida, la nave sufrió un accidente. Como último acto, lanzaron las cápsulas de suspensión al espacio. La mayoría cayó en el norte de Mundo Chatarra. La subsidiaria ya no existe. Nadie las busca. Ellas siguen ahí — y han construido una cultura propia basada en textos del <strong>periodo Edo japonés</strong> encontrados en una nave desmantelada.</p>
+<h3>Ficha canónica</h3>
+<pre><code>RAZA: BESTIAS DE MUNDO CHATARRA
+ATRIBUTOS:          Variables según función de diseño (ver Paso 1)
+BONIFICADOR DERIVA: −1/cruce
+ESPECIAL:           TARA genética (Paso 2) · Sistema de castas (Paso 4) ·
+                    Cultura del Equilibrio: +10 SM contra traumas de pérdida
+                    de control emocional · −10 Sociales con no-Bestia
+                    (excepto casta Social/Placer) · Coste: −1 profesión
+</code></pre>
+<h3>Paso 1 — Función de Diseño (elige 1 o tira 1d5)</h3>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Atributos +10/+10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trabajo</td>
+<td>Fuerza +10, Constitución +10</td>
+</tr>
+<tr>
+<td>Combate</td>
+<td>Fuerza +10, Agilidad +10</td>
+</tr>
+<tr>
+<td>Artista Físico</td>
+<td>Agilidad +10, Habilidad +10</td>
+</tr>
+<tr>
+<td>Explorador</td>
+<td>Constitución +10, Percepción +10</td>
+</tr>
+<tr>
+<td>Social / Placer</td>
+<td>Carisma +10, Percepción +10</td>
+</tr>
+</tbody>
+</table>
+<h3>Paso 2 — TARA Genética (tira 1d10)</h3>
+<table>
+<thead>
+<tr>
+<th>1d10</th>
+<th>TARA</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>Equilibrio Perfecto</td>
+<td>Sin defecto visible. +5 a una Social a elegir.</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>Más Bestia</td>
+<td>Apariencia claramente no humana. −10 CAR con humanos. +5 FUE o CON.</td>
+</tr>
+<tr>
+<td>5-6</td>
+<td>Más Humano</td>
+<td>Casi indetectable. +10 Social con humanos. −5 habilidad racial de especie.</td>
+</tr>
+<tr>
+<td>7-8</td>
+<td>Defecto Menor</td>
+<td>1d6: 1-2 Ojos (visión nocturna, −5 sociales) · 3-4 Extremidad (+5 FUE, −5 AGI) · 5-6 Piel (Bld +1, −10 sociales)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Defecto Mayor</td>
+<td>1d6: 1-2 Grande (Mérito Grande, −10 AGI) · 3-4 Pequeño (Defecto Pequeño, +10 AGI) · 5-6 Mutación visible (−15 CAR, +10 atributo físico)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Desequilibrio Grave</td>
+<td>Elige: +20 físico/−20 mental, O +20 mental/−20 físico.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Regla opcional: tira dos veces y aplica ambos resultados. Tara doble, más dramática.</em></p>
+<h3>Paso 3 — Especie (elige o tira 1d20)</h3>
+<table>
+<thead>
+<tr>
+<th>1d20</th>
+<th>Especie</th>
+<th>1d20</th>
+<th>Especie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-3</td>
+<td>Felino (tigre, lince, pantera)</td>
+<td>11-12</td>
+<td>Roedor (rata, castor, ardilla)</td>
+</tr>
+<tr>
+<td>4-5</td>
+<td>Cánido (lobo, zorro, perro)</td>
+<td>13-14</td>
+<td>Úrsido (oso, panda)</td>
+</tr>
+<tr>
+<td>6-7</td>
+<td>Équido (caballo, cebra)</td>
+<td>15-16</td>
+<td>Ave (raro: −5 sociales)</td>
+</tr>
+<tr>
+<td>8-9</td>
+<td>Bóvido (toro, búfalo, ciervo)</td>
+<td>17-18</td>
+<td>Reptil (muy raro: −5 sociales)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Primate (mono, simio)</td>
+<td>19-20</td>
+<td>Otro (definir con el DJ)</td>
+</tr>
+</tbody>
+</table>
+<p>Mamíferos por defecto. Otras clases: −5 adicionales a una Social + justificación narrativa.</p>
+<h3>Paso 4 — Sistema de Castas (elige o tira 1d6)</h3>
+<table>
+<thead>
+<tr>
+<th>1d6</th>
+<th>Casta</th>
+<th>Beneficio</th>
+<th>Lastre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Noble</td>
+<td>+10 CAR, contactos en el norte</td>
+<td>−10 Atléticas</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Monje</td>
+<td>+10 VOL, +5 SM. <strong>Puede aprender Tatuador Rúnico</strong></td>
+<td>−10 Tecnológicas</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Artesano</td>
+<td>+10 a una Tecnológica a elegir</td>
+<td>−5 Sociales con no-Bestia</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Samurái / Yakuza</td>
+<td>+10 a una habilidad de Combate. <strong>Yakuza: tatuajes rúnicos como voto</strong></td>
+<td>Código de honor (defecto narrativo)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Campesino</td>
+<td>+10 CON, +5 Supervivencia</td>
+<td>−10 Sociales con nobles y monjes</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Comerciante</td>
+<td>+10 CAR, +5.000 PC iniciales</td>
+<td>−10 Combate</td>
+</tr>
+</tbody>
+</table>
+<h3>Mecánicas especiales</h3>
+<p><strong>Voto del Equilibrio:</strong> voto personal al abandonar el norte (no acumular riqueza / no buscar venganza / proteger a los débiles). Mientras se cumple: +5 a todas las tiradas de SM. Si se rompe: −10.</p>
+<p><strong>La Nave de los Libros:</strong> personaje monje o artesano que haya estudiado allí: +10 a Identificación de objetos del periodo Edo y conocimiento de tradición japonesa histórica.</p>
+<p><strong>Reproducción con humanos:</strong> 50% de viabilidad (gen X). Hijos mestizos: rasgos bestiales visibles, sin TARA, pueden elegir función de diseño. Con otras razas: incompatible salvo decisión del DJ.</p>
+<hr />
+<h2>8. PNJS PRINCIPALES</h2>
+<p><strong>Hermano Kaito</strong> (Monje Bestia, Felino, TARA "Más Humano") — Mensajero del Monasterio. Casi indetectable como no humano.<br />
+F35/A40/P50/V60 | PV 18/9/18 | Bld 1 | Esquiva 60%<br />
+Detección Distorsión 65% | Camino de los Portales 30% | Social 55% | Supervivencia 40%<br />
+Tatuajes rúnicos N1 (Alerta +10 PER, Paso Ligero +10 Sigilo). No ataca primero. Se defiende y huye si la situación es desesperada.</p>
+<p><strong>Ren</strong> (Monje Bestia, Felino, TARA "Más Bestia") — Joven monje que intentó invocar a Axarón. Deriva 23. Tercer ojo cerrado en la frente.<br />
+F30/A45/P40/V55 | PV 16/8/16 | Bld 1 | Esquiva 55%<br />
+Detección Distorsión 45% | Camino de los Portales 15% (sube a 30% si completa la aventura).<br />
+Habla en lengua Precursora sin saberlo bajo estrés.</p>
+<p><strong>Axarón</strong> (Demonio Menor del Grimorio) — No invocado formalmente. No vinculado. Confundido.<br />
+F45/A45/P50 | PV 22 | Bld 4 | 55% (Pen 2) | Daño 3+4F | Esquiva 60%<br />
+Especial: +20 a localizar objetos/personas perdidas. Puede rastrear a través de la urdimbre.<br />
+Precio en Almas: 1 punto para establecer vínculo permanente.</p>
+<p><strong>Voss</strong> (El Mecánico) — Ver §5 Facciones.</p>
+<hr />
+<h2>9. AVENTURA — EL VOTO DEL EQUILIBRIO</h2>
+<p><strong>Duración:</strong> 2-3 sesiones | <strong>Nivel:</strong> Inicial/Medio | <strong>Tono:</strong> Misterio filosófico con acción</p>
+<h3>Sinopsis</h3>
+<p>Ren, joven monje bestia, ha desaparecido del Monasterio de los Libros. Los ancianos envían a Kaito a buscar Iniciados de otras disciplinas — los monjes solo dominan el Tatuaje Rúnico, pero Ren intentó algo que requiere Invocación o Camino de los Portales. Los personajes deben encontrarlo antes de que la Deriva lo transforme, o antes de que algo más lo encuentre primero.</p>
+<h3>Escena 0 — El Mensajero</h3>
+<p><strong>Ubicación:</strong> Cualquier mundo despertado donde los PJs estén.</p>
+<p>Kaito busca a los PJs. +10 Sigilo por TARA y tatuajes. Si los PJs tienen Alerta &gt;50%, lo detectan primero. Si no, aparece detrás de ellos en un momento de calma.</p>
+<p>Si lo dejan hablar:</p>
+<blockquote>
+<p><em>"Busco a quienes caminan la distorsión sin tatuajes en la piel. Mi nombre es Kaito. Vengo del Monasterio de los Libros, en el norte del Vertedero. Un hermano ha desaparecido. Intentó algo... prohibido. Necesitamos ayuda. No podemos hacerlo solos."</em></p>
+</blockquote>
+<p><strong>Oferta:</strong> 5.000 PC adelanto / 10.000 PC al completar / Acceso a la Nave de los Libros / Posibilidad de aprender Tatuador Rúnico.</p>
+<p><strong>Información:</strong> Ren desapareció hace tres semanas hacia el Coloso. Llevaba un pergamino del Grimorio. Mencionó un "Oni" que podía encontrar cualquier cosa. Dos semanas a pie hasta el Coloso.</p>
+<h3>Escena 1 — El Monasterio de los Libros</h3>
+<p><strong>Ubicación:</strong> Norte del Vertedero. Microclima amable, volcanes termales, arrozales en terrazas de metal oxidado.</p>
+<p>En la celda de Ren: mapa marcando "El Ojo del Coloso" · notas sobre <em>"Axarón — el que busca sin encontrar"</em> · tatuaje rúnico incompleto (Alerta N1) · pergamino con el nombre de una herrera legendaria: <em>"La Forja del Cielo Abierto"</em>.</p>
+<h3>Escena 2 — El Camino al Coloso</h3>
+<p><strong>Duración:</strong> Dos semanas (o menos con vehículo). Cada 30 minutos, tira 1d6:</p>
+<table>
+<thead>
+<tr>
+<th>1d6</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>Sombras de la Noche — no atacan salvo que se sientan acorraladas</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>Anomalía de distorsión menor — déjà vu intenso. Voluntad −10 o +1 Deriva temporal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Asentamiento abandonado — vacío, intacto. Descanso sin riesgo</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Zona de cristales — perlas explotadas. +1 Deriva/hora. Cristales recolectables (1d6 = 1 perla parcial, 50 PD)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El rastro de Ren:</strong> Supervivencia +10 o resultado 5. Capa enganchada en metal retorcido. Marcas de garras de Sabandija del Pecio. Ren pasó hace 3 días.</p>
+<h3>Escena 3 — El Ojo del Coloso</h3>
+<p><strong>Zona:</strong> Claro circular de 50m frente al Coloso. Distorsión visible.</p>
+<p><strong>Ren</strong> está vivo pero cambiado. Deriva 23. Tercer ojo cerrado en la frente. Habla en lengua Precursora. El pergamino del Grimorio está abierto frente a él.</p>
+<p><strong>Qué pasó:</strong> Ren intentó invocar a Axarón para encontrar <strong>la Espada del Cielo Abierto</strong> — una espada legendaria capaz de crear portales sin necesidad de un Maestro. La invocación falló, pero algo respondió. Axarón está aquí, sin estar invocado formalmente.</p>
+<p><strong>La tragedia de Ren (lore oculto):</strong> Su hermana <strong>Hana</strong> murió en el Páramo de la Desesperación, atacada por una criatura mutada. La espada no es solo un mito para él — es la promesa de que la pérdida puede convertirse en justicia.</p>
+<p><strong>La Espada del Cielo Abierto:</strong><br />
+- Parpadeo (acción de movimiento): desaparecer y aparecer en línea de visión.<br />
+- Carga: catas (1 asalto) O 2 impactos fallidos consecutivos = 1 carga.<br />
+- Descarga: próximo impacto exitoso añade rayo espectacular. Daño: 10 × éxitos totales. Ignora armaduras. 90% de pulso electromagnético en 5m.<br />
+- Coste: 12 PV base (75+ → 9 PV / 50+ → 6 PV / 25+ → 3 PV).</p>
+<p>La espada <strong>no está aquí</strong>. Ren fue engañado por Axarón.</p>
+<h3>Escena 4 — La Decisión</h3>
+<p><strong>A) Combatir:</strong> Axarón se defiende. Si lo "derrotan", desaparece temporalmente pero Ren pierde 1 PA permanentemente.</p>
+<p><strong>B) Negociar</strong> (CAR 40+ o Social):<br />
+Axarón quiere: un nombre verdadero (Voluntad −10 en el Grimorio) / O 1 PA como pago / O que Ren complete la invocación correctamente (Invocador o Camino de los Portales 25+).</p>
+<p><strong>C) Cerrar el portal:</strong><br />
+Detección de Distorsión −10 / O Camino de los Portales −10 / O sacrificar 10 PD de una perla.</p>
+<p><strong>D) Dejar que Axarón se vincule:</strong><br />
+Coste: 1 PA. Ren se convierte en Invocador accidental. El monasterio lo expulsa o vigila constantemente.</p>
+<h3>Escena 5 — Consecuencias</h3>
+<p><strong>Si salvan a Ren sin coste:</strong> +10 reputación con las Bestias del Norte. Ren tira Tabla A (tiene el tercer ojo, tira el segundo efecto). Se convierte en aliado futuro.</p>
+<p><strong>Si Ren pierde 1 PA:</strong> Humanidad baja a 70. Los monjes lo ven con recelo. Pero ahora tiene Camino de los Portales 10% (despertó accidentalmente).</p>
+<p><strong>Si Axarón se vincula:</strong> Ren es Invocador Menor (20%). El monasterio lo expulsa. Los PJs ganan un aliado poderoso... y un problema futuro.</p>
+<p><strong>Recompensas:</strong> 10.000-15.000 PC / Tatuador Rúnico disponible / Acceso Nave de los Libros (+10 conocimiento Edo) / Pergamino con nombre de Axarón / Fragmentos de la leyenda de la Espada.</p>
+<h3>Ganchos futuros</h3>
+<ol>
+<li>La Espada del Cielo Abierto — ¿existe realmente?</li>
+<li>La Deriva de Ren sigue subiendo. En 6 meses alcanzará 30 — punto de no retorno.</li>
+<li>Axarón advirtió: <em>"Hay otros once esperando. El que llama, llama a todos."</em></li>
+<li>El Coloso se movió 3 metros durante el encuentro. Algo lo está despertando.</li>
+<li>Chafry envió una nueva expedición al norte. Las Bestias están en peligro.</li>
+<li>El Páramo de la Desesperación. La criatura que mató a Hana sigue allí.</li>
+</ol>
+<hr />
+<h2>10. GANCHOS DE CAMPAÑA — MUNDO CHATARRA</h2>
+<ol>
+<li>El Coloso lleva tres días quieto sobre una zona concreta. Algo debajo genera vibraciones que lo mantienen inmóvil. ¿Qué hay ahí abajo?</li>
+<li>Un comunicador de largo alcance no debería funcionar aquí. Algo emite una señal repetitiva desde lo profundo de una montaña de chatarra.</li>
+<li>Voss necesita algo reparado. Algo que no debería existir. Algo que reconoce a los PJs.</li>
+<li>Un pecio reciente reveló una nave del periodo Edo idéntica a la Nave de los Libros. ¿Hay más?</li>
+<li>Uno de los Colosos detenidos empezó a moverse. Hacia Edivan.</li>
+<li>El cliente necesita una pieza Precursora que solo existe en el Vertedero.</li>
+</ol>
+<hr />
+<p><em>"El equilibrio no es quietud. Es saber cuándo ceder y cuándo resistir."</em><br />
+— <em>Hermano Kaito, Monasterio de los Libros</em></p>
+<h2>---</h2></div></section>
+<hr class="dlc-sep"><section class="dlc-section cap-anchor" id="tesela3"><div class="document-container"><h1>TESELA 02 — MAZMORRAS DE LOS ANTIGUOS: LAS TESELAS ANIDADAS</h1>
+<p><em>"No son ruinas. Son pruebas. Y nosotros somos los sujetos."</em><br />
+— <em>Errante anónimo, EP-9</em></p>
+<hr />
+<h2>1. QUÉ SON</h2>
+<p>Las Mazmorras de los Antiguos son <strong>teselas anidadas</strong> — micro-universos artificiales creados por los Precursores y anclados permanentemente a la urdimbre. No son ruinas explorables: son <strong>sistemas cerrados con reglas propias</strong>.</p>
+<p>Cada mazmorra es un laboratorio, prisión o experimento de una civilización que ya no existe. Algunas fueron diseñadas para contener algo. Otras para probar algo. Las más inquietantes — para <strong>observar</strong> algo.</p>
+<hr />
+<h2>2. ESTRUCTURA</h2>
+<ul>
+<li><strong>Física variable</strong>: gravedad invertida, tiempo más lento, colores inexistentes. Cada nivel es distinto.</li>
+<li><strong>Bosses guardianes</strong>: no se puede bajar sin derrotarlo o resolverlo.</li>
+<li><strong>Recompensas únicas</strong>: lo que encuentras no se puede comprar en Norton.</li>
+<li><strong>Regeneración</strong>: después de semanas o meses, enemigos y bosses resucitan. Es su diseño original.</li>
+<li><strong>Evolución</strong>: cuanto más se usa, más reacciona. Los bosses aprenden. La mazmorra reconoce a quienes la visitan.</li>
+</ul>
+<hr />
+<h2>3. MECÁNICAS</h2>
+<h3>Entrada</h3>
+<p>Portales estabilizados, estructuras de los Antiguos activas, o anomalías permanentes.<br />
+- Saber que existe · Tener acceso al punto de entrada · Estar dispuesto a morir</p>
+<h3>Progresión</h3>
+<ul>
+<li>Derrotar al boss → se abre el portal al siguiente nivel</li>
+<li>No derrotar al boss → no puedes bajar (pero puedes volver)</li>
+<li>Morir → <strong>muerte permanente</strong>. Con Necrochip: la conciencia se transfiere, pero el cuerpo queda en la mazmorra.</li>
+</ul>
+<h3>Recompensas por tipo</h3>
+<table>
+<thead>
+<tr>
+<th>Levmotic original</th>
+<th>Recompensa típica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Laboratorio de tecnología</td>
+<td>Armas, implantes, prototipos de los Antiguos</td>
+</tr>
+<tr>
+<td>Prisión de entidades</td>
+<td>Artefactos de contención, conocimiento de Demonios</td>
+</tr>
+<tr>
+<td>Experimento biológico</td>
+<td>Materiales orgánicos raros, mutágenos, especímenes</td>
+</tr>
+<tr>
+<td>Archivo de conocimiento</td>
+<td>Datos, mapas, coordenadas de teselas perdidas</td>
+</tr>
+<tr>
+<td>Campo de prueba</td>
+<td>Tecnología de combate, armaduras experimentales</td>
+</tr>
+<tr>
+<td>Observatorio</td>
+<td>Información sobre otras teselas, entidades, fenómenos</td>
+</tr>
+</tbody>
+</table>
+<h3>Deriva</h3>
+<p>El DJ decide al diseñar la mazmorra: si acumula, cuánto (+1/+2/+3 por nivel o por hora), y si hay zonas seguras.</p>
+<h3>Regeneración y Evolución</h3>
+<p>Después de 1d6 semanas/meses: los bosses resucitan y <strong>aprenden</strong> de los intentos previos. Evolución avanzada (decenas de incursiones): nuevos niveles aparecen, la física cambia.</p>
+<hr />
+<h2>4. EL INFIERNO — LA MAZMORRA TELEVISADA</h2>
+<p><em>"Bienvenidos al Infierno. Las cámaras están encendidas. No hay reglas. Solo hay una: sobrevive."</em></p>
+<p>La única mazmorra "domesticada" para <strong>entretenimiento interdimensional</strong>. 7-9 niveles estimados. Los participantes entran voluntariamente (o casi) para competir por premios, fama, o supervivencia.</p>
+<h3>Formato televisivo</h3>
+<ul>
+<li><strong>Apostar</strong> por los participantes</li>
+<li><strong>Enviar suministros</strong> (a cambio de PD)</li>
+<li><strong>Votar</strong> para activar eventos cada 1d6 horas: trampas, refuerzos de bosses, cambios de entorno</li>
+</ul>
+<p><strong>Los participantes:</strong> grupos de 3-6. No tienen que cooperar — pueden matarse entre ellos.<br />
+<strong>El premio:</strong> 100.000-1.000.000 PC. A veces tecnología rara. A veces simplemente salir vivo.<br />
+<strong>Patrocinadores:</strong> Las corporaciones dan equipo, información o ventajas a cambio de visibilidad.</p>
+<blockquote>
+<p><strong>Para el Narrador:</strong> El Infierno puede ser un arco de campaña completo, un gancho de aventura, o una crítica social. La muerte en directo como espectáculo. La vida como mercancía.</p>
+</blockquote>
+<hr />
+<h2>5. SEIS MAZMORRAS CONOCIDAS</h2>
+<h3>1. El Pozo de los Espejos</h3>
+<p><strong>Sector 24 de EP-9</strong> | 5 niveles | Horror psicológico | Deriva +1/nivel</p>
+<p>Cada nivel es un reflejo distorsionado del anterior. Los espejos muestran lo que podría haber sido. Los participantes ven versiones alternativas de sí mismos: el que no cruzó el portal, el que mató a su hermano, el que se convirtió en Demonio.</p>
+<p><strong>Bosses:</strong> Un "yo alternativo" por nivel con ventaja específica sobre el original (conocen sus miedos, recuerdos, secretos).<br />
+<strong>Recompensas:</strong> Fragmentos de espejo que permiten ver teselas alternativas.<br />
+<strong>Leyenda:</strong> En el nivel 5 hay un espejo que muestra la verdad sobre los Antiguos. Nadie ha llegado vivo para confirmarlo.</p>
+<hr />
+<h3>2. La Forja Olvidada</h3>
+<p><strong>Nexar Prime, bajo las dunas del sur</strong> | 7 niveles | Tecnología ancestral, calor extremo | Deriva +2/nivel</p>
+<p>Una fábrica de los Antiguos que sigue operando. Cada nivel es una sección: fundición, ensamblaje, pruebas, archivo. El calor es insoportable sin protección.</p>
+<p><strong>Bosses:</strong> "Supervisores" — constructos con inteligencia y personalidad. Pueden negociar.<br />
+<strong>Recompensas:</strong> Tecnología de los Antiguos funcional. El nivel 7 tiene un prototipo de Genocaballero incompleto.<br />
+<strong>Leyenda:</strong> La Forja fue <strong>sellada</strong>, no abandonada. Algo en el nivel 7 sigue funcionando, y los Antiguos no quisieron que nadie lo encontrara.</p>
+<hr />
+<h3>3. El Jardín de los Huesos</h3>
+<p><strong>Oasis, jungla bajo la capital</strong> | 4 niveles | Biológico, orgánico, simbiosis | Deriva +1/nivel</p>
+<p>Una mazmorra viva. Las paredes son tejido orgánico, el suelo respira, los pasillos se contraen y expanden.</p>
+<p><strong>Bosses:</strong> "Jardineros" — entidades biológicas no hostiles por defecto. Pueden negociarse.<br />
+<strong>Recompensas:</strong> Materiales orgánicos raros. El nivel 4 tiene una semilla que puede crecer en cualquier tesela.<br />
+<strong>Leyenda:</strong> Totovia sabe más sobre el Jardín de lo que dice. Su mansión está <strong>vigilando</strong> la entrada.</p>
+<hr />
+<h3>4. La Biblioteca de Babel</h3>
+<p><strong>Ubicación desconocida — aparece y desaparece</strong> | 3-12 niveles | Conocimiento, paradojas, tiempo no lineal | Deriva +1/nivel</p>
+<p>Una biblioteca infinita. Los libros contienen información real — pero también trampas cognitivas. Leer el libro equivocado puede matarte, volverte loco, o transportarte a otra tesela.</p>
+<p><strong>Bosses:</strong> "Bibliotecarios" — protegen la información. Si intentas robar sin pagar, te lo quitan (memorias, habilidades, o años de vida).<br />
+<strong>Recompensas:</strong> Información pura: mapas de teselas perdidas, nombres de Demonios del Grimorio, coordenadas de portales estables.<br />
+<strong>Leyenda:</strong> No fue creada por los Antiguos. Fue creada por <strong>algo que los Antiguos intentaron contener</strong>. Y sigue conteniéndolo.</p>
+<hr />
+<h3>5. El Laberinto de los Mil Nombres</h3>
+<p><strong>MadCity, pisos 150-200</strong> | 9 niveles | Demonios, invocación, pactos | Deriva +3/nivel</p>
+<p>Una prisión de Demonios. Cada nivel es una celda — un universo en miniatura con un Demonio contenido. Las runas de contención se debilitan con el tiempo.</p>
+<p><strong>Bosses:</strong> Cada nivel es un Demonio. No todos son hostiles — algunos quieren ser liberados, otros destruidos, otros quieren pactar.<br />
+<strong>Recompensas:</strong> Nombres de Demonios del Grimorio, artefactos de contención, conocimiento de invocación. El nivel 9 tiene algo que <strong>no es un Demonio</strong> — es algo que los Antiguos temían más.<br />
+<strong>Leyenda:</strong> Primus lo vigila. No lo sella porque si lo sellan, lo que hay dentro <strong>saldrá</strong>.</p>
+<hr />
+<h3>6. La Ciudad que No Existe</h3>
+<p><strong>Mundo Chatarra, norte del Vertedero</strong> | 6 niveles | Civilización perdida, paradoja temporal | Deriva +1/nivel</p>
+<p>Una ciudad completa en bucle: calles, edificios, vehículos, personas. Pero las personas son <strong>ecos temporales</strong> de una civilización destruida. El mismo día, las mismas conversaciones, las mismas muertes, repitiéndose sin fin.</p>
+<p><strong>Bosses:</strong> "Guardianes del Tiempo" — no hostiles si no interrumpes el bucle. Si intentas "salvar" a alguien, te conviertes en parte de él.<br />
+<strong>Recompensas:</strong> Objetos de la civilización perdida. El nivel 6 tiene una máquina que puede detener el bucle — pero hacerlo destruye la ciudad y todos sus ecos.<br />
+<strong>Leyenda:</strong> La ciudad no fue destruida. Fue <strong>atrapada en el momento de su destrucción</strong>. Los Antiguos la dejaron como advertencia.</p>
+<blockquote>
+<p><em>Nota de conexión:</em> Está en el norte del Vertedero — territorio de las Bestias. El Monasterio de los Libros tiene referencias a ella en textos del periodo Edo, aunque no saben qué es realmente.</p>
+</blockquote>
+<hr />
+<h2>6. CORPORACIONES Y MAZMORRAS</h2>
+<ul>
+<li><strong>TecnoStealer:</strong> Mapas de varias mazmorras. Las usa como bases secretas o trampas.</li>
+<li><strong>Chafry:</strong> Busca tecnología de los Antiguos. Ha enviado expediciones a La Forja Olvidada.</li>
+<li><strong>Primus:</strong> Vigila El Laberinto. No lo sella porque teme lo que hay dentro.</li>
+<li><strong>Mort:</strong> Vende información sobre mazmorras. No participa directamente.</li>
+<li><strong>Serpent:</strong> Tiene agentes dentro. No se sabe cuántos, ni cuáles, ni qué buscan.</li>
+</ul>
+<hr />
+<h2>7. GANCHOS DE AVENTURA</h2>
+<ol>
+<li>Un participante del Infierno es alguien que los PJs conocen. ¿Intentan salvarlo? ¿Participan ellos?</li>
+<li>Una mazmorra ha "evolucionado" de formas impredecibles. Algo se ha despertado.</li>
+<li>Una corporación ofrece una cantidad obscena por un artefacto específico. ¿Por qué lo quieren?</li>
+<li>Un Errante ha vuelto de una mazmorra... cambiado. Algo lo sigue. Algo que no debería haber salido.</li>
+<li>El Infierno ha sido hackeado. Alguien transmite algo que no debería verse.</li>
+<li>Una mazmorra ha aparecido donde no debería haber ninguna — en medio de una ciudad, en una tesela no despertada, en el corazón de una corporación.</li>
+</ol>
+<hr />
+<p><em>"Las mazmorras no son ruinas. Son pruebas. Y nosotros somos los sujetos."</em></p>
+<h2>---</h2></div></section>
+<hr class="dlc-sep"><section class="dlc-section cap-anchor" id="tesela4"><div class="document-container"><h1>TESELA 03 — [PENDIENTE]</h1>
+<p><em>(Reservado para expansión futura)</em></p>
+<hr />
+<p><em>Suplemento: Teselas Expandidas — v0.1 — 27/06/26</em><br />
+<em>Documento vivo. Añadir nuevas teselas sin modificar las anteriores.</em></p></div></section>
+</main>
+</body></html>
