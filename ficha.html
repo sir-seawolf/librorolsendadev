@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -19,9 +20,7 @@
   .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:10px;text-transform:uppercase;}
   h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:2px 7px;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin:5px 0 3px;display:flex;justify-content:space-between;align-items:center;}
   .row{display:flex;gap:10px;align-items:flex-start;}
-  .col-left{flex:0 0 250px;}
-  .col-g2,.col-g3{flex:1;min-width:0;}
-  .col-g4{flex:0 0 250px;}
+  .col-left,.col-g2,.col-g3,.col-g4{flex:1;min-width:0;}
   .ident{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:5px 0 4px;}
   .ident label{display:flex;flex-direction:column;font-size:8.5px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;}
   input{font-family:'Rajdhani',sans-serif;font-size:12px;padding:1px 4px;border:1px solid var(--border);border-radius:3px;background:var(--input-bg);width:100%;}
@@ -39,11 +38,22 @@
   th.skill-h{text-align:left;padding-left:6px;}
   td{padding:0 2px;border-bottom:1px solid #eef1f5;line-height:1.25;}
   td.skill{text-align:left;padding-left:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+  .col-g2 td.skill,.col-g3 td.skill{font-size:11.5px;}
+  .col-left-tuned .attr span{font-size:11px;}
+  .col-left-tuned .attr input{font-size:13px;}
+  .col-left-tuned .metrics{font-size:11px;}
+  .col-left-tuned .metrics input{font-size:12px;}
+  .col-left-tuned .auto-cell{font-size:11px;}
+  .col-left-tuned table{font-size:11px;}
+  .col-left-tuned th{font-size:8.5px;}
+  .col-left-tuned .note{font-size:8.5px;}
   .cat-base{font-family:'Share Tech Mono',monospace;font-size:10px;color:#fff;background:var(--accent2);text-align:center;border-radius:2px;font-weight:700;}
   .cat-formula{font-family:'Share Tech Mono',monospace;font-size:8px;color:#9fd;font-weight:400;}
   .total{font-weight:700;text-align:center;background:var(--auto-bg);border:1px solid #93b4d8;border-radius:2px;}
   .skilltbl col.c-num{width:30px;}
   .skilltbl input[type=number]{width:26px;}
+  .armastbl col.c-s{width:46px;}
+  .armastbl input[type=number]{width:100%;min-width:0;}
   .lifebox{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:4px;margin-bottom:4px;}
   .lifegrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:3px;text-align:center;font-size:10px;}
   .lifegrid .hd{font-family:'Share Tech Mono',monospace;font-size:7.5px;color:var(--muted);text-transform:uppercase;}
@@ -51,12 +61,16 @@
   .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:3px;font-size:10px;}
   .metrics div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
   .note{font-size:8px;color:var(--muted);font-style:italic;margin-top:2px;line-height:1.2;}
-  .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;font-size:9px;}
-  .loc-cell{background:#f1f5f9;padding:2px 5px;border-radius:3px;}
-  .loc-cell .lname{font-family:'Share Tech Mono',monospace;font-size:7.5px;text-transform:uppercase;color:var(--muted);}
+  .loc-grid{display:grid;grid-template-columns:1fr;gap:3px;font-size:9px;}
+  .loc-cell{background:#f1f5f9;padding:2px 4px;border-radius:3px;min-height:28px;display:flex;flex-direction:column;justify-content:center;}
+  .loc-cell .lname{font-family:'Share Tech Mono',monospace;font-size:7px;text-transform:uppercase;color:var(--muted);line-height:1.05;}
   .loc-cell .lrow{display:flex;gap:4px;margin-top:1px;align-items:center;}
-  .loc-cell .lrow label{font-size:7.5px;color:var(--muted);}
-  .loc-cell input{width:36px;}
+  .loc-cell .lrow label{font-size:7px;color:var(--muted);}
+  .loc-cell input{width:34px;height:21px;padding:0 2px;font-size:10px;}
+  .armor-visual{display:grid;grid-template-columns:1fr 154px;gap:5px;align-items:stretch;background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:4px;}
+  .armor-image{display:flex;align-items:center;justify-content:center;border:1px dashed #93b4d8;border-radius:4px;background:#fff;overflow:hidden;min-height:190px;}
+  .armor-image img{width:100%;height:100%;object-fit:contain;display:block;}
+  .armor-side{display:flex;flex-direction:column;gap:3px;justify-content:space-between;height:100%;}
   h2 .toggle{font-family:'Share Tech Mono',monospace;font-size:8px;padding:0 7px;background:var(--accent2);color:#fff;border:none;border-radius:3px;cursor:pointer;text-transform:none;}
   .portrait-box{border:1px dashed #93b4d8;border-radius:4px;min-height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f8fafc;text-align:center;font-size:9px;color:var(--muted);cursor:pointer;margin-top:3px;}
   .portrait-box img{width:100%;height:100%;object-fit:cover;}
@@ -70,6 +84,44 @@
   button{font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;padding:6px 14px;border:none;border-radius:4px;cursor:pointer;background:var(--bg-dark);color:#fff;}
   button.alt{background:var(--accent2);}
   .footnote{font-size:9px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:8px;padding-top:4px;page-break-inside:avoid;break-inside:avoid;}
+  .page2{margin-top:6px;padding-top:3px;border-top:2px solid #cbd5e1;min-height:97vh;}
+  .page2-title{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:13px;color:#000;border-bottom:2px solid var(--accent);padding-bottom:1px;letter-spacing:1px;margin-bottom:2px;}
+  .page2-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;align-items:stretch;min-height:89vh;}
+  .page2-col{display:flex;flex-direction:column;gap:6px;min-width:0;height:100%;}
+  .page2-block{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:3px;}
+  .page2-block h3{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:#0f172a;margin-bottom:2px;}
+  .page2-wide{grid-column:1 / -1;}
+  .p2-table{width:100%;border-collapse:collapse;font-size:9px;table-layout:fixed;}
+  .p2-table th{font-family:'Share Tech Mono',monospace;font-size:7px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:0 2px;text-align:left;line-height:1.2;}
+  .p2-table td{padding:0 1px;border-bottom:1px solid #e5e7eb;line-height:1.05;}
+  .p2-table input,.p2-table textarea{width:100%;border:1px solid var(--border);border-radius:3px;background:#fffef5;font-family:'Rajdhani',sans-serif;font-size:10px;padding:1px 3px;line-height:1.1;}
+  .p2-table textarea{min-height:48px;resize:vertical;}
+  .veh-dibujo td{height:120px;vertical-align:top;}
+  .page2 .page2-col:nth-child(1) .p2-table input,
+  .page2 .page2-col:nth-child(1) .p2-table textarea,
+  .page2 .page2-col:nth-child(2) .p2-table input,
+  .page2 .page2-col:nth-child(2) .p2-table textarea{
+    font-size:11.5px;
+    min-height:22px;
+    padding:2px 4px;
+    line-height:1.2;
+  }
+  .page2 .page2-col:nth-child(1) .p2-table th,
+  .page2 .page2-col:nth-child(2) .p2-table th{
+    font-size:8px;
+    padding:1px 3px;
+  }
+  .page2 .page2-col:nth-child(1) .p2-table textarea,
+  .page2 .page2-col:nth-child(2) .p2-table textarea{
+    min-height:62px;
+  }
+  .page2 .page2-col:nth-child(2) .page2-block:last-child .p2-table input,
+  .page2 .page2-col:nth-child(2) .page2-block:last-child .p2-table textarea,
+  .page2 .page2-col:nth-child(3) .page2-block:last-child .p2-table textarea{
+    font-size:10px;
+    min-height:20px;
+    padding:1px 3px;
+  }
   @media screen and (max-width: 900px){
     body{padding:6px;font-size:13px;}
     .sheet{padding:8px 10px;}
@@ -80,7 +132,7 @@
     .attr{padding:2px 6px;}
     .lifegrid{grid-template-columns:1.2fr 1fr 1fr 1fr;}
     .metrics{grid-template-columns:repeat(2,1fr);}
-    .loc-grid{grid-template-columns:repeat(3,1fr);}
+    .loc-grid{grid-template-columns:1fr;}
     .pegrid{grid-template-columns:repeat(2,1fr);}
     table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
     input{font-size:13px;padding:3px 5px;}
@@ -89,6 +141,7 @@
     .disc-inner > div{width:100%;}
     h2{font-size:11px;}
     .portrait-box{min-height:160px;}
+    .page2-grid{grid-template-columns:1fr;}
     .btns{flex-wrap:wrap;}
     button{font-size:12px;padding:8px 16px;}
   }
@@ -120,7 +173,7 @@
     .lifebox{padding:2px;margin-bottom:2px;}
     .attrs{gap:2px;} .metrics{gap:2px;} .loc-grid{gap:2px;}
     .ident{margin:2px 0;}
-    .col-left{flex:0 0 230px;} .col-g4{flex:0 0 235px;}
+    .col-left,.col-g2,.col-g3,.col-g4{flex:1;min-width:0;}
     .footnote{margin-top:4px;font-size:7px;}
     h2{break-after:avoid;page-break-after:avoid;}
     tr{break-inside:avoid;page-break-inside:avoid;}
@@ -136,6 +189,15 @@
     .metrics div,.pegrid div,.loc-cell{padding:0 4px;}
     .ident{margin:1px 0;}
     table{margin-bottom:1px;}
+    .auto-cell,.total,.lifegrid .v{background:#fff !important;border:1px solid #666 !important;color:#000 !important;}
+    .cat-base{background:#fff !important;color:#000 !important;border:1px solid #666 !important;}
+    .page2{page-break-before:always;break-before:page;border-top:none;margin-top:0;padding-top:0;}
+    .page2-title{font-size:12px;}
+    .page2-grid{grid-template-columns:1fr 1fr 1fr;gap:5px;}
+    .page2-col{gap:5px;}
+    .page2-block{padding:3px;border:1px solid #666;background:#fff;}
+    .p2-table th{background:#e6eaf0;color:#000;border-bottom:1px solid #666;}
+    th{background:#e6eaf0 !important;color:#000 !important;}
   }
 </style>
 </head>
@@ -157,7 +219,7 @@
 
   <div class="row">
     <!-- COLUMNA 1: atributos, vida, métricas, carga, méritos -->
-    <div class="col-left">
+    <div class="col-left col-left-tuned">
       <h2>Atributos</h2>
       <div class="attrs">
         <div class="attr"><span>Car</span><input type="number" id="Ca" oninput="calc()"></div>
@@ -173,7 +235,7 @@
       <h2>Vida por zona — 3 niveles</h2>
       <div class="lifebox">
         <div class="lifegrid">
-          <div class="hd"></div><div class="hd">Leve(0)</div><div class="hd">Medio(−10)</div><div class="hd">Grave(−20)</div>
+          <div class="hd"></div><div class="hd">Leve(0)</div><div class="hd">Medio(-10)</div><div class="hd">Grave(-20)</div>
           <div class="hd" style="text-align:left;">PV/niv</div>
           <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
         </div>
@@ -194,8 +256,8 @@
       <h2>Carga</h2>
       <div class="metrics">
         <div><span>Libre ≤(F+C)/4</span><span class="auto-cell" id="cargaLibre">0</span></div>
-        <div><span>−20% (F+C)/2</span><span class="auto-cell" id="carga20">0</span></div>
-        <div><span>−40% (F+C)×2</span><span class="auto-cell" id="carga40">0</span></div>
+        <div><span>-20% (F+C)/2</span><span class="auto-cell" id="carga20">0</span></div>
+        <div><span>-40% (F+C)×2</span><span class="auto-cell" id="carga40">0</span></div>
       </div>
 
       <h2>Méritos y Defectos / Rasgos</h2>
@@ -212,6 +274,29 @@
       <div class="note">Ej: «parecía que había muerto» contra el Inquisidor · +50 a una tirada clave.</div>
     </div>
 
+    <!-- GRID 4: Combate + Armas + Armadura + Retrato -->
+    <div class="col-g4">
+      <h2>Combate</h2>
+      <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
+        <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
+        <tbody id="combatTable"></tbody>
+      </table>
+      <h2>Armas</h2>
+      <table class="armastbl"><colgroup><col><col class="c-s"><col class="c-s"><col class="c-s"></colgroup>
+        <tr><th class="skill-h">Nombre</th><th>%</th><th>Dñ</th><th>Pen</th></tr>
+        <tbody id="armasTable"></tbody>
+      </table>
+      <h2>Localizaciones / Armadura</h2>
+      <div class="armor-visual">
+        <div class="armor-image">
+          <img src="img/Modelolocalizaciones2.png" alt="Modelo de localizaciones corporales">
+        </div>
+        <div class="armor-side">
+          <div class="loc-grid" id="locGrid"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- GRID 2: Académicas + Atlética -->
     <div class="col-g2">
       <div id="catA"></div>
@@ -222,25 +307,6 @@
     <div class="col-g3">
       <div id="catB"></div>
       <div id="catD"></div>
-    </div>
-
-    <!-- GRID 4: Combate + Armas + Armadura + Retrato -->
-    <div class="col-g4">
-      <h2>Combate</h2>
-      <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
-        <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
-        <tbody id="combatTable"></tbody>
-      </table>
-      <h2>Armas</h2>
-      <table><colgroup><col><col style="width:24px;"><col style="width:28px;"><col style="width:24px;"></colgroup>
-        <tr><th class="skill-h">Nombre</th><th>%</th><th>Dñ</th><th>Pen</th></tr>
-        <tbody id="armasTable"></tbody>
-      </table>
-      <h2>Armadura / PV por zona</h2>
-      <div class="loc-grid" id="locGrid"></div>
-      <h2>Retrato</h2>
-      <div class="portrait-box" id="portraitBox" onclick="document.getElementById('imgInput').click()">Pulsa para cargar imagen</div>
-      <input type="file" id="imgInput" accept="image/*" class="hidden" onchange="loadImg(event)">
     </div>
   </div>
 
@@ -289,6 +355,110 @@
     <button class="alt" onclick="window.print()">Imprimir / PDF</button>
     <button class="alt" onclick="limpiar()" style="background:#888;">Limpiar habilidades</button>
   </div>
+
+  <div class="page2">
+    <div class="page2-title">La Senda de los Errantes · Página 2</div>
+    <div class="page2-grid">
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Distorsión</h3>
+          <table class="p2-table">
+            <tr><th style="width:32%;">Aspecto</th><th>Detalle</th></tr>
+            <tr><td>Origen</td><td><input type="text"></td></tr>
+            <tr><td>Manifestación</td><td><input type="text"></td></tr>
+            <tr><td>Riesgo</td><td><input type="text"></td></tr>
+            <tr><td>Notas</td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Perlas</h3>
+          <table class="p2-table">
+            <tr><th>Capacidad</th><th>Cantidad</th><th>Gastadas</th></tr>
+            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Vehículos, Huecos y Extras</h3>
+          <table class="p2-table">
+            <tr><th style="width:28%;">Vehículo / Hueco</th><th style="width:25%;">Estado / Tipo</th><th>Extra / Descripción</th></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          </table>
+          <table class="p2-table veh-dibujo" style="margin-top:3px;">
+            <tr><th>Espacio para dibujo de vehículo</th></tr>
+            <tr><td></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Escuelas y Hechizos</h3>
+          <table class="p2-table">
+            <tr><th style="width:24%;">Escuela</th><th>Poder / Hechizo</th><th style="width:14%;">Coste</th><th>Efecto breve</th></tr>
+            <tr><td><input type="text" placeholder="(escuela o ninguna)"></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Chip de conocimiento en posesión</h3>
+          <table class="p2-table">
+            <tr><th>Nombre</th><th style="width:24%;">%</th></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Dinero y otros</h3>
+          <table class="p2-table">
+            <tr><th style="width:25%;">Campo</th><th>Detalle</th></tr>
+            <tr><td>Dinero</td><td><input type="text"></td></tr>
+            <tr><td>Otros recursos</td><td><textarea></textarea></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Equipo e inventario</h3>
+          <table class="p2-table">
+            <tr><th>Ítem</th><th style="width:16%;">Cant.</th><th style="width:26%;">Estado</th></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Trasfondo / Notas</h3>
+          <table class="p2-table">
+            <tr><th>Registro</th></tr>
+            <tr><td><textarea></textarea></td></tr>
+            <tr><td><textarea></textarea></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -299,9 +469,9 @@ const round = x => Math.round(x);
 
 const CATS = [
   { name:"Académicas", formula:"(I+V)/2", base:()=>round((num('I')+num('V'))/2),
-    skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Esconderse/Evadirse","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—"] },
+    skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Esconderse/Evadirse","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—","—"] },
   { name:"Tecnológica", formula:"(H+P)/2", base:()=>round((num('H')+num('P'))/2),
-    skills:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Manualidades","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","—"] },
+    skills:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Manualidades","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","—","—"] },
   { name:"Atlética", formula:"(A+F)/2", base:()=>round((num('A')+num('F'))/2),
     skills:["Acrobacias","Conducir","Resistir","Proezas","Pilotar","Trajes Servoasistidos","Sigilo","—","—"] },
   { name:"Social", formula:"(Ca+P)/2", base:()=>round((num('Ca')+num('P'))/2),
@@ -338,7 +508,7 @@ function buildCombat(){
 }
 function buildArmas(){
   const tb=document.getElementById('armasTable');tb.innerHTML='';
-  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>`;
+  for(let i=0;i<5;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>`;
 }
 function buildLoc(){
   const z=["Cabeza","Torso","Brazo Izq","Brazo Der","Pierna Izq","Pierna Der"];
@@ -356,7 +526,7 @@ function buildDisc(){
 }
 function buildImpl(){
   const tb=document.getElementById('implTable');tb.innerHTML='';
-  for(let i=0;i<7;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td></tr>`;
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td></tr>`;
 }
 function buildRuna(){
   const tb=document.getElementById('runaTable');tb.innerHTML='';
@@ -364,25 +534,19 @@ function buildRuna(){
 }
 function buildEpic(){
   const tb=document.getElementById('epicTable');tb.innerHTML='';
-  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td style="text-align:center;color:#94a3b8;font-size:9px;">${i+1}</td><td><input type="text" style="font-size:11px;"></td></tr>`;
+  for(let i=0;i<3;i++) tb.innerHTML+=`<tr><td style="text-align:center;color:#94a3b8;font-size:9px;">${i+1}</td><td><input type="text" style="font-size:11px;"></td></tr>`;
 }
 function buildNotas(){
   const tb=document.getElementById('notasTable');tb.innerHTML='';
-  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td></tr>`;
+  for(let i=0;i<2;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td></tr>`;
 }
 function toggle(id){document.getElementById(id).classList.toggle('hidden');}
-function loadImg(ev){
-  const f=ev.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=e=>{document.getElementById('portraitBox').innerHTML='<img src="'+e.target.result+'">';};
-  r.readAsDataURL(f);
-}
 function calc(){
   const vidaOk=filled('A','C','F');
   const pv=vidaOk?round((num('A')+num('C')+num('F'))/6):'';
-  document.getElementById('vidaLeve').textContent=pv;
-  document.getElementById('vidaMedio').textContent=pv;
-  document.getElementById('vidaGrave').textContent=pv;
+  document.getElementById('vidaLeve').textContent=vidaOk?pv:'';
+  document.getElementById('vidaMedio').textContent=vidaOk?pv:'';
+  document.getElementById('vidaGrave').textContent=vidaOk?pv:'';
   document.getElementById('vidaTotal').textContent=vidaOk?(pv*3):'';
   document.getElementById('techoHum').textContent=filled('alma')?(num('alma')*10):'—';
   document.getElementById('dinero').textContent=filled('I')?(num('I')*100)+' PC':'';
