@@ -380,21 +380,96 @@
             <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
           </table>
         </div>
-        <div class="page2-block">
-          <h3>Vehículos, Huecos y Extras</h3>
-          <table class="p2-table">
-            <tr><th style="width:28%;">Vehículo / Hueco</th><th style="width:25%;">Estado / Tipo</th><th>Extra / Descripción</th></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          </table>
-          <table class="p2-table veh-dibujo" style="margin-top:3px;">
-            <tr><th>Espacio para dibujo de vehículo</th></tr>
-            <tr><td></td></tr>
-          </table>
-        </div>
+<div class="page2-block">
+  <h3>Vehículos</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    
+    <!-- Columna izquierda: Stats del vehículo -->
+    <div>
+      <table class="p2-table">
+        <tr><th>Nombre</th><td><input type="text"></td></tr>
+        <tr><th>Nivel / Tipo</th><td><input type="text"></td></tr>
+        <tr><th>Calidad</th><td><input type="text"></td></tr>
+        <tr><th>PDE</th><td><input type="text" placeholder="act/max"></td></tr>
+        <tr><th>Blindaje</th><td><input type="text"></td></tr>
+        <tr><th>Maniobra</th><td><input type="number" style="width:60px"></td></tr>
+        <tr><th>Plazas / Carga</th><td><input type="text"></td></tr>
+        <tr><th>Velocidad</th><td><input type="text"></td></tr>
+        <tr><th>Huecos</th><td><input type="text" placeholder="usados/tot"></td></tr>
+      </table>
+    </div>
+
+    <!-- Columna derecha: Armamento + Complementos -->
+    <div>
+      <h4>Armamento</h4>
+      <table class="p2-table">
+        <tr><th>Arma</th><th>Daño</th><th>Cad</th><th>Huecos</th></tr>
+        <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
+        <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
+        <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
+      </table>
+
+      <h4>Complementos</h4>
+      <table class="p2-table">
+        <tr><th>Complemento</th><th>Efecto</th><th>H</th></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fila inferior: Estado/Daños + Vuelo Personal + Recursos -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+    
+    <div>
+      <h4>Estado / Daños</h4>
+      <table class="p2-table">
+        <tr><th>Componente</th><th>%</th></tr>
+        <tr><td>Motor</td><td><input type="number" style="width:40px"></td></tr>
+        <tr><td>Blindaje</td><td><input type="number" style="width:40px"></td></tr>
+        <tr><td>Sensores</td><td><input type="number" style="width:40px"></td></tr>
+        <tr><td>Armamento</td><td><input type="number" style="width:40px"></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h4>Vuelo Personal</h4>
+      <table class="p2-table">
+        <tr><th>Sistema</th><th>NT</th><th>Auton</th></tr>
+        <tr><td><input type="text"></td><td><input type="number" style="width:30px"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="number" style="width:30px"></td><td><input type="text"></td></tr>
+      </table>
+
+      <h4>Recursos</h4>
+      <table class="p2-table">
+        <tr><th>Recurso</th><th>Cant</th></tr>
+        <tr><td>Helio-3</td><td><input type="text"></td></tr>
+        <tr><td>Munición</td><td><input type="text"></td></tr>
+        <tr><td>Raciones</td><td><input type="text"></td></tr>
+      </table>
+    </div>
+
+    <!-- REFUGIO DEL ERRANTE -->
+    <div>
+      <h4>Refugio del Errante</h4>
+      <table class="p2-table">
+        <tr><th>Ubicación</th><td><input type="text"></td></tr>
+        <tr><th>Tipo</th><td><input type="text"></td></tr>
+        <tr><th>Defensas</th><td><input type="text"></td></tr>
+        <tr><th>Taller</th><td><input type="text"></td></tr>
+        <tr><th>Almacén</th><td><input type="text"></td></tr>
+        <tr><th>Camuflaje</th><td><input type="text"></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Dibujo al final -->
+  <table class="p2-table veh-dibujo" style="margin-top:10px;">
+    <tr><th>Espacio para dibujo de vehículo / refugio</th></tr>
+    <tr><td style="height:80px;"></td></tr>
+  </table>
+</div>
       </div>
 
       <div class="page2-col">
