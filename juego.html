@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego de Rol — La Senda de los Errantes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;min-height:100vh;}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:40px 20px;background:radial-gradient(ellipse at center,#1a1c25 0%,#0a0b0f 70%);}
+h1{font-family:'Orbitron',sans-serif;font-size:clamp(24px,4vw,40px);text-transform:uppercase;letter-spacing:3px;margin-bottom:4px;}
+h1 em{color:#ff3b3b;font-style:normal;}
+.sub{font-family:'Share Tech Mono',monospace;color:#94a3b8;font-size:14px;margin-bottom:40px;}
+.nav{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;max-width:700px;}
+.nav a{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:2px;padding:14px 26px;border:2px solid #ff3b3b;color:#fff;text-decoration:none;border-radius:4px;transition:all .2s;}
+.nav a:hover{background:#ff3b3b;color:#000;}
+.nav a.alt{border-color:#1d6fa3;}
+.nav a.alt:hover{background:#1d6fa3;}
+.nav a.dlc{border-color:#9333ea;}
+.nav a.dlc:hover{background:#9333ea;}
+.volver{margin-top:50px;font-family:'Share Tech Mono',monospace;font-size:13px;}
+.volver a{color:#94a3b8;text-decoration:none;}
+.volver a:hover{color:#fff;}
+@media(max-width:600px){.nav a{font-size:11px;padding:10px 16px;letter-spacing:1px;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Juego de <em>Rol</em></h1>
+  <p class="sub">Todo lo que necesitas para jugar</p>
+  <div class="nav">
+    <a href="manual.html">Manual completo</a>
+    <a href="quickstart.html" class="alt">Quickstart</a>
+    <a href="ficha.html" class="alt">Ficha de Personaje</a>
+    <a href="lore.html" class="alt">Lore</a>
+    <a href="dlcs.html" class="dlc">DLCs y Expansiones</a>
+  </div>
+  <p class="volver"><a href="index.html">&larr; Volver al inicio</a></p>
+</div>
+</body>
+</html>

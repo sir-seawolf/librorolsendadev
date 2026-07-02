@@ -14,33 +14,42 @@ body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;min-heig
 h1{font-family:'Orbitron',sans-serif;font-size:clamp(28px,5vw,48px);text-transform:uppercase;letter-spacing:3px;margin-bottom:4px;}
 h1 em{color:#ff3b3b;font-style:normal;}
 .sub{font-family:'Share Tech Mono',monospace;color:#94a3b8;font-size:14px;margin-bottom:40px;}
-.nav{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-.nav a{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:2px;padding:12px 24px;border:2px solid #ff3b3b;color:#fff;text-decoration:none;border-radius:4px;transition:all .2s;}
-.nav a:hover{background:#ff3b3b;color:#000;}
-.nav a.alt{border-color:#1d6fa3;}
-.nav a.alt:hover{background:#1d6fa3;}
-.nav a.dlc{border-color:#9333ea;}
-.nav a.dlc:hover{background:#9333ea;}
+.desc{max-width:640px;text-align:center;color:#94a3b8;font-size:15px;line-height:1.6;margin-bottom:44px;}
+.puertas{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+.puerta{display:flex;flex-direction:column;align-items:center;gap:10px;width:220px;padding:28px 20px;border:2px solid #ff3b3b;border-radius:8px;text-decoration:none;color:#fff;transition:all .2s;background:rgba(255,59,59,.04);}
+.puerta:hover{background:#ff3b3b;color:#000;transform:translateY(-4px);}
+.puerta.alt{border-color:#1d6fa3;background:rgba(29,111,163,.05);}
+.puerta.alt:hover{background:#1d6fa3;}
+.puerta.gal{border-color:#9333ea;background:rgba(147,51,234,.05);}
+.puerta.gal:hover{background:#9333ea;}
+.ico{font-size:34px;line-height:1;}
+.tit{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:2px;}
+.txt{font-size:13px;color:#94a3b8;line-height:1.4;}
+.puerta:hover .txt{color:inherit;}
 .footer{text-align:center;padding:30px;font-size:12px;color:#475569;font-family:'Share Tech Mono',monospace;}
 .footer a{color:#94a3b8;text-decoration:none;}
-.desc{max-width:600px;text-align:center;color:#94a3b8;font-size:15px;line-height:1.6;margin-bottom:36px;}
-@media(max-width:600px){.nav a{font-size:11px;padding:10px 16px;letter-spacing:1px;}}
+@media(max-width:600px){.puertas{flex-direction:column;align-items:center;}.puerta{width:260px;}}
 </style>
 </head>
 <body>
 <div class="hero">
   <img src="img/Portada_rol_Errantes.jpg" alt="La Senda de los Errantes">
   <h1>La Senda de <em>Los Errantes</em></h1>
-  <p class="sub">Juego de rol · Cyberpunk multiversal · Borrador de trabajo</p>
-  <p class="desc">Un universo de teselas conectadas por portales inestables. Corporaciones que sobreviven a civilizaciones enteras. Errantes que cruzan entre mundos con lo puesto. Un juego que nació en 1991 en una finca junto al río Júcar.</p>
-  <div class="nav">
-    <a href="manual.html">Leer el Manual</a>
-    <a href="quickstart.html" class="alt">Quickstart</a>
-    <a href="lore.html" class="alt">Lore</a>
-    <a href="blog/index.html" class="alt">Blog</a>
-    <a href="galeria.html" class="alt">Galería</a>
-    <a href="dlc.html" class="dlc">Teselas Expandidas</a>
-    <a href="ficha.html" class="alt">Ficha de Personaje</a>
+  <p class="sub">Cyberpunk multiversal · Desde 1991</p>
+  <p class="desc">Un universo de teselas conectadas por portales inestables. Corporaciones que sobreviven a civilizaciones enteras. Errantes que cruzan entre mundos con lo puesto. Un juego que nació en 1991 en una finca junto al río Júcar — y una historia que sigue creciendo.</p>
+  <div class="puertas">
+    <a href="juego.html" class="puerta">
+      <span class="ico">⚅</span><span class="tit">Juego de Rol</span>
+      <span class="txt">Manual, quickstart, ficha y expansiones</span>
+    </a>
+    <a href="blog/index.html" class="puerta alt">
+      <span class="ico">✒</span><span class="tit">Blog</span>
+      <span class="txt">El Pecio de Seawolf — la crónica novelada</span>
+    </a>
+    <a href="galeria.html" class="puerta gal">
+      <span class="ico">◈</span><span class="tit">Galería</span>
+      <span class="txt">Arte, cómics y mundos del mosaico</span>
+    </a>
   </div>
 </div>
 <div class="footer">
@@ -48,9 +57,7 @@ h1 em{color:#ff3b3b;font-style:normal;}
   <span id="builddate">2026</span>
 </div>
 <script>
-fetch('build_date.txt').then(r=>r.text()).then(t=>{
-  document.getElementById('builddate').textContent='Actualizado: '+t.trim();
-}).catch(()=>{});
+fetch('build_date.txt').then(r=>r.text()).then(t=>{document.getElementById('builddate').textContent=t.trim();}).catch(()=>{});
 </script>
 </body>
 </html>
