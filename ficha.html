@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +8,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
   :root{
     --bg-dark:#0f1115; --border:#2a303c;
-    --accent:#ff3b3b; --accent2:#1d6fa3; --muted:#94a3b8;
+    --accent:#ff3b3b; --accent2:#1d6fa3; --accent3:#9333ea; --muted:#94a3b8;
     --auto-bg:#dbeafe; --input-bg:#fffef5;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -19,11 +18,13 @@
   h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:16px;color:#000;border-bottom:3px solid var(--accent);padding-bottom:2px;letter-spacing:1px;}
   .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:10px;text-transform:uppercase;}
   h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:2px 7px;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin:5px 0 3px;display:flex;justify-content:space-between;align-items:center;}
-  .row{display:flex;gap:10px;align-items:flex-start;}
+  h4{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--accent2);margin:3px 0 1px;letter-spacing:.5px;}
+  .row{display:flex;gap:10px;align-items:stretch;}
   .col-left,.col-g2,.col-g3,.col-g4{flex:1;min-width:0;}
+  .col-g4{display:flex;flex-direction:column;}
   .ident{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:5px 0 4px;}
   .ident label{display:flex;flex-direction:column;font-size:8.5px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;}
-  input{font-family:'Rajdhani',sans-serif;font-size:12px;padding:1px 4px;border:1px solid var(--border);border-radius:3px;background:var(--input-bg);width:100%;}
+  input,select,textarea{font-family:'Rajdhani',sans-serif;font-size:12px;padding:1px 4px;border:1px solid var(--border);border-radius:3px;background:var(--input-bg);width:100%;}
   input[type=number]{width:36px;text-align:center;padding:1px;}
   /* Quitar las flechas (spinners) de los campos numericos: estorban y tapan el numero */
   input[type=number]::-webkit-outer-spin-button,
@@ -58,16 +59,19 @@
   .lifegrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:3px;text-align:center;font-size:10px;}
   .lifegrid .hd{font-family:'Share Tech Mono',monospace;font-size:7.5px;color:var(--muted);text-transform:uppercase;}
   .lifegrid .v{background:var(--auto-bg);font-weight:700;border-radius:2px;padding:1px;border:1px solid #93b4d8;}
+  .estado-row{display:flex;align-items:center;gap:5px;margin-bottom:3px;font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--muted);}
+  .estado-row select{width:auto;flex:1;font-family:'Rajdhani',sans-serif;font-size:11px;text-transform:none;padding:2px 4px;}
   .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:3px;font-size:10px;}
   .metrics div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
   .note{font-size:8px;color:var(--muted);font-style:italic;margin-top:2px;line-height:1.2;}
   .loc-grid{display:grid;grid-template-columns:1fr;gap:3px;font-size:9px;}
   .loc-cell{background:#f1f5f9;padding:2px 4px;border-radius:3px;min-height:28px;display:flex;flex-direction:column;justify-content:center;}
   .loc-cell .lname{font-family:'Share Tech Mono',monospace;font-size:7px;text-transform:uppercase;color:var(--muted);line-height:1.05;}
-  .loc-cell .lrow{display:flex;gap:4px;margin-top:1px;align-items:center;}
+  .loc-cell .lrow{display:flex;gap:4px;margin-top:1px;align-items:center;flex-wrap:wrap;}
   .loc-cell .lrow label{font-size:7px;color:var(--muted);}
-  .loc-cell input{width:34px;height:21px;padding:0 2px;font-size:10px;}
-  .armor-visual{display:grid;grid-template-columns:1fr 154px;gap:5px;align-items:stretch;background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:4px;}
+  .loc-cell input{width:26px;height:21px;padding:0 1px;font-size:9px;}
+  .loc-cell input.pvact{border-color:var(--accent);}
+  .armor-visual{display:grid;grid-template-columns:1fr 128px;gap:5px;align-items:stretch;background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:4px;flex:1;}
   .armor-image{display:flex;align-items:center;justify-content:center;border:1px dashed #93b4d8;border-radius:4px;background:#fff;overflow:hidden;min-height:190px;}
   .armor-image img{width:100%;height:100%;object-fit:contain;display:block;}
   .armor-side{display:flex;flex-direction:column;gap:3px;justify-content:space-between;height:100%;}
@@ -78,15 +82,29 @@
   .disc-band{margin-top:4px;}
   .disc-inner{display:flex;gap:10px;align-items:flex-start;}
   .disc-inner > div{flex:1;min-width:0;}
-  .pegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;font-size:9.5px;}
+  .disc-inner > #discBlockWrap{flex:2.3;}
+  .disc-groups{display:flex;gap:6px;}
+  .disc-group{flex:1;min-width:0;border-left:3px solid var(--accent3);padding-left:4px;}
+  .disc-group table{font-size:9.5px;table-layout:fixed;}
+  .disc-group .skilltbl col.c-num{width:18px;}
+  .disc-group td.skill{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.05;padding:1px 2px 1px 3px;}
+  .pegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;font-size:9.5px;}
   .pegrid div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
+  .caminos-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border-radius:3px;padding:2px 5px;margin-top:3px;font-size:9px;}
+  .caminos-row label{display:flex;align-items:center;gap:2px;white-space:nowrap;}
+  .caminos-row input[type=checkbox]{width:auto;}
+  .caminos-row input[type=number]{width:32px;}
+  .recon-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;font-size:9px;text-align:center;}
+  .recon-grid div{background:#f1f5f9;border-radius:3px;padding:2px 3px;}
+  .recon-grid .rlbl{display:block;font-family:'Share Tech Mono',monospace;font-size:7px;color:var(--muted);text-transform:uppercase;}
+  .recon-grid .rval{font-weight:700;font-size:12px;color:var(--accent2);}
   .btns{margin:8px 0;display:flex;gap:8px;}
   button{font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;padding:6px 14px;border:none;border-radius:4px;cursor:pointer;background:var(--bg-dark);color:#fff;}
   button.alt{background:var(--accent2);}
   .footnote{font-size:9px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:8px;padding-top:4px;page-break-inside:avoid;break-inside:avoid;}
   .page2{margin-top:6px;padding-top:3px;border-top:2px solid #cbd5e1;min-height:97vh;}
   .page2-title{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:13px;color:#000;border-bottom:2px solid var(--accent);padding-bottom:1px;letter-spacing:1px;margin-bottom:2px;}
-  .page2-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;align-items:stretch;min-height:89vh;}
+  .page2-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;align-items:stretch;min-height:89vh;}
   .page2-col{display:flex;flex-direction:column;gap:6px;min-width:0;height:100%;}
   .page2-block{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:3px;}
   .page2-block h3{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:#0f172a;margin-bottom:2px;}
@@ -94,32 +112,21 @@
   .p2-table{width:100%;border-collapse:collapse;font-size:9px;table-layout:fixed;}
   .p2-table th{font-family:'Share Tech Mono',monospace;font-size:7px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:0 2px;text-align:left;line-height:1.2;}
   .p2-table td{padding:0 1px;border-bottom:1px solid #e5e7eb;line-height:1.05;}
-  .p2-table input,.p2-table textarea{width:100%;border:1px solid var(--border);border-radius:3px;background:#fffef5;font-family:'Rajdhani',sans-serif;font-size:10px;padding:1px 3px;line-height:1.1;}
-  .p2-table textarea{min-height:48px;resize:vertical;}
-  .veh-dibujo td{height:120px;vertical-align:top;}
-  .page2 .page2-col:nth-child(1) .p2-table input,
-  .page2 .page2-col:nth-child(1) .p2-table textarea,
-  .page2 .page2-col:nth-child(2) .p2-table input,
-  .page2 .page2-col:nth-child(2) .p2-table textarea{
-    font-size:11.5px;
-    min-height:22px;
+  .p2-table input,.p2-table select,.p2-table textarea{width:100%;border:1px solid var(--border);border-radius:3px;background:#fffef5;font-family:'Rajdhani',sans-serif;font-size:10px;padding:1px 3px;line-height:1.1;}
+  .p2-table textarea{min-height:40px;resize:vertical;}
+  .veh-dibujo td{height:70px;vertical-align:top;}
+  .page2 .page2-col:nth-child(3) .p2-table input,
+  .page2 .page2-col:nth-child(3) .p2-table textarea,
+  .page2 .page2-col:nth-child(4) .p2-table input,
+  .page2 .page2-col:nth-child(4) .p2-table textarea{
+    font-size:11px;
+    min-height:20px;
     padding:2px 4px;
     line-height:1.2;
   }
-  .page2 .page2-col:nth-child(1) .p2-table th,
-  .page2 .page2-col:nth-child(2) .p2-table th{
+  .page2 .page2-col:nth-child(3) .p2-table th,
+  .page2 .page2-col:nth-child(4) .p2-table th{
     font-size:8px;
-    padding:1px 3px;
-  }
-  .page2 .page2-col:nth-child(1) .p2-table textarea,
-  .page2 .page2-col:nth-child(2) .p2-table textarea{
-    min-height:62px;
-  }
-  .page2 .page2-col:nth-child(2) .page2-block:last-child .p2-table input,
-  .page2 .page2-col:nth-child(2) .page2-block:last-child .p2-table textarea,
-  .page2 .page2-col:nth-child(3) .page2-block:last-child .p2-table textarea{
-    font-size:10px;
-    min-height:20px;
     padding:1px 3px;
   }
   @media screen and (max-width: 900px){
@@ -134,11 +141,13 @@
     .metrics{grid-template-columns:repeat(2,1fr);}
     .loc-grid{grid-template-columns:1fr;}
     .pegrid{grid-template-columns:repeat(2,1fr);}
+    .recon-grid{grid-template-columns:repeat(2,1fr);}
     table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-    input{font-size:13px;padding:3px 5px;}
+    input,select{font-size:13px;padding:3px 5px;}
     input[type=number]{width:44px;}
     .disc-inner{flex-direction:column;gap:8px;}
     .disc-inner > div{width:100%;}
+    .disc-groups{flex-direction:column;gap:8px;}
     h2{font-size:11px;}
     .portrait-box{min-height:160px;}
     .page2-grid{grid-template-columns:1fr;}
@@ -151,8 +160,9 @@
     .loc-grid{grid-template-columns:repeat(2,1fr);}
     .metrics{grid-template-columns:1fr;}
     .pegrid{grid-template-columns:1fr 1fr;}
+    .recon-grid{grid-template-columns:1fr;}
     h1{font-size:13px;}
-    input{font-size:14px;padding:4px 6px;}
+    input,select{font-size:14px;padding:4px 6px;}
     input[type=number]{width:52px;}
     .auto-cell{min-width:44px;font-size:13px;}
   }
@@ -169,7 +179,11 @@
     .row{gap:7px;}
     td{line-height:1.0;padding:0 2px;}
     th{padding:0 3px;}
-    input{border-color:#ccc;padding:0 3px;line-height:1.0;}
+    input,select,textarea{border-color:#ccc;padding:0 3px;line-height:1.0;background:#fff !important;color:#000 !important;}
+    select{-webkit-appearance:none;appearance:none;}
+    .estado-row,.caminos-row,.recon-grid div,.pegrid div,.metrics div{background:#fff !important;border:1px solid #999;}
+    .disc-group{border-left:2px solid #999;}
+    .recon-grid .rval{color:#000 !important;}
     .lifebox{padding:2px;margin-bottom:2px;}
     .attrs{gap:2px;} .metrics{gap:2px;} .loc-grid{gap:2px;}
     .ident{margin:2px 0;}
@@ -186,18 +200,29 @@
     .lifebox{padding:1px;margin-bottom:1px;}
     .note{font-size:6.5px;margin-top:0;line-height:1.1;}
     .attr{padding:0 6px;}
-    .metrics div,.pegrid div,.loc-cell{padding:0 4px;}
+    .metrics div,.pegrid div,.loc-cell,.recon-grid div{padding:0 4px;}
     .ident{margin:1px 0;}
     table{margin-bottom:1px;}
     .auto-cell,.total,.lifegrid .v{background:#fff !important;border:1px solid #666 !important;color:#000 !important;}
     .cat-base{background:#fff !important;color:#000 !important;border:1px solid #666 !important;}
     .page2{page-break-before:always;break-before:page;border-top:none;margin-top:0;padding-top:0;}
     .page2-title{font-size:12px;}
-    .page2-grid{grid-template-columns:1fr 1fr 1fr;gap:5px;}
+    .page2-grid{grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;}
     .page2-col{gap:5px;}
     .page2-block{padding:3px;border:1px solid #666;background:#fff;}
     .p2-table th{background:#e6eaf0;color:#000;border-bottom:1px solid #666;}
     th{background:#e6eaf0 !important;color:#000 !important;}
+    /* compresion de bloques nuevos v3 para no desbordar la pagina 1 */
+    .estado-row{font-size:6.5px;margin-bottom:1px;gap:3px;}
+    .estado-row select{font-size:7px;padding:0 2px;}
+    .caminos-row{font-size:6.5px;padding:0 3px;margin-top:1px;gap:3px;}
+    .caminos-row input[type=number]{width:22px;}
+    .recon-grid{gap:2px;}
+    .recon-grid .rlbl{font-size:6px;}
+    .recon-grid .rval{font-size:9px;}
+    .note-inic, .lifebox .note{display:none;}
+    .disc-group h4{margin:1px 0 0;font-size:6.5px;}
+    .disc-band .note{display:none;}
   }
 </style>
 </head>
@@ -205,7 +230,7 @@
 <div class="sheet">
   <div class="header">
     <h1>La Senda de los Errantes</h1>
-    <span class="subtitle">Ficha de personaje · autocalculada</span>
+    <span class="subtitle">Ficha de personaje · autocalculada v3</span>
   </div>
 
   <div class="ident">
@@ -234,12 +259,21 @@
 
       <h2>Vida por zona — 3 niveles</h2>
       <div class="lifebox">
+        <div class="estado-row">Estado General
+          <select id="estadoGeneral">
+            <option>Sano</option>
+            <option>Herido</option>
+            <option>Exhausto (-20%)</option>
+            <option>Inconsciente</option>
+            <option>Muerto</option>
+          </select>
+        </div>
         <div class="lifegrid">
           <div class="hd"></div><div class="hd">Leve(0)</div><div class="hd">Medio(-10)</div><div class="hd">Grave(-20)</div>
           <div class="hd" style="text-align:left;">PV/niv</div>
           <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
         </div>
-        <div class="note">PV/nivel=(A+C+F)/6. Total zona=<span id="vidaTotal">0</span>. Desbordar Grave: muerte (cabeza/torso) o desmembr. 1d6 (extremidad).</div>
+        <div class="note">PV/nivel=(A+C+F)/6. Total zona=<span id="vidaTotal">0</span>. Desbordar Grave: muerte (cabeza/torso) o desmembr. 1d6 (extremidad). Estados en paralelo a la zona más dañada (CAP03): al bajar de nivel, tira Resistencia (fallo=inconsciente).</div>
       </div>
 
       <h2>Métricas</h2>
@@ -252,6 +286,14 @@
         <div><span>Dinero(I×100)</span><span class="auto-cell" id="dinero">0</span></div>
       </div>
       <div class="note">SM: Crisis a SM ≤ Voluntad; Quiebra a SM ≤ Voluntad/2.</div>
+      <div class="caminos-row" id="caminosRow">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--muted);">Camino de Alma:</span>
+        <label><input type="checkbox" name="camino" value="La Paz"> La Paz</label>
+        <label><input type="checkbox" name="camino" value="La Pobreza"> La Pobreza</label>
+        <label><input type="checkbox" name="camino" value="El Servicio"> El Servicio</label>
+        <label><input type="checkbox" name="camino" value="La Carne"> La Carne</label>
+        <span>Sesiones seguidas</span><input type="number" title="5 sesiones consecutivas = +1 PA. Si se abandona el camino, el contador vuelve a 0 (CAP04e).">
+      </div>
 
       <h2>Carga</h2>
       <div class="metrics">
@@ -259,6 +301,16 @@
         <div><span>-20% (F+C)/2</span><span class="auto-cell" id="carga20">0</span></div>
         <div><span>-40% (F+C)×2</span><span class="auto-cell" id="carga40">0</span></div>
       </div>
+
+      <h2>Reconocimiento (suma de habilidades por rama)</h2>
+      <div class="recon-grid">
+        <div><span class="rlbl">Combate</span><span class="rval" id="reconCombate">0</span></div>
+        <div><span class="rlbl">Tecnológica</span><span class="rval" id="reconTec">0</span></div>
+        <div><span class="rlbl">Atlética</span><span class="rval" id="reconAtl">0</span></div>
+        <div><span class="rlbl">Social</span><span class="rval" id="reconSoc">0</span></div>
+        <div><span class="rlbl">Académicas</span><span class="rval" id="reconAca">0</span></div>
+      </div>
+      <div class="note">CAP03: la suma de habilidades de una categoría es su Reconocimiento (progresión profesional / valor de contratos).</div>
 
       <h2>Méritos y Defectos / Rasgos</h2>
       <table><colgroup><col><col style="width:55px;"><col></colgroup>
@@ -274,9 +326,16 @@
       <div class="note">Ej: «parecía que había muerto» contra el Inquisidor · +50 a una tirada clave.</div>
     </div>
 
-    <!-- GRID 4: Combate + Armas + Armadura + Retrato -->
+    <!-- GRID 4: Iniciativa/Alerta/Esquivar + Combate + Armas + Armadura + Retrato -->
     <div class="col-g4">
-      <h2>Combate</h2>
+      <h2><span>Iniciativa / Alerta / Esquivar</span></h2>
+      <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
+        <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
+        <tbody id="inicTable"></tbody>
+      </table>
+      <div class="note note-inic">Iniciativa: tirada = 2d10 (leído como d100) + Total Iniciativa. Esquivar consume la acción del asalto. Bases: Iniciativa=AGI, Alerta=PER, Esquivar=AGI.</div>
+
+      <h2><span>Combate</span><span class="cat-formula">(AGI+HAB)/2</span></h2>
       <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
         <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
         <tbody id="combatTable"></tbody>
@@ -310,32 +369,29 @@
     </div>
   </div>
 
-  <!-- BANDA INFERIOR: Iniciados / Distorsión + Implantes -->
+  <!-- BANDA INFERIOR: Distorsión + Implantes -->
   <div class="disc-band">
-    <h2>Iniciados / Distorsión · Implantes <button class="toggle" onclick="toggle('discBlock')">ocultar ▾</button></h2>
+    <h2>Distorsión (Hechicería / Taumaturgia / Marcas) · Implantes <button class="toggle" onclick="toggle('discBlock')">ocultar ▾</button></h2>
     <div id="discBlock" class="disc-inner">
-      <div>
-        <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
-          <tr><th class="skill-h">Disciplina</th><th>Bas</th><th>Hab</th><th>Mod</th><th>Tot</th></tr>
-          <tbody id="discTable"></tbody>
-        </table>
-      </div>
+      <div id="discBlockWrap" class="disc-groups"></div>
       <div>
         <div class="pegrid">
-          <div><span>Tinta temp</span><input type="number" style="width:38px;"></div>
-          <div><span>Tinta perm</span><input type="number" style="width:38px;"></div>
+          <div><span>Tinta temp (PV)</span><input type="number" style="width:38px;"></div>
+          <div><span>Tinta perm (PV)</span><input type="number" style="width:38px;"></div>
           <div><span>Perlas blancas</span><input type="number" style="width:38px;"></div>
           <div><span>Perlas grises</span><input type="number" style="width:38px;"></div>
+          <div><span>Perlas gastadas</span><input type="number" style="width:38px;"></div>
         </div>
         <table style="margin-top:3px;"><colgroup><col><col style="width:38px;"><col></colgroup>
           <tr><th class="skill-h">Runa</th><th>Niv</th><th>Nota</th></tr><tbody id="runaTable"></tbody></table>
-        <div class="note">Maestros/Marcas usan su atributo como base. Hechicería arranca en 0 (solo Hab+Mod). Perlas: blancas=100, grises=1000.</div>
+        <div class="note">Bases de disciplina por atributo (CAP04b): Proyección=Hab, Protección=Per, Invocación=Int, Detección=Per, Manipulación=Vol, Portales=sin base(0), Herrero=Vol, Tatuador=Car. Perlas: blancas=100PD; "grises"=perlas manchadas (valor reducido); gastadas=uso acumulado.</div>
       </div>
       <div>
-        <table><colgroup><col><col><col style="width:42px;"></colgroup>
-          <tr><th class="skill-h">Implante</th><th>Efecto</th><th>C.Hum</th></tr>
+        <table><colgroup><col><col style="width:74px;"><col><col style="width:42px;"></colgroup>
+          <tr><th class="skill-h">Implante</th><th>Zona/Slot</th><th>Efecto</th><th>C.Hum</th></tr>
           <tbody id="implTable"></tbody>
         </table>
+        <div class="note">Cada slot ocupado cierra esa zona a nuevas adiciones (CAP04e). Aviso visual (fondo rojo) si repites zona — no es un bloqueo duro, el DJ decide casos dudosos.</div>
         <div class="metrics" style="margin-top:3px;">
           <div><span>Necrochip</span><input type="text" placeholder="Sí/No" style="width:54px;"></div>
           <div><span>NT</span><input type="text" style="width:54px;"></div>
@@ -359,9 +415,121 @@
   <div class="page2">
     <div class="page2-title">La Senda de los Errantes · Página 2</div>
     <div class="page2-grid">
+
+      <!-- COLUMNA 1: VEHÍCULOS -->
       <div class="page2-col">
         <div class="page2-block">
-          <h3>Distorsión</h3>
+          <h3>Vehículo — Stats</h3>
+          <table class="p2-table">
+            <tr><th>Nombre</th><td><input type="text"></td></tr>
+            <tr><th>Nivel / Tipo</th><td><input type="text"></td></tr>
+            <tr><th>Calidad</th><td><input type="text" placeholder="Básica/Estándar/Premium"></td></tr>
+            <tr><th>FUE / CON</th><td><input type="text" placeholder="fue/con"></td></tr>
+            <tr><th>PDE</th><td><input type="text" placeholder="act/max"></td></tr>
+            <tr><th>Blindaje (PDE extra)</th><td><input type="text"></td></tr>
+            <tr><th>Maniobra</th><td><input type="number" style="width:60px"></td></tr>
+            <tr><th>Plazas / Carga</th><td><input type="text"></td></tr>
+            <tr><th>Velocidad</th><td><input type="text"></td></tr>
+            <tr><th>Huecos</th><td><input type="text" placeholder="usados/tot"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Armamento</h3>
+          <table class="p2-table">
+            <tr><th>Arma</th><th>Daño</th><th>Cad</th><th>Huecos</th></tr>
+            <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Complementos</h3>
+          <table class="p2-table">
+            <tr><th>Complemento</th><th>Efecto</th><th>H</th></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Estado (según % PDE, CAP05b §9)</h3>
+          <table class="p2-table">
+            <tr><th>Estado</th><td>
+              <select>
+                <option>Funcional (76-100%)</option>
+                <option>Dañado (51-75%)</option>
+                <option>Deteriorado (26-50%)</option>
+                <option>Chatarra (1-25%)</option>
+              </select>
+            </td></tr>
+            <tr><th>% PDE actual</th><td><input type="number" style="width:50px"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Vuelo Personal</h3>
+          <table class="p2-table">
+            <tr><th>Sistema</th><th>Formato</th><th>NT</th><th>Auton(asaltos)</th></tr>
+            <tr><td><input type="text"></td><td><input type="text" placeholder="Mochila/Cinturón/Botas"></td><td><input type="number" style="width:30px"></td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Recursos</h3>
+          <table class="p2-table">
+            <tr><th>Recurso</th><th>Cant</th></tr>
+            <tr><td>Helio-3</td><td><input type="text"></td></tr>
+            <tr><td>Munición</td><td><input type="text"></td></tr>
+            <tr><td>Raciones</td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <table class="p2-table veh-dibujo">
+          <tr><th>Dibujo de vehículo</th></tr>
+          <tr><td></td></tr>
+        </table>
+      </div>
+
+      <!-- COLUMNA 2: REFUGIO -->
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Refugio del Errante</h3>
+          <table class="p2-table">
+            <tr><th>Ubicación</th><td><input type="text"></td></tr>
+            <tr><th>Tipo</th><td><input type="text"></td></tr>
+            <tr><th>Nivel de defensa</th><td><input type="text"></td></tr>
+            <tr><th>Defensas</th><td><input type="text"></td></tr>
+            <tr><th>Taller</th><td><input type="text"></td></tr>
+            <tr><th>Almacén</th><td><input type="text"></td></tr>
+            <tr><th>Camuflaje</th><td><input type="text"></td></tr>
+            <tr><th>Ocupantes</th><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Mejoras / Instalaciones</h3>
+          <table class="p2-table">
+            <tr><th>Mejora</th><th>Efecto</th></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Notas del Refugio</h3>
+          <table class="p2-table">
+            <tr><th>Registro</th></tr>
+            <tr><td><textarea></textarea></td></tr>
+            <tr><td><textarea></textarea></td></tr>
+          </table>
+        </div>
+        <table class="p2-table veh-dibujo">
+          <tr><th>Dibujo / plano de refugio</th></tr>
+          <tr><td></td></tr>
+        </table>
+      </div>
+
+      <!-- COLUMNA 3: DISTORSIÓN (detalle narrativo) + ESCUELAS + CHIPS -->
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Distorsión — detalle</h3>
           <table class="p2-table">
             <tr><th style="width:32%;">Aspecto</th><th>Detalle</th></tr>
             <tr><td>Origen</td><td><input type="text"></td></tr>
@@ -370,109 +538,6 @@
             <tr><td>Notas</td><td><input type="text"></td></tr>
           </table>
         </div>
-        <div class="page2-block">
-          <h3>Perlas</h3>
-          <table class="p2-table">
-            <tr><th>Capacidad</th><th>Cantidad</th><th>Gastadas</th></tr>
-            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
-            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
-            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
-            <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
-          </table>
-        </div>
-<div class="page2-block">
-  <h3>Vehículos</h3>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-    
-    <!-- Columna izquierda: Stats del vehículo -->
-    <div>
-      <table class="p2-table">
-        <tr><th>Nombre</th><td><input type="text"></td></tr>
-        <tr><th>Nivel / Tipo</th><td><input type="text"></td></tr>
-        <tr><th>Calidad</th><td><input type="text"></td></tr>
-        <tr><th>PDE</th><td><input type="text" placeholder="act/max"></td></tr>
-        <tr><th>Blindaje</th><td><input type="text"></td></tr>
-        <tr><th>Maniobra</th><td><input type="number" style="width:60px"></td></tr>
-        <tr><th>Plazas / Carga</th><td><input type="text"></td></tr>
-        <tr><th>Velocidad</th><td><input type="text"></td></tr>
-        <tr><th>Huecos</th><td><input type="text" placeholder="usados/tot"></td></tr>
-      </table>
-    </div>
-
-    <!-- Columna derecha: Armamento + Complementos -->
-    <div>
-      <h4>Armamento</h4>
-      <table class="p2-table">
-        <tr><th>Arma</th><th>Daño</th><th>Cad</th><th>Huecos</th></tr>
-        <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
-        <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
-        <tr><td><input type="text"></td><td><input type="number" style="width:40px"></td><td><input type="text"></td><td><input type="number" style="width:40px"></td></tr>
-      </table>
-
-      <h4>Complementos</h4>
-      <table class="p2-table">
-        <tr><th>Complemento</th><th>Efecto</th><th>H</th></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="number" style="width:30px"></td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- Fila inferior: Estado/Daños + Vuelo Personal + Recursos -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
-    
-    <div>
-      <h4>Estado / Daños</h4>
-      <table class="p2-table">
-        <tr><th>Componente</th><th>%</th></tr>
-        <tr><td>Motor</td><td><input type="number" style="width:40px"></td></tr>
-        <tr><td>Blindaje</td><td><input type="number" style="width:40px"></td></tr>
-        <tr><td>Sensores</td><td><input type="number" style="width:40px"></td></tr>
-        <tr><td>Armamento</td><td><input type="number" style="width:40px"></td></tr>
-      </table>
-    </div>
-
-    <div>
-      <h4>Vuelo Personal</h4>
-      <table class="p2-table">
-        <tr><th>Sistema</th><th>NT</th><th>Auton</th></tr>
-        <tr><td><input type="text"></td><td><input type="number" style="width:30px"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="number" style="width:30px"></td><td><input type="text"></td></tr>
-      </table>
-
-      <h4>Recursos</h4>
-      <table class="p2-table">
-        <tr><th>Recurso</th><th>Cant</th></tr>
-        <tr><td>Helio-3</td><td><input type="text"></td></tr>
-        <tr><td>Munición</td><td><input type="text"></td></tr>
-        <tr><td>Raciones</td><td><input type="text"></td></tr>
-      </table>
-    </div>
-
-    <!-- REFUGIO DEL ERRANTE -->
-    <div>
-      <h4>Refugio del Errante</h4>
-      <table class="p2-table">
-        <tr><th>Ubicación</th><td><input type="text"></td></tr>
-        <tr><th>Tipo</th><td><input type="text"></td></tr>
-        <tr><th>Defensas</th><td><input type="text"></td></tr>
-        <tr><th>Taller</th><td><input type="text"></td></tr>
-        <tr><th>Almacén</th><td><input type="text"></td></tr>
-        <tr><th>Camuflaje</th><td><input type="text"></td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- Dibujo al final -->
-  <table class="p2-table veh-dibujo" style="margin-top:10px;">
-    <tr><th>Espacio para dibujo de vehículo / refugio</th></tr>
-    <tr><td style="height:80px;"></td></tr>
-  </table>
-</div>
-      </div>
-
-      <div class="page2-col">
         <div class="page2-block">
           <h3>Escuelas y Hechizos</h3>
           <table class="p2-table">
@@ -496,16 +561,9 @@
             <tr><td><input type="text"></td><td><input type="number"></td></tr>
           </table>
         </div>
-        <div class="page2-block">
-          <h3>Dinero y otros</h3>
-          <table class="p2-table">
-            <tr><th style="width:25%;">Campo</th><th>Detalle</th></tr>
-            <tr><td>Dinero</td><td><input type="text"></td></tr>
-            <tr><td>Otros recursos</td><td><textarea></textarea></td></tr>
-          </table>
-        </div>
       </div>
 
+      <!-- COLUMNA 4: EQUIPO + TRASFONDO + DINERO -->
       <div class="page2-col">
         <div class="page2-block">
           <h3>Equipo e inventario</h3>
@@ -519,8 +577,14 @@
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Dinero y otros</h3>
+          <table class="p2-table">
+            <tr><th style="width:25%;">Campo</th><th>Detalle</th></tr>
+            <tr><td>Dinero</td><td><input type="text"></td></tr>
+            <tr><td>Otros recursos</td><td><textarea></textarea></td></tr>
           </table>
         </div>
         <div class="page2-block">
@@ -532,6 +596,7 @@
           </table>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -540,8 +605,12 @@
 const raw = id => { const v = document.getElementById(id).value.trim(); return v === '' ? NaN : parseInt(v); };
 const num = id => { const v = raw(id); return isNaN(v) ? 0 : v; };
 const filled = (...ids) => ids.every(id => !isNaN(raw(id)));
-const round = x => Math.round(x);
+const round = x => Math.ceil(x - 0.5); // el manual redondea los .5 hacia abajo (verificado con Kairo, CAP02)
 
+// Ramas — listas originales de la ficha _B (preservadas para no perder habilidades ya presentes).
+// Nota: ANEXO_Meritos_Habilidades_DEFINITIVO.md reclasifica Conducir/Pilotar/Trajes Servoasistidos/Sigilo
+// como Tecnológicas, no Atléticas — discrepancia real entre el anexo y las fichas existentes del proyecto.
+// Se mantiene aquí la convención ya usada en todas las fichas (_B, Senda_v2, Kit_de_Inicio_vertical).
 const CATS = [
   { name:"Académicas", formula:"(I+V)/2", base:()=>round((num('I')+num('V'))/2),
     skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Esconderse/Evadirse","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—","—"] },
@@ -552,13 +621,17 @@ const CATS = [
   { name:"Social", formula:"(Ca+P)/2", base:()=>round((num('Ca')+num('P'))/2),
     skills:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo","—"] },
 ];
+// Combate: rama con base única (AGI+HAB)/2 (Kairo, CAP02) — Iniciativa/Alerta/Esquivar van aparte (item 4)
+const combateBase = ()=>round((num('A')+num('H'))/2);
 const COMBAT = [
-  { name:"Iniciativa", base:()=>round((num('A')+num('P'))/2) },
-  { name:"Alerta", base:()=>round((num('P')+num('I'))/2) },
-  { name:"Esquivar", base:()=>round((num('A')+num('H'))/2) },
-  { name:"Distancia", base:()=>round((num('A')+num('H')+num('P'))/3) },
-  { name:"Sin Armas", base:()=>round((num('F')+num('C')+num('A'))/3) },
-  { name:"Arma CC", base:()=>round((num('F')+num('A')+num('H'))/3) },
+  { name:"Distancia", base:combateBase },
+  { name:"Sin Armas", base:combateBase },
+  { name:"Arma CC", base:combateBase },
+];
+const INIC = [
+  { name:"Iniciativa", base:()=>num('A') },
+  { name:"Alerta", base:()=>num('P') },
+  { name:"Esquivar", base:()=>num('A') },
 ];
 
 function catTableHTML(cat, ci){
@@ -581,6 +654,10 @@ function buildCombat(){
   const tb=document.getElementById('combatTable');tb.innerHTML='';
   COMBAT.forEach((c,i)=>{tb.innerHTML+=`<tr><td class="skill">${c.name}</td><td class="cat-base combatbase-${i}">0</td><td><input type="number" class="capr" data-i="${i}" oninput="calc()"></td><td><input type="number" class="cmod" data-i="${i}" oninput="calc()"></td><td class="total" id="ctot-${i}">0</td></tr>`;});
 }
+function buildInic(){
+  const tb=document.getElementById('inicTable');tb.innerHTML='';
+  INIC.forEach((c,i)=>{tb.innerHTML+=`<tr><td class="skill">${c.name}</td><td class="cat-base inicbase-${i}">0</td><td><input type="number" class="iapr" data-i="${i}" oninput="calc()"></td><td><input type="number" class="imod" data-i="${i}" oninput="calc()"></td><td class="total" id="itot-${i}">0</td></tr>`;});
+}
 function buildArmas(){
   const tb=document.getElementById('armasTable');tb.innerHTML='';
   for(let i=0;i<5;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>`;
@@ -588,24 +665,59 @@ function buildArmas(){
 function buildLoc(){
   const z=["Cabeza","Torso","Brazo Izq","Brazo Der","Pierna Izq","Pierna Der"];
   const g=document.getElementById('locGrid');g.innerHTML='';
-  z.forEach(n=>{g.innerHTML+=`<div class="loc-cell"><div class="lname">${n}</div><div class="lrow"><label>Bld</label><input type="number"><label>PV</label><input type="number"></div></div>`;});
+  z.forEach(n=>{g.innerHTML+=`<div class="loc-cell"><div class="lname">${n}</div><div class="lrow"><label>Bld</label><input type="number"><label>PV máx</label><input type="number"><label>Act</label><input type="number" class="pvact" oninput="checkZonePV(this)"></div></div>`;});
 }
-const DISC=[
-  {n:"Det/ident distorsión",attr:"P"},{n:"Manipular distorsión",attr:"V"},{n:"Camino de los portales",attr:null},
-  {n:"Tatuador Rúnico",attr:"Ca"},{n:"Herrero Rúnico",attr:"V"},
-  {n:"Proyección energía",attr:"ZERO"},{n:"Protección energía",attr:"ZERO"},{n:"Invocación energía",attr:"ZERO"},
+function checkZonePV(inp){
+  const v=parseInt(inp.value);
+  inp.style.background = (!isNaN(v) && v<=0) ? '#fecaca' : '';
+}
+// Distorsión — CAP04b: Hechicería / Taumaturgia / Marcas (fuente canónica ANEXO para atributos base)
+const DISC_GROUPS=[
+  {cat:"Hechicería",items:[
+    {n:"Proyección de Energía",attr:"H"},
+    {n:"Protección de Energía",attr:"P"},
+    {n:"Invocación de Energía",attr:"I"},
+  ]},
+  {cat:"Taumaturgia",items:[
+    {n:"Detección de Distorsión",attr:"P"},
+    {n:"Manipulación de Distorsión",attr:"V"},
+    {n:"Camino de los Portales",attr:null},
+  ]},
+  {cat:"Marcas",items:[
+    {n:"Herrero Rúnico",attr:"V"},
+    {n:"Tatuador Rúnico",attr:"Ca"},
+  ]},
 ];
+const DISC = DISC_GROUPS.flatMap(g=>g.items.map(it=>({...it,cat:g.cat})));
 function buildDisc(){
-  const tb=document.getElementById('discTable');tb.innerHTML='';
-  DISC.forEach((d,i)=>{tb.innerHTML+=`<tr><td class="skill" title="${d.n}">${d.n}</td><td class="cat-base discbase-${i}">0</td><td><input type="number" class="dhab" data-i="${i}" oninput="calc()"></td><td><input type="number" class="dmod" data-i="${i}" oninput="calc()"></td><td class="total" id="dtot-${i}">0</td></tr>`;});
+  const wrap=document.getElementById('discBlockWrap');wrap.innerHTML='';
+  let gi=0;
+  DISC_GROUPS.forEach(g=>{
+    let h=`<div class="disc-group"><h4>${g.cat}</h4><table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup><tr><th class="skill-h">Disciplina</th><th>Bas</th><th>Hab</th><th>Mod</th><th>Tot</th></tr>`;
+    g.items.forEach(d=>{
+      const i=gi++;
+      h+=`<tr><td class="skill" title="${d.n}">${d.n}</td><td class="cat-base discbase-${i}">0</td><td><input type="number" class="dhab" data-i="${i}" oninput="calc()"></td><td><input type="number" class="dmod" data-i="${i}" oninput="calc()"></td><td class="total" id="dtot-${i}">0</td></tr>`;
+    });
+    h+=`</table></div>`;
+    wrap.innerHTML+=h;
+  });
 }
+const SLOTS=["","Ojos","Brazo D","Brazo I","Pierna D","Pierna I","Sistema Neural","Sistema Óseo","Sistema Muscular","Órganos"];
 function buildImpl(){
   const tb=document.getElementById('implTable');tb.innerHTML='';
-  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td></tr>`;
+  const opts=SLOTS.map(s=>`<option value="${s}">${s||'(elige zona)'}</option>`).join('');
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><select class="implSlot" onchange="checkSlots()" style="font-size:9.5px;">${opts}</select></td><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td></tr>`;
+  checkSlots();
+}
+function checkSlots(){
+  const sels=[...document.querySelectorAll('.implSlot')];
+  const counts={};
+  sels.forEach(s=>{if(s.value) counts[s.value]=(counts[s.value]||0)+1;});
+  sels.forEach(s=>{s.style.background = (s.value && counts[s.value]>1) ? '#fecaca' : '';});
 }
 function buildRuna(){
   const tb=document.getElementById('runaTable');tb.innerHTML='';
-  for(let i=0;i<7;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="text" style="font-size:10px;"></td></tr>`;
+  for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="number"></td><td><input type="text" style="font-size:10px;"></td></tr>`;
 }
 function buildEpic(){
   const tb=document.getElementById('epicTable');tb.innerHTML='';
@@ -616,6 +728,13 @@ function buildNotas(){
   for(let i=0;i<2;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td></tr>`;
 }
 function toggle(id){document.getElementById(id).classList.toggle('hidden');}
+function initCaminos(){
+  document.querySelectorAll('input[name=camino]').forEach(cb=>{
+    cb.addEventListener('change',()=>{
+      if(cb.checked) document.querySelectorAll('input[name=camino]').forEach(o=>{if(o!==cb)o.checked=false;});
+    });
+  });
+}
 function calc(){
   const vidaOk=filled('A','C','F');
   const pv=vidaOk?round((num('A')+num('C')+num('F'))/6):'';
@@ -630,6 +749,9 @@ function calc(){
   document.getElementById('cargaLibre').textContent=fcOk?round(fc/4):'';
   document.getElementById('carga20').textContent=fcOk?round(fc/2):'';
   document.getElementById('carga40').textContent=fcOk?fc*2:'';
+
+  const reconSum = {0:0,1:0,2:0,3:0}; // por índice de CATS
+  const reconAny = {0:false,1:false,2:false,3:false};
   CATS.forEach((cat,ci)=>{
     const deps=cat.formula.match(/[A-Z][a-z]?/g)||[];
     const ok=deps.length>0&&filled(...deps);
@@ -640,21 +762,44 @@ function calc(){
       const mod=document.querySelector(`.mod[data-cat="${ci}"][data-sk="${si}"]`);
       const a=parseInt(apr.value)||0,m=parseInt(mod.value)||0;
       const hasInput=ok||apr.value.trim()!==''||mod.value.trim()!=='';
-      document.getElementById(`tot-${ci}-${si}`).textContent=hasInput?(ok?cat.base():0)+a+m:'';
+      const tot=hasInput?(ok?cat.base():0)+a+m:0;
+      document.getElementById(`tot-${ci}-${si}`).textContent=hasInput?tot:'';
+      if(hasInput){reconSum[ci]+=tot;reconAny[ci]=true;}
     });
   });
+  document.getElementById('reconAca').textContent=reconAny[0]?reconSum[0]:'';
+  document.getElementById('reconTec').textContent=reconAny[1]?reconSum[1]:'';
+  document.getElementById('reconAtl').textContent=reconAny[2]?reconSum[2]:'';
+  document.getElementById('reconSoc').textContent=reconAny[3]?reconSum[3]:'';
+
+  let reconCombateSum=0, reconCombateAny=false;
   COMBAT.forEach((c,i)=>{
     const base=c.base();
-    const anyAttr=filled('A','P','I','H','F','C');
+    const anyAttr=filled('A','H');
     document.querySelectorAll('.combatbase-'+i).forEach(el=>el.textContent=anyAttr?base:'');
     const a=parseInt(document.querySelector(`.capr[data-i="${i}"]`).value)||0;
     const m=parseInt(document.querySelector(`.cmod[data-i="${i}"]`).value)||0;
     const hasInput=anyAttr||a!==0||m!==0;
-    document.getElementById('ctot-'+i).textContent=hasInput?base+a+m:'';
+    const tot=hasInput?base+a+m:0;
+    document.getElementById('ctot-'+i).textContent=hasInput?tot:'';
+    if(hasInput){reconCombateSum+=tot;reconCombateAny=true;}
   });
+  INIC.forEach((c,i)=>{
+    const base=c.base();
+    const anyAttr=filled('A','P');
+    document.querySelectorAll('.inicbase-'+i).forEach(el=>el.textContent=anyAttr?base:'');
+    const a=parseInt(document.querySelector(`.iapr[data-i="${i}"]`).value)||0;
+    const m=parseInt(document.querySelector(`.imod[data-i="${i}"]`).value)||0;
+    const hasInput=anyAttr||a!==0||m!==0;
+    const tot=hasInput?base+a+m:0;
+    document.getElementById('itot-'+i).textContent=hasInput?tot:'';
+    if(hasInput){reconCombateSum+=tot;reconCombateAny=true;}
+  });
+  document.getElementById('reconCombate').textContent=reconCombateAny?reconCombateSum:'';
+
   DISC.forEach((d,i)=>{
     let base=0;let ok=false;
-    if(d.attr&&d.attr!=="ZERO"){base=num(d.attr);ok=filled(d.attr);}
+    if(d.attr){base=num(d.attr);ok=filled(d.attr);}
     document.querySelector('.discbase-'+i).textContent=ok?base:'';
     const h=parseInt(document.querySelector(`.dhab[data-i="${i}"]`).value)||0;
     const m=parseInt(document.querySelector(`.dmod[data-i="${i}"]`).value)||0;
@@ -662,7 +807,7 @@ function calc(){
     document.getElementById('dtot-'+i).textContent=hasInput?base+h+m:'';
   });
 }
-function limpiar(){document.querySelectorAll('.apr,.mod,.capr,.cmod,.dhab,.dmod').forEach(el=>el.value='');calc();}
+function limpiar(){document.querySelectorAll('.apr,.mod,.capr,.cmod,.iapr,.imod,.dhab,.dmod').forEach(el=>el.value='');calc();}
 function guardar(){
   const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
   const blob=new Blob([html],{type:'text/html'});const a=document.createElement('a');
@@ -673,7 +818,7 @@ function buildMerit(){
   const tb=document.getElementById('meritTable');tb.innerHTML='';
   for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td></tr>`;
 }
-buildSkills();buildCombat();buildArmas();buildLoc();buildDisc();buildImpl();buildMerit();buildRuna();buildEpic();buildNotas();calc();
+buildSkills();buildCombat();buildInic();buildArmas();buildLoc();buildDisc();buildImpl();buildMerit();buildRuna();buildEpic();buildNotas();initCaminos();calc();
 </script>
 </body>
 </html>
