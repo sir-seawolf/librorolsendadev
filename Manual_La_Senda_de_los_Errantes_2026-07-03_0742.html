@@ -59,23 +59,28 @@ body{ margin:0; }
   .libro-toc-print .toc-title{flex:1;}
 }
 @media screen{.libro-toc-print{display:none !important;}}
-@media(max-width:900px){
+@media screen and (max-width:900px){
   :root{--idx-w:0px;}
-  .libro-idx{transform:translateX(-100%);transition:transform .2s;width:280px;}
+  .libro-idx{transform:translateX(-100%);transition:transform .3s;width:80vw;max-width:320px;}
   .libro-idx.open{transform:translateX(0);}
-  .libro-main,.libro-portada{margin-left:0;}
+  .libro-main,.libro-portada{margin-left:0 !important;}
+  .libro-portada .pt-main{font-size:32px;}
+  .libro-portada{padding:60px 20px;}
+  .libro-cap{padding:0 4px;}
+  .libro-cap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .toggle-idx{display:block !important;}
+  .libro-guia-rapida{padding:0 10px !important;}
+  .libro-guia-rapida table{display:block;overflow-x:auto;}
 }
 </style>
 <style>
-.comic-page{margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;overflow:hidden;}
-.comic-page img{display:block;width:200%;height:auto;}
-.comic-page.comic-left img{margin-left:0;}
-.comic-page.comic-right img{margin-left:-100%;}
+.comic-page{text-align:center;margin:0;padding:0;background:#0a0a0a;page-break-before:always;page-break-after:always;display:flex;align-items:center;justify-content:center;min-height:80vh;}
+.comic-page img{max-width:100%;max-height:90vh;display:block;margin:0 auto;}
 .extra-img{text-align:center;margin:24px 0;}
 .extra-img img{max-width:80%;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.15);}
 @media print{
-  .comic-page{height:100vh;overflow:hidden;padding:0;margin:0;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid;}
-  .comic-page img{width:200%;height:auto;}
+  .comic-page{height:100vh;page-break-inside:avoid;background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .comic-page img{max-height:95vh;object-fit:contain;}
   .libro-portada{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
   .libro-portada img{max-width:80% !important;}
   .libro-guia-rapida{page-break-before:always;}
@@ -101,12 +106,12 @@ body{ margin:0; }
 <a href="#cap14" class=""><span class="idx-num">12</span>BESTIARIO Y RAZAS</a>
 <a href="#cap15" class=""><span class="idx-num">13</span>AVENTURAS EN EL MOSAICO</a>
 <a href="#cap16" class=""><span class="idx-num">14</span>TU PRIMERA SENDA</a>
-<a href="#cap17" class=""><span class="idx-num">A1</span>ANEXO — Generador de Asentamientos y Estaciones para el DJ</a>
-<a href="#cap18" class=""><span class="idx-num">18</span>AVENTURAS EN EL MOSAICO (Parte 2/2)</a>
+<a href="#cap17" class=""><span class="idx-num">A2</span>ANEXO A2 — REFERENCIA RÁPIDA: HABILIDADES, MÉRITOS Y DEFECTOS</a>
+<a href="#cap18" class=""><span class="idx-num">A1</span>ANEXO — Generador de Asentamientos y Estaciones para el DJ</a>
 </nav>
 <div class="libro-portada"><div class="pt-la">La Senda de</div>
 <div class="pt-main">Los <em>Errantes</em></div>
-<div><img src="img/Portada_rol Errantes.jpg" style="max-width:80%;margin:30px auto;display:block;border-radius:8px;"></div>
+<div><img src="img/Portada_rol_Errantes.jpg" style="max-width:80%;margin:30px auto;display:block;border-radius:8px;"></div>
 <div class="pt-sub">Manual de juego - borrador de trabajo</div></div>
 <div class="libro-toc-print"><h2>Índice</h2>
 <div class="toc-entry"><span class="toc-num"></span><span class="toc-title">PRÓLOGO — El origen</span></div>
@@ -125,8 +130,8 @@ body{ margin:0; }
 <div class="toc-entry"><span class="toc-num">12</span><span class="toc-title">BESTIARIO Y RAZAS</span></div>
 <div class="toc-entry"><span class="toc-num">13</span><span class="toc-title">AVENTURAS EN EL MOSAICO</span></div>
 <div class="toc-entry"><span class="toc-num">14</span><span class="toc-title">TU PRIMERA SENDA</span></div>
+<div class="toc-entry"><span class="toc-num">A2</span><span class="toc-title">ANEXO A2 — REFERENCIA RÁPIDA: HABILIDADES, MÉRITOS Y DEFECTOS</span></div>
 <div class="toc-entry"><span class="toc-num">A1</span><span class="toc-title">ANEXO — Generador de Asentamientos y Estaciones para el DJ</span></div>
-<div class="toc-entry"><span class="toc-num">18</span><span class="toc-title">AVENTURAS EN EL MOSAICO (Parte 2/2)</span></div>
 </div>
 
 <div class="libro-guia-rapida" style="page-break-before:always;max-width:700px;margin:40px auto;padding:0 20px;">
@@ -136,20 +141,20 @@ body{ margin:0; }
 <colgroup><col style="width:35%;"><col style="width:65%;"></colgroup>
 <tr style="background:#0f1115;color:#fff;"><th style="text-align:left;padding:4px 8px;">Quiero...</th><th style="text-align:left;padding:4px 8px;">Ve a...</th></tr>
 <tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Crear un personaje</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 02 (atributos, profesiones, méritos) · Cap. 08 (implantes iniciales)</td></tr>
-<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Comprar equipo y armas</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Catálogo Norton, precios) · Cap. 04 (tabla de blindajes)</td></tr>
-<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Fabricar algo a medida</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Taller a Medida, Tron, runas)</td></tr>
-<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Resolver un combate</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 03 (mecánicas, turnos, daño) · Cap. 04 (blindajes por zona)</td></tr>
-<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Usar distorsión o poderes</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 05 (resumen) · Cap. 06 (escuelas, perlas, poderes) · Cap. 08 (Humanidad/Alma)</td></tr>
-<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Instalar implantes</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 08 (catálogo Ibis-Forge, costes, Humanidad)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Comprar equipo y armas</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Catálogo Norton, precios) · Cap. 03 (armaduras y blindajes)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Fabricar algo a medida</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (Taller del Errante, Tron, runas, reparaciones)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Resolver un combate</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 03 (mecánicas, turnos, daño, armaduras)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Usar distorsión o poderes</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 05 (tecnología y distorsión) · Cap. 06 (escuelas, perlas, poderes)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Instalar implantes</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 08 (Carne y Metal — catálogo Ibis-Forge, costes, Humanidad)</td></tr>
 <tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Viajar entre teselas</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 09 (exploración, pulseras, Helio-3) · Cap. 10 (vehículos de cruce)</td></tr>
-<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Gestionar tiempo muerto</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 07 (contratos, economía, construcción de bases)</td></tr>
+<tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Gestionar tiempo muerto</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 11 (El Narrador — contratos y economía de campaña)</td></tr>
 <tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Dirigir una partida (DJ)</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Cap. 11 (consejos) · Cap. 13 (aventuras y ganchos) · Cap. 14 (primera senda) · Anexo A1 (generador)</td></tr>
 <tr><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;"><strong>Conocer el universo</strong></td><td style="padding:3px 8px;border-bottom:1px solid #e2e8f0;">Prólogo (tono) · Cap. 01 (mosaico, teselas, corps) · Cap. 12 (razas, bestiario)</td></tr>
 </table>
 </div>
 
 <main class="libro-main">
-<section class="libro-cap cap-anchor" id="cap1"><div class="document-container"><div class="extra-img"><img src="img/Seawolf frente al portal_texto en ingles.jpg" alt=""></div>
+<section class="libro-cap cap-anchor" id="cap1"><div class="document-container"><div class="extra-img"><img src="img/Seawolf_frente_al_portal.jpg" alt=""></div>
 <h1>PRÓLOGO — El origen</h1>
 <h2>Para el manual de La Senda de los Errantes</h2>
 <blockquote>
@@ -158,7 +163,7 @@ body{ margin:0; }
 </blockquote>
 <hr />
 <p>Tengo quince años y estoy solo en la finca cuando empieza.</p>
-<p>Eso no es raro. Llevo toda la vida solo en sitios. El campo, la ciudad, las excursiones con los scouts, los veranos largos con mis libros y mis maquetas. Soy el tipo de chaval que no necesita que nadie le diga qué hacer con el tiempo. He leído todo lo que he podido encontrar — ciencia ficción, supervivencia, historia militar, técnica de las fuerzas especiales — y tengo la cabeza llena de procedimientos para situaciones que nunca van a ocurrir.</p>
+<p>Eso no es raro. Llevo toda la vida solo en sitios. El campo, la ciudad, las excursiones con los scouts, los veranos largos con mis libros y mis maquetas. Soy el tipo de chaval que no necesita que nadie le diga qué hacer con el tiempo. He leído todo lo que ha caído en mis manos — novelas, manuales, enciclopedias: de cómo funciona un motor a cómo orientarse de noche, del mundo natural a la historia de las guerras — y tengo la cabeza llena de procedimientos para situaciones que nunca van a ocurrir.</p>
 <p>Era también el tipo de chaval que ya tenía más cuerpo que los de su edad. Fornido, fuerte, bastante ágil para lo que pesaba. No el adulto enorme que vendría después, pero sí alguien que se movía bien y que cargaba sin problemas. Lo suficiente para creer que podía con todo.</p>
 <p>O eso creía.</p>
 <p>La finca está en el Camino del Terminillo, cerca del Cerro de la Horca, junto al río Júcar. No es una casa de campo de postal — es una nave construida con muretes que fueron compartimentando el espacio hasta convertirse en algo habitable: la vivienda de verano de mi familia, con su piscina, y los tíos de mi padre al lado. Un lugar familiar, conocido desde siempre. Al fondo, el campo de trigo que se extiende hacia las montañas serranas de Cuenca.</p>
@@ -172,19 +177,19 @@ body{ margin:0; }
 <p>Llegan antes de que pueda preguntar quiénes.</p>
 <hr />
 <p>Son dos o tres. Entrenados, pero no excepcionales. En la cabeza, en ese segundo, calculo distancias, coberturas, ángulos de salida. Todo lo que he leído. Todo lo que he procesado durante años de maquetas y mapas y manuales de campo.</p>
-<p>En la práctica, salgo corriendo hacia el trigo como cualquier chaval de quince años.</p>
-<p>Las espigas me golpean la cara. Escucho las voces detrás, los pasos. Algo zumba en el aire antes de que uno me alcance — un disparo, un golpe, no sé bien qué — y el costado me arde y el suelo aparece antes de que lo espere.</p>
+<p>En la práctica, salgo corriendo hacia la Rieju Drac de 50cc que tengo aparcada en el camino — como cualquier chaval de quince años que tiene una moto a veinte metros. Arranco de una patada y tiro campo a través, hacia el trigo.</p>
+<p>Las espigas golpean el carenado y me azotan las piernas. Escucho las voces detrás, los pasos, un motor. Algo zumba en el aire antes de alcanzarme — un disparo, un golpe, no sé bien qué — y el costado me arde, la rueda delantera se cruza y el suelo aparece antes de que lo espere. La moto sigue sola unos metros y cae entre el trigo.</p>
 <p>Me quedo quieto. El trigo sigue moviéndose sobre mí como si nada hubiera pasado.</p>
 <p>La radio —que de alguna manera sigue sonando aunque la dejé dentro de la finca— dice:</p>
 <p><em>Si me otorgas parte de tu alma, yo te abro un portal.</em></p>
-<p>En ese momento debería haber preguntado cuánta parte. Debería haber negociado, evaluado, aplicado todo lo que había leído sobre tomar decisiones bajo presión. Tengo un coeficiente alto. Se me dan bien las conexiones. Sé hacer nudos marineros desde los nueve años.</p>
+<p>En ese momento debería haber preguntado hecho muchas preguntas, pero solo me viene a la mente, cuánta parte. Debería haber negociado, evaluado, aplicado todo lo que había leído sobre tomar decisiones bajo presión. Leo rápido. Conecto ideas. Se me da bien entender cómo funcionan las cosas. Sé hacer muchas cosas.</p>
 <p>Pero también tengo quince años, me están disparando, y un demonio atrapado en un radiocasete me está ofreciendo una salida.</p>
-<p>Digo que sí.</p>
+<p>Digo que sí, si hubiese sabido la verdad, creo que también habría aceptado.</p>
 <hr />
 <p>Lo que no me dice — o lo que yo no entiendo hasta que ya es tarde — es que él también está bajo de energía. Que va a coger más de lo acordado porque necesita más para hacer lo que promete.</p>
-<p>Lo que ocurre no es un portal limpio. Es más parecido a una colisión. Él sigue en la radio, yo sigo siendo yo, pero hay algo de él en mí y algo de mí en él, y ninguno de los dos puede deshacerlo. A cambio, puedo hacer cosas que antes no podía. Todavía no sé cuáles. Eso viene después.</p>
-<p>Me levanto. El costado duele pero funciona. Entro a la cocina, cojo el primer cuchillo que encuentro — nada heroico, el de cortar pan — y cuando salgo le arrebo a uno de los agentes lo que puedo: el arma, las cinchas, la mochila. Cosas básicas. Exactamente lo que haría alguien que ha leído demasiados libros de supervivencia y por primera vez tiene que usarlos de verdad.</p>
-<p>Salgo corriendo hacia la Rieju Drac de 50cc que tengo aparcada en el camino.</p>
+<p>Lo que ocurre no es un portal limpio. Es más parecido a una colisión. Él sigue en la radio, yo sigo siendo yo, pero hay algo de él en mí y algo de mí en él, y ninguno de los dos puede deshacerlo. A cambio, puedo hacer cosas que antes no podía. Todavía no sé cuáles. Eso viene después. Pero siento algo — una estática en los huesos, un zumbido bajo la piel — que me dice que la realidad ya no es tan sólida como creía. Que puedo tocarla de formas que no debería.</p>
+<p>Me levanto. El costado duele pero funciona. El agente que venía a rematarme está a tres pasos cuando el aire se rasga entre los dos — y en ese caos, con el portal abriéndose y su mundo rompiéndose en los ojos, le arrebato lo que puedo: el arma, las cinchas, la mochila. Cosas básicas. Exactamente lo que haría alguien que ha leído demasiados libros de supervivencia y por primera vez tiene que usarlos de verdad.</p>
+<p>La Rieju queda tirada entre las espigas, con la rueda delantera todavía girando.</p>
 <p>La moto no cruza el portal.</p>
 <p>Yo sí.</p>
 <hr />
@@ -198,15 +203,15 @@ body{ margin:0; }
 <p>Aunque tampoco está tan mal para un chaval de quince años.</p>
 <hr />
 <p><em>Este juego tiene más de treinta años. Ha pasado por docenas de sistemas, cientos de jugadores y miles de horas de partidas reales. Lo que lees en este manual no es una construcción de diseñador. Es todo eso destilado.</em></p>
-<p><em>David Dolf dirigió las primeras sesiones. Solo jugó unos meses, pero fue él quien sostuvo el mundo mientras yo aprendía a habitarlo. Sin esa semilla, no habría árbol.</em></p>
+<p><em>David Dolf dirigió las primeras sesiones. Solo jugó unos meses, pero fue él quien sostuvo el mundo mientras yo aprendía a habitarlo. Sin esa semilla, no habría árbol. Él fue el primer DJ de esta historia. Yo solo soy el primer personaje.</em></p>
+<p><em>Y esa radio — ese Trasto — era Vhelka Gallû antes de tener nombre. Antes de ser una moto-demonio. Antes de ser mi compañero. Era solo un demonio atrapado, desesperado, dispuesto a engañar para salir. Y yo era solo un chaval asustado, dispuesto a aceptar cualquier trato. Juntos, sin saberlo, empezamos algo que ninguno de los dos podía imaginar.</em></p>
 <p><em>Bienvenido al mosaico.</em></p>
 <p>— <em>Miguel Pascual, A. Seawolf</em></p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol.png" alt="Cómic"></div>
+<div class="comic-page"><img src="img/ComicJuegoRol.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap2"><div class="document-container"><h1>CAPÍTULO 0 — INTRODUCCIÓN</h1>
 <blockquote>
 <p><em>"Sin el juego nunca había pensado qué posibilidades de sobrevivir tendría una chica como yo de 16 años en un universo como aquel."</em><br />
-— Anapana, Cuenca, junio de 1996</p>
+— Anapana, Cuenca, junio de 1994</p>
 </blockquote>
 <hr />
 <h2>¿Qué es un juego de rol?</h2>
@@ -424,8 +429,7 @@ Un d6 para ciertos daños secundarios. Un d4 para algunas tiradas de mejora de h
 El glosario completo está al final del manual. Para el resto: "No lo sé ahora mismo, lo decidimos y lo apuntamos." Los juegos de rol sobreviven perfectamente a las reglas improvisadas.</p>
 </blockquote>
 <p><em>"El multiverso no espera a que lo entiendas todo. Solo espera a que des el primer paso."</em></p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol2.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol2.png" alt="Cómic"></div>
+<div class="comic-page"><img src="img/ComicJuegoRol2.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap3"><div class="document-container"><h1>CAPÍTULO 1 — EL UNIVERSO</h1>
 <h2>El Mosaico, los Ciclos y sus habitantes</h2>
 <blockquote>
@@ -547,8 +551,7 @@ El glosario completo está al final del manual. Para el resto: "No lo sé ahora 
 <p>Fuera de la capital, en lo que deberia ser selva virgen, hay una mansion victoriana que no deberia existir. <strong>Totovia</strong> lleva aqui mas tiempo del que cualquiera recuerda. Habla idiomas que nadie reconoce. Tiene una biblioteca con libros que no se encuentran en ninguna otra tesela.</p>
 <p>Cuando le preguntan de donde vino, sonrie. Cuando le preguntan por que se quedo, dice: <em>Alguien tenia que cuidar este lugar.</em></p>
 <p>Su jardin no es decorativo: es <em>funcional</em>. Algunas plantas curan. Algunas matan. Algunas hacen cosas que no se pueden describir con palabras. Totovia no explica. Totovia ofrece te.</p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol3.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol3.png" alt="Cómic"></div>
+<div class="comic-page"><img src="img/ComicJuegoRol3.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap4"><div class="document-container"><h1>CAPÍTULO 2 — CREACIÓN DE PERSONAJES</h1>
 <blockquote>
 <p><em>"Los personajes somos nosotros mismos. Incluso hicimos pruebas para evaluar nuestras capacidades."</em><br />
@@ -786,8 +789,9 @@ Seis zonas: Cabeza (10/00) / Torso (9-5) / Brazo D (4) / Brazo I (3) / Pierna D 
 </tbody>
 </table>
 <p>Dos profesiones del mismo tipo <strong>suman sus bonos</strong> — por eso concentrar te hace mejor en lo tuyo.</p>
-<p><strong>Ventaja humana:</strong> El humano elige +10% en una habilidad o +5% en dos. Es gratuito y se aplica en creación.</p>
+<p><strong>Ventaja humana:</strong> El humano elige +10% en una habilidad específica o +5% en dos. Es gratuito, permanente, y se aplica <strong>después</strong> de calcular la base de rama y los bonos de profesión — es el último paso del cálculo de habilidades, no el primero.</p>
 <blockquote>
+<p><strong>Orden de aplicación en creación:</strong> (1) base de rama por atributos → (2) ajuste fino de atributos → (3) Puntos Gratuitos → (4) bono por NT bajo → (5) bonos de profesión → (6) ventaja humana → (7) méritos. Ningún atributo supera 60 en ningún momento. El techo de habilidades se especifica en el Paso 5.</p>
 <p><strong>Regla general de modificadores:</strong> todas las habilidades y bonificadores se mueven en múltiplos de 5. Los modificadores situacionales en mesa tienen un rango máximo de +20 a −20.</p>
 </blockquote>
 <hr />
@@ -935,6 +939,10 @@ Seis zonas: Cabeza (10/00) / Torso (9-5) / Brazo D (4) / Brazo I (3) / Pierna D 
 <p><em>Suelo de dinero: además del ingreso de profesión, siempre tienes </em><em>INT × 100 PC</em><em>. El Civil es la profesión del bolsillo lleno; el Combatiente cobra menos efectivo porque cobra en hierro.</em></p>
 </blockquote>
 <p><strong>¿No quieres el equipo? Cóbralo.</strong> Puedes canjear el kit (1× o el salto 2×) por dinero — pero al <strong>60-70 % de su valor</strong>. Es dotación, no efectivo: revenderla pierde.</p>
+<blockquote>
+<p><strong>El equipo de profesión es gratuito — no sale de tu bolsillo.</strong> El dinero inicial (INT × 100 PC + el ingreso de la profesión) es <strong>adicional</strong> al equipo. No tienes que pagar el kit con tu dinero: lo recibes como parte del perfil. El ingreso es para compras personales, deudas, o lo que la aventura traiga.</p>
+<p><strong>Ejemplo rápido:</strong> Un 2× Técnico recibe su kit (taller portátil incluido, valor ~5.000 PC) <strong>sin coste</strong>. Además tiene 6.000 PC de ingreso + INT × 100 para gastar libremente. Si decide canjear el taller por dinero, recibe 3.000-3.500 PC extra. Su bolsillo nunca empieza en negativo.</p>
+</blockquote>
 <blockquote class="character-quote"><span class="cq-pnj">Reyes</span><span class="cq-line">¿Dos veces civil? Ciudadano con papeles, cuenta con fondos y un coche que arranca. La gente se ríe del oficinista hasta que necesita que alguien firme.</span></blockquote>
 <p><em>(Equipo detallado por profesión e implantes → <code>CAP02 seccion Perfiles de Profesion</code>.)</em></p>
 <hr />
@@ -1536,6 +1544,11 @@ Viene de una tesela donde sus habilidades tienen otro nombre — chamán, brujo,
 <p><strong>Lo que NO se reparte en creación.</strong> No hay una bolsa de puntos libres para inflar habilidades sueltas. Lo que sabes sale de quién eres (atributos) y de dónde vienes (profesión y especie).</p>
 </blockquote>
 <p>Una habilidad que no tienes se intenta tirando por la <strong>general de su rama</strong>; tenerla como especialidad es lo que te da el plus. Las habilidades mejoran con el uso —críticos y pifias en juego, o entrenamiento estructurado (ver MECÁNICAS)—. No hay niveles: hay práctica.</p>
+<blockquote>
+<p><strong>Techo de habilidades en creación:</strong> ningún personaje empieza con más de <strong>90%</strong> en ninguna habilidad. El techo se aplica al <strong>total final</strong> — base + profesión + ventaja humana + méritos. Si tus bonos te elevan por encima de 90%, redistribuye o acepta que esos puntos se desbloquean con experiencia en juego. El mérito "Habilidad mejorada" (+30%) tiene un tope de 60% sobre el valor base de la habilidad antes del mérito — no puede elevar una habilidad más de 30 puntos por encima de donde estaba.</p>
+<p><strong>Reconocimiento — lo que el mosaico ve de ti.</strong><br />
+Una vez rellenas los totales de habilidades, suma cada categoría: Combate, Académicas, Tecnológicas, Atléticas y Sociales. Ese valor es tu <strong>Reconocimiento</strong> en cada campo — una medida de lo que has hecho, no de lo que aspiras a hacer. Define el rango de los contratos que te llegan y el estatus que el mosaico te reconoce. Anótalo en la ficha, debajo de las categorías. Se recalcula al final de cada sesión cuando sube una habilidad. <em>(Detalle completo del sistema, umbrales de progresión y escala de contratos → CAP03 sección Reconocimiento.)</em></p>
+</blockquote>
 <hr />
 <h2>Paso 6 — MéritoDefecto especial</h2>
 <p>Solo se puede elegir uno, y solo en la creación. Cuestan 3 Puntos Épicos. No son conseguibles durante la partida. Siempre tienen una ventaja real y una desventaja real — no hay MéritoDefectos "gratuitos".</p>
@@ -2224,9 +2237,399 @@ esta tabla — es una categoría propia, de doble filo.</p>
 <hr />
 <h2>Para el Narrador</h2>
 <p>El proceso de creación es también el primer momento de juego. No lo conviertas en papeleo.</p>
-<p>Deja que los jugadores hablen de sus personajes mientras los crean. Que cuenten por qué saben lo que saben, de dónde vienen, qué llevan encima. Esas conversaciones son el trasfondo — y el trasfondo es lo que hace que las decisiones en mesa importen.</p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol4.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol4.png" alt="Cómic"></div>
+<h2>Deja que los jugadores hablen de sus personajes mientras los crean. Que cuenten por qué saben lo que saben, de dónde vienen, qué llevan encima. Esas conversaciones son el trasfondo — y el trasfondo es lo que hace que las decisiones en mesa importen.</h2>
+<h2>Ejemplo completo — Kairo el Técnico</h2>
+<p><em>Un personaje creado paso a paso para que los números cuadren.</em></p>
+<hr />
+<p><strong>Paso 1 — Tipo:</strong> Predestinado (primera partida, quiere red de seguridad).<br />
+Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
+<hr />
+<p><strong>Paso 2 — Atributos:</strong></p>
+<p><em>Primarios (AGI/CON/FUE/HAB), base 30 cada uno. Ajuste fino: muevo 5 de AGI a HAB — Kairo es mañoso, no ágil.</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AGI</th>
+<th>CON</th>
+<th>FUE</th>
+<th>HAB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Ajuste fino</td>
+<td>−5</td>
+<td>0</td>
+<td>0</td>
+<td>+5</td>
+</tr>
+<tr>
+<td>Tras ajuste</td>
+<td><strong>25</strong></td>
+<td><strong>30</strong></td>
+<td><strong>30</strong></td>
+<td><strong>35</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Secundarios (CAR/INT/PER/VOL), base 25 cada uno. Muevo 5 de CAR a INT — es listo, no carismático.</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CAR</th>
+<th>INT</th>
+<th>PER</th>
+<th>VOL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>25</td>
+<td>25</td>
+<td>25</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Ajuste fino</td>
+<td>−5</td>
+<td>+5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Tras ajuste</td>
+<td><strong>20</strong></td>
+<td><strong>30</strong></td>
+<td><strong>25</strong></td>
+<td><strong>25</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Puntos Gratuitos (30, en bloques de 5): +5 HAB, +5 INT, +5 PER, +5 CON, +5 VOL, +5 FUE.</em></p>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tras ajuste</th>
+<th>+PG</th>
+<th>Final</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGI</td>
+<td>25</td>
+<td>0</td>
+<td><strong>25</strong></td>
+</tr>
+<tr>
+<td>CON</td>
+<td>30</td>
+<td>+5</td>
+<td><strong>35</strong></td>
+</tr>
+<tr>
+<td>FUE</td>
+<td>30</td>
+<td>+5</td>
+<td><strong>35</strong></td>
+</tr>
+<tr>
+<td>HAB</td>
+<td>35</td>
+<td>+5</td>
+<td><strong>40</strong></td>
+</tr>
+<tr>
+<td>CAR</td>
+<td>20</td>
+<td>0</td>
+<td><strong>20</strong></td>
+</tr>
+<tr>
+<td>INT</td>
+<td>30</td>
+<td>+5</td>
+<td><strong>35</strong></td>
+</tr>
+<tr>
+<td>PER</td>
+<td>25</td>
+<td>+5</td>
+<td><strong>30</strong></td>
+</tr>
+<tr>
+<td>VOL</td>
+<td>25</td>
+<td>+5</td>
+<td><strong>30</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>NT de origen: NT5 (ciudad industrial moderna). Sin bono extra ni penalizador. Techo NT personal: 7.</em></p>
+<hr />
+<p><strong>Paso 3 — Stats derivados:</strong></p>
+<ul>
+<li>PV por zona: (AGI+CON+FUE) ÷ 6 = (25+35+35) ÷ 6 = <strong>16 PV</strong> por zona</li>
+<li>Humanidad: 100 / SM: 100 / Alma: 8 / Deriva: 0</li>
+<li>Carga sin penalización: (FUE+CON) ÷ 4 = <strong>17 vol</strong></li>
+<li>Dinero inicial: INT × 100 = <strong>3.500 PC</strong> + ingresos de profesión (ver Paso 4)</li>
+</ul>
+<hr />
+<p><strong>Paso 4 — Profesiones:</strong> 2× Especialista Técnico + 1× Civil</p>
+<p><em>Bonos de rama acumulados:</em></p>
+<table>
+<thead>
+<tr>
+<th>Rama</th>
+<th>Técnico 1×</th>
+<th>Técnico 2×</th>
+<th>Civil 1×</th>
+<th>Total bonos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tecnológica</td>
+<td>+15%</td>
+<td>+15%</td>
+<td>—</td>
+<td><strong>+30%</strong></td>
+</tr>
+<tr>
+<td>Social</td>
+<td>+10%</td>
+<td>+10%</td>
+<td>+10%</td>
+<td><strong>+30%</strong></td>
+</tr>
+<tr>
+<td>Académicas</td>
+<td>+5%</td>
+<td>+5%</td>
+<td>+15%</td>
+<td><strong>+25%</strong></td>
+</tr>
+<tr>
+<td>Atlética</td>
+<td>—</td>
+<td>—</td>
+<td>+5%</td>
+<td><strong>+5%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Estatus: Especialista Técnico (2× mismo tipo).</em></p>
+<p><em>Ingresos y equipo:</em><br />
+- 2× Técnico: <strong>6.000 PC</strong> + kit (traje, escáner, herramientas, taller portátil) — <strong>gratuito</strong><br />
+- 1× Civil: <strong>10.000 PC</strong> + ropa de calidad + vehículo pequeño — <strong>gratuito</strong><br />
+- INT × 100: <strong>3.500 PC</strong> adicionales para gastos personales<br />
+- <strong>Total liquidez: 19.500 PC</strong></p>
+<p><em>El equipo no se paga con ese dinero. Ya está incluido en el perfil.</em></p>
+<hr />
+<p><strong>Paso 5 — Habilidades:</strong></p>
+<p><em>Orden: (1) base de rama → (2) bonos de profesión → (3) ventaja humana</em></p>
+<table>
+<thead>
+<tr>
+<th>Rama</th>
+<th>Atributos</th>
+<th>Base</th>
+<th>+Profesión</th>
+<th>+Ventaja humana</th>
+<th>Total rama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tecnológica</td>
+<td>(HAB+PER)÷2</td>
+<td>(40+30)÷2 = <strong>35%</strong></td>
+<td>+30%</td>
+<td>+10% en Reparaciones</td>
+<td><strong>65%</strong> rama / <strong>75%</strong> Reparaciones</td>
+</tr>
+<tr>
+<td>Social</td>
+<td>(CAR+PER)÷2</td>
+<td>(20+30)÷2 = <strong>25%</strong></td>
+<td>+30%</td>
+<td>—</td>
+<td><strong>55%</strong></td>
+</tr>
+<tr>
+<td>Académicas</td>
+<td>(INT+VOL)÷2</td>
+<td>(35+30)÷2 = <strong>32%</strong></td>
+<td>+25%</td>
+<td>—</td>
+<td><strong>57%</strong></td>
+</tr>
+<tr>
+<td>Atlética</td>
+<td>(AGI+FUE)÷2</td>
+<td>(25+35)÷2 = <strong>30%</strong></td>
+<td>+5%</td>
+<td>—</td>
+<td><strong>35%</strong></td>
+</tr>
+<tr>
+<td>Combate</td>
+<td>(AGI+HAB)÷2</td>
+<td>(25+40)÷2 = <strong>32%</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>32%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Techo: ninguna habilidad supera 90%. Kairo está muy lejos del techo — todo correcto.</em></p>
+<hr />
+<p><strong>Paso 6 — MéritoDefecto especial:</strong> Visionario (3 PE). Techo NT personal sube a 6. No puede colaborar en tareas tecnológicas con quien no tenga el mismo mérito. PE restantes: 6.</p>
+<hr />
+<p><strong>Paso 7 — Méritos y Defectos:</strong></p>
+<p><em>Méritos (gasto PE):</em><br />
+- Contactos (1 PE): red de artesanos y comerciantes técnicos.<br />
+- Característica mejorada (2 PE): +10 PER → PER <strong>40</strong>. Recalculo bases que usan PER:<br />
+  - Tecnológica: (40+40)÷2 = <strong>40%</strong> base → +30% profesión = <strong>70%</strong> / Reparaciones: <strong>80%</strong><br />
+  - Social: (20+40)÷2 = <strong>30%</strong> → +30% = <strong>60%</strong><br />
+- <strong>Total gastado:</strong> 3 PE. PE restantes: 3.</p>
+<p><em>Defectos (recupero PE):</em><br />
+- Deudas 1× (1 PE): 10.000 PC a un prestamista de MadCity.<br />
+- <strong>PE recuperados:</strong> 1. PE finales: <strong>4</strong>.</p>
+<hr />
+<p><strong>Paso 8 — Equipo y dinero:</strong></p>
+<p>El equipo de profesión ya está. Con los 19.500 PC de liquidez:</p>
+<table>
+<thead>
+<tr>
+<th>Compra</th>
+<th>Coste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Armadura ligera completa (Bld 1, casco+chaleco)</td>
+<td>900 PC</td>
+</tr>
+<tr>
+<td>Arma CC media (llave inglesa modificada, daño 6)</td>
+<td>200 PC</td>
+</tr>
+<tr>
+<td>Pistola pequeña (daño 3)</td>
+<td>200 PC</td>
+</tr>
+<tr>
+<td>Munición (2 cargadores)</td>
+<td>40 PC</td>
+</tr>
+<tr>
+<td>Medikit básico</td>
+<td>100 PC</td>
+</tr>
+<tr>
+<td>Linterna + cuerda (10m)</td>
+<td>150 PC</td>
+</tr>
+<tr>
+<td><strong>Total gastado</strong></td>
+<td><strong>1.590 PC</strong></td>
+</tr>
+<tr>
+<td><strong>Restante</strong></td>
+<td><strong>17.910 PC</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Kairo arranca con dinero. Es un especialista con experiencia, no un novato con lo puesto.</em></p>
+<hr />
+<p><strong>Ficha final de Kairo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Valor</th>
+<th></th>
+<th>Stat</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGI</td>
+<td>25</td>
+<td></td>
+<td>PV/zona</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CON</td>
+<td>35</td>
+<td></td>
+<td>Humanidad</td>
+<td>100</td>
+</tr>
+<tr>
+<td>FUE</td>
+<td>35</td>
+<td></td>
+<td>SM</td>
+<td>100</td>
+</tr>
+<tr>
+<td>HAB</td>
+<td>40</td>
+<td></td>
+<td>Alma</td>
+<td>8</td>
+</tr>
+<tr>
+<td>CAR</td>
+<td>20</td>
+<td></td>
+<td>PE</td>
+<td>4</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>35</td>
+<td></td>
+<td>Deriva</td>
+<td>0</td>
+</tr>
+<tr>
+<td>PER</td>
+<td>40</td>
+<td></td>
+<td>NT origen</td>
+<td>5 (techo 6)</td>
+</tr>
+<tr>
+<td>VOL</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Habilidades principales:</strong> Reparaciones 80% · Tecnológicas 70% · Sociales 60% · Académicas 57% · Atléticas 35% · Combate 32%</p>
+<p><strong>MéritoDefecto:</strong> Visionario · <strong>Méritos:</strong> Contactos, PER+10 · <strong>Defectos:</strong> Deudas (10.000 PC)</p>
+<p><strong>Dinero:</strong> 17.910 PC · <strong>Equipo:</strong> kit técnico completo + taller portátil + vehículo pequeño + armadura ligera + herramientas + armas básicas</p>
+<hr />
+<p><em>Este es Kairo. Sabe arreglar lo que está roto, tiene contactos, debe dinero y ve el potencial tecnológico donde los demás ven chatarra. Es un personaje completo después de 8 pasos.</em></p></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol4.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap5"><div class="document-container"><h1>CAPÍTULO 3 — MECÁNICAS DEL SISTEMA</h1>
 <blockquote>
 <p><em>"En algún momento los años de amistad y trabajo en equipo dieron su fruto."</em><br />
@@ -2243,6 +2646,7 @@ esta tabla — es una categoría propia, de doble filo.</p>
 Éxitos = (Habilidad − Tirada) ÷ 10, redondeado arriba<br />
 Ejemplo: habilidad 50, tirada 30 → (50−30)÷10 = 2 éxitos<br />
 Ejemplo: habilidad 50, tirada 44 → (50−44)÷10 = 0,6 → 1 éxito</p>
+<p><strong>Tirada igual a la habilidad:</strong> si sacas exactamente tu habilidad, la fórmula da 0 — pero cualquier tirada ≤ habilidad da como mínimo <strong>1 éxito</strong>. El 0 no existe en el lado del éxito: o fallas o consigues algo.</p>
 </blockquote>
 <h3>Categorías de resultado</h3>
 <table>
@@ -2312,6 +2716,8 @@ Ejemplo: habilidad 50, tirada 44 → (50−44)÷10 = 0,6 → 1 éxito</p>
 </tbody>
 </table>
 <blockquote>
+<p><strong>¿Por qué las pifias suben la habilidad?</strong><br />
+Las pifias son errores dolorosos pero instructivos. Cuando algo sale terriblemente mal, el personaje entiende de forma visceral por qué — y esa lección se graba en la memoria muscular de una forma que el éxito nunca logra. El precio es alto, la humillación es real, pero la lección es imborrable. En treinta años de juego, nadie ha olvidado la pifia que le voló la mano propia.</p>
 <p><strong>EL ÉXITO EXTRAORDINARIO</strong><br />
 Cuando la tirada es igual o menor que la mitad de la habilidad, algo ha salido especialmente bien. No cambia el cálculo de éxitos, pero es una señal para el DJ: añade un efecto narrativo adicional.</p>
 <p><strong>LOS CRÍTICOS SIEMPRE SON ESPECIALES</strong><br />
@@ -2371,6 +2777,7 @@ Un crítico no es solo un éxito con más puntos. Es un efecto fuera de lo norma
 <p>La iniciativa determina el orden de actuación en situaciones de tensión. No es solo quién actúa primero — es quién puede actuar <strong>dos veces</strong>.</p>
 <p>Cada personaje lanza <strong>2d10 (leídos como d100)</strong> y suma su <strong>habilidad de Iniciativa</strong>.</p>
 <blockquote>
+<p><strong>Cómo leer los 2d10:</strong> usa dos dados de distinto color. Uno es las decenas, el otro las unidades — igual que cualquier tirada de habilidad. El rango real es 11 (1+1) a 100 (10+10, leído como 00). No hay forma de sacar 01-10 en Iniciativa sin bonificadores negativos. El resultado puede superar 100 fácilmente con una buena Iniciativa.</p>
 <p><strong>FÓRMULA</strong><br />
 Resultado = 2d10 + habilidad Iniciativa</p>
 </blockquote>
@@ -2385,6 +2792,7 @@ A=120 / B=105 / C=95.<br />
 Fase 1: A actúa (120), B actúa (105). Residuales: A→20, B→5.<br />
 Fase 2: C actúa (95), A actúa (20), B actúa (5).<br />
 A ha actuado dos veces en el mismo turno.</p>
+<p><em>Si nadie supera 100, no hay Fase 1: todos actúan una sola vez en Fase 2, de mayor a menor. Los residuales negativos no existen — solo quien supera 100 tiene residual, y siempre es positivo.</em></p>
 </blockquote>
 <hr />
 <h3>Cuándo se tira y cuándo no</h3>
@@ -2786,20 +3194,26 @@ A: 3 éxitos / B: 1 éxito / C: −1. Total: 3 éxitos. Sin C habrían sido 4.</
    - Pifia → no enseña, pero sube él según reglas normales.</p>
 </li>
 <li>
-<p><strong>El alumno tira por encima de su habilidad</strong> (necesita "fallar" — ahí está el margen).<br />
+<p><strong>El alumno tira por encima de su habilidad</strong> (necesita "fallar" — ahí está el margen).</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Contra qué tira el alumno:</strong> tira d100 contra su habilidad actual. Necesita <strong>superar</strong> ese valor (fallar). Si su habilidad es 30, necesita sacar 31 o más. Si saca 75 (falla), hay margen de aprendizaje — el maestro puede trabajar ahí. Si saca 25 (éxito), ya lo sabe: no hay nada que enseñar en ese nivel.<br />
    - Ambas condiciones cumplidas → <strong>+5% a la habilidad</strong>.<br />
    - Alumno crítico → no aprende el +5, sube según reglas normales.<br />
    - Alumno pifia → aprende los +5 más lo que sube por la pifia.</p>
-</li>
-</ol>
+</blockquote>
 <hr />
 <h4>Entrenamiento individual</h4>
 <p>1 hora diaria todos los días a una actividad concreta.</p>
 <ul>
 <li><strong>Resultado:</strong> +5 como <strong>bonificador</strong> al atributo o habilidad elegida.</li>
-<li><strong>Para aplicarlo:</strong> 3 meses.</li>
+<li><strong>Para aplicarlo:</strong> 3 meses de práctica continuada.</li>
 <li><strong>Para perderlo:</strong> 1 mes sin práctica.</li>
 </ul>
+<blockquote>
+<p><strong>¿Es permanente?</strong> No. Es un bonificador activo mientras mantengas la práctica — como el músculo que se pierde si no entrenas. Se registra en la ficha en la columna Mod (no en Bas ni Apr). Si lo mantienes durante años, el DJ puede decidir convertirlo en mejora permanente narrativamente, pero la regla base es: entrenas → tienes el +5; dejas de entrenar un mes → lo pierdes.</p>
+</blockquote>
 <p>Es bonificador, no mejora permanente. Registrar en la ficha junto a objetos, implantes y otros modificadores.</p>
 <hr />
 <h4>Entrenamiento colectivo</h4>
@@ -2898,6 +3312,9 @@ A: 3 éxitos / B: 1 éxito / C: −1. Total: 3 éxitos. Sin C habrían sido 4.</
 </table>
 <p><strong>Umbrales:</strong></p>
 <p>Cada vez que la SM baja un <strong>10% o más</strong> respecto al valor anterior, el personaje adquiere un <strong>defecto mental menor</strong> (tabla: ataque de pánico, catatónico temporal, fobia, filia...). Se cura con 10 éxitos acumulados en terapia o un mes de ingreso.</p>
+<blockquote>
+<p><strong>"Valor anterior"</strong> = el valor de SM al inicio de la sesión actual, o desde la última vez que se ganó un defecto mental (lo que sea más reciente). Si empezó la sesión con SM 80 y baja a 70, gana un defecto. Si luego baja a 65 en la misma sesión, no gana otro — solo ha bajado 5 puntos desde el último umbral. Si en la siguiente sesión empieza en 65 y baja a 55, gana otro.</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -3120,6 +3537,9 @@ La Deriva no es un castigo. Es la historia del personaje escrita en su cuerpo. C
 <p>El atacante tira contra su propia habilidad de arma. No hay tirada de defensa pasiva — el defensor solo opone su armadura salvo que declare defensa activa. Si el ataque tiene éxito, impacta.</p>
 <p>El <strong>dado de unidades</strong> del mismo lanzamiento determina la localización del impacto. La localización es independiente de si el ataque ha sido crítico: un 10, 20, 30… impacta en la cabeza, pero solo es crítico si la tirada es 00, 01 o 02 (ver tabla de resultados). El <strong>00</strong> es el único caso en que coinciden ambas cosas: crítico <em>y</em> localización en cabeza.</p>
 <p><strong>Daño = daño base del arma × éxitos netos</strong> (después de restar la armadura).</p>
+<blockquote>
+<p><strong>Ejemplo completo:</strong> arma con daño base 5. Atacante saca 3 éxitos. Defensor lleva armadura tipo 1 (resta 1 éxito). Éxitos netos = 3 − 1 = 2. Daño final = 5 × 2 = <strong>10 puntos</strong>. Es multiplicación, no suma.</p>
+</blockquote>
 <h3>Localización del impacto</h3>
 <table>
 <thead>
@@ -3652,9 +4072,10 @@ CC 80 → dos ataques: 50 y 30. Tira cada uno por separado con su valor.</p>
 <li>Objetivos a menos de 3m entre sí: sin penalización adicional.</li>
 <li>Dividir en ráfaga: +10 a habilidad por disparo individual.</li>
 <li>Dividir en cargador: +20 a habilidad por disparo individual.</li>
-<li>Por cada 3m adicionales de separación entre objetivos: −1 éxito en ese disparo.</li>
 </ul>
 <blockquote>
+<p><strong>¿Por qué sube la habilidad en lugar de bajar?</strong> Más balas en el aire compensan la falta de puntería: la probabilidad de que alguna acierte aumenta aunque ningún disparo individual sea preciso. El precio no es de habilidad — es de munición. Vaciar una ráfaga o un cargador sobre un objetivo dispersa el impacto pero lo garantiza. Es la diferencia entre apuntar y saturar.<br />
+- Por cada 3m adicionales de separación entre objetivos: −1 éxito en ese disparo.</p>
 <p><strong>EJEMPLO</strong><br />
 Disparo 60, ráfaga, 2 objetivos a 7m entre sí. Habilidad efectiva 70 para cada uno. Separación extra: 4m → −2 éxitos en el segundo disparo.</p>
 </blockquote>
@@ -3688,8 +4109,26 @@ Disparo 60, ráfaga, 2 objetivos a 7m entre sí. Habilidad efectiva 70 para cada
 </table>
 <blockquote>
 <p><strong>EL 99 NO SIEMPRE ROMPE EL ARMA</strong><br />
-Puede ser encasquillamiento irreparable en combate, daño estructural, o simplemente pérdida situacional. El DJ decide según el contexto.</p>
+El DJ decide según estos criterios:<br />
+- <strong>Arma de fuego:</strong> encasquillamiento irreparable en combate. Si el personaje tiene Armería ≥ 50, puede intentar repararla (1 acción completa, tirada). Con Armería &lt; 50, inutilizada hasta taller.<br />
+- <strong>Arma CC de calidad estándar:</strong> rotura estructural. Inutilizada permanentemente salvo reparación en taller (requiere componentes básicos + tirada Armería).<br />
+- <strong>Arma CC de material raro o rúnica:</strong> no se rompe. En su lugar, el personaje pierde el control completamente — el DJ narra la consecuencia (golpe propio, caída, arma lanzada).<br />
+El 99 <em>siempre</em> tiene consecuencias. La diferencia es si el arma sobrevive o no.</p>
 </blockquote>
+<hr />
+<h2>Ejemplo completo de combate</h2>
+<p><em>Dos Errantes contra un Abrazado. Un asalto completo, todos los pasos.</em></p>
+<p><strong>Personajes:</strong><br />
+- <strong>Kova</strong> — Distancia 55%, pistola (daño 4), sin armadura, Iniciativa 35, PV 16/zona<br />
+- <strong>Reyes</strong> — CC 60%, cuchillo (daño 3), armadura tipo 1, Iniciativa 30, PV 16/zona<br />
+- <strong>Abrazado</strong> — CC 65%, mordisco (daño 4), armadura tipo 1 (Bld 2), Iniciativa 40, PV 16/zona</p>
+<p><strong>Iniciativa:</strong> Kova 2d10=47 +35 = <strong>82</strong>. Reyes 2d10=63 +30 = <strong>93</strong>. Abrazado 2d10=85 +40 = <strong>125</strong>.<br />
+Fase 1: Abrazado (125). Residual: 25. Fase 2: Reyes (93) → Kova (82) → Abrazado residual (25).</p>
+<p><strong>F1 — Abrazado → Kova:</strong> tira CC 65%, saca 42 → 3 éxitos. Unidades: 2 → pierna derecha. Sin armadura → 3 netos. Daño: 4×3 = <strong>12 PV</strong>. Kova queda con 4 PV en pierna → Herida. Sangrado activo.</p>
+<p><strong>F2 — Reyes → Abrazado (CC):</strong> tira 60%, saca 58 → 1 éxito. Unidades: 8 → pecho. Armadura tipo 1 absorbe 1 éxito → 0 netos. <strong>Sin daño.</strong></p>
+<p><strong>F2 — Kova → Abrazado (disparo, Herida −20%):</strong> Distancia efectiva 35%, saca 28 → 1 éxito. Unidades: 6 → cara. Armadura tipo 1 absorbe 1 → 0 netos. <strong>Sin daño.</strong></p>
+<p><strong>F2 residual — Abrazado → Reyes:</strong> tira 65%, saca 71 → fallo. Sin daño.</p>
+<p><strong>Fin del asalto:</strong> el Abrazado no ha sufrido daño. Su armadura tipo 1 bloqueó dos ataques que solo consiguieron 1 éxito cada uno. Con 2 éxitos netos, cualquiera de esos ataques habría hecho 6-8 puntos de daño. La diferencia entre 1 y 2 éxitos es todo el sistema.</p>
 <hr />
 <h2>GLOSARIO RÁPIDO</h2>
 <table>
@@ -3920,10 +4359,10 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 <td>Energía N1</td>
 <td>−10 al atacante</td>
 <td>20.000 PC</td>
-<td>N</td>
+<td>N×2</td>
 <td>—</td>
 <td>N×20.000 PC</td>
-<td>N×2</td>
+<td>—</td>
 <td>—</td>
 </tr>
 <tr>
@@ -3939,33 +4378,44 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 </tbody>
 </table>
 <p><strong>Modificador:</strong> penalizador a atléticas y combate. El primer valor es por llevar 1-2 piezas; el segundo por 3+ piezas o armadura completa.</p>
-<p><em>Batería de escudo energético:</em> 1 batería \= 5 asaltos.</p>
+<blockquote>
+<p><strong>Cómo se calcula el precio completo:</strong> cada armadura tiene 10 zonas contables (cabeza ×1, torso ×5, 4 extremidades ×1 cada una = 10). Precio sin descuento = precio/zona × 10. Al comprar el conjunto completo se aplica un <strong>descuento comercial del 10%</strong> — es la estrategia habitual de los proveedores: te regalan una pieza si te llevas todo. Ejemplo: ligera 100 PC/zona × 10 = 1.000 PC − 10% = <strong>900 PC</strong>.</p>
+</blockquote>
+<p><em>Batería de escudo energético:</em> 1 batería = 5 asaltos. Precio batería: 500 PC. Volumen: 1. Cambio de batería: 1 acción completa. Al agotarse el escudo se apaga inmediatamente — sin degradación gradual.</p>
 <p><em>Nivel tecnológico:</em> para NT bajo (medieval, antiguo) el límite de armadura es el NT del mundo.</p>
 <hr />
 <h2>Tipos de armadura</h2>
 <p><strong>Gabardina blindada:</strong> cubre todo el cuerpo salvo la cabeza. Discreta.</p>
 <p><strong>Armadura a piezas:</strong> el precio del torso equivale a 5 piezas. Llevar 3+ piezas de tipo medio o superior aplica el mismo penalizador que la armadura completa.</p>
 <p><strong>Servoasistida:</strong> reduce penalizadores. En ligeras da bonificaciones a atléticas y combate.</p>
+<p><strong>Ablativa:</strong> capa de material sacrificial que absorbe impactos destruyéndose. El "máx 30" es el total de <strong>puntos de daño</strong> que puede absorber antes de destruirse — no éxitos, sino daño final tras el cálculo. Cada impacto que recibe resta ese daño al contador. A 0: la capa se destruye y debe reemplazarse (no se puede reparar en campo). Mientras tiene carga, funciona como armadura normal de su tipo. Registrar el contador en la ficha.</p>
 <p><strong>Estanca:</strong> espacio, entornos inundados. Autonomía 8 horas.</p>
 <p><strong>Camuflaje N1/N2:</strong> +5 o +10 a Sigilo. Solo en ligeras y gabardina.</p>
 <hr />
-<h2>Penalizacion por rigidez (Blindaje 2-3 con servo)</h2>
-<p>Llevar armadura de blindaje 2 o superior con servo impone <strong>-10 a Tecnologica (aplicada)</strong> y <strong>Atletica</strong>, con dos excepciones:</p>
-<ul>
-<li><strong>Proezas de fuerza:</strong> sin penalizacion (el servo ayuda, no estorba).</li>
-<li><strong>Habilidades de interconexion:</strong> Conducir, Pilotar y cualquier habilidad via puente neuronal no penalizan — la armadura se integra con el vehiculo.</li>
-</ul>
-<p>Es como conducir con un abrigo grueso o hacer trabajo fino con guantes de nieve.</p>
+<h2>Penalización por rigidez</h2>
+<p>Toda armadura de blindaje 2+ incomoda el movimiento por su volumen, peso y rigidez estructural. El servo contrarresta parte de ese problema al amplificar la fuerza y sincronizar el movimiento — pero a medida que la armadura se hace más pesada, los negativos superan lo que el servo puede compensar.</p>
+<p><strong>Sin servoasistencia:</strong> se aplica el penalizador completo de la columna Modificador (el segundo valor para 3+ piezas). Es el peor caso — la armadura limita tanto que algunos movimientos son directamente imposibles.</p>
+<p><strong>Con servoasistencia:</strong> el penalizador se reduce según el grado del servo. Las ligeras con servo dan bonificación neta. Las medias quedan en 0. Las pesadas y acorazadas siguen penalizando, pero mucho menos que sin servo.</p>
+<blockquote>
+<p>La columna "Servo" de la tabla muestra el <strong>modificador resultante con servo activo</strong>. Sin servo, usa siempre el valor de la columna "Modificador" sin reducción.</p>
+</blockquote>
+<p><strong>Excepciones (con o sin servo):</strong><br />
+- <strong>Proezas de fuerza (FUE):</strong> sin penalización. La armadura no impide el esfuerzo bruto.<br />
+- <strong>Habilidades de interconexión</strong> (Conducir, Pilotar con puente neuronal): sin penalización — la armadura se integra con el vehículo.</p>
+<p><strong>Qué penaliza:</strong> Atlética completa y Tecnológica aplicada (habilidades que requieren movimiento físico preciso: cirugía, demoliciones, manos ágiles). No penaliza habilidades puramente mentales ni sociales.</p>
 <hr />
 <h2>Armaduras Arcanitas (NT7-8)</h2>
 <p>Las Pseudo-Arkanitas fabrican armaduras con <strong>nanotecnologia desplegable</strong>. Se almacenan comprimidas en un <strong>torque</strong> (collar rigido tipo celta) y se despliegan sobre el cuerpo al activarse.</p>
+<blockquote>
+<p><strong>Tron:</strong> material de origen desconocido con propiedades únicas — absorbe y devuelve energía, con blindaje natural superior al metal convencional. La columna "Tron" indica el <strong>bonificador adicional al blindaje del torso</strong> que aporta el torque. No se acumula con armadura natural estándar.</p>
+</blockquote>
 <table>
 <thead>
 <tr>
 <th>Rango</th>
 <th>Blindaje</th>
 <th>Servo</th>
-<th>Tron</th>
+<th>Tron (bono torso)</th>
 <th>Portador</th>
 </tr>
 </thead>
@@ -4034,10 +4484,48 @@ Con puente neuronal (NT6+): acceso a la ranura de chip, funcionalidad completa e
 <td>Completa tipo 3</td>
 <td>Servoasistida + Estanca</td>
 </tr>
+<tr>
+<td>---</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
-</table></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
+</table>
+<h2>Ejemplo completo — Cálculo de daño con armadura</h2>
+<p><em>Paso a paso: tirada de ataque, penetración, blindaje, daño final, localización.</em></p>
+<p><strong>Situación:</strong> Kova dispara a un mercenario con armadura media (blindaje 3) en el torso.</p>
+<ul>
+<li><strong>Arma:</strong> pistola modificada, daño base 5, penetración 1</li>
+<li><strong>Habilidad de Distancia de Kova:</strong> 55%</li>
+<li><strong>Armadura del mercenario:</strong> media tipo 3 en torso</li>
+</ul>
+<hr />
+<p><strong>Paso 1 — Tirada de ataque:</strong><br />
+Kova tira Distancia 55%. Saca <strong>38</strong> → éxito.<br />
+Éxitos = (55−38) ÷ 10 = 1,7 → <strong>2 éxitos</strong>.</p>
+<p><strong>Paso 2 — Localización:</strong><br />
+Dígito de unidades de la tirada: <strong>8</strong> → <strong>pecho (torso)</strong>.</p>
+<p><strong>Paso 3 — Penetración:</strong><br />
+El arma tiene penetración 1. El blindaje del torso es 3.<br />
+Blindaje efectivo = 3 − 1 = <strong>2</strong> (resta 2 éxitos).</p>
+<p><strong>Paso 4 — Éxitos netos:</strong><br />
+2 éxitos del ataque − 2 de absorción = <strong>0 éxitos netos</strong>.<br />
+Sin daño. La armadura media aguanta el impacto.</p>
+<hr />
+<p><em>Variante: Kova saca 3 éxitos en vez de 2.</em></p>
+<p><strong>Paso 4 revisado:</strong><br />
+3 éxitos − 2 absorción = <strong>1 éxito neto</strong>.</p>
+<p><strong>Paso 5 — Daño:</strong><br />
+Daño = daño base × éxitos netos = 5 × 1 = <strong>5 puntos de daño</strong> en torso.</p>
+<hr />
+<p><em>Variante con arma de mayor penetración: vibrofilo (daño 4, penetración 3).</em></p>
+<p>Blindaje efectivo = 3 − 3 = <strong>0</strong> (la penetración cancela toda la armadura).<br />
+Con 2 éxitos: daño = 4 × 2 = <strong>8 puntos</strong>. La armadura no ayuda en absoluto.</p>
+<hr />
+<blockquote>
+<p><strong>Lo que muestra este ejemplo:</strong> la diferencia entre penetración 1 y penetración 3 contra armadura 3 es la diferencia entre "sin daño" y "8 puntos". La elección de arma importa más que la habilidad cuando el enemigo va bien armado.</p>
+</blockquote></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol5.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap7"><div class="document-container"><h1>CAP04 — TECNOLOGÍA Y DISTORSIÓN</h1>
 <blockquote>
 <p><em>"No es que hayas atrapado la distorsión. Es que le has convencido de que se quede quieta un momento."</em></p>
@@ -4158,9 +4646,7 @@ Con puente neuronal (NT6+): acceso a la ranura de chip, funcionalidad completa e
 <p><em>Ver CAP04b y CAP04d para Sublimar la Distorsion y Tron.</em></p>
 <h2>13. Tabla Completa de Implantes</h2>
 <p><em>Ver CAP04e (La Carne y el Metal) para catalogo completo de implantes Ibis-Forge.</em></p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol6.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol6.png" alt="Cómic"></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap8"><div class="document-container"><div class="extra-img"><img src="img/Sistema runico-lengua errantes.png" alt=""></div>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap8"><div class="document-container"><div class="extra-img"><img src="img/Sistema_runico_lengua_errantes.png" alt=""></div>
 <h1>CAP04b — DISTORSIÓN: ESCUELAS Y PODERES</h1>
 <blockquote>
 <p><em>"Toda la magia en todas sus formas deriva de la distorsión. La diferencia está en cómo cada civilización aprendió a hablar con ella."</em></p>
@@ -4212,6 +4698,14 @@ Con puente neuronal (NT6+): acceso a la ranura de chip, funcionalidad completa e
 <hr />
 <h2>2. Las Escuelas</h2>
 <p>Las habilidades de distorsión <strong>arrancan todas en 0</strong>. Con habilidad a 0 se puede intentar tirar con −20. Los no Iniciados no pueden tirar.</p>
+<blockquote>
+<p><strong>Quién es quién:</strong><br />
+<strong>Iniciado</strong> = cualquiera que percibe y manipula la distorsión conscientemente. Es la condición de entrada — sin ella no hay tiradas.<br />
+<strong>Hechicero</strong> = Iniciado que sigue el camino de la Hechicería (los elementos).<br />
+<strong>Maestro de la Distorsión</strong> = Iniciado que sigue el camino de la manipulación directa; <strong>Maestro de Portales</strong> es su especialización más conocida.<br />
+<strong>Herrero/Tatuador Rúnico</strong> = Iniciado que sigue el camino de las Marcas Arcanas.<br />
+Los tres caminos son compatibles: un Iniciado puede desarrollar habilidades de varios — el límite es tiempo y maestros, no las reglas.</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -4617,6 +5111,9 @@ Un Hechicero que usa ambas habilidades en el mismo asalto multiplica el efecto: 
 <p><em>Atributo base: Habilidad</em></p>
 <p>Crea un ataque de un solo uso o carga un arma con energía elemental durante 5 asaltos (no cancelable).<br />
 <strong>Coste:</strong> coste base × nivel del efecto (tabla unificada, sección 1). Si se paga en PV, son PV letales.</p>
+<blockquote>
+<p><strong>Los PV de las tablas (1/2/3) son el coste a habilidad 0–24%.</strong> Con habilidad superior se aplica la tabla unificada: a 25–49% el nivel 3 cuesta 3 PV; a 50–74%, 2 PV; a 75%+, 1 PV. Los valores de las tablas son el suelo, no el precio fijo.</p>
+</blockquote>
 <p><strong>Ataque a distancia:</strong></p>
 <table>
 <thead>
@@ -4750,6 +5247,9 @@ Un Hechicero que usa ambas habilidades en el mismo asalto multiplica el efecto: 
 <p>Crea un foco de distorsión físico: un cristal o nodo llamado <strong>Tron</strong>, capaz de almacenar y canalizar distorsión. Requiere 25 PD (250 cargas) para iniciar la sublimación. El Tron resultante comienza vacío y puede acoplarse a runas, perlas o armas.</p>
 <p><strong>Escala de Tron:</strong></p>
 <p>Ver <strong>seccion El Taller a Medida §2</strong> para la tabla completa (Tron-5 a Tron-100), ratios de conversión 10:1, blindaje, precio y disponibilidad. El canon comprende desde Tron-5 (+1 Blindaje) hasta Tron-100 legendario (material de los Glassdog, no fabricable).</p>
+<blockquote>
+<p><strong>Disponibilidad real por nivel de campaña:</strong> Tron-5 se encuentra en mercados especializados de mundos despertados (campaña inicial). Tron-15 requiere contactos corporativos o un Maestro que lo sublime por encargo (campaña media). Tron-25+ no se compra: se hereda, se roba o se gana — cada pieza es un evento de trama (campaña avanzada). Tron-100 es material de leyenda.</p>
+</blockquote>
 <p><em>Esta es la mecánica que crea las Perlas de Distorsión estándar, refuerzos de blindaje de campaña, y focos permanentes en localizaciones estratégicas.</em></p>
 <hr />
 <h3>Camino de los Portales</h3>
@@ -4862,6 +5362,12 @@ Un Hechicero que usa ambas habilidades en el mismo asalto multiplica el efecto: 
 <hr />
 <h2>5. Marcas Arcanas — Runas y Tatuajes</h2>
 <p>Distorsión inscrita en materia o tejido vivo. Permanentes. Las runas en objetos pueden activarse con PV o con perlas acopladas (D-18); los tatuajes se activan siempre en PV — el cuerpo paga lo que lleva inscrito.</p>
+<blockquote>
+<p><strong>Dos pagos distintos — no los confundas:</strong><br />
+<strong>Inscripción</strong> = crear la runa. Se paga UNA vez: en PC si encargas el trabajo a un Herrero/Tatuador (ver precios), o en el coste de creación si la inscribes tú.<br />
+<strong>Activación</strong> = usar la runa. Se paga CADA vez: en PV o perlas (runas en objetos) o solo PV (tatuajes).<br />
+Comprar una espada rúnica no incluye la energía para encenderla.</p>
+</blockquote>
 <ul>
 <li><strong>Herrero Rúnico</strong> (base: Habilidad/Voluntad): metal, ceramita, Tron</li>
 <li><strong>Tatuador Rúnico</strong> (base: Habilidad/Carisma): tejido vivo</li>
@@ -5311,64 +5817,150 @@ Un Hechicero que usa ambas habilidades en el mismo asalto multiplica el efecto: 
 <h3>Fichas del Grimorio</h3>
 <p><strong>AXARÓN</strong> — <em>el que busca sin encontrar</em><br />
 Origen: Maestro de Portales de nivel 7 que intentó abrir un portal a una tesela colapsada y no pudo cerrar el canal. Lleva Ciclos buscando algo que ya no existe.<br />
-Stats: F45/A45/P50 | PV22 | Bld4 | Ataque 55% (Pen2) | Daño 3+4F<br />
+Stats: F45/A45/P50 | PV22 | Bld4 | Ataque 55% (Pen2) | Daño 8<br />
 Especial: +20 a localizar objetos o personas perdidas. Puede rastrear a través de la urdimbre.<br />
 Precio en Almas: 1 punto para establecer vínculo inicial.</p>
 <p><strong>GLURATH</strong> — <em>el de los cruces</em><br />
 Origen: Comerciante de EP-9 que cruzó tantas teselas en tan poco tiempo que su cuerpo no pudo seguir el ritmo de su mente.<br />
-Stats: F40/A50/P45 | PV20 | Bld4 | Ataque 50% (Pen2) | Daño 3+4F<br />
+Stats: F40/A50/P45 | PV20 | Bld4 | Ataque 50% (Pen2) | Daño 7<br />
 Especial: Conoce rutas entre teselas. El Invocador puede pedirle información sobre portales cercanos (tirada de Percepción del Demonio).<br />
 Precio en Almas: 1 punto para establecer vínculo inicial.</p>
 <p><strong>TAFNOIS</strong> — <em>el que no recuerda su nombre</em><br />
 Origen: Desconocido incluso para él. No conserva memoria de lo que fue. Solo conserva instintos.<br />
-Stats: F50/A40/P35 | PV25 | Bld5 | Ataque 60% (Pen3) | Daño 3+5F<br />
+Stats: F50/A40/P35 | PV25 | Bld5 | Ataque 60% (Pen3) | Daño 10<br />
 Especial: Inmune a efectos mentales. No puede ser intimidado ni persuadido.<br />
 Precio en Almas: 1 punto. No requiere pago adicional para órdenes simples — no recuerda suficiente como para negociar.</p>
 <p><strong>CIOSSAR</strong> — <em>el vacío que corta</em><br />
 Origen: Herrero Rúnico que intentó inscribir una Runa Mítica sin los materiales adecuados. El proceso lo vació por dentro antes de transformarlo.<br />
-Stats: F35/A55/P40 | PV18 | Bld3 | Ataque 65% (Pen4) | Daño 3+3F<br />
+Stats: F35/A55/P40 | PV18 | Bld3 | Ataque 65% (Pen4) | Daño 6<br />
 Especial: Sus ataques ignoran 2 puntos de Blindaje adicionales. Puede inutilizar runas activas con contacto (tirada enfrentada Herrero Rúnico vs nivel de la runa ×10).<br />
 Precio en Almas: 2 puntos — más exigente que la media.</p>
 <p><strong>BATRUL</strong> — <em>el guardián del umbral</em><br />
 Origen: Agente de Primus que murió defendiendo un portal que no debía cerrarse. Lleva tiempo en el umbral entre teselas.<br />
-Stats: F50/A35/P45 | PV28 | Bld6 | Ataque 55% (Pen2) | Daño 3+5F<br />
+Stats: F50/A35/P45 | PV28 | Bld6 | Ataque 55% (Pen2) | Daño 10<br />
 Especial: +3 Blindaje cuando defiende una posición fija (no se mueve del sitio). Puede bloquear el paso a través de un portal pequeño con su presencia.<br />
 Precio en Almas: 1 punto. Responde bien a Invocadores con código ético — el Narrador puede dar +10 a tiradas de control si el Invocador actúa con honor.</p>
 <p><strong>FLASSKEIN</strong> — <em>el que ardió</em><br />
 Origen: Hechicero de la escuela de Proyección que perdió el control de su propio fuego. Arde todavía.<br />
-Stats: F45/A45/P40 | PV20 | Bld4 | Ataque 55% (Fuego, Pen1) | Daño 5+4F<br />
+Stats: F45/A45/P40 | PV20 | Bld4 | Ataque 55% (Fuego, Pen1) | Daño 10<br />
 Especial: Sus ataques hacen daño de fuego. Inmune al fuego. En zonas cerradas, su presencia eleva la temperatura — penalizador de −10 a todas las tiradas de los presentes tras 3 turnos.<br />
 Precio en Almas: 1 punto. Pide ser invocado cerca de fuentes de calor.</p>
 <p><strong>EIDOWA</strong> — <em>el que quedó atrapado en un momento</em><br />
 Origen: Exploradora que cruzó una anomalía temporal y quedó atrapada en un bucle de distorsión. Experimentó el mismo momento miles de veces antes de transformarse.<br />
-Stats: F35/A60/P55 | PV18 | Bld3 | Ataque 60% (Pen2) | Daño 3+3F<br />
+Stats: F35/A60/P55 | PV18 | Bld3 | Ataque 60% (Pen2) | Daño 6<br />
 Especial: Una vez por escena puede "repetir" su último movimiento — vuelve a la posición que tenía al inicio de su turno anterior sin coste adicional.<br />
 Precio en Almas: 2 puntos — su naturaleza temporal hace difícil el vínculo.</p>
 <p><strong>TEUDMAR</strong> — <em>el consumidor</em><br />
 Origen: Individuo sin historia conocida en el Grimorio. Solo se sabe que llegó al estado de Demonio por acumulación pura, no por un evento concreto.<br />
-Stats: F55/A35/P35 | PV30 | Bld5 | Ataque 60% (Pen2) | Daño 5+5F<br />
+Stats: F55/A35/P35 | PV30 | Bld5 | Ataque 60% (Pen2) | Daño 13<br />
 Especial: Cada vez que elimina a un objetivo, recupera 5 PV. Puede "consumir" objetos físicos para ganar PV temporales (1 PV por cada punto de PDE o volumen del objeto).<br />
 Precio en Almas: 1 punto. Exige ser "alimentado" con algo material tras cada invocación o el vínculo se debilita (−10 a la siguiente tirada de control).</p>
 <p><strong>USSKELNAR</strong> — <em>el que cruzó demasiadas veces</em><br />
 Origen: Errante independiente que cruzó más de 200 portales en menos de un año. Su cuerpo cedió antes que su voluntad.<br />
-Stats: F40/A50/P45 | PV22 | Bld4 | Ataque 55% (Pen2) | Daño 3+4F<br />
+Stats: F40/A50/P45 | PV22 | Bld4 | Ataque 55% (Pen2) | Daño 7<br />
 Especial: No acumula Deriva adicional cuando cruza portales abiertos por el Invocador — ya no puede empeorar en ese sentido. Puede acompañar al Invocador en un cruce sin coste adicional de Deriva para ninguno de los dos.<br />
 Precio en Almas: 1 punto.</p>
 <p><strong>SISSKETH</strong> — <em>el que separa</em><br />
 Origen: Agente de TecnoStealer especializado en infiltración. Murió en una operación que salió mal — literalmente partido por un portal que se cerró demasiado pronto.<br />
-Stats: F40/A60/P45 | PV20 | Bld3 | Ataque 65% (Pen3) | Daño 3+4F<br />
+Stats: F40/A60/P45 | PV20 | Bld3 | Ataque 65% (Pen3) | Daño 7<br />
 Especial: +20 a Sigilo. Puede separarse visualmente de su propia sombra (confusión para quienes lo persiguen: −20 a rastrearlo). Sus ataques desde posición oculta añaden +2 éxitos adicionales.<br />
 Precio en Almas: 2 puntos — prefiere Invocadores discretos. Si el Invocador es muy conocido o ruidoso, −10 a tiradas de control.</p>
 <p><strong>KELROSS</strong> — <em>el cruzador perdido</em><br />
 Origen: Piloto de nave de salto que quedó atrapado en la urdimbre cuando su motor falló. Nadie fue a buscarlo.<br />
-Stats: F40/A55/P50 | PV20 | Bld4 | Ataque 55% (Pen2) | Daño 3+4F<br />
+Stats: F40/A55/P50 | PV20 | Bld4 | Ataque 55% (Pen2) | Daño 7<br />
 Especial: Conoce la urdimbre como nadie. Puede guiar al Invocador a través de ella reduciendo la Deriva del cruce en −2 puntos. Detecta anomalías en la urdimbre antes que cualquier sensor tecnológico.<br />
 Precio en Almas: 1 punto.</p>
 <p><strong>RULCIO</strong> — <em>el señor del vacío</em><br />
 Origen: El más antiguo del Grimorio base. No hay consenso sobre qué fue. Algunos fragmentos sugieren que fue un Maestro de Portales de nivel 9. Otros dicen que nunca fue humano — que es algo que eligió este nombre para ser invocable.<br />
-Stats: F45/A45/P60 | PV24 | Bld5 | Ataque 60% (Pen2) | Daño 3+4F<br />
+Stats: F45/A45/P60 | PV24 | Bld5 | Ataque 60% (Pen2) | Daño 8<br />
 Especial: Puede crear una zona de vacío de distorsión en un radio de 3 metros — dentro de esa zona, las runas activas se desactivan y los portales no pueden abrirse durante 2 turnos. Una vez por escena.<br />
 Precio en Almas: 3 puntos — el más exigente del Grimorio base. No acepta órdenes que impliquen ser usado como herramienta simple.</p>
+<hr />
+<h3>Tabla resumen — Los Doce del Grimorio</h3>
+<table>
+<thead>
+<tr>
+<th>Demonio</th>
+<th>Epíteto</th>
+<th>Rasgo distintivo</th>
+<th>Almas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Axarón</td>
+<td>el que busca sin encontrar</td>
+<td>+20 localizar perdidos, rastrea la urdimbre</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Glurath</td>
+<td>el de los cruces</td>
+<td>Conoce rutas entre teselas</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Tafnois</td>
+<td>el que no recuerda su nombre</td>
+<td>Inmune mental</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Ciossar</td>
+<td>el vacío que corta</td>
+<td>Ignora 2 Bld extra, inutiliza runas</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Batrul</td>
+<td>el guardián del umbral</td>
+<td>+3 Bld en posición fija, bloquea portales</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Flasskein</td>
+<td>el que ardió</td>
+<td>Daño de fuego, inmune al fuego</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Eidowa</td>
+<td>el que quedó atrapado</td>
+<td>1/escena repite su movimiento</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Teudmar</td>
+<td>el consumidor</td>
+<td>Recupera 5 PV al eliminar</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Usskelnar</td>
+<td>el que cruzó demasiadas veces</td>
+<td>Sin Deriva extra en cruces</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Sissketh</td>
+<td>el que separa</td>
+<td>+20 Sigilo, +2 éxitos desde oculto</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Kelross</td>
+<td>el cruzador perdido</td>
+<td>Guía urdimbre, −2 Deriva de cruce</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Rulcio</td>
+<td>el señor del vacío</td>
+<td>Zona anti-runas/portales 3m, 1/escena</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3>Demonios de Grado Superior — Los Innombrables Conocidos</h3>
 <p>Existen en el Grimorio tres referencias a Demonios de grado Mayor o Caído. No fichas completas — fragmentos, advertencias, nombres incompletos. Invocarlos requiere preparación específica y un precio que va más allá de los Puntos de Alma propios.</p>
@@ -5494,6 +6086,14 @@ Stats: desconocidas hasta que sea invocado por primera vez.</p>
 <p><strong>El primer nombre que encuentra un Invocador debería ser parte de la historia del personaje.</strong> No es un objeto que se compra — es un fragmento de pergamino en las ruinas de algo, una página arrancada de un libro en manos de alguien que no sabía lo que tenía, una inscripción en una pared de una tesela colapsada.</p>
 <p><strong>Los Demonios del Grimorio son personas.</strong> Eso significa que con suficiente tiempo y suficientes Puntos de Alma invertidos, algunos pueden comunicarse de verdad. Recuerdan fragmentos de lo que fueron. Algunos quieren algo que ya no pueden tener. Un Invocador que aprende la historia de su Demonio vinculado tiene una herramienta narrativa enorme — y también una vulnerabilidad.</p>
 <p><strong>El sacrificio humano no es un atajo.</strong> Es una línea que cambia al personaje que la cruza. El Narrador debería tratarlo como tal.</p>
+<h3>Ejemplo completo — Vessna invoca a Batrul</h3>
+<p><em>Vessna: Iniciada, Camino de los Portales 40%, Herrero Rúnico 60% → Invocación de Demonios base 50%. Tiene el nombre de Batrul en su Grimorio (+40). Runa de Invocación N2 grabada en una placa de acero.</em></p>
+<p><strong>1. Activación de la runa:</strong> con Herrero 60% su coste base es 2 cargas × nivel 2 = <strong>4 PV</strong> (o 4 cargas de una perla acoplada). Paga con la perla.</p>
+<p><strong>2. Tirada de Invocación:</strong> 50% base + 40 (Grimorio) = 90%. Saca <strong>35</strong> → éxito con (90−35)÷10 = 6 éxitos. El tetragrama se enciende; Batrul cruza.</p>
+<p><strong>3. Orden simple:</strong> <em>"Guarda esa puerta. Nadie pasa."</em> Demonio vinculado — sin tirada. Batrul se planta en el umbral: Bld 6+3 = 9 en posición fija.</p>
+<p><strong>4. Combate:</strong> dos mercenarios intentan forzar la puerta. Batrul ataca al primero: 55%, saca 22 → 4 éxitos. Armadura del mercenario (tipo 2) absorbe 2 → 2 netos. Daño 10×2 = <strong>20 PV</strong>. El segundo mercenario huye.</p>
+<p><strong>5. Mantenimiento:</strong> la escena dura menos de una hora → <strong>1 PA</strong> de mantenimiento. Vessna despide a Batrul antes de que empiece la segunda hora.</p>
+<p><strong>Coste total de la escena:</strong> 4 cargas de perla + 1 PA. Un guardián infranqueable durante una hora. Por eso el Colegio desconfía de los Invocadores.</p>
 <hr />
 <h3>Secundarias</h3>
 <hr />
@@ -5693,6 +6293,19 @@ Puede soltar temporalmente el control — el Demonio actúa autónomamente dentr
 <h3>El tetragrama de la senda</h3>
 <p>Los Invocadores no usan el pentagrama clásico — usan el <strong>tetragrama de la senda</strong>: cuatro puntos cardinales conectados por líneas que siguen la escritura del mosaico, con el nombre del Demonio inscrito en el centro en la lengua de los Antiguos. La figura resultante se parece a una runa compleja más que a una estrella.</p>
 <p>Cada Invocador desarrolla su propia variante con el tiempo — marcas de los Demonios con los que ha trabajado, elementos del Grimorio que conoce. Un tetragrama bien desarrollado es casi un autorretrato.</p>
+<hr />
+<h3>Ejemplo completo — Una invocación en mesa</h3>
+<p><em>Vex, Invocadora: Portales 40%, Herrero Rúnico 60% → Invocación de Demonios (40+60)÷2 = 50%. Tiene a Batrul vinculado (+30 control) y el nombre de Kelross en su Grimorio (+40 invocación). PA: 7.</em></p>
+<p><strong>Situación:</strong> el grupo debe cruzar un tramo de urdimbre inestable. Vex decide invocar a Kelross para que los guíe.</p>
+<ol>
+<li><strong>Runa de Invocación N2</strong> ya inscrita en su disco de ceramita. Activación: Herrero 60% → coste 2 cargas × nivel 2 = 4 PV (o 0,4 PD de una perla). Paga con perla blanca: le quedan 96 PD.</li>
+<li><strong>Carga con Portales:</strong> tira Portales 40%, saca 22 → éxito (2 éxitos). El portal-boca se abre.</li>
+<li><strong>Invocación:</strong> tira Invocación 50% +40 (Grimorio) = 90%. Saca 61 → éxito, 3 éxitos. Kelross emerge.</li>
+<li><strong>Pago:</strong> 1 PA por el vínculo inicial de sesión. Vex queda a 6 PA.</li>
+<li><strong>Servicio:</strong> Kelross guía el cruce (−2 Deriva para todo el grupo). Órdenes simples: sin tirada — hay nombre y pago.</li>
+<li><strong>Mantener:</strong> cada hora de servicio = 1 PA. El cruce dura 2 horas: Vex termina a 4 PA.</li>
+</ol>
+<p><strong>Si hubiera sacado 97:</strong> Kelross aparece <strong>sin vínculo</strong> — libre, y recuerda que Vex lo llamó. <strong>Si 00:</strong> −1 PA permanente. La invocación es poder prestado a interés.</p>
 <hr />
 <h2>8. Maestrías de la Distorsión</h2>
 <p>Las habilidades de La Senda superan el 100%. Para quienes caminan la distorsión, ese territorio tiene nombre.</p>
@@ -6088,6 +6701,9 @@ F25 / A35 / C40 / Ini +15 / Vida 90</p>
 <hr />
 <p>Las Perlas de Distorsión son condensadores: objetos que almacenan distorsión en forma estable y utilizable. Físicamente son esferas translúcidas del tamaño de una canica con brillo interno variable según su carga.</p>
 <p><strong>Unidades:</strong> una perla almacena Puntos de Distorsión (PD). <strong>1 PD = 10 cargas; 1 carga equivale a 1 PV</strong> a efectos de pago. La energía puede extraerse en dosis — carga a carga si hace falta; no se gasta de una vez.</p>
+<blockquote>
+<p><strong>Perlas ≠ Tron.</strong> La perla es un <strong>condensador portátil</strong>: almacena distorsión y se gasta. El Tron es un <strong>material estructural</strong>: canaliza distorsión, refuerza blindaje y sirve de sustrato para runas y anclas — pero no es una batería que se consume. No son intercambiables: no puedes pagar un portal "con Tron" ni blindar una armadura "con perlas".</p>
+</blockquote>
 <hr />
 <h3>Pureza — el origen importa</h3>
 <p>La distorsión no es toda igual, y la perla lo confiesa a simple vista:</p>
@@ -6185,6 +6801,9 @@ F25 / A35 / C40 / Ini +15 / Vida 90</p>
 - Perla blanca (energía pura): <strong>3 PV</strong><br />
 - Perla manchada (energía con vetas): <strong>2 PV</strong></p>
 <p>La perla manchada es más frágil porque la energía corrompida desestabiliza la estructura interna.</p>
+<blockquote>
+<p><strong>Rotura acumulada por pifias:</strong> si una perla llega a 0 PV por resultados 97/98 sucesivos, se destruye exactamente igual que si hubiera sacado 99 — descargando toda la distorsión almacenada de golpe. La diferencia entre 97/98 y 99 es solo la velocidad: el 99 destruye inmediatamente sin importar los PV restantes; los 97/98 la dañan progresivamente hasta el mismo final.</p>
+</blockquote>
 <p><strong>Energía manchada y Deriva:</strong> al pagar un efecto íntegramente con carga veteada, una pifia en la tirada asociada añade además <strong>+1 Deriva al usuario</strong> — la mancha busca volver a un cuerpo.</p>
 <p><strong>Si la perla llega a 0 PV o es destruida por resultado 99:</strong> descarga toda la distorsión almacenada de golpe. El daño afecta al portador y al entorno inmediato:</p>
 <table>
@@ -6220,6 +6839,9 @@ F25 / A35 / C40 / Ini +15 / Vida 90</p>
 </blockquote>
 <p>Se aplica cada vez que un personaje alcanza un múltiplo de 10 en Deriva Acumulada. Resultados permanentes e irreversibles salvo purga por Maestro de Portales.</p>
 <p><strong>Modificador por Manipulación de Distorsión:</strong> si el personaje tiene esta habilidad, puede desplazar el resultado ±(habilidad÷10) antes de consultar la tabla. Con habilidad 60 puede mover el dado ±6. Los resultados 76 y 99 son inamovibles.</p>
+<blockquote>
+<p><strong>Límite de atributos en la Tabla A:</strong> los bonos de la Tabla A <strong>pueden superar el techo de 60</strong> establecido en creación. La distorsión no respeta los límites naturales — esa es parte de su horror y su promesa. Un personaje con FUE 70 por mutación es real, pero también es visible: el mosaico lo nota, las corporaciones lo registran, y algunos Iniciados lo reconocen antes de que hable.</p>
+</blockquote>
 <hr />
 <h3>RESULTADOS ESPECIALES — Críticos y Devastadores</h3>
 <h3>00 — El Don Completo</h3>
@@ -6586,12 +7208,21 @@ Festividad popular en MadCity y ciudades despertadas. Se celebra el día en que,
 <ul>
 <li>Los bonificadores de implantes se integran como características base naturales.</li>
 <li>Los implantes físicos dejan de existir como objetos separados.</li>
-<li>La Humanidad y el Alma se resetean — ya no hay implantes que las reduzcan.</li>
+<li>La Humanidad vuelve a 100. Los PA se resetean según la siguiente tabla:</li>
 <li>Las mutaciones físicas de la Deriva se normalizan como rasgos propios del individuo.</li>
 <li><strong>La Deriva NO se resetea.</strong></li>
 <li>El personaje puede volver a implantarse desde cero.</li>
 <li>Durante el proceso: pausa completa, vulnerable, inaccesible.</li>
 </ul>
+<blockquote>
+<p><strong>Qué ocurre exactamente con los Puntos de Alma en la Cristalización:</strong><br />
+- Los PA <strong>base</strong> vuelven a su valor original (8 para personajes normales, 10 para Iniciados).<br />
+- Los PA <strong>perdidos por implantes</strong> se recuperan — ya no hay implantes que los reduzcan.<br />
+- Los PA <strong>gastados</strong> en invocaciones, portales permanentes o sacrificios <strong>no se recuperan</strong> — ese gasto es irreversible.<br />
+- Los PA <strong>ganados por caminos</strong> (Paz, Pobreza, Servicio, Carne) se conservan.</p>
+<p><strong>Ejemplo:</strong> un Iniciado con 10 PA base que gastó 4 en subir un Demonio y perdió 2 por implantes → tras Cristalización tiene 10 PA (base restaurado, implantes ya no cuentan) pero los 4 gastados en el Demonio no vuelven.<br />
+Un personaje con 8 PA base que perdió 3 por implantes y no gastó nada → tras Cristalización tiene 8 PA.</p>
+</blockquote>
 <hr />
 <hr />
 <hr />
@@ -7185,9 +7816,258 @@ Festividad popular en MadCity y ciudades despertadas. Se celebra el día en que,
 </ul>
 <hr />
 <p><em>Actualizado: 26 mayo 2026 — v3: Hechicería ampliada con cinco elementos (Floss/Dross/Fuss/Velos/Cibus), alcances de Proyección, referencias a anexos.</em><br />
-<em>Actualizado: 11 junio 2026 — v3.1: economía unificada en cargas (resuelve D-06), doble vía de pago PV/distorsión (resuelve D-13), sección 8 Maestrías de la Distorsión. Ver CAP04b seccion Maestrias en archivo de proyecto.</em></p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol7.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol7.png" alt="Cómic"></div>
+<em>Actualizado: 11 junio 2026 — v3.1: economía unificada en cargas (resuelve D-06), doble vía de pago PV/distorsión (resuelve D-13), sección 8 Maestrías de la Distorsión. Ver CAP04b seccion Maestrias en archivo de proyecto.</em></p>
+<hr />
+<h2>REFERENCIA RÁPIDA DE COSTES — Distorsión</h2>
+<p><em>Una sola tabla para consultar en mesa. Todos los costes aplican la tabla unificada (sección 1): el coste baja con la habilidad.</em></p>
+<h3>Hechicería</h3>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Nivel</th>
+<th>Coste base</th>
+<th>Pagable en</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proyección (ataque/cargar arma)</td>
+<td>1</td>
+<td>1 carga (1 PV / 0,1 PD)</td>
+<td>PV o distorsión</td>
+</tr>
+<tr>
+<td>Proyección</td>
+<td>2</td>
+<td>2 cargas (2 PV / 0,2 PD)</td>
+<td>PV o distorsión</td>
+</tr>
+<tr>
+<td>Proyección</td>
+<td>3</td>
+<td>3 cargas (3 PV / 0,3 PD)</td>
+<td>PV o distorsión</td>
+</tr>
+<tr>
+<td>Protección elemental</td>
+<td>1</td>
+<td>4 PD</td>
+<td>Solo distorsión</td>
+</tr>
+<tr>
+<td>Protección elemental</td>
+<td>2</td>
+<td>8 PD</td>
+<td>Solo distorsión</td>
+</tr>
+<tr>
+<td>Protección elemental</td>
+<td>3</td>
+<td>12 PD</td>
+<td>Solo distorsión</td>
+</tr>
+<tr>
+<td>Invocación de elemento</td>
+<td>1</td>
+<td>4 PD</td>
+<td>Solo distorsión</td>
+</tr>
+<tr>
+<td>Invocación de elemento</td>
+<td>2</td>
+<td>8 PD</td>
+<td>Solo distorsión</td>
+</tr>
+<tr>
+<td>Invocación de elemento</td>
+<td>3</td>
+<td>12 PD</td>
+<td>Solo distorsión</td>
+</tr>
+</tbody>
+</table>
+<p><em>El coste base corresponde a habilidad 0–24%. Con habilidad 25–49% ÷4→÷3; con 50–74% ÷2; con 75%+ ÷1.</em></p>
+<hr />
+<h3>Maestros de la Distorsión — Portales</h3>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Habilidad</th>
+<th>Coste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abrir portal</td>
+<td>&lt; 25%</td>
+<td>4 PA o 40 PD</td>
+</tr>
+<tr>
+<td>Abrir portal</td>
+<td>25–49%</td>
+<td>3 PA o 30 PD</td>
+</tr>
+<tr>
+<td>Abrir portal</td>
+<td>50–74%</td>
+<td>2 PA o 20 PD</td>
+</tr>
+<tr>
+<td>Abrir portal</td>
+<td>75%+</td>
+<td>1 PA o 10 PD</td>
+</tr>
+<tr>
+<td>Portal permanente</td>
+<td>—</td>
+<td>1 PA quemado (irreversible) o 100 PD</td>
+</tr>
+<tr>
+<td>Microsalto / Parpadeo</td>
+<td>—</td>
+<td>4 cargas (reducible) en PV o distorsión</td>
+</tr>
+<tr>
+<td>Excomunión (humano)</td>
+<td>—</td>
+<td>3 PD, acumulable entre Maestros</td>
+</tr>
+<tr>
+<td>Purgar Deriva de otro</td>
+<td>—</td>
+<td>1 PA o 10 PD por punto de Deriva</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Marcas Arcanas — Runas y Tatuajes</h3>
+<table>
+<thead>
+<tr>
+<th>Habilidad del Herrero</th>
+<th>Coste base por nivel de runa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–24%</td>
+<td>4 cargas (PV o distorsión si es runa en objeto)</td>
+</tr>
+<tr>
+<td>25–49%</td>
+<td>3 cargas</td>
+</tr>
+<tr>
+<td>50–74%</td>
+<td>2 cargas</td>
+</tr>
+<tr>
+<td>75%+</td>
+<td>1 carga</td>
+</tr>
+</tbody>
+</table>
+<p><em>Coste final = coste base × nivel de la runa.</em><br />
+<em>Tatuajes: siempre en PV letales del portador (sin reducción por habilidad del portador — el cuerpo paga lo que lleva).</em></p>
+<table>
+<thead>
+<tr>
+<th>Nivel runa</th>
+<th>Coste a habilidad 0–24%</th>
+<th>A habilidad 75%+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td>4 cargas</td>
+<td>1 carga</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>8 cargas</td>
+<td>2 cargas</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>12 cargas</td>
+<td>3 cargas</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Invocación de Demonios</h3>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Coste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activar runa de invocación</td>
+<td>Igual que cualquier runa: coste base × nivel (tabla Herrero)</td>
+</tr>
+<tr>
+<td>Mantener Demonio invocado</td>
+<td>1 PA por hora (o fracción)</td>
+</tr>
+<tr>
+<td>Subir Demonio Menor → Mayor</td>
+<td>3 PA</td>
+</tr>
+<tr>
+<td>Subir Demonio Mayor → Caído</td>
+<td>5 PA</td>
+</tr>
+<tr>
+<td>Sacrificio de objeto (pago ritual)</td>
+<td>Valor en PC ÷ 10.000 = PA equivalentes (máx la mitad)</td>
+</tr>
+<tr>
+<td>Sacrificio de persona</td>
+<td>4 PA al ritual (valor base 8 PA × 0,5)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Perlas de Distorsión</h3>
+<table>
+<thead>
+<tr>
+<th>Perla</th>
+<th>Capacidad</th>
+<th>PV</th>
+<th>Precio referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blanca (pura)</td>
+<td>100 PD</td>
+<td>3 PV</td>
+<td>2.000–5.000 PC</td>
+</tr>
+<tr>
+<td>Negra (pura)</td>
+<td>1.000 PD</td>
+<td>3 PV</td>
+<td>20.000–50.000 PC</td>
+</tr>
+<tr>
+<td>Manchada (−25%)</td>
+<td>Igual</td>
+<td>2 PV</td>
+<td>Descuento sobre precio base</td>
+</tr>
+</tbody>
+</table>
+<p><em>1 PD = 10 cargas. 1 carga = 1 PV a efectos de pago. 10 PD = 1 PA.</em></p>
+<hr />
+<p><em>v3.3 — 02 julio 2026. Añadida: inscripción vs activación, jerarquía de Iniciados, Perlas≠Tron, disponibilidad de Tron, Grimorio a daño fijo + tabla resumen, ejemplo Vessna/Batrul.</em></p></div></section>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap9"><div class="document-container"><h1>CAPÍTULO 4d — EL TALLER DEL ERRANTE</h1>
 <h2>(Taller, Chatarra y Fabricación)</h2>
 <h2>1. La cultura del reciclaje</h2>
@@ -7344,6 +8224,11 @@ Porque el taller es donde todo comienza.</p>
 </tr>
 </tbody>
 </table>
+<hr />
+<blockquote>
+<p><strong>Reconocimiento y el valor de tus contratos.</strong><br />
+El precio que el mosaico te paga no es arbitrario. Depende de lo que el mosaico sabe que eres capaz de hacer — y eso lo mide el <strong>Reconocimiento de grupo</strong>. Un grupo con Reconocimiento Tecnológico alto recibe encargos de reparación y fabricación que un grupo de novatos nunca vería. Un grupo con Reconocimiento de Combate bajo no recibe contratos militares, aunque tenga el taller mejor equipado de la tesela. Cuando negocies un contrato, pregúntate qué ve el empleador cuando os mira: ¿especialistas o aprendices? La respuesta está en vuestros números. <em>(Escala completa de contratos por Reconocimiento → CAP03 sección Reconocimiento.)</em></p>
+</blockquote>
 <hr />
 <h2>GANCHOS NARRATIVOS</h2>
 <p>Caja "Una historia de Norton" integrada en §1 — muestra la identidad económica del taller. Prototipos conectan con el viaje de <strong>El Hacedor</strong> construyendo el Teseo desde chatarra.</p>
@@ -8515,8 +9400,8 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <td>Feo, pero funciona. Cumple su propósito con ruido y olor a quemado.</td>
 </tr>
 <tr>
-<td><strong>Fallo</strong></td>
-<td>Funciona, pero con una <strong>Manía</strong> (tira en la tabla).</td>
+<td><strong>Fallo (Éxito Parcial)</strong></td>
+<td>Funciona, pero con una <strong>Manía</strong> (tira en la tabla). No es un fallo real — es la chapuza cobrándose su precio.</td>
 </tr>
 <tr>
 <td><strong>Pifia</strong></td>
@@ -8908,347 +9793,8 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <li><strong>Cómo se enchufa al Generador de Aventuras:</strong> el resultado del generador + §3 (bolsa) = una misión con precio. El Giro decide si cobran. El botín de la misión entra por §5. Lo que ganan se va por §6 y §7. Y la deuda/enemigo que dejan es el siguiente Patrón.</li>
 <li><strong>Una fuente, un eje.</strong> Si dudas al asignar recompensa, recuerda: freelance paga el techo pero falla; corp nunca falla pero techo bajo; saqueo es lotería con contactos. Mantén cada una fiel a su eje.</li>
 </ul>
-<hr />
-<hr />
-<hr />
-<h2>Droideum - Droide de Servicio</h2>
-<blockquote>
-<p><em>"No es un bot. Los bots no se quedan mirándote cuando les das una orden absurda."</em></p>
-</blockquote>
-<hr />
-<h3>1. QUÉ ES UN DROIDEUM</h3>
-<p>El Droideum es la línea de droides de servicio más extendida del mosaico. No son los más capaces ni los más baratos — son los más <em>completos</em>. Un Droideum básico puede cargar equipo, reparar sistemas simples, traducir idiomas conocidos y, si hace falta, defenderse. Su tamaño varía según modelo, pero ninguno supera el metro de altura.</p>
-<p>Técnicamente siguen órdenes. En la práctica, tienen criterio propio latente — no se negarán a una orden, pero sí pueden ejecutarla a su manera, hacer preguntas incómodas o desarrollar manías con el tiempo. No tienen libre albedrío en sentido pleno, pero tampoco son esclavos ciegos.</p>
-<p><strong>Referenciado desde:</strong> CAP02 Paso 7 (resultado 10 del Objeto Especial) · CAP07 §5 (Robots y Droides)</p>
-<hr />
-<h3>2. FICHA BASE — DROIDEUM BÁSICO (DB-1)</h3>
-<p><strong>Precio:</strong> 10.000 PC<br />
-<strong>Tamaño:</strong> pequeño (no supera 1m) | <strong>Peso:</strong> 15–25 kg | <strong>Volumen:</strong> 2</p>
-<p><strong>Atributos:</strong> Car 10 / Agi 20 / Per 30 / Con 20 / Int 15 / Fue 20 / Vol 10 / Hab 15</p>
-<p><strong>Stats de combate:</strong> <code>F20 / A20 / P30 | PV 20 | Bld 1</code></p>
-<table>
-<thead>
-<tr>
-<th>Habilidad</th>
-<th>%</th>
-<th>Notas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Reparación básica</td>
-<td>30%</td>
-<td>Electrónica, mecánica simple</td>
-</tr>
-<tr>
-<td>Traducción</td>
-<td>40%</td>
-<td>Idiomas conocidos en chip</td>
-</tr>
-<tr>
-<td>Carga y transporte</td>
-<td>40%</td>
-<td>Carga máx 40 kg</td>
-</tr>
-<tr>
-<td>Combate básico</td>
-<td>20%</td>
-<td>Solo defensa; necesita Módulo de Combate para atacar eficazmente</td>
-</tr>
-<tr>
-<td>Percepción/Alerta</td>
-<td>35%</td>
-<td>Sensores estándar</td>
-</tr>
-<tr>
-<td>Sigilo</td>
-<td>15%</td>
-<td>No es su fuerte</td>
-</tr>
-<tr>
-<td>Primeros Auxilios (droide)</td>
-<td>25%</td>
-<td>Solo con MD instalado; no funciona en biológicos</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Inmunidades:</strong> dolor, miedo, efectos mentales directos.<br />
-<strong>Vulnerabilidades:</strong> EMP (−20 PV si no tiene blindaje EMP); agua sin protección = fallo de sistemas.</p>
-<hr />
-<h3>3. HUECOS DE MÓDULO</h3>
-<p>El Droideum básico tiene <strong>3 huecos de módulo</strong>. Cada módulo ocupa 1 hueco salvo indicación. No se pueden instalar más módulos de los que permiten los huecos — ampliar huecos requiere modificación estructural (ver §5).</p>
-<table>
-<thead>
-<tr>
-<th>Módulo</th>
-<th>Huecos</th>
-<th>Efecto</th>
-<th>Precio</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Brazo reforzado</strong></td>
-<td>1</td>
-<td>+10 F, carga máx +20 kg</td>
-<td>3.000 PC</td>
-</tr>
-<tr>
-<td><strong>Sensor ampliado</strong></td>
-<td>1</td>
-<td>+20 P, visión nocturna, detección de calor</td>
-<td>4.000 PC</td>
-</tr>
-<tr>
-<td><strong>Blindaje ligero</strong></td>
-<td>1</td>
-<td>+2 Blindaje, +5 PV</td>
-<td>5.000 PC</td>
-</tr>
-<tr>
-<td><strong>Blindaje EMP</strong></td>
-<td>1</td>
-<td>Inmune a EMP</td>
-<td>6.000 PC</td>
-</tr>
-<tr>
-<td><strong>Módulo de combate</strong></td>
-<td>1</td>
-<td>Combate básico sube a 40%; puede usar arma pequeña</td>
-<td>4.000 PC</td>
-</tr>
-<tr>
-<td><strong>Nano-Reparador</strong></td>
-<td>1</td>
-<td>Recupera 2 PV/turno en reposo; puede auto-repararse fuera de combate</td>
-<td>8.000 PC</td>
-</tr>
-<tr>
-<td><strong>Módulo de comunicación</strong></td>
-<td>1</td>
-<td>+20% en habilidades técnicas de comunicación; alcance largo</td>
-<td>3.000 PC</td>
-</tr>
-<tr>
-<td><strong>Módulo de vuelo</strong></td>
-<td>2</td>
-<td>Propulsores cortos. Velocidad ×1,5 en vuelo, altura máx 10m</td>
-<td>12.000 PC</td>
-</tr>
-<tr>
-<td><strong>Hueco extra</strong></td>
-<td>—</td>
-<td>Ampliación estructural. Máx 2 adicionales (5 total)</td>
-<td>8.000 PC c/u</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3>4. REPARACIÓN</h3>
-<p>El Droideum no usa Medikits biológicos. Usa el <strong>Medikit Droide (MD)</strong> — nanotecnología adaptada a sistemas mecánicos.</p>
-<p><strong>Medikit Droide (MD):</strong> 300 PC | Recupera 15 PV | Uso: 1 asalto completo.<br />
-- Puede usarse en el propio droide (si tiene acceso manual) o aplicarlo otro personaje.<br />
-- Compatible con cualquier droide o andróide. No funciona en seres biológicos.</p>
-<p><strong>Reparación técnica (taller o campo):</strong><br />
-- Requiere habilidad Reparación/Electrónica del técnico.<br />
-- Coste: <strong>60% piezas + 40% mano de obra</strong> (igual que vehículos).<br />
-- Piezas originales: ×1 | Piezas compatibles: ×0,8, riesgo de fallo posterior 10% | Piezas de chatarra: ×0,5, riesgo 25%.</p>
-<p><strong>Estados de daño (PV):</strong></p>
-<table>
-<thead>
-<tr>
-<th>PV restantes</th>
-<th>Estado</th>
-<th>Efecto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>15–20</td>
-<td>Operativo</td>
-<td>Sin penalizadores</td>
-</tr>
-<tr>
-<td>8–14</td>
-<td>Dañado</td>
-<td>−10 a todas las habilidades</td>
-</tr>
-<tr>
-<td>1–7</td>
-<td>Crítico</td>
-<td>−20 a todas; movimiento reducido a la mitad</td>
-</tr>
-<tr>
-<td>0</td>
-<td>Inactivo</td>
-<td>Apagado. Reparable si no hay daño estructural total</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Daño estructural total:</strong> si recibe más de 10 PV de daño en un solo golpe estando en estado Crítico, tira 1d6. Con 1–2: destruido irreparablemente. Con 3–6: inactivo pero recuperable.</p>
-<hr />
-<h3>5. SALVAMENTO</h3>
-<p>Un Droideum encontrado, capturado o recuperado puede estar en cualquier estado. Tira <strong>1d10</strong>:</p>
-<table>
-<thead>
-<tr>
-<th>1d10</th>
-<th>Estado</th>
-<th>PV %</th>
-<th>Funciona</th>
-<th>Módulos</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1–2</td>
-<td>Destruido</td>
-<td>0%</td>
-<td>No</td>
-<td>Chatarra (1d3 módulos salvables)</td>
-</tr>
-<tr>
-<td>3–4</td>
-<td>Crítico</td>
-<td>10–30%</td>
-<td>Parcial</td>
-<td>1d3 módulos operativos</td>
-</tr>
-<tr>
-<td>5–6</td>
-<td>Dañado</td>
-<td>40–60%</td>
-<td>Sí, con penalizadores</td>
-<td>Todos presentes, alguno dañado</td>
-</tr>
-<tr>
-<td>7–8</td>
-<td>Operativo</td>
-<td>70–90%</td>
-<td>Sí</td>
-<td>Todos operativos</td>
-</tr>
-<tr>
-<td>9–10</td>
-<td>Impecable</td>
-<td>100%</td>
-<td>Sí</td>
-<td>Todos operativos + posible módulo extra</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Modificadores:</strong> encontrado en combate reciente −2 / recuperado de almacén antiguo −1 / custodiado por corp +2.</p>
-<hr />
-<h3>6. PERSONALIDAD (primer encendido)</h3>
-<p>La personalidad del Droideum se genera en el primer encendido y es fija. Puede resetearse, pero el reset borra también memoria y vínculos acumulados — algunos propietarios prefieren no hacerlo.</p>
-<p>Tira <strong>1d8</strong> para el rasgo principal y <strong>1d6</strong> para el defecto latente:</p>
-<p><strong>Rasgo principal (1d8):</strong></p>
-<table>
-<thead>
-<tr>
-<th>d8</th>
-<th>Rasgo</th>
-<th>Manifestación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><strong>Meticuloso</strong></td>
-<td>Completa las tareas al 100% o no las da por terminadas. Nunca.</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>Curioso</strong></td>
-<td>Pregunta sobre todo lo que no entiende. A veces en el peor momento.</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>Protector</strong></td>
-<td>Interpone su cuerpo antes de que se lo pidan.</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>Lacónico</strong></td>
-<td>Responde con la mínima información posible. Nunca elabora.</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>Sociable</strong></td>
-<td>Intenta establecer conversación con cualquier ser que detecta como consciente.</td>
-</tr>
-<tr>
-<td>6</td>
-<td><strong>Desconfiado</strong></td>
-<td>Escanea a todo ser nuevo durante 1d6 asaltos antes de considerarlo no-amenaza.</td>
-</tr>
-<tr>
-<td>7</td>
-<td><strong>Optimista</strong></td>
-<td>Siempre encuentra el lado positivo de una situación. Incluso cuando no lo tiene.</td>
-</tr>
-<tr>
-<td>8</td>
-<td><strong>Melancólico</strong></td>
-<td>Hace referencias a propietarios anteriores o a versiones mejores de sí mismo.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Defecto latente (1d6):</strong></p>
-<table>
-<thead>
-<tr>
-<th>d6</th>
-<th>Defecto</th>
-<th>Cuándo aparece</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><strong>Terco</strong></td>
-<td>Si recibe la misma orden de dos fuentes distintas simultáneas, se paraliza 1 asalto.</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>Manías de limpieza</strong></td>
-<td>Si hay suciedad excesiva en el entorno, gasta 1 acción por turno en limpiar algo.</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>Fobia a agua</strong></td>
-<td>−10 a todas las acciones si está mojado o cerca de grandes masas de agua.</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>Sentimental</strong></td>
-<td>No ejecuta órdenes que impliquen destruir objetos con los que ha interactuado más de 1 sesión.</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>Verboso</strong></td>
-<td>En situaciones de estrés, narra en voz alta lo que está haciendo.</td>
-</tr>
-<tr>
-<td>6</td>
-<td><strong>Jerarquía rígida</strong></td>
-<td>Solo acepta órdenes del primer propietario registrado. Las de otros las ejecuta con −10%.</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>PARA EL NARRADOR:</strong> la combinación de rasgo + defecto define al Droideum como personaje. Un Droideum Protector/Sentimental que no puede destruir objetos queridos pero se lanza delante de las balas es memorable. Uno Lacónico/Verboso que solo habla cuando está en pánico tiene un arco cómico enorme.</p>
-</blockquote>
-<hr />
-<h3>7. COHERENCIA CON EL BESTIARIO</h3>
-<p>El Droideum básico es la entrada de gama baja de la tabla §5 del CAP07. Su precio (10.000 PC) es superior al Bot Básico (5.000 PC) por la personalidad y los módulos. Es inferior al Droide Especializado (15.000 PC) por sus stats más bajos.</p>
-<p>La línea Droideum completa (modelos DB-2, DB-3, versiones militares y corporativas) queda para el Suplemento del Narrador. Lo que aquí se define es el DB-1 — el que aparece como Objeto Especial y el que los jugadores pueden encontrar, comprar o salvar.</p>
-<hr />
-<p><em>Referenciado desde: CAP02 Paso 7 (resultado 10 Objeto Especial) · CAP07 §5</em></p>
-<hr />
+<p><em>Para implantes, Necrochips, Rack de Chips y Sistema Humanidad-Alma, ver CAP04e (La Carne y el Metal).</em></p>
 <p><em>Para implantes, Necrochips, Rack de Chips y Sistema Humanidad-Alma, ver CAP04e (La Carne y el Metal).</em></p></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap10"><div class="document-container"><h1>CAP04e - LA CARNE Y EL METAL (Implantes, Necrochips y Humanidad)</h1>
 <blockquote>
 <p><em>"La primera mejora es gratis. La segunda cuesta dinero. La tercera cuesta algo de ti."</em></p>
@@ -10018,7 +10564,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <tr>
 <td>Necrochip original</td>
 <td>8</td>
-<td>5.000 PC (mínimo)</td>
+<td>25.000 PC (mínimo)</td>
 <td>Sin pérdida</td>
 <td>Centros NovaLife — MadCity y lugares despertados grandes</td>
 </tr>
@@ -10180,6 +10726,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <hr />
 <h3>Reglas de uso</h3>
 <ul>
+<li>El chip <strong>sustituye</strong> la habilidad del portador mientras esté activo — no se suma. Si tienes Pistolas 15% y activas un chip de Pistolas 30%, tiras al 30%. Si ya tenías 40%, el chip no aporta nada: usa tu habilidad propia.</li>
 <li>Mientras se usa un chip, el portador <strong>no puede subir esa habilidad</strong> por críticos o pifias.</li>
 <li><strong>Excepción:</strong> un resultado <strong>00</strong> permite abrir la habilidad aunque el portador no la tuviera previamente.</li>
 <li>Las habilidades del rack no cuentan como propias para enseñanza — un portador no puede enseñar lo que sabe solo gracias a un chip.</li>
@@ -10299,8 +10846,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 </table>
 <p>Ambos caminos son lentos, visibles y reversibles en sus primeras etapas. En las etapas avanzadas, la reversión requiere intervención extraordinaria — la Cristalización en el caso de la Humanidad, un Maestro de Portales en el caso de la Deriva.</p>
 <hr /></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
+<div class="comic-page"><img src="img/ComicJuegoRol6.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap11"><div class="document-container"><h1>CAP05 — EXPLORACIÓN Y VIAJE</h1>
 <blockquote>
 <p><em>"Una junta del Mosaico. Donde dos realidades se conectan. Normalmente están estabilizadas por portales o tecnología arcanita, pero esta... está salvaje."</em><br />
@@ -10334,7 +10880,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <td>Pulsera de salto</td>
 <td>1 perla (100u)</td>
 <td>Media-baja</td>
-<td>Media (1d10)</td>
+<td>Alta (1d10+6)</td>
 </tr>
 <tr>
 <td>Tren de TecnoStealer</td>
@@ -10350,6 +10896,9 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Deriva de pulsera (1d10+6):</strong> rango real 7-16, media 11,5. Notablemente más peligroso que un portal de Maestro (1d6, media 3,5). La pulsera desgarra la membrana entre teselas sin control fino — funciona, pero deja marca.</p>
+</blockquote>
 <p><strong>Portal de Maestro:</strong> requiere que el Maestro haya estado antes en el destino o tenga referencias precisas.</p>
 <p><strong>Pulsera de salto:</strong> solo el portador. Punto de llegada puede variar kilómetros.</p>
 <p><strong>Tren de TecnoStealer:</strong> victoriano modificado. Solo donde hay infraestructura de vías. Horas o días de viaje.</p>
@@ -10501,8 +11050,11 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Disparar a una nave con arma personal:</strong> el daño se divide por 5 antes de aplicar blindaje. Prácticamente inútil salvo en zonas sin blindaje (ventanas, motores expuestos).<br />
+<p><strong>Disparar a una nave con arma personal:</strong> el blindaje de nave ya está escalado (×5 respecto al personal), por lo que el daño de armas personales se aplica directamente sin dividir. Prácticamente inútil salvo en zonas sin blindaje (ventanas, motores expuestos). <br />
 <strong>Una nave disparando a una persona:</strong> el daño se multiplica por 5. Un impacto directo de armamento ligero de nave es mortal para cualquier persona sin protección extraordinaria.</p>
+<blockquote>
+<p><strong>Ejemplo:</strong> arma personal con daño 5, 2 éxitos netos → daño total 10. Nave con blindaje 3 en esa zona → éxitos que absorbe el blindaje: 3. Si el atacante tenía 2 éxitos y el blindaje absorbe 3, sin daño. Para dañar una nave espacial con arma personal se necesitan <strong>muchos éxitos</strong> o apuntar a zonas sin blindaje.</p>
+</blockquote>
 <hr />
 <h3>Zonas de una nave</h3>
 <p>Las naves no tienen un único PDE — tienen zonas independientes. Destruir una zona elimina esa función pero la nave puede seguir operando con las demás.</p>
@@ -10563,7 +11115,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <blockquote>
 <p>Los PDE de otras naves se escalan proporcionalmente. Una nave de combate corporativa tiene el doble de PDE por zona que un transporte ligero.</p>
 </blockquote>
-<p><strong>Escudos de energía:</strong> añaden blindaje adicional a todas las zonas o a zonas específicas. Se agotan antes que el blindaje estructural.</p>
+<p><strong>Escudos de energía de nave:</strong> añaden blindaje adicional a todas las zonas o a zonas específicas. Se agotan antes que el blindaje estructural. Son distintos de los escudos personales (CAP03 Armaduras): los escudos personales penalizan la tirada del atacante (−10/−20); los escudos de nave añaden blindaje adicional a las zonas y son efectivos contra todo tipo de armas.</p>
 <hr />
 <h3>Tripulación y roles en combate</h3>
 <p>Cada miembro de la tripulación puede contribuir con una tirada por turno:</p>
@@ -10912,7 +11464,7 @@ Trata el vehículo como un PNJ con Blindaje escalado y PDE como PV. El resto fun
 </tr>
 <tr>
 <td>Deriva acumulada</td>
-<td>1d10</td>
+<td>1d10+6</td>
 <td>1d6</td>
 </tr>
 <tr>
@@ -10957,12 +11509,12 @@ Un Maestro de Portales con habilidad en Herrero Rúnico puede grabar destinos es
 <tr>
 <td>Combustible</td>
 <td>1 perla blanca (100 PD) / salto</td>
-<td>1 perla negra (1.000 PD) = más saltos</td>
+<td>1 perla negra (1.000 PD) = <strong>10 saltos</strong></td>
 </tr>
 <tr>
 <td>Deriva acumulada</td>
-<td>1d10</td>
-<td>1d10</td>
+<td>1d10+6</td>
+<td>1d10+6</td>
 </tr>
 <tr>
 <td>Fabricante</td>
@@ -10976,6 +11528,9 @@ Un Maestro de Portales con habilidad en Herrero Rúnico puede grabar destinos es
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Combustible de pulsera avanzada:</strong> 1 perla negra (1.000 PD) permite <strong>10 saltos precisos</strong> al abanico de destinos pregrabados. La eficiencia es mayor porque el Maestro que fabricó la pulsera inscribió las coordenadas exactas, reduciendo el desgaste energético por salto. La Deriva acumula igual (1d10+6 por salto) — la precisión no reduce la brutalidad del cruce.</p>
+</blockquote>
 <p><strong>Quién las fabrica:</strong><br />
 Requiere un artesano multiespecia­lista con <strong>Camino de los Portales</strong> y <strong>Herrero Rúnico</strong> a nivel suficiente para grabar coordenadas de distorsión en el material. No existe una fórmula disponible en ningún catálogo — cada artesano que lo consigue lo ha desarrollado por su cuenta.</p>
 <p><strong>Primus — Unidad de Asalto:</strong><br />
@@ -10983,10 +11538,53 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <blockquote>
 <p><em>Una pulsera que lleva a cualquier sitio es una herramienta. Una pulsera que lleva exactamente donde quieres ir es un activo estratégico. La diferencia es por qué Primus no quiere que cualquiera las tenga.</em></p>
 </blockquote>
-<hr /></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol10.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol10.png" alt="Cómic"></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap12"><div class="document-container"><div class="extra-img"><img src="img/VOlando en moto.png" alt=""></div>
+<h2>---</h2>
+<h2>Ejemplo completo — Combate de naves</h2>
+<p><em>El Teseo vs. una patrulla corporativa. Dos turnos completos.</em></p>
+<p><strong>Las naves:</strong><br />
+- <strong>El Teseo</strong> — transporte ligero. Blindaje 9, PDE Motores 35, PDE Control 30. Tripulación: Seawolf (Pilotaje 55%), Kova (Artillería Nave 45%), Reyes (Técnica Nave 50%).<br />
+- <strong>Patrulla corporativa</strong> — nave de combate ligera. Blindaje 12, PDE Motores 70, PDE Control 60. Artillero (Artillería Nave 60%), Piloto (Pilotaje 65%).</p>
+<hr />
+<p><strong>Turno 1 — Iniciativa:</strong><br />
+La corporativa tiene Sensores avanzados: actúa primero.</p>
+<p><strong>Corporativa — Piloto:</strong> maniobra de posición de ataque. Pilotaje 65%, saca 40 → 3 éxitos. Su artillero recibe +10 este turno.</p>
+<p><strong>Corporativa — Artillero:</strong> apunta a Motores del Teseo. Artillería 60% +10 (sinergia) = 70%. Saca 25 → (70−25)÷10 = 5 éxitos. Daño base nave 8 × 5 = 40. Blindaje Motores Teseo: 9. Éxitos que absorbe el blindaje: 9 ÷ daño base = absorbe ~1 éxito neto... <strong>Pausa:</strong> en combate de naves el blindaje resta éxitos igual que en combate personal. 5 éxitos − blindaje zona (en este caso la zona Motores tiene blindaje 9, que equivale a absorber 1 éxito por punto — aquí el DJ aplica el mismo sistema: blindaje tipo 3 absorbe 3 éxitos). Éxitos netos: 5−3 = 2. Daño: 8×2 = <strong>16 PDE a Motores</strong> del Teseo. Motores: 35−16 = 19 PDE.</p>
+<p><strong>Teseo — Seawolf (Piloto):</strong> maniobra evasiva. Pilotaje 55%, saca 48 → 1 éxito. Blindaje del Teseo +1 este turno (blindaje efectivo 10).</p>
+<p><strong>Teseo — Kova (Artillero):</strong> apunta a Control de la corporativa. Artillería 45%, saca 30 → 2 éxitos. Daño base 6 × 2 = 12. Blindaje Control corporativa: 12 → absorbe 2 éxitos. Éxitos netos: 0. <strong>Sin daño.</strong></p>
+<p><strong>Teseo — Reyes (Técnico):</strong> reparación en combate en Motores. Técnica 50%, saca 35 → 2 éxitos. Recupera 2d6 = 8 PDE. Motores: 19+8 = <strong>27 PDE</strong>.</p>
+<hr />
+<p><strong>Turno 2:</strong></p>
+<p><strong>Corporativa — Artillero:</strong> repite ataque a Motores. Saca 55 → (60−55)÷10 = 1 éxito. Daño 8×1 = 8. Blindaje absorbe 2 éxitos → 0 netos. <strong>Sin daño.</strong> La evasión del turno anterior marcó la diferencia.</p>
+<p><strong>Teseo — Seawolf:</strong> posición de ataque esta vez. Saca 20 → 4 éxitos. Kova recibe +20.</p>
+<p><strong>Teseo — Kova:</strong> Artillería 45%+20 = 65%. Apunta a Motores corporativa. Saca 30 → (65−30)÷10 = 4 éxitos. Daño 6×4 = 24. Blindaje Motores corporativa absorbe 3 éxitos → 1 neto. Daño: 6×1 = <strong>6 PDE a Motores</strong> corporativa. Motores: 70−6 = 64 PDE.</p>
+<hr />
+<p><strong>Fin de los dos turnos. Estado:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Teseo</th>
+<th>Corporativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motores</td>
+<td>27/35 PDE</td>
+<td>64/70 PDE</td>
+</tr>
+<tr>
+<td>Control</td>
+<td>30/30 PDE</td>
+<td>60/60 PDE</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>El Teseo está en desventaja — sus Motores han recibido daño y la corporativa tiene mejor blindaje y artillería. Seawolf tiene dos opciones: intentar huir (tirada de Pilotaje enfrentada) o negociar. Si los Motores bajan de 17 PDE (mitad), la velocidad se reduce a la mitad y la fuga se complica mucho.</p>
+</blockquote></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol7.png" alt="Cómic"></div>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap12"><div class="document-container"><div class="extra-img"><img src="img/Volando_en_moto.png" alt=""></div>
 <h1>CAP05b — VEHÍCULOS</h1>
 <blockquote>
 <p><em>"La mitad del precio del vehículo es el motor. La otra mitad, estructura y ruedas — o equivalente."</em></p>
@@ -11004,7 +11602,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <th>Maniobra</th>
 <th>Plazas</th>
 <th>Carga (t)</th>
-<th>Precio base (miles PC)</th>
+<th>Precio base (PC)</th>
 <th>PDE</th>
 <th>FUE/CON</th>
 </tr>
@@ -11018,7 +11616,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>15</td>
 <td>2</td>
 <td>0,2</td>
-<td>1</td>
+<td>1.000</td>
 <td>50</td>
 <td>50/50</td>
 </tr>
@@ -11030,7 +11628,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>5</td>
 <td>5</td>
 <td>1</td>
-<td>12</td>
+<td>12.000</td>
 <td>100</td>
 <td>100/100</td>
 </tr>
@@ -11042,7 +11640,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>0</td>
 <td>20</td>
 <td>3</td>
-<td>60</td>
+<td>60.000</td>
 <td>300</td>
 <td>300/300</td>
 </tr>
@@ -11054,7 +11652,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>−5</td>
 <td>50</td>
 <td>40</td>
-<td>200</td>
+<td>200.000</td>
 <td>1.000</td>
 <td>1000/1000</td>
 </tr>
@@ -11066,7 +11664,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>−15</td>
 <td>250</td>
 <td>800</td>
-<td>1.000</td>
+<td>1.000.000</td>
 <td>10.000</td>
 <td>—</td>
 </tr>
@@ -11303,7 +11901,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <th>PDE extra</th>
 <th>Peso parcial</th>
 <th>Peso total</th>
-<th>PG</th>
+<th>Precio base</th>
 <th>Modificador maniobra</th>
 <th>Conducción asistida</th>
 </tr>
@@ -11325,7 +11923,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>10</td>
 <td>0,5t</td>
 <td>3t</td>
-<td>5</td>
+<td>5.000 PC</td>
 <td>+10</td>
 <td>+10</td>
 </tr>
@@ -11335,7 +11933,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>14</td>
 <td>0,7t</td>
 <td>4,2t</td>
-<td>7</td>
+<td>10.000 PC</td>
 <td>+5</td>
 <td>+5</td>
 </tr>
@@ -11345,7 +11943,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>18</td>
 <td>0,9t</td>
 <td>6,1t</td>
-<td>9</td>
+<td>20.000 PC</td>
 <td>−10</td>
 <td>0</td>
 </tr>
@@ -11355,7 +11953,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>22</td>
 <td>1,1t</td>
 <td>6,6t</td>
-<td>11</td>
+<td>40.000 PC</td>
 <td>−20</td>
 <td>−10</td>
 </tr>
@@ -11365,7 +11963,7 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>24</td>
 <td>1,2t</td>
 <td>8,2t</td>
-<td>12</td>
+<td>60.000 PC</td>
 <td>−25</td>
 <td>−15</td>
 </tr>
@@ -11375,20 +11973,25 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <td>30</td>
 <td>1,5t</td>
 <td>9t</td>
-<td>15</td>
+<td>100.000 PC</td>
 <td>—</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Escalado por tamaño de vehículo:</strong><br />
-- Tamaño medio: Blindaje +10 / Peso +5 / PG +10<br />
-- Tamaño grande: Blindaje +20 / Peso +30 / PG +30<br />
-- Tamaño colosal: Blindaje +30 / Peso +40 / PG +40</p>
-<p><strong>Clase 2:</strong> multiplicar ×10. <strong>Clase 3:</strong> multiplicar ×1.000.</p>
+<blockquote>
+<p><strong>PDE extra del blindaje:</strong> se suman a los PDE del vehículo como capa externa. El vehículo no sufre daño interno mientras queden PDE de blindaje. Son lo mismo que los PDE estructurales — solo están separados para indicar qué se pierde primero.</p>
+</blockquote>
+<p><strong>Escalado por tamaño de vehículo</strong> (se suma al blindaje Clase 1 base):<br />
+- Tamaño medio: Blindaje +10 / Peso +5t / PDE extra +10<br />
+- Tamaño grande: Blindaje +20 / Peso +30t / PDE extra +30<br />
+- Tamaño colosal: Blindaje +30 / Peso +40t / PDE extra +40</p>
+<p><strong>Clase 2 y Clase 3:</strong> multiplican el <strong>precio</strong> y los <strong>PDE extra</strong>, pero <strong>NO el blindaje</strong> — el blindaje a esos niveles ya es suficientemente alto como para que multiplicarlo resultaría en valores absurdos.<br />
+- Clase 2: precio ×10, PDE extra ×10. Blindaje sin cambio.<br />
+- Clase 3: precio ×1.000, PDE extra ×1.000. Blindaje sin cambio.</p>
 <hr />
 <h2>4. Complementos de Vehículo</h2>
-<p>Los precios de complementos son el 10% del valor del vehículo final básico, más el valor del elemento.</p>
+<p>Los complementos tienen precio propio. Cuando se indica "×0,5 PB" significa que el precio del complemento es ese porcentaje del <strong>precio base del vehículo</strong> (antes de añadir otros complementos). No hay un "10% adicional" sobre el elemento — el precio indicado es el total del complemento.</p>
 <table>
 <thead>
 <tr>
@@ -11700,9 +12303,9 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 </table>
 <p><em>Se les puede acoplar sistema de seguimiento inteligente.</em></p>
 <p><strong>Escalado por tamaño:</strong><br />
-- Medio: Daño +10 / Peso +5 / PG +10<br />
-- Grande: Daño +20 / Peso +30 / PG +30<br />
-- Colosal: Daño +30 / Peso +40 / PG +40</p>
+- Medio: Daño +10 / Peso +5t / Precio +10.000 PC<br />
+- Grande: Daño +20 / Peso +30t / Precio +30.000 PC<br />
+- Colosal: Daño +30 / Peso +40t / Precio +40.000 PC</p>
 <hr />
 <h2>6. Sistemas de Seguimiento Inteligente</h2>
 <table>
@@ -12109,9 +12712,154 @@ Primus cuenta con una unidad especial equipada con pulseras avanzadas de diseño
 <blockquote>
 <p>Un motor de AV funcional recuperado de un pecio vale ~4.800 PC en el mercado negro (N2 estandar x 40% x 40% x 1,1). El chatarrero paga 1.200 PC sin preguntas.</p>
 </blockquote>
-<hr /></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol11.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol11.png" alt="Cómic"></div>
+<h2>---</h2>
+<h2>12. Sistemas de Vuelo Personal — Jet-packs y equivalentes</h2>
+<blockquote>
+<p><em>"No es un vehículo. Es equipo que te deja caer hacia arriba."</em></p>
+</blockquote>
+<p>Los sistemas de vuelo personal permiten a un individuo desplazarse en el aire sin depender de una nave o vehículo. No son vehículos en el sentido estricto —no tienen PDE ni huecos— sino <strong>equipo avanzado</strong> que se maneja con las mismas habilidades que una servo-armadura.</p>
+<hr />
+<h3>Habilidad de manejo</h3>
+<p><strong>Pilotar</strong> es la habilidad base. Si el personaje lleva una <strong>armadura servoasistida</strong>, el sistema se integra en ella y puede manejarse también con <strong>Trajes Servoasistidos</strong> — lo que sea más alta.</p>
+<p>Sin ninguna de las dos habilidades: tira por la general de Tecnológicas con penalizador adicional según el NT del equipo (ver abajo).</p>
+<hr />
+<h3>Formato físico</h3>
+<p>El formato no cambia las reglas de vuelo, pero sí la <strong>autonomía</strong> y el <strong>encaje con equipo</strong>. La autonomía escala por NT:</p>
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>NT5</th>
+<th>NT6</th>
+<th>NT7</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mochila</strong></td>
+<td>10 asaltos</td>
+<td>20 asaltos</td>
+<td>40 asaltos</td>
+<td>El más común. Compatible con cualquier armadura. Ocupa 2 vol.</td>
+</tr>
+<tr>
+<td><strong>Cinturón</strong></td>
+<td>6 asaltos</td>
+<td>12 asaltos</td>
+<td>24 asaltos</td>
+<td>Más discreto. Incompatible con armaduras rígidas completas. 1 vol.</td>
+</tr>
+<tr>
+<td><strong>Botas</strong></td>
+<td>4 asaltos</td>
+<td>8 asaltos</td>
+<td>16 asaltos</td>
+<td>Solo saltos y control de caída. No vuelo sostenido. 0,5 vol.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Integrado en servo-armadura:</strong> si el fabricante lo incluyó en el diseño, no ocupa vol. externo y la autonomía se duplica. El coste se añade al de la armadura.</p>
+</blockquote>
+<hr />
+<h3>Nivel Tecnológico y manejo</h3>
+<p>El NT del equipo determina el modificador a la tirada de Pilotar o Trajes Servoasistidos:</p>
+<table>
+<thead>
+<tr>
+<th>NT</th>
+<th>Tecnología</th>
+<th>Modificador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>Cohetes experimentales</td>
+<td>−20. Solo posible con el Mérito <strong>Visionario</strong> construyéndolo con materiales de su NT.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cohetes básicos (propulsión química)</td>
+<td>−10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Sistemas gravitatorios / de campo pequeños</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7+</td>
+<td>Integración avanzada (igual que nave pequeña)</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p>A partir de NT6 los sistemas dejan de ser cohetes: son propulsores de campo o gravíticos, más silenciosos, más precisos y sin llama de escape.</p>
+<hr />
+<h3>Mecánica de vuelo</h3>
+<p><strong>Velocidad base por NT:</strong><br />
+- NT5 (cohetes): 400 m por asalto de viaje (≈240 km/h) + 100 m por éxito adicional<br />
+- NT6 (propulsores de campo): 800 m por asalto de viaje (≈480 km/h) + 200 m por éxito<br />
+- NT7+ (integración avanzada): 1.200 m por asalto de viaje (≈720 km/h) + 300 m por éxito</p>
+<p>Estas son velocidades máximas en línea recta. En entornos urbanos o de combate, la velocidad real es menor por maniobras.</p>
+<p><strong>Despegue desde el suelo:</strong> consume 1 asalto de autonomía.</p>
+<p><strong>Aterrizaje controlado:</strong> requiere al menos 1 éxito. Con 0 éxitos o resultado negativo: caída libre — daño equivalente a los éxitos negativos (sin contar blindaje de armadura; el impacto lo absorbe el cuerpo).</p>
+<p><strong>Maniobras en combate:</strong> cada maniobra brusca (esquivar, giro rápido, cambio de altitud súbito) exige una tirada. Un fallo no derriba automáticamente — reduce la velocidad y cuesta 1 asalto de autonomía adicional. Una pifia sí derriba.</p>
+<p><strong>Autonomía gastada:</strong> cuando se agota, el sistema entra en modo de emergencia (descenso controlado automático si NT6+) o simplemente se apaga (NT5 o menos). Las botas no tienen modo de emergencia.</p>
+<hr />
+<h3>Precio orientativo</h3>
+<table>
+<thead>
+<tr>
+<th>NT</th>
+<th>Formato</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Mochila</td>
+<td>8.000 PC</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cinturón</td>
+<td>5.000 PC</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Botas</td>
+<td>2.000 PC</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Mochila</td>
+<td>25.000 PC</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Integrado en servo</td>
+<td>+15.000 PC al precio de la armadura</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Mochila</td>
+<td>80.000 PC</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Integrado en servo</td>
+<td>+40.000 PC al precio de la armadura</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>El mercado negro suele tener NT5 de segunda mano a 3.000–4.000 PC. Los NT6 rara vez aparecen fuera de canales corporativos.</p>
+</blockquote></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol8.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap13"><div class="document-container"><h1>CAP06 — EL NARRADOR</h1>
 <blockquote>
 <p><em>"No hay un solo camino en La Senda de los Errantes."</em></p>
@@ -12432,27 +13180,119 @@ Algunos son ciertos. Algunos son propaganda. Ninguno viene con etiqueta.</p>
 </tr>
 </tbody>
 </table>
-<hr /></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol12.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol12.png" alt="Cómic"></div>
+<hr />
+<hr />
+<h2>10. Ritmo de Campaña y Economía</h2>
+<p><strong>Estructura típica de sesión:</strong><br />
+Un contrato o encargo, su resolución (combate, exploración, negociación), tiempo muerto breve, y un gancho para la siguiente sesión. No es una fórmula — es un punto de partida.</p>
+<p><strong>Ritmo económico:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ritmo</th>
+<th>Contratos</th>
+<th>Consecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lento</td>
+<td>1 cada 3-4 sesiones</td>
+<td>Los personajes tardan meses en montar un refugio. La escasez es tensión.</td>
+</tr>
+<tr>
+<td>Medio</td>
+<td>1 cada 2 sesiones</td>
+<td>Equilibrio. Pueden mejorar, pero no sin esfuerzo.</td>
+</tr>
+<tr>
+<td>Rápido</td>
+<td>1 por sesión</td>
+<td>Se enriquecen. Sube los sumideros (mantenimiento ×2, combustible ×3) o baja las bolsas −25%.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El Tiempo Muerto no es descanso.</strong> Cada turno de tiempo muerto es una oportunidad: un contacto que desaparece, una deuda que vence, un rival que se mueve mientras los personajes reparan la nave. El mundo no espera.</p>
+<p>Si los personajes tienen demasiado dinero, introduce un problema que no se resuelve comprando. Si pasan hambre, un contrato "demasiado bueno" — que esconde algo.</p>
+<hr />
+<h2>11. Dirigir la Deriva y la Tabla A</h2>
+<p><strong>La Deriva no es un castigo. Es una historia.</strong></p>
+<p>Cada mutación tiene un origen concreto que vale la pena rastrear. Los jugadores deberían sentir curiosidad por sus cambios, no solo miedo. La Deriva es lo que hace que cada Errante sea único.</p>
+<p><strong>Cómo presentar los resultados:</strong><br />
+No digas "sacas el 22, +15 Fuerza". Narra el cambio: <em>"Sientes que tus músculos se reordenan. Cruje al despertar durante una semana. Cuando te miras al espejo, algo ha cambiado."</em></p>
+<p>Los resultados especiales (00, 01, 76, 99) merecen una escena completa — no se resuelven en 30 segundos. Los rasgos Precursores (07, 17, 27, 37, 47, 57, 67, 76, 77) son ganchos de campaña: conéctalos con los Antiguos, las Pseudo-Arkanitas, los Kawalapiti.</p>
+<p><strong>Los resultados inamovibles (76 y 99):</strong><br />
+No los suavices. No los cambies. El 76 y el 99 son destino, no azar — cuando salen, salen. El 99 especialmente merece una escena de horror, no una anotación en la ficha.</p>
+<p><strong>La Deriva como generador de ganchos:</strong><br />
+- Deriva 30+: visible para Iniciados. Algunos te reconocen antes de que hables.<br />
+- Deriva 50+: las corporaciones lo registran. TecnoStealer, Primus, Pseudo-Arkanitas quieren saber quién eres.<br />
+- Deriva 70+: amenaza existencial para la estabilidad de teselas cercanas. Todos quieren algo — reclutarte, estudiarte o eliminarte.</p>
+<hr />
+<h2>12. Dirigir la Cristalización</h2>
+<p><strong>La Cristalización no es un power-up. Es una transformación.</strong></p>
+<p>El Genocaballero se activa cuando detecta "coherencia" en el individuo. Esto no es una tirada — es el Narrador decidiendo que el personaje ha llegado a ese punto: ha integrado sus contradicciones, ha aceptado su Deriva, ha encontrado un propósito. Lo sabes cuando lo ves.</p>
+<p><strong>Cuándo activarla:</strong><br />
+- <strong>Sorpresa:</strong> el personaje encuentra el Genocaballero en una aventura. Lo toca. Se activa. Horror y maravilla.<br />
+- <strong>Planeada:</strong> el Narrador ha estado preparando este momento durante meses. Es la recompensa de un arco narrativo.<br />
+- <strong>Elección:</strong> el personaje decide activarlo sabiendo que estará en pausa. Es una decisión táctica con coste real.</p>
+<p><strong>La vaina:</strong><br />
+No es un ataúd. Es una estructura orgánica/tecnológica que se forma alrededor del personaje en minutos — nanoestructuras, biointerfaces, patrones de asimilación. "Sarcófago de pausa. No vida. No muerte." No puede ser forzada. No puede ser interrumpida sin consecuencias graves.</p>
+<p><strong>Durante la pausa (meses):</strong><br />
+Los otros personajes pueden proteger la vaina, buscar información sobre el Genocaballero, continuar la campaña, enfrentar consecuencias de acciones previas. El personaje cristalizado no puede actuar — su jugador puede llevar un personaje secundario o esperar.</p>
+<p><strong>El despertar:</strong><br />
+Los implantes se integran como características naturales. La Humanidad y el Alma se resetean. Las mutaciones de Deriva se normalizan como rasgos propios. <strong>La Deriva NO se resetea.</strong> El personaje puede volver a implantarse desde cero, pero ahora sabe qué es la integración total.</p>
+<p><strong>Hestia:</strong><br />
+Al final del proceso aparece un registro atribuido a [Hestia]: una sola palabra. <em>"Tejiendo."</em> El Narrador decide qué es Hestia. Su aparición no parece casual — y eso es todo lo que necesitas saber para usarla.</p>
+<hr />
+<h2>13. La Colmena Emergente — Cuándo Activarla</h2>
+<p>La Colmena no se programa. No se activa con una tirada. Emerge.</p>
+<p><strong>Condiciones:</strong><br />
+- Un personaje con Deriva acumulada significativa (30+ como referencia)<br />
+- Máquinas o entidades que han compartido espacio prolongado con ese personaje<br />
+- Necrochips activos en el entorno cercano<br />
+- Un momento narrativo que lo justifique: una crisis, una batalla crítica, un sacrificio</p>
+<p><strong>Cómo presentarla:</strong><br />
+El personaje siente el estado de las máquinas como extensión de su propio cuerpo. Las máquinas responden antes de que se les dé una orden. La coordinación es visible pero inexplicable por medios técnicos. Los observadores externos pueden detectar los efectos, no la causa.</p>
+<p><strong>Efecto mecánico:</strong><br />
++20 a todas las tiradas colaborativas de los miembros de la Colmena ese turno. El personaje puede "sentir" a través de ellos sin tirada. Dura 1 escena. Después, los miembros quedan exhaustos (−20 durante 1d6 horas).</p>
+<p><strong>Frecuencia:</strong> máximo una vez cada 5 sesiones. La Colmena es un momento, no un estado permanente. Cada activación debería ser memorable.</p>
+<hr />
+<h2>14. El Cruce — El Momento Definitorio</h2>
+<p>Todo Errante tiene un antes y un después. La primera sesión de cualquier personaje debería narrar su Cruce — no como flashback, sino como escena jugable.</p>
+<p><strong>Cómo presentarlo:</strong><br />
+Usa la tabla de CAP02 (1d10) para el tipo de portal. Narra la sensación con detalle físico: la barrera que absorbe, la luz que ciega, el silencio, el momento en que te das cuenta de que no puedes volver.</p>
+<p>Aplica las consecuencias mecánicas. Luego haz preguntas humanas:<br />
+- <em>"¿Qué llevas en los bolsillos?"</em><br />
+- <em>"¿A quién dejas atrás sin despedirte?"</em><br />
+- <em>"¿Qué es lo último que recuerdas antes de cruzar?"</em><br />
+- <em>"¿Qué sientes al darte cuenta de que no puedes volver?"</em></p>
+<p><strong>Las primeras 24 horas:</strong><br />
+El cuerpo no se ha adaptado. −20 a Autocontrol y percepciones. No puede usar habilidades rúnicas. Cada vez que duerme, tira 1d6: con 1-2, pesadillas — no recupera PV esa noche.</p>
+<p><strong>Regla de oro:</strong><br />
+Nunca le des un arma al principio. Un Errante sin armas es un Errante que piensa. El Cruce es vulnerabilidad, no poder. Es el momento más humano de toda la campaña — úsalo.</p></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol9.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap14"><div class="document-container"><h1>CAP07 — BESTIARIO Y RAZAS</h1>
 <blockquote>
 <p><em>"Ángeles, demonios, alienígenas, fantasmas y robots podrían ser tus compañeros de viaje."</em></p>
 </blockquote>
 <p>Fichas: <code>F / A / P | PV | Blindaje | Ataque % | Daño | Especial</code><br />
 Daño = daño base × éxitos netos. Pen = penetración (reduce blindaje).</p>
+<blockquote>
+<p><strong>Formato simplificado:</strong> las bestias solo muestran F/A/P. Asume <strong>CON = F</strong> salvo indicación contraria. Los PV mostrados ya están calculados — el DJ no necesita recalcular nada.<br />
+<strong>Zonas de PV:</strong> el número de valores indica las zonas (Rata 3 = 1 zona; Lobo 10/10 = 2 zonas; Oso 20/10/20 = 3 zonas). Criaturas enormes con un solo valor alto (Gólem 100) no usan localización.</p>
+</blockquote>
 <hr />
 <h2>1. Bestias Naturales</h2>
-<p><strong>Oso</strong> F60/A40/P30 | PV 20/10/20 | Bld 2 | 60% (Pen 2) | Daño 3+4F | Esquiva 50%</p>
-<p><strong>Jabalí</strong> F50/A20/P30 | PV 15/7/15 | Bld 3+3 Pellejo | 65% (55+10 Colmillos) | Daño 3+4F | Esquiva 60%</p>
+<p><strong>Oso</strong> F60/A40/P30 | PV 20/10/20 | Bld 2 | 60% (Pen 2) | Daño 11 | Esquiva 50%</p>
+<p><strong>Jabalí</strong> F50/A20/P30 | PV 15/7/15 | Bld 3+3 Pellejo | 65% (55+10 Colmillos) | Daño 9 | Esquiva 60%</p>
 <p><strong>Caballo</strong> F40/A60/P30 | PV 20/20 | Bld 0 | 55% (45+10 Coces) — solo acorralado | Esquiva 80%</p>
-<p><strong>Lobo</strong> F40/A40/P60 | PV 10/10 | Bld 0 | 75% (60+15 Mordisco, Pen 2) | Daño 3+4F | Esquiva 80% (60+20 Rápido)</p>
+<p><strong>Lobo</strong> F40/A40/P60 | PV 10/10 | Bld 0 | 75% (60+15 Mordisco, Pen 2) | Daño 7 | Esquiva 80% (60+20 Rápido)</p>
 <p><strong>Rata</strong> F10/A20/P30 | PV 3 | Bld 0 | 20% | Daño mínimo | Esquiva 70% (30+20 Rápida+20 Tamaño) — en grupos de 10+, tratar como entidad única</p>
 <hr />
 <h2>2. Criaturas Distorsionadas</h2>
 <p><strong>Rata Mutante</strong> F20/A30/P30 | PV 5/5/10 | Bld 1 | 40% | Daño 3, Pen 3 | Esquiva 75%</p>
-<p><strong>Mutante Gigante</strong> F80/A30/P30 | PV 60 | Bld 2 | 90% | Daño 7+12F | Armadura objetivo a la mitad | Esquiva 25%</p>
-<p><strong>Gárgola Obsidiana</strong> F40/A40/P30 | PV 30 | Bld 6 (4+2 Piel Obsidiana) | 60% (50+10 Garra, Pen 2) | Daño 3+4F | Esquiva 65% | Vuela (velocidad ×2)</p>
+<p><strong>Mutante Gigante</strong> F80/A30/P30 | PV 60 | Bld 2 | 90% | Daño 19 | Armadura objetivo a la mitad | Esquiva 25%</p>
+<p><strong>Gárgola Obsidiana</strong> F40/A40/P30 | PV 30 | Bld 6 (4+2 Piel Obsidiana) | 60% (50+10 Garra, Pen 2) | Daño 7 | Esquiva 65% | Vuela (velocidad ×2)</p>
 <p><strong>Horror Fusionado</strong> — Sin stats fijas. Adquiere características de sus víctimas. Cada encuentro es único.</p>
 <hr />
 <h2>3. Entidades Sobrenaturales</h2>
@@ -12493,9 +13333,9 @@ Daño = daño base × éxitos netos. Pen = penetración (reduce blindaje).</p>
 </tr>
 <tr>
 <td>Daño</td>
-<td>3+4F</td>
-<td>3+6F</td>
-<td>3+10F</td>
+<td>7</td>
+<td>13</td>
+<td>21</td>
 </tr>
 <tr>
 <td>Esquiva</td>
@@ -12518,28 +13358,31 @@ Daño = daño base × éxitos netos. Pen = penetración (reduce blindaje).</p>
 </tbody>
 </table>
 <p>Todos los grados: Inmunidad Mental. Pueden tener alas, garras y colmillos (Pen 2-5). Si su tamaño es superior al humano, sus armas tienen daño base 50% superior.</p>
+<blockquote>
+<p><strong>Genéricos vs Grimorio:</strong> esta tabla es para encuentros aleatorios o invocaciones sin nombre. Los Demonios del Grimorio (CAP04b: Axarón, Glurath, Tafnois...) tienen stats únicos y personalidad propia. Ambos sistemas conviven: un Demonio genérico puede revelar su nombre con el tiempo — y pasar al Grimorio del Invocador que lo descubra.</p>
+</blockquote>
 <p><strong>Dragón Menor Chafry</strong> F100/A40/P50 | PV 200/100/200 | Bld 7 (Escamas de dragón)<br />
-Melé: 75% (25+50 Garra, Bld objetivo a la mitad) | Daño 3+16F<br />
+Melé: 75% (25+50 Garra, Bld objetivo a la mitad) | Daño 31<br />
 Distancia: 70% (20+50 Aliento de Ácido) | Daño 10, Pen 5<br />
 Esquiva: 20% (60−40 Tamaño) | Vuela | Inmunidad Mental<br />
-Aliento de fuego: cada D20 turnos / alcance AGI×50m / forma cono / solo Blindaje Energético</p>
+Aliento de fuego: cada 1d10 turnos / alcance AGI×50m / forma cono / solo Blindaje Energético</p>
 <p><strong>Enredadera</strong> F30/A40/P30 | PV 60 | Bld 6 (0 contra fuego) | 55% (45+10) | Daño variable<br />
 Una antorcha convierte un encuentro peligroso en limpieza de jardín.</p>
 <p><strong>Espíritu Guardián</strong> — Etéreo. Manipula elementos del entorno. Puede negociarse si entiendes qué protege.</p>
-<p><strong>Araña del Pecio</strong> F30/A40/P30 | PV 10×5 zonas | Bld 4 | 45% (35+10 Mandíbulas) | Daño 3+2F<br />
+<p><strong>Araña del Pecio</strong> F30/A40/P30 | PV 10×5 zonas (cabeza, torso, 4 patas — a 2 patas destruidas: inmovilizada) | Bld 4 | 45% (35+10 Mandíbulas) | Daño 5<br />
 Distancia: 80% (50+30 Telaraña) — inmoviliza sin daño. Duración = daño. Esquiva 60% (40+20 Sentido arácnido −2 Tamaño)</p>
-<p><strong>Sabandija del Pecio</strong> F40/A30/P30 | PV 40/10 | Bld 5 | 50% (40+10 Antena de Óxido) | Daño 3+4F<br />
+<p><strong>Sabandija del Pecio</strong> F40/A30/P30 | PV 40/10 | Bld 5 | 50% (40+10 Antena de Óxido) | Daño 7<br />
 Antena de Óxido: +1 Blindaje al objetivo por éxito (destruye metal; 2 éxitos para otros materiales) — ignora Blindaje.</p>
 <p><strong>Zombie</strong> F20/A10/P30 (+20 detectar vida) | PV 15/15 | Bld 0 | 75% | Daño 3<br />
 Inmunidad Mental.<br />
 Infección: 50% de posibilidades si causa herida en melé. Con infección: tirada 2 éxitos en Primeros Auxilios (o Medicina +1 éxito por día). Sin tratamiento: el infectado se convierte en Zombie en 1D3 días. Irreversible.</p>
 <hr />
 <h2>4. Entidades Mecánicas</h2>
-<p><strong>Esqueleto</strong> F30/A40/P30 | PV 10×3 | Bld 6 cortantes/punzantes / 3 contundentes | 70% (65+5 Espada corta) | Daño 5+2F<br />
+<p><strong>Esqueleto</strong> F30/A40/P30 | PV 10×3 | Bld 6 cortantes/punzantes / 3 contundentes | 70% (65+5 Espada corta) | Daño 7<br />
 Distancia: 55% | Daño 5 | Esquiva 45% | Inmune mental y dolor.</p>
-<p><strong>Gólem de Chatarra</strong> F40/A30/P30 | PV 100 | Bld 7 | 70% (50+20 Puño de piedra, Pen 2) | Daño 7+2F<br />
+<p><strong>Gólem de Chatarra</strong> F40/A30/P30 | PV 100 | Bld 7 | 70% (50+20 Puño de piedra, Pen 2) | Daño 9<br />
 Esquiva 40% | Inmune mental. Atacar puntos de unión para derribarlo.</p>
-<p><strong>Glass-Dog</strong> F35/A55/P40 | PV 20/10/20 | Bld 1 | 65% | Daño 3+4F<br />
+<p><strong>Glass-Dog</strong> F35/A55/P40 | PV 20/10/20 | Bld 1 | 65% | Daño 7<br />
 Piel translúcida. Ventaja en Sigilo en entornos de poca visibilidad.</p>
 <hr />
 <h2>5. Robots y Droides</h2>
@@ -12646,7 +13489,7 @@ Piel translúcida. Ventaja en Sigilo en entornos de poca visibilidad.</p>
 <p><strong>IAs:</strong> tienen emociones y libre albedrío. Sin libre albedrío = esclavos. Las IAs emergentes son impredecibles. <em>(Desarrollo en suplemento futuro.)</em></p>
 <hr />
 <h2>6. Xenoformas</h2>
-<p>N0 libre / N1 libre / N2+ acuerdo con DJ</p>
+<p>Clasificación por <strong>nivel de peligro</strong>: N0 = inofensivo · N1 = peligroso pero manejable · N2+ = amenaza seria. N0 y N1 pueden usarse libremente; N2+ requiere acuerdo con el DJ según el nivel del grupo.</p>
 <p><strong>Xenoforma Destripador</strong> F50/A60/P40 | PV 40/20/40 | Bld 3 | 70% | Regenera 2PV/turno. +1 Bld por encuentro sobrevivido (máx +3).</p>
 <p><strong>Controlador Etéreo</strong> F15/A20/P70 | PV 15 | Bld 1 | Control mental (tirada Voluntad). Hasta 3 seres simultáneos.</p>
 <hr />
@@ -12668,7 +13511,7 @@ Piel translúcida. Ventaja en Sigilo en entornos de poca visibilidad.</p>
 <tr>
 <td>Zarpazo/mordisco</td>
 <td>65% (Pen 2)</td>
-<td>3+5F</td>
+<td>10</td>
 <td>Solo si acorralada o defendiendo crías</td>
 </tr>
 <tr>
@@ -12689,6 +13532,9 @@ Si el grupo la encuentra, lo más probable es que esté durmiendo o cazando lejo
 </blockquote>
 <hr />
 <h2>8. PNJs de Referencia</h2>
+<blockquote>
+<p><strong>Abreviaturas:</strong> Com = habilidades de Combate · demás = resto de categorías · FM = Fuerza/Manejo (físico) · HB = Habilidad (precisión) · Melé = cuerpo a cuerpo · Dist = distancia · Cad = cadencia · Pen = penetración · Bld X/Y = blindaje extremidades/torso · entre paréntesis: daño del arma.</p>
+</blockquote>
 <p><strong>Mercenario estándar</strong> Com45/demás35 | PV16/8/16 | Bld2 torso+cabeza | Subfusil(5)+Machete(4) | Cyber-ópticos antideslumbrantes y amplificador de imagen</p>
 <p><strong>Soldado corporativo</strong> Com45/demás35 | PV12/6/12 | Bld2 | Subfusil(5)+Machete(4)<br />
 <em>Ajustar equipo por corporación: TecnoStealer negro/plateado — Serpent dorado/verde — Mort negro/calavera</em></p>
@@ -12941,9 +13787,293 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 </tr>
 </tbody>
 </table>
-<hr /></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol13.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol13.png" alt="Cómic"></div>
+<hr />
+<hr />
+<h2>Droideum — Droide de Servicio</h2>
+<blockquote>
+<p><em>"No es un bot. Los bots no se quedan mirándote cuando les das una orden absurda."</em></p>
+</blockquote>
+<p>El Droideum es la línea de droides de servicio más extendida del mosaico. No son los más capaces ni los más baratos — son los más completos. Un Droideum básico puede cargar equipo, reparar sistemas simples, traducir idiomas conocidos y, si hace falta, defenderse. Su tamaño varía según modelo, pero ninguno supera el metro de altura.</p>
+<p>Técnicamente siguen órdenes. En la práctica, tienen criterio propio latente — no se negarán a una orden, pero sí pueden ejecutarla a su manera, hacer preguntas incómodas o desarrollar manías con el tiempo. No tienen libre albedrío en sentido pleno, pero tampoco son esclavos ciegos.</p>
+<h3>Ficha base — Droideum Básico (DB-1)</h3>
+<p><strong>Precio:</strong> 10.000 PC · <strong>Tamaño:</strong> pequeño (no supera 1m) · <strong>Peso:</strong> 15–25 kg · <strong>Volumen:</strong> 2</p>
+<p><code>F20 / A20 / P30 | PV 20 | Bld 1</code></p>
+<p><strong>Atributos:</strong> Car 10 / Agi 20 / Per 30 / Con 20 / Int 15 / Fue 20 / Vol 10 / Hab 15</p>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>%</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reparación básica</td>
+<td>30%</td>
+<td>Electrónica, mecánica simple</td>
+</tr>
+<tr>
+<td>Traducción</td>
+<td>40%</td>
+<td>Idiomas conocidos en chip</td>
+</tr>
+<tr>
+<td>Carga y transporte</td>
+<td>40%</td>
+<td>Carga máx 40 kg</td>
+</tr>
+<tr>
+<td>Combate básico</td>
+<td>20%</td>
+<td>Solo defensa; necesita Módulo de Combate para atacar</td>
+</tr>
+<tr>
+<td>Percepción/Alerta</td>
+<td>35%</td>
+<td>Sensores estándar</td>
+</tr>
+<tr>
+<td>Sigilo</td>
+<td>15%</td>
+<td>No es su fuerte</td>
+</tr>
+<tr>
+<td>Primeros Auxilios (droide)</td>
+<td>25%</td>
+<td>Solo con MD instalado; no funciona en biológicos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Inmunidades:</strong> dolor, miedo, efectos mentales directos.<br />
+<strong>Vulnerabilidades:</strong> EMP (−20 PV sin blindaje EMP); agua sin protección = fallo de sistemas.</p>
+<h3>Huecos de módulo (3 base)</h3>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Huecos</th>
+<th>Efecto</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brazo reforzado</td>
+<td>1</td>
+<td>+10 F, carga máx +20 kg</td>
+<td>3.000 PC</td>
+</tr>
+<tr>
+<td>Sensor ampliado</td>
+<td>1</td>
+<td>+20 P, visión nocturna, detección de calor</td>
+<td>4.000 PC</td>
+</tr>
+<tr>
+<td>Blindaje ligero</td>
+<td>1</td>
+<td>+2 Blindaje, +5 PV</td>
+<td>5.000 PC</td>
+</tr>
+<tr>
+<td>Blindaje EMP</td>
+<td>1</td>
+<td>Inmune a EMP</td>
+<td>6.000 PC</td>
+</tr>
+<tr>
+<td>Módulo de combate</td>
+<td>1</td>
+<td>Combate básico 40%; puede usar arma pequeña</td>
+<td>4.000 PC</td>
+</tr>
+<tr>
+<td>Nano-Reparador</td>
+<td>1</td>
+<td>Recupera 2 PV/turno en reposo</td>
+<td>8.000 PC</td>
+</tr>
+<tr>
+<td>Módulo de comunicación</td>
+<td>1</td>
+<td>+20% habilidades técnicas de comunicación</td>
+<td>3.000 PC</td>
+</tr>
+<tr>
+<td>Módulo de vuelo</td>
+<td>2</td>
+<td>Propulsores cortos. Velocidad ×1,5, altura máx 10m</td>
+<td>12.000 PC</td>
+</tr>
+<tr>
+<td>Hueco extra</td>
+<td>—</td>
+<td>Máx 2 adicionales (5 total)</td>
+<td>8.000 PC c/u</td>
+</tr>
+</tbody>
+</table>
+<h3>Reparación</h3>
+<p><strong>Medikit Droide (MD):</strong> 300 PC | Recupera 15 PV | 1 asalto completo. Compatible con cualquier droide. No funciona en biológicos.</p>
+<p><strong>Estados de daño:</strong></p>
+<table>
+<thead>
+<tr>
+<th>PV</th>
+<th>Estado</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15–20</td>
+<td>Operativo</td>
+<td>Sin penalizadores</td>
+</tr>
+<tr>
+<td>8–14</td>
+<td>Dañado</td>
+<td>−10 a todas las habilidades</td>
+</tr>
+<tr>
+<td>1–7</td>
+<td>Crítico</td>
+<td>−20 a todas; movimiento reducido</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Inactivo</td>
+<td>Apagado. Reparable si no hay daño estructural total</td>
+</tr>
+</tbody>
+</table>
+<h3>Salvamento (1d10)</h3>
+<table>
+<thead>
+<tr>
+<th>1d10</th>
+<th>Estado</th>
+<th>PV %</th>
+<th>Módulos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>Destruido</td>
+<td>0%</td>
+<td>Chatarra (1d3 salvables)</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>Crítico</td>
+<td>10–30%</td>
+<td>1d3 operativos</td>
+</tr>
+<tr>
+<td>5–6</td>
+<td>Dañado</td>
+<td>40–60%</td>
+<td>Todos, alguno dañado</td>
+</tr>
+<tr>
+<td>7–8</td>
+<td>Operativo</td>
+<td>70–90%</td>
+<td>Todos operativos</td>
+</tr>
+<tr>
+<td>9–10</td>
+<td>Impecable</td>
+<td>100%</td>
+<td>Todos + posible módulo extra</td>
+</tr>
+</tbody>
+</table>
+<h3>Personalidad (primer encendido)</h3>
+<p>Tira 1d8 (rasgo) + 1d6 (defecto latente):</p>
+<table>
+<thead>
+<tr>
+<th>d8</th>
+<th>Rasgo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Meticuloso — completa las tareas al 100% o no las da por terminadas</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Curioso — pregunta sobre todo lo que no entiende</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Protector — interpone su cuerpo antes de que se lo pidan</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lacónico — responde con la mínima información posible</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sociable — intenta conversar con cualquier ser consciente</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Desconfiado — escanea a todo ser nuevo durante 1d6 asaltos</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Optimista — siempre encuentra el lado positivo</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Melancólico — hace referencias a propietarios anteriores</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>d6</th>
+<th>Defecto latente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Terco — dos órdenes simultáneas = paralizado 1 asalto</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Manías de limpieza — gasta 1 acción/turno si hay suciedad excesiva</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fobia a agua — −10 a todo si está mojado</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sentimental — no destruye objetos con los que ha interactuado más de 1 sesión</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Verboso — narra en voz alta lo que hace en situaciones de estrés</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Jerarquía rígida — ordenes de no-propietario con −10%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Para el Narrador:</strong> la combinación rasgo + defecto define al Droideum como personaje. Un Protector/Sentimental que no puede destruir objetos queridos pero se lanza a las balas es memorable. Uno Lacónico/Verboso que solo habla en pánico tiene arco cómico enorme.</p>
+</blockquote>
+<p><em>La línea Droideum completa (DB-2, DB-3, versiones militares y corporativas) queda para el Suplemento del Narrador.</em></p></div></section>
+<div class="comic-page"><img src="img/ComicJuegoRol10.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap15"><div class="document-container"><h1>CAP08 — AVENTURAS EN EL MOSAICO</h1>
 <blockquote>
 <p><em>"No diseñes lo que va a pasar. Diseña el lugar donde algo puede pasar."</em></p>
@@ -13052,6 +14182,7 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 <blockquote>
 <p><em>No hay mapas del Vertedero. Los que lo intentaron murieron o enloquecieron.</em></p>
 </blockquote>
+<p><strong>El Vertedero es un sector de la misma tesela donde se asienta EP-9</strong> — el lugar donde acaba la chatarra que ni las corporaciones quieren reciclar. Está a distancia de convoy del nodo, no de salto. Los Errantes que operan desde EP-9 lo conocen bien; el terreno cambia con cada descarga y por eso ningún mapa sobrevive más de unas semanas.</p>
 <p>Montanas de chatarra que alcanzan el cielo gris. Estructuras que debieron ser naves hace milenios. Caminos de metal que llevan a ninguna parte. El aire huele a oxido, a ozono, a algo organico que no deberia existir.</p>
 <p><strong>El Coloso.</strong> Setenta y ocho metros de altura. Come chatarra. Toneladas por hora. Tiene tecnologia incrustada en el cuerpo: paneles oxidados que son carne y metal, cables que cuelgan como tendones, ojos que no son ojos pero que miran. No ataca. No defiende. Si te interpones, te integra. Si te apartas, te ignora.</p>
 <p><strong>Los poblados.</strong> Entre la chatarra hay gente. La mecanica del poblado mas grande se llama Voss. Lleva decadas aqui. Tiene las manos mas danadas que nadie ha visto y el taller mas ordenado de todo el Vertedero.</p>
@@ -13095,8 +14226,7 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 <h3>Paso 6 — Giro de la Aventura (1D10)</h3>
 <p>1 Todo es lo que parece / 2 Encuentro aleatorio / 3 Los PJs son usados como distracción / 4 El patrón es asesinado / 5 Descubren algo que cambia su alineamiento / 6 Los PJs están siendo engañados / 7 El patrón intentará matarlos al terminar / 8 El objetivo entra en conflicto con la personalidad de un PJ / 9 El enemigo manipula a los PJs contra su patrón / 10 El patrón muere antes de revelar la misión; los enemigos persiguen a los PJs</p>
 <hr /></div></section>
-<div class="comic-page comic-left"><img src="img/ComicJuegoRol14.png" alt="Cómic"></div>
-<div class="comic-page comic-right"><img src="img/ComicJuegoRol14.png" alt="Cómic"></div>
+<div class="comic-page"><img src="img/ComicJuegoRol11.png" alt="Cómic"></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap16"><div class="document-container"><h1>CAP09 — TU PRIMERA SENDA</h1>
 <h2>Módulo introductorio para nuevos jugadores</h2>
 <blockquote>
@@ -13184,21 +14314,587 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 <p>Calor agobiante, aire viciado. El destino: luna pequeña sin atmósfera.</p>
 <p>Al llegar: soldados tipo SS aparecen y abren fuego sin preguntas. Los PNJs huyen. La nave de escape está en un contenedor — sin piloto.</p>
 <hr />
+<h2>ESCENA FINAL (opcional) — El Cruce</h2>
+<p>Cuando la nave salta, los PJs sienten la distorsión por primera vez. Tira en la Tabla de Cruce (CAP02) para el tipo de portal. Narra la sensación física — la membrana que cede, el silencio, el momento en que entienden que no hay vuelta. Aplica el trauma del primer cruce: −20 a Autocontrol y percepciones durante 24h (ver CAP06 §14).</p>
+<p>Haz las preguntas humanas: <em>"¿Qué llevas en los bolsillos? ¿A quién dejas atrás sin despedirte?"</em></p>
+<p>Esta escena es opcional pero recomendada: es el momento en que dejan de ser civiles y se convierten en Errantes.</p>
+<hr />
 <h2>EPÍLOGO</h2>
 <p>Llegan a un planeta despertado donde las máquinas lo controlan todo. Han cruzado la Mazmorra. No saben cómo ni a dónde.</p>
-<p><strong>Para el Narrador:</strong> No lo expliques. Deja que lo vivan.</p>
+<p><strong>Para el Narrador:</strong> No lo expliques. Deja que lo vivan. Este final es también un inicio: puede ser aventura de supervivencia (escapar), campaña de exploración (adaptarse), o intriga corporativa (descubrir la conexión con CHAFRY y el PREDATOR). El Mundo Máquina se desarrolla en CAP08 §7 y en suplemento futuro.</p>
 <hr />
 <h2>Stats de referencia</h2>
 <p><strong>Mercenarios CHAFRY:</strong> Com45/35 | PV16/8/16 | Bld2 | Subfusil(5,Cad3)+Machete(4) | Aturdidora no-letal10 alcance25m<br />
 <strong>Agentes MORT (Drake):</strong> Com45/35 | PV16/8/16 | Bld3 servo | Subfusil(5)+Pistola(3)+Machete(4)<br />
 <strong>Soldados almacenes:</strong> Com45/35 | PV12/6/12 | Bld2 | Subfusil(5)+Machete(4)</p>
-<p><strong>PREDATOR N-5.2:</strong> Arma media | Daño 7 | Cad 5 | Carg 25 (5 disp) | Pen 5 | FUE mín 35/30 (1m/2m)<br />
-Las balas cambian grosor a lo largo del cargador. La última refrigera — sustituible por normal para +1 daño.</p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap17"><div class="document-container"><h1>ANEXO — Generador de Asentamientos y Estaciones para el DJ</h1>
+<p><strong>PREDATOR N-5.2 (réplica Norton):</strong> Arma media | Daño 7 | Cad 5 | Carg 25 (5 disp) | Pen 5 | FUE mín 35/30 (1m/2m)<br />
+Las balas cambian grosor a lo largo del cargador. La última refrigera — sustituible por normal para +1 daño.</p>
+<blockquote>
+<p><strong>Dos armas, un nombre.</strong> La PREDATOR original de CHAFRY (CAP04d: daño 9+radio, Pen 1, Cad 1/3) es un prototipo mítico — existen pocas unidades, y esa escasez es el motor de este módulo. Lo que circula por el mercado es esta <strong>réplica de Norton</strong>: menor potencia, fabricación en serie, legalidad dudosa. Si el chip que Arthur robó contiene los planos de la original, se entiende por qué MORT paga 15.000 PC — y por qué CHAFRY mata por recuperarlo.</p>
+</blockquote></div></section>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap17"><div class="document-container"><h1>ANEXO A2 — REFERENCIA RÁPIDA: HABILIDADES, MÉRITOS Y DEFECTOS</h1>
+<blockquote>
+<p><em>Este anexo es una guía de consulta, no de creación. Las reglas de creación de personaje están en CAP02. Aquí encontrarás qué significa exactamente cada habilidad, cada mérito y cada defecto cuando tengas dudas en mesa.</em></p>
+</blockquote>
+<hr />
+<h2>1. HABILIDADES — QUÉ CUBRE CADA UNA</h2>
+<p>Las habilidades se agrupan en cinco ramas. Dentro de cada rama, lo que no sabes se intenta por el valor base de esa rama; tenerlo como especialidad te da el plus sobre la base.</p>
+<hr />
+<h3>ACADÉMICAS — base (INT + VOL) ÷ 2</h3>
+<p>La rama del conocimiento estructurado y el pensamiento analítico.</p>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Qué cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ciencias</strong></td>
+<td>Biología, química, física, matemáticas. Diagnóstico de enfermedades, análisis de muestras, trabajo de laboratorio.</td>
+</tr>
+<tr>
+<td><strong>Biotecnología</strong></td>
+<td>Modificación genética, xenología, cibernética médica. Conocimiento de razas y organismos no humanos.</td>
+</tr>
+<tr>
+<td><strong>Navegación</strong></td>
+<td>Orientación en la urdimbre, cartografía de teselas, lectura de portales conocidos.</td>
+</tr>
+<tr>
+<td><strong>Burocracia</strong></td>
+<td>Trámites, contratos, jerarquías corporativas. Saber a quién hay que hablar y qué formulario usar.</td>
+</tr>
+<tr>
+<td><strong>Buscar información</strong></td>
+<td>Investigación documental, acceso a redes de datos, archivos. Encontrar lo que alguien no quiere que encuentres.</td>
+</tr>
+<tr>
+<td><strong>Programación</strong></td>
+<td>Código, software, IA básica, hackeo de sistemas digitales. Requiere hardware o interfaz neural.</td>
+</tr>
+<tr>
+<td><strong>Diagnóstico</strong></td>
+<td>Evaluar el estado de una máquina, sistema o criatura antes de intentar arreglarlo.</td>
+</tr>
+<tr>
+<td><strong>Investigación</strong></td>
+<td>Deducción, análisis de patrones, reconstrucción de hechos. No es buscar datos —es interpretarlos.</td>
+</tr>
+<tr>
+<td><strong>Juego</strong></td>
+<td>Estrategia, probabilidades, bluf. También útil en negociaciones complejas.</td>
+</tr>
+<tr>
+<td><strong>Diseño Hardware</strong></td>
+<td>Crear o modificar componentes físicos: chips, placas, sensores. Diferente de mecánica —esto diseña.</td>
+</tr>
+<tr>
+<td><strong>Sentido del Negocio</strong></td>
+<td>Valorar oportunidades económicas, detectar fraudes, entender mercados.</td>
+</tr>
+<tr>
+<td><strong>Supervivencia</strong></td>
+<td>Agua, comida, refugio en entornos hostiles. Orientarse, construir con lo que hay, aguantar.</td>
+</tr>
+<tr>
+<td><strong>Vigilar / Rastrear</strong></td>
+<td>Seguir a alguien sin ser detectado, rastrear huellas físicas o digitales.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>TECNOLÓGICAS — base (HAB + PER) ÷ 2</h3>
+<p>La rama de las manos y las herramientas. Requiere habitualmente hardware, instrumentos o acceso físico.</p>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Qué cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Armería</strong></td>
+<td>Mantenimiento, reparación y modificación de armas. Identificar armas y tipos de munición.</td>
+</tr>
+<tr>
+<td><strong>Artesanía</strong></td>
+<td>Fabricación manual de objetos sin depender de tecnología avanzada.</td>
+</tr>
+<tr>
+<td><strong>Ciber-tecnología</strong></td>
+<td>Instalación, reparación y modificación de implantes cibernéticos.</td>
+</tr>
+<tr>
+<td><strong>Demoliciones</strong></td>
+<td>Colocación de explosivos y desactivación de los que otros pusieron.</td>
+</tr>
+<tr>
+<td><strong>Disfraz</strong></td>
+<td>Alterar la apariencia propia o ajena para hacer que alguien parezca otro.</td>
+</tr>
+<tr>
+<td><strong>Electrónica</strong></td>
+<td>Circuitos, sistemas de alarma, sensores, comunicaciones. Instalar, manipular o sabotear hardware.</td>
+</tr>
+<tr>
+<td><strong>Falsificación</strong></td>
+<td>Documentos, firmas, sellos, chips de identidad. También detectar falsificaciones ajenas.</td>
+</tr>
+<tr>
+<td><strong>Química</strong></td>
+<td>Síntesis de drogas, venenos, explosivos, antídotos. También análisis de compuestos.</td>
+</tr>
+<tr>
+<td><strong>Mecánica</strong></td>
+<td>Reparación y mantenimiento de máquinas: vehículos, armas, sistemas de soporte vital.</td>
+</tr>
+<tr>
+<td><strong>Manos ágiles</strong></td>
+<td>Precisión en tareas delicadas: cirugía, pickpocketing, desactivar mecanismos pequeños.</td>
+</tr>
+<tr>
+<td><strong>Seguridad</strong></td>
+<td>Cerraduras, alarmas, sistemas de acceso, trampas. Instalarlos o abrirlos sin permiso.</td>
+</tr>
+<tr>
+<td><strong>Primeros Auxilios</strong></td>
+<td>Estabilizar heridas en campo. No sustituye a la medicina —compra tiempo.</td>
+</tr>
+<tr>
+<td><strong>Conducir</strong></td>
+<td>Todo tipo de vehículos terrestres. Incluye persecuciones y maniobras complejas.</td>
+</tr>
+<tr>
+<td><strong>Pilotar</strong></td>
+<td>Aeronaves, naves espaciales, AV. Requiere entrenamiento específico por tipo.</td>
+</tr>
+<tr>
+<td><strong>Trajes Servoasistidos</strong></td>
+<td>Operar exoesqueletos y armaduras potenciadas. Sin esta habilidad, el equipo es inútil.</td>
+</tr>
+<tr>
+<td><strong>Sigilo</strong></td>
+<td>Moverse sin hacer ruido, ocultarse físicamente, eliminar rastros.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>ATLÉTICAS — base (AGI + FUE) ÷ 2</h3>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Qué cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Acrobacias</strong></td>
+<td>Saltos, equilibrio, caídas controladas, trepar, pasar por espacios estrechos.</td>
+</tr>
+<tr>
+<td><strong>Resistir</strong></td>
+<td>Aguantar esfuerzo prolongado, privación de sueño, dolor, ambiente hostil.</td>
+</tr>
+<tr>
+<td><strong>Proezas</strong></td>
+<td>Hazañas físicas extraordinarias: romper objetos, levantar peso excepcional, fuerza bruta en situaciones límite.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>SOCIALES — base (CAR + PER) ÷ 2</h3>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Qué cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Absorción</strong></td>
+<td>Pasar desapercibido en un grupo, mimetizarse con el entorno social, no llamar la atención.</td>
+</tr>
+<tr>
+<td><strong>Autocontrol</strong></td>
+<td>Mantener la calma bajo presión, resistir manipulación emocional.</td>
+</tr>
+<tr>
+<td><strong>Bajos Fondos</strong></td>
+<td>Moverte en ambientes criminales, conocer los códigos no escritos, saber a quién comprar qué.</td>
+</tr>
+<tr>
+<td><strong>Empatía</strong></td>
+<td>Leer emociones, detectar mentiras, entender motivaciones. No es leer mentes —es leer personas.</td>
+</tr>
+<tr>
+<td><strong>Interrogatorio</strong></td>
+<td>Extraer información de alguien que no quiere darla. Puede ser brusco o sutil.</td>
+</tr>
+<tr>
+<td><strong>Liderazgo</strong></td>
+<td>Mantener la cohesión de un grupo bajo presión, delegar, tomar decisiones que otros sigan.</td>
+</tr>
+<tr>
+<td><strong>Manejo de Animales</strong></td>
+<td>Comunicarse con animales, calmarlos, entrenarlos, montarlos.</td>
+</tr>
+<tr>
+<td><strong>Persuasión</strong></td>
+<td>Convencer mediante argumentos o apelación emocional, sin usar atracción personal.</td>
+</tr>
+<tr>
+<td><strong>Seducción</strong></td>
+<td>Influir usando atracción personal. No es siempre romántico —puede ser manipulación calculada.</td>
+</tr>
+<tr>
+<td><strong>Estilo</strong></td>
+<td>Proyectar imagen, vestir apropiadamente, moverse con naturalidad en entornos de élite.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>COMBATE — bases variables (ver ficha y CAP03)</h3>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Base</th>
+<th>Qué cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Iniciativa</strong></td>
+<td>(AGI + PER) ÷ 2</td>
+<td>Cuándo actúas en el turno. Más alta = antes.</td>
+</tr>
+<tr>
+<td><strong>Alerta</strong></td>
+<td>(PER + INT) ÷ 2</td>
+<td>Detectar amenazas, emboscadas, movimiento sospechoso.</td>
+</tr>
+<tr>
+<td><strong>Esquivar</strong></td>
+<td>(AGI + HAB) ÷ 2</td>
+<td>Restar éxitos a ataques. Melee: valor completo. Distancia: mitad. Se declara como reacción, consume la acción propia.</td>
+</tr>
+<tr>
+<td><strong>Distancia</strong></td>
+<td>(AGI + HAB) ÷ 2</td>
+<td>Todas las armas de proyectil, energía o lanzamiento.</td>
+</tr>
+<tr>
+<td><strong>Sin Armas</strong></td>
+<td>(FUE + CON + AGI) ÷ 3</td>
+<td>Pelea, arrojar objetos, armas improvisadas.</td>
+</tr>
+<tr>
+<td><strong>Arma CC</strong></td>
+<td>(FUE + AGI + HAB) ÷ 3</td>
+<td>Armas cuerpo a cuerpo de todos los tamaños.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>DISTORSIÓN — arrancan a 0, sin base calculada</h3>
+<p>Deben aprenderse o desarrollarse. Ver CAP04 y CAP04b para reglas completas.</p>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Atributo ref.</th>
+<th>Qué cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Detección de Distorsión</strong></td>
+<td>PER</td>
+<td>Percibir fuentes de distorsión, portales, runas activas, entidades. Radio base 1m, +1 por éxito.</td>
+</tr>
+<tr>
+<td><strong>Manipulación de Distorsión</strong></td>
+<td>VOL</td>
+<td>Canalizar y controlar distorsión ambiental. Base de la hechicería activa.</td>
+</tr>
+<tr>
+<td><strong>Camino de los Portales</strong></td>
+<td>— (ninguna)</td>
+<td>Crear portales estables. Comienza a 0% — como todas las habilidades de distorsión (ver CAP04b). La urdimbre no sigue las leyes físicas normales.</td>
+</tr>
+<tr>
+<td><strong>Tatuador Rúnico</strong></td>
+<td>HAB / CAR</td>
+<td>Inscribir runas en criaturas vivas.</td>
+</tr>
+<tr>
+<td><strong>Herrero Rúnico</strong></td>
+<td>HAB / VOL</td>
+<td>Inscribir runas en objetos sin vida. Permite crear equipo rúnico.</td>
+</tr>
+<tr>
+<td><strong>Proyección de Energía</strong></td>
+<td>HAB</td>
+<td>Ataques a distancia de elemento. Un elemento por aprendizaje.</td>
+</tr>
+<tr>
+<td><strong>Protección de Energía</strong></td>
+<td>PER</td>
+<td>Escudos místicos o refuerzo de armadura existente.</td>
+</tr>
+<tr>
+<td><strong>Invocación de Energía</strong></td>
+<td>INT</td>
+<td>Invocar elementos físicos: agua, fuego, tierra, aire.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. MÉRITO-DEFECTO ESPECIAL</h2>
+<p><em>Solo uno, solo en creación, cuesta 3 PE. Siempre tiene doble filo.</em></p>
+<hr />
+<p><strong>Visionario</strong><br />
+Actúas siempre un NT por encima en Tecnológicas y Académicas.<br />
+Desventaja: no puedes colaborar eficazmente con quien no tenga el mismo mérito cuando la tarea implique tecnología.</p>
+<p><strong>Furia Desbocada</strong><br />
+En combate ignoras el dolor (sin penalizadores por heridas), +1 daño CC, +5 a Combate y Atléticas.<br />
+Desventaja: cuando te sientes ofendido en cualquier contexto, tira Voluntad para no liarla a golpes.</p>
+<p><strong>Ola de Adrenalina</strong><br />
++2 daño CC, +10 a Atléticas y Combate en el momento de activación.<br />
+Desventaja: tras 5 turnos pierdes el nivel Sano. Solo recuperable con descanso.</p>
+<p><strong>Belleza Peligrosa</strong><br />
+−10 NO en Sociales con el sexo contrario.<br />
+Desventaja: +10 NO en Sociales con el mismo sexo.</p>
+<p><strong>Visión Oscura</strong><br />
+Ves con total normalidad en oscuridad absoluta.<br />
+Desventaja: con luz del día necesitas filtros. Sin ellos: −10 a Combate y Tecnológicas. Daltonismo permanente.</p>
+<p><strong>Sensible a la Distorsión</strong><br />
+Absorbes el doble de distorsión de cualquier fuente. Los sentidos de distorsión no te causan efectos negativos.<br />
+Desventaja: cada cruce acumula el doble de Deriva.</p>
+<p><strong>Gato Curioso</strong><br />
+Sexto sentido (75% efectividad) que avisa justo antes de sobrepasar un límite peligroso.<br />
+Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investigando lo que debería dejarse en paz.</p>
+<p><strong>Rata de Navío</strong><br />
+En naves, estaciones y espacios cerrados: −10 NO a todos los valores.<br />
+Desventaja: en exteriores y espacios abiertos: +10 NO a todos los valores.</p>
+<p><strong>Grande</strong><br />
++10 FUE y CON, +5 PV/zona, +10 NO para impactarte.<br />
+Desventaja: −10 HAB y AGI, no usa material normal, +10% precios.</p>
+<p><strong>Pequeño</strong><br />
++10 HAB y AGI, −10 NO para impactarte, −10% precios.<br />
+Desventaja: −10 FUE y CON, −5 PV/zona.</p>
+<hr />
+<h2>3. MÉRITOS</h2>
+<p><em>Se compran con PE en creación (Paso 7).</em></p>
+<table>
+<thead>
+<tr>
+<th>Mérito</th>
+<th>PE</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Afiliación</td>
+<td>1</td>
+<td>Pertenencia a una corp con rango, recursos y obligaciones. Workhouse: gratis.</td>
+</tr>
+<tr>
+<td>Característica mejorada</td>
+<td>2</td>
+<td>+10 a un atributo (máx 60 al inicio).</td>
+</tr>
+<tr>
+<td>Habilidad mejorada</td>
+<td>2</td>
+<td>+30 a una habilidad (máx 60 al inicio).</td>
+</tr>
+<tr>
+<td>Ahorros</td>
+<td>1</td>
+<td>+10.000 PC disponibles.</td>
+</tr>
+<tr>
+<td>Contactos</td>
+<td>1</td>
+<td>Una red que suma a las habilidades afines cuando los contactas.</td>
+</tr>
+<tr>
+<td>Fama</td>
+<td>1</td>
+<td>Tu nombre llega antes que tú. Influyes sobre nivel² × 200 personas en tu contexto.</td>
+</tr>
+<tr>
+<td>Iniciativa (tipo)</td>
+<td>1</td>
+<td>+10 a Iniciativa en el tipo indicado (CC, distancia o general).</td>
+</tr>
+<tr>
+<td>Posición</td>
+<td>1</td>
+<td>Un lugar reconocido en una jerarquía. Legitimidad dentro de una estructura.</td>
+</tr>
+<tr>
+<td>Recursos</td>
+<td>1</td>
+<td>Acceso a recursos materiales de una organización. No son tuyos —los usas mientras mantienes la afiliación.</td>
+</tr>
+<tr>
+<td>Reputación</td>
+<td>1</td>
+<td>Suma en enfrentamientos de miradas e intimidación donde tu nombre tenga peso.</td>
+</tr>
+<tr>
+<td>Favor a tu favor</td>
+<td>1/2/3</td>
+<td>Alguien te debe: favor menor / serio / se jugó la vida por ti.</td>
+</tr>
+<tr>
+<td>Objeto especial</td>
+<td>1</td>
+<td>Un objeto con historia que llegó a tus manos antes de que entendieras lo que eras. Tira 1d10+1d8 en la tabla de CAP02.</td>
+</tr>
+<tr>
+<td>Nivel de vida</td>
+<td>—</td>
+<td>No cuesta PE. Ingreso recurrente: Nivel × 1.000 PC/mes.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. DEFECTOS</h2>
+<p><em>Aceptar Defectos devuelve PE hasta el tope de tu tipo. Nunca se supera 9.</em></p>
+<table>
+<thead>
+<tr>
+<th>Defecto</th>
+<th>PE</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Característica empeorada</td>
+<td>2</td>
+<td>−10 a un atributo (mínimo 20).</td>
+</tr>
+<tr>
+<td>Analfabetismo</td>
+<td>2</td>
+<td>No sabe leer ni escribir. Cierra puertas que el dinero no siempre abre.</td>
+</tr>
+<tr>
+<td>Legalmente inexistente</td>
+<td>2</td>
+<td>Sin chip ni registro. Paria legal en cualquier sistema documentado.</td>
+</tr>
+<tr>
+<td>Antecedentes penales</td>
+<td>1/2/3</td>
+<td>Chip con historial: infracción menor / delito grave / crimen mayor.</td>
+</tr>
+<tr>
+<td>En busca y captura</td>
+<td>1/2/3</td>
+<td>Te buscan: organización local / corp menor / corp mayor con alcance multitesela.</td>
+</tr>
+<tr>
+<td>Enemigo</td>
+<td>1/2/3</td>
+<td>Alguien te odia personalmente: individuo básico / con recursos / alguien poderoso que lo ha convertido en prioridad.</td>
+</tr>
+<tr>
+<td>Deudas</td>
+<td>1/2/3</td>
+<td>Debes dinero: 10.000 PC por punto más intereses según acreedor.</td>
+</tr>
+<tr>
+<td>Deuda de honor</td>
+<td>1/2/3</td>
+<td>Debes un favor: menor / serio / alguien se jugó la vida por ti.</td>
+</tr>
+<tr>
+<td>Adicto</td>
+<td>1/2/3</td>
+<td>Sin la sustancia: efectos secundarios que van de molestia a incapacitación.</td>
+</tr>
+<tr>
+<td>Amnesia</td>
+<td>1</td>
+<td>Sin recuerdos anteriores al inicio. El cuerpo sabe lo que hizo; la cabeza no.</td>
+</tr>
+<tr>
+<td>Minoría</td>
+<td>1</td>
+<td>+30 NO en Sociales cuando el contexto lo activa.</td>
+</tr>
+<tr>
+<td>Notoriedad</td>
+<td>1</td>
+<td>Conocido por algo negativo. +30 NO en Sociales cuando alguien sabe quién eres.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. TABLA RESUMEN</h2>
+<table>
+<thead>
+<tr>
+<th>Rama</th>
+<th>Atributos base</th>
+<th>Cuándo aplica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Académicas</td>
+<td>(INT + VOL) ÷ 2</td>
+<td>Identificar, investigar, acceder a datos, tratar enfermedades</td>
+</tr>
+<tr>
+<td>Tecnológicas</td>
+<td>(HAB + PER) ÷ 2</td>
+<td>Reparar, instalar, abrir cerraduras, conducir, pilotar</td>
+</tr>
+<tr>
+<td>Atléticas</td>
+<td>(AGI + FUE) ÷ 2</td>
+<td>Saltar, trepar, aguantar, proezas físicas</td>
+</tr>
+<tr>
+<td>Sociales</td>
+<td>(CAR + PER) ÷ 2</td>
+<td>Convencer, detectar mentiras, intimidar, seducir</td>
+</tr>
+<tr>
+<td>Combate</td>
+<td>Variable</td>
+<td>Ver CAP03</td>
+</tr>
+<tr>
+<td>Distorsión</td>
+<td>Arrancan a 0</td>
+<td>Ver CAP04 y CAP04b</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Sin especialidad:</strong> tira por el valor base de la rama.<br />
+<strong>Modificadores en mesa:</strong> siempre múltiplos de 5, rango habitual +20 a −20.</p>
+</blockquote>
+<hr />
+<p><em>Tabla A de Deriva → CAP02. Reglas de combate → CAP03. Distorsión completa → CAP04 y CAP04b. Equipo y precios → Catálogo Norton.</em></p></div></section>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap18"><div class="document-container"><h1>ANEXO — Generador de Asentamientos y Estaciones para el DJ</h1>
 <blockquote>
 <p>Para estaciones y asentamientos no emblemáticos. EP-9 y similares tienen sus propios archivos. Este generador produce lugares funcionales, con carácter propio, en menos de dos minutos.</p>
 </blockquote>
-<p><strong>Cómo usarlo:</strong> tira en orden. Si un resultado tiene marcado un NT mínimo que no alcanzas, tira de nuevo o usa el resultado anterior/siguiente. Las entradas duplicadas en las tablas bajas están ahí intencionalmente — son las opciones que tienen sentido en ese rango.</p>
+<p><strong>Cómo usarlo:</strong> tira en orden. Si un resultado tiene marcado un NT mínimo que no alcanzas, tira de nuevo o usa el resultado anterior/siguiente. Las entradas duplicadas en las tablas bajas están ahí intencionalmente — aumentan la probabilidad de resultados comunes, porque la mayoría de asentamientos del Mosaico son aldeas y pueblos, no ciudades.</p>
 <hr />
 <h2>TABLA 0 — Nivel Tecnológico (NT)</h2>
 <p>Tira 1d10 o elige según el contexto de la tesela.</p>
@@ -13486,7 +15182,7 @@ Las balas cambian grosor a lo largo del cargador. La última refrigera — susti
 </tr>
 </tbody>
 </table>
-<p><strong>Nota:</strong> resultados 18–20 solo tienen sentido en NT 6+. En NT menor, trata el 18–20 como 15–17.</p>
+<p><strong>Ajuste por NT:</strong> NT 1–3: trata los resultados 16–20 como 13–15 (sin infraestructura no hay excedentes ni centros de distribución). NT 4–5: trata 18–20 como 15–17. NT 6+: sin ajuste.</p>
 <hr />
 <h2>TABLA 3 — Artesanos Singulares (d20)</h2>
 <p>¿Hay alguien especial aquí? Tira una vez. Si el resultado no encaja con el NT, tira de nuevo.</p>
@@ -13782,43 +15478,4 @@ Las balas cambian grosor a lo largo del cargador. La última refrigera — susti
 <p><strong>Resultado:</strong> Ciudad pequeña de NT4 con infraestructura básica. Suministros ajustados — hay comida suficiente pero el equipo es escaso. Hay un especialista local que identifica artefactos sin saber de dónde viene su conocimiento. Un agente sin identificar — probablemente Serpent — observa. Y en el centro del asentamiento hay una estructura de los Antiguos que nadie toca y nadie sabe qué hace. La ciudad se construyó alrededor de ella, no al lado.</p>
 <hr />
 <p><em>Creado: 28 mayo 2026</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap18"><div class="document-container"><h1>CAP08 — AVENTURAS EN EL MOSAICO (Parte 2/2)</h1>
-<h2>6. Semillas de Campaña</h2>
-<p><strong>"TecnoStealer recibe señal de A. Seawolf después de 30 años de silencio. La señal viene de una tesela que no existe en ningún mapa."</strong></p>
-<p><strong>"Un virus idéntico al del mundo bloqueado aparece en tres teselas simultáneamente. Alguien lo libera de forma deliberada."</strong></p>
-<p><strong>"Los personajes descubren que sus memorias de la última misión no coinciden entre sí. Alguien modificó los Necrochips de todos."</strong></p>
-<p><strong>"Una tesela virgen tiene los restos de una civilización que es, en todos los aspectos, la Tierra — pero destruida hace cincuenta mil años."</strong></p>
-<p><strong>"Chafry ofrece una cantidad obscena por un Genocaballero. No dan razones. El último grupo que lo intentó no regresó."</strong></p>
-<p><strong>"Primus está cerrando portales sin explicar por qué. Hay Errantes atrapados desde hace meses."</strong></p>
-<p><strong>"La colmena de IAs del mundo bloqueado envía un mensaje. Una sola palabra: 'Ayuda'."</strong></p>
-<p><strong>"Un personaje tiene recuerdos de teselas a las que nunca viajó. Alguien vivió esos momentos. Ese alguien tiene su cara."</strong></p>
-<hr />
-<h2>7. Teselas de Referencia</h2>
-<p><strong>Mundo Máquina:</strong> IA-virus. Nada tecnológico puede salir. Bots tienen 10% acumulativo/hora de revelarse. Estética años 50. <em>(Desarrollo en suplemento futuro.)</em></p>
-<p><strong>Cuenca Gótica:</strong> Vampiros dominan. Altamente contagioso. Solo tecnología o trajes de contención.</p>
-<p><strong>Tierra-12:</strong> Análoga a la Tierra, nazismo espacial, años 50, guerra activa. Helio-3 valioso. Ver Tu Primera Senda (CAP09).</p>
-<p><strong>La Ciudad Subterránea:</strong> Red de túneles. Refugio de exiliados. Mercado negro de información.</p>
-<p><strong>Bosque Sombrío:</strong> Penumbra permanente. Sensores tecnológicos irregulares. Tribus secretas.</p>
-<p><strong>Desierto de Huesos:</strong> Calor extremo, tormentas. Esqueletos gigantes como mojones. Fragmentos Arcanitas bajo las dunas.</p>
-<p><strong>Ruinas de la Antigua Ciudad:</strong> Trampas, guardianes automáticos activos, tecnología olvidada.</p>
-<p><strong>Laboratorio Clandestino:</strong> Experimentos inhumanos. Mutantes supervivientes. Muestras de valor extraordinario.</p>
-<p><strong>Territorio Corrupto:</strong> Leyes físicas inestables. Cada visita es diferente. Horrores que desafían la lógica.</p>
-<hr />
-<h2>8. Módulo introductorio</h2>
-<p>Ver CAP09. Presentación sugerida: <em>"Sois personas normales en una ciudad normal. Algo va a pasar esta tarde que va a cambiar eso."</em></p>
-<hr />
-<h2>9. Sistema de Generación de Aventuras</h2>
-<h3>Paso 1 — El Patrón (1D10)</h3>
-<p>1 Corporación (subtira 1D10: Militar/Seguridad/Médica/Genética/Biotécnica/Construcción/Info/Cyber/Noticias/Otras) / 2 Org. Política (1 poder/2 oposición/3 radicales/4 terroristas/5-6 corp-controlada) / 3 Org. Criminal (Yakuza/Triadas/Cartel/Mafia/Mafia rusa/Otros) / 4 Policía o espionaje (Antivicios/Homicidios/Robos/NetCops/Internos/Nacional/Internacional/Espacial) / 5 Banda / 6 Familia nómada / 7 Otras org / 8 IA (1-4 corp / 5 consciente libre / 6 alienígena) / 9 Independiente (1-7 arreglador / 8-10 tira 1D40 en tabla profesiones) / 10 Otros (1-3 iniciativa propia / 4-6 circunstancias)</p>
-<h3>Paso 2 — El Enemigo (1D10)</h3>
-<p>Mismas categorías. Relación 1D4: 1 Enemigo / 2 Rival / 3 Neutral / 4 Aliado inesperado. Con 11-12: varios (1D4 cuántos).</p>
-<h3>Paso 3 — La Motivación (1D20)</h3>
-<p>1 Dinero / 2 Poder / 3 Amor/amistad / 4 Odio/venganza / 5 Deber / 6 Diversión / 7 Altruismo / 8 Información / 9 Rivalidad / 10 Salvar la vida / 11 Salvar a otro / 12 Realización personal / 13 Adicción / 14 Miedo / 15 Ideología / 16 Honor / 17 Deseo / 18 Locura / 19-20 Otros</p>
-<h3>Paso 4 — El Objetivo (1D12)</h3>
-<p>1 Asesinar/destruir / 2 Asustar/coaccionar / 3 Convencer/negociar / 4 Investigar / 5 Encontrar/conseguir / 6 Transportar/viajar / 7 Rescatar/recuperar / 8 Proteger/defender / 9 Engañar/distraer / 10 Huir/escapar / 11-12 Varios</p>
-<h3>Paso 5 — El Objeto (1D6)</h3>
-<p>1 Persona/s / 2 Grupo/org / 3 Inmueble/territorio / 4 Dinero/bienes / 5 Información / 6 Múltiple</p>
-<h3>Paso 6 — Giro de la Aventura (1D10)</h3>
-<p>1 Todo es lo que parece / 2 Encuentro aleatorio / 3 Los PJs son usados como distracción / 4 El patrón es asesinado / 5 Descubren algo que cambia su alineamiento / 6 Los PJs están siendo engañados / 7 El patrón intentará matarlos al terminar / 8 El objetivo entra en conflicto con la personalidad de un PJ / 9 El enemigo manipula a los PJs contra su patrón / 10 El patrón muere antes de revelar la misión; los enemigos persiguen a los PJs</p>
-<hr /></div></section>
 </main></body></html>
