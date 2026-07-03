@@ -61,6 +61,8 @@
   .lifegrid .v{background:var(--auto-bg);font-weight:700;border-radius:2px;padding:1px;border:1px solid #93b4d8;}
   .estado-row{display:flex;align-items:center;gap:5px;margin-bottom:3px;font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--muted);}
   .estado-row select{width:auto;flex:1;font-family:'Rajdhani',sans-serif;font-size:11px;text-transform:none;padding:2px 4px;}
+  .dano-scratch{display:flex;align-items:center;gap:5px;margin-top:3px;font-family:'Share Tech Mono',monospace;font-size:7.5px;text-transform:uppercase;color:var(--muted);}
+  .dano-scratch .scratch-line{flex:1;border-bottom:1px solid #cbd5e1;height:14px;}
   .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:3px;font-size:10px;}
   .metrics div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
   .note{font-size:8px;color:var(--muted);font-style:italic;margin-top:2px;line-height:1.2;}
@@ -220,7 +222,10 @@
     .recon-grid{gap:2px;}
     .recon-grid .rlbl{font-size:6px;}
     .recon-grid .rval{font-size:9px;}
-    .note-inic, .lifebox .note{display:none;}
+    .note-inic{display:none;}
+    .lifebox .note{font-size:6px;}
+    .dano-scratch{font-size:6px;margin-top:1px;}
+    .dano-scratch .scratch-line{height:9px;}
     .disc-group h4{margin:1px 0 0;font-size:6.5px;}
     .disc-band .note{display:none;}
   }
@@ -274,6 +279,7 @@
           <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
         </div>
         <div class="note">PV/nivel=(A+C+F)/6. Total zona=<span id="vidaTotal">0</span>. Desbordar Grave: muerte (cabeza/torso) o desmembr. 1d6 (extremidad). Estados en paralelo a la zona más dañada (CAP03): al bajar de nivel, tira Resistencia (fallo=inconsciente).</div>
+        <div class="dano-scratch"><span>Daño acumulado (notas)</span><div class="scratch-line"></div></div>
       </div>
 
       <h2>Métricas</h2>
@@ -569,6 +575,14 @@
           <h3>Equipo e inventario</h3>
           <table class="p2-table">
             <tr><th>Ítem</th><th style="width:16%;">Cant.</th><th style="width:26%;">Estado</th></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
