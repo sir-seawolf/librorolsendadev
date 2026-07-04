@@ -84,12 +84,13 @@
   .disc-band{margin-top:4px;}
   .disc-inner{display:flex;gap:10px;align-items:flex-start;}
   .disc-inner > div{flex:1;min-width:0;}
-  .disc-inner > #discBlockWrap{flex:2.3;}
-  .disc-groups{display:flex;gap:6px;}
-  .disc-group{flex:1;min-width:0;border-left:3px solid var(--accent3);padding-left:4px;}
-  .disc-group table{font-size:9.5px;table-layout:fixed;}
-  .disc-group .skilltbl col.c-num{width:18px;}
-  .disc-group td.skill{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.05;padding:1px 2px 1px 3px;}
+  #discNormal, #discAlt{flex:3.3 !important;display:flex;gap:10px;min-width:0;}
+  #discNormal > #discBlockWrap{flex:1.7;}
+  #discNormal > div:last-child, #discAlt > div{flex:1;min-width:0;}
+  #discAlt h4{margin-top:0;}
+  #discBlockWrap .skilltbl col.c-num{width:22px;}
+  #discBlockWrap td.skill{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.1;font-size:10.5px;padding:1px 3px 1px 6px;}
+  .disc-cat-row td{background:var(--accent3);color:#fff;font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.5px;padding:1px 5px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   .pegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;font-size:9.5px;}
   .pegrid div{display:flex;justify-content:space-between;background:#f1f5f9;padding:0 5px;border-radius:3px;}
   .caminos-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border-radius:3px;padding:2px 5px;margin-top:3px;font-size:9px;}
@@ -149,7 +150,7 @@
     input[type=number]{width:44px;}
     .disc-inner{flex-direction:column;gap:8px;}
     .disc-inner > div{width:100%;}
-    .disc-groups{flex-direction:column;gap:8px;}
+    #discNormal,#discAlt{flex-direction:column;gap:8px;}
     h2{font-size:11px;}
     .portrait-box{min-height:160px;}
     .page2-grid{grid-template-columns:1fr;}
@@ -184,7 +185,7 @@
     input,select,textarea{border-color:#ccc;padding:0 3px;line-height:1.0;background:#fff !important;color:#000 !important;}
     select{-webkit-appearance:none;appearance:none;}
     .estado-row,.caminos-row,.recon-grid div,.pegrid div,.metrics div{background:#fff !important;border:1px solid #999;}
-    .disc-group{border-left:2px solid #999;}
+    .disc-cat-row td{background:#ddd !important;color:#000 !important;}
     .recon-grid .rval{color:#000 !important;}
     .lifebox{padding:2px;margin-bottom:2px;}
     .attrs{gap:2px;} .metrics{gap:2px;} .loc-grid{gap:2px;}
@@ -226,7 +227,7 @@
     .lifebox .note{font-size:6px;}
     .dano-scratch{font-size:6px;margin-top:1px;}
     .dano-scratch .scratch-line{height:9px;}
-    .disc-group h4{margin:1px 0 0;font-size:6.5px;}
+    .disc-cat-row td{font-size:6.5px;padding:0 4px;}
     .disc-band .note{display:none;}
   }
 </style>
@@ -377,20 +378,50 @@
 
   <!-- BANDA INFERIOR: Distorsión + Implantes -->
   <div class="disc-band">
-    <h2>Distorsión (Hechicería / Taumaturgia / Marcas) · Implantes <button class="toggle" onclick="toggle('discBlock')">ocultar ▾</button></h2>
+    <h2>Distorsión (Hechicería / Taumaturgia / Marcas) · Implantes <button class="toggle" id="discToggleBtn" onclick="toggleDiscAlt()">Sin Distorsión ▾</button></h2>
     <div id="discBlock" class="disc-inner">
-      <div id="discBlockWrap" class="disc-groups"></div>
-      <div>
-        <div class="pegrid">
-          <div><span>Tinta temp (PV)</span><input type="number" style="width:38px;"></div>
-          <div><span>Tinta perm (PV)</span><input type="number" style="width:38px;"></div>
-          <div><span>Perlas blancas</span><input type="number" style="width:38px;"></div>
-          <div><span>Perlas grises</span><input type="number" style="width:38px;"></div>
-          <div><span>Perlas gastadas</span><input type="number" style="width:38px;"></div>
+      <div id="discNormal">
+        <div id="discBlockWrap"></div>
+        <div>
+          <div class="pegrid">
+            <div><span>Tinta temp (PV)</span><input type="number" style="width:38px;"></div>
+            <div><span>Tinta perm (PV)</span><input type="number" style="width:38px;"></div>
+            <div><span>Perlas blancas</span><input type="number" style="width:38px;"></div>
+            <div><span>Perlas grises</span><input type="number" style="width:38px;"></div>
+            <div><span>Perlas gastadas</span><input type="number" style="width:38px;"></div>
+          </div>
+          <table style="margin-top:3px;"><colgroup><col><col style="width:38px;"><col></colgroup>
+            <tr><th class="skill-h">Runa</th><th>Niv</th><th>Nota</th></tr><tbody id="runaTable"></tbody></table>
+          <div class="note">Bases de disciplina por atributo (CAP04b): Proyección=Hab, Protección=Per, Invocación=Int, Detección=Per, Manipulación=Vol, Portales=sin base(0), Herrero=Vol, Tatuador=Car. Perlas: blancas=100PD; "grises"=perlas manchadas (valor reducido); gastadas=uso acumulado.</div>
         </div>
-        <table style="margin-top:3px;"><colgroup><col><col style="width:38px;"><col></colgroup>
-          <tr><th class="skill-h">Runa</th><th>Niv</th><th>Nota</th></tr><tbody id="runaTable"></tbody></table>
-        <div class="note">Bases de disciplina por atributo (CAP04b): Proyección=Hab, Protección=Per, Invocación=Int, Detección=Per, Manipulación=Vol, Portales=sin base(0), Herrero=Vol, Tatuador=Car. Perlas: blancas=100PD; "grises"=perlas manchadas (valor reducido); gastadas=uso acumulado.</div>
+      </div>
+      <div id="discAlt" class="hidden">
+        <div>
+          <h4>Vehículo (resumen)</h4>
+          <table class="p2-table">
+            <tr><th>Nombre</th><td><input type="text"></td></tr>
+            <tr><th>PDE (act/max)</th><td><input type="text"></td></tr>
+            <tr><th>Blindaje</th><td><input type="text"></td></tr>
+            <tr><th>Maniobra</th><td><input type="number" style="width:50px"></td></tr>
+            <tr><th>Velocidad</th><td><input type="text"></td></tr>
+          </table>
+        </div>
+        <div>
+          <h4>Droideum (raza)</h4>
+          <table class="p2-table">
+            <tr><th>Chasis</th><td>
+              <select>
+                <option>Servicio (rack chips 1 slot, sin blindaje/arma)</option>
+                <option>Combate (Bld 1 + 1 arma, −20 Sociales)</option>
+                <option>Exploración (+10 Vigilar/Rastrear, Bld máx 2, sin arma)</option>
+                <option>Transporte (1-2 pasajeros, −20 Sigilo)</option>
+              </select>
+            </td></tr>
+            <tr><th>Atributos</th><td>Todos 20 (plano — solo suben con piezas + taller)</td></tr>
+            <tr><th>Cap. rúnica</th><td>Pequeño ≤5 / Mediano ≤10 (solo almacena, no activa)</td></tr>
+            <tr><th>Restricciones</th><td>Sin Distorsión/Perlas/PA/Cristalización/Humanidad. Sociales −10 vs quien sepa qué es.</td></tr>
+          </table>
+        </div>
       </div>
       <div>
         <table><colgroup><col><col style="width:74px;"><col><col style="width:42px;"></colgroup>
@@ -704,17 +735,18 @@ const DISC_GROUPS=[
 ];
 const DISC = DISC_GROUPS.flatMap(g=>g.items.map(it=>({...it,cat:g.cat})));
 function buildDisc(){
-  const wrap=document.getElementById('discBlockWrap');wrap.innerHTML='';
+  const wrap=document.getElementById('discBlockWrap');
+  let h=`<table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup><tr><th class="skill-h">Disciplina</th><th>Bas</th><th>Hab</th><th>Mod</th><th>Tot</th></tr>`;
   let gi=0;
   DISC_GROUPS.forEach(g=>{
-    let h=`<div class="disc-group"><h4>${g.cat}</h4><table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup><tr><th class="skill-h">Disciplina</th><th>Bas</th><th>Hab</th><th>Mod</th><th>Tot</th></tr>`;
+    h+=`<tr class="disc-cat-row"><td colspan="5">${g.cat}</td></tr>`;
     g.items.forEach(d=>{
       const i=gi++;
       h+=`<tr><td class="skill" title="${d.n}">${d.n}</td><td class="cat-base discbase-${i}">0</td><td><input type="number" class="dhab" data-i="${i}" oninput="calc()"></td><td><input type="number" class="dmod" data-i="${i}" oninput="calc()"></td><td class="total" id="dtot-${i}">0</td></tr>`;
     });
-    h+=`</table></div>`;
-    wrap.innerHTML+=h;
   });
+  h+=`</table>`;
+  wrap.innerHTML=h;
 }
 const SLOTS=["","Ojos","Brazo D","Brazo I","Pierna D","Pierna I","Sistema Neural","Sistema Óseo","Sistema Muscular","Órganos"];
 function buildImpl(){
@@ -741,7 +773,12 @@ function buildNotas(){
   const tb=document.getElementById('notasTable');tb.innerHTML='';
   for(let i=0;i<2;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td></tr>`;
 }
-function toggle(id){document.getElementById(id).classList.toggle('hidden');}
+function toggleDiscAlt(){
+  const n=document.getElementById('discNormal'), a=document.getElementById('discAlt'), btn=document.getElementById('discToggleBtn');
+  n.classList.toggle('hidden');
+  a.classList.toggle('hidden');
+  btn.textContent = n.classList.contains('hidden') ? 'Distorsión ▾' : 'Sin Distorsión ▾';
+}
 function initCaminos(){
   document.querySelectorAll('input[name=camino]').forEach(cb=>{
     cb.addEventListener('change',()=>{
