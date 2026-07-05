@@ -220,12 +220,24 @@ img { max-width: 100%; height: auto; }
     background-color: var(--color-combate-bg);
     border-left: 4px solid var(--color-combate);
 }
+.recuadro-combate::before {
+    content: "✕ ";
+    color: var(--color-combate);
+    font-weight: bold;
+    margin-right: 4px;
+}
 .recuadro-combate strong { color: var(--color-combate); }
 
 /* Tecnología: equipo, distorsión, objetos, cyberware */
 .recuadro-tech {
     background-color: var(--color-tech-bg);
     border-left: 4px solid var(--color-tech);
+}
+.recuadro-tech::before {
+    content: "◆ ";
+    color: var(--color-tech);
+    font-weight: bold;
+    margin-right: 4px;
 }
 .recuadro-tech strong { color: var(--color-tech); }
 
@@ -234,6 +246,12 @@ img { max-width: 100%; height: auto; }
     background-color: var(--color-lore-bg);
     border-left: 4px solid var(--color-lore);
 }
+.recuadro-lore::before {
+    content: "§ ";
+    color: var(--color-lore);
+    font-weight: bold;
+    margin-right: 4px;
+}
 .recuadro-lore strong { color: var(--color-lore); }
 
 /* Ejemplo de juego: nombre de PJ y situación en mesa */
@@ -241,6 +259,13 @@ img { max-width: 100%; height: auto; }
     background-color: #f8fafc;
     border-left: 4px solid var(--text-muted);
     font-style: italic;
+}
+.ejemplo::before {
+    content: "▸ ";
+    color: var(--text-muted);
+    font-weight: bold;
+    margin-right: 4px;
+    font-style: normal;
 }
 .ejemplo strong { color: var(--bg-dark); font-style: normal; }
 
@@ -262,13 +287,20 @@ img { max-width: 100%; height: auto; }
 
 /* Pifia: resultado crítico negativo, consecuencias graves */
 .pifia {
-    background-color: #1e1b1b;
-    color: #fca5a5;
+    background-color: #3a2a2a;
+    color: #fde68a;
     border-left: 4px solid var(--color-combate);
     font-family: 'Share Tech Mono', monospace;
     font-size: 13.5px;
 }
-.pifia strong { color: #fee2e2; }
+.pifia::before {
+    content: "☠ ";
+    color: var(--color-combate);
+    font-weight: bold;
+    margin-right: 4px;
+    font-size: 15px;
+}
+.pifia strong { color: #ffffff; }
 
 /* Tabla de dados: rango, valores, resultados */
 .tabla-dados {
@@ -276,6 +308,13 @@ img { max-width: 100%; height: auto; }
     border-left: 4px solid var(--accent-subtle);
     font-family: 'Share Tech Mono', monospace;
     font-size: 13.5px;
+}
+.tabla-dados::before {
+    content: "⚂ ";
+    color: var(--accent-subtle);
+    font-weight: bold;
+    margin-right: 4px;
+    font-size: 15px;
 }
 
 /* ============================================================ */
