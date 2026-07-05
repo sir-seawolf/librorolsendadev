@@ -19,6 +19,16 @@
     --accent2: #1d6fa3;
     --soft: #f1f5f9;
     --auto-bg: #dbeafe;
+
+    /* ---- PALETA SEMÁNTICA CANÓNICA (04/07/2026) ----
+       Codifica el TIPO de contenido, no la estética.
+       Ver 00_PROYECTO/CSS_ETIQUETAS.md para uso correcto. */
+    --color-combate: #ff3b3b;   /* rojo: reglas letales, peligro, combate */
+    --color-tech:    #1d6fa3;   /* azul: tecnología, distorsión, objetos */
+    --color-lore:    #9333ea;   /* púrpura: historia, trasfondo, worldbuilding */
+    --color-combate-bg: #fff1f1;
+    --color-tech-bg:    #eff6ff;
+    --color-lore-bg:    #faf5ff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -181,6 +191,94 @@ img { max-width: 100%; height: auto; }
 .pg-grupo-box .gb-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px;}
 .pg-grupo-box .pg-grid{flex:1;background-image:linear-gradient(#eef1f5 1px,transparent 1px),linear-gradient(90deg,#eef1f5 1px,transparent 1px);background-size:18px 18px;border:1px solid #e2e8f0;border-radius:4px;min-height:380px;}
 .pg-note{font-size:9px;color:var(--text-muted);font-style:italic;text-align:center;}
+
+/* ============================================================
+   RECUADROS SEMÁNTICOS (04/07/2026)
+   Cada recuadro codifica el TIPO de contenido por color.
+   Uso: <div class="recuadro-combate">...</div>
+   Ver 00_PROYECTO/CSS_ETIQUETAS.md para reglas de uso.
+   ============================================================ */
+
+.recuadro-combate,
+.recuadro-tech,
+.recuadro-lore,
+.ejemplo,
+.nota-dj,
+.pifia,
+.tabla-dados {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* Combate: reglas letales, daño, peligro físico */
+.recuadro-combate {
+    background-color: var(--color-combate-bg);
+    border-left: 4px solid var(--color-combate);
+}
+.recuadro-combate strong { color: var(--color-combate); }
+
+/* Tecnología: equipo, distorsión, objetos, cyberware */
+.recuadro-tech {
+    background-color: var(--color-tech-bg);
+    border-left: 4px solid var(--color-tech);
+}
+.recuadro-tech strong { color: var(--color-tech); }
+
+/* Lore: historia, worldbuilding, trasfondo narrativo */
+.recuadro-lore {
+    background-color: var(--color-lore-bg);
+    border-left: 4px solid var(--color-lore);
+}
+.recuadro-lore strong { color: var(--color-lore); }
+
+/* Ejemplo de juego: nombre de PJ y situación en mesa */
+.ejemplo {
+    background-color: #f8fafc;
+    border-left: 4px solid var(--text-muted);
+    font-style: italic;
+}
+.ejemplo strong { color: var(--bg-dark); font-style: normal; }
+
+/* Nota del Director de Juego (información no visible al jugador) */
+.nota-dj {
+    background-color: #fef3c7;
+    border-left: 4px solid #d97706;
+}
+.nota-dj::before {
+    content: "★ NOTA DEL DJ ";
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #d97706;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Pifia: resultado crítico negativo, consecuencias graves */
+.pifia {
+    background-color: #1e1b1b;
+    color: #fca5a5;
+    border-left: 4px solid var(--color-combate);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13.5px;
+}
+.pifia strong { color: #fee2e2; }
+
+/* Tabla de dados: rango, valores, resultados */
+.tabla-dados {
+    background-color: #f1f5f9;
+    border-left: 4px solid var(--accent-subtle);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13.5px;
+}
+
+/* ============================================================ */
 
 /* ===== RESPONSIVE MOVIL ===== */
 @media (max-width: 768px) {
