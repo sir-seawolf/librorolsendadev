@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- ARCHIVO MAESTRO. Las copias de distribución se generan desde este archivo. -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -107,9 +108,12 @@
   .footnote{font-size:9px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:8px;padding-top:4px;page-break-inside:avoid;break-inside:avoid;}
   .page2{margin-top:6px;padding-top:3px;border-top:2px solid #cbd5e1;min-height:97vh;}
   .page2-title{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:13px;color:#000;border-bottom:2px solid var(--accent);padding-bottom:1px;letter-spacing:1px;margin-bottom:2px;}
-  .page2-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;align-items:stretch;min-height:89vh;}
+  .page2-grid{display:grid;grid-template-columns:1.05fr 1fr 1.2fr 1.15fr;gap:6px;align-items:stretch;min-height:89vh;}
   .page2-col{display:flex;flex-direction:column;gap:6px;min-width:0;height:100%;}
   .page2-block{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:3px;}
+  .page2-block.grow{flex:1;display:flex;flex-direction:column;}
+  .page2-block.grow .p2-table{height:100%;}
+  .page2-block.grow textarea{height:100%;min-height:58px;resize:none;}
   .page2-block h3{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:#0f172a;margin-bottom:2px;}
   .page2-wide{grid-column:1 / -1;}
   .p2-table{width:100%;border-collapse:collapse;font-size:9px;table-layout:fixed;}
@@ -208,11 +212,15 @@
     table{margin-bottom:1px;}
     .auto-cell,.total,.lifegrid .v{background:#fff !important;border:1px solid #666 !important;color:#000 !important;}
     .cat-base{background:#fff !important;color:#000 !important;border:1px solid #666 !important;}
-    .page2{page-break-before:always;break-before:page;border-top:none;margin-top:0;padding-top:0;}
+    .page1{height:190mm;overflow:hidden;}
+    .page1-scale{zoom:.88;}
+    .page2{page-break-before:always;break-before:page;border-top:none;margin-top:0;padding-top:0;height:190mm;min-height:190mm;overflow:hidden;}
     .page2-title{font-size:12px;}
-    .page2-grid{grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;}
+    .page2-grid{grid-template-columns:1.05fr 1fr 1.2fr 1.15fr;grid-template-rows:1fr;gap:5px;height:184mm;min-height:0;}
     .page2-col{gap:5px;}
     .page2-block{padding:3px;border:1px solid #666;background:#fff;}
+    .p2-table input,.p2-table select{min-height:4mm;}
+    .p2-table textarea{min-height:12mm;}
     .p2-table th{background:#e6eaf0;color:#000;border-bottom:1px solid #666;}
     th{background:#e6eaf0 !important;color:#000 !important;}
     /* compresion de bloques nuevos v3 para no desbordar la pagina 1 */
@@ -234,9 +242,10 @@
 </head>
 <body>
 <div class="sheet">
+  <div class="page1"><div class="page1-scale">
   <div class="header">
     <h1>La Senda de los Errantes</h1>
-    <span class="subtitle">Ficha de personaje · autocalculada v3</span>
+    <span class="subtitle">Ficha de personaje · autocalculada</span>
   </div>
 
   <div class="ident">
@@ -285,10 +294,10 @@
 
       <h2>Métricas</h2>
       <div class="metrics">
-        <div><span>Humanidad</span><input type="number" style="width:44px;"></div>
-        <div><span>Techo(Alma×10)</span><span class="auto-cell" id="techoHum">—</span></div>
+        <div><span>Humanidad</span><input type="number" id="humanidad" style="width:44px;" oninput="calc()"></div>
+        <div><span>Alma máx. (Hum÷10)</span><span class="auto-cell" id="almaMax">—</span></div>
         <div><span>S. Mental</span><input type="number" style="width:44px;"></div>
-        <div><span>Alma</span><input type="number" id="alma" style="width:44px;" oninput="calc()"></div>
+        <div><span>Alma actual</span><input type="number" id="alma" style="width:44px;" oninput="calc()"></div>
         <div><span>Deriva</span><input type="number" style="width:44px;"></div>
         <div><span>Dinero(I×100)</span><span class="auto-cell" id="dinero">0</span></div>
       </div>
@@ -441,13 +450,15 @@
     </div>
   </div>
 
-  <div class="footnote">Uso: escribe los 8 atributos y se calculan solas las casillas resaltadas. En cada habilidad: Base de categoría (auto) + Apr. (aprendido) + Mod. (implante/chip/objeto) = Total. Para imprimir, pon orientación Horizontal; entra en 1 folio A4 apaisado.</div>
+  <div class="footnote">Uso: escribe los 8 atributos y se calculan solas las casillas resaltadas. En cada habilidad: Base de categoría (auto) + Apr. (aprendido) + Mod. (implante/chip/objeto) = Total. Para imprimir, usa orientación Horizontal: la ficha ocupa exactamente 2 páginas A4 apaisadas.</div>
 
   <div class="btns">
     <button onclick="guardar()">Guardar (descargar)</button>
     <button class="alt" onclick="window.print()">Imprimir / PDF</button>
     <button class="alt" onclick="limpiar()" style="background:#888;">Limpiar habilidades</button>
   </div>
+
+  </div></div>
 
   <div class="page2">
     <div class="page2-title">La Senda de los Errantes · Página 2</div>
@@ -518,7 +529,7 @@
             <tr><td>Raciones</td><td><input type="text"></td></tr>
           </table>
         </div>
-        <table class="p2-table veh-dibujo">
+        <table class="p2-table veh-dibujo page2-block grow">
           <tr><th>Dibujo de vehículo</th></tr>
           <tr><td></td></tr>
         </table>
@@ -549,7 +560,7 @@
             <tr><td><input type="text"></td><td><input type="text"></td></tr>
           </table>
         </div>
-        <div class="page2-block">
+        <div class="page2-block grow">
           <h3>Notas del Refugio</h3>
           <table class="p2-table">
             <tr><th>Registro</th></tr>
@@ -557,7 +568,7 @@
             <tr><td><textarea></textarea></td></tr>
           </table>
         </div>
-        <table class="p2-table veh-dibujo">
+        <table class="p2-table veh-dibujo page2-block">
           <tr><th>Dibujo / plano de refugio</th></tr>
           <tr><td></td></tr>
         </table>
@@ -598,6 +609,18 @@
             <tr><td><input type="text"></td><td><input type="number"></td></tr>
           </table>
         </div>
+        <div class="page2-block grow">
+          <h3>Especie, chasis y necesidades</h3>
+          <table class="p2-table">
+            <tr><th style="width:31%;">Campo</th><th>Detalle</th></tr>
+            <tr><td>Especie / modelo</td><td><input type="text" placeholder="Humano, Nakel, Droideum…"></td></tr>
+            <tr><td>Chasis / cuerpo</td><td><input type="text"></td></tr>
+            <tr><td>Energía / sustento</td><td><input type="text"></td></tr>
+            <tr><td>Mantenimiento</td><td><input type="text"></td></tr>
+            <tr><td>Capacidades</td><td><textarea></textarea></td></tr>
+            <tr><td>Restricciones</td><td><textarea></textarea></td></tr>
+          </table>
+        </div>
       </div>
 
       <!-- COLUMNA 4: EQUIPO + TRASFONDO + DINERO -->
@@ -632,7 +655,7 @@
             <tr><td>Otros recursos</td><td><textarea></textarea></td></tr>
           </table>
         </div>
-        <div class="page2-block">
+        <div class="page2-block grow">
           <h3>Trasfondo / Notas</h3>
           <table class="p2-table">
             <tr><th>Registro</th></tr>
@@ -650,7 +673,7 @@
 const raw = id => { const v = document.getElementById(id).value.trim(); return v === '' ? NaN : parseInt(v); };
 const num = id => { const v = raw(id); return isNaN(v) ? 0 : v; };
 const filled = (...ids) => ids.every(id => !isNaN(raw(id)));
-const round = x => Math.ceil(x - 0.5); // el manual redondea los .5 hacia abajo (verificado con Kairo, CAP02)
+const round = x => Math.round(x); // regla canónica: 0,5 o más redondea hacia arriba
 
 // Ramas — listas originales de la ficha _B (preservadas para no perder habilidades ya presentes).
 // Nota: ANEXO_Meritos_Habilidades_DEFINITIVO.md reclasifica Conducir/Pilotar/Trajes Servoasistidos/Sigilo
@@ -788,12 +811,16 @@ function initCaminos(){
 }
 function calc(){
   const vidaOk=filled('A','C','F');
-  const pv=vidaOk?round((num('A')+num('C')+num('F'))/6):'';
+  const pv=vidaOk?Math.ceil((num('A')+num('C')+num('F'))/6):''; // Vida siempre redondea hacia arriba
   document.getElementById('vidaLeve').textContent=vidaOk?pv:'';
   document.getElementById('vidaMedio').textContent=vidaOk?pv:'';
   document.getElementById('vidaGrave').textContent=vidaOk?pv:'';
   document.getElementById('vidaTotal').textContent=vidaOk?(pv*3):'';
-  document.getElementById('techoHum').textContent=filled('alma')?(num('alma')*10):'—';
+  const almaMax=filled('humanidad')?Math.floor(num('humanidad')/10):NaN;
+  const almaMaxEl=document.getElementById('almaMax');
+  almaMaxEl.textContent=isNaN(almaMax)?'—':almaMax;
+  const almaEl=document.getElementById('alma');
+  almaEl.style.background=(!isNaN(almaMax)&&filled('alma')&&num('alma')>almaMax)?'#fecaca':'';
   document.getElementById('dinero').textContent=filled('I')?(num('I')*100)+' PC':'';
   const fcOk=filled('F','C');
   const fc=num('F')+num('C');
@@ -860,16 +887,44 @@ function calc(){
 }
 function limpiar(){document.querySelectorAll('.apr,.mod,.capr,.cmod,.iapr,.imod,.dhab,.dmod').forEach(el=>el.value='');calc();}
 function guardar(){
-  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-  const blob=new Blob([html],{type:'text/html'});const a=document.createElement('a');
+  calc();
+  const clone=document.documentElement.cloneNode(true);
+  const originals=[...document.querySelectorAll('input,textarea,select')];
+  const copies=[...clone.querySelectorAll('input,textarea,select')];
+  originals.forEach((el,i)=>{
+    const copy=copies[i];
+    if(el instanceof HTMLInputElement){
+      copy.setAttribute('value',el.value);
+      if(el.type==='checkbox'||el.type==='radio') el.checked?copy.setAttribute('checked',''):copy.removeAttribute('checked');
+    }else if(el instanceof HTMLTextAreaElement){
+      copy.textContent=el.value;
+    }else if(el instanceof HTMLSelectElement){
+      [...copy.options].forEach((option,j)=>option.selected=el.options[j].selected);
+    }
+  });
+  const html='<!DOCTYPE html>\n'+clone.outerHTML;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});const a=document.createElement('a');
   const n=document.getElementById('personaje').value||'personaje';
-  a.href=URL.createObjectURL(blob);a.download='Ficha_'+n.replace(/\s+/g,'_')+'.html';a.click();
+  const url=URL.createObjectURL(blob);
+  a.href=url;a.download='Ficha_'+n.replace(/[^a-z0-9áéíóúüñ_-]+/gi,'_')+'.html';a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function buildMerit(){
   const tb=document.getElementById('meritTable');tb.innerHTML='';
   for(let i=0;i<4;i++) tb.innerHTML+=`<tr><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td><td><input type="text" style="font-size:11px;"></td></tr>`;
 }
-buildSkills();buildCombat();buildInic();buildArmas();buildLoc();buildDisc();buildImpl();buildMerit();buildRuna();buildEpic();buildNotas();initCaminos();calc();
+if(!document.querySelector('#catA .skilltbl'))buildSkills();
+if(!document.querySelector('#combatTable tr'))buildCombat();
+if(!document.querySelector('#inicTable tr'))buildInic();
+if(!document.querySelector('#armasTable tr'))buildArmas();
+if(!document.querySelector('#locGrid .loc-cell'))buildLoc();
+if(!document.querySelector('#discBlockWrap .skilltbl'))buildDisc();
+if(!document.querySelector('#implTable tr'))buildImpl();
+if(!document.querySelector('#meritTable tr'))buildMerit();
+if(!document.querySelector('#runaTable tr'))buildRuna();
+if(!document.querySelector('#epicTable tr'))buildEpic();
+if(!document.querySelector('#notasTable tr'))buildNotas();
+initCaminos();checkSlots();calc();
 </script>
 </body>
 </html>
