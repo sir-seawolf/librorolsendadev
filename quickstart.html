@@ -81,15 +81,72 @@
 <hr />
 <h2>PARTE 1 — CHULETA DE REGLAS (PARA EL NARRADOR)</h2>
 <p>El sistema evita cálculos variables en mitad de la sesión. Toda resolución parte de la hoja de personaje, más un único modificador de dificultad fijo que pone el Narrador.</p>
-<h3>Tirada básica</h3>
+<h3>Tirada básica y éxitos</h3>
+<p>Tira un d100 (2d10: un dado para las decenas, otro para las unidades). Si el resultado es igual o menor que tu Habilidad efectiva, la acción tiene éxito.</p>
+<p><strong>Habilidad efectiva = valor de la categoría (talento innato) + puntos de la habilidad concreta (lo aprendido).</strong> Ejemplo: un personaje con categoría Académicas 30 y 15 puntos en Investigación, cuando investiga tira con <strong>45</strong> (30 + 15).</p>
+<p>Toda tirada exitosa produce al menos 1 éxito. Obtienes un éxito adicional por cada 10 puntos completos de diferencia entre tu Habilidad y la tirada:</p>
+<p><code>Diferencia = Habilidad efectiva − Tirada</code><br />
+<code>Éxitos = suelo(Diferencia / 10) + 1</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Diferencia</th>
+<th style="text-align: right;">Éxitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0-9</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">10-19</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">20-29</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">30-39</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">40-49</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo: Habilidad 65 y tirada 34. La diferencia es 31, por lo que obtienes 4 éxitos.</p>
 <ul>
-<li><strong>Resolución:</strong> se tira <strong>d100</strong> (2d10: un dado para las unidades, otro para las decenas) y se obtiene éxito al sacar un valor <strong>igual o menor</strong> que la habilidad empleada.</li>
-<li><strong>Habilidad efectiva = valor de la categoría (talento innato) + puntos de la habilidad concreta (lo aprendido).</strong> Ejemplo: un personaje con categoría Académicas 30 y 15 puntos en Investigación, cuando investiga tira con <strong>45</strong> (30 + 15).</li>
-<li><strong>Éxitos netos = (Habilidad − Tirada) / 10</strong>, redondeando hacia arriba. A más éxitos, mejor resultado.</li>
-<li><strong>Crítico:</strong> 00, 01, 02. <strong>Pifia:</strong> 97, 98, 99.</li>
 <li><strong>Habilidad a 0:</strong> si no se tiene, se puede intentar con un penalizador de −20.</li>
 <li><strong>Habilidades combinadas:</strong> media de las dos habilidades + sinergia de +5 a +15 a criterio del DJ.</li>
 </ul>
+<h3>Críticos y pifias</h3>
+<p>Los resultados 00, 01 y 02 siempre son críticos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Tirada</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">00</td>
+<td>Éxitos normales +3. En combate impacta automáticamente en la cabeza.</td>
+</tr>
+<tr>
+<td style="text-align: right;">01</td>
+<td>Éxitos normales +2.</td>
+</tr>
+<tr>
+<td style="text-align: right;">02</td>
+<td>Éxitos normales +1.</td>
+</tr>
+</tbody>
+</table>
+<p>Los resultados 97, 98 y 99 siempre son pifias, incluso cuando la Habilidad efectiva supera 100.</p>
 <h3>Dificultad — UN solo modificador a la habilidad</h3>
 <p>El Narrador ajusta el porcentaje del personaje según lo fácil o difícil que vea la acción. <strong>Solo estos cinco escalones, y ningún otro modificador de este tipo:</strong></p>
 <table>
@@ -125,16 +182,62 @@
 <h3>Ventajas y desventajas de equipo o entorno — modifican los ÉXITOS</h3>
 <p>Si tras aplicar la dificultad <strong>superas la tirada</strong>, las circunstancias (mejor equipo, posición favorable, o lo contrario) suman o restan <strong>éxitos</strong> al resultado. <strong>Si fallas la tirada, no hay nada que sumar ni restar:</strong> primero hay que tener éxito, y luego se modula cuánto.</p>
 <h3>Puntos Épicos</h3>
-<p>Los Madera de Héroe empiezan con <strong>3</strong>. Dos usos en mesa:<br />
-- <strong>Gesto heroico:</strong> gasta 1 antes de tirar para sumar <strong>+50</strong> a una tirada clave.<br />
-- <strong>Burlar a la muerte ("parecía que había muerto"):</strong> ante un golpe mortal, gasta 1 y el personaje queda inconsciente/estabilizado en vez de muerto. Todos lo dan por muerto; sobrevive para volver más tarde.</p>
+<p>Antes de tirar, el Narrador comunica la dificultad: Muy fácil <code>+20</code>, Fácil <code>+10</code>, Normal <code>0</code>, Difícil <code>−10</code> o Muy difícil <code>−20</code>. Después de conocerla, el jugador puede gastar 1 Punto Épico para sumar <code>+50</code> a su Habilidad efectiva.</p>
+<p>La Habilidad efectiva puede superar 100. Ese aumento también amplía el margen y los éxitos obtenidos. Sin embargo, 97, 98 y 99 siguen siendo pifias.</p>
+<p>El Punto Épico puede aplicarse a cualquier tirada, incluida Iniciativa o una tirada enfrentada. No se añade directamente al daño: al mejorar un ataque, genera más éxitos y esos éxitos pueden aumentar el daño.</p>
+<p>Ante un golpe mortal, también puede gastarse 1 Punto Épico para activar «Parecía que había muerto»: el personaje queda inconsciente y estabilizado en vez de morir.</p>
 <h3>Combate</h3>
+<h3>Iniciativa</h3>
+<p>Tira d100 y suma tu valor de Iniciativa. Todos actúan de mayor a menor.</p>
+<p>Una Iniciativa superior a 100 concede un segundo turno completo. Primero se resuelven, en orden descendente, todas las iniciativas de 101 o más. Después se resta 100 a esos resultados y se inserta su segunda actuación en el orden descendente restante.</p>
+<p>Ejemplo: un personaje con Iniciativa 120 actúa primero en la posición 120 y vuelve a actuar en la posición 20.</p>
+<h3>Cadencia de fuego</h3>
+<table>
+<thead>
+<tr>
+<th>Modo</th>
+<th style="text-align: right;">Munición</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiro a tiro</td>
+<td style="text-align: right;">1 bala</td>
+<td>Sin bonificación.</td>
+</tr>
+<tr>
+<td>Ráfaga</td>
+<td style="text-align: right;">3 balas</td>
+<td>+1 éxito si el ataque tiene éxito.</td>
+</tr>
+<tr>
+<td>Fuego sostenido</td>
+<td style="text-align: right;">9 balas</td>
+<td>+2 éxitos si el ataque tiene éxito.</td>
+</tr>
+</tbody>
+</table>
+<p>La bonificación de Cadencia se aplica después de comprobar que la tirada de ataque ha tenido éxito.</p>
+<h3>Penetración y cobertura</h3>
+<p>Cada punto de Penetración anula un punto de Blindaje. La Penetración se aplica también al Blindaje proporcionado por cobertura: una bala adecuada puede atravesar el coche, la puerta o el muro tras el que se protege el objetivo.</p>
+<p>En las armas a distancia, la Penetración procede normalmente de la munición utilizada. Cambiar de munición puede ser tan importante como cambiar de arma.</p>
+<p>La PREDATOR es una excepción: incorpora su Penetración como parte del diseño del arma.</p>
+<p><strong>Orden de resolución:</strong><br />
+1. Calcula los éxitos del ataque.<br />
+2. Añade los éxitos de Cadencia, si corresponde.<br />
+3. Resta los éxitos de defensa.<br />
+4. Suma el Blindaje personal y el de cobertura.<br />
+5. Reduce ese Blindaje mediante Penetración.<br />
+6. Resta el Blindaje restante a los éxitos del ataque.<br />
+7. Multiplica los éxitos finales por el daño base del arma.</p>
+<h3>Defensa</h3>
+<p><strong>Cuerpo a cuerpo:</strong> antes de tirar, el personaje puede dividir su Habilidad de arma entre ataque y defensa. Realiza una tirada con cada valor. Los éxitos de defensa restan éxitos al ataque recibido.</p>
+<p>También puede dedicar todo su turno a Esquivar. Si la tirada de Esquivar tiene éxito, evita el ataque cuerpo a cuerpo, pero no puede atacar durante ese turno.</p>
+<p><strong>Ataques a distancia:</strong> no se esquivan las balas mediante una tirada gratuita de Esquivar. Contra disparos, el personaje debe buscar cobertura o reservar parte de su Habilidad mediante defensa activa.</p>
+<p>La cobertura aporta Blindaje, pero puede ser atravesada mediante Penetración.</p>
 <ul>
-<li><strong>Iniciativa:</strong> 2d10 leídos como d100 (0-99) + Iniciativa. Quien supere 100 actúa dos veces; el resto, de mayor a menor.</li>
-<li><strong>Atacar:</strong> tirada de la habilidad de arma (Distancia o Arma CC) ≤ habilidad.</li>
-<li><strong>Penetración y Blindaje:</strong> Penetración total = Pen intrínseca + munición + modificaciones o runas compatibles. Blindaje total = armadura natural + armadura llevada + cobertura + otras fuentes compatibles. <strong>Blindaje efectivo = máx. 0, Blindaje total − Penetración total</strong>. La Pen sobrante no causa daño ni éxitos adicionales.</li>
-<li><strong>Daño = daño base del arma × éxitos finales.</strong> Tras resolver el impacto y restar Esquivar, resta el Blindaje efectivo a los éxitos normales; después suma los éxitos adicionales de crítico, Cadencia y arma inteligente. Los adicionales solo se aplican si el ataque impactó.</li>
-<li><strong>Localización:</strong> dado de unidades de la tirada de ataque. 0 = Cabeza · 9-5 = Torso · 4 = Brazo D · 3 = Brazo I · 2 = Pierna D · 1 = Pierna I. La localización no implica crítico (salvo tirada de 00).</li>
+<li><strong>Localización:</strong> dado de unidades de la tirada de ataque. 0 = Cabeza · 9-5 = Torso · 4 = Brazo D · 3 = Brazo I · 2 = Pierna D · 1 = Pierna I.</li>
 </ul>
 <h3>Vida y heridas graves</h3>
 <ul>
@@ -142,11 +245,15 @@
 <li><strong>Desbordamiento:</strong> si un golpe hace más daño que los PV de la zona: <strong>Cabeza o Torso → muerte</strong>; <strong>Extremidad → 1d6</strong> (1-2 inutilizada · 3-4 amputación baja · 5-6 amputación alta), el PJ sigue en pie.</li>
 <li><strong>Sangrado:</strong> tras herida grave o amputación, tira <strong>Constitución</strong> al inicio de cada asalto; si falla, baja un nivel. Lo estabiliza un <strong>Medikit</strong> o un éxito en <strong>Primeros Auxilios</strong>.</li>
 </ul>
-<h3>Nota sobre Deriva y Humanidad</h3>
-<ul>
-<li><strong>Deriva:</strong> se acumula al viajar entre teselas (mundos). Cuanto más viajes, más cambia tu cuerpo y tu mente: al alcanzar o superar por primera vez cada múltiplo de 10, algo irreversible ocurre. En este módulo los personajes empiezan con Deriva 0. Si cruzan durante la aventura, el DJ decide cuánta acumulan. <strong>Excepción deliberada del módulo:</strong> su pulsera inestable causa 1d10+6 porque desgarra la membrana sin control fino; un portal de Maestro causa 1d6.</li>
-<li><strong>Humanidad:</strong> mide cuánto de ti sigue siendo orgánico. Cada implante cibernético la reduce. En un ser orgánico, llegar a 0 supone la pérdida total de su humanidad. Un humano normal comienza con Humanidad 100 y Alma 8. La Humanidad puede superar al Alma; <strong>Alma máxima = suelo(Humanidad / 10)</strong> y baja inmediatamente si la Humanidad reduce ese límite. Un Droideum anota Humanidad <strong>— / no aplicable</strong>, no 0, y tampoco posee Alma biológica.</li>
-</ul>
+<h3>Humanidad y Alma</h3>
+<p>Un humano normal comienza con Humanidad 100 y Alma 8. Un Iniciado comienza con Humanidad 100 y Alma 10.</p>
+<p>La Humanidad mide cuánto conserva el personaje de su identidad humana frente a implantes, transformaciones y experiencias que lo alejan de ella. El Alma representa su anclaje metafísico.</p>
+<p>La Humanidad puede ser superior al Alma, pero el Alma nunca puede superar el límite marcado por la Humanidad:</p>
+<p><code>Alma máxima = suelo(Humanidad / 10)</code></p>
+<p>Ejemplo: si la Humanidad desciende a 70, el Alma máxima pasa a ser 7. Si tenía Alma 8, pierde inmediatamente el punto que excede ese límite.</p>
+<p>Un Droideum anota Humanidad <strong>— / no aplicable</strong>, no 0, y tampoco posee Alma biológica.</p>
+<h3>Nota sobre Deriva</h3>
+<p>La Deriva se acumula al viajar entre teselas (mundos). Cuanto más viajes, más cambia tu cuerpo y tu mente: al alcanzar o superar por primera vez cada múltiplo de 10, algo irreversible ocurre. En este módulo los personajes empiezan con Deriva 0. Si cruzan un portal durante la aventura, el DJ decide cuánta acumulan (1d10+6 con pulsera inestable, 1d6 con un Maestro de Portales).</p>
 <hr />
 <h2>PARTE 2 — PERSONAJES PREGENERADOS</h2>
 <blockquote>
@@ -247,10 +354,61 @@
 <p><strong>MÍNIMO RECOMENDADO: 2 jugadores</strong> — uno de combate y uno social o técnico. Por ejemplo, Drago (músculo) + Reyes (la voz), o Kova + Bishop. Con 3-5 se reparten mejor las escenas.</p>
 </blockquote>
 <hr />
+<h3>Antes del callejón — La noche del club</h3>
+<p>Los personajes no son todavía aventureros ni agentes corporativos. Son miembros del mismo club de juegos de mesa. Se conocen desde hace tiempo, han compartido partidas, discusiones sobre reglas, cenas tardías y suficientes derrotas como para saber aproximadamente cómo piensa cada uno.</p>
+<p>Esa tarde salen juntos del club. Quizá acaban de terminar una partida; quizá el local ha cerrado antes; quizá van a buscar algo para cenar. Entonces oyen los disparos.</p>
+<p>Sus habilidades no proceden de una vida heroica. Cada uno ha aprendido cosas útiles dentro de una vida normal:<br />
+- Kova trabaja como transportista, hizo el servicio militar y practica artes marciales.<br />
+- Bishop se dedica al mantenimiento técnico y repara aparatos por afición.<br />
+- Salim trabaja en el ámbito sanitario y colabora como voluntario en emergencias.<br />
+- Reyes se mueve en comercio, gestión o logística y conoce gente en toda la ciudad.<br />
+- Drago trabaja en seguridad y practica deportes de combate.</p>
+<p>No empiezan siendo héroes. La aventura les obligará a descubrir de qué son capaces.</p>
+<hr />
 <h2>PARTE 3 — MÓDULO 0.5: PREDATOR N-5.2</h2>
 <blockquote>
-<p><strong>[DJ] Estructura:</strong> 3-5 jugadores (mínimo 2) · 1-2 sesiones · nivel inicial · thriller de calle.<br />
-<strong>[DJ] Premisa:</strong> la acción arranca en un <strong>mundo no despertado</strong> — una ciudad cualquiera de finales del siglo XX o principios del XXI, podría ser Madrid, Londres o cualquier metrópoli real. Gente normal, calles normales. Por debajo, las corporaciones cósmicas mueven los hilos sin que nadie lo sepa. Tienen prohibido por contrato actuar abiertamente en mundos recién adscritos a El Mosaico... y ninguna cumple el acuerdo. El contraste —lo cotidiano frente a lo que se oculta— es el alma de la aventura. Lo verdaderamente extraño no llega hasta la Escena 5.</p>
+<p><strong>[DJ] Estructura:</strong> 3-5 jugadores (mínimo 2) · 1-2 sesiones · nivel inicial · thriller de calle.</p>
+</blockquote>
+<h3>El mundo no se adapta a los personajes</h3>
+<p><em>La Senda de los Errantes</em> no construye todos sus encuentros para que los personajes puedan vencer mediante la fuerza. El mundo es coherente consigo mismo: una instalación importante estará bien protegida y seis agentes con armadura seguirán siendo seis agentes con armadura.</p>
+<p>Tu responsabilidad como Narrador no es convertir cada peligro en un combate justo. Es transmitir suficiente información para que los jugadores puedan tomar decisiones conscientes.</p>
+<p>Antes de una situación peligrosa, permite que puedan descubrir:<br />
+- cuántos adversarios hay y cómo están equipados;<br />
+- qué protección, armas o munición podrían necesitar;<br />
+- qué rutas de entrada, negociación, engaño o retirada existen;<br />
+- qué consecuencias tendría un enfrentamiento directo.</p>
+<p>Si no pueden vencer por fuerza, pueden investigar, preparar una emboscada, obtener munición de Penetración, sabotear el entorno, negociar, dividir al enemigo, escapar o regresar mejor preparados.</p>
+<p><strong>Los encuentros no están equilibrados; están informados.</strong></p>
+<h3>Ajustar ejecutores por tamaño del grupo</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Personajes</th>
+<th style="text-align: right;">Ejecutores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">4-5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>No reducir su equipo ni competencia. Este ajuste compensa la economía de acciones de mesas pequeñas, no convierte la escena en un combate obligatorio.</p>
+<blockquote>
+<p><strong>[DJ] Premisa:</strong> la acción arranca en un <strong>mundo no despertado</strong> — una ciudad cualquiera de finales del siglo XX o principios del XXI, podría ser Madrid, Londres o cualquier metrópoli real. Gente normal, calles normales. Por debajo, las corporaciones cósmicas mueven los hilos sin que nadie lo sepa. Tienen prohibido por contrato actuar abiertamente en mundos recién adscritos a El Mosaico... y ninguna cumple el acuerdo. El contraste —lo cotidiano frente a lo que se oculta— es el alma de la aventura. Lo verdaderamente extraño no llega hasta la Escena 5.</p>
 </blockquote>
 <p><img alt="El Callejon" src="img/callejon.jpg" /></p>
 <h3>ESCENA 1 — EL CALLEJÓN</h3>
@@ -357,6 +515,17 @@
 <li>Alerta 40 · Distancia (subfusil/armas cortas) 35 · Sigilo 40 · Arma CC 35</li>
 <li><strong>Variante Chafry (interceptación):</strong> igual pero Blindaje 2 (torso+cabeza) + pistola aturdidora (daño no letal 10, alcance 25 m)</li>
 </ul>
+<h3>Tres rutas hacia los almacenes</h3>
+<blockquote>
+<p><strong>[DJ]</strong> Las investigaciones y decisiones de las escenas anteriores convergen en los almacenes de MORT. Hay tres formas de llegar, y cada una tiene consecuencias distintas:</p>
+</blockquote>
+<p><strong>Ruta A — Acuerdo con Mort.</strong> Los personajes entregan o negocian el chip. Mort ofrece sacarlos del sector mediante sus contenedores. Es la ruta más directa, pero los coloca voluntariamente dentro de una operación que no comprenden.</p>
+<p><strong>Ruta B — Captura o persecución.</strong> Mort o Chafry localizan al grupo. Durante la persecución, los personajes descubren que los almacenes son el centro logístico desde el que salen los contenedores. Pueden infiltrarse para escapar, ser introducidos como prisioneros o aprovechar el caos de un ataque entre corporaciones.</p>
+<p><strong>Ruta C — Investigación.</strong> Los datos de Arthur, Pitágoras, las cámaras o los movimientos bancarios conducen a la empresa logística utilizada por Mort. Los personajes comprenden que los almacenes ofrecen una ruta clandestina fuera de la ciudad y deciden infiltrarse por iniciativa propia.</p>
+<p>Las tres rutas convergen en los almacenes, pero conservan una consecuencia diferente:<br />
+- <strong>Acuerdo:</strong> Mort conoce su identidad y espera una deuda.<br />
+- <strong>Persecución:</strong> una corporación los considera fugitivos o activos capturados.<br />
+- <strong>Investigación:</strong> entran sin permiso y conservan mayor autonomía, pero carecen de apoyo.</p>
 <h3>ESCENA 4 — LOS ALMACENES (tapadera de MORT)</h3>
 <blockquote>
 <p><em>Los muelles de carga son un hervidero. Sobre todo destaca una grúa industrial amarilla, altísima, de seis plantas, moviendo contenedores en una danza automática e hipnótica. Vías de tren rodean el complejo como un circuito de juguete y se meten en un túnel hacia el este, todo cercado por vallas de alta tensión. En el centro, dos edificios administrativos con el rótulo de una empresa de logística de nombre corriente. Todo — las grúas, los monos de trabajo, las señales— está pintado en el mismo gris oscuro y naranja industrial, una combinación que, si uno se fija, resulta vagamente familiar.</em></p>
@@ -392,6 +561,9 @@
 <p><strong>¿Qué hace aquí un Maestro de Portales?</strong> Primus vigila los enclaves no despertados con equipos pequeños de reconocimiento. Este Maestro estaba en misión de supervisión cuando el bombardeo aliado destruyó su campamento y mató a su escolta. No ha venido a rescatar a nadie — ha encontrado a los PJs porque necesita protección para salir vivo. Un Maestro sin escolta en una zona de guerra es un objetivo prioritario para cualquier facción que quiera un portal gratis.</p>
 <p><strong>ENLACE:</strong> conecta con el siguiente suplemento: <strong>De Ratones y Hombres</strong> <em>(en desarrollo)</em>.</p>
 </blockquote>
+<h3>Deriva al cruzar</h3>
+<p>Cuando el Maestro de Portales abre el cruce final, cada personaje obtiene <code>1d6</code> puntos de Deriva. Es su primer contacto mecánico con el precio de viajar por el Mosaico.</p>
+<p>Si un personaje alcanza 10 o más puntos, aplica inmediatamente el efecto correspondiente de Deriva. El cambio es permanente.</p>
 <hr />
 <h2>APÉNDICE — DATOS DE REFERENCIA</h2>
 <h3>PREDATOR N-5.2 (prototipo Chafry) — arma media</h3>
