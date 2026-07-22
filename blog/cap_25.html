@@ -4,11 +4,13 @@
 body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;margin:0;padding:0;}
 .topnav{background:#12141a;border-bottom:2px solid #ff3b3b;padding:8px 20px;display:flex;
   justify-content:space-between;align-items:center;font-family:'Orbitron',sans-serif;
-  font-size:11px;text-transform:uppercase;letter-spacing:1px;position:sticky;top:0;z-index:100;}
+  font-size:11px;text-transform:uppercase;letter-spacing:1px;position:fixed;top:0;left:0;
+  width:100%;z-index:100;}
 .topnav a{color:#94a3b8;text-decoration:none;padding:4px 10px;}
 .topnav a:hover{color:#fff;}
 .topnav .brand{color:#ff3b3b;font-weight:700;font-size:12px;}
-.content{max-width:750px;margin:0 auto;padding:40px 20px 60px;line-height:1.8;font-size:16px;}
+@media print{.topnav{display:none;}}
+.content{max-width:750px;margin:0 auto;padding:96px 20px 60px;line-height:1.8;font-size:16px;}
 .content h1{font-family:'Orbitron',sans-serif;font-size:22px;color:#ff3b3b;margin-bottom:6px;}
 .content h2,.content h3{font-family:'Orbitron',sans-serif;color:#cbd5e1;}
 .content hr{border:none;border-top:1px solid #2a303c;margin:20px 0;}
@@ -34,8 +36,15 @@ body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;margin:0
 .chapter-list .draft{display:block;padding:10px 16px;color:#475569;
   border-bottom:1px solid #1e293b;}
 .chapter-list .draft .num{color:#333;}
+.arc-filters{max-width:750px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px;}
+.arc-filters button{font-family:'Share Tech Mono',monospace;font-size:11px;text-transform:uppercase;
+  background:#161920;color:#94a3b8;border:1px solid #2a303c;border-radius:4px;padding:6px 12px;
+  cursor:pointer;transition:all .15s;}
+.arc-filters button:hover{border-color:#ff3b3b;color:#fff;}
+.arc-filters button.active{background:#ff3b3b;border-color:#ff3b3b;color:#000;font-weight:700;}
+.chapter-list a.arc-hidden,.chapter-list span.arc-hidden{display:none;}
 </style></head><body>
-<div class="topnav"><a class="brand" href="../index.html">La Senda</a><div><a href="../index.html">Inicio</a><a href="../manual.html">Manual</a><a href="index.html">Blog</a><a href="../galeria.html">Galeria</a></div></div>
+<div class="topnav"><a class="brand" href="../index.html">La Senda</a><div><a href="../index.html">Inicio</a><a href="../juego.html">Juego</a><a href="index.html">Blog</a><a href="../galeria.html">Galería</a><a href="../dlcs.html">DLCs</a></div></div>
 <div class="content"><h1>Capítulo 25: Las Minas y el Despertar</h1>
 <hr/>
 <p>Capítulo 25: Las Minas y el Despertar</p>

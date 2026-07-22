@@ -4,11 +4,13 @@
 body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;margin:0;padding:0;}
 .topnav{background:#12141a;border-bottom:2px solid #ff3b3b;padding:8px 20px;display:flex;
   justify-content:space-between;align-items:center;font-family:'Orbitron',sans-serif;
-  font-size:11px;text-transform:uppercase;letter-spacing:1px;position:sticky;top:0;z-index:100;}
+  font-size:11px;text-transform:uppercase;letter-spacing:1px;position:fixed;top:0;left:0;
+  width:100%;z-index:100;}
 .topnav a{color:#94a3b8;text-decoration:none;padding:4px 10px;}
 .topnav a:hover{color:#fff;}
 .topnav .brand{color:#ff3b3b;font-weight:700;font-size:12px;}
-.content{max-width:750px;margin:0 auto;padding:40px 20px 60px;line-height:1.8;font-size:16px;}
+@media print{.topnav{display:none;}}
+.content{max-width:750px;margin:0 auto;padding:96px 20px 60px;line-height:1.8;font-size:16px;}
 .content h1{font-family:'Orbitron',sans-serif;font-size:22px;color:#ff3b3b;margin-bottom:6px;}
 .content h2,.content h3{font-family:'Orbitron',sans-serif;color:#cbd5e1;}
 .content hr{border:none;border-top:1px solid #2a303c;margin:20px 0;}
@@ -34,8 +36,15 @@ body{font-family:'Rajdhani',sans-serif;background:#0a0b0f;color:#e2e8f0;margin:0
 .chapter-list .draft{display:block;padding:10px 16px;color:#475569;
   border-bottom:1px solid #1e293b;}
 .chapter-list .draft .num{color:#333;}
+.arc-filters{max-width:750px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px;}
+.arc-filters button{font-family:'Share Tech Mono',monospace;font-size:11px;text-transform:uppercase;
+  background:#161920;color:#94a3b8;border:1px solid #2a303c;border-radius:4px;padding:6px 12px;
+  cursor:pointer;transition:all .15s;}
+.arc-filters button:hover{border-color:#ff3b3b;color:#fff;}
+.arc-filters button.active{background:#ff3b3b;border-color:#ff3b3b;color:#000;font-weight:700;}
+.chapter-list a.arc-hidden,.chapter-list span.arc-hidden{display:none;}
 </style></head><body>
-<div class="topnav"><a class="brand" href="../index.html">La Senda</a><div><a href="../index.html">Inicio</a><a href="../manual.html">Manual</a><a href="index.html">Blog</a><a href="../galeria.html">Galeria</a></div></div>
+<div class="topnav"><a class="brand" href="../index.html">La Senda</a><div><a href="../index.html">Inicio</a><a href="../juego.html">Juego</a><a href="index.html">Blog</a><a href="../galeria.html">Galería</a><a href="../dlcs.html">DLCs</a></div></div>
 <div class="content"><h1>Capítulo 13: El Asedio - Parte II</h1>
 <hr/>
 <p>Luis y yo habíamos estado trabajando en algo durante meses. Él tenía problemas para ubicarse espacialmente a veces —su visión óptica era excelente pero carecía de profundidad real. Así que desarrollamos un sistema de mapeo que utilizaba el sonido, como los murciélagos. Ondas sónicas rebotando en superficies, creando un mapa tridimensional del entorno. Pero Luis había ido más allá. Había creado un programa que podía usar los altavoces —normalmente los de los trajes de nuestros aliados, pero ahora los de la nave— para emitir música. Música específica. Música con una frecuencia y volumen que, francamente, era insoportable. A menos que tuvieras el sistema de cancelación de ruido que habíamos instalado en nuestros cascos. El primer acorde de "Smoke on the Water" de Deep Purple estalló en la noche. No fue solo fuerte. Fue un asalto sónico. Los altavoces de la nave, diseñados para comunicaciones en ambientes ruidosos, ahora bombeaban ciento cincuenta decibelios de rock clásico puro. El sonido hacía vibrar el metal, hacía temblar el cristal, hacía que el aire mismo pareciera solidificarse con cada nota. Para los soldados corporativos fue como ser golpeados por un martillo invisible. Los vi tambalearse, llevarse las manos a los cascos. Algunos cayeron de rodillas, el tintineo de su armadura casi inaudible bajo el rugido de la música. Para nosotros, con nuestros sistemas de cancelación, era perfecto silencio. Bueno, no silencio exactamente. Podíamos oír la música, pero como un susurro distante, el volumen reducido a algo manejable. Y servía como señal. Era hora de volver a casa. Vi a Isthar moverse primero. Dejó su posición de disparo, el siseo final de su rifle cortándose abruptamente, y corrió hacia el cable más cercano. Se lanzó sin vacilar, su cuerpo cortando el aire con gracia, el silbido del viento mezclándose con los acordes distorsionados de guitarra. Aterrizó en la nave con un golpe metálico, rodando para absorber el impacto, el olor a sudor y cordita viniendo con ella. Miguel —bueno, Beky traía a Miguel. La moto subió con esa elegancia imposible, esquivando los disparos desesperados de los soldados que aún podían apuntar. El rugido de su motor era un contrapunto perfecto a Deep Purple, creando una sinfonía de caos y belleza. La compuerta trasera de la nave estaba abierta. Beky no redujo velocidad. Simplemente se lanzó hacia adelante, el aire silbando alrededor de su chasis, y entró en la nave con centímetros de sobra a cada lado, el olor a combustible quemado y adrenalina llenando el espacio. Miguel estaba consciente, apenas. A través del comunicador podía oír su respiración irregular, el susurro de dolor que intentaba controlar. El olor a sangre era evidente incluso a través de los sistemas de filtración. Nadine llegó como una sombra con garras. Saltó desde un edificio cercano, su cuerpo una silueta contra las luces de neón, y aterrizó en el ala de la nave con un impacto que hizo gemir el metal. Cojeaba, el olor a sangre más fuerte con ella, pero sus ojos brillaban con esa determinación felina que significaba que estaba lejos de estar acabada. —Todos dentro —gruñó, su voz ronca por el esfuerzo y el dolor.</p>
