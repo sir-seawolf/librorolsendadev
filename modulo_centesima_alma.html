@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — La centésima alma</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — La centésima alma</h1>
+<h2>Módulo completo pendiente de playtest, corrección y maquetación</h2>
+<blockquote>
+<p><em>Una Daga no necesita entender su camino. Para eso están quienes la llevan.</em></p>
+</blockquote>
+<p>Este documento queda como <strong>módulo completo pendiente de playtest, corrección y maquetación</strong>. Contiene una ruta jugable de seis escenas, PNJ principales, reglas locales, oposición y finales posibles, pero conserva la etiqueta <code>BORRADOR</code> porque aún necesita prueba en mesa, ajuste de ritmo, corrección de estilo y maquetación final.</p>
+<p>Formato previsto: aventura de una o dos sesiones, ampliable. Su función es permitir que los jugadores atisben el lore de las Dagas del LORD, el Centenar y la Trama sin resolverlo.</p>
+<p>Referencia canónica: <code>03_LORE_Y_REFERENCIAS/LORE_Constantes_LORD_Culto_Dagas_DEFINITIVO.md</code>.</p>
+<hr />
+<h2>Esquema de ruta</h2>
+<pre><code class="language-text">Corredor estable
+      │
+Estación Mercury — Escena 1
+      │
+Primer tramo / Rastreros — Escena 2
+      │
+Campamento / sueño
+      │
+Refugio intermedio — Escena 3
+      │
+Intercepción del Inquisidor — Escena 4
+      │
+Núcleo de Ashal / fracturas — Escena 5
+      │
+Hospicio de la Linde — Escena 6
+</code></pre>
+<p>El mapa gráfico permanece pendiente.</p>
+<hr />
+<h2>Premisa</h2>
+<p>Una mensajera profesional de Mercury transporta una Daga del LORD sin comprender completamente lo que posee.</p>
+<p>La Daga contiene <strong>99 Puntos de Alma</strong>.</p>
+<p>Varias fuerzas convergen sobre Nara Venn:</p>
+<ul>
+<li>una célula del Culto de las Dagas;</li>
+<li>el Inquisidor;</li>
+<li>una facción radical interesada en completar la carga o emplearla contra una entidad local;</li>
+<li>Serekh, un Demonio Mayor con Nombre que intenta atravesar el velo.</li>
+</ul>
+<p>La tesela posee una entidad protectora que técnicamente podría ser clasificada como demonio. No es malvada. Ha acumulado muchas almas mediante contratos voluntarios y acogiendo a quienes murieron bajo su protección.</p>
+<p>Matarla con la Daga solo aportaría <strong>1 Punto de Alma</strong>, como cualquier otra víctima.</p>
+<hr />
+<h2>Asterión, planeta-tesela</h2>
+<p>Asterión no es una pequeña región aislada: es una <strong>tesela planetaria completa situada dentro de la Urdimbre</strong>.</p>
+<p>Se accede mediante un corredor estable que desemboca en una estación de tránsito. Mercury y otras organizaciones mantienen este acceso porque, dentro de Asterión, el problema no es llegar al planeta: es salir de él por cualquier sitio que no sea el corredor.</p>
+<p>Dentro de Asterión:</p>
+<ul>
+<li>vehículos, naves y tecnología convencional funcionan;</li>
+<li>las comunicaciones locales tienen alcance limitado;</li>
+<li>no pueden abrirse portales nuevos en la mayor parte del planeta;</li>
+<li>Parpadeo no encuentra destinos estables;</li>
+<li>para abandonar la tesela es necesario regresar al corredor estable;</li>
+<li>determinadas zonas se superponen parcialmente con el espacio existente entre la entrada y la salida de los portales.</li>
+</ul>
+<p>La causa probable es el exceso de Distorsión: la Urdimbre está demasiado cerca para distinguir correctamente entrada, tránsito y salida. Mantén esta explicación como hipótesis operativa, no como verdad cosmológica absoluta.</p>
+<p>La misión transcurre en el <strong>Páramo Sordo</strong>, entre la estación de acceso y el Hospicio de la Linde.</p>
+<p><strong>Trayecto:</strong> aproximadamente 36 km, dos jornadas, una noche en ruta y un refugio intermedio a mitad del recorrido.</p>
+<h3>Exposición ambiental de Asterión</h3>
+<p>Esta es una regla local de Asterión y no una regla universal del Mosaico.</p>
+<blockquote>
+<p>Por cada 24 horas completas de exposición en Asterión, toda criatura susceptible recibe 1 punto de Deriva.</p>
+</blockquote>
+<p>Una Perla sintonizada puede desviar esa exposición:</p>
+<ul>
+<li>debe estar en contacto directo con el cuerpo durante la mayor parte del periodo;</li>
+<li>recibe 1 PD en lugar de que el portador reciba 1 Deriva;</li>
+<li>solo protege a una criatura;</li>
+<li>solo desvía la Deriva ambiental diaria;</li>
+<li>no absorbe Deriva de portales, poderes, criaturas o acontecimientos;</li>
+<li>si está llena, el portador recibe Deriva normalmente;</li>
+<li>llevar varias perlas no permite cargar todas;</li>
+<li>los Droideum, inmunes a Deriva, no generan PD por este procedimiento.</li>
+</ul>
+<p>Nara lleva una Perla Blanca corporativa sintonizada e integrada en contacto con su traje. Comienza descargada y forma parte del equipo retornable de Mercury.</p>
+<p>Los personajes no reciben Perlas. Pueden emplear una propia o manipular el cargamento, pero abrir la caja o utilizar una de las seis Perlas viola el contrato y queda registrado por el sello Mercury.</p>
+<hr />
+<h2>Cliente, cargamento y contrato</h2>
+<p>El cliente es el <strong>Hospicio de la Linde</strong>, hospital y refugio situado al otro lado del Páramo.</p>
+<p>No adora formalmente a Ashal. Conoce a la protectora como «la Custodia» y mantiene una convivencia práctica con ella.</p>
+<p>El Hospicio necesita:</p>
+<ul>
+<li>seis Perlas Blancas descargadas;</li>
+<li>capacidad total: 600 PD;</li>
+<li>valor conjunto orientativo: 12.000–30.000 PC según las tablas activas de Perlas;</li>
+<li>destinadas a recoger Distorsión local;</li>
+<li>necesarias para sistemas médicos, defensas y estabilizadores.</li>
+</ul>
+<p>La caja Mercury:</p>
+<ul>
+<li>es pequeña;</li>
+<li>está sellada;</li>
+<li>registra aperturas y manipulaciones;</li>
+<li>no contiene la Daga;</li>
+<li>la Daga viaja entre las pertenencias personales de Nara.</li>
+</ul>
+<h3>Contrato de escolta</h3>
+<ul>
+<li><strong>Encargo:</strong> escoltar a Nara y la caja hasta el Hospicio de la Linde.</li>
+<li><strong>Duración prevista:</strong> dos días.</li>
+<li><strong>Pago grupal:</strong> 12.000 PC.</li>
+<li><strong>Adelanto:</strong> 4.800 PC.</li>
+<li><strong>Pago a la entrega:</strong> 7.200 PC.</li>
+<li><strong>Condiciones:</strong> Nara y las seis Perlas deben llegar.</li>
+<li><strong>Sustitución:</strong> las Perlas no pueden sustituirse por otras sin autorización.</li>
+<li><strong>Suministro:</strong> Mercury proporciona equipo básico de supervivencia.</li>
+</ul>
+<p>El pago concreto del módulo se ajusta al eje económico de CAP04d: contrato estándar con riesgo y rastro corporativo, señal del 40% por adelantado y liquidación al cumplir la entrega.</p>
+<p><strong>Equipo de supervivencia por personaje:</strong> respirador, gafas protectoras, agua y alimento para dos días, manta térmica, comunicador local, baliza, cuerda y anclajes, dos bengalas, filtro o kit médico básico.</p>
+<p>Este equipo no incluye el Traje de Tránsito Mercury NT8 de Nara ni concede acceso al equipo retornable corporativo.</p>
+<hr />
+<h2>Peligros del Páramo Sordo</h2>
+<p>El Páramo Sordo no debe jugarse como una sucesión de tiradas de supervivencia sin decisión. Divide el recorrido en tres tramos y pide Supervivencia u Orientación cuando el grupo tome decisiones reales: elegir ruta, buscar abrigo, evitar una depresión del terreno, seguir huellas o interpretar un eco visual.</p>
+<p>Un fallo produce retraso, consumo de recursos o posición desfavorable, pero no bloquea la aventura.</p>
+<p>Peligros recurrentes:</p>
+<ul>
+<li>polvo blanco que entra en filtros y articulaciones;</li>
+<li>cambios bruscos de temperatura;</li>
+<li>suelo quebradizo;</li>
+<li>cavidades cubiertas por costras minerales;</li>
+<li>ecos visuales de otros momentos;</li>
+<li>Rastreros del Páramo;</li>
+<li>aperturas parciales del velo.</li>
+</ul>
+<h3>Tramos del viaje</h3>
+<table>
+<thead>
+<tr>
+<th>Tramo</th>
+<th style="text-align: right;">Distancia aproximada</th>
+<th>Rasgo dominante</th>
+<th>Consecuencia habitual de fallo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estación → zona de Rastreros</td>
+<td style="text-align: right;">12 km</td>
+<td>llanura blanca y señales corporativas antiguas</td>
+<td>el grupo llega disperso o con peor posición</td>
+</tr>
+<tr>
+<td>Zona de Rastreros → refugio</td>
+<td style="text-align: right;">12 km</td>
+<td>viento, cavidades y sombras bajo la costra</td>
+<td>retraso, pérdida de agua o consumo de filtros</td>
+</tr>
+<tr>
+<td>Refugio → Hospicio/núcleo</td>
+<td style="text-align: right;">12 km</td>
+<td>ecos del velo y terreno fracturado</td>
+<td>exposición narrativa a señales de Ashal o Serekh</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Facciones del Culto</h2>
+<h3>Los Observadores</h3>
+<p>Los Observadores siguen al grupo, pero no atacan. Aparecerán abiertamente después del refugio.</p>
+<h4>Sava Or</h4>
+<p>Investigadora veterana del Culto.</p>
+<p><code>F25/A35/P60 | PV 14/7/14 | Bld 1 | Combate 35% | Esquiva 45%</code></p>
+<p>Investigación 75%, Lore de las Dagas 80%, Sociales 60%, Alerta 55%.</p>
+<p>Prefiere observar y negociar.</p>
+<ul>
+<li>Documenta portadores desde hace décadas.</li>
+<li>Trata el destino como problema estadístico.</li>
+<li>Quiere determinar si Nara es portadora permanente, accidental o de transición.</li>
+<li>Cree que intervenir demasiado puede alterar lo que estudia.</li>
+<li>No pretende provocar la centésima alma.</li>
+</ul>
+<h4>Elian Tross</h4>
+<p>Acompañante joven.</p>
+<p><code>F35/A45/P45 | PV 16/8/16 | Bld 1 | Combate 45% | Esquiva 55%</code></p>
+<p>Alerta 50%, Primeros Auxilios 45%, Sociales 50%.</p>
+<p>Protege a Nara antes que una interpretación abstracta de la Trama.</p>
+<ul>
+<li>Conserva una interpretación religiosa de la Trama.</li>
+<li>Le cuesta aceptar que alguien pueda ser necesario sin ser protagonista.</li>
+<li>Empieza a preocuparse personalmente por Nara.</li>
+<li>No desea sacrificarla.</li>
+</ul>
+<h3>Los Concluyentes</h3>
+<p>Los Concluyentes son tres. Creen que una Daga con 99 puntos no llega a un lugar por accidente y que impedir el cierre de la Trama es una forma de cobardía cósmica.</p>
+<h4>Ysra Pell</h4>
+<p>Dirige la célula.</p>
+<p><code>F40/A45/P50 | PV 18/9/18 | Bld 2 | Combate 55% | Esquiva 50%</code></p>
+<p>Voluntad 70%, Lore del Culto 70%, Supervivencia 60%.</p>
+<p>Si es rescatada en el refugio, actúa con −20 hasta recibir tratamiento y descanso adecuados.</p>
+<ul>
+<li>Cree que una Daga con 99 puntos no llega a un lugar por accidente.</li>
+<li>Aceptaría un sacrificio, incluso el suyo.</li>
+<li>Prefiere que la centésima alma tenga valor simbólico.</li>
+<li>Pretende utilizar la Daga contra Ashal cuando Serekh la debilite.</li>
+</ul>
+<p><strong>Estado actual:</strong> Ysra está realmente inconsciente. Presenta hipotermia y respiración apenas perceptible; parece muerta en una inspección apresurada. Una tirada de Medicina o una comprobación cuidadosa descubre que vive. No está fingiendo, no ejecuta un plan y no usa ningún inhibidor metabólico. Estuvo a punto de morir.</p>
+<h4>Bram Olt</h4>
+<ul>
+<li>Creyente disciplinado.</li>
+<li>Ha muerto en el refugio.</li>
+<li>Sus heridas no corresponden a Rastreros.</li>
+</ul>
+<h4>Kedo Marr</h4>
+<p><code>F40/A50/P45 | PV 18/9/18 | Bld 2 | Combate 60% | Esquiva 60%</code></p>
+<p>Voluntad 65%, Supervivencia 60%, Sigilo 55%.</p>
+<p>Puede emplear la Daga como daga normal según el equipo vigente. La propiedad de absorber Alma solo se activa cuando una criatura muere mediante ella.</p>
+<ul>
+<li>Explorador de la célula.</li>
+<li>Ha desaparecido.</li>
+<li>Ha avanzado hacia el núcleo.</li>
+<li>Ha establecido contacto indirecto con Serekh.</li>
+<li>Cree que Serekh forma parte del cumplimiento de la profecía.</li>
+<li>Reaparecerá durante la ruptura del velo.</li>
+</ul>
+<hr />
+<h2>Escena 1 — El contrato</h2>
+<p>Lee o parafrasea:</p>
+<blockquote>
+<p>La oficina de Mercury podría estar en cualquier tesela: paredes grises, luz blanca y un mostrador sin una sola marca de uso. La caja que debéis proteger ocupa menos que una mochila. La mujer situada a su lado parece pesar todavía menos.</p>
+<p>Lleva un traje oscuro ajustado, sin placas visibles, y una pequeña bolsa personal cruzada sobre el pecho. No mira las armas del grupo. Mira sus botas, sus filtros y la cantidad de agua que habéis traído.</p>
+<p>—Nara Venn —dice—. Treinta y seis kilómetros. Una noche fuera. Si todo va bien, no tendremos que disparar a nadie.</p>
+</blockquote>
+<p>Entrega en esta escena:</p>
+<ul>
+<li>contrato;</li>
+<li>adelanto;</li>
+<li>equipo;</li>
+<li>manifiesto de seis Perlas Blancas descargadas;</li>
+<li>información básica del Páramo.</li>
+</ul>
+<p>Nara no muestra la Daga. Si se revisa su equipaje, figura como objeto personal autorizado.</p>
+<hr />
+<h2>Escena 2 — Los Rastreros</h2>
+<p>Los Rastreros intentan aislar a Nara, no robar la caja.</p>
+<p>Lee o parafrasea:</p>
+<blockquote>
+<p>Algo se mueve a vuestra izquierda. No entre las piedras: debajo de su sombra.</p>
+<p>Cuando la primera criatura sale al descubierto, parece un perro pálido hasta que apoya seis patas sobre el suelo. No tiene ojos. Inclina el cuerpo, pega el pecho contra la tierra y gira lentamente hacia Nara.</p>
+<p>Las demás responden desde lugares diferentes. Ninguna mira la caja.</p>
+</blockquote>
+<p>Número recomendado:</p>
+<ul>
+<li>tres para tres personajes;</li>
+<li>cuatro para cuatro;</li>
+<li>cinco para cinco o más.</li>
+</ul>
+<p>Revelaciones:</p>
+<ul>
+<li>buscan a Nara;</li>
+<li>ignoran las Perlas descargadas;</li>
+<li>la Daga se calienta;</li>
+<li>Nara es muy eficaz huyendo, pero dispara con Combate 30%;</li>
+<li>después aparece polvo blanco adherido a la bolsa de la Daga.</li>
+</ul>
+<hr />
+<h2>Primera noche</h2>
+<p>Usa el segundo sueño ya incorporado: Oren entre centenares de figuras y la pregunta «¿Es esta?».</p>
+<p>Nara puede contarlo si confía en alguien. Si no, un personaje despierto escucha:</p>
+<blockquote>
+<p>—No sé quién eres.</p>
+</blockquote>
+<p>Aplica al final del primer periodo completo la regla de exposición ambiental de Asterión: +1 Deriva a cada criatura susceptible, o 1 PD a una Perla sintonizada en contacto directo.</p>
+<hr />
+<h2>Escena 3 — El refugio</h2>
+<p>Lee o parafrasea:</p>
+<blockquote>
+<p>El refugio es un bloque bajo de hormigón blanco, construido para resistir el viento y no para resultar acogedor. La puerta está abierta.</p>
+<p>Dentro hay dos cuerpos. Uno está apoyado contra la pared, con el pecho abierto por una herida demasiado limpia. El otro yace boca abajo junto a una mesa volcada. No hay sangre a su alrededor.</p>
+<p>Tres tazas. Tres mantas. Tres mochilas.</p>
+<p>Pero solo dos personas.</p>
+</blockquote>
+<p>Situación:</p>
+<ul>
+<li>Bram está muerto.</li>
+<li>Ysra parece muerta, pero vive.</li>
+<li>Kedo falta.</li>
+</ul>
+<p>Pistas:</p>
+<ul>
+<li>mapa con el núcleo de Ashal señalado;</li>
+<li>notas sobre una «carga 99»;</li>
+<li>referencias incompletas al Cierre de la Trama;</li>
+<li>comida y equipo para tres;</li>
+<li>pared arañada desde el otro lado sin rotura visible;</li>
+<li>huellas de Kedo hacia el interior.</li>
+</ul>
+<p>Ysra afirma inicialmente que investigaban alteraciones del velo. Solo reconoce la Daga si llega a verla.</p>
+<p>Al abandonar el refugio, el grupo distingue al Inquisidor observando desde una elevación.</p>
+<hr />
+<h2>Escena 4 — El Inquisidor</h2>
+<p>Tras abandonar el refugio, el Inquisidor espera al grupo.</p>
+<p>Lee o parafrasea:</p>
+<blockquote>
+<p>La figura de la elevación no intenta ocultarse. Lleva un abrigo oscuro sobre una armadura demasiado rígida para ser ropa y una máscara que no refleja la luz. El viento levanta polvo a su alrededor, pero ninguna partícula parece tocarlo.</p>
+<p>Cuando descendéis, ya os está esperando en mitad del camino. No apunta con su arma. Tampoco necesita hacerlo.</p>
+<p>—Viajaban tres —dice, mirando hacia el refugio—. Uno ha muerto, otro sigue caminando y la tercera todavía no ha decidido de qué lado está.</p>
+<p>La máscara gira hacia Nara.</p>
+<p>—Y usted lleva veinticuatro años transportando algo que no figura en el manifiesto.</p>
+</blockquote>
+<p>El Inquisidor exige:</p>
+<ul>
+<li>examinar la Daga;</li>
+<li>comprobar su carga;</li>
+<li>conocer el estado de Ysra;</li>
+<li>saber qué encontraron sobre Kedo.</li>
+</ul>
+<p>No intenta confiscarla inmediatamente. No ataca primero salvo que intenten matarlo.</p>
+<p>Si el grupo se niega, puede bloquear la navegación o la caja Mercury temporalmente para forzar una conversación, pero no destruir el cargamento.</p>
+<p>Puede aliarse provisionalmente si:</p>
+<ul>
+<li>le permiten examinar la Daga;</li>
+<li>comparten las notas de carga 99;</li>
+<li>explican lo sucedido;</li>
+<li>demuestran que protegen a Nara;</li>
+<li>identifican que Kedo se dirige hacia Ashal.</li>
+</ul>
+<p>Información que puede ofrecer:</p>
+<ul>
+<li>ha documentado otras Dagas;</li>
+<li>algunas desaparecieron después de una muerte;</li>
+<li>las que pudo rastrear tras reaparecer estaban descargadas;</li>
+<li>no sabe si es el mismo objeto;</li>
+<li>no cree casual que una Daga con 99 puntos esté junto a una fractura.</li>
+</ul>
+<p>No revela la verdad última.</p>
+<p><strong>Ficha de referencia:</strong> usar la ficha vigente del <strong>Inquisidor TecnoStealer</strong> en CAP07: <code>FM45/HB55 | PV16/8/16 | Bld3/6 | Melé70%(5,Pen2) Dist80%(3,Cad3)</code>.</p>
+<p>Habilidades narrativas añadidas para esta escena: Investigación 80%, Alerta 70%, Interrogación o Sociales pertinentes 65%. Estas habilidades no modifican sus estadísticas de combate.</p>
+<h3>Llegada de los Observadores</h3>
+<p>Sava Or y Elian Tross aparecen durante o inmediatamente después de la confrontación.</p>
+<p>Relaciones:</p>
+<ul>
+<li>El Inquisidor considera que Sava contamina su investigación con creencias.</li>
+<li>Sava cree que el Inquisidor destruye patrones al diseccionarlos.</li>
+<li>Elian se preocupa personalmente por Nara.</li>
+<li>Nara se enfada al saber que varias personas seguían la Daga sin advertirla.</li>
+</ul>
+<p>Sava identifica a Kedo como Concluyente y advierte que intentará completar la carga.</p>
+<p>La escena termina cuando el terreno se duplica visualmente y Ashal pierde el control de una fractura.</p>
+<hr />
+<h2>Escena 5 — La ruptura del velo</h2>
+<p>Lee o parafrasea:</p>
+<blockquote>
+<p>El Páramo termina sin cambiar de paisaje. Una pisada cae sobre polvo blanco; la siguiente, sobre una superficie negra que refleja un cielo inexistente.</p>
+<p>La gema emerge a lo lejos, grande como un edificio, enterrada hasta la mitad. En su interior brillan centenares de figuras. Algunas golpean desde dentro. Otras están sentadas, esperando.</p>
+<p>Sobre ella se inclina Serekh. Cada uno de sus brazos ocupa una distancia diferente. Ashal lo contiene con filamentos de luz, pero tres de ellos ya se han roto.</p>
+<p>Entonces veis a Kedo junto al núcleo. Lleva la Daga.</p>
+</blockquote>
+<h3>Regla del encuentro</h3>
+<p>Serekh no se derrota mediante PV.</p>
+<p>Existen tres fracturas. Cada una requiere <strong>tres éxitos acumulados</strong> mediante acciones apropiadas.</p>
+<ul>
+<li>Una tirada puede aportar varios éxitos según la fórmula normal.</li>
+<li>Un fallo no elimina éxitos.</li>
+<li>Una pifia aplica la complicación específica.</li>
+<li>Una solución creativa coherente puede sustituir las habilidades sugeridas.</li>
+</ul>
+<h3>Fractura 1 — La Piedra</h3>
+<p>Una estructura de anclaje está desplazada. El Lacerador intenta agravarla.</p>
+<p>Puede cerrarse con:</p>
+<ul>
+<li>Tecnología;</li>
+<li>Reparaciones;</li>
+<li>Manipulación de Distorsión;</li>
+<li>Proezas;</li>
+<li>uso coherente de equipo.</li>
+</ul>
+<p>Rasgar puede retirar uno de los éxitos acumulados si el Lacerador completa su actuación sin ser dañado o interrumpido.</p>
+<p>Al cerrarse, el Lacerador pierde 2 Bld hasta terminar el encuentro.</p>
+<p>Pifia: el personaje queda derribado y la fractura pierde un éxito acumulado, mínimo 0.</p>
+<h3>Fractura 2 — Las Voces</h3>
+<p>Serekh mezcla su voz con las almas de Ashal. Nara oye versiones distintas de Oren.</p>
+<p>Puede cerrarse con:</p>
+<ul>
+<li>Voluntad;</li>
+<li>Empatía;</li>
+<li>Detección de Distorsión;</li>
+<li>Invocación;</li>
+<li>conocimientos pertinentes;</li>
+<li>reconocer la voz verdadera de Oren mediante conversación.</li>
+</ul>
+<p>El Arrastrador intenta llevarse a Nara por esta fractura.</p>
+<p>Al cerrarse, Oren puede manifestarse con claridad.</p>
+<p>Pifia: el personaje acepta durante un instante una voz falsa; pierde su siguiente acción o se desplaza hacia la fractura, a elección del Narrador según la ficción.</p>
+<h3>Fractura 3 — El Núcleo</h3>
+<p>Kedo ha colocado la Daga junto a la gema. Cree que matar a Ashal completará correctamente la Trama. Serekh le ha prometido que la centésima alma abrirá el centro.</p>
+<p>Requiere:</p>
+<ol>
+<li>detener, apartar o convencer a Kedo;</li>
+<li>recuperar o asegurar la Daga;</li>
+<li>obtener después tres éxitos acumulados mediante Manipulación, Voluntad, Tecnología u otra solución coherente.</li>
+</ol>
+<p>Kedo espera que Serekh debilite a Ashal. Si comprende que no podrá matarla, intentará completar la carga mediante:</p>
+<ol>
+<li>un Demonio Menor moribundo;</li>
+<li>Ysra, si está presente y se ofrece;</li>
+<li>otra víctima accesible como último recurso.</li>
+</ol>
+<p>No ataca automáticamente a Nara: considera que ella sigue siendo una pieza necesaria.</p>
+<p>Pifia al cerrar: la Daga queda al alcance de Kedo o Serekh durante una actuación.</p>
+<h3>Ayuda de los PNJ</h3>
+<p>Los PNJ ayudan sin resolver la escena:</p>
+<ul>
+<li>Inquisidor: contiene a un Demonio Menor durante una ronda o proporciona cobertura.</li>
+<li>Sava: distingue doctrina del Culto de manipulación de Serekh.</li>
+<li>Elian: protege a Nara o estabiliza una fractura.</li>
+<li>Ysra: intenta convencer a Kedo o puede ofrecerse voluntariamente.</li>
+<li>Nara: reconoce a Oren.</li>
+<li>Oren: una vez, orienta al grupo desde Ashal.</li>
+</ul>
+<p>Su ayuda depende del trato recibido.</p>
+<h3>Ajuste por tamaño del grupo</h3>
+<h4>Tres personajes</h4>
+<ul>
+<li>El Lacerador aparece al inicio.</li>
+<li>El Arrastrador entra en la segunda ronda.</li>
+<li>Si el Inquisidor es aliado, contiene al Lacerador durante su primera actuación.</li>
+</ul>
+<h4>Cuatro personajes</h4>
+<ul>
+<li>Ambos Demonios Menores aparecen desde el inicio.</li>
+<li>Desarrollo estándar.</li>
+</ul>
+<h4>Cinco o más</h4>
+<ul>
+<li>Ambos aparecen desde el inicio.</li>
+<li>El Lacerador comienza junto a la Fractura de la Piedra.</li>
+<li>El Arrastrador comienza a distancia de movimiento de Nara.</li>
+<li>No aumentar daño ni Blindaje arbitrariamente.</li>
+</ul>
+<h3>Resultados de la ruptura</h3>
+<h4>Tres fracturas cerradas</h4>
+<ul>
+<li>Ashal expulsa a Serekh.</li>
+<li>Los Demonios Menores supervivientes son arrastrados con él.</li>
+<li>Nara habla varios minutos con Oren.</li>
+<li>El Hospicio conserva su protección.</li>
+</ul>
+<h4>Dos fracturas cerradas</h4>
+<ul>
+<li>Serekh se retira llevándose algunas almas.</li>
+<li>Ashal sobrevive debilitada.</li>
+<li>Oren solo puede manifestarse unos instantes.</li>
+<li>El Hospicio pierde parte de su protección.</li>
+</ul>
+<h4>Una fractura cerrada</h4>
+<ul>
+<li>Ashal abandona su manifestación material para evitar ser devorada.</li>
+<li>Serekh obtiene algunas almas, no todas.</li>
+<li>El núcleo queda oscuro.</li>
+<li>Oren deja un único mensaje.</li>
+<li>El Hospicio queda sin Custodia.</li>
+</ul>
+<h4>Ninguna fractura cerrada</h4>
+<ul>
+<li>El grupo debe retirarse o arriesgarse a quedar atrapado.</li>
+<li>Ashal rompe su núcleo para impedir la absorción total.</li>
+<li>La mayoría de las almas se dispersa por la Urdimbre.</li>
+<li>Serekh obtiene una parte y queda como amenaza futura.</li>
+</ul>
+<h3>Conversación entre Nara y Oren</h3>
+<p>No escribas esta conversación como monólogo inamovible. Usa preguntas probables y respuestas orientativas.</p>
+<p>Verdades que Oren transmite:</p>
+<ul>
+<li>eligió permanecer en Ashal;</li>
+<li>Ashal cumplió el contrato;</li>
+<li>no sabe quién envió la Daga;</li>
+<li>no llevó deliberadamente a Nara hasta Asterión;</li>
+<li>no quiere decidir la vida de su hija;</li>
+<li>permaneció para poder ofrecerle una elección y despedirse.</li>
+</ul>
+<p>Diálogo central sugerido:</p>
+<blockquote>
+<p>—¿Fuiste tú? —pregunta Nara, mostrando la Daga.</p>
+<p>—No —responde Oren—. Ojalá pudiera decirte que sí. Significaría que entiendo algo de todo esto.</p>
+<p>—Entonces, ¿por qué estoy aquí?</p>
+<p>—No lo sé. Yo no te traje. Solo me quedé por si algún día llegabas.</p>
+<p>—¿Para que me quede contigo?</p>
+<p>—Para decirte que no tienes que hacerlo.</p>
+</blockquote>
+<p>Si solo pueden intercambiar un mensaje, Oren dice:</p>
+<blockquote>
+<p>—No dejes que los muertos decidan por ti. Ni siquiera yo.</p>
+</blockquote>
+<h3>Si la Daga alcanza cien</h3>
+<p>Puede combinarse con cualquier resultado:</p>
+<ul>
+<li>toma exactamente 1 Punto de Alma de la víctima;</li>
+<li>aparecen conexiones imposibles;</li>
+<li>desaparece;</li>
+<li>no aparece necesariamente el LORD;</li>
+<li>las facciones interpretan el hecho de manera diferente.</li>
+</ul>
+<hr />
+<h2>Escena 6 — El Hospicio de la Linde</h2>
+<h3>Doctora Maela Rinn</h3>
+<p>Administradora y médica. Práctica, agotada y sin interés en discutir teología antes de comprobar las Perlas.</p>
+<p>Lee o parafrasea:</p>
+<blockquote>
+<p>El Hospicio no parece un templo ni una fortaleza. Parece un edificio que ha sido reparado demasiadas veces por personas que se negaban a abandonarlo.</p>
+<p>Cuando la caja Mercury cruza la puerta, media docena de luces se encienden en los pasillos. No porque las Perlas estén cargadas, sino porque alguien ha decidido que su llegada merece gastar energía.</p>
+<p>La doctora Maela Rinn apoya una mano sobre el sello.</p>
+<p>—Seis —dice—. Decidme que siguen siendo seis.</p>
+</blockquote>
+<p>Maela comprueba:</p>
+<ul>
+<li>identidad de Nara;</li>
+<li>sello;</li>
+<li>número e integridad de las Perlas;</li>
+<li>carga acumulada;</li>
+<li>registro de manipulación.</li>
+</ul>
+<h3>Pago final</h3>
+<p>El saldo pendiente de 7.200 PC se divide:</p>
+<ul>
+<li>3.600 PC por entregar a Nara con vida.</li>
+<li>3.600 PC por entregar las seis Perlas intactas: 600 PC por Perla.</li>
+</ul>
+<p>El adelanto de 4.800 PC no se reclama salvo fraude deliberado.</p>
+<p>Una Perla parcialmente cargada pero intacta sigue siendo útil. Si fue manipulada para salvar una vida y Nara valida la emergencia, Mercury puede aceptar la entrega completa. Si se abrió por beneficio propio, se pierde el pago correspondiente y queda registrada la infracción.</p>
+<p>No impongas deudas adicionales automáticas por el valor comercial del cargamento sin una decisión narrativa expresa.</p>
+<p>Al recuperar conexión, el equipo NT8 de Nara y su Perla corporativa se repliegan en la cápsula de retorno Mercury. No quedan como botín.</p>
+<hr />
+<h2>Destinos de los PNJ</h2>
+<ul>
+<li>Sava conserva sus notas y continúa siguiendo el Centenar.</li>
+<li>Elian puede permanecer con Sava, romper con ella o acompañar temporalmente a Nara según lo vivido.</li>
+<li>Ysra no abandona automáticamente su fe. Puede reconsiderar el método de los Concluyentes.</li>
+<li>Kedo puede morir, huir, ser detenido o dudar. No fijes un único destino.</li>
+<li>El Inquisidor registra el resultado y se marcha sin fingir que lo comprende. Puede ofrecer un contacto futuro, no una explicación.</li>
+<li>Nara decide si conserva la Daga, la entrega o permite otra custodia si sigue existiendo.</li>
+</ul>
+<h3>Epílogo si alcanza cien</h3>
+<p>Texto opcional:</p>
+<blockquote>
+<p>En una tesela sin nombre, alguien abre una puerta que llevaba años cerrada.</p>
+<p>Al otro lado no hay una habitación. Solo una pequeña caja sin remitente.</p>
+<p>Dentro descansa una daga bifacetada. En el contrapeso de la empuñadura hay una letra.</p>
+<p>Está fría.</p>
+<p>Está vacía.</p>
+</blockquote>
+<p>No confirmes que sea el mismo objeto.</p>
+<hr />
+<h2>Nara Venn</h2>
+<p>Nara Venn tiene 24 años. Es una mensajera profesional de Mercury, no una combatiente.</p>
+<p>Su padre, Oren Venn, murió cuando ella tenía ocho años. Nara creció desde entonces en una residencia de acogida u orfanato. Tres noches después de recibir la noticia de su muerte apareció un paquete ante la puerta principal:</p>
+<ul>
+<li>sin remitente;</li>
+<li>sin registro de entrega;</li>
+<li>sin testigos;</li>
+<li>contenía únicamente la Daga del LORD.</li>
+</ul>
+<p>Nara decidió conservarla. Mercury la tiene declarada como herramienta de corte de valor sentimental y desconoce su naturaleza.</p>
+<h3>Rasgos interpretativos</h3>
+<ul>
+<li>Habla poco durante el trabajo.</li>
+<li>Cumple los horarios incluso cuando parecen imposibles.</li>
+<li>Revisa personalmente todas las salidas antes de dormir.</li>
+<li>No abandona un paquete ni una persona bajo su responsabilidad.</li>
+<li>Cuando siente miedo, camina más deprisa.</li>
+<li>Detesta que otros decidan por ella «para protegerla».</li>
+<li>Cree que los sueños sobre su padre son una consecuencia del duelo.</li>
+<li>Ante un ataque intenta escapar con la carga; solo combate si no existe salida.</li>
+</ul>
+<h3>Ficha funcional de Nara</h3>
+<p><code>F25/A55/P50 | PV 14/7/14 | Movimiento 20</code></p>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th style="text-align: right;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Esquiva</td>
+<td style="text-align: right;">65%</td>
+</tr>
+<tr>
+<td>Orientación</td>
+<td style="text-align: right;">75%</td>
+</tr>
+<tr>
+<td>Supervivencia</td>
+<td style="text-align: right;">55%</td>
+</tr>
+<tr>
+<td>Atletismo</td>
+<td style="text-align: right;">60%</td>
+</tr>
+<tr>
+<td>Alerta</td>
+<td style="text-align: right;">60%</td>
+</tr>
+<tr>
+<td>Sociales</td>
+<td style="text-align: right;">45%</td>
+</tr>
+<tr>
+<td>Tecnología</td>
+<td style="text-align: right;">50%</td>
+</tr>
+<tr>
+<td>Combate</td>
+<td style="text-align: right;">30%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Arma de emergencia:</strong> pistola compacta corporativa, daño 3, Pen 1, Cad 1. Usa su Combate 30%. Nara no recibe ningún bonificador adicional por llevarla.</p>
+<h3>Traje de Tránsito Mercury NT8</h3>
+<p>No es una armadura pesada ni convierte a Nara en tanque. Está diseñado para mantenerla en movimiento y conservarla con vida el tiempo suficiente para completar una entrega.</p>
+<ul>
+<li>Blindaje 2 en todo el cuerpo.</li>
+<li>Capa ablativa con reserva 20, resuelta como armadura ablativa de CAP03: absorbe daño final tras el cálculo de Blindaje y resta ese daño de la reserva.</li>
+<li>Movimiento 20; correr 40.</li>
+<li>+10 a Esquivar únicamente en la tirada de <strong>Movimiento evasivo</strong>.</li>
+<li>Reduce a la mitad el daño por caídas.</li>
+<li>Una vez por escena, si Nara queda incapacitada, la estabiliza sin recuperar PV.</li>
+<li>Sellado ambiental durante una hora.</li>
+</ul>
+<p><strong>Limitaciones y seguridad corporativa:</strong></p>
+<ul>
+<li>Está vinculado biométricamente a Nara.</li>
+<li>En otras manos se bloquea.</li>
+<li>Cuando recupera conexión con Mercury fuera del Páramo, se repliega en una cápsula de retorno corporativa.</li>
+<li>Si Nara muere dentro de la zona incomunicada, queda bloqueado hasta su recuperación por Mercury.</li>
+<li>No puede convertirse en botín de los personajes.</li>
+<li>No concede bonificadores de combate, daño, iniciativa ni ataque.</li>
+</ul>
+<hr />
+<h2>Los sueños</h2>
+<p>Estos sueños pueden aparecer al inicio de escenas, durante descansos o cuando la Daga se calienta. No confirman que Ashal controle la Trama ni que enviase la Daga.</p>
+<h3>Primer sueño</h3>
+<p>Nara vuelve a tener ocho años. Su padre está al otro lado de la puerta del orfanato, pero detrás de él no hay calle: aparece una llanura blanca llena de figuras inmóviles.</p>
+<p>Oren no llama. Solo espera.</p>
+<p>Al despertar, la Daga está caliente.</p>
+<h3>Segundo sueño</h3>
+<p>Oren camina entre centenares de personas. Algunas llevan ropas antiguas; otras no parecen humanas. Todas proyectan la misma sombra.</p>
+<p>Una voz femenina, demasiado grande para una garganta, pregunta:</p>
+<blockquote>
+<p>—¿Es esta?</p>
+</blockquote>
+<p>Oren responde:</p>
+<blockquote>
+<p>—Todavía no. Dejad que llegue por sí misma.</p>
+</blockquote>
+<h3>Tercer sueño</h3>
+<p>Ocurre dentro del Páramo. Oren está herido frente a una estructura facetada semejante a una gema gigantesca.</p>
+<p>Dice:</p>
+<blockquote>
+<p>—No te traje hasta aquí. Pero llevo años esperando que el camino lo haga.</p>
+</blockquote>
+<hr />
+<h2>Ashal, la Custodia de los Ausentes</h2>
+<p>Ashal es la entidad protectora.</p>
+<p>Su núcleo material es una estructura mineral enterrada bajo el Páramo, semejante a una gema oscura de varios metros. En su interior se observan luces que parecen personas vistas desde muy lejos.</p>
+<p>Cada luz corresponde a un alma acogida.</p>
+<p>Ashal no devora almas. Establece contratos:</p>
+<ul>
+<li>ofrece refugio después de la muerte;</li>
+<li>conserva la identidad de las almas;</li>
+<li>permite que permanezcan en comunidad;</li>
+<li>puede transmitir algunos recuerdos o mensajes;</li>
+<li>recibe permiso para emplear parte de su energía en proteger la tesela.</li>
+</ul>
+<p>Algunas almas conservan su individualidad durante siglos. Otras se integran voluntariamente en Ashal. Algunas piden ser liberadas.</p>
+<p>Ashal alberga aproximadamente <strong>300 Puntos de Alma</strong>. No todos están despiertos simultáneamente.</p>
+<p>No tiene ficha convencional de PV y ataques. Puede ser amenazada por rituales, fracturas del velo, Cibus apropiado o decisiones narrativas, pero no debe resolverse como un combate normal de «bajar puntos de vida».</p>
+<h3>Contrato de Oren</h3>
+<p>Oren atravesó el Páramo años atrás durante otra misión. Fue herido mortalmente cuando se abrió el velo.</p>
+<p>Ashal le ofreció morir y continuar hacia un destino desconocido o permanecer dentro de la Custodia.</p>
+<p>Oren eligió quedarse con una condición:</p>
+<blockquote>
+<p>Si algún descendiente suyo cruzaba alguna vez el Páramo, Ashal debía ofrecerle protección y permitirle decidir por sí mismo si quería conocer la verdad.</p>
+</blockquote>
+<p>Oren no pidió que manipulasen la vida de Nara ni que la condujeran hasta Ashal.</p>
+<h3>Capacidades de Ashal</h3>
+<p>Puede:</p>
+<ul>
+<li>comunicarse mediante sueños;</li>
+<li>permitir que un alma acogida hable brevemente;</li>
+<li>detectar concentraciones de Alma;</li>
+<li>abrir comunicación temporal con el otro lado del velo;</li>
+<li>proteger el asentamiento;</li>
+<li>contener entidades;</li>
+<li>permitir cruces parciales del velo.</li>
+</ul>
+<p>No puede:</p>
+<ul>
+<li>abandonar el área de su núcleo;</li>
+<li>obligar a las almas a hablar;</li>
+<li>controlar a Nara;</li>
+<li>abrir portales ordinarios dentro del Páramo;</li>
+<li>comprender por completo la Daga;</li>
+<li>impedir por sí sola que Serekh rompa sus defensas;</li>
+<li>actuar con precisión en el mundo material mientras contiene una gran brecha.</li>
+</ul>
+<p>Ashal sabe que la Daga contiene 99 Puntos de Alma, que no forman una comunidad como las almas acogidas por ella y que algo cambiará al alcanzar 100. No sabe dónde reaparecerá ni qué es realmente el LORD.</p>
+<hr />
+<h2>Serekh, el que quedó fuera</h2>
+<p>Serekh es un Demonio Mayor con algo más de un centenar de Puntos de Alma. Posee Nombre.</p>
+<p>Afirma que Ashal no protege las almas, sino que las encierra. Según él, absorberlas sería liberarlas. No confirmes si lo cree sinceramente o si racionaliza su hambre.</p>
+<p>Ataca porque:</p>
+<ul>
+<li>el Páramo debilita la acción material de Ashal;</li>
+<li>ha localizado tres fracturas vulnerables;</li>
+<li>la llegada de la Daga altera el velo;</li>
+<li>los Concluyentes pueden abrirle involuntariamente el acceso final.</li>
+</ul>
+<p>Descripción para leer o parafrasear:</p>
+<blockquote>
+<p>Al otro lado del velo hay algo demasiado grande para encontrarse allí. Tiene una silueta aproximadamente humana, pero sus brazos se dividen cada vez que intenta alcanzar la gema. Su cuerpo parece formado por capas de personas que quieren caminar en direcciones diferentes. Donde debería estar el rostro solo queda un espacio vacío, rodeado de bocas que hablan con voces prestadas.</p>
+</blockquote>
+<p>Serekh no tiene ficha de jefe ordinario. Los personajes pueden distraerlo, frustrar sus acciones o dañarlo superficialmente, pero no derrotarlo reduciendo PV.</p>
+<p>La escena se resuelve mediante tres fracturas del velo. Cada fractura cerrada permite a Ashal recuperar capacidad. Con las tres cerradas, Ashal puede expulsar a Serekh.</p>
+<p>La escena completa se desarrolla en <strong>Escena 5 — La ruptura del velo</strong>.</p>
+<hr />
+<h2>Criaturas y encuentros</h2>
+<h3>Demonio Menor: Lacerador del Velo</h3>
+<blockquote>
+<p>Avanza sobre cuatro extremidades demasiado largas. No posee cabeza: en su lugar tiene una abertura vertical que se separa cuando percibe Distorsión. Sus garras no arañan la piedra; arañan el espacio que la piedra ocupa.</p>
+</blockquote>
+<p><code>F50/A50/P45 | PV 35/17/35 | Bld 5 | Ataque 65% | Garras, Daño 5, Pen 2 | Esquiva 55%</code></p>
+<p><strong>Especiales:</strong></p>
+<ul>
+<li><strong>Rasgar:</strong> si pasa una actuación completa junto a una fractura sin recibir daño ni ser interrumpido, la agrava un nivel.</li>
+<li><strong>Cuerpo intermedio:</strong> vulnerable a Cibus según las reglas vigentes.</li>
+<li>Cuando una fractura se cierra, pierde 2 puntos de Blindaje hasta el final del encuentro.</li>
+</ul>
+<h3>Demonio Menor: Arrastrador de Ecos</h3>
+<blockquote>
+<p>Parece una figura envuelta en telas mojadas, aunque nada en ella es realmente tela. Bajo cada pliegue se mueve un rostro que intenta recordar su nombre. Sus manos terminan en dedos finos que atraviesan la carne sin dejar una herida visible.</p>
+</blockquote>
+<p><code>F40/A60/P55 | PV 30/15/30 | Bld 4 | Ataque 70% | Toque, Daño 3 | Esquiva 65%</code></p>
+<p><strong>Especiales:</strong></p>
+<ul>
+<li><strong>Arrastrar:</strong> con dos éxitos netos o más puede sujetar al objetivo. En su siguiente actuación intenta desplazarlo hacia una fractura. El objetivo puede liberarse mediante tirada enfrentada de Fuerza o Esquivar, siguiendo CAP03.</li>
+<li><strong>Olor del Alma:</strong> detecta la concentración de la Daga y prioriza a Nara cuando entra en escena. No comprende qué es el objeto.</li>
+</ul>
+<h3>Rastrero del Páramo</h3>
+<p>Fauna natural, no demoníaca.</p>
+<blockquote>
+<p>Desde lejos parece un perro sin pelo. De cerca se aprecia que posee seis patas, placas blancas en lugar de ojos y una mandíbula que se abre hacia los lados. Se detiene constantemente para apoyar el pecho contra el suelo. No escucha sonidos: escucha las vibraciones de las cosas vivas.</p>
+</blockquote>
+<p><code>F35/A55/P55 | PV 12/6/12 | Bld 2 | Ataque 60% | Mordisco, Daño 4, Pen 1 | Esquiva 65% | Movimiento 20</code></p>
+<p><strong>Especiales:</strong></p>
+<ul>
+<li><strong>Sentir el Alma:</strong> detecta concentraciones anómalas de Alma a varios centenares de metros. La Daga cargada los atrae más que las Perlas descargadas.</li>
+<li><strong>Caza en grupo:</strong> utiliza la regla normal de ataque en grupo, sin inventar daño automático.</li>
+<li>Se retiran cuando pierden la mitad del grupo o uno sufre una herida crítica.</li>
+<li>Encuentro recomendado: entre tres y cinco, ajustado al número de personajes.</li>
+</ul>
+<hr />
+<h2>Tres rutas abiertas</h2>
+<p>Estas rutas son esqueletos, no carriles cerrados. Pueden mezclarse, romperse o cambiar según las decisiones del grupo.</p>
+<h3>1. Proteger a Nara</h3>
+<p>Los personajes intentan sacar a Nara y la Daga de la tesela.</p>
+<p>Preguntas abiertas:</p>
+<ul>
+<li>¿Confían en ella?</li>
+<li>¿La Daga debe viajar con ella o separarse de ella?</li>
+<li>¿A quién piden ayuda?</li>
+<li>¿Qué facción interpreta la protección como secuestro?</li>
+<li>¿Nara acepta ser protegida si eso implica perder su capacidad de decidir?</li>
+</ul>
+<h3>2. Colaborar con una parte del Culto</h3>
+<p>Los personajes aceptan hablar con miembros del Culto o colaborar provisionalmente con ellos.</p>
+<p>Puede existir un sacrificio voluntario, una custodia ritual o una interpretación menos violenta de la Trama. La escena debe permitir dudas reales, no una respuesta moral prefabricada.</p>
+<p>Preguntas abiertas:</p>
+<ul>
+<li>¿El Culto quiere completar la centésima alma o impedir que ocurra antes de tiempo?</li>
+<li>¿Quién se ofrece voluntariamente y por qué?</li>
+<li>¿Es fe, manipulación, miedo o lucidez?</li>
+<li>¿La Daga está siguiendo la Trama o alguien está usando la doctrina para justificar un crimen?</li>
+</ul>
+<h3>3. Destruir, ocultar, robar o arrojar la Daga a un portal</h3>
+<p>Los personajes intentan sacar la Daga del tablero inmediato.</p>
+<p>Opciones posibles:</p>
+<ul>
+<li>destruirla mediante un método apropiado, si descubren uno;</li>
+<li>ocultarla en la tesela;</li>
+<li>robarla a Nara o a una facción;</li>
+<li>arrojarla a un portal, repitiendo de otro modo el eco de la Daga de la subasta.</li>
+</ul>
+<p>La aventura no debe invalidar esta ruta. Si la Daga desaparece sin alcanzar 100, eso también es historia.</p>
+<hr />
+<h2>Si alcanza la centésima alma</h2>
+<p>Si durante la partida la Daga mata a una víctima y alcanza 100 Puntos de Alma:</p>
+<ul>
+<li>la víctima pierde exactamente 1 Punto de Alma;</li>
+<li>la Daga alcanza 100;</li>
+<li>la Urdimbre muestra brevemente filamentos o conexiones imposibles;</li>
+<li>la Daga desaparece;</li>
+<li>no aparece necesariamente el LORD;</li>
+<li>no se explica lo sucedido.</li>
+</ul>
+<p>Epílogo opcional: alguien encuentra una Daga idéntica y descargada en otra tesela. No confirmes que sea el mismo objeto.</p>
+<hr />
+<h2>Si los jugadores lo impiden</h2>
+<p>La aventura sigue siendo válida.</p>
+<p>La Daga permanece con 99 Puntos de Alma o cambia de manos. Las facciones reaccionan a las decisiones del grupo. No fuerces la muerte de un PNJ ni el cumplimiento del Centenar para preservar un destino prefijado.</p>
+<p>La Trama puede buscar otros caminos en el futuro, pero nunca debe anular la agencia del grupo.</p>
+<hr />
+<h2>Revelaciones permitidas</h2>
+<p>Los jugadores pueden llegar a conocer:</p>
+<ul>
+<li>la absorción de un único Punto de Alma;</li>
+<li>la existencia aproximada del Centenar;</li>
+<li>la doctrina de la Trama;</li>
+<li>la creencia en el LORD;</li>
+<li>la función incierta de los portadores;</li>
+<li>que el Inquisidor investiga sin poseer la respuesta;</li>
+<li>que una entidad demoníaca no tiene que ser malvada;</li>
+<li>que Ashal no devora almas, pero tampoco es una respuesta simple;</li>
+<li>que alcanzar 100 provoca la desaparición de la Daga, si sucede durante la partida.</li>
+</ul>
+<p>No deben obtener una respuesta definitiva sobre:</p>
+<ul>
+<li>la existencia de una única Daga;</li>
+<li>el creador del Centenar;</li>
+<li>la naturaleza real del LORD;</li>
+<li>el propósito final de la Trama;</li>
+<li>si Ashal, Oren o la Trama enviaron la Daga a Nara;</li>
+<li>si están presenciando orden, manipulación, reparación cósmica o una broma.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p><strong>Objetivo inicial:</strong> escoltar a Nara Venn y una caja Mercury con seis Perlas Blancas descargadas desde la estación de Asterión hasta el Hospicio de la Linde.</p>
+<p><strong>PNJ y motivaciones:</strong></p>
+<table>
+<thead>
+<tr>
+<th>PNJ</th>
+<th>Quiere</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nara Venn</td>
+<td>cumplir el encargo, sobrevivir y decidir por sí misma</td>
+</tr>
+<tr>
+<td>Ashal</td>
+<td>contener a Serekh y proteger las almas acogidas</td>
+</tr>
+<tr>
+<td>Oren Venn</td>
+<td>despedirse de Nara sin decidir por ella</td>
+</tr>
+<tr>
+<td>Serekh</td>
+<td>romper las defensas de Ashal y devorar almas</td>
+</tr>
+<tr>
+<td>Inquisidor</td>
+<td>estudiar la Daga sin cerrar una verdad falsa</td>
+</tr>
+<tr>
+<td>Sava Or</td>
+<td>observar el patrón de la Trama</td>
+</tr>
+<tr>
+<td>Elian Tross</td>
+<td>proteger a Nara sin traicionar del todo su fe</td>
+</tr>
+<tr>
+<td>Ysra Pell</td>
+<td>completar la carga con valor simbólico</td>
+</tr>
+<tr>
+<td>Kedo Marr</td>
+<td>ejecutar el cierre que cree profético</td>
+</tr>
+<tr>
+<td>Maela Rinn</td>
+<td>recibir las Perlas y mantener vivo el Hospicio</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Revelaciones por escena:</strong></p>
+<ol>
+<li>Mercury contrata al grupo; la Daga no figura en el manifiesto.</li>
+<li>Los Rastreros buscan a Nara, no la caja.</li>
+<li>Los Concluyentes ya han llegado al Páramo; Kedo falta e Ysra vive.</li>
+<li>El Inquisidor y los Observadores confirman que la carga 99 importa.</li>
+<li>Ashal, Oren y Serekh aparecen sin resolver el misterio del LORD.</li>
+<li>El Hospicio paga o ajusta el pago según Nara, Perlas y manipulación.</li>
+</ol>
+<p><strong>Encuentros:</strong> Rastreros del Páramo; confrontación social con el Inquisidor y Observadores; ruptura del velo con Lacerador, Arrastrador, Kedo y tres fracturas.</p>
+<p><strong>Regla ambiental:</strong> por cada 24 horas completas en Asterión, cada criatura susceptible recibe +1 Deriva; una Perla sintonizada en contacto directo puede recibir 1 PD en su lugar. Es una regla local.</p>
+<p><strong>Tres fracturas:</strong> Piedra, Voces y Núcleo. Cada una exige tres éxitos acumulados. Serekh no se derrota mediante PV.</p>
+<p><strong>Resultados posibles:</strong> tres, dos, una o ninguna fractura cerrada determinan cuánto conserva Ashal, cuánto pierde el Hospicio y cuánto se manifiesta Oren.</p>
+<p><strong>Recordatorio:</strong> la verdad del LORD, la naturaleza última de la Daga y el sentido completo de la Trama no se resuelven en este módulo.</p>
+<hr />
+<h2>Nota de desarrollo</h2>
+<p>Pendiente para una versión futura:</p>
+<ul>
+<li>playtest de ritmo y dificultad;</li>
+<li>corrección de estilo;</li>
+<li>maquetación final;</li>
+<li>mapa gráfico regional;</li>
+<li>recompensas secundarias y pagos variables.</li>
+</ul>
+<h3>Mapas pendientes</h3>
+<ol>
+<li>
+<p><strong>Mapa regional del módulo</strong><br />
+   - estación de entrada;<br />
+   - primer campamento;<br />
+   - zona de Rastreros;<br />
+   - refugio;<br />
+   - núcleo de Ashal y fracturas;<br />
+   - Hospicio.</p>
+</li>
+<li>
+<p><strong>Sistema futuro de accesibilidad del Mosaico</strong><br />
+   - nodos por tesela;<br />
+   - accesos;<br />
+   - estabilidad;<br />
+   - restricciones;<br />
+   - conexiones;<br />
+   - control de los accesos.</p>
+</li>
+</ol>
+<p>No crear todavía mapas gráficos ni un atlas nuevo en este lote.</p>
+<p><em>Módulo completo pendiente de playtest, corrección y maquetación — 24/07/26.</em></p>
+</div>
+</body>
+</html>
