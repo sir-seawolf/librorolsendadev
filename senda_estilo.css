@@ -26,9 +26,11 @@
     --color-combate: #ff3b3b;   /* rojo: reglas letales, peligro, combate */
     --color-tech:    #1d6fa3;   /* azul: tecnología, distorsión, objetos */
     --color-lore:    #9333ea;   /* púrpura: historia, trasfondo, worldbuilding */
+    --color-regla:   #16a34a;   /* verde: regla mecánica general, no letal ni tech */
     --color-combate-bg: #fff1f1;
     --color-tech-bg:    #eff6ff;
     --color-lore-bg:    #faf5ff;
+    --color-regla-bg:   #f0fdf4;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -202,6 +204,7 @@ img { max-width: 100%; height: auto; }
 .recuadro-combate,
 .recuadro-tech,
 .recuadro-lore,
+.recuadro-regla,
 .ejemplo,
 .nota-dj,
 .pifia,
@@ -253,6 +256,19 @@ img { max-width: 100%; height: auto; }
     margin-right: 4px;
 }
 .recuadro-lore strong { color: var(--color-lore); }
+
+/* Regla: mecánica general de sistema, no letal ni tecnológica */
+.recuadro-regla {
+    background-color: var(--color-regla-bg);
+    border-left: 4px solid var(--color-regla);
+}
+.recuadro-regla::before {
+    content: "▣ ";
+    color: var(--color-regla);
+    font-weight: bold;
+    margin-right: 4px;
+}
+.recuadro-regla strong { color: var(--color-regla); }
 
 /* Ejemplo de juego: nombre de PJ y situación en mesa */
 .ejemplo {

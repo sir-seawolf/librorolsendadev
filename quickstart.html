@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Módulo 0.5: PREDATOR N-5.2 — "Las guerras secretas"</title>
+<title>LA SENDA DE LOS ERRANTES — KIT DE INICIO</title>
 <link rel="stylesheet" href="senda_estilo.css">
 
 <style>
@@ -30,7 +30,7 @@
 </head>
 <body>
 <div class="document-container">
-<p>﻿# LA SENDA DE LOS ERRANTES — KIT DE INICIO</p>
+<h1>LA SENDA DE LOS ERRANTES — KIT DE INICIO</h1>
 <h2>Módulo 0.5: PREDATOR N-5.2 — "Las guerras secretas"</h2>
 <p><picture><source srcset="img/portada.webp" type="image/webp"><img alt="Portada" src="img/portada.jpg" /></picture></p>
 <hr />
@@ -146,7 +146,46 @@
 </tr>
 </tbody>
 </table>
-<p>Los resultados 97, 98 y 99 siempre son pifias, incluso cuando la Habilidad efectiva supera 100.</p>
+<p>Los resultados 97, 98 y 99 siempre son pifias, incluso cuando la Habilidad efectiva supera 100. Una pifia nunca cuenta como éxito.</p>
+<p>Si la tirada falla, calcula éxitos negativos:</p>
+<p><code>Éxitos negativos = −techo((Tirada − Habilidad efectiva) / 10)</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Habilidad</th>
+<th style="text-align: right;">Tirada</th>
+<th style="text-align: right;">Diferencia</th>
+<th style="text-align: right;">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">−1</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">−1</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">−2</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">−2</td>
+</tr>
+</tbody>
+</table>
+<p>Si una pifia también supera la Habilidad efectiva, calcula el fallo normal y añade −1, −2 o −3. Si no la supera, parte de 0 y aplica únicamente −1, −2 o −3. Ejemplo: Habilidad 120 y tirada 99 = −3.</p>
 <h3>Dificultad — UN solo modificador a la habilidad</h3>
 <p>El Narrador ajusta el porcentaje del personaje según lo fácil o difícil que vea la acción. <strong>Solo estos cinco escalones, y ningún otro modificador de este tipo:</strong></p>
 <table>
@@ -189,8 +228,8 @@
 <h3>Combate</h3>
 <h3>Iniciativa</h3>
 <p>Tira d100 y suma tu valor de Iniciativa. Todos actúan de mayor a menor.</p>
-<p>Una Iniciativa superior a 100 concede un segundo turno completo. Primero se resuelven, en orden descendente, todas las iniciativas de 101 o más. Después se resta 100 a esos resultados y se inserta su segunda actuación en el orden descendente restante.</p>
-<p>Ejemplo: un personaje con Iniciativa 120 actúa primero en la posición 120 y vuelve a actuar en la posición 20.</p>
+<p>Después de calcular la Iniciativa total, genera posiciones de actuación restando 100 sucesivamente mientras el resultado siga siendo positivo. Reúne todas las posiciones de todos los participantes y resuélvelas en orden descendente. Cada posición concede una actuación completa; no hay límite fijo de dos actuaciones.</p>
+<p>Ejemplos: Iniciativa 100 → 100; 101 → 101, 1; 200 → 200, 100; 201 → 201, 101, 1; 305 → 305, 205, 105, 5.</p>
 <h3>Cadencia de fuego</h3>
 <table>
 <thead>
@@ -218,42 +257,73 @@
 </tr>
 </tbody>
 </table>
-<p>La bonificación de Cadencia se aplica después de comprobar que la tirada de ataque ha tenido éxito.</p>
+<p>La bonificación de Cadencia se aplica después del Blindaje y solo si la tirada de ataque ha tenido éxito.</p>
+<h3>Fuego repartido</h3>
+<p>Para atacar a varios objetivos con un arma a distancia, divide por separado la habilidad de <strong>Distancia</strong> y los proyectiles disparados. Requiere Distancia 50 o más; cada objetivo debe recibir al menos 25 puntos de habilidad y al menos 1 proyectil. La suma de habilidad asignada no puede superar la Distancia original, y la suma de proyectiles no puede superar la cantidad disparada.</p>
+<p>Cada objetivo se resuelve con una tirada independiente usando su habilidad asignada tras aplicar modificadores situacionales. La cadencia se calcula por objetivo: 1–2 proyectiles no dan bonificación, 3–8 dan +1 éxito si impacta, y 9 dan +2 éxitos si impacta. Estos éxitos se añaden después del Blindaje, no convierten un fallo en impacto y no se comparten entre objetivos.</p>
+<p>Elige un objetivo principal. Los primeros 3 metros respecto al objetivo principal no penalizan. Por cada 3 metros adicionales o fracción, el ataque pierde −1 éxito.</p>
+<p>Ejemplos rápidos: Distancia 80 y 9 proyectiles puede repartirse como 30/25/25 con 3/3/3 proyectiles y +1/+1/+1 de Cadencia, o como 50/30 con 6/3 proyectiles y +1/+1. Contra un solo objetivo, 9 proyectiles mantienen Distancia 80 y conceden +2 de Cadencia.</p>
 <h3>Penetración y cobertura</h3>
 <p>Cada punto de Penetración anula un punto de Blindaje. La Penetración se aplica también al Blindaje proporcionado por cobertura: una bala adecuada puede atravesar el coche, la puerta o el muro tras el que se protege el objetivo.</p>
 <p>En las armas a distancia, la Penetración procede normalmente de la munición utilizada. Cambiar de munición puede ser tan importante como cambiar de arma.</p>
 <p>La PREDATOR es una excepción: incorpora su Penetración como parte del diseño del arma.</p>
 <p><strong>Orden de resolución:</strong><br />
-1. Calcula los éxitos del ataque.<br />
-2. Añade los éxitos de Cadencia, si corresponde.<br />
-3. Resta los éxitos de defensa.<br />
-4. Suma el Blindaje personal y el de cobertura.<br />
-5. Reduce ese Blindaje mediante Penetración.<br />
-6. Resta el Blindaje restante a los éxitos del ataque.<br />
-7. Multiplica los éxitos finales por el daño base del arma.</p>
+1. Realiza la tirada de ataque.<br />
+2. Si impacta, calcula los éxitos normales.<br />
+3. Resuelve la defensa activa según su regla; si cancela completamente el ataque, este no causa daño.<br />
+4. Calcula Penetración total.<br />
+5. Calcula Blindaje total y Blindaje efectivo.<br />
+6. Resta el Blindaje efectivo de los éxitos normales restantes.<br />
+7. Añade después del Blindaje los éxitos adicionales de crítico, Cadencia, arma inteligente y efectos que lo indiquen expresamente.<br />
+8. <code>Daño final = daño base modificado × éxitos netos finales</code>.</p>
+<p>Los éxitos adicionales solo se aplican si la tirada impactó. No convierten un fallo en impacto. Pueden causar daño si el Blindaje absorbió los éxitos normales, pero no reactivan un ataque completamente cancelado por una defensa activa exitosa.</p>
 <h3>Defensa</h3>
-<p><strong>Cuerpo a cuerpo:</strong> antes de tirar, el personaje puede dividir su Habilidad de arma entre ataque y defensa. Realiza una tirada con cada valor. Los éxitos de defensa restan éxitos al ataque recibido.</p>
+<p><strong>Cuerpo a cuerpo:</strong> antes de tirar, el personaje puede dividir su Habilidad de arma cuerpo a cuerpo entre ataque y defensa. Realiza una tirada con cada valor. Los éxitos de defensa restan éxitos al ataque cuerpo a cuerpo recibido. Si igualan o superan el ataque, no causa daño.</p>
 <p>También puede dedicar todo su turno a Esquivar. Si la tirada de Esquivar tiene éxito, evita el ataque cuerpo a cuerpo, pero no puede atacar durante ese turno.</p>
-<p><strong>Ataques a distancia:</strong> no se esquivan las balas mediante una tirada gratuita de Esquivar. Contra disparos, el personaje debe buscar cobertura o reservar parte de su Habilidad mediante defensa activa.</p>
+<p><strong>Ataques a distancia:</strong> no se esquivan las balas mediante defensa activa dividida ni Esquiva total. Contra disparos, el personaje debe buscar cobertura o usar Movimiento evasivo.</p>
+<p><strong>Movimiento evasivo:</strong> consume toda la actuación. El personaje puede moverse hasta su movimiento normal y tira Esquivar una sola vez; el efecto dura hasta su siguiente actuación y afecta a todos los ataques a distancia recibidos.</p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fallo o pifia</td>
+<td>Sin penalizador para los atacantes; la pifia añade consecuencia narrativa.</td>
+</tr>
+<tr>
+<td>1 éxito</td>
+<td>−10 a la Habilidad efectiva de los atacantes.</td>
+</tr>
+<tr>
+<td>2+ éxitos o crítico</td>
+<td>−20 a la Habilidad efectiva de los atacantes; el crítico añade efecto favorable.</td>
+</tr>
+</tbody>
+</table>
+<p>Si el atacante acierta pese al penalizador, resuelve el ataque normalmente. Movimiento evasivo puede combinarse con cobertura: la evasión modifica la Habilidad y la cobertura aporta Blindaje. Si recibe un ataque antes de actuar, puede declararlo sacrificando por completo su próxima actuación.</p>
 <p>La cobertura aporta Blindaje, pero puede ser atravesada mediante Penetración.</p>
 <ul>
-<li><strong>Localización:</strong> dado de unidades de la tirada de ataque. 0 = Cabeza · 9-5 = Torso · 4 = Brazo D · 3 = Brazo I · 2 = Pierna D · 1 = Pierna I.</li>
+<li><strong>Localización:</strong> dado de unidades de la tirada de ataque. 0 = Cabeza (cualquier tirada terminada en 0; solo 00 es crítico máximo automático) · 9 Ojos · 8 Pecho · 7 Oídos · 6 Lengua/mandíbula · 5 Espalda · 4 Brazo D · 3 Brazo I · 2 Pierna D · 1 Pierna I.</li>
 </ul>
 <h3>Vida y heridas graves</h3>
 <ul>
-<li><strong>Estados (por zona):</strong> Sano (sin daño) → Leve (0) → Medio (−10 a las acciones) → Grave (−20). Si un golpe desborda el nivel Grave de la zona: muerte (Cabeza/Torso) o desmembramiento (Extremidad, ver abajo).</li>
-<li><strong>Desbordamiento:</strong> si un golpe hace más daño que los PV de la zona: <strong>Cabeza o Torso → muerte</strong>; <strong>Extremidad → 1d6</strong> (1-2 inutilizada · 3-4 amputación baja · 5-6 amputación alta), el PJ sigue en pie.</li>
-<li><strong>Sangrado:</strong> tras herida grave o amputación, tira <strong>Constitución</strong> al inicio de cada asalto; si falla, baja un nivel. Lo estabiliza un <strong>Medikit</strong> o un éxito en <strong>Primeros Auxilios</strong>.</li>
+<li><strong>Estados (por zona):</strong> Leve hasta 25% de capacidad perdida; Media más de 25% hasta 50% (−10); Grave más de 50%, sin desbordar (−20 y sangrado si es orgánica); Desbordada al alcanzar el límite.</li>
+<li><strong>Desbordamiento:</strong> Cabeza y extremidades desbordan al alcanzar o superar sus PV de zona. El torso tiene capacidad doble y desborda al alcanzar o superar <code>PV de zona × 2</code>. <strong>Cabeza o Torso → muerte</strong>; <strong>Extremidad → 1d6</strong> (1-2 inutilizada · 3-4 amputación baja · 5-6 amputación alta), el PJ sigue en pie.</li>
+<li><strong>Sangrado y estado general:</strong> las heridas Graves orgánicas y las zonas orgánicas desbordadas sangran. Al inicio de cada asalto tira <strong>Constitución</strong>; con éxito no empeora, con fallo desciende Sano → Herido → Exhausto (−20 a todas las habilidades) → Inconsciente → Muerto. Primeros Auxilios o un medikit apropiado detienen el sangrado y el descenso, pero no recuperan automáticamente estados ya perdidos. Droideum, robots y zonas mecánicas no sufren sangrado orgánico.</li>
 </ul>
 <h3>Humanidad y Alma</h3>
 <p>Un humano normal comienza con Humanidad 100 y Alma 8. Un Iniciado comienza con Humanidad 100 y Alma 10.</p>
 <p>La Humanidad mide cuánto conserva el personaje de su identidad humana frente a implantes, transformaciones y experiencias que lo alejan de ella. El Alma representa su anclaje metafísico.</p>
 <p>La Humanidad puede ser superior al Alma, pero el Alma nunca puede superar el límite marcado por la Humanidad:</p>
-<p><code>Alma máxima = suelo(Humanidad / 10)</code></p>
-<p>Ejemplo: si la Humanidad desciende a 70, el Alma máxima pasa a ser 7. Si tenía Alma 8, pierde inmediatamente el punto que excede ese límite.</p>
+<p><code>Alma accesible máxima = suelo(Humanidad / 10)</code></p>
+<p>Ejemplo: si la Humanidad desciende a 70, el Alma accesible máxima pasa a ser 7. Si tenía Alma total 8, puede usar 7 y conserva 1 punto bloqueado hasta recuperar Humanidad o aplicar una regla específica.</p>
 <p>Un Droideum anota Humanidad <strong>— / no aplicable</strong>, no 0, y tampoco posee Alma biológica.</p>
 <h3>Nota sobre Deriva</h3>
-<p>La Deriva se acumula al viajar entre teselas (mundos). Cuanto más viajes, más cambia tu cuerpo y tu mente: al alcanzar o superar por primera vez cada múltiplo de 10, algo irreversible ocurre. En este módulo los personajes empiezan con Deriva 0. Si cruzan un portal durante la aventura, el DJ decide cuánta acumulan (1d10+6 con pulsera inestable, 1d6 con un Maestro de Portales).</p>
+<p>La Deriva se acumula al viajar entre teselas (mundos). Cuanto más viajes, más cambia tu cuerpo y tu mente: al alcanzar o superar por primera vez cada múltiplo de 10, algo persistente ocurre. En este módulo los personajes empiezan con Deriva 0. Si cruzan un portal durante la aventura, el DJ decide cuánta acumulan (1d10+6 con pulsera inestable, 1d6 con un Maestro de Portales). El contador puede reducirse solo mediante reglas que lo indiquen expresamente, pero los umbrales ya alcanzados no se reactivan y sus consecuencias no desaparecen automáticamente.</p>
 <hr />
 <h2>PARTE 2 — PERSONAJES PREGENERADOS</h2>
 <blockquote>
@@ -267,8 +337,8 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 40 · <strong>CON</strong> 40 · <strong>FUE</strong> 45 · <strong>HAB</strong> 45 · <strong>CAR</strong> 25 · <strong>INT</strong> 30 · <strong>PER</strong> 30 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona (3 niveles):</strong> Leve 0–21 · Medio 22–42 (−10) · Grave 43–63 (−20) · +63 = muerte/desbordamiento</li>
-<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
+<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–6 · Media 7–11 (−10) · Grave 12–20 (−20 y sangrado si orgánica) · Desbordada 21+. Torso: Leve 1–11 · Media 12–21 · Grave 22–41 · Desbordada 42+.</li>
+<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤21 (−20% hasta 42) · <strong>Créditos</strong> 3.000 PC</li>
 </ul>
 <p><strong>Habilidades para tirar:</strong><br />
@@ -285,8 +355,8 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 30 · <strong>CON</strong> 30 · <strong>FUE</strong> 30 · <strong>HAB</strong> 50 · <strong>CAR</strong> 30 · <strong>INT</strong> 45 · <strong>PER</strong> 40 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona (3 niveles):</strong> Leve 0–15 · Medio 16–30 (−10) · Grave 31–45 (−20) · +45 = muerte/desbordamiento</li>
-<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
+<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–4 · Media 5–8 (−10) · Grave 9–14 (−20 y sangrado si orgánica) · Desbordada 15+. Torso: Leve 1–8 · Media 9–15 · Grave 16–29 · Desbordada 30+.</li>
+<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤15 (−20% hasta 30) · <strong>Créditos</strong> 4.500 PC</li>
 </ul>
 <p><strong>Habilidades para tirar:</strong><br />
@@ -304,8 +374,8 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 30 · <strong>CON</strong> 35 · <strong>FUE</strong> 30 · <strong>HAB</strong> 35 · <strong>CAR</strong> 35 · <strong>INT</strong> 45 · <strong>PER</strong> 45 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona (3 niveles):</strong> Leve 0–16 · Medio 17–32 (−10) · Grave 33–48 (−20) · +48 = muerte/desbordamiento</li>
-<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
+<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–4 · Media 5–8 (−10) · Grave 9–15 (−20 y sangrado si orgánica) · Desbordada 16+. Torso: Leve 1–8 · Media 9–16 · Grave 17–31 · Desbordada 32+.</li>
+<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤16 (−20% hasta 32) · <strong>Créditos</strong> 4.500 PC</li>
 </ul>
 <p><strong>Habilidades para tirar:</strong><br />
@@ -322,8 +392,8 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 35 · <strong>CON</strong> 30 · <strong>FUE</strong> 30 · <strong>HAB</strong> 30 · <strong>CAR</strong> 50 · <strong>INT</strong> 40 · <strong>PER</strong> 40 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona (3 niveles):</strong> Leve 0–16 · Medio 17–32 (−10) · Grave 33–48 (−20) · +48 = muerte/desbordamiento</li>
-<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
+<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–4 · Media 5–8 (−10) · Grave 9–15 (−20 y sangrado si orgánica) · Desbordada 16+. Torso: Leve 1–8 · Media 9–16 · Grave 17–31 · Desbordada 32+.</li>
+<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤15 (−20% hasta 30) · <strong>Créditos</strong> 4.000 PC (+ tarjeta con 940 PC)</li>
 </ul>
 <p><strong>Habilidades para tirar:</strong><br />
@@ -340,8 +410,8 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 45 · <strong>CON</strong> 40 · <strong>FUE</strong> 45 · <strong>HAB</strong> 45 · <strong>CAR</strong> 25 · <strong>INT</strong> 25 · <strong>PER</strong> 30 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona (3 niveles, el más duro):</strong> Leve 0–22 · Medio 23–44 (−10) · Grave 45–66 (−20) · +66 = muerte/desbordamiento</li>
-<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
+<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–6 · Media 7–11 (−10) · Grave 12–21 (−20 y sangrado si orgánica) · Desbordada 22+. Torso: Leve 1–11 · Media 12–22 · Grave 23–43 · Desbordada 44+.</li>
+<li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤21 (−20% hasta 42) · <strong>Créditos</strong> 2.500 PC</li>
 </ul>
 <p><strong>Habilidades para tirar:</strong><br />
@@ -563,7 +633,7 @@
 </blockquote>
 <h3>Deriva al cruzar</h3>
 <p>Cuando el Maestro de Portales abre el cruce final, cada personaje obtiene <code>1d6</code> puntos de Deriva. Es su primer contacto mecánico con el precio de viajar por el Mosaico.</p>
-<p>Si un personaje alcanza 10 o más puntos, aplica inmediatamente el efecto correspondiente de Deriva. El cambio es permanente.</p>
+<p>Si un personaje alcanza 10 o más puntos, aplica inmediatamente el efecto correspondiente de Deriva. El umbral queda registrado; reducir después el contador no borra el cambio ni permite volver a activar ese mismo umbral.</p>
 <hr />
 <h2>APÉNDICE — DATOS DE REFERENCIA</h2>
 <h3>PREDATOR N-5.2 (prototipo Chafry) — arma media</h3>
