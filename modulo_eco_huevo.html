@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El Eco del Huevo</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — El Eco del Huevo</h1>
+<p><em>Estado: BORRADOR — pendiente de revisión editorial</em><br />
+<em>Transcripción del HTML original — contenido sin editar</em></p>
+<p><em>Aventura para 3-5 personajes · 3-5 sesiones · Nivel medio-alto</em></p>
+<h2>Introducción</h2>
+<p>Los Errantes no eligen las misiones. Las misiones los eligen a ellos — a veces en forma de una deuda, a veces en forma de un cadáver, a veces en forma de un objeto que no debería existir y que alguien acaba de sacar de una subasta.</p>
+<p>Este módulo comienza con un huevo. No un huevo cualquiera. Un huevo Faverhge — una tesela de bolsillo plegada en forma de cáscara iridiscente. Tres de ellos se han puesto en venta en un mercado del Mosaico. Dos son cáscaras vacías. Uno contiene algo que las Pseudo-Arkanitas llevan mil años buscando destruir.</p>
+<p>Los personajes pueden ser cualquier grupo de Errantes con acceso a mercados, subastas o contactos en el Mosaico. No necesitan historia previa con Kawalapiti. La necesitan al terminar.</p>
+<h2>Emplazamiento</h2>
+<p>El módulo se desarrolla en tres localizaciones principales, aunque el DJ puede adaptarlas a la tesela donde se encuentre el grupo:</p>
+<ul>
+<li><strong>Un asentamiento del Mosaico</strong> — donde se celebra la subasta o el mercado. Puede ser EP-9, un puerto orbital, una ciudad corporativa o un mercado flotante. Lo importante: que haya movimiento, dinero y objetos que no deberían estar a la venta.</li>
+<li><strong>La mansión o refugio de un contacto</strong> — un lugar seguro donde examinar el huevo y recibir la visita de un Kawalapiti. Puede ser la casa de un viejo Errante, un santuario de Iniciados o una base corporativa abandonada.</li>
+<li><strong>El planeta Kawalapiti</strong> — "El lugar del suelo que recuerda." Un mundo de jungla densa, ruinas antiguas y vainas bajo la superficie. Los Kawalapiti viven aquí en una sociedad de Edad del Bronce tardía, guardianes inadvertidos de algo mucho más antiguo.</li>
+</ul>
+<h2>Trama</h2>
+<h3>Acto I — La Subasta</h3>
+<p>Los personajes asisten a una subasta o mercado donde se venden tres huevos Faverhge. El vendedor es un falsificador que solo quería vender copias, pero por error entregó el verdadero. Los personajes pueden comprarlo (si tienen dinero), robarlo (si tienen contactos), o simplemente estar en el lugar correcto cuando algo sale mal.</p>
+<div class="nota-dj"><p>El huevo verdadero se distingue de los falsos por una tirada de <strong>Detección de Distorsión</strong> (Difícil, −10) o <strong>Tecnológica</strong> (Difícil, −10). Los falsos son inertes. El verdadero emite una señal de baja intensidad — no hacia fuera, hacia dentro. Como si hablara consigo mismo.</p>
+<p>Si los personajes lo compran, el vendedor intenta recuperarlo esa misma noche. Si lo roban, el vendedor los busca. Si simplemente lo encuentran, el vendedor los busca igual. El huevo es un imán de problemas.</p></div>
+<p>Esa noche, el huevo empieza a emitir una señal más fuerte. Alguien —o algo— la está buscando. Los personajes tienen 24 horas antes de que las Pseudo-Arkanitas lleguen.</p>
+<h3>Acto II — La Visita</h3>
+<p>Un Kawalapiti llamado <strong>Vedānta</strong> aparece en el refugio de los personajes. Ha sentido la señal del huevo. Ha venido a avisar. No toca el huevo — se arrodilla ante él.</p>
+<blockquote>
+<p>"No es un huevo. Es un eco. Y los ecos atraen a los que temen ser recordados."</p>
+</blockquote>
+<p>Vedānta explica lo que los personajes no saben:</p>
+<ul>
+<li>El huevo verdadero está vacío. Contuvo un sistema solar completo, plegado por las Arcanitas hace mil años durante la rebelión Kawalapiti. Al caer cerca de un sol, el sistema se desplegó. Los Kawalapiti que quedaron dentro casi se extinguen, volvieron a un NT bajo, pero sobrevivieron.</li>
+<li>Los Kawalapiti actuales son los descendientes de los sirvientes que quedaron fuera del huevo cuando fue plegado.</li>
+<li>Las Pseudo-Arkanitas no saben que el huevo está vacío. Creen que todavía contiene el sistema solar plegado. Lo buscan porque temen que los Kawalapiti rebeldes lo usen como arma o lo abran.</li>
+<li>Lo que las Pseudo-Arkanitas temen de verdad es lo que la resonancia del huevo demuestra: que los Dormidos existieron, y que sabían algo que las Arcanitas actuales han olvidado — el origen de su falsa divinidad.</li>
+</ul>
+<div class="nota-dj"><p>Vedānta ofrece dos caminos:</p>
+<ol>
+<li><strong>Llevar el huevo a Kawalapiti.</strong> Allí, bajo la superficie, hay tecnología que puede abrir el huevo de forma segura. Pero es peligroso: las Pseudo-Arkanitas que buscan el huevo sabrán dónde está.</li>
+<li><strong>Destruir el huevo.</strong> Vedānta no lo recomienda. <em>"Dentro hay personas. Despiertas o dormidas, son personas. Pero si vosotros decidís..."</em> No termina la frase.</li>
+</ol>
+<p>Decisión moral: ¿Protegen a los Dormidos (que fueron los opresores de los Kawalapiti)? ¿Los entregan a las Pseudo-Arkanitas de fuera (que los quieren destruir)? ¿Los despiertan (y asumen las consecuencias)? ¿Destruyen el huevo (y asumen el peso de matar a quienes nunca tuvieron opción)?</p>
+<p>No hay respuesta correcta. Cada opción tiene consecuencias reales.</p></div>
+<p>Si eligen ir a Kawalapiti (la opción más probable, porque conecta con la trama), Vedānta los guiará. Pero advierte:</p>
+<blockquote>
+<p>"El viaje no es largo. Pero lo que hay dentro del huevo... para ellos, ha pasado mucho tiempo. Para nosotros, casi nada. El tiempo no es igual en todas las teselas. Recordadlo."</p>
+</blockquote>
+<h3>Acto III — La Llegada</h3>
+<p>El planeta Kawalapiti recibe al grupo con el mismo silencio de siempre. Pero algo ha cambiado. Las luces del asentamiento son más escasas. Hay movimiento en los bordes — Kawalapiti con lanzas, mirando al cielo. No con miedo. Con preparación.</p>
+<p>Los Kawalapiti saben que algo viene. Vedānta les ha enviado un mensaje antes de partir. El poblado está en alerta.</p>
+<div class="nota-dj"><p>Tirada de <strong>Social</strong> o <strong>Absorción</strong> (Difícil, −10) para cualquier PJ que no sea Kawalapiti:</p>
+<ul>
+<li><strong>Éxito:</strong> Los Kawalapiti los aceptan, pero con reservas. No confían plenamente en quienes no han estado antes.</li>
+<li><strong>Pifia:</strong> Alguien del grupo dice algo que ofende sin querer. Un anciano Kawalapiti los mira con algo parecido al dolor. <em>"Vosotros también tenéis Creadoras. Y también las habéis perdido."</em> No explica más.</li>
+</ul></div>
+<p>Vedānta los lleva a las minas. No a las que ya vieron —a otras más profundas. Donde las cámaras criogénicas están intactas.</p>
+<blockquote>
+<p>El aire es más frío aquí. Las paredes tienen una textura que no es roca ni metal — es algo entre las dos, como si la materia misma hubiera olvidado qué quería ser. Las cámaras son cientos. Miles. Todas cerradas. Todas con alguien dentro.</p>
+<p>No son Kawalapiti.</p>
+<p>Son Pseudo-Arkanitas.</p>
+</blockquote>
+<p>Vedānta explica, con la voz baja:</p>
+<blockquote>
+<p>"Estas son las cámaras de los que no se rebelaron. Los que las Creadoras guardaron porque sabían demasiado. O porque eran demasiado valiosos para perder. O porque eran demasiado peligrosos para dejar despiertos."</p>
+</blockquote>
+<div class="nota-dj"><p>Tirada de <strong>Académicas</strong> o <strong>Identificación de Distorsión</strong> (Muy difícil, −20):</p>
+<ul>
+<li><strong>Éxito:</strong> Las cámaras tienen inscripciones arcanitas. Se pueden leer fragmentos. Hablan de <em>"contención"</em>, <em>"memoria"</em>, <em>"el error que no puede repetirse"</em>.</li>
+<li><strong>Éxito extraordinario:</strong> Una de las inscripciones menciona <em>"el jardín exterior"</em>. Un mundo de flora agresiva y fauna mutada — un laboratorio biológico arcanita abandonado. Las cámaras y el jardín están conectados — fueron diseñados juntos.</li>
+</ul></div>
+<p>Si los PJs tocan una de las cámaras (o intentan analizarla), algo ocurre. La cámara reacciona. No se abre — pero proyecta algo. Una memoria.</p>
+<blockquote>
+<p>El mundo se vuelve blanco. No es un sueño — es un recuerdo que no es vuestro.</p>
+<p>Veis un laboratorio. Pseudo-Arkanitas trabajando. Kawalapiti siendo... modificados. No con violencia — con precisión. Como quien ajusta un instrumento. Los Kawalapiti gritan. No de dolor — de confusión. Como si les estuvieran quitando algo que no sabían que tenían.</p>
+<p>Una Arcanita —alta, con venas de oro bajo la piel— habla con otra. No las entendéis. Pero alguien del grupo, a través de la memoria, traduce:</p>
+<p>—No pueden tener esto. Si lo recuerdan, si lo pasan a sus hijos, la rebelión no terminará nunca.</p>
+<p>—¿Qué les estamos quitando?</p>
+<p>—La capacidad de crear. De imaginar lo que no existe. Serán perfectos sirvientes. Porque no podrán imaginar ser otra cosa.</p>
+</blockquote>
+<p>La visión termina. Los PJs vuelven a la cámara. Vedānta los mira. No está sorprendido — está cansado.</p>
+<blockquote>
+<p>"Ahora sabéis por qué nos rebelamos. No por libertad. Por eso. Por lo que nos quitaron y que algunos de nosotros... recuperamos. A pesar de todo."</p>
+</blockquote>
+<div class="nota-dj"><p>Tirada de <strong>Salud Mental</strong> (Moderado, 2d6). El conocimiento de esto —de lo que les hicieron— es pesado. No por violento, sino por íntimo. Los Kawalapiti no son sirvientes rebeldes. Son personas a las que intentaron castrar el alma. Y algunas lo sobrevivieron.</p></div>
+<h3>Acto IV — La Amenaza</h3>
+<p>Mientras están en las cámaras, los sensores detectan algo. La señal del huevo —que habían dejado activa— se ha acelerado. No emite hacia dentro. Ahora emite hacia fuera.</p>
+<blockquote>
+<p>"Alguien la ha encontrado. Y está respondiendo."</p>
+</blockquote>
+<p>Vedānta palidece.</p>
+<blockquote>
+<p>"Las Creadoras de fuera. Las que no están dormidas. Han encontrado el huevo."</p>
+</blockquote>
+<div class="nota-dj"><p>Tirada de <strong>Alerta</strong> o <strong>Detección de Distorsión</strong> (Difícil, −10):</p>
+<ul>
+<li><strong>Éxito:</strong> La señal viene de la urdimbre. Algo se está acercando. Rápido.</li>
+<li><strong>Éxito extraordinario:</strong> No es una nave. Es un portal. Alguien está abriendo un camino directo hacia Kawalapiti.</li>
+</ul>
+<p>Las Pseudo-Arkanitas llegan. No con un ejército —con un comando. Seis Inquisidoras. NT7-8. Tecnología que los PJs no pueden igualar.</p></div>
+<h3>Acto V — El Combate Asimétrico</h3>
+<p>Las Inquisidoras Pseudo-Arkanitas son fanáticas de las Arcanitas actuales. Vienen a destruir el huevo. No a matar PJs. Pero si los PJs se interponen, los matarán. Sin odio. Sin placer. Solo eficiencia dogmática.</p>
+<h3>Inquisidoras Pseudo-Arkanitas (6 unidades)</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fuerza</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Agilidad</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Percepción</td>
+<td>60</td>
+</tr>
+<tr>
+<td>PV</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Blindaje</td>
+<td>5 (Escudo de Distorsión NT8)</td>
+</tr>
+<tr>
+<td>Ataque Melé</td>
+<td>75% (Lanza de resonancia, Pen 3, Daño 6)</td>
+</tr>
+<tr>
+<td>Ataque Distancia</td>
+<td>85% (Rifle de haz, Daño 8, Pen 5)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Habilidades Especiales:</strong></p>
+<ul>
+<li><strong>Parpadeo (Micro-saltos):</strong> Pueden teletransportarse hasta 15 metros como acción de movimiento. Cuesta 1 PD.</li>
+<li><strong>Inmunidad parcial a armas convencionales:</strong> las armas sin penetración de distorsión hacen daño reducido a la mitad.</li>
+<li><strong>Inmunidad a la persuasión:</strong> Su dogma es absoluto. Los Kawalapiti son "material biológico robado".</li>
+<li><strong>Escudo de Distorsión:</strong> absorbe los primeros 2 éxitos de cualquier ataque. Solo daño con Pen 4+ lo atraviesa.</li>
+</ul>
+<div class="nota-dj"><p>El combate es asimétrico. Los PJs no pueden ganar por fuerza. Tienen que usar:</p>
+<ul>
+<li>El entorno (las minas, las cámaras, las Sombras de la Noche que pueden ser atraídas por la distorsión arcanita)</li>
+<li>Las propias cámaras criogénicas (si se activan accidentalmente, los Dormidos despiertan — y eso cambia todo)</li>
+<li>La táctica y la inteligencia (no la fuerza bruta)</li>
+</ul>
+<p>Tirada de <strong>Táctica</strong> o <strong>Académicas</strong> (Muy difícil, −20) para planear el combate:</p>
+<ul>
+<li><strong>Éxito:</strong> Los PJs pueden usar las cámaras como trampa. Si logran que una Inquisidora toque una cámara, el Dormido de dentro despierta — y atacará a quien lo haya despertado, sea quien sea.</li>
+<li><strong>Éxito extraordinario:</strong> Los PJs pueden atraer a las Sombras de la Noche. Las criaturas odian la distorsión arcanita pura — atacarán a las Pseudo-Arkanitas antes que al grupo.</li>
+</ul></div>
+<h3>Acto VI — La Elección Final</h3>
+<p>En medio del combate, algo cambia. Una de las cámaras se abre — no por el combate, sino porque alguien dentro ha decidido despertar. Un Dormido. Una Pseudo-Arkanita antigua.</p>
+<blockquote>
+<p>Sale de la cámara con movimientos lentos, como quien recuerda cómo se mueve. No lleva armas. Lleva algo en las manos — un objeto que brilla con luz que no existe en el espectro visible.</p>
+<p>Mira a las Inquisidoras. Y les habla. En un idioma que nadie entiende — excepto alguien del grupo que traduce en tiempo real:</p>
+<p>—Basta. Ya no.</p>
+</blockquote>
+<div class="nota-dj"><p>La Dormida —que no tiene nombre, o que lo ha olvidado— se pone del lado del grupo. No por ellos. Contra las Pseudo-Arkanitas que la encerraron.</p>
+<p>Las Inquisidoras tienen que decidir:</p>
+<ul>
+<li>¿Obedecen a la Dormida (que es de rango superior al suyo)?</li>
+<li>¿La destruyen (y traicionan a sus propias Creadoras)?</li>
+<li>¿Se retiran (y reportan lo que ha pasado)?</li>
+</ul>
+<p>Esto es el clímax moral. La Dormida no es aliada — es otra cosa. Alguien que fue encerrada por saber demasiado. Que ahora despierta con rabia antigua.</p></div>
+<p>Las Inquisidoras se retiran. No han ganado. Y lo que han visto —una Dormida despierta— las aterra más que cualquier combate.</p>
+<p>La Dormida mira al grupo. Mira el huevo. Y dice algo que alguien del grupo traduce:</p>
+<blockquote>
+<p>"Este huevo no es vuestro. No es de nadie. Es una prisión. Y lo que hay dentro... no quiere salir."</p>
+</blockquote>
+<p>La Dormida explica, con la parsimonia de quien ha dormido mil años:</p>
+<ul>
+<li>Dentro del huevo hay un sistema solar. Sí.</li>
+<li>Pero también hay algo más. Algo que las Arcanitas temen. Algo que fue sellado con el sistema solar. No para protegerlo —para contenerlo.</li>
+<li>Si el huevo se abre, lo que está contenido puede salir.</li>
+<li>Y eso... cambiaría todo.</li>
+</ul>
+<blockquote>
+<p>"Vuestro grupo... algunos de vosotros sois faros. Pero no para nosotros. Para eso. Si abrís el huevo, eso lo encontrará. Y entonces... ya no habrá ningún tiempo donde esconderlo."</p>
+</blockquote>
+<div class="nota-dj"><p>Tirada de <strong>Salud Mental</strong> (Grave, 3d6). El peso de saber que hay algo peor que las Pseudo-Arkanitas —algo que las Pseudo-Arkanitas temen— es demasiado.</p></div>
+<h2>Epílogo — Lo que se Llevan</h2>
+<div class="nota-dj"><p>El grupo deja Kawalapiti. Vedānta se queda. La Dormida... no se sabe. Puede que vuelva a dormir. Puede que siga al grupo. Puede que desaparezca.</p></div>
+<p><strong>Lo que se llevan:</strong></p>
+<ul>
+<li><strong>Conexión confirmada:</strong> El mundo de Monstruoplantas (o cualquier mundo de flora agresiva), el huevo, Kawalapiti — todo es arcanita. Todo está conectado.</li>
+<li><strong>El huevo verdadero:</strong> Todavía cerrado. Todavía con algo dentro que no quiere salir.</li>
+<li><strong>La verdad parcial sobre los Dormidos:</strong> Sabían algo que las Arcanitas actuales han olvidado. Su falsa divinidad.</li>
+<li><strong>La Dormida:</strong> Un PNJ que puede volver en futuras aventuras. Con información que no ha dado todavía.</li>
+<li><strong>La Arcanita del subsuelo:</strong> Vedānta menciona, de pasada, que bajo Kawalapiti queda "una sola". No dice más. Semilla para otra aventura.</li>
+<li><strong>El peso de la decisión:</strong> ¿Protegen el huevo? ¿Lo destruyen? ¿Lo abren? No lo han decidido. Pero tendrán que hacerlo.</li>
+</ul>
+<blockquote>
+<p>"Hay cosas que se protegen no porque sean verdaderas. Sino porque si se destruyen, lo que queda es peor."</p>
+</blockquote>
+<h2>Ganchos para Futuras Sesiones</h2>
+<ol>
+<li><strong>La Arcanita del subsuelo.</strong> Vedānta sabe dónde está. No la despertará — todavía. Pero si los PJs vuelven a Kawalapiti, pueden encontrarla. Y ella sabe cosas que los Dormidos olvidaron.</li>
+<li><strong>La Dormida sabe más.</strong> Puede contactar al grupo en sueños (especialmente con quien tenga Deriva alta). Tiene información sobre lo que hay contenido en el huevo.</li>
+<li><strong>Las Pseudo-Arkanitas de fuera no se rinden.</strong> Han reportado lo que han visto. Vendrán con más. La próxima vez, no serán seis —serán sesenta.</li>
+<li><strong>El huevo puede abrirse.</strong> Pero no en Kawalapiti —hace falta tecnología que solo existe en un lugar: una estación abandonada, una tesela virgen, o las profundidades de un mundo que todavía no han visitado.</li>
+<li><strong>Monstruoplantas tiene más que revelar.</strong> El jardín arcanita no estaba abandonado —estaba sellado. Y algo dentro sigue creciendo.</li>
+<li><strong>Los Dormidos.</strong> Nadie sabe dónde están los que no estaban en las cámaras. Pero Vedānta tiene una teoría: que no desaparecieron. Que se escondieron. Que están esperando. Y que cuando vuelvan, las Pseudo-Arkanitas tendrán que responder por lo que hicieron.</li>
+</ol>
+<h2>PNJs de Referencia</h2>
+<h3>Vedānta (Kawalapiti Guardián)</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fuerza</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Agilidad</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Percepción</td>
+<td>50</td>
+</tr>
+<tr>
+<td>PV</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Blindaje</td>
+<td>2 (tejido Kawalapiti)</td>
+</tr>
+<tr>
+<td>Ataque Melé</td>
+<td>60% (Lanza de Raíz, Pen 2, Daño 5)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Especial:</strong> Mente Aplicada +10 a tiradas de percepción de distorsión y tecnología antigua. Inmune a la Deriva ambiental.</p>
+<h3>La Dormida (Arcanita Antigua)</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fuerza</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Agilidad</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Percepción</td>
+<td>70</td>
+</tr>
+<tr>
+<td>PV</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Blindaje</td>
+<td>6 (NT8)</td>
+</tr>
+<tr>
+<td>Ataque Distancia</td>
+<td>80% (Haz arcanita, Daño 10, Pen 6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Especial:</strong> Micro-saltos (Parpadeo) hasta 20m. Inmunidad a armas de Pen &lt; 4. Puede desactivar tecnología arcanita con contacto.</p>
+<h2>Notas para el Narrador</h2>
+<div class="nota-dj"><p>Este módulo está diseñado para ser genérico. Los personajes pueden ser cualquier grupo de Errantes con acceso a mercados del Mosaico. No necesitan historia previa con Kawalapiti, Pseudo-Arkanitas o huevos Faverhge.</p>
+<p>El módulo conecta con:</p>
+<ul>
+<li><strong>El lore canónico:</strong> Kawalapiti, Pseudo-Arkanitas, huevos Faverhge, vainas, Dormidos.</li>
+<li><strong>El sistema de juego:</strong> Tiradas de Detección de Distorsión, Salud Mental, Académicas, Táctica.</li>
+<li><strong>El tono de la Senda:</strong> Decisiones morales, consecuencias reales, horror cósmico, belleza terrible.</li>
+</ul>
+<p>El módulo puede adaptarse a cualquier campaña. Si los personajes ya han visitado Kawalapiti, el DJ puede cambiar el emplazamiento inicial (otra tesela, otro mercado, otro contacto). Si los personajes ya conocen a Vedānta, el DJ puede introducir un nuevo PNJ Kawalapiti.</p>
+<p>Lo importante no es el escenario. Es la decisión. Y la decisión es siempre la misma: ¿qué estás dispuesto a proteger, y qué estás dispuesto a destruir?</p></div>
+<h2>Notas de revisión pendientes</h2>
+<div class="nota-dj"><p>Transcripción fiel del lore canónico. Puntos a verificar:</p>
+<ul>
+<li><strong>Huevos Faverhge:</strong> El lore dice que son teselas de bolsillo plegadas. El módulo usa esto como base. Coherente con CAP04b y CAP05.</li>
+<li><strong>Pseudo-Arkanitas vs Arcanitas:</strong> Las Pseudo-Arkanitas son las continuadoras tecnológicas de los Precursores. Se autodenominan "Arcanitas". El resto del mosaico las llama Pseudo-Arkanitas. El módulo usa ambos términos correctamente.</li>
+<li><strong>Kawalapiti:</strong> Creados por las Pseudo-Arkanitas como sirvientes. Se rebelaron, fueron casi exterminados, sobrevivieron gracias a su propio ingenio. El módulo respeta esto.</li>
+<li><strong>Vainas:</strong> Bajo Kawalapiti hay vainas de construcción Kawalapiti donde duermen los supervivientes del exterminio. El módulo añade que también hay cámaras de Dormidos (Pseudo-Arkanitas puras en animación suspendida). Esto es coherente con el lore de CAP04b.</li>
+<li><strong>Stats de combate:</strong> Las Inquisidoras Pseudo-Arkanitas usan el sistema de combate del manual (d100, éxitos, blindaje, penetración). Coherente con CAP03.</li>
+<li><strong>Deriva:</strong> El módulo no menciona costes de Deriva específicos, pero el DJ puede aplicar los costes canónicos (CAP05) si los personajes cruzan a Kawalapiti.</li>
+</ul>
+<p>El módulo está listo para jugar. Solo necesita un DJ con el manual completo y un grupo de Errantes dispuestos a tomar decisiones imposibles.</p></div>
+</div>
+</body>
+</html>

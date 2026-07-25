@@ -476,3 +476,37 @@ body.landing {
     .landing .cards { flex-direction: column; align-items: center; }
     .landing .card { width: 270px; }
 }
+
+/* DLCs: secciones (Suplementos/Modulos) y tarjetas de borrador */
+.landing .dlc-seccion {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted, #94a3b8);
+    margin: 28px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-color, #2a303c);
+}
+
+.landing .card-borrador {
+    opacity: 0.75;
+    border-style: dashed;
+}
+
+.landing .card-borrador:hover {
+    opacity: 1;
+}
+
+.landing .badge-borrador {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--text-muted, #94a3b8);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
