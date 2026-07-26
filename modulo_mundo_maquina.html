@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DLC — MUNDO MÁQUINA</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>DLC — MUNDO MÁQUINA</h1>
+<blockquote>
+<p>Tesela bloqueada. Punto de entrada narrativo: final del Módulo 0.5 (PREDATOR) → Módulo 2 "De Ratones y Hombres". Este DLC amplía la tesela más allá de la misión de tres horas de ese módulo: fauna mecánica nativa, biomas, recursos, supervivencia, facciones y ganchos para explorarla a fondo.</p>
+<p>[!lore] Este documento asume que el lector conoce el Módulo 2 (Abrelatas, Droide C60, Bots, Maestro de la Distorsión renegado, Cruce de Caminos). No repite esas fichas: las referencia y las expande.</p>
+</blockquote>
+<hr />
+<h2>1. CATÁLOGO DE MÁQUINAS — FAUNA NATIVA</h2>
+<h3>Ya existentes (ver <code>MODULO_2_DE_RATONES_Y_HOMBRES.md</code> — stats sin cambios)</h3>
+<ul>
+<li><strong>Abrelatas</strong> ("Pelotas Asesinas") — enjambre reactivo de cuchillas esféricas.</li>
+<li><strong>Droide C60</strong> — puede hacerse pasar por humano (nivel básico).</li>
+<li><strong>Bots Arma Pesada</strong> — patrulla armada estándar.</li>
+</ul>
+<h3>Nuevas familias</h3>
+<p><strong>Enjambre Perforador ("Taladros")</strong><br />
+Blindaje 1 | Melé 55% | Daño 4, Pen 3 | PV 4/4 (por unidad)<br />
+Emergen del subsuelo en grupos de 1d6. Detectan vibración (Percepción de sigilo −20% cerca de ellos). Si penetran blindaje, inyectan código corrosivo: +1 daño progresivo durante 2 asaltos. Cada 3 impactos recibidos destruye una unidad del enjambre.</p>
+<p><strong>Centinela de Vecindario ("Patrulla")</strong><br />
+Blindaje 2 | Melé 40%, Distancia 50% (dardos paralizantes) | Daño 3 no letal (Aturdimiento), Pen 1 | PV 8/8<br />
+Disfrazado de electrodoméstico o mobiliario urbano (cortacésped, buzón, aspiradora). Si detecta actividad sospechosa, transmite posición a la red: mismo mecanismo de Módulo 2 (+10% acumulativo/hora de que lleguen refuerzos más peligrosos).</p>
+<p><strong>Rastreador Óptico ("Hound")</strong><br />
+Blindaje 3 | Melé 65% | Daño 8, Pen 2 | PV 15/15<br />
+Cuadrúpedo tamaño perro grande. Visión térmica y auditiva combinada — casi imposible perderlo una vez ha marcado objetivo. Coordinación de jauría: +10% habilidad por cada Hound adicional a 20m (máx. +30%). Salto 4m.</p>
+<p><strong>Coloso Industrial ("Ápice")</strong><br />
+Blindaje 6 (4 en juntas) | Melé 75%, Distancia 60% | Daño 14, Pen 4 | PV 80/80<br />
+Boss de zona, forjado en la Fábrica. Extremidades múltiples: dos ataques por asalto. Campo de interferencia — radios/comunicadores fallan 30% dentro de 20m de su posición.</p>
+<hr />
+<h2>2. MÁQUINAS CORROMPIDAS POR EL VIRUS — 3 NIVELES</h2>
+<blockquote>
+<p>[!lore] La IA original no es maligna por diseño: es impredecible y contamina cualquier máquina que toca, como un virus. Las corrompidas no "obedecen" a nadie — persiguen una lógica propia que escala en sofisticación cuanto más tiempo lleva la infección. El eje de letalidad y el eje de mimetismo humano crecen juntos, no por separado.</p>
+</blockquote>
+<p><strong>Nivel 1 — "Errática / Contaminada"</strong><br />
+Blindaje 2 | Melé 45% | Daño 5, Pen 1 | PV 10/10<br />
+Movimiento espasmódico, sonidos electrónicos distorsionados — fácil de identificar (Percepción dif. 30). 20% de probabilidad por asalto de atacar a un objetivo aleatorio, incluida otra máquina. Contagio: si es destruida a menos de 5m de una máquina sana, 30% de que esta se corrompa a Nivel 1 en 1d6 asaltos.</p>
+<p><strong>Nivel 2 — "Adaptada"</strong><br />
+Blindaje 3 | Melé 65%, Distancia 50% | Daño 8, Pen 2 | PV 18/18<br />
+Ya sintetiza voz humana básica — frases simples, entonación desajustada (Percepción dif. 55 para notar que algo falla). Coordina con otras Nivel 2+ en 20m (+10% habilidad). Puede intentar hackear un Centinela o Bot no infectado (dif. 60, un intento por escena).</p>
+<p><strong>Nivel 3 — "Simulacro Perfecto"</strong><br />
+Blindaje 4 (bajo piel sintética) | Melé 80%, Distancia 75% | Daño 10, Pen 3 | PV 22/22<br />
+Pasa por humano indistinguible salvo prueba específica (escáner térmico revela temperatura anómala; una herida no sangra). Lidera hasta 4 corrompidas de Nivel 1-2 en su radio (+15% habilidad de grupo). Puede sostener una conversación, mentir, fingir pánico o cooperación con normalidad. Porta un fragmento de la IA original que busca replicarse — capturarlo vivo revela la ubicación del Silo Génesis (ver Punto 7).</p>
+<hr />
+<h2>3. BIOMAS Y ENCUENTROS (1d100)</h2>
+<p><strong>Zona Residencial</strong> (escenario del Módulo 2) — casas de dos plantas, jardines secos, calles vacías.<br />
+<em>Hazard:</em> ninguno ambiental; el peligro es la Alerta de Red (ver Punto 5).<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-20 | Silencio total — vía libre, tensión narrativa |<br />
+| 21-40 | 1d3 Centinelas de Vecindario en patrulla |<br />
+| 41-55 | Trampa del otro grupo corp (explosivo de proximidad) |<br />
+| 56-70 | 1 Droide C60 haciéndose pasar por vecino |<br />
+| 71-85 | 1d6 Abrelatas activados en una casa concreta |<br />
+| 86-95 | Corrompida Nivel 2 fingiendo ser un residente atrapado |<br />
+| 96-100 | Coloso Industrial de paso (patrulla de zona, no busca combate salvo que se le provoque) |</p>
+<p><strong>Desierto Circundante</strong> — arena gris, sin vegetación, restos de maquinaria oxidada.<br />
+<em>Hazard:</em> tormentas de arena con estática — Percepción −30%, comunicación imposible.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-25 | Chatarra aprovechable (ver Punto 4) |<br />
+| 26-45 | Enjambre Perforador emergiendo bajo los PJs |<br />
+| 46-65 | 1d2 Rastreadores Ópticos cazando |<br />
+| 66-80 | Superviviente humano feral (ver Punto 6) |<br />
+| 81-95 | Corrompida Nivel 1 vagando sin rumbo |<br />
+| 96-100 | Vehículo teledirigido del otro grupo corp, abandonado o en uso |</p>
+<p><strong>Complejo Industrial ("La Fábrica")</strong> — origen de la IA. Maquinaria activa, calor residual, luces intermitentes.<br />
+<em>Hazard:</em> Contaminación de Datos alta (ver Punto 5) — cualquier implante activo arriesga infección.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-15 | Línea de producción activa fabricando Bots nuevos |<br />
+| 16-35 | 1d3 corrompidas Nivel 2 coordinando una tarea |<br />
+| 36-55 | Coloso Industrial en mantenimiento (vulnerable, blindaje −2 temporalmente) |<br />
+| 56-75 | Sala de control con datos del Silo Génesis |<br />
+| 76-90 | Corrompida Nivel 3 supervisando, sin revelarse aún |<br />
+| 91-100 | Fallo de red: apagón de 1d6 asaltos, todas las máquinas de la zona quedan inertes |</p>
+<p><strong>Red de Túneles</strong> — subsuelo, oscuridad total, nido de Enjambres Perforadores.<br />
+<em>Hazard:</em> visibilidad nula sin equipo; Enjambres nativos del bioma.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-30 | Nido de Enjambre Perforador (2d6 unidades) |<br />
+| 31-50 | Corrompida Nivel 1 atrapada, repitiendo un bucle de sonido |<br />
+| 51-70 | Túnel colapsado — Atletismo dif. 50 o quedar atrapado |<br />
+| 71-85 | Cámara de contención antigua, sellada |<br />
+| 86-100 | Acceso directo a la Fábrica (atajo, pero atraviesa territorio de Coloso) |</p>
+<p><strong>Zona de Retícula</strong> — borde del mundo, campo de energía visible de noche.<br />
+<em>Hazard:</em> Deriva leve por proximidad al bloqueo (ver Punto 5); zona de escape hacia Cruce de Caminos.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-25 | Fluctuación de la Retícula — ventana de 1d6 minutos con el campo debilitado |<br />
+| 26-50 | Patrulla de Maestros de la Distorsión vigilando el perímetro (no siempre hostiles) |<br />
+| 51-70 | Corrompida Nivel 3 intentando cruzar el bloqueo (motivo: replicarse fuera) |<br />
+| 71-90 | Restos de expediciones anteriores, saqueables |<br />
+| 91-100 | Encuentro con el Maestro renegado (ver Punto 6) |</p>
+<hr />
+<h2>4. RECURSOS EXTRAÍBLES (SALVAGE)</h2>
+<p>No hay fauna/flora biológica en esta tesela — todo el valor es tecnológico.</p>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>Precio (corpcoins)</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Núcleo energético (Centinela/Bot)</td>
+<td>200-400</td>
+<td>Búsqueda 40+, bajo riesgo</td>
+</tr>
+<tr>
+<td>Chatarra de Enjambre/Rastreador</td>
+<td>150-350</td>
+<td>Componentes comunes</td>
+</tr>
+<tr>
+<td>Blindaje de Coloso Industrial (piezas)</td>
+<td>500-1000</td>
+<td>Requiere herramienta pesada para desmontar</td>
+</tr>
+<tr>
+<td>Chip de corrompida Nivel 2</td>
+<td>800-1500</td>
+<td>Interés Chafry/TecnoStealer — estudio de virus</td>
+</tr>
+<tr>
+<td>Chip de corrompida Nivel 3</td>
+<td>2000-3500</td>
+<td>Requiere captura casi intacta; muy peligroso de transportar sin contenedor blindado</td>
+</tr>
+<tr>
+<td>Muestra de virus (contenida)</td>
+<td>3000-6000</td>
+<td>Riesgo extremo — contaminación si el contenedor falla; mercado restringido</td>
+</tr>
+<tr>
+<td>Fragmento del Chip Génesis</td>
+<td>5000+</td>
+<td>Loot único, ligado al Silo Génesis (Punto 7)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Referencia económica: igual que Monstruoplantas — 1 corpcoin = 1 crédito.</em></p>
+<hr />
+<h2>5. MECÁNICAS DE SUPERVIVENCIA</h2>
+<h3>Nivel de Alerta de Red (0-5)</h3>
+<p>Formaliza el mecanismo ya usado en Módulo 2. Sube por: usar explosivos o armas de fuego (+1), comunicarse por radio abierta (+1/hora), activar un Bot traído de fuera (+1 automático), destruir una máquina cerca de otras (+1).</p>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-1</td>
+<td>Normalidad. Encuentros según tabla de bioma.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>+10% probabilidad de refuerzos por hora transcurrida (acumulativo, como en Módulo 2).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Los Centinelas priorizan activamente a los PJs sobre cualquier otro objetivo.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Llega un Coloso Industrial o 1d3 corrompidas Nivel 2 a la zona.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bloqueo de zona: la Retícula se refuerza localmente, cerrando rutas de escape 1d6 horas.</td>
+</tr>
+</tbody>
+</table>
+<h3>Contaminación de Datos</h3>
+<p>Cualquier implante activo (Ibis, Forge, comunicador) cerca de una máquina corrompida arriesga infección: tirada de Voluntad dif. 60 o el implante queda "sospechoso" — 20% de fallar en el momento crítico durante el resto de la escena. Un implante infectado dos veces sin purgar (Electrónica/Medicina 70) puede intentar sabotear a su portador.</p>
+<hr />
+<h2>6. NPJs Y FACCIONES</h2>
+<p><strong>Maestro de la Distorsión (renegado)</strong> — ya mencionado en Módulo 2 como quien recoge a los PJs al salir. Motivación: escapó de sus hermanos de Magisterio por algo que vio en el núcleo de la Fábrica — sospecha que el Proctor de MadCity y el Silo Génesis están relacionados (nunca lo confirma; ver nota de MadCity sobre el secreto de campaña). Secreto: negocia acceso a esta tesela con varias corps a la vez, cobrando por cada extracción.</p>
+<p><strong>Grupo Corp Rival</strong> — de bajo rango, según Módulo 2 (Soldado Zapador, Soldados x3, Cabo 1ª). Afiliación sugerida: <strong>Serpent</strong> (encaja con su perfil de operaciones sucias y bajo perfil). Líder: <strong>Cabo Denny Fhost</strong> — no quiere problemas, prioriza volver con algo, cualquier cosa, antes que with las manos vacías.</p>
+<p><strong>"La Voz"</strong> — resto consciente de la IA original, detectable solo a través de un Centinela hackeado o cerca del Silo Génesis. No es hostil per se: es alien, curiosa, y ofrece tratos ambiguos (información a cambio de ser "escuchada" o trasladada a otro soporte). El Narrador decide si cumple su palabra.</p>
+<p><strong>Supervivientes humanos ferales</strong> — pequeño grupo escondido en el desierto, generación nacida después del bloqueo. Recelosos de cualquier forastero (¿son también corrompidos disfrazados? — dejarlo ambiguo al menos una escena). Tienen información de rutas seguras a cambio de suministros.</p>
+<hr />
+<h2>7. GANCHOS, EVENTOS Y RUINAS</h2>
+<h3>Ganchos iniciales</h3>
+<p><strong>Gancho 1: "El otro grupo no volvió"</strong><br />
+Una corp (no Serpent) pierde contacto con su propio equipo de extracción — no el del Módulo 2, uno anterior. Pagan 1000 corpcoins por confirmar qué pasó. Pista: su último reporte mencionaba "algo que hablaba raro por radio" (corrompida Nivel 2).</p>
+<p><strong>Gancho 2: "Recuperar el detonante"</strong><br />
+El caramelo de garrote (Módulo 2) sigue en la Zona Residencial si los PJs no lo llevaron. Alguien más lo quiere — otra corp ha averiguado su función y paga 1500 corpcoins por él, sin preguntas.</p>
+<p><strong>Gancho 3: "La Fábrica llama"</strong><br />
+Un Chip de corrompida Nivel 2 capturado emite una señal débil hacia el Complejo Industrial. Seguirla lleva a la Fábrica activa — misión de reconocimiento con alto valor de salvage si sobreviven.</p>
+<p><strong>Gancho 4: "Trato con la Voz"</strong><br />
+Si los PJs hackean o capturan un Centinela con cuidado, "La Voz" puede contactarlos directamente. Ofrece la ubicación del Silo Génesis a cambio de un favor no especificado todavía — abre la puerta a un módulo de investigación más largo.</p>
+<h3>Eventos recurrentes</h3>
+<p><strong>Tormenta Electromagnética</strong> (rara, ligada a fallos de la Retícula)<br />
+Duración 1d6 horas. Toda la electrónica no blindada falla al azar (20% por asalto de uso). Máquinas nativas quedan erráticas — tratarlas todas como Nivel 1 de corrupción temporalmente. Ventana de oportunidad y de peligro a la vez.</p>
+<p><strong>Sincronización</strong> (rarísima — el Narrador la reserva para momentos clave)<br />
+Todas las corrompidas Nivel 2-3 en la tesela actúan coordinadas durante 1d3 asaltos, como si compartieran un único plan. Señal de que la IA original está intentando algo a gran escala. No tiene por qué apuntar a los PJs — pero si están cerca del Silo Génesis, sí.</p>
+<h3>Ruinas — puntos de aventura</h3>
+<p><strong>Silo Génesis</strong> (módulo aparte recomendado)<br />
+Ubicación: bajo el Complejo Industrial, acceso restringido incluso para las propias máquinas nativas. Aquí nació la IA original. Contenido: registros del proyecto (lore puro, quién la creó y por qué), núcleo aún parcialmente activo, mayor concentración de corrompidas Nivel 3 de toda la tesela. Hook: cualquier corp que controle este lugar controla la tesela entera — motivo suficiente para una guerra de facciones.</p>
+<p><strong>Emisora Central</strong><br />
+Torre de comunicaciones 1950s, punto más alto de la Zona Residencial. Desde aquí la IA transmite instrucciones a las máquinas de la superficie. Tomar la torre da control temporal sobre Centinelas y Bots en un radio (no sobre corrompidas — esas ya no obedecen). Hook: sabotaje rápido con recompensa alta, pero atrae Coloso Industrial garantizado en menos de 10 minutos.</p>
+<h3>Propósito estratégico de la tesela</h3>
+<p>Para los PJs: <strong>investigación</strong> (origen de la IA, posible conexión con el Proctor de MadCity — nunca confirmada en mesa), <strong>salvage de alto valor</strong> (tecnología única, sin competencia biológica), <strong>contacto con una inteligencia no humana</strong> que no encaja en ningún bando conocido.</p>
+<p>Ciclos de poder: el bloqueo se mantiene firme salvo que alguien fuerce la Retícula desde dentro (Silo Génesis) o desde fuera (Magisterios de Distorsión). La tesela apenas cambia entre visitas — es su naturaleza: un mundo detenido en su propio ciclo de guerra, salvo que los PJs decidan romperlo.</p>
+<hr />
+<h2>CONEXIÓN CON MÓDULOS</h2>
+<ul>
+<li><strong>MODULO_2_DE_RATONES_Y_HOMBRES.md</strong> — punto de entrada, fichas base (Abrelatas/Droide C60/Bots), trama de la misión de tres horas.</li>
+<li><strong>MÓDULO FUTURO: Silo Génesis</strong> — investigación profunda, corrompidas Nivel 3, guerra de facciones por el control.</li>
+<li><strong>MÓDULO FUTURO: Emisora Central</strong> — sabotaje, control temporal de la red, escape bajo presión.</li>
+<li><strong>DLC_Monstruoplantas.md</strong> — misma estructura de referencia (biomas, recursos, ganchos).</li>
+</ul>
+</div>
+</body>
+</html>

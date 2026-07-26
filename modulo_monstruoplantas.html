@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DLC — MUNDO MONSTRUO PLANTAS</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>DLC — MUNDO MONSTRUO PLANTAS</h1>
+<h2>Tesela del Jardín Desequilibrado</h2>
+<blockquote>
+<p><em>"Fue un jardín una vez. Los Antiguos lo cuidaban. Luego vinieron otros a estudiarlo. Luego vinieron más a saquearlo. Ahora el planeta responde a todos por igual — con muerte."</em></p>
+</blockquote>
+<hr />
+<h2>1. FICHAS — FAUNA Y FLORA</h2>
+<h3>LIANAS REGENERANTES</h3>
+<p><strong>Liana Estándar</strong><br />
+F65/A10/P5 | PV 30 | Blindaje 3 (Corteza) | Constricción 60% | Daño 8 (asfixia) | <br />
+<strong>Especial:</strong> Regeneración — recupera segmento cortado en 3 asaltos. Cada corte requiere éxito 1+ en Armas para no quedar envuelto. Ataques en grupo.</p>
+<p><strong>Liana Mayor</strong><br />
+F75/A5/P8 | PV 45 | Blindaje 4 | Constricción 70%, Veneno 40% (CON−10 p/asalto) | Daño 12 + Veneno 2 | <br />
+<strong>Especial:</strong> Regeneración acelerada (2 asaltos). Produce ácido leve (blindaje −1 cada 2 asaltos de constricción sostenida).</p>
+<h3>DEPREDADORES MUTANTES</h3>
+<p><strong>Cazador Cuádrupedo — Estándar</strong><br />
+F50/A60/P45 | PV 25/15/25 | Blindaje 2 (Piel) | Melé 75% (Colmillos) | Daño 9, Pen 1 | <br />
+<strong>Especial:</strong> Aprendizaje — +5% vs cada atacante diferente (máx +25). Organización grupal.</p>
+<p><strong>Depredador Híbrido — Cabezas Múltiples</strong><br />
+F60/A45/P50 | PV 30/20/30 | Blindaje 3 | 2× Melé 70% | Daño 10 c/cabeza | <br />
+<strong>Especial:</strong> Regeneración lenta (2 PV por asalto). Visión omnidireccional. Ambas cabezas pueden atacar con objetivos múltiples.</p>
+<p><strong>Depredador Gigantoide — Ápice</strong><br />
+F80/A50/F60 | PV 60/40/60 | Blindaje 4 | Melé 80% | Daño 16, Pen 2 | <br />
+<strong>Especial:</strong> Dominio territorial (+3 tirada). Carga potente (×2 movimiento + ataque automático). Vulnerabilidad: lomo Blindaje 2. Raramente en encuentros aleatorios — boss de zona.</p>
+<h3>FLORA TÓXICA</h3>
+<p><strong>Seta Venenosa Rastrera</strong><br />
+F10/A5/P3 | PV 8 | Blindaje 0 | No ataca | Veneno 60% (contacto) | <br />
+<strong>Especial:</strong> Espora — radio 2m (CON dif 50 o visión−10%, movimiento−10% p/ 1d6 asaltos). Crece 5-20. Fuego acelera liberación.</p>
+<p><strong>Árbol Tóxico — Corteza Ácida</strong><br />
+F70/A15/P25 | PV 80 | Blindaje 4 (Corteza) | Secreción Ácida 50% (auto) | Daño 3 (por asalto contacto) | <br />
+<strong>Especial:</strong> No se mueve. Ataque melé provoca salpicadura (CON dif 40 o 2 daño). Raíces enrollan como lianas (FUE 50).</p>
+<h3>MICROORGANISMOS AMBIENTALES</h3>
+<p><strong>Infección Ambiental — Agua Pantanosa</strong><br />
+Contacto 3+ asaltos o heridas abiertas: CON dif 60 o infección leve (−5 todas, 1d6 horas). Crítica fallida: grave (−10 todas, 24h, Medicina 80).</p>
+<p><strong>Degradación Material — Suelo Activo</strong><br />
+Blindaje 1-2: −1 efectividad cada 4 asaltos. Blindaje 3+: resiste indefinidamente. Equipamiento: revisión cada 8 horas.</p>
+<h3>ZOMBIS — SOLDADOS IRRADIADOS (3 Niveles)</h3>
+<p><strong>Zombi Nivel 1 — "Fase Terminal"</strong> (Lento, resistente, casi no siente daño)<br />
+F60/A30/P15 | PV 35/20/35 | Blindaje 4 (Piel quemada) | Melé 55% | Daño 7 | <br />
+<strong>Especial:</strong> Regeneración lenta (1 PV por 2 asaltos fuera de combate). Necrochip dañado = sin comunicación. Inmunidad parcial a venenos (CON−5). Movimiento lento (−20% iniciativa). Sigue atacando en "Tullido".</p>
+<p><strong>Zombi Nivel 2 — "Cazador"</strong> (Ágil, coordinación básica, tácticas simples)<br />
+F55/A55/P40 | PV 28/15/28 | Blindaje 2 (Musculatura) | Melé 70%, Distancia 40% | Daño 6 melé, 4 distancia | <br />
+<strong>Especial:</strong> Coordinación parcial (+10% en grupo si hay otro Nivel 2+ en radio 20m). Tácticas simples (rodea, flanco). Necrochip parcialmente funcional = inteligencia básica. Puede usar equipo corp abandonado.</p>
+<p><strong>Zombi Nivel 3 — "Líder"</strong> (Inteligencia casi humana, armado, táctico)<br />
+F50/A65/P60 | PV 24/12/24 | Blindaje 3 (Traje corp reforzado) | Melé 85%, Distancia 75% | Daño 8 melé, 6 distancia, Pen 1 | <br />
+<strong>Especial:</strong> Inteligencia residual — planifica estrategia, da órdenes. Necrochip más intacto = usa comunicadores corp, acceso datos limitado. Movimiento rápido (+10% iniciativa). Liderazgo — Zombis Nivel 1-2 cercanos (+5% ataque/defensa). Portador información corp clasificada si es capturado vivo.</p>
+<hr />
+<h2>2 + 5. BIOMAS, GEOGRAFÍA Y ENCUENTROS</h2>
+<h3>GLACIARES (Regiones Polares)</h3>
+<p><strong>Descripción:</strong> Hielo permanente, grietas profundas, vientos letales. Fauna adaptada al frío extremo.<br />
+Temperatura: −40°C. Sin equipo: CON dif 70 cada hora o 1 daño por frío.</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-25</td>
+<td>Bestia Ártica (1d3)</td>
+</tr>
+<tr>
+<td>26-40</td>
+<td>Zombi Nivel 1 (1d2)</td>
+</tr>
+<tr>
+<td>41-55</td>
+<td>Grieta + Avalancha — Atletismo dif 60 o 4d6 daño</td>
+</tr>
+<tr>
+<td>56-70</td>
+<td>Radiación Moderada — 1 daño/2 asaltos</td>
+</tr>
+<tr>
+<td>71-85</td>
+<td>Bestia Ártica + Zombi</td>
+</tr>
+<tr>
+<td>86-95</td>
+<td>Ninguno — cruzar 1 hora</td>
+</tr>
+<tr>
+<td>96-100</td>
+<td>Zombi Nivel 3 solitario</td>
+</tr>
+</tbody>
+</table>
+<h3>DESIERTO (Zonas Áridas)</h3>
+<p><strong>Descripción:</strong> Sin vegetación. Insectos gigantes como depredadores. Día 60°C, noche −20°C.<br />
+Temperatura: CON dif 50 cada 2 horas o 1 daño por calor.</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-20</td>
+<td>Araña Lobo Gigante (1d2)</td>
+</tr>
+<tr>
+<td>21-40</td>
+<td>Enjambre Escarabajos (10-20)</td>
+</tr>
+<tr>
+<td>41-55</td>
+<td>Zombi Nivel 1 (1d2)</td>
+</tr>
+<tr>
+<td>56-70</td>
+<td>Radiación Alta — zona "muerta"</td>
+</tr>
+<tr>
+<td>71-80</td>
+<td>Araña Lobo + Radiación</td>
+</tr>
+<tr>
+<td>81-90</td>
+<td>Ninguno — cruzar 2 horas, sed peligrosa</td>
+</tr>
+<tr>
+<td>91-100</td>
+<td>Zombi Nivel 2 cazador</td>
+</tr>
+</tbody>
+</table>
+<h3>ZONAS RADIACTIVAS LIBERADAS</h3>
+<p><strong>Descripción:</strong> Bombardeos liberaron radiación masiva. Fauna local muerta/mutada. Zombis patrullan.<br />
+Radiación: 2 daño/asalto sin protección. CON dif 70 cada 6 asaltos o Enfermedad de Radiación (−5 todas, 1d6 días, Medicina 80).</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-30</td>
+<td>Zombi Nivel 1 (1d3)</td>
+</tr>
+<tr>
+<td>31-50</td>
+<td>Bestia Irradiada Nivel 1 (1d2)</td>
+</tr>
+<tr>
+<td>51-65</td>
+<td>Zombi Nivel 2 (1d2)</td>
+</tr>
+<tr>
+<td>66-75</td>
+<td>Radiación + Niebla Tóxica — visibilidad 2m, respirar CON dif 60</td>
+</tr>
+<tr>
+<td>76-85</td>
+<td>Bestia + Zombi</td>
+</tr>
+<tr>
+<td>86-95</td>
+<td>Zombi Nivel 3 solitario</td>
+</tr>
+<tr>
+<td>96-100</td>
+<td>Zombi Nivel 3 + Escolta (1d2 Nivel 2)</td>
+</tr>
+</tbody>
+</table>
+<h3>PARED CALCÁREA (Zona de Emplazamiento)</h3>
+<p><strong>Descripción:</strong> Acantilados calcáreos. Puesto Fronterizo agarrado aquí. Cavernas con agua dulce (rara).</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-20</td>
+<td>Cazador Cuádrupedo (1d2)</td>
+</tr>
+<tr>
+<td>21-35</td>
+<td>Lianas Regenerantes densa — dif 50+</td>
+</tr>
+<tr>
+<td>36-50</td>
+<td>Patrulla Corp (1d2)</td>
+</tr>
+<tr>
+<td>51-65</td>
+<td>Grieta agua dulce — campamento seguro</td>
+</tr>
+<tr>
+<td>66-80</td>
+<td>Depredador Híbrido</td>
+</tr>
+<tr>
+<td>81-95</td>
+<td>Ninguno — cruzar 30 min</td>
+</tr>
+<tr>
+<td>96-100</td>
+<td>Depredador Gigantoide</td>
+</tr>
+</tbody>
+</table>
+<h3>VALLE CENTRAL (Máxima Densidad Lianas)</h3>
+<p><strong>Descripción:</strong> Lianas entrelazadas. Movimiento −50%. Visión −20%.</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-25</td>
+<td>Lianas activas (1d3 constricción, 8 daño c/u)</td>
+</tr>
+<tr>
+<td>26-40</td>
+<td>Depredador Híbrido</td>
+</tr>
+<tr>
+<td>41-55</td>
+<td>Grupo Cazadores (1d4)</td>
+</tr>
+<tr>
+<td>56-70</td>
+<td>Liana Mayor — alto daño + veneno</td>
+</tr>
+<tr>
+<td>71-80</td>
+<td>Agua Estancada — CON dif 60 infección</td>
+</tr>
+<tr>
+<td>81-90</td>
+<td>Ninguno — cruzar 2 horas</td>
+</tr>
+<tr>
+<td>91-100</td>
+<td>Enjambre Depredadores (1d6)</td>
+</tr>
+</tbody>
+</table>
+<h3>BOSQUE MUTANTE (Árboles Gigantoides)</h3>
+<p><strong>Descripción:</strong> Árboles 100+ metros. Raíces forman "cuevas". Luz filtrada.<br />
+Escalada: Atletismo dif 60+. Combate en copas: −20%.</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-20</td>
+<td>Árbol Tóxico — salpicadura 2 daño</td>
+</tr>
+<tr>
+<td>21-35</td>
+<td>Cazador (1d2) emboscada probable</td>
+</tr>
+<tr>
+<td>36-50</td>
+<td>Seta Venenosa (5-20, espora)</td>
+</tr>
+<tr>
+<td>51-65</td>
+<td>Raíces enrollan (FUE 50, 6 daño)</td>
+</tr>
+<tr>
+<td>66-80</td>
+<td>Depredador Gigantoide</td>
+</tr>
+<tr>
+<td>81-90</td>
+<td>Ninguno — cruzar 1.5 horas</td>
+</tr>
+<tr>
+<td>91-100</td>
+<td>Enjambre Cazadores + Flora</td>
+</tr>
+</tbody>
+</table>
+<h3>PANTANOS DE BIOLUMINISCENCIA</h3>
+<p><strong>Descripción:</strong> Agua luminiscente de noche. Ácido leve. Fauna acuática. Suelo inestable.<br />
+Movimiento en agua: −30%. Cada 3 asaltos: CON dif 50 o −1 exposición. 5+ = Enfermedad leve.</p>
+<p><strong>Tabla de Encuentros (1d100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-20</td>
+<td>Infección Ambiental — CON dif 60</td>
+</tr>
+<tr>
+<td>21-35</td>
+<td>Depredador Acuático (1d2)</td>
+</tr>
+<tr>
+<td>36-50</td>
+<td>Bioluminiscencia extrema — imposible ocultarse</td>
+</tr>
+<tr>
+<td>51-65</td>
+<td>Cieno profundo — Atletismo dif 55 o hundimiento 1d3 asaltos</td>
+</tr>
+<tr>
+<td>66-80</td>
+<td>Zombi Nivel 1 buceador</td>
+</tr>
+<tr>
+<td>81-90</td>
+<td>Ninguno — cruzar 1 hora</td>
+</tr>
+<tr>
+<td>91-100</td>
+<td>Enjambre Depredadores Acuáticos (1d4)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. RECURSOS EXTRAÍBLES</h2>
+<p>Toda extracción requiere llevar especímenes vivos o tejido fresco. Viaje de regreso al Puesto Fronterizo toma 4-12 horas según bioma (riesgo de encuentros, degradación de muestras).</p>
+<h3>FAUNA — MUESTRAS VIVAS</h3>
+<p><strong>Especímenes de Lianas</strong><br />
+Precio: 400-800 corpcoins (Chafry, TecnoStealer, Pseudo-Arkanitas)<br />
+Dificultad: Moderada (Medicina 50+ o Atletismo 60)<br />
+Peso: 2-5 kg (segmento), 50+ kg (completo)<br />
+Preservación: Contenedor gel nutritivo (100 coins, reutilizable). Viabilidad: 8h.<br />
+Notas: Pueden escapar o atacar durante transporte.</p>
+<p><strong>Cazador Cuádrupedo Vivo</strong><br />
+Precio: 600-1200 corpcoins<br />
+Dificultad: Alta (combate + Atletismo 70 o sedativos)<br />
+Peso: 80-120 kg (requiere vehículo)<br />
+Preservación: Jaula Blindaje 3, alimento vivo. Viabilidad: 24h.<br />
+Notas: Agresividad aumenta con tiempo. Intento escape: FUE 60.</p>
+<p><strong>Depredador Híbrido Vivo</strong><br />
+Precio: 1000-2000 corpcoins (solo Arcanitas/Pseudo-Arkanitas)<br />
+Dificultad: Muy Alta<br />
+Peso: 150-200 kg<br />
+Preservación: Criogénico portátil (2000 coins). Viabilidad: 48h.<br />
+Notas: Raramente se captura vivo.</p>
+<p><strong>Necrochip Zombi Nivel 3</strong><br />
+Precio: 800-1500 corpcoins<br />
+Dificultad: Alta (capturar vivo + Medicina 80)<br />
+Peso: 0.5 kg<br />
+Preservación: Contenedor energía pasiva. Viabilidad: indefinida (−1% datos/día).<br />
+Notas: Ubicaciones bases corp, contraseñas, rutas. Clasificado.</p>
+<h3>FLORA — MUESTRAS Y PRODUCTOS</h3>
+<p><strong>Fruto Mutante Árbol Tóxico</strong><br />
+Precio: 300-600 corpcoins<br />
+Dificultad: Moderada-Alta (CON 60 o Blindaje 2+)<br />
+Peso: 2-4 kg<br />
+Preservación: Cristal hermético. Viabilidad: 3 días.<br />
+Notas: TecnoStealer paga +30%.</p>
+<p><strong>Raíz Liana Mayor (polvo)</strong><br />
+Precio: 250-450 corpcoins<br />
+Dificultad: Alta (matar liana sin destruir raíz, Atletismo 55)<br />
+Peso: 1-2 kg<br />
+Preservación: Bolsa estanca. Viabilidad: indefinida.<br />
+Notas: Anestésico local potencial, valor especulativo.</p>
+<p><strong>Espora Seta Venenosa</strong><br />
+Precio: 500-1000 corpcoins<br />
+Dificultad: Extrema (traje hermético, Atletismo 70)<br />
+Peso: 0.2-0.5 kg<br />
+Preservación: Cristal doble sellado. Viabilidad: indefinida.<br />
+Notas: ARMA BIOLÓGICA — crimen según ley interplanetaria.</p>
+<p><strong>Fragmento Artefacto Arcanita</strong><br />
+Precio: 2000-5000+ corpcoins<br />
+Dificultad: Variable (ruinas corp, Búsqueda 60+)<br />
+Peso: 1-10 kg<br />
+Preservación: Contenedor energía pasiva (500 coins). Viabilidad: indefinida.<br />
+Notas: Valor extremo. Pseudo-Arkanitas pagan premium pero buscan robarlo.</p>
+<h3>TECNOLOGÍA — SALVAGE</h3>
+<p><strong>Blindaje Reforzado</strong><br />
+Precio: 100-300 corpcoins<br />
+Dificultad: Baja (Búsqueda 40+)<br />
+Peso: 5-8 kg<br />
+Notas: Reparación Mecánica 50. Raro encontrar en buen estado.</p>
+<p><strong>Comunicador Corp Dañado</strong><br />
+Precio: 50-200 corpcoins<br />
+Dificultad: Moderada<br />
+Peso: 0.5 kg<br />
+Notas: Reparación Electrónica 60+. Acceso canales abandonados si funciona.</p>
+<p><strong>Arma Ligera Abandonada</strong><br />
+Precio: 300-600 corpcoins<br />
+Dificultad: Moderada<br />
+Peso: 1-2 kg<br />
+Notas: Funcionalidad variable. Venta requiere documentación falsa.</p>
+<h3>PRECIOS REFERENCIA</h3>
+<p>1 corpocoin = 1 crédito estándar. Salario base soldado: 500 coins/mes. Viaje ida/vuelta: 200 coins.<br />
+Ganancia típica: (Recurso base − gastos − seguro) × supervivencia esperada.</p>
+<hr />
+<h2>4. MECÁNICAS DE SUPERVIVENCIA</h2>
+<h3>SISTEMA DE EXPOSICIÓN AMBIENTAL</h3>
+<p>Track 0-5 puntos por hazard. A 5+ = Enfermedad o Condición Crítica.</p>
+<p><strong>Radiación (Zonas Radiactivas Liberadas)</strong><br />
+- Base: 2 daño/asalto sin protección. Blindaje −1 máximo.<br />
+- Tirada CON dif 70 cada 6 asaltos o +1 exposición.<br />
+- 5+: Enfermedad Radiación (−5 todas, 1d6 días). Cura: Medicina 80 o equipo 1000 coins.</p>
+<p><strong>Frío Extremo (Glaciares, noches desierto)</strong><br />
+- Base: −40°C (Glaciares) o −20°C (noche).<br />
+- Tirada CON dif 70 cada hora (Glaciares) o 2 horas (noche).<br />
+- Fallo: 1 daño frío (ignora 50% blindaje) + 1 exposición.<br />
+- 5+: Hipotermia (−10 todas, PV máx 50%, riesgo dormir permanente).<br />
+- Prevención: traje aislante, fuego, bebidas calientes.</p>
+<p><strong>Calor Extremo (Desierto día)</strong><br />
+- Base: +60°C.<br />
+- Tirada CON dif 50 cada 2 horas sin agua.<br />
+- Fallo: 1 daño calor + 1 exposición. Agua reduce exposición 1 punto (1L).<br />
+- 5+: Deshidratación Crítica (−10 todas, inconsciente 1d6h después).<br />
+- Prevención: sombra, ropa clara, hidratación.</p>
+<p><strong>Contaminación Biológica (Agua Pantanosa, Suelo Activo)</strong><br />
+- Contacto 3+ asaltos o herida abierta: CON dif 60 o +1 exposición.<br />
+- 5+: Infección (−5 todas, Medicina 75 para curar, 3 días reposo).<br />
+- Prevención: heridas cubiertas, aislamiento químico, antídotos.</p>
+<p><strong>Deriva (Contaminación Planar — Rara)</strong><br />
+- Solo zonas específicas (ruinas Arcanita, epicentros radiactivos antiguos).<br />
+- Tirada PV dif 70 cada asalto de exposición o +1 Deriva involuntario.<br />
+- 5 puntos: Transformación física, alucinaciones, pérdida identidad (posiblemente permanente).<br />
+- Prevención: evitar zona, traje aislamiento planar (muy raro).</p>
+<h3>EQUIPO ESPECIALIZADO</h3>
+<table>
+<thead>
+<tr>
+<th>Equipo</th>
+<th>Precio</th>
+<th>Protección</th>
+<th>Durabilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traje Aislante Térmico</td>
+<td>400</td>
+<td>−1 daño frío/calor</td>
+<td>10 usos</td>
+</tr>
+<tr>
+<td>Máscara Filtro Biológico</td>
+<td>200</td>
+<td>−2 dif CON infección</td>
+<td>5 usos</td>
+</tr>
+<tr>
+<td>Detector Radiación</td>
+<td>300</td>
+<td>aviso 10m</td>
+<td>indefinida</td>
+</tr>
+<tr>
+<td>Contenedor Criogénico</td>
+<td>2000</td>
+<td>preserva muestras</td>
+<td>48h energía</td>
+</tr>
+<tr>
+<td>Traje Aislamiento Planar</td>
+<td>5000+</td>
+<td>inmunidad parcial Deriva</td>
+<td>2 usos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. PNJs CORP/FACCIONES</h2>
+<h3>MANDOS LOCALES PRINCIPALES</h3>
+<p><strong>Comandante Varice</strong> (TecnoStealer)<br />
+Perfil: Militar cínico, cicatrices radiactivas, pierde paciencia rápido.<br />
+Motivación: Llenar cuotas extractivas. Artefactos Arcanita.<br />
+Relación: Contrata mercenarios sin preguntas, paga tarde, retiene % pago si "fraude".<br />
+Secreto: Negocia con Pseudo-Arkanitas — vende información exploración.<br />
+Contacto: Oficina subterránea, código corp.</p>
+<p><strong>Dra. Sonya Kess</strong> (Chafry)<br />
+Perfil: Joven, ambiciosa, adicta datos, casi no duerme.<br />
+Motivación: Mutaciones biológicas. Papers. Carrera corp.<br />
+Relación: Paga bien muestras vivas sin preguntas éticas. Bonificación especímenes raros.<br />
+Secreto: Experimentos ilegales Zombis Nivel 3 — intenta revertir necrochip (fallido).<br />
+Contacto: Laboratorio caverna bajo Puesto. Contraseña: "Mutación-Alpha".</p>
+<p><strong>Kemar Vall</strong> (Serpent)<br />
+Perfil: Misterioso, voz suave, emoción nula.<br />
+Motivación: Control mercado negro. Información = poder.<br />
+Relación: Compra datos clasificados, veneno, tech negra. Confiable (dinero).<br />
+Secreto: Informante dentro Chafry (Dra. Kess) — vende datos investigación. Vende a Pseudo-Arkanitas.<br />
+Contacto: Cantina Puesto, trastienda. "Pregunta por K".</p>
+<p><strong>Maestro de Portal Oren</strong> (Conclave Maestros Portales)<br />
+Perfil: Anciano indiferente, habla poco. Conoce tesela mejor que nadie vivo.<br />
+Motivación: Mantener equilibrio planar. Cumplir normas Conclave.<br />
+Relación: No negocia. Permite paso o no. Sin "precio". Advertencias crípticas ocasionales.<br />
+Secreto: Portal era artificial (Antiguos lo crearon). Oren custodio heredado, posiblemente inmortal. No humano.<br />
+Contacto: Ante el portal. Presencia inmóvil siempre.</p>
+<h3>FACCIONES RIVAL EN TERRENO</h3>
+<p><strong>Pseudo-Arkanitas "La Búsqueda Restaurada"</strong><br />
+Objetivo: Recuperar tech/lore Arcanita. Reconstruir "perdido".<br />
+Tácticas: Rápidas, agresivas, sin piedad. Negociación pobre.<br />
+Equipamiento: Armas avanzadas, armaduras 3-4, artefactos Arcanita menores ocasionalmente.<br />
+Conflicto: Compiten por artefactos. Enemigos declarados o aliados temporales (si ayudan fauna).<br />
+Líder: <strong>Capitán Ash</strong> — cicatriz media cara, coja (prótesis mala). Obsesiva. Paga info ruinas.</p>
+<p><strong>Patrol Militar Primus</strong><br />
+Objetivo: Vigilancia anomalías. Radiación. Clasificar amenazas.<br />
+Tácticas: Formales, lentas, protocolo. Evitan riesgo innecesario.<br />
+Equipamiento: Blindaje pesado (Nivel 4), armas estándar, médico básico, detectores.<br />
+Conflicto: Aliados si reportan hallazgos. Hostiles si contrabando o venta ilegal.<br />
+Líder: <strong>Teniente Harkon</strong> — disciplinado, sin corrupción. Respeta mercs profesionales.</p>
+<p><strong>Mort/Workhouse (Contratistas Carne)</strong><br />
+Objetivo: Vender soldados desechables. Obtener cadáveres para... no especificado.<br />
+Tácticas: Grupos grandes, carne de cañón. Pierden gente sin importar.<br />
+Equipamiento: Blindaje Nivel 1, armas viejas, sin soporte médico.<br />
+Conflicto: Si PCs cruzan territorios, pueden robar "prisioneros" Mort. Hostiles.<br />
+Líder: <strong>Boss Grim</strong> — corpulento, implantes metal en rostro. Busca ventaja. Peligroso si aburre.</p>
+<hr />
+<h2>NOTAS FINALES DE CANON</h2>
+<ul>
+<li><strong>Ubicación:</strong> Urdimbre, entre teselas. Sin filtro dedicado.</li>
+<li><strong>Viaje:</strong> Portales erráticos, atracción gravitacional anómala.</li>
+<li><strong>Comunicaciones:</strong> Dificultosas (núcleo radiactivo bloquea satélites).</li>
+<li><strong>Extracción:</strong> Personas/fauna pueden salir; tech queda atrás o protocolo especial.</li>
+<li><strong>Ciclo actual:</strong> Pseudo-Arkanitas activas; Arcanitas reales desaparecidas/ocultas. Investigación en curso.</li>
+</ul>
+<hr />
+<h2>CONEXIÓN CON MÓDULOS</h2>
+<ul>
+<li><strong>MODULO_1_PUESTO_FRONTERIZO.md</strong> — entrada, NPJs, seguridad local.</li>
+<li><strong>MODULO_2_DE_RATONES_Y_HOMBRES.md</strong> — tesela Mundo Máquina (Scrimers), DLC pendiente.</li>
+<li><strong>DLC_SUPLEMENTO_Teselas_Expandidas.md</strong> — otras teselas menores (referencia estructura).</li>
+</ul>
+<hr />
+<h2>7. GANCHOS DE AVENTURAS, TORMENTAS Y RUINAS</h2>
+<h3>GANCHOS INICIALES (Primeras Misiones — Puesto Fronterizo)</h3>
+<p><strong>Gancho 1: "Extracción Rápida de Lianas"</strong><br />
+- <strong>Oferta:</strong> Comandante Varice (TecnoStealer) busca 3 segmentos Liana Mayor vivos.<br />
+- <strong>Pago:</strong> 1200 corpcoins (800 base + 400 bonificación &lt;8h).<br />
+- <strong>Dificultad:</strong> Moderada. Zona Pared Calcárea.<br />
+- <strong>Complicación:</strong> Pseudo-Arkanitas patrullan zona. Riesgo encuentro.<br />
+- <strong>Gancho futuro:</strong> Si capturan soldado Pseudo-Arkanita, descubren búsqueda de "Fragmento Artefacto Perdido" en Ruina Occidental.</p>
+<p><strong>Gancho 2: "Recuperar Comunicador Dañado"</strong><br />
+- <strong>Oferta:</strong> Kemar Vall (Serpent) paga 300 corpcoins por comunicador funcional/reparable.<br />
+- <strong>Pista:</strong> Patrulla Chafry perdida hace 2 semanas en Bosque Mutante sector norte.<br />
+- <strong>Dificultad:</strong> Moderada-Alta. Encuentro fauna + posible Árbol Tóxico.<br />
+- <strong>Recompensa secundaria:</strong> Si reparan (Electrónica 60+), acceso canales corp abandonados = información ruinas, movimientos Pseudo-Arkanitas.<br />
+- <strong>Gancho futuro:</strong> Datos revelan campamento Pseudo-Arkanita temporal.</p>
+<p><strong>Gancho 3: "Cazador Vivo para Dra. Kess"</strong><br />
+- <strong>Oferta:</strong> Dra. Sonya Kess paga 900 corpcoins por Cazador Cuádrupedo vivo en jaula.<br />
+- <strong>Dificultad:</strong> Alta. Combate + captura táctica (Atletismo 70 o sedativos).<br />
+- <strong>Complicación:</strong> Mientras capturan, enjambre cazadores aparece (encuentro peligroso).<br />
+- <strong>Secreto:</strong> Dra. estudia mutaciones radiactivas. Hint: Zonas Radiactivas tienen fauna irradiada — más dura.<br />
+- <strong>Gancho futuro:</strong> Ofrece misión premium: Bestia Irradiada Nivel 2 (1500+ corpcoins).</p>
+<p><strong>Gancho 4: "Investigación Patrulla Desaparecida"</strong><br />
+- <strong>Oferta:</strong> Teniente Harkon (Primus) busca restos patrulla 3 días atrás en Pantanos.<br />
+- <strong>Pago:</strong> 700 corpcoins. Información clasificada sobre Pseudo-Arkanitas si descubren evidencia.<br />
+- <strong>Dificultad:</strong> Moderada. Navegación pantano + infecciones + posible fauna acuática.<br />
+- <strong>Complicación:</strong> Encuentran equipo Primus pero evidencia de emboscada Pseudo-Arkanita — ¿por qué?<br />
+- <strong>Gancho futuro:</strong> Descubren Pseudo-Arkanitas buscan Ruina Sumergida en Pantanos. Mapa parcial si encuentran cuaderno oficial.</p>
+<h3>EVENTOS AMBIENTALES RECURRENTES</h3>
+<p><strong>Tormenta de Nanopartículas "Lluvia de Silicio"</strong> (Rara, 1-2 veces por ciclo)<br />
+- <strong>Desencadenador:</strong> Zonas radiactivas liberadas o epicentros Arcanita antiguos, sin aviso.<br />
+- <strong>Duración:</strong> 2d6 horas. Viento extremo + partículas microscópicas.<br />
+- <strong>Efectos:</strong><br />
+  - Visibilidad −50%. Máximo 5m de visión.<br />
+  - 1 daño/asalto equipo (Blindaje −1 efectivo). Personas en contenedor hermético: 0 daño.<br />
+  - Comunicaciones bloqueadas (interferencia planar).<br />
+  - +1 exposición Deriva involuntaria (o voluntario para quien busque Deriva).<br />
+- <strong>Estrategia:</strong> Buscar cueva/ruina para esperar. Si se aventuran: riesgo alto pero posibilidad descubrir artefactos Arcanita expuestos.</p>
+<p><strong>Tifones Intensos</strong> (Periodicidad: cada 3-4 encuentros — Narrador decide)<br />
+- <strong>Desencadenador:</strong> Clima impredecible Urdimbre. Sin avisos confiables.<br />
+- <strong>Intensidad:</strong> Vientos 150+ km/h. Lluvia/granizo (Atletismo dif 60 mantener posición).<br />
+- <strong>Efectos:</strong><br />
+  - Movimiento −50%. Vuelo imposible (tormentas iónicas).<br />
+  - Visibilidad nula. Combate a ciegas (ataque −40%, depredadores +20% emboscada).<br />
+  - Cada 1d6 asaltos: Atletismo dif 55 o arrastrado 2d6m (posible caída acantilado).<br />
+  - Duración: 1d6 horas.<br />
+- <strong>Supervivencia:</strong> Refugio en ruinas, cavernas subterráneas, tiendas especiales (caras).</p>
+<h3>RUINAS LEGENDARIAS — PUNTOS DE AVENTURA</h3>
+<p><strong>Ruina Occidental — "Necrópolis Pseudo-Arkanita"</strong> (Módulo aparte recomendado)<br />
+- <strong>Ubicación:</strong> Bosque Mutante sector oeste via Pared Calcárea. Mapa parcial en comunicador reparado.<br />
+- <strong>Descripción:</strong> Instalación Pseudo-Arkanita abandonada hace ~200 ciclos. Metal/cristal resistiendo, interior activo sin mantenimiento.<br />
+- <strong>Contenido:</strong><br />
+  - Laboratorio con datos experimentos Arcanita originales (lore).<br />
+  - Bóveda sellada artefactos menores (riqueza + radiación activa + trampas).<br />
+  - Zombis Nivel 2-3 patrullando (guardias automáticos de siglos atrás).<br />
+  - Contacto Pseudo-Arkanita vivo (Capitán Ash posiblemente) reclutando mercenarios.<br />
+- <strong>Hook módulo:</strong> Convergencia corps vs Primus vs PCs vs fauna. Dinámca compleja.</p>
+<p><strong>Ruina Sumergida — "Catacumbas del Antiguo Reino"</strong> (Módulo aparte recomendado)<br />
+- <strong>Ubicación:</strong> Bajo Pantanos de Bioluminiscencia, entrada sumergida via sistema cuevas subterráneas.<br />
+- <strong>Descripción:</strong> Arquitectura anterior a Pseudo-Arkanitas — <strong>Arcanita real o Antiguos</strong>. Desconocida mayoría.<br />
+- <strong>Contenido:</strong><br />
+  - Tecnología pura (no dañada, energizada — valor extremo).<br />
+  - Inscripciones/datos sobre creadores jardín (Antiguos).<br />
+  - Acuarios/laboratorios biológicos funcionando (fauna antigua).<br />
+  - Puerta bloqueada que requiere conocimiento Arcanita (no fuerza).<br />
+- <strong>Hook módulo:</strong> Descubrimiento cambia meta-narrativa. Pseudo-Arkanitas harían guerra. Primus querría clasificarla. PCs moneda negociación.</p>
+<h3>PROPÓSITO ESTRATÉGICO DE LA TESELA</h3>
+<p><strong>Para PCs:</strong><br />
+1. <strong>Investigación:</strong> Aprender Pseudo-Arkanitas, Arcanitas reales, Antiguos via artefactos/ruinas.<br />
+2. <strong>Economía:</strong> Muestras fauna/flora + salvage corp militar = ingresos continuos.<br />
+3. <strong>Conflicto faccionario:</strong> Navegar corps, Pseudo-Arkanitas, Primus, Serpent sin alinearse pronto.</p>
+<p><strong>Ciclos de Poder (Narrativa Larga — No fuerza progresión):</strong><br />
+- Fronteras corp avanzan/retroceden según victorias en ruinas o control recursos.<br />
+- Pseudo-Arkanitas aparecen/desaparecen según hallazgos artefactos.<br />
+- Fauna evoluciona/muta según radiación o Deriva libre.<br />
+- Ruinas nuevas pueden emerger si Narrador decide (descubrimiento, derrumbes).</p>
+<p><strong>Duración esperada:</strong><br />
+- Corta (5-10 sesiones): Puesto Fronterizo + 1 ruina menor.<br />
+- Mediana (20+ sesiones): Puesto + ambas ruinas legendarias + dinámicas faccionarias.<br />
+- Larga (50+ sesiones): Ciclos poder, cambio fronteras, tercera ruina oculta.</p>
+<hr />
+<h2>CONEXIÓN CON MÓDULOS</h2>
+<ul>
+<li><strong>MODULO_1_PUESTO_FRONTERIZO.md</strong> — entrada, NPJs, seguridad local, ganchos iniciales.</li>
+<li><strong>MÓDULO FUTURO: Ruina Occidental</strong> — exploración, combate Pseudo-Arkanitas, decisiones faccionarias.</li>
+<li><strong>MÓDULO FUTURO: Catacumbas Sumergidas</strong> — exploración profunda, tech Arcanita/Antiguos, misterio.</li>
+<li><strong>MODULO_2_DE_RATONES_Y_HOMBRES.md</strong> — tesela Mundo Máquina (Scrimers), DLC pendiente.</li>
+<li><strong>DLC_SUPLEMENTO_Teselas_Expandidas.md</strong> — otras teselas menores (referencia estructura).</li>
+</ul>
+</div>
+</body>
+</html>
