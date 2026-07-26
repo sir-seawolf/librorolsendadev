@@ -33,23 +33,25 @@
 <h1>DLC — MUNDO MÁQUINA</h1>
 <blockquote>
 <p>Tesela bloqueada. Punto de entrada narrativo: final del Módulo 0.5 (PREDATOR) → Módulo 2 "De Ratones y Hombres". Este DLC amplía la tesela más allá de la misión de tres horas de ese módulo: fauna mecánica nativa, biomas, recursos, supervivencia, facciones y ganchos para explorarla a fondo.</p>
-<p>[!lore] Este documento asume que el lector conoce el Módulo 2 (Abrelatas, Droide C60, Bots, Maestro de la Distorsión renegado, Cruce de Caminos). No repite esas fichas: las referencia y las expande.</p>
 </blockquote>
 <hr />
 <h2>1. CATÁLOGO DE MÁQUINAS — FAUNA NATIVA</h2>
-<h3>Ya existentes (ver <code>MODULO_2_DE_RATONES_Y_HOMBRES.md</code> — stats sin cambios)</h3>
-<ul>
-<li><strong>Abrelatas</strong> ("Pelotas Asesinas") — enjambre reactivo de cuchillas esféricas.</li>
-<li><strong>Droide C60</strong> — puede hacerse pasar por humano (nivel básico).</li>
-<li><strong>Bots Arma Pesada</strong> — patrulla armada estándar.</li>
-</ul>
+<p><strong>Abrelatas</strong> ("Pelotas Asesinas")<br />
+Blindaje 0 | Melé 50% | Daño 2, Pen 5 | PV 3/3<br />
+Tamaño de pelota de fútbol, rodeadas de cuchillas. Reactivas: en la arena aparece 1 de cada 10 por turno; fuera de la arena solo salen las ya activas. No dejan a su víctima hasta eliminarla. Aprenden unas de otras — si una atraviesa un blindaje, cuenta como uno inferior a partir de ese momento. Éxito en ataque contra una reduce su blindaje en 1.</p>
+<p><strong>Droide C60</strong><br />
+Blindaje 2 | Melé 55% | Daño 6, Pen 2 | PV 12/12<br />
+Chasis humanoide con piel sintética de gama básica. Puede hacerse pasar por humano a distancia o en conversación breve (Percepción dif. 45 para notar el engaño; de cerca y con tiempo, dif. 30). Es el modelo de referencia más débil que la red despliega como refuerzo — su aparición señala que la Alerta de Red aún es baja (ver Punto 5).</p>
+<p><strong>Bots Arma Pesada</strong><br />
+Blindaje 3 | Distancia 40% | Daño 5, Pen 3 | PV 10/10<br />
+Patrulla armada estándar de la red. Van en pareja o trío, cobertura mutua básica (+5% Distancia si hay otro Bot Arma Pesada a la vista).</p>
 <h3>Nuevas familias</h3>
 <p><strong>Enjambre Perforador ("Taladros")</strong><br />
 Blindaje 1 | Melé 55% | Daño 4, Pen 3 | PV 4/4 (por unidad)<br />
 Emergen del subsuelo en grupos de 1d6. Detectan vibración (Percepción de sigilo −20% cerca de ellos). Si penetran blindaje, inyectan código corrosivo: +1 daño progresivo durante 2 asaltos. Cada 3 impactos recibidos destruye una unidad del enjambre.</p>
 <p><strong>Centinela de Vecindario ("Patrulla")</strong><br />
 Blindaje 2 | Melé 40%, Distancia 50% (dardos paralizantes) | Daño 3 no letal (Aturdimiento), Pen 1 | PV 8/8<br />
-Disfrazado de electrodoméstico o mobiliario urbano (cortacésped, buzón, aspiradora). Si detecta actividad sospechosa, transmite posición a la red: mismo mecanismo de Módulo 2 (+10% acumulativo/hora de que lleguen refuerzos más peligrosos).</p>
+Disfrazado de electrodoméstico o mobiliario urbano (cortacésped, buzón, aspiradora). Si detecta actividad sospechosa, transmite posición a la red: sube el Nivel de Alerta y con él la probabilidad de refuerzos, +10% acumulativo por hora transcurrida (ver Punto 5, tabla completa).</p>
 <p><strong>Rastreador Óptico ("Hound")</strong><br />
 Blindaje 3 | Melé 65% | Daño 8, Pen 2 | PV 15/15<br />
 Cuadrúpedo tamaño perro grande. Visión térmica y auditiva combinada — casi imposible perderlo una vez ha marcado objetivo. Coordinación de jauría: +10% habilidad por cada Hound adicional a 20m (máx. +30%). Salto 4m.</p>
@@ -174,7 +176,7 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 <hr />
 <h2>5. MECÁNICAS DE SUPERVIVENCIA</h2>
 <h3>Nivel de Alerta de Red (0-5)</h3>
-<p>Formaliza el mecanismo ya usado en Módulo 2. Sube por: usar explosivos o armas de fuego (+1), comunicarse por radio abierta (+1/hora), activar un Bot traído de fuera (+1 automático), destruir una máquina cerca de otras (+1).</p>
+<p>Sube por: usar explosivos o armas de fuego (+1), comunicarse por radio abierta (+1/hora), activar un Bot traído de fuera (+1 automático), destruir una máquina cerca de otras (+1).</p>
 <table>
 <thead>
 <tr>
@@ -189,7 +191,7 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 </tr>
 <tr>
 <td>2</td>
-<td>+10% probabilidad de refuerzos por hora transcurrida (acumulativo, como en Módulo 2).</td>
+<td>+10% probabilidad de refuerzos por hora transcurrida (acumulativo).</td>
 </tr>
 <tr>
 <td>3</td>
@@ -209,8 +211,15 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 <p>Cualquier implante activo (Ibis, Forge, comunicador) cerca de una máquina corrompida arriesga infección: tirada de Voluntad dif. 60 o el implante queda "sospechoso" — 20% de fallar en el momento crítico durante el resto de la escena. Un implante infectado dos veces sin purgar (Electrónica/Medicina 70) puede intentar sabotear a su portador.</p>
 <hr />
 <h2>6. NPJs Y FACCIONES</h2>
-<p><strong>Maestro de la Distorsión (renegado)</strong> — ya mencionado en Módulo 2 como quien recoge a los PJs al salir. Motivación: escapó de sus hermanos de Magisterio por algo que vio en el núcleo de la Fábrica — sospecha que el Proctor de MadCity y el Silo Génesis están relacionados (nunca lo confirma; ver nota de MadCity sobre el secreto de campaña). Secreto: negocia acceso a esta tesela con varias corps a la vez, cobrando por cada extracción.</p>
-<p><strong>Grupo Corp Rival</strong> — de bajo rango, según Módulo 2 (Soldado Zapador, Soldados x3, Cabo 1ª). Afiliación sugerida: <strong>Serpent</strong> (encaja con su perfil de operaciones sucias y bajo perfil). Líder: <strong>Cabo Denny Fhost</strong> — no quiere problemas, prioriza volver con algo, cualquier cosa, antes que with las manos vacías.</p>
+<p><strong>Maestro de la Distorsión (renegado)</strong> — recoge a los PJs al salir de la tesela. Motivación: escapó de sus hermanos de Magisterio por algo que vio en el núcleo de la Fábrica — sospecha que el Proctor de MadCity y el Silo Génesis están relacionados (nunca lo confirma). Secreto: negocia acceso a esta tesela con varias corps a la vez, cobrando por cada extracción.</p>
+<p><strong>Grupo Corp Rival (Serpent)</strong> — de bajo rango, no quieren problemas, priorizan volver con algo antes que con las manos vacías. Líder: <strong>Cabo Denny Fhost</strong>.</p>
+<ul>
+<li><strong>Soldado Zapador</strong>: Ocultarse 60% | Blindaje 2, Melé 50%, Daño 7, Pen 5 | PV 15/7/15 | Rack Médico: 3 cargas leves | 1 Crack, 1 Frack, 1 Chaff</li>
+<li><strong>Soldados (x3)</strong>: Ocultarse 60% | Blindaje 2, Melé 70%, Daño 5, Pen 2 | PV 15/7/15 | Rack Médico: 3 cargas leves | 1 Crack, 1 Frack, 1 Chaff</li>
+<li><strong>Cabo Denny Fhost</strong>: Ocultarse 70% | Blindaje 3, Melé 80% (eléctrico), Daño 5, Pen 2 | PV 15/7/15 | Rack Médico: 2 cargas leves, 1 grave | 1 Crack, 1 Frack, 1 Chaff</li>
+<li><strong>Hotpoy Taller</strong>: buggy radiocontrolado, Blindaje 10, sin armas — solo huida y distracción.</li>
+</ul>
+<p>Traen Bots propios sin saber el riesgo: cada uno activado sube directamente la Alerta de Red (ver Punto 5). Si llegan antes que los PJs, colocan trampas explosivas de proximidad en accesos y escaleras, y preparan hasta dos casas-trampa (un Bot con arma perforante y visión térmica apostado en planta alta, rodeado de explosivos). Si llegan después, sueltan un vehículo teledirigido en el desierto para atraer Abrelatas como distracción.</p>
 <p><strong>"La Voz"</strong> — resto consciente de la IA original, detectable solo a través de un Centinela hackeado o cerca del Silo Génesis. No es hostil per se: es alien, curiosa, y ofrece tratos ambiguos (información a cambio de ser "escuchada" o trasladada a otro soporte). El Narrador decide si cumple su palabra.</p>
 <p><strong>Supervivientes humanos ferales</strong> — pequeño grupo escondido en el desierto, generación nacida después del bloqueo. Recelosos de cualquier forastero (¿son también corrompidos disfrazados? — dejarlo ambiguo al menos una escena). Tienen información de rutas seguras a cambio de suministros.</p>
 <hr />
