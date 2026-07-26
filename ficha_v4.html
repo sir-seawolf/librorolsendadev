@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha v4 · CAP2 completo</title>
+<link rel="stylesheet" href="senda_estilo.css">
+<style>
+  body{background:#eef2f7;padding:10px}
+  .layout{max-width:1400px;margin:auto;display:grid;grid-template-columns:260px 1fr;gap:10px}
+  .panel{background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:10px}
+  .steps{display:flex;flex-direction:column;gap:6px}
+  .step-btn{padding:8px;border:1px solid #cbd5e1;background:#f8fafc;border-radius:6px;cursor:pointer;text-align:left;font-size:12px}
+  .step-btn.active{border-color:#1d4ed8;background:#dbeafe}
+  .step-btn.dirty{border-color:#b45309;background:#ffedd5}
+  .step{display:none}.step.active{display:block}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  label{display:flex;flex-direction:column;font-size:12px;gap:3px}
+  input,select,textarea,button{font-size:13px;padding:6px;border:1px solid #94a3b8;border-radius:4px}
+  .btn{background:#111827;color:#fff;border:none;cursor:pointer}
+  .btn.alt{background:#1d4ed8}
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  table{width:100%;border-collapse:collapse;background:#fff}
+  th,td{border:1px solid #dbe3ef;padding:5px;font-size:12px}
+  .skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .box{border:1px solid #dbe3ef;border-radius:6px;padding:8px;background:#f8fafc}
+  .chip{display:inline-block;margin:2px;padding:3px 8px;background:#111827;color:#fff;border-radius:999px;font-size:11px}
+  textarea{min-height:100px}
+  .iframe-wrap{height:74vh;border:1px solid #cbd5e1;border-radius:6px;overflow:hidden;background:#fff}
+  .iframe-wrap iframe{width:100%;height:100%;border:none}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="panel">
+    <h3>Pasos CAP2</h3>
+    <div class="steps" id="stepsMenu"></div>
+    <div class="muted" style="margin-top:8px">Si cambias pasos tempranos, se marcarán como “revisar” los posteriores dependientes.</div>
+  </aside>
+
+  <main class="panel">
+    <h1>La Senda de los Errantes · Ficha v4</h1>
+    <div class="muted">Motor CAP2 avanzado + JSON completo</div>
+
+    <section class="step active" data-step="1">
+      <h2>Paso 1 · Tipo + Datos base</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomTypeData()">Aleatorio paso 1</button></div>
+      <div class="grid">
+        <label>Jugador<input id="jugador"></label>
+        <label>Personaje<input id="personaje"></label>
+        <label>Corporación<input id="corporacion"></label>
+        <label>Naturaleza / Tipo<input id="naturaleza"></label>
+        <label>NT de origen
+          <select id="ntOrigen">
+            <option value="7">NT7+</option>
+            <option value="6">NT6</option>
+            <option value="5" selected>NT5</option>
+            <option value="4">NT4</option>
+            <option value="3">NT3</option>
+            <option value="2">NT2</option>
+            <option value="1">NT1</option>
+            <option value="0">NT0</option>
+          </select>
+        </label>
+        <label>Nivel Tecnológico (actual)<input id="nt"></label>
+        <label>Atributo objetivo bono NT
+          <select id="ntTargetAttr">
+            <option>Ca</option><option>A</option><option>P</option><option>C</option>
+            <option>I</option><option>F</option><option>V</option><option selected>H</option>
+          </select>
+        </label>
+        <label>Raza
+          <select id="raza"></select>
+        </label>
+        <label>Tipo de personaje
+          <select id="tipoPersonaje">
+            <option>Héroe</option><option>Madera de Héroe</option><option selected>Predestinado</option>
+          </select>
+        </label>
+        <label>Grupo primario
+          <select id="grupoPrimario">
+            <option>Físicos</option><option>Mentales</option>
+          </select>
+        </label>
+      </div>
+      <div id="resTipo" class="box" style="margin-top:8px"></div>
+      <div class="box" style="margin-top:8px">
+        <h3>Ventaja humana (si raza = Humano)</h3>
+        <div class="grid">
+          <label>Modo
+            <select id="humanMode">
+              <option value="none">Sin aplicar</option>
+              <option value="single10">+10 a 1 habilidad</option>
+              <option value="double5">+5 a 2 habilidades</option>
+            </select>
+          </label>
+          <label>Habilidad objetivo 1<select id="humanSkill1"></select></label>
+          <label>Habilidad objetivo 2<select id="humanSkill2"></select></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="2">
+      <h2>Paso 2 · Atributos CAP2</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomAttrs()">Aleatorio paso 2</button></div>
+      <div class="box">
+        <div><span class="chip">Primario: <b id="primarioVal">30</b></span><span class="chip">Secundario: <b id="secundarioVal">25</b></span><span class="chip">PG total: <b id="pgTotal">30</b></span><span class="chip">PG restante: <b id="pgRest">30</b></span></div>
+      </div>
+      <table style="margin-top:8px">
+        <thead><tr><th>Atributo</th><th>Base grupo</th><th>Ajuste fino (±5)</th><th>PG (+5)</th><th>Total</th></tr></thead>
+        <tbody id="attrsBody"></tbody>
+      </table>
+    </section>
+
+    <section class="step" data-step="3">
+      <h2>Paso 3 · Profesiones</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomProfs()">Aleatorio paso 3</button></div>
+      <div class="grid">
+        <label>Profesión 1<select id="prof1"></select></label>
+        <label>Profesión 2<select id="prof2"></select></label>
+        <label>Profesión 3<select id="prof3"></select></label>
+      </div>
+      <div id="profSummary" class="box" style="margin-top:8px"></div>
+      <div id="vocSummary" class="box" style="margin-top:8px"></div>
+    </section>
+
+    <section class="step" data-step="4">
+      <h2>Paso 4 · Habilidades por bolsa (+5)</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomSkills()">Aleatorio paso 4</button></div>
+      <div id="poolChips" class="box"></div>
+      <div id="skillsWrap" class="skills-wrap"></div>
+      <div class="box" style="margin-top:8px">
+        <h3>Runas (solo Iniciado)</h3>
+        <div class="muted">3 runas por toma de Iniciado. Tope de nivel por número de tomas.</div>
+        <div id="runeWrap" class="row" style="margin-top:6px"></div>
+      </div>
+    </section>
+
+    <section class="step" data-step="5">
+      <h2>Paso 5 · Méritos y Defectos</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomMerDef()">Aleatorio paso 5</button></div>
+      <div class="row">
+        <div class="box" style="flex:1;min-width:280px"><h3>Méritos</h3><div id="meritosBox"></div></div>
+        <div class="box" style="flex:1;min-width:280px"><h3>Defectos</h3><div id="defectosBox"></div></div>
+      </div>
+      <div class="box" style="margin-top:8px">
+        <h3>Mérito/Defecto especial (Paso 6 CAP2)</h3>
+        <label>Especial
+          <select id="specialMerDef">
+            <option value="">Ninguno</option>
+            <option>Visionario</option>
+            <option>Furia desbocada</option>
+            <option>Ola de adrenalina</option>
+            <option>Belleza peligrosa</option>
+            <option>Visión Oscura</option>
+            <option>Sensible a la Distorsión</option>
+            <option>Gato curioso</option>
+            <option>Rata de navío</option>
+            <option>Grande</option>
+            <option>Pequeño</option>
+          </select>
+        </label>
+        <div class="muted">Coste fijo: 3 PE. Solo uno.</div>
+      </div>
+      <div class="box" style="margin-top:8px">
+        <label>Objetivo de "Característica mejorada"<select id="targetCar"></select></label>
+        <label>Objetivo de "Habilidad mejorada"<select id="targetHab"></select></label>
+        <div id="peSummary" class="muted"></div>
+      </div>
+    </section>
+
+    <section class="step" data-step="6">
+      <h2>Paso 6 · Equipamiento y dinero</h2>
+      <div class="row" style="margin-bottom:8px">
+        <button class="btn alt" type="button" onclick="randomEconomy()">Aleatorio paso 6</button>
+        <button class="btn alt" type="button" onclick="rebuildEconomy()">Recalcular por profesiones</button>
+      </div>
+      <div id="ecoSummary" class="box" style="margin-top:8px"></div>
+      <label style="margin-top:8px">Equipo inicial (editable)<textarea id="equipoInicial"></textarea></label>
+      <label>Dinero final editable<input id="dineroFinal"></label>
+    </section>
+
+    <section class="step" data-step="7">
+      <h2>Paso 7 · Resumen y consistencia</h2>
+      <div id="fullSummary" class="box"></div>
+    </section>
+
+    <section class="step" data-step="8">
+      <h2>Paso 8 · Ficha completa (formato v3)</h2>
+      <div class="iframe-wrap">
+        <iframe id="finalV3Frame" src="FICHA_Personaje_Autocalculada_v3.html" title="Ficha v3"></iframe>
+      </div>
+      <div id="finalSheetV3" class="box" style="margin-top:8px"></div>
+    </section>
+
+    <div class="row" style="margin-top:10px">
+      <button class="btn alt" onclick="randomFillAll()">Aleatorio</button>
+      <button class="btn" onclick="guardarJSON()">Guardar JSON</button>
+      <label class="btn alt" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">
+        Cargar JSON<input id="jsonFileInput" type="file" accept=".json,application/json" style="display:none" onchange="cargarJSON(event)">
+      </label>
+      <button class="btn" onclick="prevStep()">Anterior</button>
+      <button class="btn alt" onclick="nextStep()">Siguiente</button>
+    </div>
+  </main>
+</div>
+<script src="FICHA_Personaje_Autocalculada_v4_json_preguntas.js"></script>
+</body>
+</html>
