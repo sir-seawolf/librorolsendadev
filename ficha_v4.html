@@ -113,8 +113,14 @@
     </section>
 
     <section class="step" data-step="3">
-      <h2>Paso 3 · Profesiones</h2>
-      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomProfs()">Aleatorio paso 3</button></div>
+      <h2>Paso 3 · Stats derivados</h2>
+      <div class="muted">Se recalculan solos según los atributos y profesiones ya elegidos — no hay nada que rellenar aquí.</div>
+      <div id="statsDerivadosBox" class="box" style="margin-top:8px"></div>
+    </section>
+
+    <section class="step" data-step="4">
+      <h2>Paso 4 · Profesiones</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomProfs()">Aleatorio paso 4</button></div>
       <div class="grid">
         <label>Profesión 1<select id="prof1"></select></label>
         <label>Profesión 2<select id="prof2"></select></label>
@@ -124,9 +130,9 @@
       <div id="vocSummary" class="box" style="margin-top:8px"></div>
     </section>
 
-    <section class="step" data-step="4">
-      <h2>Paso 4 · Habilidades por bolsa (+5)</h2>
-      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomSkills()">Aleatorio paso 4</button></div>
+    <section class="step" data-step="5">
+      <h2>Paso 5 · Habilidades por bolsa (+5)</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomSkills()">Aleatorio paso 5</button></div>
       <div id="poolChips" class="box"></div>
       <div id="skillsWrap" class="skills-wrap"></div>
       <div class="box" style="margin-top:8px">
@@ -136,15 +142,9 @@
       </div>
     </section>
 
-    <section class="step" data-step="5">
-      <h2>Paso 5 · Méritos y Defectos</h2>
-      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomMerDef()">Aleatorio paso 5</button></div>
-      <div class="row">
-        <div class="box" style="flex:1;min-width:280px"><h3>Méritos</h3><div id="meritosBox"></div></div>
-        <div class="box" style="flex:1;min-width:280px"><h3>Defectos</h3><div id="defectosBox"></div></div>
-      </div>
-      <div class="box" style="margin-top:8px">
-        <h3>Mérito/Defecto especial (Paso 6 CAP2)</h3>
+    <section class="step" data-step="6">
+      <h2>Paso 6 · MéritoDefecto especial</h2>
+      <div class="box">
         <label>Especial
           <select id="specialMerDef">
             <option value="">Ninguno</option>
@@ -160,7 +160,16 @@
             <option>Pequeño</option>
           </select>
         </label>
-        <div class="muted">Coste fijo: 3 PE. Solo uno.</div>
+        <div class="muted">Coste fijo: 3 PE. Solo uno, solo en creación.</div>
+      </div>
+    </section>
+
+    <section class="step" data-step="7">
+      <h2>Paso 7 · Méritos y Defectos</h2>
+      <div class="row" style="margin-bottom:8px"><button class="btn alt" type="button" onclick="randomMerDef()">Aleatorio paso 7</button></div>
+      <div class="row">
+        <div class="box" style="flex:1;min-width:280px"><h3>Méritos</h3><div id="meritosBox"></div></div>
+        <div class="box" style="flex:1;min-width:280px"><h3>Defectos</h3><div id="defectosBox"></div></div>
       </div>
       <div class="box" style="margin-top:8px">
         <label>Objetivo de "Característica mejorada"<select id="targetCar"></select></label>
@@ -169,10 +178,10 @@
       </div>
     </section>
 
-    <section class="step" data-step="6">
-      <h2>Paso 6 · Equipamiento y dinero</h2>
+    <section class="step" data-step="8">
+      <h2>Paso 8 · Equipamiento y dinero</h2>
       <div class="row" style="margin-bottom:8px">
-        <button class="btn alt" type="button" onclick="randomEconomy()">Aleatorio paso 6</button>
+        <button class="btn alt" type="button" onclick="randomEconomy()">Aleatorio paso 8</button>
         <button class="btn alt" type="button" onclick="rebuildEconomy()">Recalcular por profesiones</button>
       </div>
       <div id="ecoSummary" class="box" style="margin-top:8px"></div>
@@ -180,13 +189,13 @@
       <label>Dinero final editable<input id="dineroFinal"></label>
     </section>
 
-    <section class="step" data-step="7">
-      <h2>Paso 7 · Resumen y consistencia</h2>
+    <section class="step" data-step="9">
+      <h2>Paso 9 · Resumen y consistencia</h2>
       <div id="fullSummary" class="box"></div>
     </section>
 
-    <section class="step" data-step="8">
-      <h2>Paso 8 · Ficha completa (formato v3)</h2>
+    <section class="step" data-step="10">
+      <h2>Paso 10 · Ficha completa (formato v3)</h2>
       <div class="iframe-wrap">
         <iframe id="finalV3Frame" src="ficha.html" title="Ficha v3"></iframe>
       </div>

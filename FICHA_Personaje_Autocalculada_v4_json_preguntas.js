@@ -1,6 +1,7 @@
 const STEP_TITLES = [
-  "1) Tipo + Datos base","2) Atributos","3) Profesiones","4) Habilidades",
-  "5) Méritos/Defectos","6) Equipo y dinero","7) Resumen","8) Ficha final v3"
+  "1) Tipo de personaje","2) Atributos y Puntos Gratuitos","3) Stats derivados","4) Profesiones",
+  "5) Habilidades","6) MéritoDefecto especial","7) Méritos y Defectos","8) Equipo y dinero",
+  "9) Resumen","10) Ficha final v3"
 ];
 
 const PROFESIONES = ["Combatiente","Civil","Científico","Especialista Técnico","Iniciado","Ninguna"];
@@ -94,6 +95,26 @@ const qsa = s => [...document.querySelectorAll(s)];
 const round = x => Math.round(x);
 
 function attr(a){ return parseInt(qs(`#at-${a}`)?.value || "0", 10) || 0; }
+
+function renderStatsDerivados(){
+  const box = qs('#statsDerivadosBox');
+  if(!box) return;
+  const A=attr('A'), C=attr('C'), F=attr('F');
+  const vida = Math.ceil((A+C+F)/6);
+  const carga = Math.round((F+C)/4);
+  const iniciado = initiatedTakes() >= 1;
+  const alma = iniciado ? 10 : 8;
+  const humanidad = 100;
+  const almaAccesible = Math.floor(humanidad/10);
+  box.innerHTML = `
+    <div><b>Vida por zona:</b> ${vida} PV (Cabeza/Torso/cada Brazo/cada Pierna — redondeo hacia arriba)</div>
+    <div><b>Carga sin penalización:</b> ${carga} vol</div>
+    <div><b>Humanidad:</b> ${humanidad}</div>
+    <div><b>Alma total:</b> ${alma}${iniciado ? ' (Iniciado)' : ''} — accesible máx.: ${Math.min(alma, almaAccesible)}</div>
+    <div><b>Salud Mental:</b> 100 (referencia de trauma 100)</div>
+    <div><b>Deriva:</b> 0 (sube en juego con cada cruce de urdimbre, no en creación)</div>
+  `;
+}
 function cfg(){ return TYPE_CFG[qs('#tipoPersonaje').value] || TYPE_CFG["Predestinado"]; }
 function razaCfg(){ return RAZAS[qs('#raza')?.value || "Humano"] || RAZAS["Humano"]; }
 function ntOrigen(){ return parseInt(qs('#ntOrigen')?.value || '5',10); }
@@ -108,7 +129,7 @@ function buildRazaSelect(){
   if(!r) return;
   r.innerHTML = Object.keys(RAZAS).map(x=>`<option>${x}</option>`).join('');
   r.value = "Humano";
-  r.addEventListener('change', ()=>{ applyProfSlotUI(); recalcAttr(); rebuildPools(); rebuildEconomy(); markDirty(1); updateStepStatus(); });
+  r.addEventListener('change', ()=>{ applyProfSlotUI(); recalcAttr(); rebuildPools(); rebuildEconomy(); renderStatsDerivados(); markDirty(1); updateStepStatus(); });
 }
 
 function buildStepsMenu(){
@@ -136,20 +157,22 @@ function updateStepStatus(){
   setStepBadge(1, (!!qs('#tipoPersonaje').value && !!qs('#grupoPrimario').value && !!qs('#raza').value) ? "ok":"pend");
   const pgRest = parseInt(qs('#pgRest').textContent || "0",10);
   setStepBadge(2, pgRest < 0 ? "err" : (pgRest===0 ? "ok":"pend"));
-  setStepBadge(3, effectiveProfs().length>=2 ? "ok":"pend");
+  setStepBadge(3, "ok");
+  setStepBadge(4, effectiveProfs().length>=2 ? "ok":"pend");
   const usage = poolUsage();
   let overflow = false;
   Object.entries(usage).forEach(([r,u])=>{ if(u > (state.pools[r]||0)) overflow = true; });
-  setStepBadge(4, overflow ? "err" : "ok");
+  setStepBadge(5, overflow ? "err" : "ok");
+  setStepBadge(6, "ok");
   const peTxt = qs('#peSummary').textContent || "";
   const peFinal = parseInt((peTxt.match(/final\s+(-?\d+)/)||[])[1]||"0",10);
-  setStepBadge(5, peFinal < 0 ? "err":"ok");
-  setStepBadge(6, (qs('#dineroFinal').value || '').trim() ? "ok":"pend");
-  setStepBadge(7, "ok");
-  setStepBadge(8, qs('#finalV3Frame') ? "ok":"pend");
+  setStepBadge(7, peFinal < 0 ? "err":"ok");
+  setStepBadge(8, (qs('#dineroFinal').value || '').trim() ? "ok":"pend");
+  setStepBadge(9, "ok");
+  setStepBadge(10, qs('#finalV3Frame') ? "ok":"pend");
 }
 function goStep(s){
-  state.step = Math.max(1,Math.min(8,s));
+  state.step = Math.max(1,Math.min(10,s));
   qsa('.step').forEach(el=>el.classList.toggle('active', parseInt(el.dataset.step,10)===state.step));
   paintStepMenu();
 }
@@ -169,7 +192,7 @@ function rebuildAttrTable(){
     body.innerHTML += `<tr><td>${a}</td><td><input type="number" id="ab-${a}" value="0" readonly></td><td><input type="number" id="af-${a}" value="0" step="5"></td><td><input type="number" id="ap-${a}" value="0" step="5"></td><td><input type="number" id="at-${a}" value="0" readonly></td></tr>`;
   });
   qsa('#attrsBody input[id^="af-"], #attrsBody input[id^="ap-"]').forEach(el=>{
-    el.addEventListener('input', ()=>{ normalizeAttrInput(el); enforcePgLimits(); recalcAttr(); recalcSkillBases(); markDirty(2); updateStepStatus(); });
+    el.addEventListener('input', ()=>{ normalizeAttrInput(el); enforcePgLimits(); recalcAttr(); recalcSkillBases(); renderStatsDerivados(); markDirty(2); updateStepStatus(); });
   });
   recalcAttr();
 }
@@ -212,7 +235,9 @@ function recalcAttr(){
     const racial = rCfg.mod[a] || 0;
     const ntAdd = (a === ntTarget) ? ntB : 0;
     const raw = (parseInt(qs(`#ab-${a}`).value,10)||0)+af+ap+racial+ntAdd;
-    qs(`#af-${a}`).value = af; qs(`#ap-${a}`).value = ap; qs(`#at-${a}`).value = Math.min(rCfg.maxAttr, raw);
+    // Techo de creación: 50 + el modificador racial de ESTE atributo (positivo o negativo).
+    // No usar rCfg.maxAttr fijo: eso anularía el propio bonus racial (p.ej. Kawalapiti +10 CON).
+    qs(`#af-${a}`).value = af; qs(`#ap-${a}`).value = ap; qs(`#at-${a}`).value = Math.min(50 + racial, raw);
   });
   qs('#pgRest').textContent = (c.pg - currentPgSpent());
   const special = qs('#specialMerDef')?.value || '';
@@ -230,7 +255,7 @@ function applyProfSlotUI(){
 function buildProfSelects(){
   ['#prof1','#prof2','#prof3'].forEach(id=>{
     qs(id).innerHTML = PROFESIONES.map(p=>`<option>${p}</option>`).join('');
-    qs(id).addEventListener('change', ()=>{ rebuildPools(); rebuildEconomy(); recalcSkillBases(); renderRunes(); markDirty(3); updateStepStatus(); });
+    qs(id).addEventListener('change', ()=>{ rebuildPools(); rebuildEconomy(); recalcSkillBases(); renderRunes(); renderStatsDerivados(); markDirty(4); updateStepStatus(); });
   });
   applyProfSlotUI();
 }
@@ -273,7 +298,7 @@ function buildSkills(){
       tb.innerHTML += `<tr><td>${h}</td><td><input type="number" class="sk-base" data-r="${rk}" data-i="${i}" value="0" readonly></td><td><input type="number" class="sk-apr" data-r="${rk}" data-i="${i}" value="0" step="5"></td><td><input type="number" class="sk-mod" data-r="${rk}" data-i="${i}" value="0"></td><td><input type="number" class="sk-tot" data-r="${rk}" data-i="${i}" value="0" readonly></td></tr>`;
     });
   });
-  qsa('.sk-apr,.sk-mod').forEach(el=>el.addEventListener('input', ()=>{ calcSkills(); markDirty(4); updateStepStatus(); }));
+  qsa('.sk-apr,.sk-mod').forEach(el=>el.addEventListener('input', ()=>{ calcSkills(); markDirty(5); updateStepStatus(); }));
   fillTargets();
   recalcSkillBases();
   calcSkills();
@@ -358,7 +383,7 @@ function renderRunes(){
 function buildMerDef(){
   qs('#meritosBox').innerHTML = MERITOS.map(x=>`<label><input type="checkbox" class="mer" value="${x.n}"> ${x.n} (PE ${x.pe})</label><br>`).join('');
   qs('#defectosBox').innerHTML = DEFECTOS.map(x=>`<label><input type="checkbox" class="def" value="${x.n}"> ${x.n} (+PE ${x.pe})</label><br>`).join('');
-  qsa('.mer,.def').forEach(el=>el.addEventListener('change', ()=>{ applyMerDefEffects(); markDirty(5); updateStepStatus(); }));
+  qsa('.mer,.def').forEach(el=>el.addEventListener('change', ()=>{ applyMerDefEffects(); markDirty(7); updateStepStatus(); }));
   qs('#targetCar').addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
   qs('#targetHab').addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
   fillTargets(); applyMerDefEffects();
@@ -452,7 +477,7 @@ function applyData(d){
   if(!d||!d.form) return;
   qsa('input,select,textarea').forEach((el,i)=>{ const k=el.id||`${el.tagName}_${i}`; if(!(k in d.form)) return; if(el.type==='checkbox') el.checked=!!d.form[k]; else el.value=d.form[k]; });
   if(d.state) state = d.state;
-  enforcePgLimits(); recalcAttr(); rebuildPools(); recalcSkillBases(); calcSkills(); renderRunes(); applyMerDefEffects(); rebuildEconomy(); buildFullSummary(); goStep(state.step||1); updateStepStatus();
+  enforcePgLimits(); recalcAttr(); rebuildPools(); recalcSkillBases(); calcSkills(); renderRunes(); applyMerDefEffects(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); goStep(state.step||1); updateStepStatus();
 }
 function guardarJSON(){
   const blob = new Blob([JSON.stringify(collectData(),null,2)],{type:'application/json;charset=utf-8'});
@@ -512,7 +537,7 @@ function randomMerDef(){
 function randomEconomy(){ rebuildEconomy(); }
 function randomFillAll(){
   randomTypeData(); randomAttrs(); randomProfs(); randomSkills(); randomMerDef(); randomEconomy();
-  buildFullSummary(); updateStepStatus(); goStep(8);
+  renderStatsDerivados(); buildFullSummary(); updateStepStatus(); goStep(10);
 }
 
 window.guardarJSON=guardarJSON;
@@ -541,15 +566,16 @@ function init(){
   calcSkills();
   renderRunes();
   rebuildEconomy();
+  renderStatsDerivados();
   buildFullSummary();
 
-  qs('#tipoPersonaje').addEventListener('change', ()=>{ enforcePgLimits(); recalcAttr(); recalcSkillBases(); applyMerDefEffects(); rebuildEconomy(); buildFullSummary(); markDirty(1); });
-  qs('#grupoPrimario').addEventListener('change', ()=>{ recalcAttr(); recalcSkillBases(); rebuildEconomy(); buildFullSummary(); markDirty(2); });
-  qs('#ntOrigen')?.addEventListener('change', ()=>{ recalcAttr(); recalcSkillBases(); rebuildEconomy(); buildFullSummary(); markDirty(1); });
-  qs('#ntTargetAttr')?.addEventListener('change', ()=>{ recalcAttr(); recalcSkillBases(); rebuildEconomy(); buildFullSummary(); markDirty(1); });
+  qs('#tipoPersonaje').addEventListener('change', ()=>{ enforcePgLimits(); recalcAttr(); recalcSkillBases(); applyMerDefEffects(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); markDirty(1); });
+  qs('#grupoPrimario').addEventListener('change', ()=>{ recalcAttr(); recalcSkillBases(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); markDirty(2); });
+  qs('#ntOrigen')?.addEventListener('change', ()=>{ recalcAttr(); recalcSkillBases(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); markDirty(1); });
+  qs('#ntTargetAttr')?.addEventListener('change', ()=>{ recalcAttr(); recalcSkillBases(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); markDirty(1); });
   qs('#humanMode')?.addEventListener('change', ()=>{ calcSkills(); buildFullSummary(); markDirty(1); });
   qs('#humanSkill1')?.addEventListener('change', ()=>{ calcSkills(); buildFullSummary(); markDirty(1); });
   qs('#humanSkill2')?.addEventListener('change', ()=>{ calcSkills(); buildFullSummary(); markDirty(1); });
-  qs('#specialMerDef')?.addEventListener('change', ()=>{ recalcAttr(); applyMerDefEffects(); rebuildEconomy(); buildFullSummary(); markDirty(5); });
+  qs('#specialMerDef')?.addEventListener('change', ()=>{ recalcAttr(); applyMerDefEffects(); rebuildEconomy(); buildFullSummary(); markDirty(6); });
 }
 document.addEventListener('DOMContentLoaded', init);
