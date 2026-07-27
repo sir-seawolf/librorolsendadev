@@ -23,10 +23,10 @@ const RAZAS = {
 };
 
 const SKILLS = {
-  academicas:["Ciencias","Biotecnología","Navegación","Burocracia","Investigación","Diagnóstico"],
-  tecnologicas:["Armería","Electrónica","Mecánica","Seguridad","Pilotar","Sigilo"],
+  academicas:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear"],
+  tecnologicas:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"],
   atleticas:["Acrobacias","Resistir","Proezas"],
-  sociales:["Empatía","Liderazgo","Persuasión","Interrogatorio","Seducción"],
+  sociales:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"],
   combate:["Iniciativa","Alerta","Esquivar","Distancia","Sin Armas","Arma CC"],
   distorsion:["Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Tatuador Rúnico","Herrero Rúnico","Proyección de Energía","Protección de Energía","Invocación de Energía"]
 };
@@ -831,6 +831,14 @@ const IMPL_HAB = [
   {id:"audio",n:"Ibis Audio-Amp",zona:"Sistema Neural",efecto:"Elimina penalizador ruido / +5 escucha",hum:5,precio:8000},
   {id:"lang",n:"Ibis Lang-Chip",zona:"Sistema Neural",efecto:"Comprensión básica de idiomas del mosaico",hum:5,precio:30000},
   {id:"neuralRack",n:"Ibis Neural-Rack",zona:"Sistema Neural",efecto:"Rack de Chips implantado al 40% (en vez de 30%)",hum:10,precio:50000},
+  {id:"hollowCache",n:"Forge Hollow Cache",zona:"Torso",efecto:"Compartimento oculto, ~1kg o un objeto pequeño. Detectarlo requiere escáner específico o Diagnóstico difícil",hum:5,precio:10000},
+  {id:"retractoClaws",n:"Forge Retracto-Claws",zona:"Brazo D",efecto:"Garras retráctiles, arma CC natural (daño tipo cuchillo). Retraídas, invisibles y sin penalizador de ocultación",hum:10,precio:25000},
+  {id:"talonClaws",n:"Forge Talon-Claws",zona:"Brazo D",efecto:"Garras pesadas fijas, más daño que Retracto-Claws. Siempre visibles, marca corporal permanente",hum:15,precio:45000},
+  {id:"venomGland",n:"Forge Venom-Gland",zona:"Brazo D",efecto:"Requiere Retracto-Claws o Talon-Claws instaladas. Cada impacto con las garras inyecta toxina",hum:10,precio:20000},
+  {id:"laserHand",n:"Forge Laser-Hand",zona:"Brazo D",efecto:"Emisor láser integrado en la palma, arma a distancia tier pistola sin desenfundar",hum:15,precio:60000},
+  {id:"laserArm",n:"Forge Laser-Arm",zona:"Brazo D",efecto:"Emisor láser de brazo, tier rifle (más daño que Laser-Hand), visible, no se oculta bajo manga fina",hum:20,precio:90000},
+  {id:"grappleWrist",n:"Forge Grapple-Wrist",zona:"Brazo D",efecto:"Lanza gancho/cable ~15m — trepar, cruzar huecos, o enganchar y tirar de un objeto/enemigo",hum:5,precio:20000},
+  {id:"signalGhost",n:"Ibis Signal-Ghost",zona:"Sistema Neural",efecto:"Interfiere sensores/cámaras/comunicaciones electrónicas en un radio corto, 1 uso por escena",hum:10,precio:35000},
 ];
 
 function dineroDisponible(){
