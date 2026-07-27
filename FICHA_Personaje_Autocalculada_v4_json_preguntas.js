@@ -15,11 +15,11 @@ const ATTRS = ["Ca","A","P","C","I","F","V","H"];
 const RAZAS = {
   "Humano": { mod:{}, voc:null, maxAttr:50, profSlots:3 },
   "Nakel": { mod:{}, voc:"Especialista Técnico", maxAttr:50, profSlots:2 },
-  "Inukel": { mod:{Ca:5,I:-5}, voc:"Especialista Técnico", maxAttr:50, profSlots:2 },
+  "Inukel": { mod:{Ca:5,I:-5}, voc:"Especialista Técnico", maxAttr:50, profSlots:3 },
   "Kawalapiti": { mod:{C:10,V:5,Ca:-10,A:-5}, voc:null, maxAttr:50, profSlots:2 },
   "Chernos": { mod:{C:10,P:5,Ca:-10,F:-5}, voc:null, maxAttr:50, profSlots:2 },
-  "Mujer Gato": { mod:{A:10,Ca:5}, voc:"Civil", maxAttr:50, profSlots:2 },
-  "Hombre Gato": { mod:{F:10,C:10,I:-10}, voc:"Combatiente", maxAttr:50, profSlots:2 }
+  "Mujer Gato": { mod:{A:10,Ca:5}, voc:"Civil", maxAttr:50, profSlots:3 },
+  "Hombre Gato": { mod:{F:10,C:10,I:-10}, voc:"Combatiente", maxAttr:50, profSlots:3 }
 };
 
 const SKILLS = {
@@ -460,8 +460,8 @@ const HIST_RAZA = {
   "Inukel": "Inukel, con esa calma que solo dan generaciones de adaptarse a lo peor.",
   "Kawalapiti": "Kawalapiti, más resistente de lo que su porte sugiere.",
   "Chernos": "Chernos, marcado por algo que la mayoría prefiere no preguntar.",
-  "Mujeres Gato": "De sangre felina, con reflejos que traicionan cualquier disfraz de calma.",
-  "Hombres Gato": "De sangre felina, con reflejos que traicionan cualquier disfraz de calma.",
+  "Mujer Gato": "De sangre felina, con reflejos que traicionan cualquier disfraz de calma.",
+  "Hombre Gato": "De sangre felina, con reflejos que traicionan cualquier disfraz de calma.",
   "Droideum": "Un chasis que a veces piensa que fue humano alguna vez, o que finge creerlo.",
 };
 const HIST_PROF = {
