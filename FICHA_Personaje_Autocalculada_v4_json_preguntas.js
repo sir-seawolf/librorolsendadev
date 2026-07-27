@@ -121,7 +121,8 @@ let state = {
   runes:[],
   effectiveProfs:[],
   compras:[],
-  armadura:null
+  armadura:null,
+  historia:''
 };
 
 const qs = s => document.querySelector(s);
@@ -445,7 +446,52 @@ function randomRefugio(){
 window.randomRefugio = randomRefugio;
 // ===================== FIN REFUGIOS Y BASES =====================
 
-// ===================== HERRAMIENTAS DEL NARRADOR =====================
+// ===================== HISTORIA BREVE (plantilla, sin IA — ver nota a Miguel) =====================
+const HIST_APERTURA = [
+  "Nadie recuerda bien cómo llegó {nombre} al grupo, pero nadie duda ya de que se quede.",
+  "{nombre} no habla mucho de antes de esto. Lo poco que se sabe, se sabe por terceros.",
+  "Hay quien jura que {nombre} ya había cruzado tres teselas antes de que empezara esta historia.",
+  "{nombre} llegó con lo puesto y una historia que cambia cada vez que la cuenta.",
+  "Pocos saben qué trae {nombre} entre manos. Menos aún se atreven a preguntar dos veces.",
+];
+const HIST_RAZA = {
+  "Humano": "Humano de origen, sin marcas que lo delaten a primera vista.",
+  "Nakel": "Nakel — algo en él intuye tecnología antigua que no debería reconocer.",
+  "Inukel": "Inukel, con esa calma que solo dan generaciones de adaptarse a lo peor.",
+  "Kawalapiti": "Kawalapiti, más resistente de lo que su porte sugiere.",
+  "Chernos": "Chernos, marcado por algo que la mayoría prefiere no preguntar.",
+  "Mujeres Gato": "De sangre felina, con reflejos que traicionan cualquier disfraz de calma.",
+  "Hombres Gato": "De sangre felina, con reflejos que traicionan cualquier disfraz de calma.",
+  "Droideum": "Un chasis que a veces piensa que fue humano alguna vez, o que finge creerlo.",
+};
+const HIST_PROF = {
+  "Civil": "sabe moverse en salones y despachos igual de bien que en la calle",
+  "Combatiente": "ha visto suficiente combate como para no necesitar impresionar a nadie",
+  "Especialista Técnico": "arregla lo que sea con lo que tenga a mano, y lo que no tiene, lo improvisa",
+  "Científico": "hace preguntas que incomodan porque casi siempre tiene razón",
+  "Iniciado": "lleva la Distorsión en la sangre de una forma que todavía está aprendiendo a nombrar",
+};
+const HIST_CIERRE = [
+  "Todavía no ha decidido si esto es una segunda oportunidad o solo otro trabajo.",
+  "Lo que quiere de verdad no lo ha dicho todavía — puede que ni él mismo lo sepa.",
+  "Sigue aquí. Eso, de momento, es toda la explicación que da.",
+  "Cuenta los días de otra forma desde que cruzó la primera vez.",
+  "Alguien de su pasado sigue sin saber dónde está. Mejor así, dice él.",
+];
+
+function generarHistoriaBreve(){
+  const nombre = qs('#personaje')?.value || 'Este errante';
+  const raza = qs('#raza')?.value || 'Humano';
+  const profs = effectiveProfs();
+  const profTxt = profs.length ? (HIST_PROF[profs[0]] || 'todavía no encuentra su sitio') : 'todavía no encuentra su sitio';
+  const apertura = randomChoice(HIST_APERTURA).replace('{nombre}', nombre);
+  const razaTxt = HIST_RAZA[raza] || '';
+  const cierre = randomChoice(HIST_CIERRE);
+  state.historia = `${apertura} ${razaTxt} Además, ${profTxt}. ${cierre}`;
+  return state.historia;
+}
+window.generarHistoriaBreve = generarHistoriaBreve;
+// ===================== FIN HISTORIA BREVE =====================
 let pnjs = [];
 
 function generarPNJ(){
@@ -459,6 +505,7 @@ function generarPNJ(){
   rebuildPools(); rebuildEconomy(); recalcSkillBases(); renderRunes();
   randomSkills();
   calcSkills(); renderStatsDerivados(); rebuildEconomy();
+  const historiaPnj = generarHistoriaBreve();
 
   const attrsTxt = ATTRS.map(a=>`${a} ${attr(a)}`).join(' · ');
   const skillTop = qsa('.sk-tot').map(t=>{
@@ -470,7 +517,7 @@ function generarPNJ(){
   pnjs.push({
     nombre: qs('#personaje').value, raza: qs('#raza').value, tipo: qs('#tipoPersonaje').value,
     profesiones: effectiveProfs().join(', ') || '—', attrs: attrsTxt, vida: vidaTxt,
-    skills: skillTop.map(s=>`${s.name} ${s.v}%`).join(' · ')
+    skills: skillTop.map(s=>`${s.name} ${s.v}%`).join(' · '), historia: historiaPnj
   });
   renderPNJs();
 }
@@ -481,7 +528,7 @@ window.quitarPNJ = quitarPNJ;
 
 function renderPNJs(){
   const l = qs('#pnjLista');
-  l.innerHTML = pnjs.length ? pnjs.map((p,i)=>`<div class="box" style="margin-top:6px"><b>${p.nombre}</b> — ${p.raza}, ${p.tipo} (${p.profesiones})<br>Vida/zona: ${p.vida} · ${p.attrs}<br>Destaca en: ${p.skills} <button class="btn" type="button" onclick="quitarPNJ(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ningún PNJ generado todavía.</span>';
+  l.innerHTML = pnjs.length ? pnjs.map((p,i)=>`<div class="box" style="margin-top:6px"><b>${p.nombre}</b> — ${p.raza}, ${p.tipo} (${p.profesiones})<br>Vida/zona: ${p.vida} · ${p.attrs}<br>Destaca en: ${p.skills}<br><i>${p.historia||''}</i> <button class="btn" type="button" onclick="quitarPNJ(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ningún PNJ generado todavía.</span>';
 }
 window.renderPNJs = renderPNJs;
 
@@ -1053,7 +1100,7 @@ function buildSkills(){
     wrap.innerHTML += `<div class="box"><h3>${rk}</h3><table><thead><tr><th>Hab</th><th>Base</th><th>Apr (+5)</th><th>Mod</th><th>Tot</th></tr></thead><tbody id="${id}"></tbody></table></div>`;
     const tb = qs('#'+id);
     list.forEach((h,i)=>{
-      tb.innerHTML += `<tr><td>${h}</td><td><input type="number" class="sk-base" data-r="${rk}" data-i="${i}" value="0" readonly></td><td><input type="number" class="sk-apr" data-r="${rk}" data-i="${i}" value="0" step="5"></td><td><input type="number" class="sk-mod" data-r="${rk}" data-i="${i}" value="0"></td><td><input type="number" class="sk-tot" data-r="${rk}" data-i="${i}" value="0" readonly></td></tr>`;
+      tb.innerHTML += `<tr><td>${h}</td><td><input type="number" id="skb-${rk}-${i}" class="sk-base" data-r="${rk}" data-i="${i}" value="0" readonly></td><td><input type="number" id="skapr-${rk}-${i}" class="sk-apr" data-r="${rk}" data-i="${i}" value="0" step="5"></td><td><input type="number" id="skmod-${rk}-${i}" class="sk-mod" data-r="${rk}" data-i="${i}" value="0"></td><td><input type="number" id="sktot-${rk}-${i}" class="sk-tot" data-r="${rk}" data-i="${i}" value="0" readonly></td></tr>`;
     });
   });
   qsa('.sk-apr,.sk-mod').forEach(el=>el.addEventListener('input', ()=>{ calcSkills(); markDirty(5); updateStepStatus(); }));
@@ -1136,14 +1183,14 @@ function renderRunes(){
   while(state.runes.length < maxSlots) state.runes.push({name:RUNAS_BASICAS[0], level:1});
   if(state.runes.length > maxSlots) state.runes = state.runes.slice(0,maxSlots);
   const lvlMax = maxRuneLevel();
-  rw.innerHTML = state.runes.map((r,i)=>`<div class="box" style="min-width:220px"><label>Runa ${i+1}<select data-rune-name="${i}">${RUNAS_BASICAS.map(n=>`<option ${n===r.name?'selected':''}>${n}</option>`).join('')}</select></label><label>Nivel<select data-rune-level="${i}">${[1,2,3].map(l=>`<option value="${l}" ${l===r.level?'selected':''} ${l>lvlMax?'disabled':''}>${l}</option>`).join('')}</select></label></div>`).join('');
+  rw.innerHTML = state.runes.map((r,i)=>`<div class="box" style="min-width:220px"><label>Runa ${i+1}<select id="rune-name-${i}" data-rune-name="${i}">${RUNAS_BASICAS.map(n=>`<option ${n===r.name?'selected':''}>${n}</option>`).join('')}</select></label><label>Nivel<select id="rune-level-${i}" data-rune-level="${i}">${[1,2,3].map(l=>`<option value="${l}" ${l===r.level?'selected':''} ${l>lvlMax?'disabled':''}>${l}</option>`).join('')}</select></label></div>`).join('');
   qsa('[data-rune-name]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-name'),10); state.runes[i].name=el.value; buildFullSummary(); }));
   qsa('[data-rune-level]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-level'),10); state.runes[i].level=Math.min(maxRuneLevel(), parseInt(el.value,10)); renderRunes(); buildFullSummary(); }));
 }
 
 function buildMerDef(){
-  qs('#meritosBox').innerHTML = MERITOS.map(x=>`<label title="${x.desc||''}"><input type="checkbox" class="mer" value="${x.n}"> ${x.n} (PE ${x.pe})</label><br><span class="muted" style="font-size:11px">${x.desc||''}</span><br>`).join('');
-  qs('#defectosBox').innerHTML = DEFECTOS.map(x=>`<label title="${x.desc||''}"><input type="checkbox" class="def" value="${x.n}"> ${x.n} (+PE ${x.pe})</label><br><span class="muted" style="font-size:11px">${x.desc||''}</span><br>`).join('');
+  qs('#meritosBox').innerHTML = MERITOS.map((x,i)=>`<label title="${x.desc||''}"><input type="checkbox" id="mer-${i}" class="mer" value="${x.n}"> ${x.n} (PE ${x.pe})</label><br><span class="muted" style="font-size:11px">${x.desc||''}</span><br>`).join('');
+  qs('#defectosBox').innerHTML = DEFECTOS.map((x,i)=>`<label title="${x.desc||''}"><input type="checkbox" id="def-${i}" class="def" value="${x.n}"> ${x.n} (+PE ${x.pe})</label><br><span class="muted" style="font-size:11px">${x.desc||''}</span><br>`).join('');
   qsa('.mer,.def').forEach(el=>el.addEventListener('change', ()=>{ applyMerDefEffects(); markDirty(7); updateStepStatus(); }));
   qs('#targetCar').addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
   qs('#targetHab').addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
@@ -1311,6 +1358,28 @@ function tryFillV3Iframe(){
         doc.querySelectorAll('#locGrid tr td:nth-child(2) input').forEach(el=>{ el.value = state.armadura.bld; });
       }
 
+      // Méritos, Defectos y el especial de Paso 6 → tabla de Méritos/Defectos de v3.
+      const filasMerito = [];
+      const especial = qs('#specialMerDef')?.value || '';
+      if(especial) filasMerito.push({n: especial, t: 'Esp', e: 'MéritoDefecto especial (Paso 6)'});
+      qsa('.mer:checked').forEach(el=>{
+        const info = MERITOS.find(m=>m.n===el.value);
+        filasMerito.push({n: el.value, t: 'M', e: info ? info.desc : ''});
+      });
+      qsa('.def:checked').forEach(el=>{
+        const info = DEFECTOS.find(m=>m.n===el.value);
+        filasMerito.push({n: el.value, t: 'D', e: info ? info.desc : ''});
+      });
+      const filasMeritoV3 = [...doc.querySelectorAll('#meritTable tr')];
+      filasMerito.forEach((f,i)=>{
+        const row = filasMeritoV3[i];
+        if(!row) return;
+        const inputs = row.querySelectorAll('input[type="text"]');
+        if(inputs[0]) inputs[0].value = f.n;
+        if(inputs[1]) inputs[1].value = f.t;
+        if(inputs[2]) inputs[2].value = f.e;
+      });
+
       if(frame.contentWindow && typeof frame.contentWindow.calc === 'function') frame.contentWindow.calc();
     }catch(_e){}
   };
@@ -1320,7 +1389,7 @@ function tryFillV3Iframe(){
 
 function buildFullSummary(){
   const runTxt = state.runes.length ? state.runes.map(r=>`${r.name} N${r.level}`).join(', ') : '—';
-  qs('#fullSummary').innerHTML = `<div><b>Tipo:</b> ${qs('#tipoPersonaje').value}</div><div><b>Raza:</b> ${qs('#raza').value}</div><div><b>Grupo primario:</b> ${qs('#grupoPrimario').value}</div><div><b>PG restante:</b> ${qs('#pgRest').textContent}</div><div><b>Profesiones efectivas:</b> ${effectiveProfs().join(',')||'—'}</div><div><b>Runas:</b> ${runTxt}</div><div><b>PE:</b> ${qs('#peSummary').textContent}</div><div><b>Dinero:</b> ${qs('#dineroFinal').value||'—'}</div>`;
+  qs('#fullSummary').innerHTML = `<div><b>Tipo:</b> ${qs('#tipoPersonaje').value}</div><div><b>Raza:</b> ${qs('#raza').value}</div><div><b>Grupo primario:</b> ${qs('#grupoPrimario').value}</div><div><b>PG restante:</b> ${qs('#pgRest').textContent}</div><div><b>Profesiones efectivas:</b> ${effectiveProfs().join(',')||'—'}</div><div><b>Runas:</b> ${runTxt}</div><div><b>PE:</b> ${qs('#peSummary').textContent}</div><div><b>Dinero:</b> ${qs('#dineroFinal').value||'—'}</div>${state.historia?`<div style="margin-top:6px"><b>Historia breve:</b> <i>${state.historia}</i></div>`:''}`;
   renderFinalSheetV3(); updateStepStatus();
 }
 
@@ -1393,6 +1462,7 @@ function randomMerDef(){
 function randomEconomy(){ rebuildEconomy(); }
 function randomFillAll(){
   randomTypeData(); randomAttrs(); randomProfs(); randomSkills(); randomMerDef(); randomEconomy();
+  generarHistoriaBreve();
   renderStatsDerivados(); buildFullSummary(); updateStepStatus(); goStep(10);
 }
 

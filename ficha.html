@@ -345,7 +345,16 @@
       <h2>Méritos y Defectos / Rasgos</h2>
       <table><colgroup><col><col style="width:55px;"><col></colgroup>
         <tr><th class="skill-h">Nombre</th><th>Tipo</th><th>Efecto</th></tr>
-        <tbody id="meritTable"></tbody>
+        <tbody id="meritTable">
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text" style="width:40px" placeholder="M/D"></td><td><input type="text"></td></tr>
+        </tbody>
       </table>
 
     </div>
@@ -357,9 +366,9 @@
         <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
         <tbody id="inicTable"></tbody>
       </table>
-      <div class="note note-inic">Iniciativa: tirada = 2d10 (leído como d100) + Total Iniciativa. Esquivar consume la acción del asalto. Bases: Iniciativa=AGI, Alerta=PER, Esquivar=AGI.</div>
+      <div class="note note-inic">Iniciativa: tirada = 2d10 (leído como d100) + Total Iniciativa. Esquivar consume la acción del asalto. Bases: Iniciativa=(AGI+PER)/2, Alerta=(PER+INT)/2, Esquivar=(AGI+HAB)/2.</div>
 
-      <h2><span>Combate</span><span class="cat-formula">(AGI+HAB)/2</span></h2>
+      <h2><span>Combate</span><span class="cat-formula">Distancia/Esquivar=(AGI+HAB)/2 · Sin Armas=(FUE+CON+AGI)/3 · Arma CC=(FUE+AGI+HAB)/3</span></h2>
       <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
         <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
         <tbody id="combatTable"></tbody>
@@ -641,7 +650,7 @@
       <div class="page2-col">
         <div class="page2-block">
           <h3>Equipo e inventario</h3>
-          <table class="p2-table">
+          <table class="p2-table" id="equipoTable">
             <tr><th>Ítem</th><th style="width:16%;">Cant.</th><th style="width:26%;">Estado</th></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
             <tr><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
@@ -665,7 +674,7 @@
           <h3>Dinero y otros</h3>
           <table class="p2-table">
             <tr><th style="width:25%;">Campo</th><th>Detalle</th></tr>
-            <tr><td>Dinero</td><td><input type="text"></td></tr>
+            <tr><td>Dinero</td><td><input type="text" id="dineroTotal"></td></tr>
             <tr><td>Otros recursos</td><td><textarea></textarea></td></tr>
           </table>
         </div>
@@ -696,31 +705,29 @@ const num = id => { const v = raw(id); return isNaN(v) ? 0 : v; };
 const filled = (...ids) => ids.every(id => !isNaN(raw(id)));
 const round = x => Math.round(x); // regla canónica: 0,5 o más redondea hacia arriba
 
-// Ramas — listas originales de la ficha _B (preservadas para no perder habilidades ya presentes).
-// Nota: ANEXO_Meritos_Habilidades_DEFINITIVO.md reclasifica Conducir/Pilotar/Trajes Servoasistidos/Sigilo
-// como Tecnológicas, no Atléticas — discrepancia real entre el anexo y las fichas existentes del proyecto.
-// Se mantiene aquí la convención ya usada en todas las fichas (_B, Senda_v2, Kit_de_Inicio_vertical).
+// Ramas alineadas con ANEXO_Meritos_Habilidades_DEFINITIVO.md (27/07/26): Conducir/Pilotar/Trajes
+// Servoasistidos/Sigilo son Tecnológicas, no Atléticas. Quitadas "Esconderse/Evadirse" y "Manualidades"
+// (no existen en el Anexo). Atléticas solo tiene 3 habilidades reales.
 const CATS = [
   { name:"Académicas", formula:"(I+V)/2", base:()=>round((num('I')+num('V'))/2),
-    skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Esconderse/Evadirse","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—","—"] },
+    skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—","—"] },
   { name:"Tecnológica", formula:"(H+P)/2", base:()=>round((num('H')+num('P'))/2),
-    skills:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Manualidades","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","—","—"] },
+    skills:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo","—","—"] },
   { name:"Atlética", formula:"(A+F)/2", base:()=>round((num('A')+num('F'))/2),
-    skills:["Acrobacias","Conducir","Resistir","Proezas","Pilotar","Trajes Servoasistidos","Sigilo","—","—"] },
+    skills:["Acrobacias","Resistir","Proezas","—","—"] },
   { name:"Social", formula:"(Ca+P)/2", base:()=>round((num('Ca')+num('P'))/2),
     skills:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo","—"] },
 ];
-// Combate: rama con base única (AGI+HAB)/2 (Kairo, CAP02) — Iniciativa/Alerta/Esquivar van aparte (item 4)
-const combateBase = ()=>round((num('A')+num('H'))/2);
+// Combate: cada habilidad tiene su propia fórmula (Anexo Méritos/Habilidades) — no una única para las 3.
 const COMBAT = [
-  { name:"Distancia", base:combateBase },
-  { name:"Sin Armas", base:combateBase },
-  { name:"Arma CC", base:combateBase },
+  { name:"Distancia", attrs:['A','H'], base:()=>round((num('A')+num('H'))/2) },
+  { name:"Sin Armas", attrs:['F','C','A'], base:()=>round((num('F')+num('C')+num('A'))/3) },
+  { name:"Arma CC", attrs:['F','A','H'], base:()=>round((num('F')+num('A')+num('H'))/3) },
 ];
 const INIC = [
-  { name:"Iniciativa", base:()=>num('A') },
-  { name:"Alerta", base:()=>num('P') },
-  { name:"Esquivar", base:()=>num('A') },
+  { name:"Iniciativa", attrs:['A','P'], base:()=>round((num('A')+num('P'))/2) },
+  { name:"Alerta", attrs:['P','I'], base:()=>round((num('P')+num('I'))/2) },
+  { name:"Esquivar", attrs:['A','H'], base:()=>round((num('A')+num('H'))/2) },
 ];
 
 function catTableHTML(cat, ci){
@@ -894,7 +901,7 @@ function calc(){
   let reconCombateSum=0, reconCombateAny=false;
   COMBAT.forEach((c,i)=>{
     const base=c.base();
-    const anyAttr=filled('A','H');
+    const anyAttr=filled(...c.attrs);
     document.querySelectorAll('.combatbase-'+i).forEach(el=>el.textContent=anyAttr?base:'');
     const a=parseInt(document.querySelector(`.capr[data-i="${i}"]`).value)||0;
     const m=parseInt(document.querySelector(`.cmod[data-i="${i}"]`).value)||0;
@@ -905,7 +912,7 @@ function calc(){
   });
   INIC.forEach((c,i)=>{
     const base=c.base();
-    const anyAttr=filled('A','P');
+    const anyAttr=filled(...c.attrs);
     document.querySelectorAll('.inicbase-'+i).forEach(el=>el.textContent=anyAttr?base:'');
     const a=parseInt(document.querySelector(`.iapr[data-i="${i}"]`).value)||0;
     const m=parseInt(document.querySelector(`.imod[data-i="${i}"]`).value)||0;
