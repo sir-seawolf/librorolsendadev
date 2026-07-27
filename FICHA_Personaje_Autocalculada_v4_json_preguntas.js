@@ -68,16 +68,48 @@ const ECON_CFG = {
 const RUNAS_BASICAS = ["Ímpetu","Filo","Resistencia","Luz","Alerta","Paso Ligero","Ancla","Velo","Pulso"];
 
 const MERITOS = [
-  {n:"Característica mejorada", pe:2},
-  {n:"Habilidad mejorada", pe:2},
-  {n:"Ahorros", pe:1},
-  {n:"Contactos", pe:1}
+  {n:"Afiliación", pe:1, desc:"Pertenencia a una corp con rango, recursos y obligaciones. Workhouse: gratis."},
+  {n:"Característica mejorada", pe:2, desc:"+10 a un atributo, sin superar el techo de creación. El exceso no se aplica ni se guarda."},
+  {n:"Habilidad mejorada", pe:2, desc:"+30 a una habilidad específica, techo 90 en creación. El exceso no se aplica ni se guarda."},
+  {n:"Ahorros", pe:1, desc:"+10.000 PC disponibles."},
+  {n:"Contactos", pe:1, desc:"Una red que suma a las habilidades afines cuando los contactas."},
+  {n:"Fama", pe:1, desc:"Tu nombre llega antes que tú. Influyes sobre nivel²×200 personas en tu contexto."},
+  {n:"Iniciativa (tipo)", pe:1, desc:"+10 a Iniciativa en el tipo indicado (CC, distancia o general)."},
+  {n:"Posición", pe:1, desc:"Un lugar reconocido en una jerarquía. Legitimidad dentro de una estructura."},
+  {n:"Recursos", pe:1, desc:"Acceso a recursos materiales de una organización. No son tuyos — los usas mientras mantienes la afiliación."},
+  {n:"Reputación", pe:1, desc:"Suma en enfrentamientos de miradas e intimidación donde tu nombre tenga peso."},
+  {n:"Favor a tu favor (menor)", pe:1, desc:"Alguien te debe un favor menor."},
+  {n:"Favor a tu favor (serio)", pe:2, desc:"Alguien te debe un favor serio."},
+  {n:"Favor a tu favor (se jugó la vida)", pe:3, desc:"Alguien se jugó la vida por ti — te lo debe todo."},
+  {n:"Objeto especial", pe:1, desc:"Un objeto con historia que llegó a tus manos antes de que entendieras lo que eras. Tira 1d10+1d8 en la tabla de CAP02."},
+  {n:"Runas adicionales", pe:2, desc:"+3 runas en creación (solo Iniciados). Nivel máximo igual al de la toma que las concede."},
+  {n:"Nivel de vida", pe:0, desc:"No cuesta PE. Ingreso recurrente: Nivel × 1.000 PC/mes."}
 ];
 const DEFECTOS = [
-  {n:"Característica empeorada", pe:2},
-  {n:"Deudas", pe:1},
-  {n:"Enemigo", pe:1},
-  {n:"Analfabetismo", pe:2}
+  {n:"Característica empeorada", pe:2, desc:"−10 a un atributo (mínimo 20)."},
+  {n:"Analfabetismo", pe:2, desc:"No sabe leer ni escribir. Cierra puertas que el dinero no siempre abre."},
+  {n:"Legalmente inexistente", pe:2, desc:"Sin chip ni registro. Paria legal en cualquier sistema documentado."},
+  {n:"Antecedentes penales (menor)", pe:1, desc:"Chip con historial: infracción menor."},
+  {n:"Antecedentes penales (grave)", pe:2, desc:"Chip con historial: delito grave."},
+  {n:"Antecedentes penales (mayor)", pe:3, desc:"Chip con historial: crimen mayor."},
+  {n:"En busca y captura (local)", pe:1, desc:"Te busca una organización local."},
+  {n:"En busca y captura (corp menor)", pe:2, desc:"Te busca una corp menor."},
+  {n:"En busca y captura (corp mayor)", pe:3, desc:"Te busca una corp mayor, alcance multitesela."},
+  {n:"Enemigo (básico)", pe:1, desc:"Alguien te odia personalmente — individuo básico."},
+  {n:"Enemigo (con recursos)", pe:2, desc:"Alguien te odia personalmente — tiene recursos."},
+  {n:"Enemigo (prioridad)", pe:3, desc:"Alguien poderoso te ha convertido en prioridad."},
+  {n:"Deudas (1 punto)", pe:1, desc:"Debes 10.000 PC más intereses."},
+  {n:"Deudas (2 puntos)", pe:2, desc:"Debes 20.000 PC más intereses."},
+  {n:"Deudas (3 puntos)", pe:3, desc:"Debes 30.000 PC más intereses."},
+  {n:"Deuda de honor (menor)", pe:1, desc:"Debes un favor menor."},
+  {n:"Deuda de honor (serio)", pe:2, desc:"Debes un favor serio."},
+  {n:"Deuda de honor (vida)", pe:3, desc:"Alguien se jugó la vida por ti y ahora se la debes."},
+  {n:"Adicto (leve)", pe:1, desc:"Sin la sustancia: efectos secundarios molestos."},
+  {n:"Adicto (moderado)", pe:2, desc:"Sin la sustancia: efectos secundarios serios."},
+  {n:"Adicto (incapacitante)", pe:3, desc:"Sin la sustancia: incapacitación."},
+  {n:"Amnesia", pe:1, desc:"Sin recuerdos anteriores al inicio. El cuerpo sabe lo que hizo; la cabeza no."},
+  {n:"Minoría", pe:1, desc:"−20 a la Habilidad efectiva en tiradas Sociales cuando el contexto active prejuicio relevante."},
+  {n:"Notoriedad", pe:1, desc:"−20 a la Habilidad efectiva en tiradas Sociales cuando el interlocutor reconoce tu reputación negativa."}
 ];
 
 let state = {
@@ -720,6 +752,12 @@ function comprasTotal(){ return state.compras.reduce((a,c)=>a+c.precio,0); }
 function implantBonus(a){
   return state.compras.filter(c=>c.tipo==='implante-atrib' && c.attr===a).reduce((s,c)=>s+c.bonus,0);
 }
+function meritoAttrBonus(a){
+  return (state.selectedMer.includes('Característica mejorada') && qs('#targetCar')?.value===a) ? 10 : 0;
+}
+function defectoCarEmpeorada(a){
+  return state.selectedDef.includes('Característica empeorada') && qs('#targetCarDef')?.value===a;
+}
 function armorBld(){ return state.armadura ? state.armadura.bld : 0; }
 
 function buildTiendaSelects(){
@@ -907,11 +945,18 @@ function currentPgSpent(){
 }
 function enforcePgLimits(){
   const c = cfg();
-  // Ajuste fino: máximo ±5 por atributo (no tenía tope ninguno).
+  const rCfg = razaCfg();
+  // Ajuste fino: redistribución libre en bloques de 5 dentro del grupo (no un intercambio fijo entre dos).
+  // Límite real por atributo: base+af no puede bajar de 20 ni superar 50, ambos desplazados por el
+  // modificador racial de ESE atributo (igual que el techo de creación).
   ATTRS.forEach(a=>{
     const afEl = qs(`#af-${a}`);
+    const base = parseInt(qs(`#ab-${a}`).value,10) || 0;
+    const racial = rCfg.mod[a] || 0;
     let af = normalize5(afEl.value);
-    af = Math.max(-5, Math.min(5, af));
+    const minAf = (20 + racial) - base;
+    const maxAf = (50 + racial) - base;
+    af = Math.max(minAf, Math.min(maxAf, af));
     afEl.value = af;
   });
   let spent = 0;
@@ -938,13 +983,21 @@ function recalcAttr(){
     const ap = normalize5(qs(`#ap-${a}`).value);
     const racial = rCfg.mod[a] || 0;
     const ntAdd = (a === ntTarget) ? ntB : 0;
-    const raw = (parseInt(qs(`#ab-${a}`).value,10)||0)+af+ap+racial+ntAdd;
+    const raw = (parseInt(qs(`#ab-${a}`).value,10)||0)+af+ap+racial+ntAdd+meritoAttrBonus(a);
     // Techo de creación: 50 + el modificador racial de ESTE atributo (positivo o negativo).
     // No usar rCfg.maxAttr fijo: eso anularía el propio bonus racial (p.ej. Kawalapiti +10 CON).
+    // Mérito "Característica mejorada" entra ANTES del techo — si ya estabas en el máximo, el exceso se pierde (regla del Anexo).
     // Los implantes (CAP04e) se suman DESPUÉS del techo de creación — es su función explícita superarlo.
-    qs(`#af-${a}`).value = af; qs(`#ap-${a}`).value = ap; qs(`#at-${a}`).value = Math.min(50 + racial, raw) + implantBonus(a);
+    let totalAttr = Math.min(50 + racial, raw) + implantBonus(a);
+    if(defectoCarEmpeorada(a)) totalAttr = Math.max(20, totalAttr - 10);
+    qs(`#af-${a}`).value = af; qs(`#ap-${a}`).value = ap; qs(`#at-${a}`).value = totalAttr;
   });
   qs('#pgRest').textContent = (c.pg - currentPgSpent());
+  const sumAf = g => g.reduce((s,a)=>s + (parseInt(qs(`#af-${a}`).value,10)||0), 0);
+  const primAttrs = prim, secAttrs = ATTRS.filter(a=>!prim.includes(a));
+  const primSum = sumAf(primAttrs), secSum = sumAf(secAttrs);
+  if(qs('#ajustePrimVal')){ qs('#ajustePrimVal').textContent = primSum; qs('#ajustePrimVal').style.color = primSum===0 ? '' : '#b91c1c'; }
+  if(qs('#ajusteSecVal')){ qs('#ajusteSecVal').textContent = secSum; qs('#ajusteSecVal').style.color = secSum===0 ? '' : '#b91c1c'; }
   const special = qs('#specialMerDef')?.value || '';
   const techCap = ntTechCap(special==="Visionario");
   qs('#resTipo').innerHTML = `<b>Tipo:</b> ${qs('#tipoPersonaje').value} · Prim ${c.prim} / Sec ${c.sec} / PG ${c.pg} / PE ${c.pe}<br><b>Raza:</b> ${qs('#raza').value}<br><b>NT origen:</b> ${ntOrigen()} · <b>Bono NT:</b> +${ntB} a ${ntTarget} · <b>Techo tecnológico personal:</b> NT${techCap}`;
@@ -1066,7 +1119,8 @@ function calcSkills(){
       if(hm === 'double5' && (key === hs1 || key === hs2)) humBonus = 5;
     }
     const implSkillBonus = state.compras.filter(c=>c.skillBonus && c.skillBonus.rama===r && c.skillBonus.name===skillName).reduce((s,c)=>s+c.skillBonus.val,0);
-    t.value=Math.max(0,Math.min(90,b+a+m+humBonus+implSkillBonus));
+    const meritoHab = meritoHabBonus(r, skillName);
+    t.value=Math.max(0,Math.min(90,b+a+m+humBonus+implSkillBonus+meritoHab));
   });
   paintPoolChipsWithUsage();
 }
@@ -1076,7 +1130,8 @@ function maxRuneLevel(){ const n = initiatedTakes(); if(n<=0) return 0; if(n<=2)
 function renderRunes(){
   const rw = qs('#runeWrap');
   if(!rw) return;
-  const maxSlots = initiatedTakes() * 3;
+  const bonusRunas = (state.selectedMer.includes('Runas adicionales') && initiatedTakes()>=1) ? 3 : 0;
+  const maxSlots = initiatedTakes() * 3 + bonusRunas;
   if(maxSlots<=0){ rw.innerHTML = '<span class="muted">Sin tomas de Iniciado.</span>'; state.runes = []; return; }
   while(state.runes.length < maxSlots) state.runes.push({name:RUNAS_BASICAS[0], level:1});
   if(state.runes.length > maxSlots) state.runes = state.runes.slice(0,maxSlots);
@@ -1087,15 +1142,17 @@ function renderRunes(){
 }
 
 function buildMerDef(){
-  qs('#meritosBox').innerHTML = MERITOS.map(x=>`<label><input type="checkbox" class="mer" value="${x.n}"> ${x.n} (PE ${x.pe})</label><br>`).join('');
-  qs('#defectosBox').innerHTML = DEFECTOS.map(x=>`<label><input type="checkbox" class="def" value="${x.n}"> ${x.n} (+PE ${x.pe})</label><br>`).join('');
+  qs('#meritosBox').innerHTML = MERITOS.map(x=>`<label title="${x.desc||''}"><input type="checkbox" class="mer" value="${x.n}"> ${x.n} (PE ${x.pe})</label><br><span class="muted" style="font-size:11px">${x.desc||''}</span><br>`).join('');
+  qs('#defectosBox').innerHTML = DEFECTOS.map(x=>`<label title="${x.desc||''}"><input type="checkbox" class="def" value="${x.n}"> ${x.n} (+PE ${x.pe})</label><br><span class="muted" style="font-size:11px">${x.desc||''}</span><br>`).join('');
   qsa('.mer,.def').forEach(el=>el.addEventListener('change', ()=>{ applyMerDefEffects(); markDirty(7); updateStepStatus(); }));
   qs('#targetCar').addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
   qs('#targetHab').addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
+  qs('#targetCarDef')?.addEventListener('change', ()=>{ applyMerDefEffects(); updateStepStatus(); });
   fillTargets(); applyMerDefEffects();
 }
 function fillTargets(){
   qs('#targetCar').innerHTML = ATTRS.map(a=>`<option>${a}</option>`).join('');
+  if(qs('#targetCarDef')) qs('#targetCarDef').innerHTML = ATTRS.map(a=>`<option>${a}</option>`).join('');
   const allSkills = Object.entries(SKILLS).flatMap(([r,l])=>l.map(h=>`${r}:${h}`));
   const opts = allSkills.map(s=>`<option>${s}</option>`).join('');
   qs('#targetHab').innerHTML = opts;
@@ -1115,6 +1172,19 @@ function applyMerDefEffects(){
   const maxRec = capByType[qs('#tipoPersonaje').value] ?? 0;
   const peRec = Math.min(peRecRaw, maxRec);
   qs('#peSummary').textContent = `PE base ${peBase} · gastado ${peGast} · recuperado ${peRec}/${maxRec} · final ${peBase-peGast+peRec}`;
+  // Refrescar todo lo que dependa de Méritos/Defectos: atributos (Característica mejorada/empeorada),
+  // habilidades (Habilidad mejorada), runas (Runas adicionales) y dinero (Deudas).
+  recalcAttr(); recalcSkillBases(); calcSkills(); renderRunes(); rebuildEconomy(); renderStatsDerivados();
+}
+function deudasTotal(){
+  let total = 0;
+  if(state.selectedDef.includes('Deudas (1 punto)')) total += 10000;
+  if(state.selectedDef.includes('Deudas (2 puntos)')) total += 20000;
+  if(state.selectedDef.includes('Deudas (3 puntos)')) total += 30000;
+  return total;
+}
+function meritoHabBonus(rama, name){
+  return (state.selectedMer.includes('Habilidad mejorada') && qs('#targetHab')?.value===`${rama}:${name}`) ? 30 : 0;
 }
 
 function rebuildEconomy(){
@@ -1134,9 +1204,11 @@ function rebuildEconomy(){
   const savings = qsa('.mer:checked').some(x=>x.value==="Ahorros") ? 10000 : 0;
   const gastoArmadura = state.armadura ? state.armadura.precio : 0;
   const gastoCompras = comprasTotal();
+  const deuda = deudasTotal();
   if(state.armadura && state.armadura.precio>0) lines.push(`Armadura: ${state.armadura.n} (−${gastoArmadura} PC)`);
   state.compras.forEach(c=>lines.push(`${c.n}${c.attr?` (+${c.bonus} ${c.attr})`:` (${c.zona})`} — implante, −${c.hum} Humanidad (−${c.precio} PC)`));
-  const total = money + intBonus + savings - gastoArmadura - gastoCompras;
+  if(deuda>0) lines.push(`Defecto Deudas: −${deuda} PC (más intereses en juego)`);
+  const total = money + intBonus + savings - gastoArmadura - gastoCompras - deuda;
   qs('#equipoInicial').value = lines.join('\n');
   qs('#dineroFinal').value = `${total} PC`;
   qs('#ecoSummary').innerHTML = `<b>Ingreso por categorías distintas:</b> ${money} PC<br><b>Bono INT:</b> ${intBonus} PC<br><b>Ahorros:</b> ${savings} PC<br><b>Gastado en armadura/implantes:</b> −${gastoArmadura+gastoCompras} PC<br><b>Total:</b> ${total} PC`;
@@ -1314,8 +1386,8 @@ function randomSkills(){
 }
 function randomMerDef(){
   qsa('.mer,.def').forEach(ch=>ch.checked=false);
-  qsa('.mer').forEach(ch=>{ if(Math.random()<0.3) ch.checked=true; });
-  qsa('.def').forEach(ch=>{ if(Math.random()<0.25) ch.checked=true; });
+  qsa('.mer').forEach(ch=>{ if(Math.random()<0.08) ch.checked=true; });
+  qsa('.def').forEach(ch=>{ if(Math.random()<0.06) ch.checked=true; });
   applyMerDefEffects();
 }
 function randomEconomy(){ rebuildEconomy(); }
