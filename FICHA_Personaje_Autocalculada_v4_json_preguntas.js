@@ -65,7 +65,48 @@ const ECON_CFG = {
   Iniciado:{income:3000, kit1:"Traje Iniciado + acumulador rúnico", kit2:"Focos extra + perlas + 1 runa básica"}
 };
 
-const RUNAS_BASICAS = ["Ímpetu","Filo","Resistencia","Luz","Alerta","Paso Ligero","Ancla","Velo","Pulso"];
+// Las 9 runas básicas reales (CAP04b) — "Ancla/Velo/Pulso" eran un error, no existen en el Anexo.
+const RUNAS_BASICAS = ["Filo","Ímpetu","Resistencia","Luz","Alerta","Paso Ligero","Silencio","Aguante","Impulso"];
+
+// Runas de Escuela, solo Nivel 1-2 ("sin restricción" según CAP04b) — Nivel 3+ excluido de creación
+// (requiere maestro/narrativa). Nivel 7+ (Míticas) no se fabrican por reglas estándar, no entran aquí.
+// No se repiten nombres que ya están en las básicas (Silencio/Luz/Alerta/Paso Ligero aparecen también
+// en algunas escuelas como reafirmación de la misma runa — se usa la básica, no se duplica aquí).
+const RUNAS_ESCUELA = {
+  "Combate": [
+    {n:"Explosiva", nivel:1},
+    {n:"Veneno", nivel:1},
+    {n:"Veneno de Hoja", nivel:1},
+    {n:"Furia", nivel:2},
+    {n:"Piel de Hierro", nivel:2},
+  ],
+  "Laboratorio": [
+    {n:"Preservar", nivel:1},
+    {n:"Sellado", nivel:1},
+    {n:"Transmutación", nivel:2},
+    {n:"Análisis", nivel:2},
+    {n:"Elemental", nivel:1},
+  ],
+  "Nómada": [
+    {n:"Búsqueda", nivel:1},
+    {n:"Invocación", nivel:2},
+    {n:"Raíz", nivel:2},
+  ],
+  "Sombra": [
+    {n:"Sombra", nivel:2},
+    {n:"Alteración de Sentidos", nivel:2},
+  ],
+  "Vínculo": [
+    {n:"Velocidad", nivel:2},
+    {n:"Ojo de Águila", nivel:2},
+  ],
+  "Forja": [
+    {n:"Protección", nivel:2},
+    {n:"Aguza", nivel:2},
+    {n:"Duradera", nivel:2},
+  ],
+};
+const ESCUELAS = ["Básica", ...Object.keys(RUNAS_ESCUELA)];
 
 const MERITOS = [
   {n:"Afiliación", pe:1, desc:"Pertenencia a una corp con rango, recursos y obligaciones. Workhouse: gratis."},
@@ -1173,19 +1214,34 @@ function calcSkills(){
 }
 
 function initiatedTakes(){ return effectiveProfs().filter(p=>p==="Iniciado").length; }
-function maxRuneLevel(){ const n = initiatedTakes(); if(n<=0) return 0; if(n<=2) return 2; return 3; }
+function maxRuneLevel(){ const n = initiatedTakes(); return n<=0 ? 0 : 2; } // techo real de creación: N2 (N3+ requiere maestro/narrativa)
+function runasDeOrigen(origen){
+  if(origen==="Básica" || !origen) return RUNAS_BASICAS.map(n=>({n, nivelFijo:null}));
+  return (RUNAS_ESCUELA[origen]||[]).map(r=>({n:r.n, nivelFijo:r.nivel}));
+}
 function renderRunes(){
   const rw = qs('#runeWrap');
   if(!rw) return;
   const bonusRunas = (state.selectedMer.includes('Runas adicionales') && initiatedTakes()>=1) ? 3 : 0;
   const maxSlots = initiatedTakes() * 3 + bonusRunas;
   if(maxSlots<=0){ rw.innerHTML = '<span class="muted">Sin tomas de Iniciado.</span>'; state.runes = []; return; }
-  while(state.runes.length < maxSlots) state.runes.push({name:RUNAS_BASICAS[0], level:1});
+  while(state.runes.length < maxSlots) state.runes.push({origen:"Básica", name:RUNAS_BASICAS[0], level:1, tipo:"Runa"});
   if(state.runes.length > maxSlots) state.runes = state.runes.slice(0,maxSlots);
   const lvlMax = maxRuneLevel();
-  rw.innerHTML = state.runes.map((r,i)=>`<div class="box" style="min-width:220px"><label>Runa ${i+1}<select id="rune-name-${i}" data-rune-name="${i}">${RUNAS_BASICAS.map(n=>`<option ${n===r.name?'selected':''}>${n}</option>`).join('')}</select></label><label>Nivel<select id="rune-level-${i}" data-rune-level="${i}">${[1,2,3].map(l=>`<option value="${l}" ${l===r.level?'selected':''} ${l>lvlMax?'disabled':''}>${l}</option>`).join('')}</select></label></div>`).join('');
-  qsa('[data-rune-name]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-name'),10); state.runes[i].name=el.value; buildFullSummary(); }));
-  qsa('[data-rune-level]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-level'),10); state.runes[i].level=Math.min(maxRuneLevel(), parseInt(el.value,10)); renderRunes(); buildFullSummary(); }));
+  rw.innerHTML = state.runes.map((r,i)=>{
+    const opciones = runasDeOrigen(r.origen);
+    const nivelFijo = opciones.find(o=>o.n===r.name)?.nivelFijo;
+    return `<div class="box" style="min-width:260px">
+      <label>Inscripción ${i+1} — Origen<select id="rune-origen-${i}" data-rune-origen="${i}">${ESCUELAS.map(e=>`<option ${e===(r.origen||"Básica")?'selected':''}>${e}</option>`).join('')}</select></label>
+      <label>Runa<select id="rune-name-${i}" data-rune-name="${i}">${opciones.map(o=>`<option ${o.n===r.name?'selected':''}>${o.n}${o.nivelFijo?` (N${o.nivelFijo})`:''}</option>`).join('')}</select></label>
+      <label>Nivel<select id="rune-level-${i}" data-rune-level="${i}" ${nivelFijo?'disabled':''}>${[1,2].map(l=>`<option value="${l}" ${l===(nivelFijo||r.level)?'selected':''} ${l>lvlMax?'disabled':''}>${l}</option>`).join('')}</select></label>
+      <label>Tipo<select id="rune-tipo-${i}" data-rune-tipo="${i}"><option ${r.tipo==="Runa"?'selected':''}>Runa</option><option ${r.tipo==="Tatuaje"?'selected':''}>Tatuaje</option></select></label>
+    </div>`;
+  }).join('');
+  qsa('[data-rune-origen]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-origen'),10); state.runes[i].origen=el.value; const opts=runasDeOrigen(el.value); state.runes[i].name=opts[0]?.n||RUNAS_BASICAS[0]; renderRunes(); buildFullSummary(); }));
+  qsa('[data-rune-name]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-name'),10); state.runes[i].name=el.value; renderRunes(); buildFullSummary(); }));
+  qsa('[data-rune-level]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-level'),10); state.runes[i].level=Math.min(maxRuneLevel(), parseInt(el.value,10)); buildFullSummary(); }));
+  qsa('[data-rune-tipo]').forEach(el=>el.addEventListener('change', ()=>{ const i=parseInt(el.getAttribute('data-rune-tipo'),10); state.runes[i].tipo=el.value; buildFullSummary(); }));
 }
 
 function buildMerDef(){
@@ -1265,7 +1321,7 @@ window.rebuildEconomy = rebuildEconomy;
 
 function renderFinalSheetV3(){
   const attrs = ATTRS.map(a=>`${a}: ${attr(a)}`).join(' · ');
-  const runTxt = state.runes.length ? state.runes.map(r=>`${r.name} N${r.level}`).join(', ') : '—';
+  const runTxt = state.runes.length ? state.runes.map(r=>`${r.name} N${r.level} (${r.tipo||'Runa'}${r.origen&&r.origen!=='Básica'?`, ${r.origen}`:''})`).join(', ') : '—';
   qs('#finalSheetV3').innerHTML = `<h3 style="margin-top:0">Resumen para ficha v3</h3><div class="box"><div><b>Personaje:</b> ${qs('#personaje').value || '—'} · <b>Jugador:</b> ${qs('#jugador').value || '—'}</div><div><b>Tipo:</b> ${qs('#tipoPersonaje').value} · <b>Grupo:</b> ${qs('#grupoPrimario').value} · <b>Raza:</b> ${qs('#raza').value}</div><div><b>Atributos:</b> ${attrs}</div><div><b>Profesiones efectivas:</b> ${effectiveProfs().join(', ') || '—'}</div><div><b>Runas:</b> ${runTxt}</div><div><b>Dinero:</b> ${qs('#dineroFinal').value || '—'}</div></div>`;
   tryFillV3Iframe();
 }
@@ -1388,7 +1444,7 @@ function tryFillV3Iframe(){
 }
 
 function buildFullSummary(){
-  const runTxt = state.runes.length ? state.runes.map(r=>`${r.name} N${r.level}`).join(', ') : '—';
+  const runTxt = state.runes.length ? state.runes.map(r=>`${r.name} N${r.level} (${r.tipo||'Runa'}${r.origen&&r.origen!=='Básica'?`, ${r.origen}`:''})`).join(', ') : '—';
   qs('#fullSummary').innerHTML = `<div><b>Tipo:</b> ${qs('#tipoPersonaje').value}</div><div><b>Raza:</b> ${qs('#raza').value}</div><div><b>Grupo primario:</b> ${qs('#grupoPrimario').value}</div><div><b>PG restante:</b> ${qs('#pgRest').textContent}</div><div><b>Profesiones efectivas:</b> ${effectiveProfs().join(',')||'—'}</div><div><b>Runas:</b> ${runTxt}</div><div><b>PE:</b> ${qs('#peSummary').textContent}</div><div><b>Dinero:</b> ${qs('#dineroFinal').value||'—'}</div>${state.historia?`<div style="margin-top:6px"><b>Historia breve:</b> <i>${state.historia}</i></div>`:''}`;
   renderFinalSheetV3(); updateStepStatus();
 }
