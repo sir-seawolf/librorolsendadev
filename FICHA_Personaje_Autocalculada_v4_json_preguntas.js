@@ -96,6 +96,14 @@ const round = x => Math.round(x);
 
 function attr(a){ return parseInt(qs(`#at-${a}`)?.value || "0", 10) || 0; }
 
+function updateHumanBoxVisibility(){
+  const box = qs('#humanAdvBox');
+  if(!box) return;
+  const esHumano = (qs('#raza')?.value || 'Humano') === 'Humano';
+  box.style.display = esHumano ? '' : 'none';
+  if(!esHumano){ if(qs('#humanMode')) qs('#humanMode').value = 'none'; }
+}
+
 function renderStatsDerivados(){
   const box = qs('#statsDerivadosBox');
   if(!box) return;
@@ -129,7 +137,7 @@ function buildRazaSelect(){
   if(!r) return;
   r.innerHTML = Object.keys(RAZAS).map(x=>`<option>${x}</option>`).join('');
   r.value = "Humano";
-  r.addEventListener('change', ()=>{ applyProfSlotUI(); recalcAttr(); rebuildPools(); rebuildEconomy(); renderStatsDerivados(); markDirty(1); updateStepStatus(); });
+  r.addEventListener('change', ()=>{ applyProfSlotUI(); recalcAttr(); rebuildPools(); rebuildEconomy(); renderStatsDerivados(); updateHumanBoxVisibility(); calcSkills(); markDirty(1); updateStepStatus(); });
 }
 
 function buildStepsMenu(){
@@ -210,6 +218,13 @@ function currentPgSpent(){
 }
 function enforcePgLimits(){
   const c = cfg();
+  // Ajuste fino: máximo ±5 por atributo (no tenía tope ninguno).
+  ATTRS.forEach(a=>{
+    const afEl = qs(`#af-${a}`);
+    let af = normalize5(afEl.value);
+    af = Math.max(-5, Math.min(5, af));
+    afEl.value = af;
+  });
   let spent = 0;
   ATTRS.forEach(a=>{
     const apEl = qs(`#ap-${a}`);
@@ -440,6 +455,31 @@ function renderFinalSheetV3(){
   qs('#finalSheetV3').innerHTML = `<h3 style="margin-top:0">Resumen para ficha v3</h3><div class="box"><div><b>Personaje:</b> ${qs('#personaje').value || '—'} · <b>Jugador:</b> ${qs('#jugador').value || '—'}</div><div><b>Tipo:</b> ${qs('#tipoPersonaje').value} · <b>Grupo:</b> ${qs('#grupoPrimario').value} · <b>Raza:</b> ${qs('#raza').value}</div><div><b>Atributos:</b> ${attrs}</div><div><b>Profesiones efectivas:</b> ${effectiveProfs().join(', ') || '—'}</div><div><b>Runas:</b> ${runTxt}</div><div><b>Dinero:</b> ${qs('#dineroFinal').value || '—'}</div></div>`;
   tryFillV3Iframe();
 }
+// Listas de v3 (ficha.html) en su orden real, para mapear por NOMBRE (no por índice — las listas no coinciden 1:1).
+const V3_ACAD = ["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear"];
+const V3_TEC = ["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"];
+const V3_ATL = ["Acrobacias","Resistir","Proezas"];
+const V3_SOC = ["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"];
+const V3_COMBAT = ["Distancia","Sin Armas","Arma CC"];
+const V3_INIC = ["Iniciativa","Alerta","Esquivar"];
+const V3_DISC = ["Proyección de Energía","Protección de Energía","Invocación de Energía","Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Herrero Rúnico","Tatuador Rúnico"];
+
+function fillV3Skill(doc, rama, name, val){
+  let idx;
+  const put = (sel)=>{ const e=doc.querySelector(sel); if(e) e.value = val; };
+  if(rama==='academicas'){ idx=V3_ACAD.indexOf(name); if(idx>=0) put(`.apr[data-cat="0"][data-sk="${idx}"]`); }
+  else if(rama==='tecnologicas'){ idx=V3_TEC.indexOf(name); if(idx>=0) put(`.apr[data-cat="1"][data-sk="${idx}"]`); }
+  else if(rama==='atleticas'){ idx=V3_ATL.indexOf(name); if(idx>=0) put(`.apr[data-cat="2"][data-sk="${idx}"]`); }
+  else if(rama==='sociales'){ idx=V3_SOC.indexOf(name); if(idx>=0) put(`.apr[data-cat="3"][data-sk="${idx}"]`); }
+  else if(rama==='combate'){
+    idx = V3_COMBAT.indexOf(name);
+    if(idx>=0){ put(`.capr[data-i="${idx}"]`); return; }
+    idx = V3_INIC.indexOf(name);
+    if(idx>=0) put(`.iapr[data-i="${idx}"]`);
+  }
+  else if(rama==='distorsion'){ idx=V3_DISC.indexOf(name); if(idx>=0) put(`.dhab[data-i="${idx}"]`); }
+}
+
 function tryFillV3Iframe(){
   const frame = qs('#finalV3Frame');
   if(!frame) return;
@@ -455,6 +495,32 @@ function tryFillV3Iframe(){
       setVal('nt', qs('#nt').value || '');
       setVal('Ca_b', attr('Ca')); setVal('A_b', attr('A')); setVal('P_b', attr('P')); setVal('C_b', attr('C'));
       setVal('I_b', attr('I')); setVal('F_b', attr('F')); setVal('V_b', attr('V')); setVal('H_b', attr('H'));
+
+      // Habilidades: cada .sk-apr del v4 (más la ventaja humana, si aplica) al hueco correspondiente en v3.
+      const hm = qs('#humanMode')?.value || 'none';
+      const hs1 = qs('#humanSkill1')?.value || '';
+      const hs2 = qs('#humanSkill2')?.value || '';
+      const esHumano = (qs('#raza')?.value||'Humano') === 'Humano';
+      qsa('.sk-apr').forEach(el=>{
+        const r=el.dataset.r, i=parseInt(el.dataset.i,10);
+        const name = SKILLS[r][i];
+        const key = `${r}:${name}`;
+        let val = parseInt(el.value||'0',10)||0;
+        if(esHumano){
+          if(hm==='single10' && key===hs1) val += 10;
+          if(hm==='double5' && (key===hs1||key===hs2)) val += 5;
+        }
+        if(val>0) fillV3Skill(doc, r, name, val);
+      });
+
+      // Equipo: cada línea del textarea del v4 a una fila de la tabla de v3 (id="equipoTable").
+      const equipoLineas = (qs('#equipoInicial')?.value || '').split('\n').map(l=>l.trim()).filter(Boolean);
+      const equipoInputs = [...doc.querySelectorAll('#equipoTable tr td:first-child input[type="text"]')];
+      equipoLineas.forEach((linea,i)=>{ if(equipoInputs[i]) equipoInputs[i].value = linea; });
+
+      // Dinero final.
+      setVal('dineroTotal', qs('#dineroFinal')?.value || '');
+
       if(frame.contentWindow && typeof frame.contentWindow.calc === 'function') frame.contentWindow.calc();
     }catch(_e){}
   };
@@ -567,6 +633,7 @@ function init(){
   renderRunes();
   rebuildEconomy();
   renderStatsDerivados();
+  updateHumanBoxVisibility();
   buildFullSummary();
 
   qs('#tipoPersonaje').addEventListener('change', ()=>{ enforcePgLimits(); recalcAttr(); recalcSkillBases(); applyMerDefEffects(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); markDirty(1); });
