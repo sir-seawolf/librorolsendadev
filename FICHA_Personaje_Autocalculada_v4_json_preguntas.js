@@ -87,12 +87,139 @@ let state = {
   selectedMer:[],
   selectedDef:[],
   runes:[],
-  effectiveProfs:[]
+  effectiveProfs:[],
+  compras:[],
+  armadura:null
 };
 
 const qs = s => document.querySelector(s);
 const qsa = s => [...document.querySelectorAll(s)];
 const round = x => Math.round(x);
+
+const ARMADURAS = [
+  {n:"Sin blindaje", bld:0, precio:0},
+  {n:"Ligera (Bld 1)", bld:1, precio:900},
+  {n:"Ligera Avanzada (Bld 2)", bld:2, precio:1800},
+  {n:"Media (Bld 3)", bld:3, precio:3600},
+  {n:"Pesada (Bld 4)", bld:4, precio:7200},
+  {n:"Acorazada (Bld 5)", bld:5, precio:14000},
+];
+
+const IMPL_ATRIB = [
+  {id:"F10",n:"Forge-F10 Muscular Synth",attr:"F",bonus:10,hum:5,precio:20000},
+  {id:"F15",n:"Forge-F15 Muscular Synth",attr:"F",bonus:15,hum:10,precio:40000},
+  {id:"F20",n:"Forge-F20 Titan Core",attr:"F",bonus:20,hum:20,precio:60000},
+  {id:"A10",n:"Forge-A10 Tendon Wire",attr:"A",bonus:10,hum:5,precio:20000},
+  {id:"A15",n:"Forge-A15 Tendon Wire",attr:"A",bonus:15,hum:10,precio:40000},
+  {id:"A20",n:"Forge-A20 Reflex Frame",attr:"A",bonus:20,hum:20,precio:60000},
+  {id:"C10",n:"Forge-C10 Bone Lattice",attr:"C",bonus:10,hum:5,precio:20000},
+  {id:"C15",n:"Forge-C15 Bone Lattice",attr:"C",bonus:15,hum:10,precio:40000},
+  {id:"C20",n:"Forge-C20 Iron Shell",attr:"C",bonus:20,hum:20,precio:60000},
+  {id:"H10",n:"Forge-H10 Precision Hand",attr:"H",bonus:10,hum:5,precio:20000},
+  {id:"H15",n:"Forge-H15 Precision Hand",attr:"H",bonus:15,hum:10,precio:40000},
+  {id:"H20",n:"Forge-H20 Mastercraft Arm",attr:"H",bonus:20,hum:20,precio:60000},
+  {id:"I10",n:"Ibis-I10 Cortex Boost",attr:"I",bonus:10,hum:5,precio:20000},
+  {id:"I15",n:"Ibis-I15 Cortex Boost",attr:"I",bonus:15,hum:10,precio:40000},
+  {id:"I20",n:"Ibis-I20 Apex Mind",attr:"I",bonus:20,hum:20,precio:60000},
+  {id:"P10",n:"Ibis-P10 Sensor Array",attr:"P",bonus:10,hum:5,precio:20000},
+  {id:"P15",n:"Ibis-P15 Sensor Array",attr:"P",bonus:15,hum:10,precio:40000},
+  {id:"P20",n:"Ibis-P20 Horizon Eye",attr:"P",bonus:20,hum:20,precio:60000},
+  {id:"V10",n:"Ibis-V10 Will Core",attr:"V",bonus:10,hum:5,precio:20000},
+  {id:"V15",n:"Ibis-V15 Will Core",attr:"V",bonus:15,hum:10,precio:40000},
+  {id:"V20",n:"Ibis-V20 Iron Will",attr:"V",bonus:20,hum:20,precio:60000},
+  {id:"Ca10",n:"Ibis-Ca10 Social Interface",attr:"Ca",bonus:10,hum:5,precio:20000},
+  {id:"Ca15",n:"Ibis-Ca15 Social Interface",attr:"Ca",bonus:15,hum:10,precio:40000},
+  {id:"Ca20",n:"Ibis-Ca20 Charisma Core",attr:"Ca",bonus:20,hum:20,precio:60000},
+];
+
+const IMPL_HAB = [
+  {id:"toolMk1",n:"Forge Tool-Hand Mk1",zona:"Brazo D",efecto:"+5 técnicas con herramientas / elimina penalizador equipo básico",hum:5,precio:5000},
+  {id:"toolMk2",n:"Forge Tool-Hand Mk2",zona:"Brazo D",efecto:"+10 técnicas / elimina penalizador equipo inadecuado",hum:5,precio:50000},
+  {id:"swim",n:"Forge Swim-Limb",zona:"Pierna D",efecto:"Elimina penalizador natación / +10 natación",hum:5,precio:5000},
+  {id:"grip",n:"Forge Grip-Sole",zona:"Pierna I",efecto:"Elimina penalizador escalada / +5 escalada",hum:5,precio:5000},
+  {id:"shock",n:"Forge Shock-Leg",zona:"Pierna D",efecto:"Elimina daño caídas ≤3m / mitad daño caídas mayores",hum:5,precio:8000},
+  {id:"subMk1",n:"Forge Subdermal Mk1",zona:"Sistema Óseo",efecto:"+1 blindaje natural, todas las zonas",hum:10,precio:30000},
+  {id:"subMk2",n:"Forge Subdermal Mk2",zona:"Sistema Óseo",efecto:"+2 blindaje natural, todas las zonas",hum:20,precio:80000},
+  {id:"extra",n:"Forge Extra-Limb",zona:"Sistema Muscular",efecto:"Ataque adicional a mitad CC / +1 acción de manipulación",hum:20,precio:120000},
+  {id:"nightMk1",n:"Ibis Night-Eye Mk1",zona:"Ojos",efecto:"Elimina penalizador oscuridad parcial / −10 oscuridad total",hum:5,precio:10000},
+  {id:"nightMk2",n:"Ibis Night-Eye Mk2",zona:"Ojos",efecto:"Elimina penalizador oscuridad total",hum:10,precio:100000},
+  {id:"zoom",n:"Ibis Zoom-Eye",zona:"Ojos",efecto:"Elimina penalizador distancia ≤200m / +5 precisión distancia",hum:5,precio:15000},
+  {id:"thermal",n:"Ibis Thermal-Eye",zona:"Ojos",efecto:"Detecta calor en oscuridad / +10 Alerta contra ocultos",hum:5,precio:20000,skillBonus:{rama:'combate',name:'Alerta',val:10}},
+  {id:"reflexMk1",n:"Ibis Reflex-Chip Mk1",zona:"Sistema Neural",efecto:"+10 Iniciativa",hum:5,precio:25000,skillBonus:{rama:'combate',name:'Iniciativa',val:10}},
+  {id:"reflexMk2",n:"Ibis Reflex-Chip Mk2",zona:"Sistema Neural",efecto:"+20 Iniciativa",hum:10,precio:100000,skillBonus:{rama:'combate',name:'Iniciativa',val:20}},
+  {id:"audio",n:"Ibis Audio-Amp",zona:"Sistema Neural",efecto:"Elimina penalizador ruido / +5 escucha",hum:5,precio:8000},
+  {id:"lang",n:"Ibis Lang-Chip",zona:"Sistema Neural",efecto:"Comprensión básica de idiomas del mosaico",hum:5,precio:30000},
+  {id:"neuralRack",n:"Ibis Neural-Rack",zona:"Sistema Neural",efecto:"Rack de Chips implantado al 40% (en vez de 30%)",hum:10,precio:50000},
+];
+
+function dineroDisponible(){
+  return parseInt((qs('#dineroFinal')?.value||'0').replace(/[^\d-]/g,''),10) || 0;
+}
+function comprasTotal(){ return state.compras.reduce((a,c)=>a+c.precio,0); }
+function implantBonus(a){
+  return state.compras.filter(c=>c.tipo==='implante-atrib' && c.attr===a).reduce((s,c)=>s+c.bonus,0);
+}
+function armorBld(){ return state.armadura ? state.armadura.bld : 0; }
+
+function buildTiendaSelects(){
+  const sa = qs('#tiendaArmadura');
+  if(sa) sa.innerHTML = ARMADURAS.map(a=>`<option value="${a.n}">${a.n} — ${a.precio} PC</option>`).join('');
+  const sat = qs('#tiendaImplAtrib');
+  if(sat) sat.innerHTML = IMPL_ATRIB.map(i=>`<option value="${i.id}">${i.n} (+${i.bonus} ${i.attr}, −${i.hum} Hum, ${i.precio} PC)</option>`).join('');
+  const sah = qs('#tiendaImplHab');
+  if(sah) sah.innerHTML = IMPL_HAB.map(i=>`<option value="${i.id}">${i.n} (${i.zona}, −${i.hum} Hum, ${i.precio} PC)</option>`).join('');
+}
+
+function comprarArmadura(){
+  const sel = qs('#tiendaArmadura')?.value;
+  const arm = ARMADURAS.find(a=>a.n===sel);
+  if(!arm) return;
+  const disp = dineroDisponible() + (state.armadura ? state.armadura.precio : 0);
+  if(arm.precio > disp){ alert('No hay dinero suficiente.'); return; }
+  state.armadura = arm;
+  rebuildEconomy(); renderTienda(); buildFullSummary();
+}
+window.comprarArmadura = comprarArmadura;
+
+function comprarImplante(tipo){
+  const cat = tipo==='atrib' ? IMPL_ATRIB : IMPL_HAB;
+  const selId = tipo==='atrib' ? qs('#tiendaImplAtrib')?.value : qs('#tiendaImplHab')?.value;
+  const it = cat.find(x=>x.id===selId);
+  if(!it) return;
+  if(tipo==='atrib' && state.compras.some(c=>c.tipo==='implante-atrib' && c.attr===it.attr)){
+    alert(`Ya tienes un implante de ${it.attr} — un solo implante por atributo (exclusividad, CAP04e).`); return;
+  }
+  if(tipo==='hab' && state.compras.some(c=>c.tipo==='implante-hab' && c.zona===it.zona && c.n===it.n)){
+    alert('Ya tienes ese implante.'); return;
+  }
+  if(it.precio > dineroDisponible()){ alert('No hay dinero suficiente.'); return; }
+  state.compras.push({tipo: tipo==='atrib'?'implante-atrib':'implante-hab', n:it.n, precio:it.precio, hum:it.hum, attr:it.attr, bonus:it.bonus, zona:it.zona, efecto:it.efecto, skillBonus:it.skillBonus});
+  rebuildEconomy(); recalcAttr(); recalcSkillBases(); calcSkills(); renderStatsDerivados(); renderTienda(); buildFullSummary();
+}
+window.comprarImplante = comprarImplante;
+
+function quitarCompra(idx){
+  state.compras.splice(idx,1);
+  rebuildEconomy(); recalcAttr(); recalcSkillBases(); calcSkills(); renderStatsDerivados(); renderTienda(); buildFullSummary();
+}
+window.quitarCompra = quitarCompra;
+
+function renderTienda(){
+  const ad = qs('#armaduraActual');
+  if(ad){
+    ad.innerHTML = state.armadura
+      ? `Llevas: <b>${state.armadura.n}</b> — ${state.armadura.precio} PC <button class="btn" type="button" onclick="state.armadura=null; rebuildEconomy(); renderTienda(); buildFullSummary();">Quitar</button>`
+      : 'Sin armadura comprada.';
+  }
+  const lista = qs('#implantesLista');
+  if(lista){
+    const impl = state.compras.filter(c=>c.tipo.startsWith('implante'));
+    lista.innerHTML = impl.length ? impl.map(c=>{
+      const idxReal = state.compras.indexOf(c);
+      return `<div>${c.n}${c.attr?` (+${c.bonus} ${c.attr})`:` (${c.zona})`} — ${c.precio} PC, −${c.hum} Humanidad <button class="btn" type="button" onclick="quitarCompra(${idxReal})">Quitar</button></div>`;
+    }).join('') : '<div class="muted">Ningún implante comprado.</div>';
+  }
+}
 
 function attr(a){ return parseInt(qs(`#at-${a}`)?.value || "0", 10) || 0; }
 
@@ -112,7 +239,8 @@ function renderStatsDerivados(){
   const carga = Math.round((F+C)/4);
   const iniciado = initiatedTakes() >= 1;
   const alma = iniciado ? 10 : 8;
-  const humanidad = 100;
+  const humCompras = state.compras.reduce((s,c)=>s+c.hum,0);
+  const humanidad = Math.max(0, 100 - humCompras);
   const almaAccesible = Math.floor(humanidad/10);
   box.innerHTML = `
     <div><b>Vida por zona:</b> ${vida} PV (Cabeza/Torso/cada Brazo/cada Pierna — redondeo hacia arriba)</div>
@@ -252,7 +380,8 @@ function recalcAttr(){
     const raw = (parseInt(qs(`#ab-${a}`).value,10)||0)+af+ap+racial+ntAdd;
     // Techo de creación: 50 + el modificador racial de ESTE atributo (positivo o negativo).
     // No usar rCfg.maxAttr fijo: eso anularía el propio bonus racial (p.ej. Kawalapiti +10 CON).
-    qs(`#af-${a}`).value = af; qs(`#ap-${a}`).value = ap; qs(`#at-${a}`).value = Math.min(50 + racial, raw);
+    // Los implantes (CAP04e) se suman DESPUÉS del techo de creación — es su función explícita superarlo.
+    qs(`#af-${a}`).value = af; qs(`#ap-${a}`).value = ap; qs(`#at-${a}`).value = Math.min(50 + racial, raw) + implantBonus(a);
   });
   qs('#pgRest').textContent = (c.pg - currentPgSpent());
   const special = qs('#specialMerDef')?.value || '';
@@ -375,7 +504,8 @@ function calcSkills(){
       if(hm === 'single10' && key === hs1) humBonus = 10;
       if(hm === 'double5' && (key === hs1 || key === hs2)) humBonus = 5;
     }
-    t.value=Math.max(0,Math.min(90,b+a+m+humBonus));
+    const implSkillBonus = state.compras.filter(c=>c.skillBonus && c.skillBonus.rama===r && c.skillBonus.name===skillName).reduce((s,c)=>s+c.skillBonus.val,0);
+    t.value=Math.max(0,Math.min(90,b+a+m+humBonus+implSkillBonus));
   });
   paintPoolChipsWithUsage();
 }
@@ -441,10 +571,14 @@ function rebuildEconomy(){
   });
   const intBonus = attr("I") * 100;
   const savings = qsa('.mer:checked').some(x=>x.value==="Ahorros") ? 10000 : 0;
-  const total = money + intBonus + savings;
+  const gastoArmadura = state.armadura ? state.armadura.precio : 0;
+  const gastoCompras = comprasTotal();
+  if(state.armadura && state.armadura.precio>0) lines.push(`Armadura: ${state.armadura.n} (−${gastoArmadura} PC)`);
+  state.compras.forEach(c=>lines.push(`${c.n}${c.attr?` (+${c.bonus} ${c.attr})`:` (${c.zona})`} — implante, −${c.hum} Humanidad (−${c.precio} PC)`));
+  const total = money + intBonus + savings - gastoArmadura - gastoCompras;
   qs('#equipoInicial').value = lines.join('\n');
   qs('#dineroFinal').value = `${total} PC`;
-  qs('#ecoSummary').innerHTML = `<b>Ingreso por categorías distintas:</b> ${money} PC<br><b>Bono INT:</b> ${intBonus} PC<br><b>Ahorros:</b> ${savings} PC<br><b>Total:</b> ${total} PC`;
+  qs('#ecoSummary').innerHTML = `<b>Ingreso por categorías distintas:</b> ${money} PC<br><b>Bono INT:</b> ${intBonus} PC<br><b>Ahorros:</b> ${savings} PC<br><b>Gastado en armadura/implantes:</b> −${gastoArmadura+gastoCompras} PC<br><b>Total:</b> ${total} PC`;
   buildFullSummary(); updateStepStatus();
 }
 window.rebuildEconomy = rebuildEconomy;
@@ -520,6 +654,29 @@ function tryFillV3Iframe(){
 
       // Dinero final.
       setVal('dineroTotal', qs('#dineroFinal')?.value || '');
+
+      // Implantes comprados → tabla de implantes de v3 (3 filas: Nombre / Zona / Efecto / Precio).
+      const implRows = [...doc.querySelectorAll('#implTable tr')];
+      state.compras.filter(c=>c.tipo.startsWith('implante')).forEach((c,i)=>{
+        const row = implRows[i];
+        if(!row) return;
+        const inputs = row.querySelectorAll('input[type="text"]');
+        const sel = row.querySelector('select.implSlot');
+        const num = row.querySelector('input[type="number"]');
+        if(inputs[0]) inputs[0].value = c.n;
+        if(sel){
+          const zonaGuess = c.zona || (c.attr==='F'||c.attr==='C' ? 'Sistema Óseo' : c.attr==='A'||c.attr==='H' ? 'Sistema Muscular' : 'Sistema Neural');
+          if([...sel.options].some(o=>o.value===zonaGuess)) sel.value = zonaGuess;
+        }
+        if(inputs[1]) inputs[1].value = c.efecto || (c.attr ? `+${c.bonus} ${c.attr}` : '');
+        if(num) num.value = c.precio;
+      });
+      if(doc.defaultView && typeof doc.defaultView.checkSlots === 'function') doc.defaultView.checkSlots();
+
+      // Armadura comprada → Blindaje de todas las zonas de localización.
+      if(state.armadura && state.armadura.bld>0){
+        doc.querySelectorAll('#locGrid tr td:nth-child(2) input').forEach(el=>{ el.value = state.armadura.bld; });
+      }
 
       if(frame.contentWindow && typeof frame.contentWindow.calc === 'function') frame.contentWindow.calc();
     }catch(_e){}
@@ -624,6 +781,7 @@ function init(){
   rebuildAttrTable();
   buildSkills();
   buildMerDef();
+  buildTiendaSelects();
 
   enforcePgLimits();
   recalcAttr();
@@ -634,6 +792,7 @@ function init(){
   rebuildEconomy();
   renderStatsDerivados();
   updateHumanBoxVisibility();
+  renderTienda();
   buildFullSummary();
 
   qs('#tipoPersonaje').addEventListener('change', ()=>{ enforcePgLimits(); recalcAttr(); recalcSkillBases(); applyMerDefEffects(); rebuildEconomy(); renderStatsDerivados(); buildFullSummary(); markDirty(1); });

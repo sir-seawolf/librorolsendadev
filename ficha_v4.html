@@ -187,6 +187,27 @@
       <div id="ecoSummary" class="box" style="margin-top:8px"></div>
       <label style="margin-top:8px">Equipo inicial (editable)<textarea id="equipoInicial"></textarea></label>
       <label>Dinero final editable<input id="dineroFinal"></label>
+
+      <div class="box" style="margin-top:12px">
+        <h3>Tienda — Armadura (CAP03)</h3>
+        <div class="grid">
+          <label>Tipo<select id="tiendaArmadura"></select></label>
+          <label>&nbsp;<button class="btn alt" type="button" onclick="comprarArmadura()">Comprar / cambiar</button></label>
+        </div>
+        <div id="armaduraActual" class="muted" style="margin-top:6px"></div>
+      </div>
+
+      <div class="box" style="margin-top:8px">
+        <h3>Tienda — Implantes (CAP04e, Ibis-Forge)</h3>
+        <div class="muted">Un implante por atributo o función corporal — no se puede repetir. Reduce Humanidad al instalarlo.</div>
+        <div class="grid" style="margin-top:6px">
+          <label>Implantes de atributo<select id="tiendaImplAtrib"></select></label>
+          <label>&nbsp;<button class="btn alt" type="button" onclick="comprarImplante('atrib')">Comprar</button></label>
+          <label>Implantes de habilidad<select id="tiendaImplHab"></select></label>
+          <label>&nbsp;<button class="btn alt" type="button" onclick="comprarImplante('hab')">Comprar</button></label>
+        </div>
+        <div id="implantesLista" class="box" style="margin-top:6px"></div>
+      </div>
     </section>
 
     <section class="step" data-step="9">
