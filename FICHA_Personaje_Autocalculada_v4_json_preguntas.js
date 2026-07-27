@@ -96,6 +96,567 @@ const qs = s => document.querySelector(s);
 const qsa = s => [...document.querySelectorAll(s)];
 const round = x => Math.round(x);
 
+// ===================== VEHÍCULOS (CAP05b) =====================
+const VEH_NIVELES = [
+  {n:1, tam:"Ligero", huecos:3, maniobra:15, plazas:2, carga:0.2, precio:1000, pde:50},
+  {n:2, tam:"Medio", huecos:6, maniobra:5, plazas:5, carga:1, precio:12000, pde:100},
+  {n:3, tam:"Grande", huecos:12, maniobra:0, plazas:20, carga:3, precio:60000, pde:300},
+  {n:4, tam:"Enorme", huecos:24, maniobra:-5, plazas:50, carga:40, precio:200000, pde:1000},
+  {n:5, tam:"Colosal", huecos:48, maniobra:-15, plazas:250, carga:800, precio:1000000, pde:10000},
+];
+const VEH_CALIDADES = [
+  {n:"Básica", precioMult:0.5, maniobra:-5, pdePct:-0.10, huecosAdd:-1},
+  {n:"Estándar", precioMult:1, maniobra:0, pdePct:0, huecosAdd:0},
+  {n:"Premium", precioMult:2, maniobra:5, pdePct:0.20, huecosAdd:2},
+];
+const VEH_PROPULSIONES = [
+  {n:"Terrestre/Acuático", mult:1, mov:"50 km/h", nt:0},
+  {n:"Submarino", mult:2, mov:"100 km/h", nt:4},
+  {n:"Aerodeslizador", mult:5, mov:"500 km/h", nt:6},
+  {n:"Volador", mult:4, mov:"1.000 km/h", nt:5},
+  {n:"AV (aéreo-vehículo)", mult:8, mov:"1.500 km/h", nt:6},
+  {n:"Espacial planetario", mult:12, mov:"15.000 km/h", nt:6},
+  {n:"Espacial", mult:20, mov:"150.000 km/h", nt:7},
+  {n:"Salto", mult:30, mov:"1 año luz", nt:8},
+  {n:"Mech (incl. servo)", mult:12, mov:"variable", nt:7},
+];
+const VEH_BLINDAJES = [
+  {n:"Sin blindaje", bld:0, pdeExtra:0, precio:0, maniobra:15, huecos:0},
+  {n:"Micro Clase 1", bld:5, pdeExtra:10, precio:5000, maniobra:10, huecos:1},
+  {n:"Ligera Clase 1", bld:7, pdeExtra:14, precio:10000, maniobra:5, huecos:1},
+  {n:"Media Clase 1", bld:9, pdeExtra:18, precio:20000, maniobra:-10, huecos:2},
+  {n:"Dura Clase 1", bld:11, pdeExtra:22, precio:40000, maniobra:-20, huecos:2},
+  {n:"Pesada Clase 1", bld:12, pdeExtra:24, precio:60000, maniobra:-25, huecos:3},
+  {n:"Asalto Clase 1", bld:15, pdeExtra:30, precio:100000, maniobra:0, huecos:3},
+];
+const VEH_ARMAS = [
+  {n:"Espada Clase 1 (CC energía)", puntería:10, dano:12, precio:7600, huecos:1},
+  {n:"Hacha Clase 1 (CC energía)", puntería:0, dano:14, precio:8000, huecos:1},
+  {n:"Mazo Clase 1 (CC energía)", puntería:-30, dano:16, precio:7700, huecos:1},
+  {n:"Taladro Clase 1 (CC energía)", puntería:-10, dano:11, precio:6500, huecos:1},
+  {n:"Guadaña Clase 1 (CC energía)", puntería:-1, dano:14, precio:8300, huecos:1},
+  {n:"Pistola láser Clase 1", puntería:0, dano:10, precio:12000, huecos:1},
+  {n:"Rifle láser Clase 1", puntería:0, dano:12, precio:17000, huecos:2},
+  {n:"Cañón láser Clase 1", puntería:0, dano:15, precio:10600, huecos:2},
+  {n:"Torretas láser Clase 1", puntería:0, dano:14, precio:20000, huecos:2},
+  {n:"Cañón de plasma Clase 1", puntería:0, dano:17, precio:12600, huecos:2},
+  {n:"Gatling Clase 1", puntería:-2, dano:13, precio:14700, huecos:2},
+  {n:"Cañón Clase 1 (proyectil)", puntería:0, dano:16, precio:17000, huecos:3},
+  {n:"Rifle de pulso Clase 1", puntería:2, dano:0, precio:11100, huecos:1, nota:"No hace daño: dispara ancla, engancha si supera blindaje."},
+  {n:"Lanzagranadas Clase 1", puntería:-20, dano:17, precio:9800, huecos:2},
+  {n:"Lanzamisiles Clase 1", puntería:0, dano:19, precio:15200, huecos:2},
+];
+const VEH_COMPLEMENTOS = [
+  {n:"Estanco", pctPB:0.5, huecos:0, efecto:"Estanco en cualquier ambiente, 3h autonomía"},
+  {n:"Camuflaje pasivo", pctPB:0.1, huecos:1, efecto:"+10 acechar/esconderse"},
+  {n:"Camuflaje activo", pctPB:0.5, huecos:1, efecto:"+20 acechar/esconderse"},
+  {n:"Servo asistida", pctPB:10, huecos:0, efecto:"Reduce penalizadores de maniobra"},
+  {n:"Remolque", pctFinal:0.10, huecos:0, efecto:"−10% maniobra"},
+  {n:"Soporte vital (por plaza)", precioPorPlaza:10000, huecos:0, efecto:"Atmósfera y temperatura para humanos"},
+  {n:"Sistemas estancos (submarino)", pctPB:2, huecos:0, efecto:"Impermeabilización completa"},
+  {n:"Cabina expuesta", precioFijo:-20000, huecos:0, efecto:"+10 maniobra. Cabina puede ser impactada con apuntado cuidadoso"},
+  {n:"Segunda mano", pctFinal:-0.5, huecos:0, efecto:"Riesgo de fallo 5-20%"},
+];
+
+let vState = { nivel:1, calidad:"Estándar", propulsion:"Terrestre/Acuático", blindaje:"Sin blindaje", armas:[], complementos:[] };
+
+function showMode(m){
+  qs('#modoPersonaje').style.display = m==='personaje' ? '' : 'none';
+  qs('#modoVehiculo').style.display = m==='vehiculo' ? '' : 'none';
+  qs('#modoRefugio').style.display = m==='refugio' ? '' : 'none';
+  qs('#modoMaster').style.display = m==='master' ? '' : 'none';
+  qs('#modeBtnPersonaje').className = m==='personaje' ? 'btn alt' : 'btn';
+  qs('#modeBtnVehiculo').className = m==='vehiculo' ? 'btn alt' : 'btn';
+  qs('#modeBtnRefugio').className = m==='refugio' ? 'btn alt' : 'btn';
+  qs('#modeBtnMaster').className = m==='master' ? 'btn alt' : 'btn';
+  if(m==='vehiculo') renderVehiculo();
+  if(m==='refugio') renderRefugios();
+}
+window.showMode = showMode;
+
+function vehHuecosTotal(){
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const cal = VEH_CALIDADES.find(x=>x.n===vState.calidad);
+  return niv.huecos + cal.huecosAdd;
+}
+function vehHuecosUsados(){
+  const bl = VEH_BLINDAJES.find(x=>x.n===vState.blindaje);
+  const armasH = vState.armas.reduce((s,a)=>s+a.huecos,0);
+  const complH = vState.complementos.reduce((s,c)=>s+(c.huecos||0),0);
+  return (bl?bl.huecos:0) + armasH + complH;
+}
+function vehPrecioBase(){
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const cal = VEH_CALIDADES.find(x=>x.n===vState.calidad);
+  return Math.round(niv.precio * cal.precioMult);
+}
+function vehPrecioTotal(){
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const prop = VEH_PROPULSIONES.find(x=>x.n===vState.propulsion);
+  const bl = VEH_BLINDAJES.find(x=>x.n===vState.blindaje);
+  const pb = vehPrecioBase();
+  let precioProp = Math.round(pb * prop.mult);
+  let total = precioProp + (bl?bl.precio:0);
+  total += vState.armas.reduce((s,a)=>s+a.precio,0);
+  vState.complementos.forEach(c=>{
+    if(c.precioFijo!==undefined) total += c.precioFijo;
+    if(c.pctPB!==undefined) total += Math.round(pb * c.pctPB);
+    if(c.precioPorPlaza!==undefined) total += c.precioPorPlaza * niv.plazas;
+  });
+  vState.complementos.forEach(c=>{ if(c.pctFinal!==undefined) total += Math.round(total * c.pctFinal); });
+  return Math.max(0, Math.round(total));
+}
+function vehManiobraTotal(){
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const cal = VEH_CALIDADES.find(x=>x.n===vState.calidad);
+  const bl = VEH_BLINDAJES.find(x=>x.n===vState.blindaje);
+  return niv.maniobra + cal.maniobra + (bl?bl.maniobra:0);
+}
+function vehPdeTotal(){
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const cal = VEH_CALIDADES.find(x=>x.n===vState.calidad);
+  const bl = VEH_BLINDAJES.find(x=>x.n===vState.blindaje);
+  const base = Math.round(niv.pde * (1+cal.pdePct));
+  return {estructura: base, extraBlindaje: bl?bl.pdeExtra:0};
+}
+
+function buildVehSelects(){
+  qs('#vehNivel').innerHTML = VEH_NIVELES.map(v=>`<option value="${v.n}">N${v.n} ${v.tam} — ${v.precio} PC base</option>`).join('');
+  qs('#vehCalidad').innerHTML = VEH_CALIDADES.map(v=>`<option>${v.n}</option>`).join('');
+  qs('#vehPropulsion').innerHTML = VEH_PROPULSIONES.map(v=>`<option>${v.n}</option>`).join('');
+  qs('#vehBlindaje').innerHTML = VEH_BLINDAJES.map(v=>`<option>${v.n}</option>`).join('');
+  qs('#vehArmaSelect').innerHTML = VEH_ARMAS.map((a,i)=>`<option value="${i}">${a.n} — Dñ${a.dano} — ${a.precio} PC — ${a.huecos} hueco(s)</option>`).join('');
+  qs('#vehComplSelect').innerHTML = VEH_COMPLEMENTOS.map((c,i)=>`<option value="${i}">${c.n} — ${c.efecto}</option>`).join('');
+}
+
+function anadirArma(){
+  const i = parseInt(qs('#vehArmaSelect').value,10);
+  const a = VEH_ARMAS[i];
+  if(vehHuecosUsados()+a.huecos > vehHuecosTotal()){ alert('No quedan huecos suficientes.'); return; }
+  vState.armas.push({...a});
+  renderVehiculo();
+}
+window.anadirArma = anadirArma;
+function quitarArma(i){ vState.armas.splice(i,1); renderVehiculo(); }
+window.quitarArma = quitarArma;
+
+function anadirComplemento(){
+  const i = parseInt(qs('#vehComplSelect').value,10);
+  const c = VEH_COMPLEMENTOS[i];
+  if((c.huecos||0) && vehHuecosUsados()+c.huecos > vehHuecosTotal()){ alert('No quedan huecos suficientes.'); return; }
+  vState.complementos.push({...c});
+  renderVehiculo();
+}
+window.anadirComplemento = anadirComplemento;
+function quitarComplemento(i){ vState.complementos.splice(i,1); renderVehiculo(); }
+window.quitarComplemento = quitarComplemento;
+
+function renderVehiculo(){
+  vState.nivel = parseInt(qs('#vehNivel')?.value||1,10);
+  vState.calidad = qs('#vehCalidad')?.value || "Estándar";
+  vState.propulsion = qs('#vehPropulsion')?.value || "Terrestre/Acuático";
+  vState.blindaje = qs('#vehBlindaje')?.value || "Sin blindaje";
+
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const prop = VEH_PROPULSIONES.find(x=>x.n===vState.propulsion);
+  const bl = VEH_BLINDAJES.find(x=>x.n===vState.blindaje);
+  const pde = vehPdeTotal();
+  const precio = vehPrecioTotal();
+  const presupuesto = parseInt(qs('#vehPresupuesto')?.value||'0',10)||0;
+  const huecosT = vehHuecosTotal(), huecosU = vehHuecosUsados();
+
+  qs('#vehArmasLista').innerHTML = vState.armas.length ? vState.armas.map((a,i)=>`<div>${a.n} — Dñ${a.dano}, ${a.precio} PC, ${a.huecos} hueco(s) <button class="btn" type="button" onclick="quitarArma(${i})">Quitar</button></div>`).join('') : '<span class="muted">Sin armas.</span>';
+  qs('#vehComplLista').innerHTML = vState.complementos.length ? vState.complementos.map((c,i)=>`<div>${c.n} — ${c.efecto} <button class="btn" type="button" onclick="quitarComplemento(${i})">Quitar</button></div>`).join('') : '<span class="muted">Sin complementos.</span>';
+
+  const sobrepresupuesto = precio > presupuesto;
+  qs('#vehResumen').innerHTML = `
+    <div><b>Nombre:</b> ${qs('#vehNombre')?.value || '(sin nombre)'}</div>
+    <div><b>Nivel:</b> N${niv.n} ${niv.tam} · <b>Calidad:</b> ${vState.calidad} · <b>Propulsión:</b> ${vState.propulsion} (NT mín. ${prop.nt})</div>
+    <div><b>Maniobra:</b> ${vehManiobraTotal()} · <b>Velocidad:</b> ${prop.mov} · <b>Plazas:</b> ${niv.plazas} · <b>Carga:</b> ${niv.carga} t</div>
+    <div><b>Blindaje:</b> ${bl.bld} · <b>PDE estructura:</b> ${pde.estructura} · <b>PDE extra blindaje:</b> ${pde.extraBlindaje}</div>
+    <div><b>Huecos:</b> ${huecosU} / ${huecosT} ${huecosU>huecosT?'⚠️ excedido':''}</div>
+    <div style="margin-top:6px"><b>Precio total:</b> <span style="${sobrepresupuesto?'color:#b91c1c;font-weight:bold':''}">${precio} PC</span> — Presupuesto: ${presupuesto} PC ${sobrepresupuesto?'⚠️ por encima del presupuesto':''}</div>
+  `;
+}
+window.renderVehiculo = renderVehiculo;
+
+function resetVehiculo(){
+  vState = { nivel:1, calidad:"Estándar", propulsion:"Terrestre/Acuático", blindaje:"Sin blindaje", armas:[], complementos:[] };
+  qs('#vehNombre').value=''; qs('#vehNivel').value='1'; qs('#vehCalidad').value='Estándar';
+  qs('#vehPropulsion').value='Terrestre/Acuático'; qs('#vehBlindaje').value='Sin blindaje';
+  renderVehiculo();
+}
+window.resetVehiculo = resetVehiculo;
+
+function randomVehiculo(){
+  const presupuesto = parseInt(qs('#vehPresupuesto')?.value||'50000',10)||50000;
+  vState = { nivel:1, calidad:"Estándar", propulsion:"Terrestre/Acuático", blindaje:"Sin blindaje", armas:[], complementos:[] };
+  // Nivel/calidad/propulsión al azar dentro de lo que el presupuesto pueda pagar (aproximado, se ajusta si excede).
+  const nivelesOk = VEH_NIVELES.filter(n=>n.precio<=presupuesto);
+  vState.nivel = (nivelesOk.length?nivelesOk[Math.floor(Math.random()*nivelesOk.length)]:VEH_NIVELES[0]).n;
+  vState.calidad = VEH_CALIDADES[Math.floor(Math.random()*VEH_CALIDADES.length)].n;
+  vState.propulsion = VEH_PROPULSIONES[Math.floor(Math.random()*3)].n; // limitado a las 3 más baratas por defecto
+  vState.blindaje = VEH_BLINDAJES[Math.floor(Math.random()*4)].n;
+  qs('#vehNivel').value = vState.nivel; qs('#vehCalidad').value = vState.calidad;
+  qs('#vehPropulsion').value = vState.propulsion; qs('#vehBlindaje').value = vState.blindaje;
+  // Añade 0-2 armas y 0-1 complemento si hay huecos y presupuesto, ajustando si se pasa.
+  for(let i=0;i<2;i++){
+    if(vehHuecosUsados() >= vehHuecosTotal()) break;
+    const candidatos = VEH_ARMAS.filter(a=>a.huecos <= (vehHuecosTotal()-vehHuecosUsados()));
+    if(!candidatos.length || Math.random()<0.4) continue;
+    vState.armas.push({...candidatos[Math.floor(Math.random()*candidatos.length)]});
+  }
+  if(Math.random()<0.5 && vehHuecosUsados()<vehHuecosTotal()){
+    const cIdx = Math.floor(Math.random()*VEH_COMPLEMENTOS.length);
+    vState.complementos.push({...VEH_COMPLEMENTOS[cIdx]});
+  }
+  if(!qs('#vehNombre').value) qs('#vehNombre').value = 'Vehículo sin nombre';
+  renderVehiculo();
+  guardarVehiculoSnapshot();
+}
+window.randomVehiculo = randomVehiculo;
+
+let vehiculosGuardados = [];
+function guardarVehiculoSnapshot(){
+  const niv = VEH_NIVELES.find(x=>x.n===vState.nivel);
+  const prop = VEH_PROPULSIONES.find(x=>x.n===vState.propulsion);
+  vehiculosGuardados.push({
+    nombre: qs('#vehNombre')?.value || 'Vehículo sin nombre',
+    resumen: `N${niv.n} ${niv.tam} · ${vState.calidad} · ${vState.propulsion} (${prop.mov}) · Maniobra ${vehManiobraTotal()} · PDE ${vehPdeTotal().estructura}+${vehPdeTotal().extraBlindaje} · ${vState.armas.length} arma(s) · ${vehPrecioTotal().toLocaleString()} PC`
+  });
+  renderVehiculosGuardados();
+}
+function quitarVehiculoGuardado(i){ vehiculosGuardados.splice(i,1); renderVehiculosGuardados(); }
+window.quitarVehiculoGuardado = quitarVehiculoGuardado;
+function renderVehiculosGuardados(){
+  const html = vehiculosGuardados.length ? vehiculosGuardados.map((v,i)=>`<div>${v.nombre} — ${v.resumen} <button class="btn" type="button" onclick="quitarVehiculoGuardado(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ningún vehículo generado todavía.</span>';
+  const m = qs('#vehiculosGuardadosListaMaster'); if(m) m.innerHTML = html;
+}
+window.renderVehiculosGuardados = renderVehiculosGuardados;
+// ===================== FIN VEHÍCULOS =====================
+
+// ===================== REFUGIOS Y BASES (CAP04d) =====================
+const BASES_CFG = [
+  {n:"Refugio", desc:"Escondite, piso franco", costeMin:2000, costeMax:10000, tiempo:"Días", mantenimiento:200, dan:"Dormir seguro, almacén pequeño, punto de respaldo de Necrochip"},
+  {n:"Puesto", desc:"Pequeña base operativa", costeMin:30000, costeMax:80000, tiempo:"Semanas", mantenimiento:1000, dan:"Taller básico (auto-reparación a mitad de coste, CAP05b), 2-4 de tripulación"},
+  {n:"Taller-base", desc:"Centro de operaciones", costeMin:150000, costeMax:500000, tiempo:"1-3 meses", mantenimiento:5000, dan:"Fabricación nivel Norton, hangar de vehículo, red de contactos"},
+  {n:"Asentamiento", desc:"Comunidad propia", costeMin:1000000, costeMax:5000000, tiempo:"Meses", mantenimientoTxt:"Salarios de tus Unidades", dan:"Genera ingreso (producción, rentas, servicios)"},
+  {n:"Nodo", desc:"Punto de poder en la Urdimbre", costeMin:20000000, costeMax:20000000, tiempo:"Evento de campaña", mantenimientoTxt:"Enorme", dan:"Poder real, y diana para las corps"},
+];
+let refugios = [];
+
+function buildRefSelect(){
+  qs('#refNivel').innerHTML = BASES_CFG.map(b=>`<option>${b.n}</option>`).join('');
+  renderRefugioForm();
+}
+function currentBaseCfg(){ return BASES_CFG.find(b=>b.n===(qs('#refNivel')?.value||"Refugio")); }
+function renderRefugioForm(){
+  const b = currentBaseCfg();
+  if(!b) return;
+  qs('#refInfo').innerHTML = `${b.desc} — Rango: ${b.costeMin.toLocaleString()}-${b.costeMax.toLocaleString()} PC · Tiempo: ${b.tiempo} · Mantenimiento/mes: ${b.mantenimiento?b.mantenimiento.toLocaleString()+' PC':b.mantenimientoTxt} · Da: ${b.dan}`;
+  if(!qs('#refCoste').value) qs('#refCoste').value = b.costeMin;
+}
+window.renderRefugioForm = renderRefugioForm;
+
+function anadirRefugio(){
+  const b = currentBaseCfg();
+  const tomado = qs('#refTomado').value === 'si';
+  let coste = parseInt(qs('#refCoste').value||b.costeMin,10) || b.costeMin;
+  if(coste < b.costeMin || coste > b.costeMax){ alert(`El coste debe estar entre ${b.costeMin} y ${b.costeMax} PC para un ${b.n}.`); return; }
+  if(tomado) coste = Math.round(coste*0.5);
+  refugios.push({
+    nivel: b.n, nombre: qs('#refNombre').value || `(${b.n} sin nombre)`,
+    coste, tomado, mantenimiento: b.mantenimiento || null, mantenimientoTxt: b.mantenimientoTxt || null,
+    dan: b.dan, tiempo: b.tiempo
+  });
+  qs('#refNombre').value='';
+  renderRefugios();
+}
+window.anadirRefugio = anadirRefugio;
+
+function quitarRefugio(i){ refugios.splice(i,1); renderRefugios(); }
+window.quitarRefugio = quitarRefugio;
+
+function renderRefugios(){
+  const presupuesto = parseInt(qs('#refPresupuesto')?.value||'0',10)||0;
+  const lista = qs('#refugiosLista');
+  const html = refugios.length ? refugios.map((r,i)=>`<div>${r.nombre} — <b>${r.nivel}</b> (${r.coste.toLocaleString()} PC${r.tomado?', tomado — hereda Tabla 4 y Rasgo Distintivo como complicaciones':''}), mantenimiento ${r.mantenimiento?r.mantenimiento.toLocaleString()+' PC/mes':r.mantenimientoTxt} · ${r.dan} <button class="btn" type="button" onclick="quitarRefugio(${i})">Quitar</button></div>`).join('') : '<span class="muted">Sin propiedades todavía.</span>';
+  if(lista) lista.innerHTML = html;
+  const mLista = qs('#refugiosListaMaster'); if(mLista) mLista.innerHTML = html;
+  const totalCoste = refugios.reduce((s,r)=>s+r.coste,0);
+  const totalMant = refugios.reduce((s,r)=>s+(r.mantenimiento||0),0);
+  const sobrepresupuesto = totalCoste > presupuesto;
+  const resumenHtml = `<b>Coste total:</b> <span style="${sobrepresupuesto?'color:#b91c1c;font-weight:bold':''}">${totalCoste.toLocaleString()} PC</span> — Presupuesto: ${presupuesto.toLocaleString()} PC ${sobrepresupuesto?'⚠️ por encima del presupuesto':''}<br><b>Mantenimiento mensual total (numérico):</b> ${totalMant.toLocaleString()} PC/mes${refugios.some(r=>r.mantenimientoTxt)?' + mantenimientos narrativos (Asentamiento/Nodo)':''}`;
+  if(qs('#refResumen')) qs('#refResumen').innerHTML = resumenHtml;
+}
+window.renderRefugios = renderRefugios;
+
+function resetRefugioForm(){
+  qs('#refNombre').value=''; qs('#refNivel').value='Refugio'; qs('#refTomado').value='no';
+  renderRefugioForm();
+}
+window.resetRefugioForm = resetRefugioForm;
+
+function randomRefugio(){
+  const presupuesto = parseInt(qs('#refPresupuesto')?.value||'50000',10)||50000;
+  const candidatos = BASES_CFG.filter(b=>b.costeMin<=presupuesto);
+  const b = candidatos.length ? candidatos[Math.floor(Math.random()*candidatos.length)] : BASES_CFG[0];
+  const maxDentroPresupuesto = Math.min(b.costeMax, presupuesto);
+  const coste = b.costeMin + Math.floor(Math.random()*Math.max(1,(maxDentroPresupuesto-b.costeMin)));
+  qs('#refNivel').value = b.n;
+  qs('#refNombre').value = `${b.n} sin nombre`;
+  qs('#refCoste').value = coste;
+  qs('#refTomado').value = Math.random()<0.3 ? 'si' : 'no';
+  renderRefugioForm();
+  anadirRefugio();
+}
+window.randomRefugio = randomRefugio;
+// ===================== FIN REFUGIOS Y BASES =====================
+
+// ===================== HERRAMIENTAS DEL NARRADOR =====================
+let pnjs = [];
+
+function generarPNJ(){
+  qs('#tipoPersonaje').value = qs('#pnjTipo').value;
+  randomTypeData();
+  qs('#tipoPersonaje').value = qs('#pnjTipo').value; // randomTypeData no toca tipo; nos aseguramos igualmente
+  enforcePgLimits(); recalcAttr(); rebuildPools(); rebuildEconomy();
+  randomAttrs();
+  enforcePgLimits(); recalcAttr(); recalcSkillBases();
+  randomProfs();
+  rebuildPools(); rebuildEconomy(); recalcSkillBases(); renderRunes();
+  randomSkills();
+  calcSkills(); renderStatsDerivados(); rebuildEconomy();
+
+  const attrsTxt = ATTRS.map(a=>`${a} ${attr(a)}`).join(' · ');
+  const skillTop = qsa('.sk-tot').map(t=>{
+    const r=t.dataset.r, i=parseInt(t.dataset.i,10);
+    return {name: `${SKILLS[r][i]}`, v: parseInt(t.value,10)||0};
+  }).sort((a,b)=>b.v-a.v).slice(0,4);
+  const vidaTxt = (qs('#statsDerivadosBox').textContent.match(/Vida por zona:\s*(\d+)/)||[])[1] || '?';
+
+  pnjs.push({
+    nombre: qs('#personaje').value, raza: qs('#raza').value, tipo: qs('#tipoPersonaje').value,
+    profesiones: effectiveProfs().join(', ') || '—', attrs: attrsTxt, vida: vidaTxt,
+    skills: skillTop.map(s=>`${s.name} ${s.v}%`).join(' · ')
+  });
+  renderPNJs();
+}
+window.generarPNJ = generarPNJ;
+
+function quitarPNJ(i){ pnjs.splice(i,1); renderPNJs(); }
+window.quitarPNJ = quitarPNJ;
+
+function renderPNJs(){
+  const l = qs('#pnjLista');
+  l.innerHTML = pnjs.length ? pnjs.map((p,i)=>`<div class="box" style="margin-top:6px"><b>${p.nombre}</b> — ${p.raza}, ${p.tipo} (${p.profesiones})<br>Vida/zona: ${p.vida} · ${p.attrs}<br>Destaca en: ${p.skills} <button class="btn" type="button" onclick="quitarPNJ(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ningún PNJ generado todavía.</span>';
+}
+window.renderPNJs = renderPNJs;
+
+// Generador de semillas de aventura — combina categorías, no digitaliza las semillas fijas de CAP08 §6.
+const SEMILLA_TIPO = ["Rescate","Recuperación de objeto","Escolta","Investigación","Sabotaje","Infiltración","Extracción","Negociación","Persecución","Defensa"];
+const SEMILLA_CORP = ["Chafry","TecnoStealer","Serpent","Primus","Mort","Workhouse","Pseudo-Arkanitas","ninguna corp — cliente independiente"];
+const SEMILLA_LOC = ["Mundo Máquina","Cuenca Gótica","Tierra-12","La Ciudad Subterránea","Bosque Sombrío","Desierto de Huesos","Ruinas de la Antigua Ciudad","Laboratorio Clandestino","Territorio Corrupto"];
+const SEMILLA_COMPL = [
+  "el cliente miente sobre el objetivo real",
+  "hay un traidor entre los contratantes",
+  "el plazo es mucho más corto de lo prometido",
+  "otra facción quiere lo mismo",
+  "el objetivo no quiere ser rescatado/recuperado",
+  "la información de partida está desactualizada o es falsa",
+  "el pasado de un miembro del grupo está involucrado",
+  "el trabajo obliga a cruzar a una tesela bloqueada o restringida",
+];
+const SEMILLA_RECOMPENSA = [
+  "acceso a tecnología rara",
+  "un favor de alguien poderoso",
+  "información comprometedora sobre una corp",
+  "un Necrochip recuperado",
+  "una base o territorio abandonado",
+  "solo el dinero acordado — nada más",
+];
+let semillas = [];
+function generarSemilla(){
+  const texto = `${randomChoice(SEMILLA_TIPO)} para ${randomChoice(SEMILLA_CORP)} en ${randomChoice(SEMILLA_LOC)}. Complicación: ${randomChoice(SEMILLA_COMPL)}. Recompensa extra: ${randomChoice(SEMILLA_RECOMPENSA)}.`;
+  semillas.push(texto);
+  renderSemillas();
+}
+window.generarSemilla = generarSemilla;
+function quitarSemilla(i){ semillas.splice(i,1); renderSemillas(); }
+window.quitarSemilla = quitarSemilla;
+function renderSemillas(){
+  const l = qs('#semillasLista');
+  l.innerHTML = semillas.length ? semillas.map((s,i)=>`<div>${s} <button class="btn" type="button" onclick="quitarSemilla(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ninguna semilla generada todavía.</span>';
+}
+window.renderSemillas = renderSemillas;
+// ===================== FIN HERRAMIENTAS DEL NARRADOR =====================
+
+// ===================== GENERADOR DE ASENTAMIENTOS (Anexo) =====================
+function d(n){ return Math.floor(Math.random()*n)+1; }
+
+const AST_NT = [
+  {nt:"NT 1-2", val:2, desc:"Primitivo. Herramientas manuales, sin energía estable. Supervivencia básica."},
+  {nt:"NT 2-3", val:3, desc:"Pre-industrial. Energía mecánica, metalurgia básica. Sin electrónica."},
+  {nt:"NT 3-4", val:4, desc:"Industrial temprano. Electricidad, motores de combustión, radio básica."},
+  {nt:"NT 4-5", val:5, desc:"Industrial avanzado. Electrónica, medicina funcional, comunicaciones."},
+  {nt:"NT 5", val:5, desc:"Moderno bajo. Informática básica, cirugía, vehículos motorizados comunes."},
+  {nt:"NT 5-6", val:6, desc:"Moderno. Redes, implantes simples, naves atmosféricas."},
+  {nt:"NT 6-7", val:7, desc:"Avanzado. Implantes medios, naves orbitales, IA simples."},
+  {nt:"NT 7-8", val:8, desc:"Alto. Implantes mayores, motores de salto, Necrochips estándar."},
+  {nt:"NT 8-9", val:9, desc:"Muy alto. Tecnología de los Antiguos parcialmente activa o replicada."},
+  {nt:"Mixto", val:9, desc:"Combina dos niveles. Tira dos veces y elige el más dramático."},
+];
+const AST_TIPO = [
+  {n:"Aldea de subsistencia", ntMin:0, desc:"Unas decenas de personas. Cultivos, animales, sin infraestructura."},
+  {n:"Aldea de subsistencia", ntMin:0, desc:"Unas decenas de personas. Cultivos, animales, sin infraestructura."},
+  {n:"Campamento nómada", ntMin:0, desc:"Sin ubicación fija. Se mueve con la estación o la necesidad."},
+  {n:"Puesto de avanzada", ntMin:0, desc:"Pequeño grupo en territorio hostil. Depende de suministros externos."},
+  {n:"Asentamiento minero", ntMin:3, desc:"Extracción de recursos. Puede tener Helio-3 si es el recurso que explotan."},
+  {n:"Pueblo comercial", ntMin:3, desc:"Nodo de intercambio para la región. Mercado básico."},
+  {n:"Fortaleza o bastión", ntMin:2, desc:"Función defensiva primaria. Puede ser de cualquier facción."},
+  {n:"Ciudad pequeña", ntMin:4, desc:"Infraestructura urbana básica. Servicios mínimos."},
+  {n:"Ciudad industrial", ntMin:5, desc:"Producción como eje. Contaminación, barrios obreros, tensión social."},
+  {n:"Puerto o muelle orbital bajo", ntMin:6, desc:"Tráfico de naves atmosféricas y suborbitales. Mercado de paso."},
+  {n:"Estación orbital menor", ntMin:7, desc:"Infraestructura fija en órbita. Capacidad limitada."},
+  {n:"Nodo de tránsito", ntMin:6, desc:"Punto de conexión entre rutas. Sin población fija relevante."},
+  {n:"Instalación corporativa", ntMin:5, desc:"Propiedad de una corp. Acceso restringido. Tiene su propia lógica."},
+  {n:"Asentamiento refugiado", ntMin:3, desc:"Gente que llegó huyendo de algo. Infraestructura improvisada. Tensión alta."},
+  {n:"Ruinas habitadas", ntMin:0, desc:"Estructura antigua ocupada por supervivientes. Mezcla de NT."},
+  {n:"Estación de investigación", ntMin:7, desc:"Científicos, datos, acceso restringido. Algo que estudian activamente."},
+  {n:"Comunidad autónoma", ntMin:4, desc:"Sin corp dominante por elección. Autogestionada. Desconfianza a extraños."},
+  {n:"Ciudad flotante / orbital media", ntMin:7, desc:"Infraestructura significativa. Población permanente. Política interna."},
+  {n:"Hub de contrabando", ntMin:5, desc:"Todo se consigue, nada es oficial. Presencia corp nula o comprada."},
+  {n:"Elige o combina dos", ntMin:0, desc:"El DJ elige el que mejor encaje o combina dos resultados adyacentes."},
+];
+const AST_SUMINISTROS = [
+  {rango:[1,2], n:"Escasez crítica", helio:"No", comida:"Racionada", basico:"Casi nada", avanzado:"Nada"},
+  {rango:[3,4], n:"Escasez severa", helio:"No", comida:"Escasa", basico:"Poco", avanzado:"Nada"},
+  {rango:[5,6], n:"Escasez moderada", helio:"Raro / caro", comida:"Suficiente", basico:"Básico", avanzado:"Muy poco"},
+  {rango:[7,9], n:"Ajustado", helio:"Poco / caro", comida:"Suficiente", basico:"Básico", avanzado:"Escaso"},
+  {rango:[10,12], n:"Normal", helio:"Disponible", comida:"Bien", basico:"Bien", avanzado:"Limitado"},
+  {rango:[13,15], n:"Bueno", helio:"Disponible", comida:"Abundante", basico:"Bien", avanzado:"Disponible"},
+  {rango:[16,17], n:"Abundante", helio:"Barato", comida:"Abundante", basico:"Abundante", avanzado:"Bien"},
+  {rango:[18,19], n:"Excedente", helio:"Muy barato", comida:"Excedente", basico:"Excedente", avanzado:"Disponible"},
+  {rango:[20,20], n:"Centro de distribución", helio:"De todo", comida:"De todo", basico:"De todo", avanzado:"De todo (precio alto)"},
+];
+const AST_ARTESANOS = [
+  {rango:[1,4], n:"Ninguno destacable", ntMin:0, desc:"Los artesanos locales son competentes pero no memorables."},
+  {rango:[5,6], n:"Herrero excepcional", ntMin:0, desc:"Trabaja metales con técnica inusual. Piezas que duran décadas."},
+  {rango:[7,7], n:"Médico / Curandero atípico", ntMin:2, desc:"Combina métodos locales con conocimiento de otro origen. Hace preguntas."},
+  {rango:[8,8], n:"Mecánico de lo imposible", ntMin:4, desc:"Repara cualquier cosa con lo que tiene a mano. No sabe cómo lo hace."},
+  {rango:[9,9], n:"Fabricante de armas", ntMin:3, desc:"Armas a medida. Calidad superior. No vende a desconocidos sin referencia."},
+  {rango:[10,10], n:"Informante / Archivista", ntMin:3, desc:"Guarda registros de todo. Tiene información de valor. Tiene precio."},
+  {rango:[11,11], n:"Tatuador / Modificador corporal", ntMin:4, desc:"Modificaciones estéticas y funcionales sin pasar por corp. Discreto."},
+  {rango:[12,12], n:"Químico independiente", ntMin:5, desc:"Produce compuestos que no existen en el catálogo oficial. Algunos son útiles."},
+  {rango:[13,13], n:"Piloto retirado", ntMin:6, desc:"Conoce rutas que no están en ningún mapa. Puede contratarse."},
+  {rango:[14,14], n:"Técnico de implantes sin registro", ntMin:6, desc:"Implantes sin paperwork. Sin garantía. Sin preguntas."},
+  {rango:[15,15], n:"Especialista en tecnología antigua", ntMin:4, desc:"Identifica y a veces activa artefactos de los Antiguos. No sabe de dónde viene su conocimiento."},
+  {rango:[16,16], n:"Constructor naval artesanal", ntMin:6, desc:"Naves pequeñas construidas a mano. Lentas pero casi indestructibles."},
+  {rango:[17,17], n:"IA independiente (cuerpo físico)", ntMin:7, desc:"Lleva aquí más tiempo del que admite. Observa. Tiene agenda propia."},
+  {rango:[18,18], n:"Maestro de Distorsión menor", ntMin:5, desc:"No es un Maestro de Portales — pero manipula la distorsión de formas pequeñas y útiles."},
+  {rango:[19,19], n:"Nakel con conocimiento heredado", ntMin:4, desc:"Intuye tecnología antigua sin formación. No sabe por qué."},
+  {rango:[20,20], n:"Figura legendaria en retiro", ntMin:0, desc:"Alguien que fue importante en otra parte. Está aquí porque no quiere que lo encuentren."},
+];
+const AST_CORPS = [
+  {rango:[1,3], n:"Ninguna", desc:"Sin corps. Sin logos, sin agentes, sin contratos. La gente lo valora o lo teme."},
+  {rango:[4,5], n:"Ninguna (activa)", desc:"Las corps saben que existe pero no han enviado a nadie todavía."},
+  {rango:[6,7], n:"Rastros abandonados", desc:"Hubo presencia corp. Ya no. Quedan infraestructura, contratos rotos y gente amargada."},
+  {rango:[8,9], n:"No oficial — comercial", desc:"Representante o distribuidor de una corp, sin acreditación oficial. Negocia en gris."},
+  {rango:[10,11], n:"No oficial — inteligencia", desc:"Agente de Serpent o similar. No se identifica. Observa. Puede ser contactable."},
+  {rango:[12,13], n:"Oficial menor", desc:"Oficina pequeña de una corp. Presencia simbólica, poco poder real."},
+  {rango:[14,15], n:"Oficial establecida", desc:"Una corp con infraestructura real. Contrata local, tiene agenda, tiene enemigos."},
+  {rango:[16,17], n:"Dos corps en tensión", desc:"Dos facciones con intereses opuestos. El asentamiento está en medio."},
+  {rango:[18,18], n:"Control corporativo total", desc:"Una corp lo controla todo. Ley, suministros, información. Puede ser Mort, Workhouse o similar."},
+  {rango:[19,19], n:"Presencia Primus", desc:"Agentes o estructura de Primus. Pueden ser protectores, vigilantes o ambas cosas."},
+  {rango:[20,20], n:"Situación en conflicto", desc:"Tira dos veces. Las dos presencias coexisten en tensión activa."},
+];
+const AST_RASGO = [
+  "Tiene un portal. Nadie sabe a dónde lleva. Nadie lo ha cruzado en años.",
+  "Siempre hay niebla. Natural, de distorsión, o algo entre medias. Visibilidad reducida permanente.",
+  "La fauna local no es hostil pero tampoco le tiene miedo a nadie.",
+  "Hay un barrio entero que habla un idioma que nadie identifica.",
+  "Algo se avería aquí con frecuencia inusual. Nadie sabe por qué.",
+  "Hay una estructura de los Antiguos en el centro. Nadie la toca. Nadie sabe qué hace.",
+  "El tiempo no cuadra. Llevas dos horas dentro pero fuera han pasado cuatro. O al revés.",
+  "Hay una facción local sin afiliación conocida que tiene más poder del que debería.",
+  "Todo el mundo aquí tiene tatuajes del mismo diseño. Nadie explica por qué.",
+  "El lugar huele a algo que no debería existir en ese entorno.",
+  "Hay un mercado de información. No de bienes — solo información.",
+  "Alguien aquí lleva décadas esperando a alguien que no ha llegado.",
+  "Los droides y las IAs son tratados como ciudadanos con derechos. Es una política, no una costumbre.",
+  "Hay una zona del asentamiento a la que nadie va de noche. Nadie dice por qué.",
+  "El lugar fue construido sobre otra cosa. Se oye a veces algo debajo.",
+  "La corp que lo controla tiene una política interna que resulta extrañamente humana.",
+  "Hay un Nakel que lleva aquí más tiempo del que cualquiera recuerda.",
+  "Tienen una fiesta o ritual colectivo que ocurre sin aviso. El asentamiento se paraliza.",
+  "Alguien aquí tiene información sobre Seawolf. No lo sabe todavía.",
+  "El DJ elige. Si no tiene idea, combina el resultado 7 con otro a su elección.",
+];
+
+function findByRango(tabla, roll){ return tabla.find(t=>roll>=t.rango[0] && roll<=t.rango[1]); }
+function rollFiltradoPorNT(tabla, ntVal, maxIntentos=15){
+  for(let i=0;i<maxIntentos;i++){
+    const roll = d(20);
+    const entry = 'rango' in tabla[0] ? findByRango(tabla, roll) : tabla[roll-1];
+    if((entry.ntMin||0) <= ntVal) return entry;
+  }
+  // Si tras varios intentos no hay suerte, usar el primero válido de la tabla (regla: "usa el resultado anterior/siguiente").
+  return tabla.find(e=>(e.ntMin||0) <= ntVal) || tabla[0];
+}
+
+// NT: 1d20 ponderado (no 1d10 plano). NT8-9 y Mixto quedan fuera de la tirada al azar —
+// son de trama/decisión del DJ, no algo que salga solo. 1-2 son posibles pero raros (5% cada uno).
+// NT5/NT5-6 son lo habitual en la Urdimbre (50% combinado).
+const AST_NT_TABLA = [
+  {rango:[1,1], idx:0},   // NT1-2 Primitivo — 5%
+  {rango:[2,2], idx:1},   // NT2-3 Pre-industrial — 5%
+  {rango:[3,4], idx:2},   // NT3-4 Industrial temprano — 10%
+  {rango:[5,7], idx:3},   // NT4-5 Industrial avanzado — 15%
+  {rango:[8,12], idx:4},  // NT5 Moderno bajo — 25%
+  {rango:[13,17], idx:5}, // NT5-6 Moderno — 25%
+  {rango:[18,19], idx:6}, // NT6-7 Avanzado — 10%
+  {rango:[20,20], idx:7}, // NT7-8 Alto — 5%
+];
+function rollAstNT(){
+  const roll = d(20);
+  const entry = AST_NT_TABLA.find(t=>roll>=t.rango[0] && roll<=t.rango[1]);
+  return AST_NT[entry.idx];
+}
+
+function generarAsentamiento(){
+  const ntEntry = rollAstNT();
+  const tipoEntry = rollFiltradoPorNT(AST_TIPO, ntEntry.val);
+  const sumEntry = findByRango(AST_SUMINISTROS, d(20));
+  const artEntry = rollFiltradoPorNT(AST_ARTESANOS, ntEntry.val);
+  const corpEntry = findByRango(AST_CORPS, d(20));
+  const rasgo = randomChoice(AST_RASGO);
+
+  asentamientos.push({
+    nt: ntEntry, tipo: tipoEntry, sum: sumEntry, art: artEntry, corp: corpEntry, rasgo
+  });
+  renderAsentamientos();
+}
+window.generarAsentamiento = generarAsentamiento;
+
+let asentamientos = [];
+function quitarAsentamiento(i){ asentamientos.splice(i,1); renderAsentamientos(); }
+window.quitarAsentamiento = quitarAsentamiento;
+function renderAsentamientos(){
+  const l = qs('#asentamientosLista');
+  l.innerHTML = asentamientos.length ? asentamientos.map((a,i)=>`
+    <div class="box" style="margin-top:6px">
+      <div><b>${a.tipo.n}</b> — ${a.nt.nt}: ${a.nt.desc}</div>
+      <div class="muted">${a.tipo.desc}</div>
+      <div><b>Suministros:</b> ${a.sum.n} — Helio-3: ${a.sum.helio} · Comida: ${a.sum.comida} · Eq. básico: ${a.sum.basico} · Eq. avanzado: ${a.sum.avanzado}</div>
+      <div><b>Artesano singular:</b> ${a.art.n} — ${a.art.desc}</div>
+      <div><b>Presencia corporativa:</b> ${a.corp.n} — ${a.corp.desc}</div>
+      <div><b>Rasgo distintivo:</b> ${a.rasgo}</div>
+      <button class="btn" type="button" onclick="quitarAsentamiento(${i})">Quitar</button>
+    </div>`).join('') : '<span class="muted">Ningún asentamiento generado todavía.</span>';
+}
+window.renderAsentamientos = renderAsentamientos;
+// ===================== FIN GENERADOR DE ASENTAMIENTOS =====================
+
 const ARMADURAS = [
   {n:"Sin blindaje", bld:0, precio:0},
   {n:"Ligera (Bld 1)", bld:1, precio:900},
@@ -782,6 +1343,8 @@ function init(){
   buildSkills();
   buildMerDef();
   buildTiendaSelects();
+  buildVehSelects();
+  buildRefSelect();
 
   enforcePgLimits();
   recalcAttr();

@@ -31,7 +31,14 @@
 </style>
 </head>
 <body>
-<div class="layout">
+<div class="row" style="max-width:1400px;margin:0 auto 10px;">
+  <button class="btn alt" type="button" id="modeBtnPersonaje" onclick="showMode('personaje')">Personaje</button>
+  <button class="btn" type="button" id="modeBtnVehiculo" onclick="showMode('vehiculo')">Vehículos</button>
+  <button class="btn" type="button" id="modeBtnRefugio" onclick="showMode('refugio')">Refugios / Bases</button>
+  <button class="btn" type="button" id="modeBtnMaster" onclick="showMode('master')">Master (Narrador)</button>
+</div>
+
+<div class="layout" id="modoPersonaje">
   <aside class="panel">
     <h3>Pasos CAP2</h3>
     <div class="steps" id="stepsMenu"></div>
@@ -234,6 +241,147 @@
     </div>
   </main>
 </div>
+
+<div class="panel" id="modoVehiculo" style="display:none;max-width:1400px;margin:auto;">
+  <h1>La Senda de los Errantes · Constructor de Vehículos</h1>
+  <div class="muted">CAP05b completo. Dinero propio — no tira del dinero de creación del personaje.</div>
+  <div class="row" style="margin:8px 0">
+    <button class="btn alt" type="button" onclick="randomVehiculo()">Aleatorio</button>
+    <button class="btn" type="button" onclick="resetVehiculo()">Vaciar / nuevo vehículo</button>
+    <label style="display:inline-flex;flex-direction:column;font-size:12px">Nombre<input id="vehNombre" style="width:200px"></label>
+    <label style="display:inline-flex;flex-direction:column;font-size:12px">Presupuesto (PC)<input id="vehPresupuesto" type="number" value="50000" style="width:120px" onchange="renderVehiculo()"></label>
+  </div>
+
+  <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="box">
+      <h3>1. Nivel</h3>
+      <select id="vehNivel" onchange="renderVehiculo()"></select>
+    </div>
+    <div class="box">
+      <h3>2. Calidad de base</h3>
+      <select id="vehCalidad" onchange="renderVehiculo()"></select>
+    </div>
+    <div class="box">
+      <h3>3. Propulsión</h3>
+      <select id="vehPropulsion" onchange="renderVehiculo()"></select>
+    </div>
+    <div class="box">
+      <h3>4. Blindaje</h3>
+      <select id="vehBlindaje" onchange="renderVehiculo()"></select>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>5. Armamento</h3>
+    <div class="row">
+      <select id="vehArmaSelect"></select>
+      <button class="btn alt" type="button" onclick="anadirArma()">Añadir arma</button>
+    </div>
+    <div id="vehArmasLista" style="margin-top:6px"></div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>6. Complementos</h3>
+    <div class="row">
+      <select id="vehComplSelect"></select>
+      <button class="btn alt" type="button" onclick="anadirComplemento()">Añadir complemento</button>
+    </div>
+    <div id="vehComplLista" style="margin-top:6px"></div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>Resumen</h3>
+    <div id="vehResumen"></div>
+  </div>
+</div>
+
+<div class="panel" id="modoRefugio" style="display:none;max-width:1400px;margin:auto;">
+  <h1>La Senda de los Errantes · Refugios y Bases</h1>
+  <div class="muted">CAP04d. Dinero propio — no tira del dinero de creación del personaje ni del de vehículos.</div>
+  <div class="row" style="margin:8px 0">
+    <button class="btn alt" type="button" onclick="randomRefugio()">Aleatorio</button>
+    <button class="btn" type="button" onclick="resetRefugioForm()">Vaciar formulario</button>
+    <label style="display:inline-flex;flex-direction:column;font-size:12px">Presupuesto (PC)<input id="refPresupuesto" type="number" value="50000" style="width:120px"></label>
+  </div>
+
+  <div class="box">
+    <h3>Añadir propiedad</h3>
+    <div class="grid">
+      <label>Nivel<select id="refNivel" onchange="renderRefugioForm()"></select></label>
+      <label>Nombre<input id="refNombre" placeholder="Ej: El Nido, Puesto 7..."></label>
+      <label>Coste elegido (dentro del rango)<input id="refCoste" type="number"></label>
+      <label>¿Tomado en vez de construido?
+        <select id="refTomado">
+          <option value="no">No — construido desde cero</option>
+          <option value="si">Sí — apropiado (~50% coste, hereda Tabla 4 + Rasgo Distintivo del Generador de Asentamientos como complicaciones)</option>
+        </select>
+      </label>
+    </div>
+    <div id="refInfo" class="muted" style="margin-top:6px"></div>
+    <button class="btn alt" type="button" style="margin-top:6px" onclick="anadirRefugio()">Añadir</button>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>Propiedades del grupo</h3>
+    <div id="refugiosLista"></div>
+    <div id="refResumen" style="margin-top:6px"></div>
+  </div>
+</div>
+
+<div class="panel" id="modoMaster" style="display:none;max-width:1400px;margin:auto;">
+  <h1>La Senda de los Errantes · Herramientas del Narrador</h1>
+  <div class="muted">PNJ rápidos con el mismo motor de creación, más acceso directo a Vehículos y Refugios, más un generador de semillas de aventura.</div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>PNJ rápido</h3>
+    <div class="muted">Genera un personaje completo con el motor de la pestaña Personaje (tipo, atributos, profesión, habilidades) y lo muestra en formato reducido — sin pasar por los 10 Pasos.</div>
+    <div class="row" style="margin-top:6px">
+      <select id="pnjTipo">
+        <option>Héroe</option><option>Madera de Héroe</option><option selected>Predestinado</option>
+      </select>
+      <button class="btn alt" type="button" onclick="generarPNJ()">Generar PNJ</button>
+    </div>
+    <div id="pnjLista" style="margin-top:8px"></div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>Vehículo rápido</h3>
+    <div class="muted">Tira un vehículo aleatorio completo sin salir de aquí (dentro del presupuesto de la pestaña Vehículos). Para montarlo pieza a pieza, ve a la pestaña Vehículos.</div>
+    <div class="row" style="margin-top:6px">
+      <button class="btn alt" type="button" onclick="randomVehiculo()">Generar vehículo aleatorio</button>
+      <button class="btn" type="button" onclick="showMode('vehiculo')">Ir a Vehículos (montaje manual)</button>
+    </div>
+    <div id="vehiculosGuardadosListaMaster" style="margin-top:8px"></div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>Refugio / Base rápida</h3>
+    <div class="muted">Tira una propiedad aleatoria sin salir de aquí. Se añade a la misma lista que la pestaña Refugios/Bases.</div>
+    <div class="row" style="margin-top:6px">
+      <button class="btn alt" type="button" onclick="randomRefugio()">Generar refugio aleatorio</button>
+      <button class="btn" type="button" onclick="showMode('refugio')">Ir a Refugios (ajuste manual)</button>
+    </div>
+    <div id="refugiosListaMaster" style="margin-top:8px"></div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>Generador de semillas de aventura</h3>
+    <div class="row">
+      <button class="btn alt" type="button" onclick="generarSemilla()">Generar semilla</button>
+    </div>
+    <div id="semillasLista" style="margin-top:8px"></div>
+  </div>
+
+  <div class="box" style="margin-top:8px">
+    <h3>Generador de asentamientos y estaciones (Anexo)</h3>
+    <div class="muted">6 tiradas: NT, Tipo, Suministros, Artesanos, Presencia corporativa, Rasgo distintivo. ~2 minutos de un lugar con carácter.</div>
+    <div class="row">
+      <button class="btn alt" type="button" onclick="generarAsentamiento()">Generar asentamiento</button>
+    </div>
+    <div id="asentamientosLista" style="margin-top:8px"></div>
+  </div>
+</div>
+
 <script src="FICHA_Personaje_Autocalculada_v4_json_preguntas.js"></script>
 </body>
 </html>
