@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El Voto del Equilibrio</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — El Voto del Equilibrio</h1>
+<blockquote>
+<p>Aventura para 2-3 sesiones, tesela Mundo Chatarra — ver<br />
+<code>DLC_Tesela_MundoChatarra.md</code> para el resto del mundo (geografía,<br />
+supervivencia, Colosos, facciones, bestiario y las Bestias del Norte<br />
+como raza jugable).</p>
+</blockquote>
+<p><strong>Duración:</strong> 2-3 sesiones | <strong>Nivel:</strong> Inicial/Medio | <strong>Tono:</strong> Misterio filosófico con acción</p>
+<hr />
+<h2>PNJs principales</h2>
+<p><strong>Hermano Kaito</strong> (Monje Bestia, Felino, TARA "Más Humano") — Mensajero del Monasterio. Casi indetectable como no humano.<br />
+F35/A40/P50/V60 | PV 18/9/18 | Bld 1 | Esquiva 60%<br />
+Detección Distorsión 65% | Camino de los Portales 30% | Social 55% | Supervivencia 40%<br />
+Tatuajes rúnicos N1 (Alerta +10 PER, Paso Ligero +10 Sigilo). No ataca primero. Se defiende y huye si la situación es desesperada.</p>
+<p><strong>Ren</strong> (Monje Bestia, Felino, TARA "Más Bestia") — Joven monje que intentó invocar a Axarón. Deriva 23. Tercer ojo cerrado en la frente.<br />
+F30/A45/P40/V55 | PV 16/8/16 | Bld 1 | Esquiva 55%<br />
+Detección Distorsión 45% | Camino de los Portales 15% (sube a 30% si completa la aventura).<br />
+Habla en lengua Precursora sin saberlo bajo estrés.</p>
+<p><strong>Axarón</strong> (Demonio Menor del Grimorio) — No invocado formalmente. No vinculado. Confundido.<br />
+F45/A45/P50 | PV 22 | Bld 4 | 55% (Pen 2) | Daño 3 | Esquiva 60%<br />
+Especial: +20 a localizar objetos/personas perdidas. Puede rastrear a través de la urdimbre.<br />
+Precio en Almas: 1 punto para establecer vínculo permanente.</p>
+<blockquote>
+<p><em>Voss, el Mecánico de Edivan, y el resto de facciones de Mundo Chatarra no participan directamente en esta aventura — ver <code>DLC_Tesela_MundoChatarra.md</code> §5 si los PJs se desvían hacia ellos.</em></p>
+</blockquote>
+<hr />
+<h2>Sinopsis</h2>
+<p>Ren, joven monje bestia, ha desaparecido del Monasterio de los Libros. Los ancianos envían a Kaito a buscar Iniciados de otras disciplinas — los monjes solo dominan el Tatuaje Rúnico, pero Ren intentó algo que requiere Invocación o Camino de los Portales. Los personajes deben encontrarlo antes de que la Deriva lo transforme, o antes de que algo más lo encuentre primero.</p>
+<h2>Escena 0 — El Mensajero</h2>
+<p><strong>Ubicación:</strong> Cualquier mundo despertado donde los PJs estén.</p>
+<p>Kaito busca a los PJs. +10 Sigilo por TARA y tatuajes. Si los PJs tienen Alerta &gt;50%, lo detectan primero. Si no, aparece detrás de ellos en un momento de calma.</p>
+<p>Si lo dejan hablar:</p>
+<blockquote>
+<p><em>"Busco a quienes caminan la distorsión sin tatuajes en la piel. Mi nombre es Kaito. Vengo del Monasterio de los Libros, en el norte del Vertedero. Un hermano ha desaparecido. Intentó algo... prohibido. Necesitamos ayuda. No podemos hacerlo solos."</em></p>
+</blockquote>
+<p><strong>Oferta:</strong> 5.000 PC adelanto / 10.000 PC al completar / Acceso a la Nave de los Libros / Posibilidad de aprender Tatuador Rúnico.</p>
+<p><strong>Información:</strong> Ren desapareció hace tres semanas hacia el Coloso. Llevaba un pergamino del Grimorio. Mencionó un "Oni" que podía encontrar cualquier cosa. Dos semanas a pie hasta el Coloso.</p>
+<h2>Escena 1 — El Monasterio de los Libros</h2>
+<p><strong>Ubicación:</strong> Norte del Vertedero. Microclima amable, volcanes termales, arrozales en terrazas de metal oxidado.</p>
+<p>En la celda de Ren: mapa marcando "El Ojo del Coloso" · notas sobre <em>"Axarón — el que busca sin encontrar"</em> · tatuaje rúnico incompleto (Alerta N1) · pergamino con el nombre de una herrera legendaria: <em>"La Forja del Cielo Abierto"</em>.</p>
+<h2>Escena 2 — El Camino al Coloso</h2>
+<p><strong>Duración:</strong> Dos semanas (o menos con vehículo). Cada 30 minutos, tira 1d6:</p>
+<table>
+<thead>
+<tr>
+<th>1d6</th>
+<th>Encuentro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>Sombras de la Noche — no atacan salvo que se sientan acorraladas</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>Anomalía de distorsión menor — déjà vu intenso. Voluntad −10 o +1 Deriva temporal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Asentamiento abandonado — vacío, intacto. Descanso sin riesgo</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Zona de cristales — perlas explotadas. +1 Deriva/hora. Cristales recolectables (1d6 = 1 perla parcial, 50 PD)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Distribución intencional: peligro frecuente (1-4), alivio raro (5-6). El Norte no es un lugar amable.</em></p>
+<p><em>Fichas de Sombras de la Noche y demás fauna: <code>DLC_Tesela_MundoChatarra.md</code> §6 Bestiario del Vertedero.</em></p>
+<p><strong>El rastro de Ren:</strong> Supervivencia +10 o resultado 5. Capa enganchada en metal retorcido. Marcas de garras de Sabandija del Pecio. Ren pasó hace 3 días.</p>
+<h2>Escena 3 — El Ojo del Coloso</h2>
+<p><strong>Zona:</strong> Claro circular de 50m frente al Coloso. Distorsión visible.</p>
+<p><strong>Ren</strong> está vivo pero cambiado. Deriva 23. Tercer ojo cerrado en la frente. Habla en lengua Precursora. El pergamino del Grimorio está abierto frente a él.</p>
+<p><strong>Qué pasó:</strong> Ren intentó invocar a Axarón para encontrar <strong>la Espada del Cielo Abierto</strong> — una espada legendaria capaz de crear portales sin necesidad de un Maestro. La invocación falló, pero algo respondió. Axarón está aquí, sin estar invocado formalmente.</p>
+<p><strong>La tragedia de Ren (lore oculto):</strong> Su hermana <strong>Hana</strong> murió en el Páramo de la Desesperación, atacada por una criatura mutada. La espada no es solo un mito para él — es la promesa de que la pérdida puede convertirse en justicia.</p>
+<p><strong>La Espada del Cielo Abierto:</strong></p>
+<p>Se empuña mediante katas — formas marciales que el portador ejecuta antes de liberar su poder. Cada kata consume una acción completa; mientras la ejecuta, el portador puede esquivar o bloquear con normalidad, pero si recibe daño durante la secuencia debe superar una tirada de Fortaleza o pierde de golpe todas las katas acumuladas hasta ese momento.</p>
+<p>El poder se acumula hasta un máximo de 5 katas. Cuanto más se acumula, más certero y devastador es el golpe final, pero también más difícil de controlar: la habilidad de ataque cae según sube el daño.</p>
+<div class="recuadro-combate"><p><strong>La Espada del Cielo Abierto — acumulación de katas</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kata</th>
+<th>Habilidad</th>
+<th>Daño</th>
+<th>Penetración</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>+20</td>
+<td>+2</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>+10</td>
+<td>+4</td>
+<td>+4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>+6</td>
+<td>+6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>−10</td>
+<td>+8</td>
+<td>+8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>−20</td>
+<td>+10</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p>El ataque se libera en línea recta: 2 metros de base más 2 metros por cada kata acumulada (máximo 12 metros con 5 katas), y afecta a todo lo que se cruce en su camino.</p>
+<p><strong>Efecto visual:</strong> la primera kata abre un claro entre las nubes sobre la espada; de la segunda a la cuarta, el filo traza en el cielo un kanji de rayo cada vez más nítido; con la quinta, el rayo cae y el cielo se despeja por completo.</p></div>
+<p>La espada <strong>no está aquí</strong>. Ren fue engañado por Axarón.</p>
+<h2>Escena 4 — La Decisión</h2>
+<p><strong>A) Combatir:</strong> Axarón se defiende. Si lo "derrotan", desaparece temporalmente pero Ren pierde 1 PA permanentemente.</p>
+<p><strong>B) Negociar</strong> (CAR 40+ o Social):<br />
+Axarón quiere: un nombre verdadero (Voluntad −10 en el Grimorio) / O 1 PA como pago / O que Ren complete la invocación correctamente (Invocador o Camino de los Portales 25+).</p>
+<p><strong>C) Cerrar el portal:</strong><br />
+Detección de Distorsión −10 / O Camino de los Portales −10 / O sacrificar 10 PD de una perla.</p>
+<p><strong>D) Dejar que Axarón se vincule:</strong><br />
+Coste: 1 PA. Ren se convierte en Invocador accidental. El monasterio lo expulsa o vigila constantemente.</p>
+<h2>Escena 5 — Consecuencias</h2>
+<p><strong>Si salvan a Ren sin coste:</strong> +10 reputación con las Bestias del Norte. Ren tira Tabla A (ver manual CAP04b) (tiene el tercer ojo, tira el segundo efecto). Se convierte en aliado futuro.</p>
+<p><strong>Si Ren pierde 1 PA:</strong> Humanidad baja a 70. Los monjes lo ven con recelo. Pero ahora tiene Camino de los Portales 10% (despertó accidentalmente).</p>
+<p><strong>Si Axarón se vincula:</strong> Ren es Invocador Menor (20%). El monasterio lo expulsa. Los PJs ganan un aliado poderoso... y un problema futuro.</p>
+<p><strong>Recompensas:</strong> 10.000-15.000 PC / Tatuador Rúnico disponible / Acceso Nave de los Libros (+10 conocimiento Edo) / Pergamino con nombre de Axarón / Fragmentos de la leyenda de la Espada.</p>
+<h2>Ganchos futuros</h2>
+<ol>
+<li>La Espada del Cielo Abierto — ¿existe realmente?</li>
+<li>La Deriva de Ren sigue subiendo. En 6 meses alcanzará 30 — punto de no retorno.</li>
+<li>Axarón advirtió: <em>"Hay otros once esperando. El que llama, llama a todos."</em></li>
+<li>El Coloso se movió 3 metros durante el encuentro. Algo lo está despertando.</li>
+<li>Chafry envió una nueva expedición al norte. Las Bestias están en peligro.</li>
+<li>El Páramo de la Desesperación. La criatura que mató a Hana sigue allí.</li>
+</ol>
+<hr />
+<p><em>"El equilibrio no es quietud. Es saber cuándo ceder y cuándo resistir."</em><br />
+— <em>Hermano Kaito, Monasterio de los Libros</em></p>
+</div>
+</body>
+</html>
