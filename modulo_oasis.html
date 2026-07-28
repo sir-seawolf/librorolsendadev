@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DLC — MUNDO OASIS</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>DLC — MUNDO OASIS</h1>
+<blockquote>
+<p>Tesela separada de la Urdimbre, recién despertada. El contacto es tan reciente que <strong>los federales siguen ocupándose de sí mismos</strong> — no hay presencia corporativa asentada todavía, solo mercado negro local y una autoridad que no da abasto.</p>
+<p>[!lore] Este mundo se construye sobre los primeros arcos del blog de campaña (capítulos 1-9: "El camino y el Zippo", "La broma y la mansión", "El regreso", "Ruinas y Sombras", "El Rescate"...). Oasis es la capital de la región; alrededor hay selva, una mansión, y las ruinas de una civilización caída que se fusionó por completo con una única red social hasta colapsar. Sin RV de por medio — esa fusión fue literalmente física para ellos, no simulada.</p>
+</blockquote>
+<hr />
+<h2>1. FICHAS DE AMENAZAS</h2>
+<p><strong>Matón de Segunda Mano</strong> (mercado negro, implantes mal integrados)<br />
+Blindaje 2 | Melé 55% | Daño 6, Pen 2 | PV 12/12<br />
+Lleva implantes robados o de origen dudoso — a veces fallan en mal momento (10% de que un ataque suyo falle por error del implante). Trabaja para el vendedor del mercado negro o por cuenta propia.</p>
+<p><strong>Agente de Policía de Barrio</strong><br />
+Blindaje 3 | Distancia 45% (grilletes electromagnéticos, no letal) | Daño 3 no letal (Aturdimiento) | PV 10/10<br />
+No busca matar — busca detener. Si identifica a alguien como sospechoso o prófugo, pide refuerzos por comunicador antes de actuar (mismo patrón que un Centinela: sube el nivel de atención de la zona).</p>
+<p><strong>Gorila de la Selva</strong> (fauna real, no alterada — pero enorme)<br />
+Blindaje 2 | Melé 65% | Daño 14, Pen 2 | PV 45/45<br />
+No es una amenaza sobrenatural, solo un animal grande y territorial. Cazarlo mal preparado sale caro — los explosivos improvisados fallan más de lo que aciertan (referencia: hasta a un veterano le ha estallado en la cara).</p>
+<p><strong>Chocobo Salvaje</strong> (montura potencial, no hostil salvo acorralado)<br />
+Blindaje 0 | Melé 30% (coz) | Daño 4 | PV 15/15<br />
+Domesticable con paciencia (Manejo de Animales, dif. 50). Una vez domado, transporte fiable por selva y terreno irregular — más barato y silencioso que un vehículo.</p>
+<p><strong>El Que Desaparece Gente</strong> (amenaza central, sin ficha de combate todavía)<br />
+No tiene stats de combate — es una amenaza de investigación, no de enfrentamiento directo. Cinco desapariciones en dos semanas en el mismo barrio. El DJ decide qué es realmente (tráfico de personas para el mercado de implantes "de segunda mano", una secta, algo relacionado con el Polvo de Tron, o directamente la autoridad tapando algo). No resolverlo de golpe — es el gancho que sostiene la tesela.</p>
+<hr />
+<h2>2. BIOMAS Y ENCUENTROS (1d100)</h2>
+<p><strong>Oasis — Niveles Comerciales</strong> (mercado gris, vendedores de tecnología de segunda mano)<br />
+<em>Hazard:</em> nadie pregunta de dónde sale la mercancía. Comprar aquí puede significar comprar algo robado, o algo peor.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-20 | Vendedor legítimo, precios normales |<br />
+| 21-45 | Vendedor de implantes "de segunda mano" — origen turbio, precio bajo |<br />
+| 46-60 | Matón de Segunda Mano vigilando un puesto, no busca problemas si no se los buscan |<br />
+| 61-75 | Agente de Policía de Barrio pidiendo documentación al azar |<br />
+| 76-90 | Rumor sobre una desaparición reciente, de boca de un tendero nervioso |<br />
+| 91-100 | Redada policial en marcha — mejor no estar cerca |</p>
+<p><strong>Oasis — Niveles Bajos</strong> (niebla constante, generadores, los que no pueden permitirse subir)<br />
+<em>Hazard:</em> niebla reduce Percepción −20%; humedad constante (referencia: agrava lesiones/dolencias crónicas).<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-25 | Bar sin nombre — buen sitio para escuchar rumores, mal sitio para llamar la atención |<br />
+| 26-45 | Callejón con un Matón de Segunda Mano esperando a alguien descuidado |<br />
+| 46-60 | Testigo de una de las desapariciones, dispuesto a hablar por un precio |<br />
+| 61-75 | Patrulla policial buscando a un "sospechoso" — riesgo de identificación errónea |<br />
+| 76-90 | Carteles de personas desaparecidas, capas y capas de ellos, algunos muy recientes |<br />
+| 91-100 | Encuentro con alguien de un mundo distinto de paso — Oasis atrae a más gente de la Urdimbre de la que la ciudad sabe |</p>
+<p><strong>Selva Circundante</strong> (mansión, ruinas, fauna real)<br />
+<em>Hazard:</em> terreno irregular, lluvia intensa reduce visibilidad y Maniobra de cualquier vehículo.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-25 | Chocobo salvaje, domesticable si hay paciencia |<br />
+| 26-45 | Gorila de la Selva, territorial, mejor evitarlo que enfrentarlo |<br />
+| 46-60 | Restos de una nave o vehículo accidentado, saqueable |<br />
+| 61-80 | Zona con Polvo de Tron detectable — distorsión espacial alta |<br />
+| 81-95 | Entrada a las Ruinas de la Red Única, semi-oculta |<br />
+| 96-100 | Patrulla militar (no policial) peinando la zona, buscando a alguien específico |</p>
+<p><strong>Ruinas de la Red Única</strong> (la civilización caída)<br />
+<em>Hazard:</em> estructuras inestables; trampillas ocultas a búnkeres pueden estar vigiladas.<br />
+| 1d100 | Resultado |<br />
+|---|---|<br />
+| 01-30 | Interfaces digitales incrustadas en las paredes, datos parcialmente recuperables |<br />
+| 31-50 | Trampilla a un búnker subterráneo, tecnología mejor preservada que en superficie |<br />
+| 51-65 | Guardias (militares o de otra facción) vigilando una trampilla en particular |<br />
+| 66-80 | Polvo de Tron cristalizado, cosechable con cuidado |<br />
+| 81-95 | Registro fragmentado de cómo cayó la Red Única — lore puro |<br />
+| 96-100 | Algo que todavía funciona, y no debería |</p>
+<hr />
+<h2>3. RECURSOS EXTRAÍBLES</h2>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>Precio (corpcoins)</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implante de segunda mano (origen dudoso)</td>
+<td>500-2.000</td>
+<td>Barato porque nadie garantiza de dónde salió. 15% de fallo la primera vez que se usa en combate</td>
+</tr>
+<tr>
+<td>Componente de propulsión (vehículo)</td>
+<td>1.000-4.000</td>
+<td>Precios inflados en Oasis, negociables</td>
+</tr>
+<tr>
+<td>Polvo de Tron (crudo)</td>
+<td>3.000-6.000</td>
+<td>Material necesario para materializar runas. Aparece donde la distorsión espacial es alta</td>
+</tr>
+<tr>
+<td>Polvo de Tron (refinado)</td>
+<td>8.000-15.000</td>
+<td>Procesado, listo para usar sin pérdida</td>
+</tr>
+<tr>
+<td>Datos de interfaz recuperados</td>
+<td>1.000-3.000</td>
+<td>Fragmentos de la Red Única, interesan a coleccionistas y académicos</td>
+</tr>
+<tr>
+<td>Tecnología preservada de búnker</td>
+<td>5.000-20.000</td>
+<td>Mejor conservada que en superficie, pero vigilada</td>
+</tr>
+</tbody>
+</table>
+<p><em>Referencia: 1 corpcoin = 1 crédito.</em></p>
+<hr />
+<h2>4. MECÁNICAS DE SUPERVIVENCIA</h2>
+<p><strong>Niebla y lluvia constante</strong> — Percepción −20% en Niveles Bajos y selva durante lluvia; Maniobra de cualquier vehículo −10%.</p>
+<p><strong>Identificación policial</strong> — cualquier personaje sin papeles en regla, o que llame la atención de un Agente, arriesga una comprobación de identidad (dif. 50). Si falla: detención formal (no violenta, grilletes electromagnéticos), traslado a comisaría de barrio, y de ahí a instalación mayor si nadie interviene a tiempo. No es una pelea — es una carrera contra el tiempo.</p>
+<p><strong>Rack de Chips y Polvo de Tron</strong> — instalar/usar runas en Oasis requiere Polvo de Tron como material fungible (no se recupera tras usarlo). Sin él, ninguna runa nueva puede materializarse, aunque las ya activas siguen funcionando.</p>
+<hr />
+<h2>5. NPJs Y FACCIONES</h2>
+<p><strong>El Vendedor de Implantes</strong> — puesto en una esquina oscura de los Niveles Comerciales, implantes cibernéticos visibles y mal integrados. Vende "de segunda mano" sin preguntar de dónde vienen, ni contar de dónde salieron los suyos. Secreto: parte de su mercancía viene de las desapariciones recientes — no lo sabe con certeza, y prefiere no preguntar.</p>
+<p><strong>Autoridad Local (Policía de Barrio)</strong> — no está a la altura de lo que pasa en la ciudad. Arrestan a quien parece sospechoso más que a quien es culpable — es más fácil detener a un forastero que investigar una desaparición de verdad. No son corp, no son malvados — están desbordados y lo compensan con atajos.</p>
+<p><strong>Voces del Bar Sin Nombre</strong> — un lugar sin nombre en los niveles medios, donde la gente va a olvidar. El camarero de turno (el DJ decide quién) sabe más de lo que dice, y las capas de carteles de personas desaparecidas en la pared cuentan una historia que nadie ha atado todavía.</p>
+<p><em>(Nota para el DJ: si esta tesela se juega en la campaña original de Miguel, Nadine, Crix y Totovía ya existen como personajes propios del blog — pueden aparecer directamente sin necesidad de ficha nueva. Para otras mesas, son plantillas libres: mensajera local con rasgos felinos, camarero veterano con un ojo biónico, mentor versado en runas y "programar el mundo".)</em></p>
+<hr />
+<h2>6. GANCHOS, EVENTOS Y RUINAS</h2>
+<h3>Ganchos iniciales</h3>
+<p><strong>Gancho 1: "Cinco en dos semanas"</strong><br />
+Alguien del barrio (tendero, camarero, vecino) pide ayuda — la policía no investiga las desapariciones, solo arresta a forasteros. ¿Quién se está llevando a la gente, y por qué nadie más lo pregunta?</p>
+<p><strong>Gancho 2: "Identificación errónea"</strong><br />
+Un miembro del grupo (o un aliado) es detenido por error, confundido con un prófugo real. Carrera contra el tiempo antes del traslado a una instalación mayor — el gancho de rescate más directo de la tesela.</p>
+<p><strong>Gancho 3: "El precio del Polvo de Tron"</strong><br />
+Alguien necesita Polvo de Tron refinado con urgencia (para una runa, para un aliado herido) y solo hay una fuente fiable — y no es barata, ni segura de conseguir.</p>
+<p><strong>Gancho 4: "Lo que vigilan los militares"</strong><br />
+Una patrulla no-policial (militar, o de otro origen) vigila una trampilla concreta en las Ruinas de la Red Única. Lo que sea que hay ahí abajo, alguien más lo quiere también.</p>
+<h3>Eventos recurrentes</h3>
+<p><strong>Redada</strong> — la policía, presionada por las desapariciones sin resolver, intensifica los controles en los Niveles Comerciales o Bajos durante 1d6 horas. Más Agentes, más comprobaciones de identidad, más tensión.</p>
+<p><strong>Apagón de Niebla</strong> — la niebla se espesa hasta anular casi toda visibilidad en Niveles Bajos durante 1d3 horas. Peligroso, pero también la mejor ventana para moverse sin ser visto.</p>
+<h3>Ruinas — punto de aventura</h3>
+<p><strong>Ruinas de la Red Única</strong> (módulo aparte recomendado)<br />
+Restos de una civilización que se fusionó por completo con una única red social hasta que esta colapsó, arrastrando toda su estructura — sin RV de por medio, fue su realidad literal mientras duró. Arquitectura con pantallas rotas, cables expuestos, interfaces digitales incrustadas en las paredes. Trampillas ocultas llevan a búnkeres con tecnología mejor preservada. Contenido: lore sobre la caída de la Red Única, tecnología recuperable, y al menos una trampilla vigilada por alguien con más recursos que un vendedor callejero — el porqué de esa vigilancia es la puerta a la trama mayor de la tesela.</p>
+<h3>Propósito estratégico de la tesela</h3>
+<p>Para los PJs: <strong>investigación urbana</strong> (las desapariciones, la Red Única caída), <strong>economía de mercado gris</strong> (implantes, Polvo de Tron, tecnología recuperada), <strong>fricción con una autoridad desbordada</strong> en vez de una corp organizada — Oasis todavía no ha elegido bando, y eso la hace valiosa para cualquiera que llegue primero.</p>
+<p><strong>Ciclos:</strong> al ser tesela recién despertada, cambia rápido — cada sesión puede traer una corp nueva olfateando la zona, un federal más corrupto o más desesperado, una desaparición más. No es un lugar estable todavía.</p>
+<hr />
+<h2>CONEXIÓN CON EL MATERIAL DE ORIGEN</h2>
+<ul>
+<li><strong>Capítulos 1-9 del blog</strong> — base narrativa de Oasis, la mansión, la selva, las ruinas y el Polvo de Tron.</li>
+<li><strong>MÓDULO FUTURO: Las Desapariciones</strong> — investigación centrada en el gancho 1, con resolución propia.</li>
+<li><strong>MÓDULO FUTURO: La Trampilla Vigilada</strong> — exploración de las Ruinas de la Red Única.</li>
+<li><strong>DLC_Monstruoplantas.md / DLC_Mundo_Maquina.md</strong> — misma estructura de referencia.</li>
+</ul>
+</div>
+</body>
+</html>
