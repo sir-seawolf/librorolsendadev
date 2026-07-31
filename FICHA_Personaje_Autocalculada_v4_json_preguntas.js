@@ -168,7 +168,10 @@ let state = {
 
 const qs = s => document.querySelector(s);
 const qsa = s => [...document.querySelectorAll(s)];
-const round = x => Math.round(x);
+// Regla de la casa: cuando queda decimal, SIEMPRE hacia arriba. Es un plus
+// deliberado para el jugador. Solo se usa en SKILL_BASE_FORMULA.
+// (El Alma accesible es la excepcion escrita: usa suelo, ver CAP02 Paso 3.)
+const round = x => Math.ceil(x);
 
 // ===================== VEHÍCULOS (CAP05b) =====================
 const VEH_NIVELES = [
@@ -931,7 +934,7 @@ function renderStatsDerivados(){
   if(!box) return;
   const A=attr('A'), C=attr('C'), F=attr('F');
   const vida = Math.ceil((A+C+F)/6);
-  const carga = Math.round((F+C)/4);
+  const carga = Math.ceil((F+C)/4);   // regla de la casa: decimal -> arriba
   const iniciado = initiatedTakes() >= 1;
   const alma = iniciado ? 10 : 8;
   const humCompras = state.compras.reduce((s,c)=>s+c.hum,0);
