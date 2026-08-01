@@ -27,7 +27,7 @@ const SKILLS = {
   tecnologicas:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"],
   atleticas:["Acrobacias","Resistir","Proezas"],
   sociales:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"],
-  combate:["Iniciativa","Alerta","Esquivar","Distancia","Sin Armas","Arma CC"],
+  combate:["Iniciativa","Alerta","Esquivar","Distancia Media","Sin Armas","Arma CC Media"],
   distorsion:["Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Tatuador Rúnico","Herrero Rúnico","Proyección de Energía","Protección de Energía","Invocación de Energía"]
 };
 
@@ -41,9 +41,9 @@ const SKILL_BASE_FORMULA = {
     () => round((attr("A")+attr("P"))/2),            // Iniciativa
     () => round((attr("P")+attr("I"))/2),            // Alerta
     () => round((attr("A")+attr("H"))/2),            // Esquivar
-    () => round((attr("A")+attr("H"))/2),            // Distancia
+    () => round((attr("A")+attr("H"))/2),            // Distancia Media
     () => round((attr("F")+attr("C")+attr("A"))/3),  // Sin Armas
-    () => round((attr("F")+attr("A")+attr("H"))/3)   // Arma CC
+    () => round((attr("F")+attr("A")+attr("H"))/3)   // Arma CC Media
   ],
   // Distorsión arranca a 0, sin base calculada (Anexo): no se promedia con atributos.
   distorsion: () => 0
@@ -1341,7 +1341,7 @@ const V3_ACAD = ["Ciencias","Biotecnología","Navegación","Burocracia","Buscar 
 const V3_TEC = ["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"];
 const V3_ATL = ["Acrobacias","Resistir","Proezas"];
 const V3_SOC = ["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"];
-const V3_COMBAT = ["Distancia","Sin Armas","Arma CC"];
+const V3_COMBAT = ["Distancia Media","Sin Armas","Arma CC Media"];
 const V3_INIC = ["Iniciativa","Alerta","Esquivar"];
 const V3_DISC = ["Proyección de Energía","Protección de Energía","Invocación de Energía","Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Herrero Rúnico","Tatuador Rúnico"];
 
