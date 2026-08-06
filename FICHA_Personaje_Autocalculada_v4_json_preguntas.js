@@ -27,7 +27,7 @@ const SKILLS = {
   tecnologicas:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"],
   atleticas:["Acrobacias","Resistir","Proezas"],
   sociales:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"],
-  combate:["Iniciativa","Alerta","Esquivar","Distancia Media","Sin Armas","Arma CC Media"],
+  combate:["Iniciativa","Alerta","Esquivar","Distancia Corta","Distancia Media","Distancia Larga","Sin Armas","Arma CC Corta","Arma CC Media","Arma CC Larga"],
   distorsion:["Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Tatuador Rúnico","Herrero Rúnico","Proyección de Energía","Protección de Energía","Invocación de Energía"]
 };
 
@@ -37,13 +37,19 @@ const SKILL_BASE_FORMULA = {
   atleticas: () => round((attr("A")+attr("F"))/2),
   sociales: () => round((attr("Ca")+attr("P"))/2),
   // Combate no tiene base única de rama: cada habilidad su propia fórmula (Anexo Méritos/Habilidades).
+  // Distancia y Arma CC comparten la misma fórmula en sus tres tramos — el tamaño del arma
+  // (FUE mínima, CAP04d) diferencia el tramo en juego, no la fórmula.
   combate: [
     () => round((attr("A")+attr("P"))/2),            // Iniciativa
     () => round((attr("P")+attr("I"))/2),            // Alerta
     () => round((attr("A")+attr("H"))/2),            // Esquivar
+    () => round((attr("A")+attr("H"))/2),            // Distancia Corta
     () => round((attr("A")+attr("H"))/2),            // Distancia Media
+    () => round((attr("A")+attr("H"))/2),            // Distancia Larga
     () => round((attr("F")+attr("C")+attr("A"))/3),  // Sin Armas
-    () => round((attr("F")+attr("A")+attr("H"))/3)   // Arma CC Media
+    () => round((attr("F")+attr("A")+attr("H"))/3),  // Arma CC Corta
+    () => round((attr("F")+attr("A")+attr("H"))/3),  // Arma CC Media
+    () => round((attr("F")+attr("A")+attr("H"))/3)   // Arma CC Larga
   ],
   // Distorsión arranca a 0, sin base calculada (Anexo): no se promedia con atributos.
   distorsion: () => 0
@@ -1341,6 +1347,9 @@ const V3_ACAD = ["Ciencias","Biotecnología","Navegación","Burocracia","Buscar 
 const V3_TEC = ["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"];
 const V3_ATL = ["Acrobacias","Resistir","Proezas"];
 const V3_SOC = ["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"];
+// La v3 solo tiene 3 huecos de ataque (.capr data-i 0-2): no hay sitio para los tramos
+// Corta/Larga. Se dejan fuera a propósito — indexOf() no los encuentra y fillV3Skill
+// no escribe nada para ellos (sin errores); la v3 solo refleja el tramo Media de cada rama.
 const V3_COMBAT = ["Distancia Media","Sin Armas","Arma CC Media"];
 const V3_INIC = ["Iniciativa","Alerta","Esquivar"];
 const V3_DISC = ["Proyección de Energía","Protección de Energía","Invocación de Energía","Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Herrero Rúnico","Tatuador Rúnico"];

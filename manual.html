@@ -922,16 +922,13 @@ o tipos distintos. El total repartible es la suma de todos los bonos que afecten
 </blockquote>
 <hr />
 <h3>Especializaciones avanzadas</h3>
-<blockquote>
-<p>[!importante]<br />
-Algunas capacidades no pueden adquirirse durante la creación. Se desbloquean jugando mediante experiencia, formación, contactos, acontecimientos de campaña y acceso al equipo necesario.</p>
+<div class="recuadro-regla"><p>Algunas capacidades no pueden adquirirse durante la creación. Se desbloquean jugando mediante experiencia, formación, contactos, acontecimientos de campaña y acceso al equipo necesario.</p>
 <p>Las <strong>Especializaciones avanzadas</strong> no cuentan entre las profesiones iniciales ni conceden automáticamente los bonos de rama de otra profesión.</p>
 <p><strong>Ejemplos:</strong></p>
 <ul>
 <li><strong>Maestro de Drones</strong> → <a href="CAP04d_Taller_Fabricacion_REVISADO.html#especializacion-avanzada-maestro-de-drones">Taller del Errante</a>.</li>
 <li><strong>Invocador</strong> → <a href="CAP04b_Distorsion_Escuelas_v3_DEFINITIVO.html#especializacion-avanzada-invocador">Distorsión: Escuelas y Poderes</a>.</li>
-</ul>
-</blockquote>
+</ul></div>
 <hr />
 <h2>Concentrar te equipa mejor</h2>
 <p>Cada categoría de profesión distinta rinde su <strong>ingreso una sola vez</strong> y aporta su <strong>equipo base</strong>. Repetir una categoría mejora sus bonos, rango y equipo, pero no vuelve a conceder ni multiplica su ingreso. Una profesión gratuita obtenida mediante Vocación racial tampoco concede un segundo ingreso de esa categoría. Si eliges categorías diferentes, sumas una vez el ingreso de cada una. El DJ puede modificar la liquidez inicial cuando el trasfondo de campaña lo justifique.</p>
@@ -2835,7 +2832,7 @@ Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
 <td>(30+35)÷2 = <strong>32,5%</strong> → <strong>33%</strong></td>
 </tr>
 <tr>
-<td>Esquivar / Distancia Media</td>
+<td>Esquivar / Distancia (los 3 tramos)</td>
 <td>(AGI+HAB)÷2</td>
 <td>(25+45)÷2 = <strong>35%</strong></td>
 </tr>
@@ -2845,7 +2842,7 @@ Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
 <td>(35+35+25)÷3 = <strong>31,7%</strong> → <strong>32%</strong></td>
 </tr>
 <tr>
-<td>Arma CC Media</td>
+<td>Arma CC (los 3 tramos)</td>
 <td>(FUE+AGI+HAB)÷3</td>
 <td>(35+25+45)÷3 = <strong>35%</strong></td>
 </tr>
@@ -3077,7 +3074,7 @@ Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Habilidades destacadas:</strong> Mecánica 68% · Diagnóstico 48% · Electrónica 53% · Armería 48% · Persuasión 45% · Bajos Fondos 40% · Sentido del Negocio 43% · Estilo 35% · Resistir 35% · Alerta 38% · Iniciativa 33% · Esquivar/Distancia Media 35% · Arma CC Media 35% · Sin Armas 32%. <em>(El resto de habilidades de cada rama quedan en su Base: Tecnológica 43%, Social 30%, Académicas 33%, Atlética 30%.)</em></p>
+<p><strong>Habilidades destacadas:</strong> Mecánica 68% · Diagnóstico 48% · Electrónica 53% · Armería 48% · Persuasión 45% · Bajos Fondos 40% · Sentido del Negocio 43% · Estilo 35% · Resistir 35% · Alerta 38% · Iniciativa 33% · Esquivar 35% · Distancia Corta 35% (pistola pequeña) · Arma CC Media 35% (llave inglesa) · Sin Armas 32%. <em>(El resto de habilidades de cada rama quedan en su Base: Tecnológica 43%, Social 30%, Académicas 33%, Atlética 30%; igual para los tramos de Distancia y Arma CC que Kairo no usa.)</em></p>
 <p><strong>Reconocimiento adquirido:</strong> Técnico 2× aporta bolsa Tecnológico +30, Social +20 y Académico +10; Civil aporta bolsa Académico +15, Social +10 y Atlético +5; la ventaja humana aporta +10 a Mecánica.</p>
 <table>
 <thead>
@@ -4670,11 +4667,93 @@ Cada tipo tiene resistencias y vulnerabilidades según el tipo de arma. Ver ANEX
 </table>
 <p>Estos penalizadores no se aplican a distancia — un francotirador no sufre por tener muchos objetivos, siempre que los ataque de uno en uno.</p>
 <hr />
-<h4>Arma sin fuerza mínima</h4>
-<p>Cada arma tiene una Fuerza mínima requerida. Por cada 5 puntos de FUE que falten para alcanzar ese mínimo, el arma sufre −1 a su daño base.</p>
+<h4>Fuerza y arma</h4>
+<p>Cada arma tiene un rango de trabajo. Por debajo cuesta gobernarla; por encima la castigas.</p>
+<table>
+<thead>
+<tr>
+<th>Tu FUE frente al mínimo del arma</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Más de 10 por debajo</td>
+<td><strong>No puedes usarla</strong></td>
+</tr>
+<tr>
+<td>6 – 10 por debajo</td>
+<td><strong>−20</strong> al uso</td>
+</tr>
+<tr>
+<td>1 – 5 por debajo</td>
+<td><strong>−10</strong> al uso</td>
+</tr>
+<tr>
+<td>Justa</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><strong>Cada 5 puntos por encima</strong></td>
+<td><strong>+1 al daño base</strong></td>
+</tr>
+</tbody>
+</table>
+<p>El penalizador va a la tirada, nunca al daño — y como el daño se multiplica por los éxitos netos, un arma mal empuñada ya hiere menos por sí sola.</p>
+<p>Empuñar a dos manos concede <strong>+10 de FUE efectiva</strong>, y se aplica <strong>antes</strong> de medir el hueco. Un personaje con FUE 30 maneja un arma de mínima 40 sin penalizador si la lleva con las dos manos.</p>
+<blockquote>
+<p><strong>Un arma un escalón por encima de tu fuerza, sí — a duras penas. Dos escalones, no.</strong></p>
+</blockquote>
+<p><strong>Las armas láser no exigen Fuerza.</strong> No hay culatazo que absorber.</p>
+<h5>Exceso de fuerza</h5>
+<p>El bono por exceso vale en <strong>cuerpo a cuerpo, arcos y armas arrojadizas</strong> — donde la fuerza <em>es</em> la potencia. <strong>No vale en armas de fuego</strong>: apretar más el gatillo no dispara más fuerte; ahí la Fuerza mínima solo mide el control del retroceso.</p>
+<p><strong>El arma tiene un límite: al doblar su daño base, se destruye tras el golpe.</strong> No hay tope al bono, lo hay al acero.</p>
+<table>
+<thead>
+<tr>
+<th>Arma</th>
+<th>Daño base</th>
+<th>Se rompe al llegar a</th>
+<th>FUE necesaria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minúscula</td>
+<td>2</td>
+<td>4</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Corta</td>
+<td>4</td>
+<td>8</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Media</td>
+<td>6</td>
+<td>12</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Dos manos</td>
+<td>8</td>
+<td>16</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Es la decisión antes de golpear, y es binaria:</strong> usas la fuerza o aflojas. No hay grados — en mesa se resuelve en un segundo.</p>
+<ul>
+<li><strong>Forzando:</strong> sumas el bono completo. Si la tirada sale <strong>99</strong>, el arma se destruye.</li>
+<li><strong>Aflojando:</strong> daño base, sin bono y sin riesgo.</li>
+</ul>
+<p>Por eso un veterano de FUE 45 sigue llevando una daga y sabe cuándo no apretar. Las armas grandes no pegan más <em>hoy</em>: aguantan más fuerza mañana.</p>
 <div class="ejemplo"><p><strong>EJEMPLO</strong><br />
-Espada de dos manos (FUE mínima 40). Personaje con FUE 30 → le faltan 10 puntos → −2 al daño base del arma.</p></div>
-<p>Un personaje puede empuñar un arma que supere su fuerza mínima, pero lo hace de forma ineficiente. El arma no falla — simplemente hace menos daño.</p>
+Espada media (mínima 30, daño 6). Personaje con FUE 40 → 10 de exceso → <strong>+2 al daño base = 8</strong>.<br />
+El mismo personaje con una daga (mínima 20, daño 4) → 20 de exceso → +4 → <strong>daño 8, pero el arma está en su límite de rotura</strong>. Con un 99, la daga se parte.<br />
+A FUE 30, esa espada haría 6 y no correría ningún riesgo.</p></div>
 <hr />
 <h4>Combate a dos armas</h4>
 <p>Para empuñar dos armas simultáneamente, el personaje necesita <strong>FUE igual o superior a 1,5 × la fuerza mínima del arma secundaria</strong>.</p>
@@ -5138,7 +5217,7 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 <th>Vol/zona</th>
 <th>Modificador</th>
 <th>Precio completa</th>
-<th>Servo (grados I-V, ver el capítulo 05)</th>
+<th>Servo</th>
 <th>Vol servo</th>
 </tr>
 </thead>
@@ -5152,6 +5231,16 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 <td>—</td>
 <td>—</td>
 <td>0</td>
+</tr>
+<tr>
+<td>Servo desnudo (o solo Tron 5-25)</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>+20</td>
+<td>5</td>
 </tr>
 <tr>
 <td>Ligera</td>
@@ -5243,15 +5332,73 @@ El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: 
 <h2>Tipos de armadura</h2>
 <p><strong>Gabardina blindada:</strong> cubre todo el cuerpo salvo la cabeza. Discreta.</p>
 <p><strong>Armadura a piezas:</strong> el precio del torso equivale a 5 piezas. Llevar 3+ piezas de tipo medio o superior aplica el mismo penalizador que la armadura completa.</p>
-<p><strong>Servoasistida:</strong> reduce penalizadores. En ligeras da bonificaciones a atléticas y combate.</p>
+<p><strong>Servoasistida:</strong> reduce penalizadores. En ligeras da bonificaciones a atléticas y combate. Además concede <strong>+10 a la FUE</strong> del portador, para cualquier efecto: manejar armas, carga y proezas. El motor es el mismo en todas; lo que cambia es cuánta placa tiene que arrastrar.</p>
 <p><strong>Ablativa:</strong> capa de material sacrificial que absorbe impactos destruyéndose. El "máx 30" es el total de <strong>puntos de daño</strong> que puede absorber antes de destruirse — no éxitos, sino daño final tras el cálculo. Cada impacto que recibe resta ese daño al contador. A 0: la capa se destruye y debe reemplazarse (no se puede reparar en campo). Mientras tiene carga, funciona como armadura normal de su tipo. Registrar el contador en la ficha.</p>
 <p><strong>Estanca:</strong> espacio, entornos inundados. Autonomía 8 horas.</p>
 <p><strong>Camuflaje N1/N2:</strong> +5 o +10 a Sigilo. Solo en ligeras y gabardina.</p>
 <hr />
+<h2>Trajes de asalto</h2>
+<p>La servoasistencia es un motor que se añade a lo que ya tienes. Un traje es otra cosa: <strong>te metes dentro de un cuerpo nuevo</strong>.</p>
+<p>Un traje <strong>no suma su fuerza a la tuya: la sustituye</strong>. Vale la mayor de las dos. Para el fuerte apenas cambia nada; para el débil lo cambia todo. Es una herramienta de acceso, no un multiplicador.</p>
+<table>
+<thead>
+<tr>
+<th>Traje</th>
+<th>FUE</th>
+<th>Blindaje</th>
+<th>Carga</th>
+<th>Atléticas</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>De carga</strong></td>
+<td>60</td>
+<td>2</td>
+<td>Enorme</td>
+<td>0</td>
+<td>90.000 PC</td>
+</tr>
+<tr>
+<td><strong>De asalto</strong></td>
+<td>50</td>
+<td>4</td>
+<td>Media</td>
+<td>−10</td>
+<td>140.000 PC</td>
+</tr>
+<tr>
+<td><strong>Pesado</strong></td>
+<td>70</td>
+<td>5</td>
+<td>Grande</td>
+<td>−20</td>
+<td>220.000 PC</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>La FUE del traje vale para todo</strong> — carga, proezas, daño en cuerpo a cuerpo, manejo de armas — pero <strong>solo recalcula Atléticas</strong>. No combates mejor por llevarlo puesto: el traje da músculo, no oficio.</li>
+<li><strong>Traje y servo no se acumulan.</strong> El traje ya lleva su motor dentro; su FUE lo incluye.</li>
+<li><strong>Empuñar a dos manos sigue dando +10</strong> sobre la FUE del traje. Es técnica, no músculo.</li>
+<li>Cada modelo tiene su propia regla de carga.</li>
+<li>Requiere la habilidad <strong>Trajes Servoasistidos</strong>. Sin ella, el equipo es inútil.</li>
+</ul>
+<div class="recuadro-tech"><p>Un técnico de FUE 20 en un traje de carga maneja FUE 60. Levanta lo que no levantaría nunca y empuña un arma de dos manos sin penalizador. Pero sigue siendo un técnico: su habilidad de combate no ha cambiado, y contra alguien que sabe pelear va a fallar igual. Ha ganado acceso, no destreza.</p></div>
+<h2>Ayudas parciales</h2>
+<p>No todo es una armadura entera. Hay equipo que resuelve solo una parte del problema:</p>
+<ul>
+<li><strong>Arnés estabilizador</strong> — el que usan los operadores de cámara. Hasta <strong>+15 de FUE efectiva</strong> para sostener y apuntar. <strong>No sirve en cuerpo a cuerpo:</strong> estabiliza el peso, no ayuda a blandir.</li>
+<li><strong>Compensador de retroceso</strong> — reduce la FUE que exige un arma de fuego.</li>
+<li><strong>Reductor de potencia</strong> — baja la FUE exigida a cambio de daño base. Modifica el arma, no al portador.</li>
+</ul>
+<p>Unas suben tu FUE efectiva y otras bajan lo que el arma pide, pero ambas acaban en la misma comparación: ver el capítulo 03, Mecánicas del Sistema, <em>Fuerza y arma</em>.</p>
+<hr />
 <h2>Penalización por rigidez</h2>
 <p>Toda armadura de blindaje 2+ incomoda el movimiento por su volumen, peso y rigidez estructural. El servo contrarresta parte de ese problema al amplificar la fuerza y sincronizar el movimiento — pero a medida que la armadura se hace más pesada, los negativos superan lo que el servo puede compensar.</p>
 <p><strong>Sin servoasistencia:</strong> se aplica el penalizador completo de la columna Modificador (el segundo valor para 3+ piezas). Es el peor caso — la armadura limita tanto que algunos movimientos son directamente imposibles.</p>
-<p><strong>Con servoasistencia:</strong> el penalizador se reduce según el grado del servo. Las ligeras con servo dan bonificación neta. Las medias quedan en 0. Las pesadas y acorazadas siguen penalizando, pero mucho menos que sin servo.</p>
+<p><strong>Con servoasistencia:</strong> el penalizador se reduce según el peso de la armadura. Las ligeras con servo dan bonificación neta. Las medias quedan en 0. Las pesadas y acorazadas siguen penalizando, pero mucho menos que sin servo. En todos los casos, el servo concede además <strong>+10 a la FUE</strong>.</p>
 <blockquote>
 <p>La columna "Servo" de la tabla muestra el <strong>modificador resultante con servo activo</strong>. Sin servo, usa siempre el valor de la columna "Modificador" sin reducción.</p>
 </blockquote>
@@ -7749,7 +7896,7 @@ Un contrato separa <strong>REC requerido</strong> (historial, credibilidad y acc
 </tr>
 </tbody>
 </table>
-<p>Usar arma a dos manos sin ser diseñada para ello \= +10 FUE efectiva. Penalizador por fuerza insuficiente: −10 por cada 5 puntos que falten.</p>
+<p>La <strong>FUE mínima</strong> nace de la potencia del arma y de su inercia. Empuñar un arma a dos manos concede <strong>+10 de FUE efectiva</strong>. Por debajo del mínimo hay penalizador al uso y un límite a partir del cual el arma no se maneja; por encima, el exceso suma daño hasta que el arma se rompe. Ver el capítulo 03, Mecánicas del Sistema, <em>Fuerza y arma</em>.</p>
 <hr />
 <h3>2. ARMAS A DISTANCIA</h3>
 <table>
@@ -7808,6 +7955,44 @@ Un contrato separa <strong>REC requerido</strong> (historial, credibilidad y acc
 </tr>
 </tbody>
 </table>
+<p>Aquí la FUE mínima es cuestión de retroceso: absorber el culatazo y volver a encarar. Empuñar el arma a dos manos concede <strong>+10 de FUE efectiva</strong>, igual que en el cuerpo a cuerpo.</p>
+<p><strong>Las armas láser son la excepción: no exigen Fuerza.</strong> No hay culatazo que absorber, así que cualquiera puede dispararlas sin penalizador, sea cual sea su tamaño.</p>
+<p><strong>Armas con nombre — la línea PREDATOR.</strong> Norton vende la de producción; las otras dos son historia.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Daño</th>
+<th>Pen</th>
+<th>FUE</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PREDATOR</strong> (Norton, serie)</td>
+<td>5</td>
+<td>3</td>
+<td>30</td>
+<td>3.500 PC</td>
+</tr>
+<tr>
+<td><strong>PREDATOR N-5.2</strong> (prototipo Chafry)</td>
+<td>7</td>
+<td>5</td>
+<td>35</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>PREDATOR Original</strong> (Chafry)</td>
+<td>9</td>
+<td>7</td>
+<td>50</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>La de serie es un arma sólida y asequible que cualquiera puede comprar en mostrador. La <strong>Original</strong> es otra cosa: quedan poquísimas, piden una fuerza que casi nadie tiene —o las dos manos— y su escasez es trama en sí misma. El <strong>N-5.2</strong> es el intento de Chafry de copiarla rebajando lo que exige: menos arma que la Original, pero al alcance de mucha más gente. Ninguna de las dos últimas está a la venta.</p>
 <p><strong>Cadencia:</strong> tiro a tiro (1) / ráfaga (3, +1 éxito) / cargador (9, +2 éxitos). En fuego repartido, calcula la Cadencia por objetivo según los proyectiles asignados.</p>
 <hr />
 <h3>3. ARTILLERÍA</h3>
@@ -14696,7 +14881,7 @@ Implantes: Rack de Chips implantado avanzado (capacidad 30%), Ibis Neural-Rack (
 </tr>
 </tbody>
 </table>
-<p><strong>Múltiples objetivos:</strong> requiere Distancia Media ≥50. Divide habilidad y proyectiles; mínimo 25 de habilidad y 1 proyectil por objetivo. Ni la suma de habilidad ni la de proyectiles pueden superar las originales.</p>
+<p><strong>Múltiples objetivos:</strong> requiere ≥50 en la habilidad de Distancia que estés usando (Corta, Media o Larga). Divide habilidad y proyectiles; mínimo 25 de habilidad y 1 proyectil por objetivo. Ni la suma de habilidad ni la de proyectiles pueden superar las originales.</p>
 <p><strong>Defensa activa:</strong> se declara y consume actuación.<br />
 <strong>Movimiento evasivo:</strong> toda la actuación; muévete hasta tu movimiento normal y tira Esquivar <strong>una vez</strong> — vale contra todos los ataques a distancia hasta tu siguiente actuación.<br />
 <strong>Las balas no se esquivan</strong> con defensa dividida ni Esquiva total: o cobertura, o movimiento evasivo.</p>
@@ -15150,7 +15335,41 @@ Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 </tr>
 </tbody>
 </table>
-<p><em>Fuerza insuficiente: </em><em>−10 por cada 5 puntos</em><em> que falten. Arma a dos manos usada con una: +10 a la FUE exigida.</em></p>
+<p><strong>Tramo de habilidad según tamaño:</strong> CC — Minúscula y Corta usan <strong>Arma CC Corta</strong> · Media usa<br />
+<strong>Arma CC Media</strong> · Dos manos usa <strong>Arma CC Larga</strong>. Distancia — Minúscula y Pequeña usan<br />
+<strong>Distancia Corta</strong> · Mediana usa <strong>Distancia Media</strong> · Grande usa <strong>Distancia Larga</strong>. Las<br />
+tres habilidades de cada rama comparten fórmula (Anexo de Habilidades); el tamaño del arma<br />
+elige el tramo, no una fórmula distinta.</p>
+<p><strong>Fuerza y arma</strong> — el penalizador va a la tirada, el bono al daño:</p>
+<table>
+<thead>
+<tr>
+<th>Tu FUE frente al mínimo</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Más de 10 por debajo</td>
+<td><strong>no puedes usarla</strong></td>
+</tr>
+<tr>
+<td>6 – 10 por debajo</td>
+<td><strong>−20</strong> al uso</td>
+</tr>
+<tr>
+<td>1 – 5 por debajo</td>
+<td><strong>−10</strong> al uso</td>
+</tr>
+<tr>
+<td>Cada 5 por encima</td>
+<td><strong>+1 al daño base</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>A dos manos: </em><em>+10 FUE efectiva</em><em>, antes de medir el hueco. </em><em>Las láser no exigen FUE</em><em>.</em></p>
+<p><em>El bono por exceso solo vale en </em><em>CC, arcos y arrojadizas</em><em> — no en armas de fuego. </em><em>Al doblar su daño base el arma se destruye tras el golpe.</em><em> Decisión binaria antes de golpear: forzando sumas el bono y un </em><em>99</em><em> parte el arma; aflojando, daño base sin riesgo.</em></p>
+<p><em>Servo: </em><em>+10 FUE</em><em>. Traje de asalto: </em><em>sustituye</em><em> tu FUE (Carga 60 · Asalto 50 · Pesado 70), no se acumula con servo.</em></p>
 <h3>Tron — bono de blindaje</h3>
 <table>
 <thead>
@@ -15430,9 +15649,19 @@ Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 <td>Cuerpo a cuerpo: Esquiva total o defensa según el capítulo 03. Distancia: Movimiento evasivo; no resta éxitos ni cancela proyectiles automáticamente.</td>
 </tr>
 <tr>
+<td><strong>Distancia Corta</strong></td>
+<td>(AGI + HAB) ÷ 2</td>
+<td>Armas a distancia minúsculas y pequeñas: lanzadardos, pistolas, arcos, subfusiles.</td>
+</tr>
+<tr>
 <td><strong>Distancia Media</strong></td>
 <td>(AGI + HAB) ÷ 2</td>
-<td>Todas las armas de proyectil, energía o lanzamiento. Mientras no existan los otros tramos, esta habilidad se usa para cualquier arma a distancia, sea pistola o cañón.</td>
+<td>Armas a distancia medianas: fusiles y armas de cartucho.</td>
+</tr>
+<tr>
+<td><strong>Distancia Larga</strong></td>
+<td>(AGI + HAB) ÷ 2</td>
+<td>Armas a distancia grandes: cartuchos especiales y armamento pesado.</td>
 </tr>
 <tr>
 <td><strong>Sin Armas</strong></td>
@@ -15440,12 +15669,25 @@ Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 <td>Pelea, arrojar objetos, armas improvisadas.</td>
 </tr>
 <tr>
+<td><strong>Arma CC Corta</strong></td>
+<td>(FUE + AGI + HAB) ÷ 3</td>
+<td>Armas cuerpo a cuerpo minúsculas y cortas: uñas y pinchos, dagas, garras.</td>
+</tr>
+<tr>
 <td><strong>Arma CC Media</strong></td>
 <td>(FUE + AGI + HAB) ÷ 3</td>
-<td>Armas cuerpo a cuerpo de todos los tamaños. Mientras no existan los otros tramos, esta habilidad se usa para cualquier arma cuerpo a cuerpo, del cuchillo al arma a dos manos.</td>
+<td>Armas cuerpo a cuerpo medias: espadas, sables, bastones.</td>
+</tr>
+<tr>
+<td><strong>Arma CC Larga</strong></td>
+<td>(FUE + AGI + HAB) ÷ 3</td>
+<td>Armas cuerpo a cuerpo a dos manos: mandobles, hachas.</td>
 </tr>
 </tbody>
 </table>
+<p>Las tres habilidades de cada rama comparten fórmula: la base es idéntica en Corta, Media y<br />
+Larga. Lo que las diferencia en juego es la FUE mínima del arma (capítulo 03, <em>Fuerza y<br />
+arma</em>) — no la fórmula de la habilidad.</p>
 <hr />
 <h3>DISTORSIÓN — arrancan a 0, sin base calculada</h3>
 <p>Deben aprenderse o desarrollarse. Ver el capítulo 05, Tecnología y Distorsión, y el capítulo 06, Distorsión: Escuelas y Poderes, para reglas completas.</p>
@@ -15783,10 +16025,12 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <h3>COMBATE</h3>
 <div class="recuadro-regla"><p><strong>Combate C/C</strong></p>
 <p><strong>25 — Guardia Activa:</strong> si no atacas en tu turno, +10 a Esquiva hasta tu próximo turno.</p>
-<p><strong>50 — Golpe Dirigido:</strong> puede elegir zona de impacto sin penalizador (normalmente −20).</p></div>
-<div class="recuadro-regla"><p><strong>Combate Distancia Media</strong></p>
+<p><strong>50 — Golpe Dirigido:</strong> puede elegir zona de impacto sin penalizador (normalmente −20).</p>
+<p><em>(Aplica al tramo de Arma CC — Corta, Media o Larga — en el que alcances el umbral.)</em></p></div>
+<div class="recuadro-regla"><p><strong>Combate a Distancia</strong></p>
 <p><strong>25:</strong> desenfundar en un asalto menos (mínimo 0).</p>
-<p><strong>50 — Disparo Instintivo:</strong> elimina penalizador por objetivo en movimiento.</p></div>
+<p><strong>50 — Disparo Instintivo:</strong> elimina penalizador por objetivo en movimiento.</p>
+<p><em>(Aplica al tramo de Distancia — Corta, Media o Larga — en el que alcances el umbral.)</em></p></div>
 <div class="recuadro-regla"><p><strong>Artes Marciales</strong></p>
 <p><strong>25 — Derribo Controlado:</strong> derribo como acción secundaria sin penalizador.</p>
 <p><strong>50 — Contraataque:</strong> si el enemigo falla un ataque C/C contra ti, puedes atacarle como reacción (1/asalto).</p></div>
