@@ -1733,6 +1733,7 @@ Viene de una tesela donde sus habilidades tienen otro nombre — chamán, brujo,
 <h2>Paso 5 — Habilidades</h2>
 <p>Aquí el personaje deja de ser números sueltos y empieza a saber hacer cosas. En la ficha, cada habilidad tiene cuatro casillas: <strong>Bas</strong>, <strong>Apr</strong>, <strong>Mod</strong> y <strong>Tot</strong>. El total es la suma de las tres primeras — y este paso las rellena.</p>
 <p><strong>Bas — lo que sabes por naturaleza.</strong> Cada rama (Académicas, Atléticas, Tecnológicas, Sociales, Combate) arranca de la media de los atributos que la rigen, tal como figura en la ficha y en la Tabla 4 del Glosario. Es tu punto de partida sin haber entrenado nada: con buena Agilidad y Fuerza ya corres y trepas decentemente aunque nadie te enseñara.</p>
+<p><strong>Excepción — tres habilidades de rama dual.</strong> Conducir, Pilotar y Sigilo se anotan en dos ramas a la vez, cada una con su propia base: no las elige el jugador, las declara el objeto o la situación (el vehículo que conduces, si burlas a un guardia o a un sensor). Ver el Anexo de Habilidades para el criterio completo.</p>
 <p><strong>Apr — lo que te dio tu historia.</strong> Aquí entran los bonos de los pasos anteriores. Los de profesión <strong>no se aplican a toda la rama por igual</strong> — son una <strong>bolsa de puntos que repartes en bloques de 5</strong> entre las habilidades concretas de esa rama que elijas (ver "Bonos por profesión", más arriba). Una habilidad de la rama que no toques con la bolsa se queda en su valor Base, sin el plus:</p>
 <ul>
 <li><strong>Por profesión:</strong> cada profesión del Paso 4 aporta puntos a la bolsa de las ramas indicadas. Dos profesiones del mismo tipo suman sus bonos a la misma bolsa — por eso concentrar te hace mejor en lo tuyo, no en todo lo tuyo.</li>
@@ -12217,6 +12218,8 @@ La corporativa tiene Sensores avanzados: actúa primero.</p>
 <p>Estos tres ejemplos muestran el proceso completo de cálculo. Úsalos como referencia de precio y como punto de comparación con el equipo de los personajes.</p>
 <p><strong>Fórmula:</strong> Precio base (nivel) × multiplicador de propulsión. Si se añaden complementos, se suman al resultado.</p>
 </blockquote>
+<h3>Rama de pilotaje</h3>
+<p>Conducir y Pilotar son habilidades de rama dual: cada ficha de vehículo debe declarar con qué rama se manejan. Ruedas u orugas sobre el suelo —motos, quads, chatarra rodante, terrestres de tracción directa— se conducen con el peso y la inercia: <strong>Atlética</strong>. Deslizadores, AV, empuje vectorial y naves se conducen con la interfaz: <strong>Tecnológica</strong>. Si una ficha no lo indica, por defecto: rueda por el suelo → Atlética; vuela o levita → Tecnológica.</p>
 <hr />
 <h3>Buggy de Patrulla <em>(ligero terrestre)</em></h3>
 <p><strong>Nivel 1 — Terrestre</strong></p>
@@ -12255,6 +12258,10 @@ La corporativa tiene Sensores avanzados: actúa primero.</p>
 <tr>
 <td>Huecos disponibles</td>
 <td>3</td>
+</tr>
+<tr>
+<td>Rama de pilotaje</td>
+<td>Atlética (ruedas sobre el suelo)</td>
 </tr>
 </tbody>
 </table>
@@ -12302,6 +12309,10 @@ La corporativa tiene Sensores avanzados: actúa primero.</p>
 <td>Huecos disponibles</td>
 <td>6</td>
 </tr>
+<tr>
+<td>Rama de pilotaje</td>
+<td>Tecnológica (empuje vectorial, interfaz)</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Cálculo:</strong><br />
@@ -12347,6 +12358,10 @@ La corporativa tiene Sensores avanzados: actúa primero.</p>
 <tr>
 <td>Huecos disponibles</td>
 <td>6</td>
+</tr>
+<tr>
+<td>Rama de pilotaje</td>
+<td>Tecnológica (nave, interfaz)</td>
 </tr>
 </tbody>
 </table>
@@ -15568,11 +15583,11 @@ elige el tramo, no una fórmula distinta.</p>
 <td>Estabilizar heridas en campo. No sustituye a la medicina —compra tiempo.</td>
 </tr>
 <tr>
-<td><strong>Conducir</strong></td>
-<td>Todo tipo de vehículos terrestres. Incluye persecuciones y maniobras complejas.</td>
+<td><strong>Conducir</strong> <em>(rama dual, ver abajo)</em></td>
+<td>Vehículos que se manejan por interfaz: deslizadores, AV, empuje vectorial.</td>
 </tr>
 <tr>
-<td><strong>Pilotar</strong></td>
+<td><strong>Pilotar</strong> <em>(rama dual, ver abajo)</em></td>
 <td>Aeronaves, naves espaciales, AV. Requiere entrenamiento específico por tipo.</td>
 </tr>
 <tr>
@@ -15580,11 +15595,16 @@ elige el tramo, no una fórmula distinta.</p>
 <td>Operar exoesqueletos y armaduras potenciadas. Sin esta habilidad, el equipo es inútil.</td>
 </tr>
 <tr>
-<td><strong>Sigilo</strong></td>
-<td>Moverse sin hacer ruido, ocultarse físicamente, eliminar rastros.</td>
+<td><strong>Sigilo</strong> <em>(rama dual, ver abajo)</em></td>
+<td>Burlar sensores, cámaras y detectores electrónicos.</td>
 </tr>
 </tbody>
 </table>
+<h3>Habilidades de rama dual: Conducir, Pilotar y Sigilo</h3>
+<p>Estas tres se anotan en dos ramas a la vez, cada una con su propia base — Tecnológica arriba, Atlética más abajo. No las elige el jugador al tirar: las declara el objeto o la situación.</p>
+<p><strong>Conducir y Pilotar — lo declara la ficha del vehículo.</strong> Ruedas u orugas sobre el suelo (motos, quads, chatarra rodante, terrestres de tracción directa) se conducen con el peso y la inercia: Atlética. Deslizadores, AV, empuje vectorial y naves se conducen con la interfaz: Tecnológica. Si la ficha del vehículo no lo indica, por defecto: rueda por el suelo → Atlética; vuela o levita → Tecnológica.</p>
+<p><strong>Sigilo — lo declara el obstáculo.</strong> Contra guardias humanos, moverse sin ruido, entre sombras, con el cuerpo: Atlética. Contra sensores, cámaras y detectores: Tecnológica.</p>
+<p>Trajes Servoasistidos no es dual: sigue siendo puramente Tecnológica, es un aparato, no una acción del cuerpo ni una lectura del entorno.</p>
 <hr />
 <h3>ATLÉTICAS — base (AGI + FUE) ÷ 2</h3>
 <table>
@@ -15606,6 +15626,18 @@ elige el tramo, no una fórmula distinta.</p>
 <tr>
 <td><strong>Proezas</strong></td>
 <td>Hazañas físicas extraordinarias: romper objetos, levantar peso excepcional, fuerza bruta en situaciones límite.</td>
+</tr>
+<tr>
+<td><strong>Conducir</strong> <em>(rama dual)</em></td>
+<td>Motos, quads, chatarra rodante, terrestres de tracción directa. Se conducen con el peso y la inercia.</td>
+</tr>
+<tr>
+<td><strong>Pilotar</strong> <em>(rama dual)</em></td>
+<td>Formato personal o vehículo que se maneja por peso e inercia más que por interfaz.</td>
+</tr>
+<tr>
+<td><strong>Sigilo</strong> <em>(rama dual)</em></td>
+<td>Moverse sin ruido, ocultarse físicamente, eliminar rastros — contra guardias humanos.</td>
 </tr>
 </tbody>
 </table>
@@ -16081,6 +16113,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <p><strong>50 — Conocimiento de Fallo:</strong> reparar encasquillamiento sin gastar acción de ataque.</p></div>
 <hr />
 <h3>ATLÉTICAS</h3>
+<p><em>Conducir, Pilotar y Sigilo: ver Maestrías de TECNOLÓGICAS, más abajo — no se repiten aquí. Son rama dual: la misma maestría vale, suba la base por el lado que suba.</em></p>
 <div class="recuadro-regla"><p><strong>Acrobacias</strong></p>
 <p><strong>25 — Caída Controlada:</strong> reduce daño por caída a la mitad.</p>
 <p><strong>50 — Movimiento en Combate:</strong> moverse a velocidad normal sin penalizador por terreno difícil.</p></div>
@@ -16369,7 +16402,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <td><strong>Vigor</strong></td>
 <td>2</td>
 <td>+5 PV temporales en la zona inscrita</td>
-<td>Recuperables. <em>(Renombrada — ver nota de reconstrucción)</em></td>
+<td>Recuperables</td>
 </tr>
 <tr>
 <td><strong>Armadura Fantasma</strong></td>
@@ -16391,7 +16424,6 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 </tr>
 </tbody>
 </table>
-<div class="nota-dj"><p><strong>Nota de reconstrucción (30/07/26):</strong> esta runa se llamaba "Aguante" en el documento fuente, igual que la runa básica de §1 — pero con un efecto distinto (+5 PV temporales, frente a "ignora penalizador de Herido"). <code>ficha_v4.js</code> ya excluía esta entrada del selector de creación de personajes precisamente por el choque de nombres. Renombrada a <strong>Vigor</strong> para eliminar la ambigüedad sin perder la mecánica. Si prefieres otro nombre, es solo cuestión de buscar y reemplazar — el efecto no cambia.</p></div>
 <hr />
 <h2>3. Escuela del Laboratorio</h2>
 <p>Desarrollada por científicos y alquimistas que buscaban conservar, analizar y modificar la materia. Común entre investigadores corporativos y Maestros Rúnicos académicos.</p>
@@ -16897,7 +16929,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <td>2</td>
 </tr>
 <tr>
-<td>Vigor <em>(ex-Aguante escuela)</em></td>
+<td>Vigor</td>
 <td>Combate</td>
 <td>2</td>
 </tr>

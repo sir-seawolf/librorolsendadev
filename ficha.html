@@ -703,18 +703,20 @@
 const raw = id => { const el = document.getElementById(id); const v = ('value' in el ? el.value : el.textContent).trim(); return v === '' ? NaN : parseInt(v); };
 const num = id => { const v = raw(id); return isNaN(v) ? 0 : v; };
 const filled = (...ids) => ids.every(id => !isNaN(raw(id)));
-const round = x => Math.round(x); // regla canónica: 0,5 o más redondea hacia arriba
+const round = x => Math.ceil(x); // regla de la casa: si queda decimal, SIEMPRE arriba
 
-// Ramas alineadas con ANEXO_Meritos_Habilidades_DEFINITIVO.md (27/07/26): Conducir/Pilotar/Trajes
-// Servoasistidos/Sigilo son Tecnológicas, no Atléticas. Quitadas "Esconderse/Evadirse" y "Manualidades"
-// (no existen en el Anexo). Atléticas solo tiene 3 habilidades reales.
+// Ramas alineadas con ANEXO_Meritos_Habilidades_DEFINITIVO.md. Quitadas "Esconderse/Evadirse" y
+// "Manualidades" (no existen en el Anexo). Conducir/Pilotar/Sigilo son rama dual: aparecen en
+// Tecnológica Y en Atlética, cada una con su propia base — la declara el vehículo o el
+// obstáculo, no el jugador (ver Anexo de Habilidades). Trajes Servoasistidos se queda solo
+// en Tecnológica.
 const CATS = [
   { name:"Académicas", formula:"(I+V)/2", base:()=>round((num('I')+num('V'))/2),
     skills:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear","—","—"] },
   { name:"Tecnológica", formula:"(H+P)/2", base:()=>round((num('H')+num('P'))/2),
     skills:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo","—","—"] },
   { name:"Atlética", formula:"(A+F)/2", base:()=>round((num('A')+num('F'))/2),
-    skills:["Acrobacias","Resistir","Proezas","—","—"] },
+    skills:["Acrobacias","Resistir","Proezas","Conducir","Pilotar","Sigilo","—"] },
   { name:"Social", formula:"(Ca+P)/2", base:()=>round((num('Ca')+num('P'))/2),
     skills:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo","—"] },
 ];

@@ -22,10 +22,12 @@ const RAZAS = {
   "Hombre Gato": { mod:{F:10,C:10,I:-10}, voc:"Combatiente", maxAttr:50, profSlots:3 }
 };
 
+// Conducir, Pilotar y Sigilo son rama dual (ANEXO_Meritos_Habilidades_DEFINITIVO.md): aparecen
+// en tecnologicas Y en atleticas, con su propia base cada una — no es un duplicado por error.
 const SKILLS = {
   academicas:["Ciencias","Biotecnología","Navegación","Burocracia","Buscar información","Programación","Diagnóstico","Investigación","Juego","Diseño Hardware","Sentido del Negocio","Supervivencia","Vigilar/Rastrear"],
   tecnologicas:["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"],
-  atleticas:["Acrobacias","Resistir","Proezas"],
+  atleticas:["Acrobacias","Resistir","Proezas","Conducir","Pilotar","Sigilo"],
   sociales:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"],
   combate:["Iniciativa","Alerta","Esquivar","Distancia Corta","Distancia Media","Distancia Larga","Sin Armas","Arma CC Corta","Arma CC Media","Arma CC Larga"],
   distorsion:["Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Tatuador Rúnico","Herrero Rúnico","Proyección de Energía","Protección de Energía","Invocación de Energía"]
