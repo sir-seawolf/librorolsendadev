@@ -362,6 +362,44 @@ img { max-width: 100%; height: auto; }
     .pg-page { break-inside: avoid; }
 }
 
+/* ===== AYUDAS CARTOGRÁFICAS (mapas de Puesto Fronterizo) — 14/08/2026 =====
+   Cada ayuda (.mapa-ayuda) agrupa dos mapas (.mapa-seccion: imagen + pie +
+   tabla de leyenda). En pantalla es un documento normal; en impresión,
+   cada .mapa-seccion ocupa su propia hoja y no se parte por la mitad. */
+.mapa-audiencia-badge {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+.mapa-ayuda-jugadores .mapa-audiencia-badge { background: var(--color-regla); }
+.mapa-ayuda-narrador .mapa-audiencia-badge { background: var(--color-combate); }
+.mapa-seccion { margin-bottom: 24px; }
+.mapa-seccion img { max-width: 100%; height: auto; }
+.mapa-seccion table { break-inside: avoid; page-break-inside: avoid; }
+
+@media print {
+    .mapa-audiencia-badge {
+        background: none !important;
+        border: 2px solid currentColor;
+        padding: 4px 12px;
+    }
+    .mapa-ayuda-jugadores .mapa-audiencia-badge { color: var(--color-regla); }
+    .mapa-ayuda-narrador .mapa-audiencia-badge { color: var(--color-combate); }
+    .mapa-seccion {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 0;
+    }
+    .mapa-seccion + .mapa-seccion { page-break-before: always; break-before: page; }
+    .mapa-seccion img { page-break-inside: avoid; break-inside: avoid; }
+}
+
 /* ============================================================
    LANDING (index.html, juego.html, dlcs.html) — 22/07/2026 (E9)
    Paginas oscuras tipo "puerta", centralizadas desde sus <style>
@@ -509,4 +547,158 @@ body.landing {
     padding: 1px 6px;
     border-radius: 3px;
     margin-bottom: 4px;
+}
+
+/* ============================================================
+   JERARQUÍA DLC → MÓDULO → AYUDAS (dlcs.html) — 14/08/2026
+   Cada ambientación es un .dlc-family: una tarjeta padre .card-dlc
+   (DLC/mundo/tesela/suplemento), con .module-branch colgando a la
+   derecha para cada módulo ambientado (.card-module), y un
+   .aid-branch de tercer nivel para sus ayudas (.aid-link) cuando
+   las tiene. La línea de conexión es siempre un borde CSS, nunca
+   una imagen ni JS: se reescala sola en móvil.
+   ============================================================ */
+.landing .dlc-family {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.landing .card-dlc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 640px;
+    padding: 22px 26px;
+    border: 3px solid #9333ea;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(147,51,234,.10);
+    transition: all .2s;
+}
+.landing .card-dlc:hover { background: #9333ea; color: #000; transform: translateY(-3px); }
+.landing .card-dlc:hover .txt,
+.landing .card-dlc:hover .relation-label { color: inherit; }
+.landing .card-dlc .tit {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.landing .card-dlc .txt { font-size: 14px; color: #94a3b8; line-height: 1.5; }
+
+.landing .relation-label {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #c084fc;
+}
+.landing .card-module .relation-label { color: #7dd3fc; font-size: 9px; letter-spacing: 1.5px; }
+
+.landing .module-branch {
+    position: relative;
+    margin: 4px 0 4px 46px;
+    padding-left: 26px;
+    border-left: 2px solid #9333ea;
+}
+.landing .module-branch::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: 22px;
+    width: 24px;
+    height: 2px;
+    background: #9333ea;
+}
+
+.landing .card-module {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    max-width: 440px;
+    padding: 15px 18px;
+    margin: 14px 0;
+    border: 2px solid #1d6fa3;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(29,111,163,.07);
+    transition: all .2s;
+}
+.landing .card-module:hover { background: #1d6fa3; color: #000; transform: translateY(-2px); }
+.landing .card-module:hover .txt,
+.landing .card-module:hover .relation-label { color: inherit; }
+.landing .card-module .tit {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+.landing .card-module .txt { font-size: 12px; color: #94a3b8; line-height: 1.45; }
+
+.landing .aid-branch {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 0 14px 26px;
+    padding: 10px 0 10px 20px;
+    border-left: 2px dashed #475569;
+}
+.landing .aid-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .3px;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 3px 2px;
+    border-bottom: 1px solid transparent;
+    width: fit-content;
+}
+.landing .aid-link:hover { color: #fff; border-bottom-color: #fff; }
+.landing .aid-link::before {
+    content: "";
+    flex-shrink: 0;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+}
+.landing .aid-link .aid-audiencia {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.landing .aid-link-jugadores::before { background: var(--color-regla, #16a34a); }
+.landing .aid-link-jugadores .aid-audiencia { color: var(--color-regla, #16a34a); }
+.landing .aid-link-narrador::before { background: var(--color-combate, #ff3b3b); }
+.landing .aid-link-narrador .aid-audiencia { color: var(--color-combate, #ff3b3b); }
+
+.landing .card-dlc:focus-visible,
+.landing .card-module:focus-visible,
+.landing .aid-link:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+/* Suplementos de referencia / Aventuras independientes: mismas .card
+   ya existentes, sin jerarquía — se muestran en su .cards habitual. */
+
+@media (max-width: 600px) {
+    .landing .dlc-family { max-width: 100%; }
+    .landing .card-dlc,
+    .landing .card-module { max-width: 100%; }
+    .landing .module-branch { margin-left: 14px; padding-left: 16px; }
+    .landing .module-branch::before { width: 14px; }
+    .landing .aid-branch { margin-left: 10px; padding-left: 14px; }
 }
