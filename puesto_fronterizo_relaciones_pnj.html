@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PUESTO FRONTERIZO — Relaciones y conducta de PNJ</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>PUESTO FRONTERIZO — Relaciones y conducta de PNJ</h1>
+<p><a href="modulo_puesto_fronterizo.html">← Volver al módulo</a></p>
+<blockquote>
+<p><strong>Material exclusivo para el Narrador: contiene la verdad completa y todos los secretos del módulo.</strong></p>
+</blockquote>
+<hr />
+<h2>A. Tabla principal</h2>
+<h3>A.1 — Motivaciones</h3>
+<table>
+<thead>
+<tr>
+<th>PNJ</th>
+<th>Quiere</th>
+<th>Protege</th>
+<th>Desconfía de</th>
+<th>Error o punto ciego</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Broile</td>
+<td>Conservar personal y posiciones</td>
+<td>La guarnición, sus sargentos</td>
+<td>Varice cuando prioriza cuota sobre riesgo</td>
+<td>Cree sincera la lealtad de Corliss</td>
+</tr>
+<tr>
+<td>Varice</td>
+<td>Cubrir la cuota, quedar bien ante TS</td>
+<td>El resultado, no a las personas</td>
+<td>Excusas y retrasos</td>
+<td>No conecta a Corliss/Serpent hasta que es evidente</td>
+</tr>
+<tr>
+<td>Pitt</td>
+<td>Completar la misión de Ladino sin ser descubierto</td>
+<td>Su misión, su tapadera</td>
+<td>Casi todos, en especial quien pregunta con precisión</td>
+<td>No sabe que es Corliss quien lo usa</td>
+</tr>
+<tr>
+<td>Corliss</td>
+<td>Sostener la culpa de Pitt, escapar sin ser descubierta</td>
+<td>A sí misma, y genuinamente al PJ vinculado</td>
+<td>Capricornio, cualquier PJ perspicaz</td>
+<td>Cree que su extracción será limpia; Serpent puede sacrificarla</td>
+</tr>
+<tr>
+<td>Shepard</td>
+<td>Proteger con sus drones, ver reconocido su trabajo</td>
+<td>Su gente, sus drones, quien se gane su confianza</td>
+<td>Conclusiones rápidas sin revisar registros</td>
+<td>Al principio puede sospechar de Pitt también</td>
+</tr>
+<tr>
+<td>Hierro</td>
+<td>Soldados vivos y bien entrenados</td>
+<td>Sus reclutas, a Pitt, la moral</td>
+<td>Quien no ha sudado con él</td>
+<td>Confía en la cadena de mando más que en su instinto</td>
+</tr>
+<tr>
+<td>Misty</td>
+<td>Que su sección funcione sin sobresaltos</td>
+<td>Su sección, su prestigio de eficiencia</td>
+<td>Quien le desordena el inventario</td>
+<td>Cree servir a una oficial ejemplar</td>
+</tr>
+<tr>
+<td>Capricornio</td>
+<td>La verdad demostrable, no una conclusión rápida</td>
+<td>Al procedimiento, no a personas</td>
+<td>Pruebas "demasiado limpias"</td>
+<td>Confía demasiado en procedimientos rigurosos bien preparados</td>
+</tr>
+<tr>
+<td>Niebla</td>
+<td>Estar a salvo, estar con Valiente y Snacker</td>
+<td>A sí misma y a sus dos Nakel</td>
+<td>Desconocidos armados que se acercan deprisa</td>
+<td>— (es una niña, no una pieza táctica)</td>
+</tr>
+<tr>
+<td>Valiente</td>
+<td>Proteger a Niebla; honrar a los Droides que lo criaron</td>
+<td>A Niebla y a Snacker</td>
+<td>Quien se acerca a Niebla con prisa o armas</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Snacker</td>
+<td>Proteger a Niebla</td>
+<td>A Niebla y a Valiente</td>
+<td>Quien se acerca a Niebla con prisa o armas</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>A.2 — Conducta</h3>
+<table>
+<thead>
+<tr>
+<th>PNJ</th>
+<th>Qué ofrece</th>
+<th>Si nadie interviene</th>
+<th>Durante Punta B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Broile</td>
+<td>Acceso al organigrama, autorización para investigar</td>
+<td>Deja correr el proceso oficial contra Pitt</td>
+<td>Permanece en el Puesto principal, coordina ayuda</td>
+</tr>
+<tr>
+<td>Varice</td>
+<td>Contratos rápidos, logística TS</td>
+<td>Presiona a Broile para desviar patrullas a extracción</td>
+<td>No presente en Punta B; presiona desde fuera, prioriza artefactos si aparece</td>
+</tr>
+<tr>
+<td>Pitt</td>
+<td>Información a cambio de discreción</td>
+<td>Se cierra en banda, no colabora en su defensa</td>
+<td>Combate con eficacia brutal; no delata la misión aunque lo capturen</td>
+</tr>
+<tr>
+<td>Corliss</td>
+<td>Ayuda real, amistad genuina calculada</td>
+<td>Consolida la culpa de Pitt, asciende, prepara Punta B</td>
+<td>Manda la posición; escala su reacción; huye en la cápsula</td>
+</tr>
+<tr>
+<td>Shepard</td>
+<td>Sus hallazgos técnicos, en privado</td>
+<td>Obedece la cadena de mando, comparte dudas solo en confianza; si los PJ no le creen, no fuerza la cuestión — sigue revisando registros por su cuenta y solo comparte hallazgos nuevos en condiciones seguras</td>
+<td>Despliega sus enjambres, clave en la defensa técnica</td>
+</tr>
+<tr>
+<td>Hierro</td>
+<td>Entrenamiento, opciones tácticas</td>
+<td>Prepara alternativas extraoficiales por si acaso</td>
+<td>Organiza personal y defensas; presenta opciones sin decidir por los PJ</td>
+</tr>
+<tr>
+<td>Misty</td>
+<td>Acceso a registros de suministros</td>
+<td>Sigue las órdenes de Corliss sin cuestionarlas</td>
+<td>Gestiona munición, repuestos y material médico</td>
+</tr>
+<tr>
+<td>Capricornio</td>
+<td>Investigación independiente, salida legítima para quien coopere</td>
+<td>Concluye con lo que tenga en la Semana 8</td>
+<td>Vigilancia discreta; puede intervenir si detecta a Corliss a tiempo</td>
+</tr>
+<tr>
+<td>Niebla</td>
+<td>Nada que deba pedírsele</td>
+<td>Se mantiene oculta; usa su marca de teleportación si hace falta</td>
+<td>No presente, salvo que la trama la traslade allí expresamente</td>
+</tr>
+<tr>
+<td>Valiente</td>
+<td>Guía por el terreno, información del ataque</td>
+<td>Mantiene la posición en la torre</td>
+<td>No presente, salvo traslado expreso</td>
+</tr>
+<tr>
+<td>Snacker</td>
+<td>Guía por el terreno</td>
+<td>Mantiene la posición en la torre</td>
+<td>No presente, salvo traslado expreso</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>B. Relaciones directas</h2>
+<ul>
+<li>Broile <code>⚠</code> Varice: fricción funcional — personal y posiciones frente a cuotas y recursos.</li>
+<li>Pitt <code>?</code> Corliss: objetivo y agente; él recela sin conocer inicialmente la verdad.</li>
+<li>Shepard <code>?</code> Pitt: sospecha inicial e incompleta, antes de notar las anomalías técnicas reales.</li>
+<li>Shepard <code>↔</code> Corliss: subordinación institucional, no lealtad personal.</li>
+<li>Shepard <code>↔</code> Hierro: rivalidad afectuosa y confianza bajo fuego.</li>
+<li>Capricornio <code>↔</code> Pitt: pruebas sólidas frente a secretos reales.</li>
+<li>Capricornio <code>⚠</code> Corliss: método independiente frente a manipulación impecable — la amenaza que ella no controla.</li>
+<li>Capricornio <code>↔</code> Broile: cooperación formal y respeto profesional.</li>
+<li>Capricornio <code>⚠</code> Varice: colaboración útil pero incómoda — interferencia imprevisible sobre cuotas, plazos y autoridad corporativa.</li>
+<li>Capricornio <code>↔</code> Shepard: fuente técnica valiosa, escuchada con atención pero no tratada como prueba hasta que se sostenga sola.</li>
+<li>Corliss <code>↔</code> PJ vinculado: afecto verdadero dentro de una traición.</li>
+<li>Niebla <code>↔</code> Valiente/Snacker: cariño y protección; desacuerdo sobre cuánto dejarla decidir.</li>
+<li>Broile <code>↔</code> Pitt: respeto profesional.</li>
+<li>Misty <code>↔</code> Corliss: lealtad construida sobre una imagen falsa.</li>
+<li>Hierro <code>↔</code> Pitt: respeto como combatiente.</li>
+<li>Varice <code>→</code> Corliss: ella utiliza su presión administrativa a su favor.</li>
+</ul>
+<p><strong>Símbolos:</strong> <code>→</code> protege, utiliza o persigue · <code>↔</code> relación mutua · <code>⚠</code> desconfianza o conflicto · <code>?</code> sospecha incompleta.</p>
+<hr />
+<h2>C. Movimiento autónomo</h2>
+<blockquote>
+<p>Cuando los PJ no actúan…</p>
+</blockquote>
+<ul>
+<li><strong>Shepard investiga</strong> los rastros técnicos del dron y el repetidor por su cuenta, guardando sus conclusiones hasta tener algo sólido.</li>
+<li><strong>Pitt oculta</strong> su misión real de Ladino y no colabora activamente en su propia defensa.</li>
+<li><strong>Corliss manipula</strong> el tráfico de mantenimiento, consolida la culpa de Pitt y prepara en silencio su propia salida.</li>
+<li><strong>Capricornio concluye</strong> con las pruebas que tenga cuando le corresponda concluir (Semana 8), sea o no la conclusión correcta.</li>
+<li><strong>Broile ordena</strong> que el proceso oficial siga su curso, sin motivo firme para detenerlo.</li>
+<li><strong>Varice exige</strong> resultados de cuota y presiona por recursos y prioridades, sin relacionarlo con el caso Pitt hasta que sea evidente.</li>
+<li><strong>Hierro prepara</strong> apoyos extraoficiales por si Pitt necesita ayuda algún día, sin romper la cadena de mando todavía.</li>
+<li><strong>Misty registra</strong> la logística diaria sin darse cuenta de lo que sus propios números podrían revelar.</li>
+<li><strong>Valiente y Snacker deciden</strong> mantener a Niebla oculta y protegida, priorizándola siempre por encima de cualquier posición o acuerdo.</li>
+</ul>
+<hr />
+<h2>D. Seguimiento de relaciones (rellenable)</h2>
+<p>No hay una escala numérica universal — usa las columnas como anotación libre.</p>
+<table>
+<thead>
+<tr>
+<th>PNJ</th>
+<th>Confianza hacia el grupo</th>
+<th>Favor o deuda</th>
+<th>Información compartida</th>
+<th>Herido/ausente/detenido</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Broile</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Varice</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Pitt</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Corliss</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Shepard</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hierro</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Misty</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Capricornio</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Niebla</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Valiente</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Snacker</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>E. Vínculo de Corliss (rellenable)</h2>
+<ul>
+<li><strong>PJ vinculado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Elemento compartido:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Primera escena de vínculo:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Ayuda real que Corliss le prestó:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Primera duda:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>¿Lo advirtió?:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>¿Le ofreció la cápsula?:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Estado final del vínculo:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+</ul>
+</div>
+</body>
+</html>

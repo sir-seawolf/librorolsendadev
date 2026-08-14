@@ -281,23 +281,22 @@
         <tr><td class="skill" title="Habilidad">Habilidad</td><td><input type="number" id="H_b" oninput="calc()"></td><td><input type="number" id="H_m" oninput="calc()"></td><td class="total" id="H">0</td></tr>
       </table>
 
-      <h2>Vida por zona — 3 niveles</h2>
+      <h2>PV base — Sano / Herido / Tullido</h2>
       <div class="lifebox">
-        <div class="estado-row">Estado General
+        <div class="estado-row">Nivel actual
           <select id="estadoGeneral">
             <option>Sano</option>
             <option>Herido</option>
-            <option>Exhausto (-20%)</option>
-            <option>Inconsciente</option>
+            <option>Tullido (-20%)</option>
             <option>Muerto</option>
           </select>
         </div>
         <div class="lifegrid">
-          <div class="hd"></div><div class="hd">Leve(0)</div><div class="hd">Medio(-10)</div><div class="hd">Grave(-20)</div>
+          <div class="hd"></div><div class="hd">Sano(0)</div><div class="hd">Herido(-10)</div><div class="hd">Tullido(-20)</div>
           <div class="hd" style="text-align:left;">PV/niv</div>
           <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
         </div>
-        <div class="note">PV/nivel=(A+C+F)/6. Total zona=<span id="vidaTotal">0</span>. Desborda Grave → muerte (cabeza/torso) o 1d6 amputación (extremidad). Detalle y Resistencia: CAP03.</div>
+        <div class="note">PV base=(A+C+F)/6, igual en los tres niveles. Total=<span id="vidaTotal">0</span>. Desbordamiento: impacto único ≥ PV base (cabeza/extremidad) o ≥ PV base×2 (torso) → muerte (cabeza/torso) o 1d6 amputación (extremidad). Detalle y Resistencia: CAP03.</div>
         <div class="lifegrid lifegrid-dano">
           <div class="hd" style="text-align:left;">Daño</div>
           <div class="v dano-box"><input type="text"></div>
@@ -397,8 +396,8 @@
       <h2>Medikits (Rack Médico)</h2>
       <div class="rackmed">
         <div class="hdrline"><span>Tipo</span><input type="text"><span>Cant.</span><input type="number"></div>
-        <div class="lvl"><span>Leves</span><div class="boxrow" id="medLeves"></div></div>
-        <div class="lvl"><span>Graves</span><div class="boxrow" id="medGraves"></div></div>
+        <div class="lvl"><span>MKB</span><div class="boxrow" id="medLeves"></div></div>
+        <div class="lvl"><span>MKG</span><div class="boxrow" id="medGraves"></div></div>
       </div>
     </div>
 

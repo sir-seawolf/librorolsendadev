@@ -533,6 +533,17 @@ El glosario completo está al final del manual. Para el resto: "No lo sé ahora 
 <p>Cuando una tesela "despierta", los portales ya están abiertos y no hay forma de cerrarlos sin que alguien lo note. En ese momento todo cambia, y el mayor miedo de la gente que vive ahí no es lo desconocido en abstracto — es lo concreto que puede entrar por esos portales. La respuesta natural no es el pánico sino el posicionamiento: ¿cómo me coloco para no quedarme desprotegido cuando lleguen los de fuera? ¿Qué sé yo que pueda valer algo? ¿A quién me uno?</p>
 <p>Primus existe para gestionar ese momento. No siempre llega a tiempo. No siempre actúa con buenos motivos.</p>
 <hr />
+<h2>Mundos de la Urdimbre</h2>
+<p>No todo lo que se cruza en el mosaico es una tesela.</p>
+<p>Una tesela contiene un universo separado, con sus propias leyes físicas. Un <strong>mundo de la Urdimbre</strong> es distinto: es un planeta, cuerpo o territorio material que existe directamente en la propia urdimbre —el espacio entre teselas— sin ser, él mismo, un universo aparte. Tiene continuidad física, población y ecosistema propios, pero no leyes físicas exclusivas ni la escala de una realidad completa.</p>
+<p>Puede ser un planeta entero sin ser una tesela. Su acceso depende de condiciones locales, no de una clasificación única: navegación convencional, rutas inestables, saltos que consumen algo de valor, portales abiertos por un Maestro, o combinaciones de varias. No todos los mundos de la Urdimbre comparten la misma vía de acceso, ni todos tienen portal estable, espaciopuerto o ruta fiable.</p>
+<p>Esta distinción es una herramienta del Narrador, no un dato que sus habitantes necesiten conocer — la mayoría vive su mundo sin usar el término "Urdimbre" para nombrarlo, igual que nadie en la Tierra necesita saber qué es una tesela para vivir en ella.</p>
+<p><strong>Mundo Chatarra</strong> y <strong>Monstruoplantas</strong> son ejemplos conocidos de mundos de la Urdimbre.</p>
+<p>Por esas mismas fronteras circulan también corrientes artísticas y culturales que no respetan la separación entre teselas y mundos. La más documentada hasta ahora es un diálogo entre dos voces que se responden entre sí a través de sus obras allí donde aparecen.</p>
+<p><img alt="Dos murales contrapuestos sobre un casco industrial: sátira colorida y figuras sobrias que reparan una estructura común" src="img/mundo_chatarra_dos_voces.png" /><br />
+<em>Las dos voces, tal como se documentaron por primera vez en Mundo Chatarra — el fenómeno no nació allí ni se limita a ese mundo.</em></p>
+<p>No se sabe todavía si son personas, colectivos o identidades heredadas por distintas manos con el tiempo. Discuten mediante arte, no mediante discursos, y ninguna de las dos ofrece la interpretación oficial de lo que representa.</p>
+<hr />
 <h2>Los Ciclos</h2>
 <p>El tiempo en el multiverso no es una línea recta — es una rueda en espiral. Cada vuelta completa es un <strong>Ciclo</strong>: el arco de un universo desde su origen hasta su reset. Ha habido varios, y los más antiguos son los más lejanos en la espiral. El presente canónico del mosaico se sitúa en el <strong>Cuarto Ciclo</strong> — no se especifica un año concreto, porque el mosaico no mide el tiempo como la Tierra.</p>
 <p>Lo que importa para un Errante: <strong>cuanto más atrás en el tiempo, más fácil es viajar</strong>. La urdimbre estaba más suelta, los portales más abundantes, los mapas más completos. Cuanto más adelante, más difícil — las teselas se alejan, los cruces exigen más energía, los Maestros compiten por rutas que antes eran caminos abiertos.</p>
@@ -789,10 +800,8 @@ No inventes a nadie. Coge lo que sabes hacer, lo que llevarías encima si todo s
 <h2>Paso 3 — Stats derivados</h2>
 <div class="recuadro-regla"><p><strong>Redondeo: siempre hacia arriba.</strong> Cada vez que un cálculo deje decimales — en stats derivados, en bases de habilidad, en cualquier división — se redondea al entero superior. 42,5 sube a 43; también 43,33 sube a 44. Es un plus deliberado a favor del personaje.</p>
 <p><strong>Única excepción:</strong> el <strong>Alma accesible</strong>, que usa suelo (<code>suelo(Humanidad / 10)</code>). Ahí redondear arriba iría en contra de lo que la regla debe hacer — cuando la Humanidad cae, el Alma tiene que caer con ella.</p></div>
-<p><strong>Vida:</strong> (A + C + F) ÷ 6 por zona corporal, redondeado arriba.<br />
-Seis zonas: Cabeza (0/00, ojos 9, oídos 7 y lengua/mandíbula 6) / Torso (pecho 8 y espalda 5) / Brazo D (4) / Brazo I (3) / Pierna D (2) / Pierna I (1)</p>
-<p><strong>Estados de daño (por zona):</strong> cada zona usa su propio estado — <strong>Leve</strong> (sin penalizador), <strong>Media</strong> (−10 a acciones que usen esa zona), <strong>Grave</strong> (−20 y sangrado si es orgánica) o <strong>Desbordada</strong>. Cabeza y extremidades desbordan al alcanzar sus PV de zona; el torso tiene capacidad doble. Detalle en el capítulo 03, Mecánicas del Sistema, sección Heridas graves y desmembramiento.</p>
-<p><strong>Estado general (en paralelo):</strong> Sano → Herido → Exhausto (−20 a todas las habilidades) → Inconsciente → Muerto. Representa deterioro sistémico por heridas Graves orgánicas y sangrado; no sustituye los PV por zona. Primeros Auxilios o un medikit apropiado detienen el sangrado, pero no recuperan automáticamente estados ya perdidos.</p>
+<p><strong>PV base:</strong> (A + C + F) ÷ 6, redondeado arriba. No es una reserva por zona corporal: el personaje tiene tres niveles sucesivos — <strong>Sano, Herido y Tullido</strong> — cada uno con una capacidad igual a los PV base. La localización del impacto (dado de unidades: cabeza 0/00, ojos 9, oídos 7, lengua/mandíbula 6, pecho 8, espalda 5, brazo D 4, brazo I 3, pierna D 2, pierna I 1) determina qué Blindaje protege, efectos especiales sobre esa parte y si un impacto único causa desbordamiento — no concede una reserva de PV independiente por zona.</p>
+<p><strong>Niveles de herida:</strong> <strong>Sano</strong> (sin penalizador) · <strong>Herido</strong> (−10 a todas las habilidades) · <strong>Tullido</strong> (−20 a todas las habilidades) · Tullido agotado (muerte). El daño se descuenta del nivel actual; el sobrante pasa al siguiente nivel. <strong>Desbordamiento:</strong> un único impacto que alcanza o supera los PV base desborda cabeza o extremidad (extremidad tira 1d6 en la tabla de inutilización/amputación; cabeza = muerte); el torso necesita el doble de los PV base. El sangrado solo aparece por desbordamiento o por un efecto que lo declare expresamente. Detalle en el capítulo 03, Mecánicas del Sistema, sección Heridas graves y desmembramiento.</p>
 <p><strong>Humanidad y Alma:</strong> un humano normal comienza con Humanidad 100 y Alma total 8; un Iniciado, con Humanidad 100 y Alma total 10. La Humanidad puede ser superior al Alma. <strong>Alma accesible máxima = suelo(Humanidad / 10)</strong>. Si la Humanidad desciende y el Alma total supera el nuevo máximo accesible, el exceso queda bloqueado, no perdido. Ejemplos: Humanidad 100 → Alma accesible máxima 10; 80 → 8; 70 → 7; 35 → 3.</p>
 <p><strong>Salud Mental:</strong> 100 base. Anota también Referencia de trauma 100. Cada 10 puntos completos perdidos desde esa referencia produce un defecto mental menor; la referencia desciende 10 por cada tramo resuelto.</p>
 <p><strong>Deriva:</strong> 0 base. Sube con cada cruce de urdimbre. Se resuelve la Tabla A al alcanzar o superar por primera vez cada múltiplo de 10. El contador puede reducirse solo mediante métodos que lo indiquen expresamente, pero los umbrales ya alcanzados y sus consecuencias permanecen registrados.</p>
@@ -964,8 +973,8 @@ o tipos distintos. El total repartible es la suma de todos los bonos que afecten
 <p>Las <strong>Especializaciones avanzadas</strong> no cuentan entre las profesiones iniciales ni conceden automáticamente los bonos de rama de otra profesión.</p>
 <p><strong>Ejemplos:</strong></p>
 <ul>
-<li><strong>Maestro de Drones</strong> → <a href="CAP04d_Taller_Fabricacion_REVISADO.html#especializacion-avanzada-maestro-de-drones">Taller del Errante</a>.</li>
-<li><strong>Invocador</strong> → <a href="CAP04b_Distorsion_Escuelas_v3_DEFINITIVO.html#especializacion-avanzada-invocador">Distorsión: Escuelas y Poderes</a>.</li>
+<li><strong>Maestro de Drones</strong> → <a href="#especializacion-avanzada-maestro-de-drones">Taller del Errante</a>.</li>
+<li><strong>Invocador</strong> → <a href="#especializacion-avanzada-invocador">Distorsión: Escuelas y Poderes</a>.</li>
 </ul></div>
 <hr />
 <h2>Concentrar te equipa mejor</h2>
@@ -1030,7 +1039,7 @@ o tipos distintos. El total repartible es la suma de todos los bonos que afecten
 <p><strong>Decisión:</strong> "Soy reparador de armas y defensor de taller. Sé arreglar y pelear."</p>
 <p><strong>Paso 1 — Tipo de personaje:</strong> Predestinado (30 PG base, 9 PE)</p>
 <p><strong>Paso 2 — Atributos:</strong> Elige físicos (base 30 c/u). Ajuste fino: −5 Agilidad, +5 Habilidad. Puntos Gratuitos (30, en bloques de 5): +5 Fuerza, +5 Habilidad, +5 Constitución en físicos (15) · +15 Inteligencia en mentales (secundarios, base 25). Final: <strong>Fuerza 35, Agilidad 25, Habilidad 40, Constitución 35</strong> · Carisma 25, Inteligencia 40, Percepción 25, Voluntad 25.</p>
-<p><strong>Paso 3 — Stats:</strong> Vida = (25+35+35)÷6 = 15,8 → <strong>16 PV</strong> por zona (redondeo hacia arriba). Humanidad 100, Alma 8, Deriva 0.</p>
+<p><strong>Paso 3 — Stats:</strong> PV base = (25+35+35)÷6 = 15,8 → <strong>16 PV base</strong> (Sano/Herido/Tullido 16/16/16, redondeo hacia arriba). Humanidad 100, Alma 8, Deriva 0.</p>
 <p><strong>Paso 4 — Profesiones:</strong> Elige Técnico (1×) + Combatiente (1×).</p>
 <p><em>Bolsas de profesión (a repartir en bloques de 5 entre habilidades concretas, no toda la rama):</em><br />
 - Tecnológica: +15% (Técnico) + +5% (Combatiente) = <strong>+20% bolsa</strong><br />
@@ -1060,7 +1069,7 @@ o tipos distintos. El total repartible es la suma de todos los bonos que afecten
 <p><strong>Decisión:</strong> "Soy Maestro de Portales, muy especializado. Llevo distorsión en la sangre."</p>
 <p><strong>Paso 1 — Tipo de personaje:</strong> Héroe (40 Ap base, 35 Se; 10 PG; 1 PE)</p>
 <p><strong>Paso 2 — Atributos:</strong> Elige mentales (base 40 c/u). Ajuste fino: −5 Carisma, +5 Voluntad. Puntos Gratuitos (10, en bloques de 5): +5 Percepción, +5 Voluntad. Final: <strong>Voluntad 50, Percepción 45, Inteligencia 40, Carisma 35</strong> · físicos (secundarios, base 35 c/u, sin tocar): Agilidad 35, Constitución 35, Fuerza 35, Habilidad 35.</p>
-<p><strong>Paso 3 — Stats:</strong> Vida = (35+35+35)÷6 = 17,5 → <strong>18 PV</strong> por zona (redondeo hacia arriba — no tan bajo como parece un Iniciado, simplemente no invirtió PG en físicos). Humanidad 100, Alma total 10 (iniciado).</p>
+<p><strong>Paso 3 — Stats:</strong> PV base = (35+35+35)÷6 = 17,5 → <strong>18 PV base</strong> (Sano/Herido/Tullido 18/18/18, redondeo hacia arriba — no tan bajo como parece un Iniciado, simplemente no invirtió PG en físicos). Humanidad 100, Alma total 10 (iniciado).</p>
 <p><strong>Paso 4 — Profesiones:</strong> Elige Iniciado (2×).</p>
 <p><em>Bolsas de profesión (a repartir en bloques de 5 entre habilidades concretas):</em><br />
 - Distorsión: +15% (1×) + +15% (2×) = <strong>+30% bolsa</strong><br />
@@ -1804,13 +1813,13 @@ Viene de una tesela donde sus habilidades tienen otro nombre — chamán, brujo,
 </tr>
 <tr>
 <td><strong>Grande</strong></td>
-<td>+10 FUE, +10 CON y +5 PV/zona</td>
+<td>+10 FUE, +10 CON y +5 PV base</td>
 <td>Ataques contra él: +10 a la Habilidad efectiva del atacante; −10 HAB, −10 AGI; requiere equipo adaptado, que cuesta +10%</td>
 </tr>
 <tr>
 <td><strong>Pequeño</strong></td>
 <td>+10 HAB, +10 AGI; ataques contra él: −10 a la Habilidad efectiva del atacante; equipo adaptado −10% cuando sea lógico y esté disponible</td>
-<td>−10 FUE, −10 CON, −5 PV/zona; puede necesitar equipo adaptado</td>
+<td>−10 FUE, −10 CON, −5 PV base; puede necesitar equipo adaptado</td>
 </tr>
 </tbody>
 </table>
@@ -2352,7 +2361,7 @@ esta tabla — es una categoría propia, de doble filo.</p>
 <h4>Atributos y Configuración</h4>
 <p>Los ocho atributos comienzan en 20: base total 160. Distribuye los Puntos de Configuración en bloques de 5; ningún atributo puede superar 60 durante la creación. Representan componentes, procesadores, servos, sensores y piezas instalados de fábrica: no cuestan dinero inicial, no reducen Humanidad y no son implantes comprados durante la campaña.</p>
 <p>La Configuración sustituye el proceso de atributos orgánicos. Un Droideum no recibe automáticamente el bono de atributos por origen de bajo NT: su hardware inicial ya está representado por sus Puntos de Configuración.</p>
-<p>Una vez distribuidos, calcula habilidades, Vida por zonas, Carga, Iniciativa y demás derivados con las fórmulas normales y la regla general de redondeo. La suma final queda 30 puntos por debajo del orgánico equivalente.</p>
+<p>Una vez distribuidos, calcula habilidades, PV base, Carga, Iniciativa y demás derivados con las fórmulas normales y la regla general de redondeo. La suma final queda 30 puntos por debajo del orgánico equivalente.</p>
 <h4>Profesiones</h4>
 <p>El Droideum no pierde una profesión por ser una especie no humana: recibe el número estándar de la campaña, normalmente tres. Puede elegir Civil, Combatiente, Técnico y Científico.</p>
 <p>No puede adquirir capacidades de Iniciado que exijan Alma, Distorsión, Perlas o activación de runas. Estudiar conocimientos académicos asociados a Iniciados no concede acceso automático a sus poderes. No posee Vocación racial.</p>
@@ -2463,7 +2472,7 @@ esta tabla — es una categoría propia, de doble filo.</p>
 <p>Total añadido: <strong>90</strong>. Suma final: <strong>250</strong>.</p>
 <p>Derivados de comprobación:</p>
 <ul>
-<li>Vida por zona: (AGI 35 + CON 30 + FUE 25) ÷ 6 = 15 → <strong>15 PV</strong>.</li>
+<li>PV base: (AGI 35 + CON 30 + FUE 25) ÷ 6 = 15 → <strong>15 PV base</strong> (Sano/Herido/Tullido 15/15/15).</li>
 <li>Carga: (FUE 25 + CON 30) ÷ 4 = 13,75 → <strong>14</strong>.</li>
 <li>Rama Tecnológica: (HAB 40 + PER 35) ÷ 2 = 37,5 → <strong>38</strong>.</li>
 </ul>
@@ -2759,7 +2768,7 @@ Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
 <hr />
 <p><strong>Paso 3 — Stats derivados:</strong></p>
 <ul>
-<li>PV por zona: (AGI+CON+FUE) ÷ 6 = (25+35+35) ÷ 6 = <strong>16 PV</strong> por zona</li>
+<li>PV base: (AGI+CON+FUE) ÷ 6 = (25+35+35) ÷ 6 = <strong>16 PV base</strong> (Sano/Herido/Tullido 16/16/16)</li>
 <li>Humanidad: 100 / SM: 100 / Alma: 8 / Deriva: 0</li>
 <li>Carga sin penalización: (FUE+CON) ÷ 4 = 17,5 → <strong>18 vol</strong></li>
 <li>Dinero inicial: INT × 100 = <strong>3.500 PC</strong> + un ingreso por cada categoría de profesión distinta (ver Paso 4)</li>
@@ -3059,7 +3068,7 @@ Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
 <td>AGI</td>
 <td>25</td>
 <td></td>
-<td>PV/zona</td>
+<td>PV base</td>
 <td>16</td>
 </tr>
 <tr>
@@ -3772,8 +3781,8 @@ Techo enseñable = mínimo(50, suelo(80/2)) = 40. Aunque el periodo concedería 
 <p>El Director decide cuándo existe una oportunidad real de aprenderlas. Cumplir los números no hace aparecer automáticamente un instructor, un taller o un demonio dispuesto a colaborar.</p>
 <p><strong>Índice de Especializaciones avanzadas existentes:</strong></p>
 <ul>
-<li><strong>Maestro de Drones</strong> → <a href="CAP04d_Taller_Fabricacion_REVISADO.html#especializacion-avanzada-maestro-de-drones">Taller del Errante</a>.</li>
-<li><strong>Invocador</strong> → <a href="CAP04b_Distorsion_Escuelas_v3_DEFINITIVO.html#especializacion-avanzada-invocador">Distorsión: Escuelas y Poderes</a>.</li>
+<li><strong>Maestro de Drones</strong> → <a href="#especializacion-avanzada-maestro-de-drones">Taller del Errante</a>.</li>
+<li><strong>Invocador</strong> → <a href="#especializacion-avanzada-invocador">Distorsión: Escuelas y Poderes</a>.</li>
 </ul>
 <hr />
 <h3>Reconocimiento y Potencial</h3>
@@ -3860,6 +3869,8 @@ Recursos: taller de campaña
 <p><strong>El Reconocimiento consigue que te llamen. El Potencial demuestra lo que pareces capaz de afrontar. El peligro y el valor del trabajo determinan el pago.</strong></p>
 </blockquote>
 <p>REC se actualiza cuando se adquiere formación o experiencia permanente. POT se recalcula cuando cambia el conocimiento, cuerpo, implantes o equipo permanente relevante.</p>
+<h4>PNJ y trayectoria profesional</h4>
+<p>Para PNJ, el número de profesiones de la escala orientativa de uno a diez (ver capítulo 11, El Narrador) alimenta REC de la misma forma que en creación de personajes — no es un multiplicador aparte. Cuerpo, especie, implantes y equipo del PNJ siguen sin aportar REC por sí mismos; solo pueden alterar su POT.</p>
 <hr />
 <h3>Salud Mental</h3>
 <p>La Salud Mental inicial es <strong>100</strong>. También anota una <strong>Referencia de trauma</strong> inicial de <strong>100</strong>. La SM baja por defectos en creación y por eventos traumáticos durante el juego.</p>
@@ -4229,16 +4240,57 @@ máximo 0, Blindaje total − Penetración total
 </tr>
 </tbody>
 </table>
+<h3>Puntos de Vida y niveles de herida</h3>
+<pre><code class="language-text">PV base = (Agilidad + Constitución + Fuerza) ÷ 6
+</code></pre>
+<p>Redondeo hacia arriba, como el resto del sistema.</p>
+<p>Un personaje orgánico no lleva seis reservas de Vida independientes por localización. Tiene unos <strong>PV base</strong> y tres niveles sucesivos — <strong>Sano, Herido y Tullido</strong> — cada uno con una capacidad igual a los PV base.</p>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Penalizador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sano</td>
+<td>Sin penalizador</td>
+</tr>
+<tr>
+<td>Herido</td>
+<td>−10 a todas las habilidades</td>
+</tr>
+<tr>
+<td>Tullido</td>
+<td>−20 a todas las habilidades</td>
+</tr>
+<tr>
+<td>Tullido agotado</td>
+<td>Muerte</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El daño se descuenta del nivel actual.</strong> Cuando un nivel se agota, el sobrante pasa al siguiente nivel. Si el daño atraviesa Herido, el resto entra en Tullido; si agota Tullido, el personaje muere.</p>
+<div class="ejemplo"><p><strong>Transición simple.</strong> PV base 16. Sano 4/16. Recibe 10 de daño: agota los 4 de Sano y los 6 puntos sobrantes pasan a Herido. Resultado: Herido 10/16 — penalizador −10.</p>
+<p><strong>Atravesar dos niveles.</strong> PV base 16. Sano 3/16. Recibe 22 de daño: agota los 3 de Sano, consume los 16 de Herido, y los 3 restantes entran en Tullido. Resultado: Tullido 13/16 — penalizador −20.</p>
+<p><strong>Muerte por agotamiento.</strong> PV base 16. Tullido 5/16. Recibe 5 de daño: Tullido queda agotado. Resultado: muerte.</p></div>
+<p>Registro en ficha: <code>Sano 16/16 · Herido 16/16 · Tullido 16/16</code>, abreviable como <code>PV 16/16/16</code>. La primera cifra nunca representa cabeza, torso o extremidad — representa Sano/Herido/Tullido.</p>
+<p>Droides, robots, cibermiembros, implantes con integridad propia y estructuras pueden llevar PV separados por zona o componente cuando su propia ficha lo establezca expresamente. No extiendas este sistema orgánico de tres niveles a una máquina cuya ficha esté diseñada por componentes.</p>
 <h3>Heridas graves y desmembramiento</h3>
 <p>Este es un sistema letal: un impacto bien colocado incapacita o mata. Pero un golpe brutal a una extremidad no siempre es mortal — en el combate real, lo habitual es perder el miembro, no la vida.</p>
-<p><strong>Disparador:</strong> una zona desborda cuando el daño acumulado alcanza o supera su capacidad:</p>
+<p><strong>El desbordamiento se calcula con el daño final de un único impacto</strong> — después de Blindaje, Penetración, éxitos y demás efectos —, nunca acumulando todo el daño recibido antes en esa localización.</p>
 <ul>
-<li><strong>Cabeza</strong>: desborda al alcanzar o superar sus PV de zona. Consecuencia: muerte.</li>
-<li><strong>Torso</strong> (pecho y espalda): tiene el doble de capacidad. Desborda al alcanzar o superar <code>PV de zona × 2</code>. Consecuencia: muerte.</li>
-<li><strong>Extremidad</strong> (brazo o pierna): desborda al alcanzar o superar sus PV de zona. El exceso de daño NO se traslada al resto del cuerpo. Tira <strong>1d6</strong> en la tabla de inutilización o amputación. El personaje sigue en pie.</li>
+<li><strong>Cabeza</strong>: desborda cuando un único impacto alcanza o supera los PV base. Consecuencia: muerte.</li>
+<li><strong>Torso</strong> (pecho y espalda): tiene el doble de capacidad. Desborda cuando un único impacto alcanza o supera <code>PV base × 2</code>. Consecuencia: muerte.</li>
+<li><strong>Extremidad</strong> (brazo o pierna): desborda cuando un único impacto alcanza o supera los PV base. El exceso de ese impacto NO se traslada al resto del cuerpo. Tira <strong>1d6</strong> en la tabla de inutilización o amputación. El personaje sigue en pie.</li>
 <li><strong>Ojos, oídos, lengua/mandíbula y cabeza</strong> son localizaciones de cabeza.</li>
-<li>Droides, robots e implantes usan sus PV específicos cuando corresponda.</li>
+<li>Droides, robots e implantes con PV propios de componente calculan su desbordamiento sobre esos PV.</li>
 </ul>
+<p>El daño de ese mismo impacto también se descuenta con normalidad del nivel de herida actual (Sano/Herido/Tullido) y puede atravesar niveles como cualquier otro golpe.</p>
+<div class="ejemplo"><p><strong>Desbordamiento de extremidad.</strong> PV base 16. Un único impacto causa 16 de daño final en un brazo: alcanza el umbral (16 ≥ 16 PV base) y desborda. Se tira 1d6 en la tabla de inutilización/amputación. Esos 16 puntos también se descuentan de los niveles de herida actuales del personaje.</p>
+<p><strong>Torso sin desbordar.</strong> PV base 16. Un único impacto causa 20 de daño final en el torso: no alcanza el umbral (20 &lt; 32, el doble de los PV base) y no desborda, aunque el daño sí atraviesa niveles con normalidad.</p>
+<p><strong>Torso desbordado.</strong> PV base 16. Un único impacto causa 32 de daño final en el torso: alcanza el umbral (32 ≥ 32) y desborda. Resultado: muerte.</p></div>
 <table>
 <thead>
 <tr>
@@ -4261,113 +4313,10 @@ máximo 0, Blindaje total − Penetración total
 </tr>
 </tbody>
 </table>
-<p><strong>Sangrado:</strong> sufren sangrado las heridas Graves orgánicas y las zonas orgánicas desbordadas. Al inicio de cada asalto, el personaje tira <strong>Constitución</strong>. Con éxito, no empeora durante ese asalto. Con fallo, desciende un estado general. Un <strong>medikit</strong> apropiado o un éxito en <strong>Primeros Auxilios</strong> estabiliza y detiene el sangrado.</p>
+<p><strong>Sangrado:</strong> no es automático. Un personaje orgánico solo sangra cuando una localización desborda, o cuando un arma, criatura o efecto lo declara expresamente — estar Herido o Tullido no provoca sangrado por sí solo. Mientras sangra, al inicio de cada asalto tira <strong>Constitución</strong>: con éxito no empeora ese asalto; con fallo, desciende al siguiente nivel de herida (Sano→Herido, Herido→Tullido, Tullido→agotado y muerte). Un <strong>medikit</strong> apropiado o un éxito en <strong>Primeros Auxilios</strong> detiene el sangrado.</p>
 <div class="recuadro-combate"><p><strong>NOTA</strong><br />
 En droides, robots y miembros que son implantes, cada extremidad lleva sus propios PV siempre (no solo en regla avanzada). El desbordamiento se calcula sobre esos PV.</p></div>
-<h3>Niveles de herida por zona</h3>
-<p>Según el porcentaje de capacidad perdido en una zona, la herida cae en un nivel. Cabeza y extremidades calculan los umbrales sobre sus PV de zona; el torso los calcula sobre su capacidad doble. Los umbrales fraccionarios redondean hacia arriba.</p>
-<table>
-<thead>
-<tr>
-<th>Pérdida</th>
-<th>Estado</th>
-<th>Efecto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hasta 25%</td>
-<td>Leve</td>
-<td>Sin penalizador</td>
-</tr>
-<tr>
-<td>Más de 25% hasta 50%</td>
-<td>Media</td>
-<td>−10 a acciones que usen la zona</td>
-</tr>
-<tr>
-<td>Más de 50%, sin desbordar</td>
-<td>Grave</td>
-<td>−20 a acciones que usen la zona y sangrado</td>
-</tr>
-<tr>
-<td>Al alcanzar el límite</td>
-<td>Desbordada</td>
-<td>Consecuencia por localización</td>
-</tr>
-</tbody>
-</table>
-<p>Ejemplo con 16 PV:</p>
-<table>
-<thead>
-<tr>
-<th>Zona</th>
-<th>Leve</th>
-<th>Media</th>
-<th>Grave</th>
-<th>Desbordada</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cabeza/extremidad</td>
-<td>1–4</td>
-<td>5–8</td>
-<td>9–15</td>
-<td>16+</td>
-</tr>
-<tr>
-<td>Torso</td>
-<td>1–8</td>
-<td>9–16</td>
-<td>17–31</td>
-<td>32+</td>
-</tr>
-</tbody>
-</table>
-<h3>Estados generales</h3>
-<p>Los estados generales representan deterioro sistémico por heridas Graves, sangrado, shock y pérdida de capacidad global. No son un segundo conjunto de PV y no sustituyen los estados por zona.</p>
-<table>
-<thead>
-<tr>
-<th>Estado general</th>
-<th>Condición orientativa</th>
-<th>Efecto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sano</td>
-<td>Sin deterioro sistémico relevante</td>
-<td>Sin penalizador global</td>
-</tr>
-<tr>
-<td>Herido</td>
-<td>Dolor, pérdida de sangre o daño acumulado aún controlable</td>
-<td>Según heridas por zona y criterio del DJ</td>
-</tr>
-<tr>
-<td>Exhausto</td>
-<td>El cuerpo ya no compensa la lesión o el sangrado</td>
-<td>−20 a todas las habilidades</td>
-</tr>
-<tr>
-<td>Inconsciente</td>
-<td>Incapaz de actuar</td>
-<td>No puede realizar acciones</td>
-</tr>
-<tr>
-<td>Muerto</td>
-<td>Daño letal, desbordamiento mortal o fallo narrativo definitivo</td>
-<td>Fin del personaje salvo reglas especiales</td>
-</tr>
-</tbody>
-</table>
-<p>Las reglas de Constitución, estabilización y sangrado determinan cuándo se desciende por esta cadena.</p>
 <h3>Implantes y tatuajes en zonas dañadas</h3>
-<p><strong>Zona en Grave (sin desbordar):</strong><br />
-- <strong>Implantes:</strong> inutilizados hasta reparación. No funcionan, pero no se pierden.<br />
-- <strong>Tatuajes rúnicos:</strong> pierden efecto hasta que la zona sane a Media o mejor.</p>
 <p><strong>Zona desbordada — según resultado del 1d6:</strong></p>
 <table>
 <thead>
@@ -4409,13 +4358,13 @@ En droides, robots y miembros que son implantes, cada extremidad lleva sus propi
 <tbody>
 <tr>
 <td>MKB (Básico)</td>
-<td>Leves/Medias (Graves = mitad)</td>
+<td>Sano/Herido (Tullido = mitad)</td>
 <td>15 PV</td>
 <td>200 PC</td>
 </tr>
 <tr>
-<td>MKG (Graves)</td>
-<td>Graves/Medias (Leves = mitad)</td>
+<td>MKG (Avanzado)</td>
+<td>Herido/Tullido (Sano = mitad)</td>
 <td>15 PV</td>
 <td>500 PC</td>
 </tr>
@@ -4428,6 +4377,8 @@ En droides, robots y miembros que son implantes, cada extremidad lleva sus propi
 </tbody>
 </table>
 <p>Uso manual: 1 asalto completo (a uno mismo o a otro). Cuando un medikit cura la mitad por no ser el tipo apropiado, aplica la regla general de redondeo: la mitad de 15 PV son <strong>8 PV</strong>. <strong>Automedikit:</strong> complemento de armadura (1 vol, 2.000 PC instalación), 4 slots configurables MKB/MKG, activación automática programable. Rack Médico en ficha: hasta 12 MKB + 8 MKG sueltos.</p>
+<p><strong>La curación rellena PV en orden inverso al daño:</strong> primero completa Tullido; cuando Tullido queda completo, el sobrante continúa en Herido; cuando Herido queda completo, el sobrante continúa en Sano. Nunca supera los PV base de cada nivel. Al completar un nivel y regresar al anterior, el penalizador se actualiza de inmediato.</p>
+<div class="ejemplo"><p><strong>Ejemplo:</strong> PV base 16. Tullido 12/16. Recibe 8 PV de curación: los primeros 4 completan Tullido; los 4 restantes pasan a Herido. Resultado: Herido 4/16, penalizador −10.</p></div>
 <p><strong>Primeros Auxilios:</strong> estabiliza y detiene sangrado. <strong>Medicina:</strong> tratamiento serio, cirugía, recuperación a largo plazo.</p>
 <p><strong>Recuperación natural:</strong></p>
 <table>
@@ -4440,23 +4391,23 @@ En droides, robots y miembros que son implantes, cada extremidad lleva sus propi
 </thead>
 <tbody>
 <tr>
-<td>Leve</td>
+<td>Sano</td>
 <td>1 hora / PV</td>
 <td>30 min / PV</td>
 </tr>
 <tr>
-<td>Media</td>
+<td>Herido</td>
 <td>1 día / PV</td>
 <td>12 horas / PV</td>
 </tr>
 <tr>
-<td>Grave</td>
+<td>Tullido</td>
 <td>1 semana / PV</td>
 <td>3–4 días / PV</td>
 </tr>
 </tbody>
 </table>
-<p>Heridas Graves sin atención pueden dejar secuelas permanentes (−10% habilidades afectadas, a criterio del DJ).</p>
+<p>Heridas en Tullido sin atención pueden dejar secuelas permanentes (−10 a las habilidades afectadas, a criterio del DJ).</p>
 <h3>Recuperar un miembro perdido</h3>
 <p><strong>Prótesis/cibermiembros:</strong> sustituyen la función. Amputación baja = 60% del precio; alta = 100%. Instalación en campo: tirada de Medicina, 2-4 horas, funcional pero sin bonificadores de Taller. Catálogo → el capítulo 08, La Carne y el Metal, sección Implantes.</p>
 <p><strong>Regeneración por distorsión:</strong> ciertos resultados de la Tabla A regeneran o reemplazan miembros. Ver Tabla de Efectos de Distorsión y Tabla D — Nueva Extremidad.</p>
@@ -4545,7 +4496,7 @@ En droides, robots y miembros que son implantes, cada extremidad lleva sus propi
 <tr>
 <td>2</td>
 <td>Parásita</td>
-<td>−5 PV máximos en zona cercana</td>
+<td>−5 PV base</td>
 </tr>
 <tr>
 <td>3</td>
@@ -5095,16 +5046,16 @@ El 99 <em>siempre</em> tiene consecuencias. La diferencia es si el arma sobreviv
 <h2>Ejemplo completo de combate</h2>
 <p><em>Dos Errantes contra un Abrazado. Un asalto completo, todos los pasos.</em></p>
 <p><strong>Personajes:</strong><br />
-- <strong>Kova</strong> — Distancia Media 55%, pistola (daño 4), sin armadura, Iniciativa 35, PV 16/zona<br />
-- <strong>Reyes</strong> — CC 60%, cuchillo (daño 3), armadura tipo 1, Iniciativa 30, PV 16/zona<br />
-- <strong>Abrazado</strong> — CC 65%, mordisco (daño 4), armadura tipo 1 (Bld 1), Iniciativa 40, PV 16/zona</p>
+- <strong>Kova</strong> — Distancia Media 55%, pistola (daño 4), sin armadura, Iniciativa 35, PV base 16 (Sano/Herido/Tullido 16/16/16)<br />
+- <strong>Reyes</strong> — CC 60%, cuchillo (daño 3), armadura tipo 1, Iniciativa 30, PV base 16 (Sano/Herido/Tullido 16/16/16)<br />
+- <strong>Abrazado</strong> — CC 65%, mordisco (daño 4), armadura tipo 1 (Bld 1), Iniciativa 40, PV base 16 (Sano/Herido/Tullido 16/16/16)</p>
 <p><strong>Iniciativa:</strong> Kova 2d10=47 +35 = <strong>82</strong>. Reyes 2d10=63 +30 = <strong>93</strong>. Abrazado 2d10=85 +40 = <strong>125</strong>.<br />
 Posiciones: Abrazado 125 y 25; Reyes 93; Kova 82. Orden: Abrazado 125 → Reyes 93 → Kova 82 → Abrazado 25.</p>
-<p><strong>Abrazado 125 → Kova:</strong> tira CC 65%, saca 42 → 3 éxitos. Unidades: 2 → pierna derecha. Sin armadura → 3 netos. Daño: 4×3 = <strong>12 PV</strong>. Kova queda con 4 PV en pierna: ha perdido 12 de 16, sufre herida <strong>Grave</strong> y sangrado, pero no desbordamiento.</p>
+<p><strong>Abrazado 125 → Kova:</strong> tira CC 65%, saca 42 → 3 éxitos. Unidades: 2 → pierna derecha. Sin armadura → 3 netos. Daño: 4×3 = <strong>12 PV</strong>. Impacto único de 12 en una extremidad (PV base 16): no alcanza el umbral de desbordamiento. Los 12 puntos se descuentan de su Sano (16/16 → 4/16); como no lo agota, Kova sigue Sana y sin penalizador. Sin desbordamiento no hay sangrado.</p>
 <p><strong>Reyes 93 → Abrazado (CC):</strong> tira 60%, saca 58 → 1 éxito. Unidades: 8 → pecho. Armadura tipo 1 absorbe 1 éxito → 0 netos. <strong>Sin daño.</strong></p>
-<p><strong>Kova 82 → Abrazado (disparo, herida Grave, −20):</strong> Distancia Media efectiva 35%, saca 28 → 1 éxito. Unidades: 6 → cara. Armadura tipo 1 absorbe 1 → 0 netos. <strong>Sin daño.</strong></p>
+<p><strong>Kova 82 → Abrazado (disparo):</strong> sigue Sana, sin penalizador: Distancia Media 55%, saca 28 → 3 éxitos. Unidades: 6 → cara. Armadura tipo 1 absorbe 1 → 2 netos. Daño: 4×2 = <strong>8 PV</strong>. Impacto único de 8 en la cabeza (PV base 16): no alcanza el umbral de desbordamiento. Los 8 puntos se descuentan del Sano del Abrazado (16/16 → 8/16); sigue Sano y sin penalizador.</p>
 <p><strong>Abrazado 25 → Reyes:</strong> tira 65%, saca 71 → fallo. Sin daño.</p>
-<p><strong>Fin del asalto:</strong> el Abrazado no ha sufrido daño. Su armadura tipo 1 bloqueó dos ataques que solo consiguieron 1 éxito cada uno. Con 2 éxitos netos, cualquiera de esos ataques habría hecho 6-8 puntos de daño. La diferencia entre 1 y 2 éxitos es todo el sistema.</p>
+<p><strong>Fin del asalto:</strong> Kova y el Abrazado han encajado impactos que han consumido buena parte de su Sano, pero ninguno de los dos ha bajado de nivel ni ha sufrido desbordamiento — ambos siguen sin penalizador. Reyes bloqueó el único golpe que recibió con su armadura. La diferencia entre 1 y 2+ éxitos, y entre quedarse corto o superar los PV base de una localización, es todo el sistema.</p>
 <hr />
 <h2>GLOSARIO RÁPIDO</h2>
 <table>
@@ -6090,8 +6041,59 @@ Los tres caminos son compatibles: un Iniciado puede desarrollar habilidades de v
 <li>El coste es daño real recuperable mediante curación normal.</li>
 <li>Duración general: seis asaltos salvo indicación.</li>
 <li>El tatuaje es permanente; su activación es temporal.</li>
-<li>Máximo simultáneo: suelo(Voluntad/20), mínimo uno.</li>
+<li><strong>Un tatuaje ordinario es de un solo uso hasta su recarga:</strong> tras activarse queda agotado —no se destruye ni se borra— hasta que transcurra su intervalo de recarga (ver "Recarga de marcas y tatuajes", más abajo). No se reactiva solo por tener PV disponibles mientras sigue recargando.</li>
+<li>Máximo simultáneo: suelo(Voluntad/20), mínimo uno — esto limita cuántos tatuajes distintos puede tener activos a la vez, no cuántas veces puede reactivar el mismo.</li>
 <li>Mantiene las restricciones de soporte vivo.</li>
+</ul>
+<h3>Recarga de marcas y tatuajes</h3>
+<p>La tirada de inscripción no solo determina si la marca se graba correctamente — sus éxitos adicionales fijan también cada cuánto podrá volver a activarse. El éxito que basta para completar la inscripción no cuenta como adicional: una inscripción que se queda en ese mínimo tiene recarga básica, 24 horas. Cada éxito adicional por encima de ese mínimo reduce la recarga anterior a la mitad:</p>
+<table>
+<thead>
+<tr>
+<th>Resultado de la inscripción</th>
+<th style="text-align: right;">Recarga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Éxito básico</td>
+<td style="text-align: right;">24 horas</td>
+</tr>
+<tr>
+<td>1 éxito adicional</td>
+<td style="text-align: right;">12 horas</td>
+</tr>
+<tr>
+<td>2 éxitos adicionales</td>
+<td style="text-align: right;">6 horas</td>
+</tr>
+<tr>
+<td>3 éxitos adicionales</td>
+<td style="text-align: right;">3 horas</td>
+</tr>
+<tr>
+<td>4 éxitos adicionales</td>
+<td style="text-align: right;">1 hora y 30 minutos</td>
+</tr>
+<tr>
+<td>5 éxitos adicionales</td>
+<td style="text-align: right;">45 minutos</td>
+</tr>
+<tr>
+<td>6 éxitos adicionales</td>
+<td style="text-align: right;">22 minutos aproximadamente</td>
+</tr>
+</tbody>
+</table>
+<p>Más allá de 6 éxitos adicionales, cada nuevo éxito sigue dividiendo entre dos la recarga anterior; redondea al minuto más próximo si hace falta.</p>
+<ul>
+<li>La reducción de recarga se fija <strong>al inscribir</strong> la marca y queda grabada en ella para siempre — activarla después no la mejora ni la empeora.</li>
+<li>La inscripción solo admite <strong>una activación preparada</strong>: no hay cargas múltiples ni activaciones en cola. Pasado su intervalo de recarga, vuelve a estar disponible entera.</li>
+<li>La recarga determina solo <strong>cuándo</strong> puede volver a activarse el tatuaje — nunca devuelve los PV ya pagados. Una marca puede recargar y quedar lista para activarse de nuevo aunque su portador todavía no haya recuperado los PV que pagó la vez anterior.</li>
+<li>Cada nueva activación vuelve a pagar el coste íntegro (PV por nivel, según la tabla de Tatuajes de arriba). No hay acumulación de usos por dejar pasar varios periodos de recarga sin activar.</li>
+<li>Los PV del portador se recuperan exclusivamente por las reglas normales de curación y descanso — nunca por la recarga de la marca.</li>
+<li>Una mejora reduce el intervalo de recarga; no concede activaciones simultáneas adicionales — el límite de tatuajes activos a la vez sigue siendo suelo(Voluntad/20).</li>
+<li>No confundir con el tatuaje temporal (ver más abajo): el temporal desaparece tras su única activación o a las 24h sin usarse; un tatuaje permanente con recarga vuelve a estar disponible, indefinidamente, pasado cada intervalo.</li>
 </ul>
 <h3>Runas básicas</h3>
 <p>Las nueve runas básicas son el punto de entrada al sistema de Marcas Arcanas. Son nivel 1-2,<br />
@@ -6143,8 +6145,8 @@ manual básico. No requieren escuela específica ni acceso restringido.</p>
 </tr>
 <tr>
 <td><strong>Aguante</strong></td>
-<td>Ignora el penalizador del estado Herido</td>
-<td>Ignora penalizadores de Herido y Exhausto</td>
+<td>Ignora el penalizador del nivel Herido</td>
+<td>Ignora penalizadores de Herido y Tullido</td>
 </tr>
 <tr>
 <td><strong>Impulso</strong></td>
@@ -6277,6 +6279,7 @@ para hacer hueco. Una runa natural no puede retirarse — forma parte del artesa
 </ul>
 <h2>6. Índice rúnico derivado</h2>
 <p>El índice por nivel no sustituye al catálogo por escuelas. Si aparece una discrepancia, prevalece la descripción de la escuela correspondiente — ver el Anexo A6, Batería de Runas, para catálogo completo.</p>
+<p><a id="especializacion-avanzada-invocador"></a></p>
 <h2>7. Especialización avanzada — Invocador</h2>
 <blockquote>
 <p><em>"No abres un portal para cruzarlo. Lo abres para que algo cruce hacia ti."</em></p>
@@ -7502,7 +7505,7 @@ Festividad popular en MadCity y ciudades despertadas. Se celebra el día en que,
 <p><em>"Una runa no es un objeto. Es una conversación con la distorsión inscrita en materia."</em></p>
 </blockquote>
 <p>El catálogo completo de runas por escuela, tatuajes rúnicos, combinaciones y notas para el Narrador está en el <strong>Anexo A6 — Batería de Runas por Escuelas</strong>.</p>
-<p>Este capítulo conserva la mecánica base de Marcas Arcanas — activación y resonancia, tatuajes temporales, runas favoritas y naturales, Sobrecarga — en §5.</p>
+<p>Este capítulo conserva la mecánica base de Marcas Arcanas — activación y resonancia, tatuajes temporales, uso y recarga, runas favoritas y naturales, Sobrecarga — en §5.</p>
 <hr />
 <h2>REFERENCIA RÁPIDA — Distorsión</h2>
 <h3>Costes de Hechicería</h3>
@@ -9327,7 +9330,7 @@ Desventajas: muy imprecisa fuera del rango óptimo. Pesada y lenta.</p>
 <tr>
 <td><strong>Recuperar</strong></td>
 <td>Curar heridas, Salud Mental o Puntos de Alma.</td>
-<td>Capítulo 03: Heridas graves, estados generales y Curación; Recuperación de Alma (La Paz / La Pobreza / El Servicio / La Carne)</td>
+<td>Capítulo 03: Heridas graves y desmembramiento, y Curación; Recuperación de Alma (La Paz / La Pobreza / El Servicio / La Carne)</td>
 </tr>
 </tbody>
 </table>
@@ -13115,7 +13118,143 @@ Usa la tabla del capítulo 02, Creación de Personajes (1d10), para el tipo de p
 <p><strong>Las primeras 24 horas:</strong><br />
 El cuerpo no se ha adaptado. −20 a Autocontrol y percepciones. No puede usar habilidades rúnicas. Cada vez que duerme, tira 1d6: con 1-2, pesadillas — no recupera PV esa noche.</p>
 <div class="recuadro-regla"><p><strong>Regla de oro:</strong><br />
-Nunca le des un arma al principio. Un Errante sin armas es un Errante que piensa. El Cruce es vulnerabilidad, no poder. Es el momento más humano de toda la campaña — úsalo.</p></div></div></section>
+Nunca le des un arma al principio. Un Errante sin armas es un Errante que piensa. El Cruce es vulnerabilidad, no poder. Es el momento más humano de toda la campaña — úsalo.</p></div>
+<hr />
+<h2>16. Construcción de PNJ — La Escala de Profesiones</h2>
+<p>Un PNJ no necesita el proceso de creación de un personaje jugador. Necesita algo rápido, coherente con su historia y fácil de ajustar en mesa. Esta escala orientativa de una a diez profesiones es esa herramienta: sirve para construir un PNJ nuevo con rapidez, para relacionar sus habilidades con su biografía, y para diagnosticar si una ficha antigua tiene sentido o merece revisión — sin obligarte a convertir a todo el reparto en un personaje completo.</p>
+<p>No sustituye la creación de personajes jugadores del capítulo 02. Un PJ sigue eligiendo hasta 3 profesiones en creación, con las reglas de categoría, Vocación y Especializaciones avanzadas ya establecidas. Esta escala es exclusivamente una herramienta de construcción y diagnóstico para PNJ.</p>
+<h3>La escala</h3>
+<p>La cantidad de profesiones de un PNJ representa su trayectoria, su formación y la amplitud de su experiencia — no un nivel universal de poder ni una escala rígida de desafío.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Profesiones</th>
+<th>Tipo orientativo</th>
+<th>Lectura narrativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Masilla</td>
+<td>Formación mínima o función muy concreta</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Personal corriente</td>
+<td>Profesional básico, tropa o auxiliar</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Competente</td>
+<td>Referencia aproximada de un personaje inicial humano equilibrado</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Veterano</td>
+<td>Profesional experimentado y fiable</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Especialista</td>
+<td>Destaca claramente dentro de su entorno</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Élite</td>
+<td>Operativo, mando o experto excepcional</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Figura notable</td>
+<td>Referente regional o corporativo</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Gran veterano</td>
+<td>Larga trayectoria o experiencia extraordinaria</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Autoridad excepcional</td>
+<td>Entre los mejores de una corporación o disciplina</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>PNJ poderoso</td>
+<td>Su historia ya tiene un peso considerable en el mundo</td>
+</tr>
+<tr>
+<td style="text-align: right;">11 o más</td>
+<td>Excepción narrativa</td>
+<td>Personajes únicos, legendarios y casos extraordinarios</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>No confundas el tipo orientativo con el rango por categoría.</strong> Esta tabla clasifica por el número TOTAL de profesiones, sin importar de qué categorías vengan. El rango de un PNJ dentro de una categoría concreta (Novato/Veterano/Oficial/General, Chapuzas/Especialista/Ingeniero/Genio, y equivalentes — ver capítulo 02 y la sección de Profesiones) depende de cuántas veces repite esa profesión en particular, no del total. Un PNJ con 4 profesiones puede tener tipo orientativo "Veterano" (4 en total) y al mismo tiempo ser Oficial en Combatiente (3×) más Chapuzas en Técnico (1×) — son dos palabras que coinciden por casualidad en dos escalas distintas.</p>
+</blockquote>
+<h3>No es una escala de desafío</h3>
+<p>Un PNJ con ocho profesiones no vence automáticamente a uno con cuatro. El resultado de un enfrentamiento depende de qué profesiones posee, en qué categorías se concentra, sus atributos, sus habilidades, su equipo, su cuerpo o especie, sus implantes, su preparación, el terreno, la escena, sus aliados y la estrategia. Un soldado especializado con tres profesiones puede derrotar a un académico con ocho si la situación favorece al primero.</p>
+<h3>La biografía determina las profesiones</h3>
+<p>Las profesiones deben explicar lo que el PNJ ha aprendido durante su vida. No se añaden únicamente para elevar cifras. En un PNJ importante, deberías poder responder:</p>
+<ul>
+<li>¿Dónde recibió esa formación?</li>
+<li>¿Durante cuánto tiempo la ejerció?</li>
+<li>¿Qué parte de su historia explica sus mejores habilidades?</li>
+<li>¿Qué cosas no sabe hacer pese a su experiencia?</li>
+</ul>
+<h3>Amplitud y especialización</h3>
+<p>Dos PNJ con seis profesiones pueden ser completamente diferentes: uno puede haber acumulado formación diversa: el otro puede haberse concentrado varias veces en ámbitos relacionados. Aplica siempre las reglas activas de categorías profesionales, ingresos, repetición y Especializaciones avanzadas del capítulo 02 — esta herramienta no crea una forma alternativa de repetir profesiones.</p>
+<h3>Profesiones, REC y POT</h3>
+<p>Se mantiene la separación entre Reconocimiento y Potencial ya establecida en el capítulo 03:</p>
+<ul>
+<li><strong>REC</strong> refleja la formación y experiencia adquiridas. Las profesiones de un PNJ alimentan su REC según las mismas bolsas de bono que en creación de personajes.</li>
+<li><strong>POT</strong> refleja la capacidad operativa final con la configuración actual — cuerpo, implantes y equipo incluidos.</li>
+<li>Especie, cuerpo, atributos corporales, implantes y equipo no se convierten en profesiones ni aportan REC por sí mismos. Sí pueden alterar POT cuando modifican la capacidad final del PNJ.</li>
+<li>Un cambio de cuerpo no borra la trayectoria profesional ni el REC adquirido; el POT se recalcula cuando cambia la configuración efectiva.</li>
+</ul>
+<h3>Las profesiones no aumentan todo</h3>
+<p>La cantidad de profesiones no concede automáticamente PV, Blindaje, daño, Penetración, autoridad, riqueza, equipo superior, acceso corporativo, poderes ni capacidades raciales. Cada uno de esos elementos necesita su propia justificación — de biografía, de cuerpo, de equipo o de poder — independiente del número de profesiones.</p>
+<h3>Tres tipos de construcción</h3>
+<p><strong>PNJ funcional</strong> — normalmente una o dos profesiones. Para personajes que cumplen una función limitada o aparecen en pocas escenas. Basta con indicar atributos o habilidades relevantes, equipo necesario, un rasgo distintivo y aquello que no sabe hacer. No necesita creación completa.</p>
+<p><strong>PNJ completo</strong> — normalmente entre tres y diez profesiones. Para aliados, rivales, personajes recurrentes y figuras relevantes. Su trayectoria, habilidades, REC y POT deben guardar coherencia entre sí.</p>
+<p><strong>PNJ excepcional</strong> — puede superar diez profesiones o poseer capacidades narrativas expresas. Debe existir una justificación visible en su biografía o naturaleza. Superar diez no concede licencia para elevar indiscriminadamente todas sus habilidades: sigue habiendo partes de su ficha ordinarias.</p>
+<h3>Criaturas, máquinas y entidades</h3>
+<p>Las criaturas, las máquinas construidas para una función, los demonios, los grandes jefes y las entidades no tienen que crearse mediante profesiones cuando resulte artificial. Pueden usar fichas directas porque sus capacidades proceden de su naturaleza, diseño, chasis, poderes, escala, función narrativa o reglas especiales expresas. Un Droideum construido como personaje sí puede emplear profesiones conforme a sus propias reglas; un robot de combate producido en serie no necesita una carrera profesional ficticia.</p>
+<h3>PNJ únicos y bosses</h3>
+<p>Los PNJ únicos, los personajes legendarios y los bosses pueden superar diez profesiones. Al usarlos, ten presente que:</p>
+<ul>
+<li>es una excepción, no un nuevo escalón obligatorio para el resto del reparto;</li>
+<li>su poder puede proceder de factores distintos de su formación;</li>
+<li>no todos necesitan una construcción completa;</li>
+<li>las capacidades especiales deben escribirse expresamente, no darse por supuestas;</li>
+<li>no deben utilizarse como referencia para el personal corriente.</li>
+</ul>
+<h3>Regla orientativa, no camisa de fuerza</h3>
+<p>La tabla sirve para construir y diagnosticar. Si una ficha existente funciona pero no encaja con la escala, pregúntate: ¿es una excepción legítima? ¿Su capacidad procede del cuerpo o de la especie? ¿Procede del equipo? ¿Procede de un poder? ¿Tiene una biografía que justifique tanta formación? ¿Se inflaron sus habilidades sin una trayectoria coherente? La respuesta a estas preguntas no tiene por qué ser modificar automáticamente la ficha — a veces solo aclara por qué esa excepción es legítima.</p>
+<h3>Formato resumido recomendado</h3>
+<p>Para los PNJ importantes puede usarse una línea como:</p>
+<blockquote>
+<p><strong>Trayectoria:</strong> 6 profesiones — 3 Combatiente, 2 Técnico, 1 Civil.</p>
+</blockquote>
+<p>Es un resumen orientativo. Desarrolla los nombres concretos de las profesiones solo cuando resulten útiles para interpretar o verificar la ficha. No confundas el número de profesiones con el número de categorías: "6 profesiones — 3 Combatiente, 2 Técnico, 1 Civil" son 6 profesiones repartidas en 3 categorías, no 3 profesiones en 6 categorías.</p>
+<h3>Ejemplos</h3>
+<p><strong>Guardia de almacén</strong> — PNJ funcional.<br />
+<strong>Trayectoria:</strong> 1 profesión — 1× Combatiente (Novato).<br />
+Competente únicamente en su trabajo: reconoce una amenaza y dispara su arma reglamentaria sin brillar en nada más. Rasgo distintivo: conoce cada rincón del almacén y sabe exactamente a quién no debe dejar pasar. No sabe: combate cuerpo a cuerpo más allá de defenderse, ni nada fuera de su turno de vigilancia. No necesita ficha completa.</p>
+<p><strong>Soldado veterano</strong> — PNJ completo.<br />
+<strong>Trayectoria:</strong> 4 profesiones — 3× Combatiente (rango Oficial), 1× Técnico (rango Chapuzas).<br />
+REC: bolsa de Combate 45 (3×15), Atlético 30 (3×10) y Tecnológico 15+15=30 (Combatiente 3×5 + Técnico 1×15) — reflejan una vida dedicada casi por completo a las armas, con solo un barniz de mantenimiento propio. Peligroso en combate por concentración real de formación; limitado fuera de su especialidad porque nunca invirtió en otra cosa. Tipo orientativo de la escala: Veterano (4 en total) — no debe confundirse con el rango de Oficial que ya tiene en Combatiente.</p>
+<p><strong>Especialista técnico</strong> — PNJ completo.<br />
+<strong>Trayectoria:</strong> 6 profesiones — 4× Técnico (rango Genio, ganado con los años, no en creación), 2× Científico (rango Científico).<br />
+REC Tecnológico elevado: bolsa de 60 (Técnico 4×15) + 20 (Científico 2×10) = 80 a repartir en sus habilidades técnicas. Su POT aumenta más allá de ese REC cuando instala herramientas e implantes propios de su oficio (un Tool-Hand Mk2, un Neural-Rack) — ese aumento vive en POT, no convierte el implante en una profesión ni suma REC por sí mismo.</p>
+<p><strong>Dirigente o académico</strong> — PNJ completo.<br />
+<strong>Trayectoria:</strong> 7 profesiones — 4× Científico (rango Catedrático), 3× Civil (rango Político).<br />
+REC Académico: bolsa de 60 (Científico 4×15) + 45 (Civil 3×15) = 105. REC Social: 20 (Científico 4×5) + 30 (Civil 3×10) = 50. Ninguna de sus dos categorías aporta bolsa de Combate — gran trayectoria intelectual y política, no necesariamente buen combatiente. Si la escena lo obliga a pelear, su ficha debe reflejar esa carencia con honestidad.</p>
+<p><strong>Personaje excepcional</strong> — PNJ excepcional (ejemplo ilustrativo, sin nombre asignado en el canon).<br />
+<strong>Trayectoria:</strong> 14 profesiones — mezcla de Combatiente, Técnico, Científico y Civil, acumuladas a lo largo de décadas cruzando teselas.<br />
+Justificación biográfica: no es un veterano cualquiera — es alguien cuya vida excede con mucho la duración y amplitud normales de una carrera en el mosaico, y esa longevidad activa está documentada en su historia, no solo declarada en la ficha. Advertencia: superar diez profesiones no es la escala normal de un PNJ ni un objetivo a alcanzar por el resto del reparto — es la excepción que confirma que esta herramienta sigue siendo orientativa, no una escalera que todo PNJ deba subir.</p></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol9.webp" type="image/webp"><img src="img/ComicJuegoRol9.png" alt="Cómic"></picture></div>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap15"><div class="document-container"><h1>CAPÍTULO 12 — BESTIARIO Y RAZAS</h1>
 <blockquote>
@@ -13124,17 +13263,19 @@ Nunca le des un arma al principio. Un Errante sin armas es un Errante que piensa
 <p>Fichas: <code>F / A / P | PV | Blindaje | Ataque % | Daño | Especial</code><br />
 Daño = daño base × éxitos finales. Pen = penetración (reduce el Blindaje total antes de restarlo de los éxitos normales). Los éxitos adicionales se aplican después del Blindaje y solo si el ataque impacta, conforme al orden de resolución del capítulo 03, Mecánicas del Sistema.</p>
 <div class="recuadro-tech"><p><strong>Formato simplificado:</strong> las bestias solo muestran <strong>F</strong>(uerza) / <strong>A</strong>(gilidad) / <strong>P</strong>(ercepción). Asume <strong>CON = F</strong> salvo indicación contraria. Los PV mostrados ya están calculados — el DJ no necesita recalcular nada.<br />
-<strong>Zonas de PV:</strong> el número de valores indica las zonas (Rata 3 = 1 zona; Lobo 10/10 = 2 zonas; Oso 20/10/20 = 3 zonas). Criaturas enormes con un solo valor alto (Gólem 100) no usan localización.</p></div>
+<strong>PV de organismos:</strong> un único valor (p. ej. Rata 3, Gólem de Chatarra 100) es su PV base — Sano, Herido y Tullido comparten esa misma cifra aunque no se escriba tres veces. Cuando aparecen tres valores iguales (p. ej. Oso 20/20/20) se muestran explícitamente los tres niveles. Ninguno de los dos formatos representa una reserva de PV por zona.<br />
+<strong>Máquinas y entidades con regla propia:</strong> las fichas explícitamente mecánicas o con una mecánica declarada de componentes/extremidades independientes (Esqueleto, Araña del Pecio, la ficha de Droideum) conservan su propio sistema de PV — no se les aplica el modelo orgánico de tres niveles.<br />
+<strong>Excepciones de criatura:</strong> los organismos usan normalmente Sano/Herido/Tullido. Algunas criaturas expresamente definidas pueden usar fases propias en su lugar (p. ej. Sabandija del Pecio: Herida/Quebrada). La excepción se declara en la propia ficha de esa criatura y no se extiende a ninguna otra.</p></div>
 <hr />
 <h2>1. Bestias Naturales</h2>
-<p><strong>Oso</strong> F60/A40/P30 | PV 20/10/20 | Bld 2 | 60% (Pen 2) | Daño 11 | Esquiva 50%</p>
-<p><strong>Jabalí</strong> F50/A20/P30 | PV 15/7/15 | Bld 3+3 Pellejo | 65% (55+10 Colmillos) | Daño 9 | Esquiva 60%</p>
-<p><strong>Caballo</strong> F40/A60/P30 | PV 20/20 | Bld 0 | 55% (45+10 Coces) — solo acorralado | Esquiva 80%</p>
-<p><strong>Lobo</strong> F40/A40/P60 | PV 10/10 | Bld 0 | 75% (60+15 Mordisco, Pen 2) | Daño 7 | Esquiva 80% (60+20 Rápido)</p>
+<p><strong>Oso</strong> F60/A40/P30 | PV 20/20/20 | Bld 2 | 60% (Pen 2) | Daño 11 | Esquiva 50%</p>
+<p><strong>Jabalí</strong> F50/A20/P30 | PV 15/15/15 | Bld 3+3 Pellejo | 65% (55+10 Colmillos) | Daño 9 | Esquiva 60%</p>
+<p><strong>Caballo</strong> F40/A60/P30 | PV 20/20/20 | Bld 0 | 55% (45+10 Coces) — solo acorralado | Esquiva 80%</p>
+<p><strong>Lobo</strong> F40/A40/P60 | PV 10/10/10 | Bld 0 | 75% (60+15 Mordisco, Pen 2) | Daño 7 | Esquiva 80% (60+20 Rápido)</p>
 <p><strong>Rata</strong> F10/A20/P30 | PV 3 | Bld 0 | 20% | Daño mínimo | Esquiva 70% (30+20 Rápida+20 Tamaño) — en grupos de 10+, tratar como entidad única</p>
 <hr />
 <h2>2. Criaturas Distorsionadas</h2>
-<p><strong>Rata Mutante</strong> F20/A30/P30 | PV 5/5/10 | Bld 1 | 40% | Daño 3, Pen 3 | Esquiva 75%</p>
+<p><strong>Rata Mutante</strong> F20/A30/P30 | PV 5/5/5 | Bld 1 | 40% | Daño 3, Pen 3 | Esquiva 75%</p>
 <p><strong>Mutante Gigante</strong> F80/A30/P30 | PV 60 | Bld 2 | 90% | Daño 19 | Armadura objetivo a la mitad | Esquiva 25%</p>
 <p><strong>Gárgola Obsidiana</strong> F40/A40/P30 | PV 30 | Bld 6 (4+2 Piel Obsidiana) | 60% (50+10 Garra, Pen 2) | Daño 7 | Esquiva 65% | Vuela (velocidad ×2)</p>
 <p><strong>Horror Fusionado</strong> — Sin stats fijas. Adquiere características de sus víctimas. Cada encuentro es único.</p>
@@ -13207,12 +13348,12 @@ Daño = daño base × éxitos finales. Pen = penetración (reduce el Blindaje to
 </blockquote>
 <h3>Demonios menores específicos — La centésima alma</h3>
 <p>Estas criaturas son variantes reutilizables de Demonio Menor vinculadas a fracturas del velo. No sustituyen la tabla genérica anterior.</p>
-<p><strong>Lacerador del Velo</strong> F50/A50/P45 | PV 35/17/35 | Bld 5 | Ataque 65% | Garras, Daño 5, Pen 2 | Esquiva 55%<br />
+<p><strong>Lacerador del Velo</strong> F50/A50/P45 | PV 35/35/35 | Bld 5 | Ataque 65% | Garras, Daño 5, Pen 2 | Esquiva 55%<br />
 Rasgar: si pasa una actuación completa junto a una fractura sin recibir daño ni ser interrumpido, la agrava un nivel. Cuerpo intermedio: vulnerable a Cibus según el capítulo 06. Cuando una fractura se cierra, pierde 2 puntos de Blindaje hasta el final del encuentro.</p>
-<p><strong>Arrastrador de Ecos</strong> F40/A60/P55 | PV 30/15/30 | Bld 4 | Ataque 70% | Toque, Daño 3 | Esquiva 65%<br />
+<p><strong>Arrastrador de Ecos</strong> F40/A60/P55 | PV 30/30/30 | Bld 4 | Ataque 70% | Toque, Daño 3 | Esquiva 65%<br />
 Arrastrar: con dos éxitos netos o más puede sujetar al objetivo. En su siguiente actuación intenta desplazarlo hacia una fractura. El objetivo puede liberarse mediante tirada enfrentada de Fuerza o Esquivar, siguiendo el capítulo 03. Olor del Alma: detecta concentraciones de Alma y prioriza a la portadora de una Daga cargada.</p>
 <p><strong>Serekh, el que quedó fuera</strong> — Demonio Mayor con Nombre. Entidad narrativa del módulo La Centésima Alma; no recibe PV ni ficha de jefe ordinario porque su escena se resuelve cerrando fracturas del velo, no reduciendo puntos de vida.</p>
-<p><strong>Dragón Menor Chafry</strong> F100/A40/P50 | PV 200/100/200 | Bld 7 (Escamas de dragón)<br />
+<p><strong>Dragón Menor Chafry</strong> F100/A40/P50 | PV 200/200/200 | Bld 7 (Escamas de dragón)<br />
 Melé: 75% (25+50 Garra, Bld objetivo a la mitad) | Daño 31<br />
 Distancia: 70% (20+50 Aliento de Ácido) | Daño 10, Pen 5<br />
 Esquiva: 20% (60−40 Tamaño) | Vuela | Inmunidad Mental<br />
@@ -13222,9 +13363,10 @@ Una antorcha convierte un encuentro peligroso en limpieza de jardín.</p>
 <p><strong>Espíritu Guardián</strong> — Etéreo. Manipula elementos del entorno. Puede negociarse si entiendes qué protege.</p>
 <p><strong>Araña del Pecio</strong> F30/A40/P30 | PV 10×5 zonas (cabeza, torso, 4 patas — a 2 patas destruidas: inmovilizada) | Bld 4 | 45% (35+10 Mandíbulas) | Daño 5<br />
 Distancia: 80% (50+30 Telaraña) — inmoviliza sin daño. Duración = daño. Esquiva 60% (40+20 Sentido arácnido −2 Tamaño)</p>
-<p><strong>Sabandija del Pecio</strong> F40/A30/P30 | PV 40/10 | Bld 5 | 50% (40+10 Antena de Óxido) | Daño 7<br />
+<p><strong>Sabandija del Pecio</strong> F40/A30/P30 | PV 40/10 — Herida/Quebrada | Bld 5 | 50% (40+10 Antena de Óxido) | Daño 7<br />
+<strong>Fases propias (no usa Sano/Herido/Tullido):</strong> dispone primero de 40 PV en Herida y después de 10 PV en Quebrada — 50 PV efectivos en total. No recibe penalizadores al pasar a Quebrada; sigue actuando con normalidad. Muere al agotar los PV de Quebrada. Excepción propia de esta criatura, no extensible a otras.<br />
 Antena de Óxido: +1 Blindaje al objetivo por éxito (destruye metal; 2 éxitos para otros materiales) — ignora Blindaje.</p>
-<p><strong>Zombie</strong> F20/A10/P30 (+20 detectar vida) | PV 15/15 | Bld 0 | 75% | Daño 3<br />
+<p><strong>Zombie</strong> F20/A10/P30 (+20 detectar vida) | PV 15/15/15 | Bld 0 | 75% | Daño 3<br />
 Inmunidad Mental.<br />
 Infección: 50% de posibilidades si causa herida en melé. Con infección: tirada 2 éxitos en Primeros Auxilios (o Medicina +1 éxito por día). Sin tratamiento: el infectado se convierte en Zombie en 1D3 días. Irreversible.</p>
 <hr />
@@ -13233,7 +13375,7 @@ Infección: 50% de posibilidades si causa herida en melé. Con infección: tirad
 Distancia: 55% | Daño 5 | Esquiva 45% | Inmune mental y dolor.</p>
 <p><strong>Gólem de Chatarra</strong> F40/A30/P30 | PV 100 | Bld 7 | 70% (50+20 Puño de piedra, Pen 2) | Daño 9<br />
 Esquiva 40% | Inmune mental. Atacar puntos de unión para derribarlo.</p>
-<p><strong>Glass-Dog</strong> F35/A55/P40 | PV 20/10/20 | Bld 1 | 65% | Daño 7<br />
+<p><strong>Glass-Dog</strong> F35/A55/P40 | PV 20/20/20 | Bld 1 | 65% | Daño 7<br />
 Piel translúcida. Ventaja en Sigilo en entornos de poca visibilidad.</p>
 <hr />
 <h2>5. Robots y Droides</h2>
@@ -13341,13 +13483,13 @@ Piel translúcida. Ventaja en Sigilo en entornos de poca visibilidad.</p>
 <hr />
 <h2>6. Xenoformas</h2>
 <p>Clasificación por <strong>nivel de peligro</strong>: N0 = inofensivo · N1 = peligroso pero manejable · N2+ = amenaza seria. N0 y N1 pueden usarse libremente; N2+ requiere acuerdo con el DJ según el nivel del grupo.</p>
-<p><strong>Xenoforma Destripador</strong> F50/A60/P40 | PV 40/20/40 | Bld 3 | 70% | Regenera 2PV/turno. +1 Bld por encuentro sobrevivido (máx +3).</p>
+<p><strong>Xenoforma Destripador</strong> F50/A60/P40 | PV 40/40/40 | Bld 3 | 70% | Regenera 2PV/turno. +1 Bld por encuentro sobrevivido (máx +3).</p>
 <p><strong>Controlador Etéreo</strong> F15/A20/P70 | PV 15 | Bld 1 | Control mental (tirada Voluntad). Hasta 3 seres simultáneos.</p>
 <hr />
 <h2>7. Fauna de Teselas Específicas</h2>
 <h3>Rastrero del Páramo <em>(fauna natural — La centésima alma)</em></h3>
 <p>Fauna de páramo, no demoníaca. Detecta vibraciones y concentraciones anómalas de Alma. La Daga cargada los atrae más que las Perlas descargadas.</p>
-<p><strong>F35/A55/P55</strong> | PV 12/6/12 | Bld 2 | Ataque 60% | Mordisco, Daño 4, Pen 1 | Esquiva 65% | Movimiento 20</p>
+<p><strong>F35/A55/P55</strong> | PV 12/12/12 | Bld 2 | Ataque 60% | Mordisco, Daño 4, Pen 1 | Esquiva 65% | Movimiento 20</p>
 <p><strong>Especial:</strong><br />
 - <strong>Sentir el Alma:</strong> detecta concentraciones anómalas de Alma a varios centenares de metros.<br />
 - <strong>Caza en grupo:</strong> utiliza la regla normal de ataque en grupo, sin daño automático.<br />
@@ -13356,7 +13498,7 @@ Piel translúcida. Ventaja en Sigilo en entornos de poca visibilidad.</p>
 <h3>Sombras de la Noche <em>(fauna de Kawalapiti — no enemigo estándar)</em></h3>
 <p>Criatura autóctona de los mundos Kawalapiti. Mezcla de pantera y reptil de <strong>seis extremidades</strong>. En lugar de ojos tiene tentáculos sensoriales en la cabeza — no necesita luz para percibir, detecta calor, vibración y distorsión ambiental. <strong>Solo activa de noche.</strong> Durante el día permanece en madrigueras excavadas en cuevas.</p>
 <p><strong>No es hostil por naturaleza.</strong> Los encuentros violentos casi siempre se deben a que el grupo la ha confundido con una amenaza o se ha acercado demasiado a sus crías.</p>
-<p><strong>F50/A65/P70</strong> | PV 25/12/25 | Bld 3</p>
+<p><strong>F50/A65/P70</strong> | PV 25/25/25 | Bld 3</p>
 <table>
 <thead>
 <tr>
@@ -13394,14 +13536,14 @@ Si el grupo la encuentra, lo más probable es que esté durmiendo o cazando lejo
 <blockquote>
 <p><strong>Abreviaturas:</strong> Com = habilidades de Combate · demás = resto de categorías · FM = Fuerza/Manejo (físico) · HB = Habilidad (precisión) · Melé = cuerpo a cuerpo · Dist = distancia · Cad = cadencia · Pen = penetración · Bld X/Y = blindaje extremidades/torso · entre paréntesis: daño del arma.</p>
 </blockquote>
-<p><strong>Mercenario estándar</strong> Com45/demás35 | PV16/8/16 | Bld2 torso+cabeza | Subfusil(5)+Machete(4) | Cyber-ópticos antideslumbrantes y amplificador de imagen</p>
-<p><strong>Soldado corporativo</strong> Com45/demás35 | PV12/6/12 | Bld2 | Subfusil(5)+Machete(4)<br />
+<p><strong>Mercenario estándar</strong> Com45/demás35 | PV16/16/16 | Bld2 torso+cabeza | Subfusil(5)+Machete(4) | Cyber-ópticos antideslumbrantes y amplificador de imagen</p>
+<p><strong>Soldado corporativo</strong> Com45/demás35 | PV12/12/12 | Bld2 | Subfusil(5)+Machete(4)<br />
 <em>Ajustar equipo por corporación: TecnoStealer negro/plateado — Serpent dorado/verde — Mort negro/calavera</em></p>
-<p><strong>Inquisidor TecnoStealer</strong> FM45/HB55 | PV16/8/16 | Bld3/6 | Melé70%(5,Pen2) Dist80%(3,Cad3)</p>
-<p><strong>Guardia de élite</strong> FM60/HB45 | PV20/10/20 | Bld6/10 | Melé80%(7,Pen3) Dist70%(5,Cad3)</p>
-<p><strong>Maestro de Portales avanzado (ref. Azrael)</strong> Portales85%/Proyección80%/Protección75%/Marcas70% | F30/A40/C45 | Ini+25 | Vida120</p>
-<p><strong>Niebla (PNJ especial — Módulo 1)</strong> Bld4 | Melé30% / 2×30% distancia Daño3 / Lanzagranadas 3 cañones Crack | Daño 5 eléctrico Pen 2 | PV10/5/10 | Marca de teleportación 1×día</p>
-<p><strong>Hombres Rata (ref. Módulo 1)</strong> Bld5 | Dist60%(3,Pen2) / Melé80%(3,Pen1,Veneno CON−10 t50) | PV8/8/16</p>
+<p><strong>Inquisidor TecnoStealer</strong> FM45/HB55 | PV16/16/16 | Bld3/6 | Melé70%(5,Pen2) Dist80%(3,Cad3)</p>
+<p><strong>Guardia de élite</strong> FM60/HB45 | PV20/20/20 | Bld6/10 | Melé80%(7,Pen3) Dist70%(5,Cad3)</p>
+<p><strong>Maestro de Portales avanzado (ref. Azrael)</strong> Portales85%/Proyección80%/Protección75%/Marcas70% | F30/A40/C45 | Ini+25 | PV base 120</p>
+<p><strong>Niebla (PNJ especial — Módulo 1)</strong> Bld4 | Melé30% / 2×30% distancia Daño3 / Lanzagranadas 3 cañones Crack | Daño 5 eléctrico Pen 2 | PV10/10/10 | Marca de teleportación: tatuaje N3, activación 12 PV (daño real), no se destruye al usarla, recarga básica 24h (ver capítulo 06, Recarga de marcas y tatuajes, y Módulo 1 para el efecto sobre sus PV)</p>
+<p><strong>Hombres Rata (ref. Módulo 1)</strong> Bld5 | Dist60%(3,Pen2) / Melé80%(3,Pen1,Veneno CON−10 t50) | PV8/8/8</p>
 <hr />
 <h2>9. Tablas de Portales y Encuentros</h2>
 <hr />
@@ -14151,7 +14293,7 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 </table>
 <p>Cosas del block sin relevancia inmediata: "PREDATOR N-5.2: 4 días" / "555 6666 321 Cinthia Mollis" / "Cardamomo Street 84 bajo. 13:00"</p>
 <p><strong>Cámara de vigilancia:</strong> grabados. En 16 horas, CHAFRY los identifica.</p>
-<p><strong>Mercenarios CHAFRY:</strong> Com45/demás35 | PV16/8/16 | Bld2 torso+cabeza | Subfusil(5)+Machete(4) | Cyber-ópticos</p>
+<p><strong>Mercenarios CHAFRY:</strong> Com45/demás35 | PV16/16/16 | Bld2 torso+cabeza | Subfusil(5)+Machete(4) | Cyber-ópticos</p>
 <hr />
 <h2>ESCENA 3 — Opciones</h2>
 <h3>A) Drake Street (sábado 23:00)</h3>
@@ -14188,9 +14330,9 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 <div class="nota-dj"><p><strong>Para el Narrador:</strong> No lo expliques. Deja que lo vivan. Este final es también un inicio: puede ser aventura de supervivencia (escapar), campaña de exploración (adaptarse), o intriga corporativa (descubrir la conexión con CHAFRY y el PREDATOR). El Mundo Máquina se desarrolla en el capítulo 13, §7, y en suplemento futuro.</p></div>
 <hr />
 <h2>Stats de referencia</h2>
-<p><strong>Mercenarios CHAFRY:</strong> Com45/35 | PV16/8/16 | Bld2 | Subfusil(5,Cad3)+Machete(4) | Aturdidora no-letal10 alcance25m<br />
-<strong>Agentes MORT (Drake):</strong> Com45/35 | PV16/8/16 | Bld3 servo | Subfusil(5)+Pistola(3)+Machete(4)<br />
-<strong>Soldados almacenes:</strong> Com45/35 | PV12/6/12 | Bld2 | Subfusil(5)+Machete(4)</p>
+<p><strong>Mercenarios CHAFRY:</strong> Com45/35 | PV16/16/16 | Bld2 | Subfusil(5,Cad3)+Machete(4) | Aturdidora no-letal10 alcance25m<br />
+<strong>Agentes MORT (Drake):</strong> Com45/35 | PV16/16/16 | Bld3 servo | Subfusil(5)+Pistola(3)+Machete(4)<br />
+<strong>Soldados almacenes:</strong> Com45/35 | PV12/12/12 | Bld2 | Subfusil(5)+Machete(4)</p>
 <p><strong>PREDATOR N-5.2 (prototipo Chafry):</strong> Arma media | Daño 7 | Cad 5 | Carg 25 (5 ráfagas) | Pen intrínseca 5 | FUE mín 35/30 (1m/2m)<br />
 Su Pen 5 se suma a la munición elegida y a modificaciones compatibles. Las balas cambian grosor a lo largo del cargador. La última refrigera — sustituible por normal para +1 daño.</p>
 <div class="recuadro-lore"><p><strong>Una versión concreta de la línea.</strong> La N-5.2 es el prototipo Chafry de este módulo. No es la PREDATOR Original de Seawolf, el Fogonazo del Pecio ni una réplica Norton. El chip contiene sus especificaciones, por eso MORT paga 15.000 PC y CHAFRY mata por recuperarlo.</p></div></div></section>
@@ -14203,6 +14345,7 @@ Su Pen 5 se suma a la munición elegida y a modificaciones compatibles. Las bala
 <hr />
 <h2>Cómo leer este capítulo</h2>
 <p>Cada corporación tiene su ficha con la misma estructura: identidad, presencia, rangos operativos con equipamiento y salarios, cómo se sale y con quién se lleva bien. Es material para el jugador que crea personaje, para el veterano que quiere planificar un cambio de empleador, y para el Narrador que necesita datos concretos en mesa.</p>
+<p>Cada ficha incluye una <strong>Estética</strong> breve (color, actitud general). Para arquitectura, interiores, señalización y tecnología con más detalle, Mort, Chafry y TecnoStealer tienen una gramática visual completa desarrollada aparte, en la referencia de identidad visual corporativa — útil cuando una escena transcurre en una instalación o usa equipo importante de una de las tres.</p>
 <p>Las corps aquí descritas son <strong>las seis principales del mosaico visible</strong>. Existen otras — algunas menores, algunas más antiguas de lo que parece — que aparecen mencionadas en el capítulo 1 y en material del Narrador. Este capítulo se centra en las que un Errante puede realmente encontrar y elegir como empleador.</p>
 <p><strong>Para creación de personaje:</strong> ir al final del capítulo, sección "Tabla resumen — elegir corporación de origen".</p>
 <hr />
@@ -14330,6 +14473,10 @@ Contrato incluye cláusula de "recuperación de activos" si deserta. Acceso a ar
 </tbody>
 </table>
 <p>El estipendio retenido se devuelve íntegro si se cumple el contrato. Si se rescinde antes, se pierde.</p></div>
+<h3>Los Inquisidores</h3>
+<p>"Inquisidor" no designa a un único individuo: es una dignidad excepcional dentro de TecnoStealer, con hasta doce plazas asociadas simbólicamente a los signos del zodiaco — nunca más de un Inquisidor reconocido por signo a la vez, y no siempre están todas ocupadas. Investigan lo que amenaza con esclavizar, corromper o volver predecible a la corporación: infiltraciones, dogmas internos, abusos de autoridad, tecnologías peligrosas, explicaciones oficiales demasiado perfectas. Heredan de Seawolf la curiosidad ante lo desconocido y la resistencia a que alguien se apropie de la verdad — incluida la propia TecnoStealer, si hace falta.</p>
+<p>Ni el Triunvirato ni nadie más es dueño de la institución: un Inquisidor puede investigar a Ladino, Thanos o Azrael si su cometido lo exige, y responde ante sus pruebas, no ante un superior. Tampoco es una autoridad absoluta ni ilimitada.</p>
+<p><em>(Desarrollo completo — los doce arquetipos, la relación entre signo y gajo, y el Inquisidor de Capricornio ya aparecido en juego —: material de Narrador, lore de TecnoStealer.)</em></p>
 <h3>Relación con otras corporaciones</h3>
 <p>Con Chafry, tensión: TecnoStealer sabe demasiado sobre los Antiguos para ser ignorada. Con Serpent, rivalidad profesional — compiten por los mismos contratos de inteligencia. Con Primus, respeto frío: Primus vigila a los Iniciados de TecnoStealer de cerca. Con Mort y Workhouse, ocasionalmente subcontrata mano de obra. Sin lealtad.</p>
 <h3>Estética</h3>
@@ -14941,87 +15088,59 @@ Implantes: Rack de Chips implantado avanzado (capacidad 30%), Ibis Neural-Rack (
 <strong>Las balas no se esquivan</strong> con defensa dividida ni Esquiva total: o cobertura, o movimiento evasivo.</p>
 <hr />
 <h2>PÁGINA 3 — EL CUERPO</h2>
-<p><strong>Vida por zona = (A+C+F) ÷ 6</strong>, redondeado arriba. El <strong>torso tiene el doble</strong>.</p>
+<p><strong>PV base = (A+C+F) ÷ 6</strong>, redondeado arriba. No es una reserva por zona: son <strong>tres niveles — Sano, Herido, Tullido</strong> — cada uno con capacidad igual a los PV base.</p>
 <h3>Niveles de herida</h3>
-<p>Se calculan sobre la capacidad de <em>esa</em> zona. Los umbrales fraccionarios redondean arriba.</p>
 <table>
 <thead>
 <tr>
-<th>Pérdida</th>
-<th>Estado</th>
+<th>Nivel</th>
 <th>Efecto</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Hasta 25%</td>
-<td><strong>Leve</strong></td>
+<td><strong>Sano</strong></td>
 <td>sin penalizador</td>
 </tr>
 <tr>
-<td>26–50%</td>
-<td><strong>Media</strong></td>
-<td><strong>−10</strong> a acciones que usen la zona</td>
+<td><strong>Herido</strong></td>
+<td><strong>−10</strong> a todas las habilidades</td>
 </tr>
 <tr>
-<td>51% hasta el límite</td>
-<td><strong>Grave</strong></td>
-<td><strong>−20</strong> a acciones de la zona <strong>+ sangrado</strong></td>
+<td><strong>Tullido</strong></td>
+<td><strong>−20</strong> a todas las habilidades</td>
 </tr>
 <tr>
-<td>Al alcanzar el límite</td>
-<td><strong>Desbordada</strong></td>
-<td>según localización ↓</td>
+<td>Tullido agotado</td>
+<td><strong>Muerte</strong></td>
 </tr>
 </tbody>
 </table>
-<p>Ejemplo con 16 PV de zona:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Leve</th>
-<th>Media</th>
-<th>Grave</th>
-<th>Desbordada</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cabeza / extremidad</td>
-<td>1–4</td>
-<td>5–8</td>
-<td>9–15</td>
-<td><strong>16+</strong></td>
-</tr>
-<tr>
-<td>Torso</td>
-<td>1–8</td>
-<td>9–16</td>
-<td>17–31</td>
-<td><strong>32+</strong></td>
-</tr>
-</tbody>
-</table>
+<p>El daño se descuenta del nivel actual; el sobrante pasa al siguiente. Ejemplo con PV base 16: <code>Sano 16/16 · Herido 16/16 · Tullido 16/16</code> (abreviado <code>PV 16/16/16</code>).</p>
 <h3>Desbordamiento</h3>
+<p>Con el <strong>daño final de un único impacto</strong> (tras Blindaje/Pen/éxitos) — nunca acumulando golpes previos.</p>
 <table>
 <thead>
 <tr>
 <th>Zona</th>
+<th>Desborda con</th>
 <th>Al desbordar</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Cabeza</strong></td>
+<td>impacto ≥ PV base</td>
 <td>Muerte</td>
 </tr>
 <tr>
 <td><strong>Torso</strong> (capacidad doble)</td>
+<td>impacto ≥ PV base × 2</td>
 <td>Muerte</td>
 </tr>
 <tr>
 <td><strong>Extremidad</strong></td>
+<td>impacto ≥ PV base</td>
 <td>Tira 1d6 ↓. El exceso <strong>no</strong> pasa al resto del cuerpo. Sigue en pie.</td>
 </tr>
 </tbody>
@@ -15048,44 +15167,14 @@ Implantes: Rack de Chips implantado avanzado (capacidad 30%), Ibis Neural-Rack (
 </tr>
 </tbody>
 </table>
-<p><em>Implantes y tatuajes de la zona: en Grave quedan inutilizados hasta reparación. Al amputar, se pierden los del segmento (1-2 recuperables con cirugía).</em></p>
+<p>El daño de ese mismo impacto también se descuenta con normalidad del nivel de herida actual y puede atravesar niveles.</p>
+<p><em>Implantes y tatuajes de la zona desbordada: 1-2 recuperables con cirugía; 3-6 se pierden los del segmento o la extremidad afectada.</em></p>
 <h3>Sangrado</h3>
-<p>Lo sufren las heridas <strong>Graves orgánicas</strong> y las <strong>zonas orgánicas desbordadas</strong>.</p>
+<p>Solo por <strong>desbordamiento</strong> o por un efecto que lo declare expresamente — no por estar Herido o Tullido.</p>
 <blockquote>
-<p><strong>Al inicio de cada asalto, tira Constitución.</strong> Con éxito no empeora. Con fallo, <strong>baja un estado general</strong>.<br />
+<p><strong>Mientras sangra, al inicio de cada asalto tira Constitución.</strong> Con éxito no empeora. Con fallo, <strong>desciende al siguiente nivel de herida</strong>.<br />
 Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 </blockquote>
-<h3>Estados generales</h3>
-<table>
-<thead>
-<tr>
-<th>Estado</th>
-<th>Efecto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sano</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Herido</td>
-<td>según heridas por zona</td>
-</tr>
-<tr>
-<td><strong>Exhausto</strong></td>
-<td><strong>−20 a todas las habilidades</strong></td>
-</tr>
-<tr>
-<td>Inconsciente</td>
-<td>no puede actuar</td>
-</tr>
-<tr>
-<td>Muerto</td>
-<td>fin del personaje</td>
-</tr>
-</tbody>
-</table>
 <h3>Curación</h3>
 <table>
 <thead>
@@ -15099,13 +15188,13 @@ Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 <tbody>
 <tr>
 <td><strong>MKB</strong> Básico</td>
-<td>Leves/Medias (Graves = mitad)</td>
+<td>Sano/Herido (Tullido = mitad)</td>
 <td>15</td>
 <td>200 PC</td>
 </tr>
 <tr>
-<td><strong>MKG</strong> Graves</td>
-<td>Graves/Medias (Leves = mitad)</td>
+<td><strong>MKG</strong> Avanzado</td>
+<td>Herido/Tullido (Sano = mitad)</td>
 <td>15</td>
 <td>500 PC</td>
 </tr>
@@ -15119,6 +15208,7 @@ Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 </table>
 <p>Uso manual: <strong>1 asalto completo</strong>. Media dosis por tipo inapropiado = <strong>8 PV</strong>.<br />
 <strong>Primeros Auxilios</strong> estabiliza y corta el sangrado · <strong>Medicina</strong> es tratamiento serio y cirugía.</p>
+<p>La curación llena <strong>Tullido primero</strong>; el sobrante pasa a Herido y luego a Sano. Nunca supera los PV base de cada nivel.</p>
 <table>
 <thead>
 <tr>
@@ -15129,23 +15219,23 @@ Lo detiene un medikit apropiado o un éxito en Primeros Auxilios.</p>
 </thead>
 <tbody>
 <tr>
-<td>Leve</td>
+<td>Sano</td>
 <td>1 hora / PV</td>
 <td>30 min / PV</td>
 </tr>
 <tr>
-<td>Media</td>
+<td>Herido</td>
 <td>1 día / PV</td>
 <td>12 horas / PV</td>
 </tr>
 <tr>
-<td>Grave</td>
+<td>Tullido</td>
 <td>1 semana / PV</td>
 <td>3–4 días / PV</td>
 </tr>
 </tbody>
 </table>
-<p><em>Una herida Grave sin atender puede dejar secuela permanente: −10% a las habilidades afectadas.</em></p>
+<p><em>Una herida en Tullido sin atender puede dejar secuela permanente: −10 a las habilidades afectadas.</em></p>
 <hr />
 <h2>PÁGINA 4 — LAS CAPAS</h2>
 <p><em>Esta página solo hace falta si tu mesa usa estos subsistemas. El núcleo funciona sin ella.</em></p>
@@ -15849,7 +15939,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <ul>
 <li>+10 FUE.</li>
 <li>+10 CON.</li>
-<li>+5 PV por zona.</li>
+<li>+5 PV base.</li>
 </ul>
 <p><strong>Desventajas:</strong></p>
 <ul>
@@ -15871,7 +15961,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <ul>
 <li>−10 FUE.</li>
 <li>−10 CON.</li>
-<li>−5 PV por zona.</li>
+<li>−5 PV base.</li>
 <li>Puede necesitar equipo adaptado y tener dificultades para usar objetos diseñados para personajes mayores.</li>
 </ul>
 <hr />
@@ -16190,7 +16280,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <p><strong>50 — Sistema Fantasma:</strong> desactiva un sistema de seguridad completo sin dejarlo en estado de alerta.</p></div>
 <div class="recuadro-regla"><p><strong>Primeros Auxilios</strong></p>
 <p><strong>25 — Enfermería:</strong> un objetivo crítico no empeora bajo su cuidado.</p>
-<p><strong>50 — Medicina Mayor:</strong> trata heridas graves en campo, recupera 1d6 PV por zona tratada.</p></div>
+<p><strong>50 — Medicina Mayor:</strong> trata heridas serias en campo, recupera 1d6 PV.</p></div>
 <div class="recuadro-regla"><p><strong>Conducir</strong></p>
 <p><strong>25 — Maniobra Difícil:</strong> elimina el penalizador por terreno complicado o condiciones adversas.</p>
 <p><strong>50 — Persecución Experta:</strong> en persecuciones, siempre actúa primero independientemente de la iniciativa.</p></div>
@@ -16273,7 +16363,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <hr />
 <p><em>Maestrías → capítulo 02 (desbloqueo y progresión general). Reglas completas de cada habilidad → capítulo 03 (Combate), capítulo 06 (Distorsión) y este anexo, sección 1.</em></p></div></section>
 <hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap21"><div class="document-container"><h1>ANEXO A6 — BATERÍA DE RUNAS POR ESCUELAS</h1>
-<p><em>Anexo del capítulo 06 — Distorsión: Escuelas y Poderes. Allí viven las reglas de Marcas Arcanas: activación y resonancia, tatuajes temporales, runas favoritas y naturales, Sobrecarga. Aquí está el catálogo.</em></p>
+<p><em>Anexo del capítulo 06 — Distorsión: Escuelas y Poderes. Allí viven las reglas de Marcas Arcanas: activación y resonancia, tatuajes temporales, uso y recarga, runas favoritas y naturales, Sobrecarga. Aquí está el catálogo.</em></p>
 <blockquote>
 <p><em>"Una runa no es un objeto. Es una conversación con la distorsión inscrita en materia."</em></p>
 </blockquote>
@@ -16337,8 +16427,8 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 </tr>
 <tr>
 <td><strong>Aguante</strong></td>
-<td>Ignora el penalizador del estado Herido</td>
-<td>Ignora penalizadores de Herido y Exhausto</td>
+<td>Ignora el penalizador del nivel Herido</td>
+<td>Ignora penalizadores de Herido y Tullido</td>
 </tr>
 <tr>
 <td><strong>Impulso</strong></td>
@@ -16957,6 +17047,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <strong>Duración:</strong> 1 turno (6 asaltos), salvo indicación específica.<br />
 <strong>Activación:</strong> consciente, no requiere acción completa.<br />
 <strong>Acumulación:</strong> puede activar tantos simultáneamente como Voluntad ÷ 20 (mínimo 1).<br />
+<strong>Uso y recarga:</strong> un tatuaje ordinario es de un solo uso hasta recargar. La recarga básica es 24 horas; cada éxito adicional obtenido al inscribirlo, por encima del que basta para completar la inscripción, la reduce a la mitad de la anterior. Ver "Recarga de marcas y tatuajes", capítulo 06 §5, para la escala completa.<br />
 <strong>Runas no disponibles como tatuaje:</strong> Sellado, Memoria del Metal, Paso entre Mundos (requieren soporte inerte).</p>
 <h3>Estética por escuela</h3>
 <table>
@@ -17274,7 +17365,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <h2>4. DROGAS MÉDICAS</h2>
 <p>Recurso positivo. Curan, previenen, contrarrestan.</p>
 <div class="recuadro-tech"><h3>Suero Rápido</h3>
-<p><strong>Efecto:</strong> cura 1d6 PV en una zona a elección.<br />
+<p><strong>Efecto:</strong> cura 1d6 PV.<br />
 <strong>Duración:</strong> instantáneo.<br />
 <strong>Precio:</strong> 200 PC / dosis.<br />
 <strong>Adicción:</strong> 0.</p></div>
@@ -17284,7 +17375,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <strong>Precio:</strong> 400 PC / dosis.<br />
 <strong>Adicción:</strong> 0.</p></div>
 <div class="recuadro-tech"><h3>Estabilizador</h3>
-<p><strong>Efecto:</strong> evita que un personaje con 0 PV en una zona muera durante 1d6 horas.<br />
+<p><strong>Efecto:</strong> evita que un personaje con Tullido agotado muera durante 1d6 horas.<br />
 <strong>Duración:</strong> 1d6 horas.<br />
 <strong>Precio:</strong> 800 PC / dosis.<br />
 <strong>Adicción:</strong> 0.</p></div>

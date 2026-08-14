@@ -91,13 +91,13 @@
       </div>
     </div>
     <div class="vida-box">
-      <h2>Vida por zona — 3 niveles</h2>
+      <h2>PV base — Sano / Herido / Tullido</h2>
       <div class="lifegrid">
-        <div class="hd"></div><div class="hd">Leve(0)</div><div class="hd">Medio(−10)</div><div class="hd">Grave(−20)</div>
+        <div class="hd"></div><div class="hd">Sano(0)</div><div class="hd">Herido(−10)</div><div class="hd">Tullido(−20)</div>
         <div class="hd" style="text-align:left;">PV/nivel</div>
         <div class="v" id="vL">0</div><div class="v" id="vM">0</div><div class="v" id="vG">0</div>
       </div>
-      <div class="note">PV/nivel = (A+C+F)/6, igual en los 3 niveles. Total por zona = <span id="vT">0</span>. Desbordar Grave: muerte (cabeza/torso) o desmembramiento (extremidad). Carga libre ≤(F+C)/4 = <span id="cL">0</span>.</div>
+      <div class="note">PV/nivel = (A+C+F)/6, igual en los 3 niveles. Total = <span id="vT">0</span>. Desbordamiento: impacto único ≥ PV base (cabeza/extremidad) o ≥ PV base×2 (torso) → muerte (cabeza/torso) o desmembramiento (extremidad). Carga libre ≤(F+C)/4 = <span id="cL">0</span>.</div>
       <h2>Combate</h2>
       <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
         <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>

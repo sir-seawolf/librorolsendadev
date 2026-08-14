@@ -564,7 +564,7 @@ function generarPNJ(){
     const r=t.dataset.r, i=parseInt(t.dataset.i,10);
     return {name: `${SKILLS[r][i]}`, v: parseInt(t.value,10)||0};
   }).sort((a,b)=>b.v-a.v).slice(0,4);
-  const vidaTxt = (qs('#statsDerivadosBox').textContent.match(/Vida por zona:\s*(\d+)/)||[])[1] || '?';
+  const vidaTxt = (qs('#statsDerivadosBox').textContent.match(/PV base:\s*(\d+)/)||[])[1] || '?';
 
   pnjs.push({
     nombre: qs('#personaje').value, raza: qs('#raza').value, tipo: qs('#tipoPersonaje').value,
@@ -580,7 +580,7 @@ window.quitarPNJ = quitarPNJ;
 
 function renderPNJs(){
   const l = qs('#pnjLista');
-  l.innerHTML = pnjs.length ? pnjs.map((p,i)=>`<div class="box" style="margin-top:6px"><b>${p.nombre}</b> — ${p.raza}, ${p.tipo} (${p.profesiones})<br>Vida/zona: ${p.vida} · ${p.attrs}<br>Destaca en: ${p.skills}<br><i>${p.historia||''}</i> <button class="btn" type="button" onclick="quitarPNJ(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ningún PNJ generado todavía.</span>';
+  l.innerHTML = pnjs.length ? pnjs.map((p,i)=>`<div class="box" style="margin-top:6px"><b>${p.nombre}</b> — ${p.raza}, ${p.tipo} (${p.profesiones})<br>PV base: ${p.vida} · ${p.attrs}<br>Destaca en: ${p.skills}<br><i>${p.historia||''}</i> <button class="btn" type="button" onclick="quitarPNJ(${i})">Quitar</button></div>`).join('') : '<span class="muted">Ningún PNJ generado todavía.</span>';
 }
 window.renderPNJs = renderPNJs;
 
@@ -949,7 +949,7 @@ function renderStatsDerivados(){
   const humanidad = Math.max(0, 100 - humCompras);
   const almaAccesible = Math.floor(humanidad/10);
   box.innerHTML = `
-    <div><b>Vida por zona:</b> ${vida} PV (Cabeza/Torso/cada Brazo/cada Pierna — redondeo hacia arriba)</div>
+    <div><b>PV base:</b> ${vida} PV (Sano/Herido/Tullido — redondeo hacia arriba)</div>
     <div><b>Carga sin penalización:</b> ${carga} vol</div>
     <div><b>Humanidad:</b> ${humanidad}</div>
     <div><b>Alma total:</b> ${alma}${iniciado ? ' (Iniciado)' : ''} — accesible máx.: ${Math.min(alma, almaAccesible)}</div>

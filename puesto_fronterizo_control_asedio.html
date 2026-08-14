@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PUESTO FRONTERIZO — Control del Asedio (Punta de Lanza B)</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>PUESTO FRONTERIZO — Control del Asedio (Punta de Lanza B)</h1>
+<p><a href="modulo_puesto_fronterizo.html">← Volver al módulo</a></p>
+<blockquote>
+<p><strong>Material exclusivo para el Narrador: contiene la verdad completa y todos los secretos del módulo.</strong></p>
+</blockquote>
+<hr />
+<h2>A. Estado inicial</h2>
+<p><strong>Contexto al comenzar</strong> (según cómo terminó el Acto III):</p>
+<ul>
+<li>[ ] Montaje demostrado.</li>
+<li>[ ] Solo dudas.</li>
+<li>[ ] Pitt parece culpable.</li>
+</ul>
+<p><strong>Pitt:</strong></p>
+<ul>
+<li>[ ] Libre.</li>
+<li>[ ] Vigilado.</li>
+<li>[ ] Detenido.</li>
+<li>[ ] Oculto.</li>
+<li>[ ] Fuera del Puesto.</li>
+</ul>
+<p><strong>Corliss:</strong></p>
+<ul>
+<li>[ ] Sin sospecha.</li>
+<li>[ ] Vigilada.</li>
+<li>[ ] Expuesta.</li>
+</ul>
+<p><strong>Capricornio:</strong></p>
+<ul>
+<li>[ ] En Punta B.</li>
+<li>[ ] En el Puesto principal.</li>
+<li>[ ] Siguiendo el caso desde otro lugar.</li>
+</ul>
+<p>En los tres contextos, la reapertura de Punta B es legítima y Corliss manda la posición. Lo que cambia es cuánta sospecha oficial pesa ya sobre ella — nunca regales una conclusión que los PJ no lograron demostrar.</p>
+<hr />
+<h2>B. Preparaciones</h2>
+<table>
+<thead>
+<tr>
+<th>Preparación</th>
+<th style="text-align: center;">Realizada</th>
+<th>Responsable</th>
+<th>Beneficio</th>
+<th>Si se descuidó</th>
+<th>Resultado durante el asedio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perímetro</td>
+<td style="text-align: center;">[ ]</td>
+<td>Hierro, sargentos, PJ combatientes</td>
+<td>Desembarco tarda más en asentarse</td>
+<td>Ruptura llega antes y con menos aviso</td>
+<td></td>
+</tr>
+<tr>
+<td>Sensores</td>
+<td style="text-align: center;">[ ]</td>
+<td>Shepard, técnicos</td>
+<td>Mejor aviso previo; detección más rápida de interferencia</td>
+<td>Puesto más ciego en Fase 1</td>
+<td></td>
+</tr>
+<tr>
+<td>Comunicaciones</td>
+<td style="text-align: center;">[ ]</td>
+<td>Shepard, personal de torre</td>
+<td>Canal vivo más tiempo; adelanta Fase 7</td>
+<td>Aislamiento total desde el inicio</td>
+<td></td>
+</tr>
+<tr>
+<td>Drones</td>
+<td style="text-align: center;">[ ]</td>
+<td>Shepard</td>
+<td>Enjambres sin retraso desde el inicio de Fase 4</td>
+<td>Parte de la mochila tarda en operar</td>
+<td></td>
+</tr>
+<tr>
+<td>Túnel</td>
+<td style="text-align: center;">[ ]</td>
+<td>Cualquier PJ</td>
+<td>Vía de flanqueo/evacuación propia</td>
+<td>Serpent o Corliss lo usan sin ser notados</td>
+<td></td>
+</tr>
+<tr>
+<td>Enfermería</td>
+<td style="text-align: center;">[ ]</td>
+<td>Personal médico</td>
+<td>No colapsa de inmediato en Fase 4</td>
+<td>Se desborda enseguida</td>
+<td></td>
+</tr>
+<tr>
+<td>Evacuación</td>
+<td style="text-align: center;">[ ]</td>
+<td>Broile (desde el Puesto), Hierro en el terreno</td>
+<td>Retirada ordenada si es insostenible</td>
+<td>Retirada posterior caótica, más bajas</td>
+<td></td>
+</tr>
+<tr>
+<td>Reconocimiento exterior</td>
+<td style="text-align: center;">[ ]</td>
+<td>PJ con Alerta/Sigilo altos</td>
+<td>Aviso anticipado de la disposición (Fase 2)</td>
+<td>Desembarco sorprende del todo</td>
+<td></td>
+</tr>
+<tr>
+<td>Vigilancia de Corliss</td>
+<td style="text-align: center;">[ ]</td>
+<td>PJ vinculado, o quien sospeche</td>
+<td>Adelanta el descubrimiento de su plan</td>
+<td>Fuga (Fase 6) es sorpresa total</td>
+<td></td>
+</tr>
+<tr>
+<td>Protección de Pitt</td>
+<td style="text-align: center;">[ ]</td>
+<td>Quien se quede cerca de él</td>
+<td>Dificulta la captura (Fase 5)</td>
+<td>Serpent lo localiza sin oposición</td>
+<td></td>
+</tr>
+<tr>
+<td>Ayuda corporativa</td>
+<td style="text-align: center;">[ ]</td>
+<td>Broile o Varice</td>
+<td>Adelanta el reloj de Fase 7</td>
+<td>Respuesta depende solo de lo ocurrido en el asedio</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>No inventes beneficios nuevos: cada preparación es una escena o tirada única con efecto claro, no un minijuego de gestión.</p>
+<hr />
+<h2>C. Fuerzas de Serpent</h2>
+<h3>Por vaina</h3>
+<table>
+<thead>
+<tr>
+<th>Vaina</th>
+<th>Punto de caída</th>
+<th style="text-align: center;">Sierpe</th>
+<th style="text-align: center;">Bots (2)</th>
+<th style="text-align: center;">C30 (4)</th>
+<th>Desplegada/dañada/destruida</th>
+<th>Objetivo actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Perímetro principal</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Perímetro principal</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Plataforma de suministros</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Conducto/túnel (si Serpent lo conoce)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Reserva — se reposiciona</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Disposición por defecto, no obligatoria — el Narrador puede reubicar según la escena. <strong>Recordatorio: 35 máquinas fijas en total (5 Sierpes, 10 Bots, 20 C30). No escalar.</strong></p>
+<h3>Apoyo aéreo</h3>
+<table>
+<thead>
+<tr>
+<th>Unidad</th>
+<th>Ficha</th>
+<th>Estado</th>
+<th>PV restantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nave grande</td>
+<td>Bld 6, Distancia 70%, Daño 12, Pen 3, PV 40</td>
+<td>[ ] Activa [ ] Dañada [ ] Retirada</td>
+<td>___ / 40</td>
+</tr>
+<tr>
+<td>Speedster 1</td>
+<td>Bld 4, Distancia 60%, Daño 8, Pen 2, PV 24</td>
+<td>[ ] Activo [ ] Dañado [ ] Destruido</td>
+<td>___ / 24</td>
+</tr>
+<tr>
+<td>Speedster 2</td>
+<td>Bld 4, Distancia 60%, Daño 8, Pen 2, PV 24</td>
+<td>[ ] Activo [ ] Dañado [ ] Destruido</td>
+<td>___ / 24</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>D. Enjambres de Shepard</h2>
+<h3>Ordinarios</h3>
+<ul>
+<li>2 Espía (Vigilar)</li>
+<li>2 Escudo (Blindaje +1 a quien cubran)</li>
+<li>1 Ataque</li>
+</ul>
+<h3>Mochila militar</h3>
+<table>
+<thead>
+<tr>
+<th>Enjambre</th>
+<th>Tipo</th>
+<th style="text-align: center;">Unidades restantes</th>
+<th style="text-align: center;">Habilidad</th>
+<th>Zona/orden actual</th>
+<th style="text-align: center;">Enlace</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ataque A</td>
+<td>Ataque</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Ataque B</td>
+<td>Ataque</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Ataque C</td>
+<td>Ataque</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Ataque D</td>
+<td>Ataque</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Defensa A</td>
+<td>Defensa</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Defensa B</td>
+<td>Defensa</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Defensa C</td>
+<td>Defensa</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+<tr>
+<td>Defensa D</td>
+<td>Defensa</td>
+<td style="text-align: center;">/5</td>
+<td style="text-align: center;">60%</td>
+<td></td>
+<td style="text-align: center;">[ ]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recordatorios:</strong></p>
+<ul>
+<li>Máximo 5 unidades por enjambre.</li>
+<li>Habilidad = 10 + 10 por unidad (5 unidades = 60%).</li>
+<li>Controlar un enjambre es acción menor; cada enjambre simultáneo adicional exige Programación o Liderazgo con −10 acumulativo.</li>
+<li>Cada contenedor despliega un enjambre completo como acción de preparación.</li>
+<li>Los enjambres mantienen la última orden si pierden enlace con Shepard — no desaparecen, pero no reciben nuevas órdenes tácticas.</li>
+</ul>
+<hr />
+<h2>E. Siete fases</h2>
+<h3>Fase 1 — Interferencia</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo de Serpent:</strong> cegar comunicaciones y coordinación antes del desembarco.<br />
+<strong>Frentes activos:</strong> asegurar comunicaciones internas / vigilar movimientos sospechosos.<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong>__ <strong>Consecuencia:</strong> el Puesto entra a ciegas en el desembarco.<br />
+<strong>Transición:</strong> cesa al entrar las vainas en rango visual → Fase 2.</li>
+</ul>
+<h3>Fase 2 — Desembarco</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo de Serpent:</strong> desplegar las cinco vainas (ver disposición en C).<br />
+<strong>Frentes activos:</strong> cubrir el perímetro / decidir intervención en suministros o túnel.<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong>__ <strong>Consecuencia:</strong> plataforma o túnel comprometidos sin oposición.<br />
+<strong>Transición:</strong> tropas desplegadas → Fase 3 (apoyo aéreo).</li>
+</ul>
+<h3>Fase 3 — Ataque aéreo</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo de Serpent:</strong> dispersar a los defensores con la nave y los Speedsters.<br />
+<strong>Frentes activos:</strong> gestionar el bombardeo mientras el desembarco sigue presionando (ver sección G).<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong>__ <strong>Consecuencia:</strong> bajas reales en zonas sin cobertura.<br />
+<strong>Transición:</strong> desembarco completo + presión aérea establecida → Fase 4.</li>
+</ul>
+<h3>Fase 4 — Ruptura del perímetro</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo de Serpent:</strong> abrir una brecha sostenible hacia Pitt.<br />
+<strong>Frentes activos:</strong> brecha, comunicaciones, enfermería, enjambres, túnel, artillería propia (ver sección F).<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong>__ <strong>Consecuencia:</strong> ver tabla de frentes (sección F).<br />
+<strong>Transición:</strong> brecha lograda o vía alternativa encontrada → Fase 5. <strong>Impedir la brecha no cancela el intento</strong> — solo cambia la vía.</li>
+</ul>
+<h3>Fase 5 — Captura de Pitt</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo de Serpent:</strong> reducir y llevarse a Pitt vivo (ver sección H).<br />
+<strong>Frentes activos:</strong> localización de Pitt, protección activa de los PJ.<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong>__ <strong>Consecuencia:</strong> Serpent actúa sin oposición si nadie protege a Pitt.<br />
+<strong>Transición:</strong> captura resuelta (éxito, fracaso o muerte accidental) → Fase 6.</li>
+</ul>
+<h3>Fase 6 — Fuga de Corliss</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo de Serpent:</strong> extraer a Corliss si es viable (ver sección I).<br />
+<strong>Frentes activos:</strong> vigilancia de Corliss, si se preparó.<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong>__ <strong>Consecuencia:</strong> fuga sin oposición ni testigos.<br />
+<strong>Transición:</strong> en paralelo con la respuesta de TecnoStealer → Fase 7.</li>
+</ul>
+<h3>Fase 7 — Respuesta de TecnoStealer</h3>
+<ul>
+<li>[ ] Iniciada · [ ] Resuelta<br />
+<strong>Objetivo:</strong> determinar cuándo y cómo llega la ayuda (ver sección J).<br />
+<strong>Frentes activos:</strong> ninguno nuevo — resuelve lo pendiente del asedio militar.<br />
+<strong>PJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>PNJ asignados:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Frente ignorado:</strong> — <strong>Consecuencia:</strong> —<br />
+<strong>Transición:</strong> cierra el Acto IV → Acto V, Desenlaces.</li>
+</ul>
+<hr />
+<h2>F. Frentes de ruptura (Fase 4)</h2>
+<table>
+<thead>
+<tr>
+<th>Frente</th>
+<th>Preparación relevante</th>
+<th>PNJ responsable</th>
+<th>PJ presentes</th>
+<th>Resultado</th>
+<th>Consecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perímetro</td>
+<td>Perímetro</td>
+<td>Hierro</td>
+<td></td>
+<td></td>
+<td>Brecha → Serpent avanza hacia el interior</td>
+</tr>
+<tr>
+<td>Comunicaciones</td>
+<td>Comunicaciones</td>
+<td>Shepard</td>
+<td></td>
+<td></td>
+<td>Se retrasa la Fase 7</td>
+</tr>
+<tr>
+<td>Enfermería</td>
+<td>Enfermería</td>
+<td>Personal médico</td>
+<td></td>
+<td></td>
+<td>Heridos empeoran o mueren</td>
+</tr>
+<tr>
+<td>Drones</td>
+<td>Drones</td>
+<td>Shepard</td>
+<td></td>
+<td></td>
+<td>Enjambres pierden eficacia sin dirección</td>
+</tr>
+<tr>
+<td>Túnel</td>
+<td>Túnel</td>
+<td>(quien lo exploró)</td>
+<td></td>
+<td></td>
+<td>Serpent o Corliss lo usan sin oposición</td>
+</tr>
+<tr>
+<td>Artillería/suministros</td>
+<td>—</td>
+<td>Misty Junker</td>
+<td></td>
+<td></td>
+<td>Artillería deja de disparar en el momento crítico</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Recordatorio visible:</strong> los grupos de Ataque en grupo deben ser homogéneos. No mezclar C30, bots y Sierpes en una misma tirada — agrupa C30 con C30, bots con bots; los Sierpes van sueltos o en unidad propia si se concentran cinco. Cada unidad de 5 tira una vez con la habilidad y el daño base de sus miembros; la segunda unidad y siguientes suman +1 a su Penetración por cada unidad adicional más allá de la primera (Mecánicas del Sistema, Ataque en grupo). Las fuerzas no cambian — solo cómo se resuelven las tiradas.</p>
+</blockquote>
+<p>Cada frente sin atender se resuelve con una única tirada del responsable, modificada por su preparación: resultado normal = zona en pie con coste; fallo = zona perdida, dañada o con bajas. No es un subsistema nuevo — solo una tirada pertinente y una resolución narrativa guiada por ese resultado.</p>
+<hr />
+<h2>G. Bombardeo (nave grande)</h2>
+<p>Resumen exacto — no reinterpretar:</p>
+<ol>
+<li><strong>Zona señalada</strong> con un asalto de antelación (trayectoria, sensores, o Shepard avisa).</li>
+<li><strong>Tirada de Distancia 70%</strong> al asalto siguiente.</li>
+<li><strong>Fallo:</strong> destruye terreno/cobertura, sin impacto directo a los ocupantes.</li>
+<li><strong>Impacto:</strong><br />
+   - <strong>Estructura preparada</strong> (Perímetro, Enfermería o Taller/hangar si se reforzó con Drones): suprimidos, pierden su siguiente acción cubriéndose, sin daño directo.<br />
+   - <strong>Cobertura ordinaria</strong> (sin preparación previa): sufren el ataque con la protección normal de esa cobertura — Blindaje, Penetración y daño calculados como cualquier ataque, sin inmunidad genérica.<br />
+   - <strong>Objetivo expuesto:</strong> Daño 12, Pen 3, reglas normales de Blindaje y Penetración.</li>
+<li><strong>Abandonar la zona</strong> señalada antes del impacto evita el ataque, pero puede dejar un frente desatendido.</li>
+</ol>
+<hr />
+<h2>H. Intento de captura de Pitt</h2>
+<p><strong>Vía utilizada:</strong></p>
+<ul>
+<li>[ ] Brecha.</li>
+<li>[ ] Túnel.</li>
+<li>[ ] Orden falsa.</li>
+<li>[ ] Unidad de reserva.</li>
+<li>[ ] Ataque aéreo.</li>
+<li>[ ] Comunicaciones.</li>
+<li>[ ] Acceso interior.</li>
+</ul>
+<p><strong>Pitt localizado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong> <strong>Unidad de captura:</strong> Operativos Serpent (reducir sin matar).<br />
+<strong>Testigos del intento no letal:</strong> <strong><em>_</em></strong><strong><em>_</em></strong></strong><br />
+<strong>Pitt se entrega:</strong> [ ] · <strong>Pitt es capturado:</strong> [ ] · <strong>Pitt muere:</strong> [ ] · <strong>El intento fracasa:</strong> [ ]</p>
+<p>Si ninguna vía funciona, la unidad no llega a alcanzarlo — Serpent decide si insiste, cambia de objetivo (extraer a Corliss) o se repliega hacia la Fase 6.</p>
+<hr />
+<h2>I. Fuga de Corliss</h2>
+<ul>
+<li><strong>Ruta:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Pruebas destruidas o transportadas:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Orden falsa dejada:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>PJ vinculado localizado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Segunda plaza ofrecida:</strong> [ ] Sí · [ ] No</li>
+<li><strong>Cápsula aligerada/reparada:</strong> [ ] Sí · [ ] No</li>
+<li><strong>Una o dos personas:</strong> [ ] Una · [ ] Dos (autonomía, maniobra y seguridad reducidas)</li>
+<li><strong>Resultado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+</ul>
+<p>No fuerces una confrontación final — si no la persiguen, se va; si la persiguen, el resultado depende de lo que decidan.</p>
+<hr />
+<h2>J. Llegada de TecnoStealer</h2>
+<p><strong>Cinco factores:</strong></p>
+<ul>
+<li>[ ] Transmisión interceptada o interrumpida.</li>
+<li>[ ] Baliza o canal operativo.</li>
+<li>[ ] Alerta precisa.</li>
+<li>[ ] Sin sabotaje adicional.</li>
+<li>[ ] Ayuda solicitada.</li>
+</ul>
+<p><strong>Resultado automático — no uses una tirada aislada que ignore la preparación:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Factores</th>
+<th>Llegada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>Demasiado tarde</td>
+</tr>
+<tr>
+<td style="text-align: right;">1–2</td>
+<td>Tarde</td>
+</tr>
+<tr>
+<td style="text-align: right;">3–4</td>
+<td>Durante el final</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Pronto</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Demasiado tarde:</strong> llega tras la retirada de Serpent; solo auxilia supervivientes y asegura restos.</li>
+<li><strong>Tarde:</strong> llega durante la retirada; ya no puede impedir todas sus consecuencias.</li>
+<li><strong>Durante el final:</strong> interviene en las últimas fases; puede forzar retirada o rendición parcial.</li>
+<li><strong>Pronto:</strong> llega con el asedio aún abierto y altera la situación militar, sin borrar las decisiones anteriores.</li>
+</ul>
+<hr />
+<h2>K. Resultado final</h2>
+<p><strong>Cinco ejes (evalúa por separado):</strong></p>
+<ul>
+<li><strong>Puesto:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Pitt:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Corliss:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Comunidad:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Pruebas:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+</ul>
+<p><strong>Además:</strong></p>
+<ul>
+<li><strong>Versión oficial:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Supervivientes importantes:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Bajas:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Deudas/favores:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+<li><strong>Siguiente módulo posible:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
+</ul>
+</div>
+</body>
+</html>

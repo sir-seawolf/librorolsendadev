@@ -315,9 +315,9 @@
 </ul>
 <h3>Vida y heridas graves</h3>
 <ul>
-<li><strong>Estados (por zona):</strong> Leve hasta 25% de capacidad perdida; Media más de 25% hasta 50% (−10); Grave más de 50%, sin desbordar (−20 y sangrado si es orgánica); Desbordada al alcanzar el límite.</li>
-<li><strong>Desbordamiento:</strong> Cabeza y extremidades desbordan al alcanzar o superar sus PV de zona. El torso tiene capacidad doble y desborda al alcanzar o superar <code>PV de zona × 2</code>. <strong>Cabeza o Torso → muerte</strong>; <strong>Extremidad → 1d6</strong> (1-2 inutilizada · 3-4 amputación baja · 5-6 amputación alta), el PJ sigue en pie.</li>
-<li><strong>Sangrado y estado general:</strong> las heridas Graves orgánicas y las zonas orgánicas desbordadas sangran. Al inicio de cada asalto tira <strong>Constitución</strong>; con éxito no empeora, con fallo desciende Sano → Herido → Exhausto (−20 a todas las habilidades) → Inconsciente → Muerto. Primeros Auxilios o un medikit apropiado detienen el sangrado y el descenso, pero no recuperan automáticamente estados ya perdidos. Droideum, robots y zonas mecánicas no sufren sangrado orgánico.</li>
+<li><strong>PV base y niveles:</strong> un personaje orgánico no lleva seis reservas de PV por zona. Tiene unos <strong>PV base</strong> = (A+C+F)÷6 y tres niveles sucesivos con esa misma capacidad cada uno — <strong>Sano</strong> (sin penalizador), <strong>Herido</strong> (−10 a todas las habilidades), <strong>Tullido</strong> (−20 a todas las habilidades). El daño se descuenta del nivel actual y el sobrante pasa al siguiente; agotar Tullido es muerte.</li>
+<li><strong>Desbordamiento:</strong> se calcula con el daño final de un único impacto (no acumulado). Cabeza y extremidades desbordan cuando ese impacto alcanza o supera los PV base. El torso tiene capacidad doble y desborda al alcanzar o superar <code>PV base × 2</code>. <strong>Cabeza o Torso → muerte</strong>; <strong>Extremidad → 1d6</strong> (1-2 inutilizada · 3-4 amputación baja · 5-6 amputación alta), el PJ sigue en pie. Ese mismo daño también se descuenta con normalidad del nivel de herida actual.</li>
+<li><strong>Sangrado:</strong> no es automático — solo sangra una localización desbordada, o un efecto que lo declare expresamente. Mientras sangra, al inicio de cada asalto tira <strong>Constitución</strong>; con éxito no empeora, con fallo desciende al siguiente nivel de herida (Sano→Herido→Tullido→agotado y muerte). Primeros Auxilios o un medikit apropiado detienen el sangrado. Droideum, robots y componentes mecánicos no sufren sangrado orgánico.</li>
 </ul>
 <h3>Humanidad y Alma</h3>
 <p>Un humano normal comienza con Humanidad 100 y Alma 8. Un Iniciado comienza con Humanidad 100 y Alma 10.</p>
@@ -342,7 +342,7 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 40 · <strong>CON</strong> 35 · <strong>FUE</strong> 40 · <strong>HAB</strong> 45 · <strong>CAR</strong> 25 · <strong>INT</strong> 30 · <strong>PER</strong> 35 · <strong>VOL</strong> 30</li>
-<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–5 · Media 6–10 (−10) · Grave 11–19 (−20 y sangrado si orgánica) · Desbordada 20+. Torso: Leve 1–10 · Media 11–20 · Grave 21–39 · Desbordada 40+.</li>
+<li><strong>PV base 20</strong> — Sano/Herido/Tullido 20/20/20. Desbordamiento: cabeza/extremidad con impacto único ≥20 · torso ≥40.</li>
 <li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤19 (−20% hasta 38) · <strong>Créditos</strong> 3.000 PC</li>
 </ul>
@@ -366,7 +366,7 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 30 · <strong>CON</strong> 30 · <strong>FUE</strong> 30 · <strong>HAB</strong> 50 · <strong>CAR</strong> 30 · <strong>INT</strong> 45 · <strong>PER</strong> 40 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–4 · Media 5–8 (−10) · Grave 9–14 (−20 y sangrado si orgánica) · Desbordada 15+. Torso: Leve 1–8 · Media 9–15 · Grave 16–29 · Desbordada 30+.</li>
+<li><strong>PV base 15</strong> — Sano/Herido/Tullido 15/15/15. Desbordamiento: cabeza/extremidad con impacto único ≥15 · torso ≥30.</li>
 <li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤15 (−20% hasta 30) · <strong>Créditos</strong> 4.500 PC</li>
 </ul>
@@ -389,7 +389,7 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 30 · <strong>CON</strong> 35 · <strong>FUE</strong> 30 · <strong>HAB</strong> 35 · <strong>CAR</strong> 35 · <strong>INT</strong> 45 · <strong>PER</strong> 45 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–4 · Media 5–8 (−10) · Grave 9–15 (−20 y sangrado si orgánica) · Desbordada 16+. Torso: Leve 1–8 · Media 9–16 · Grave 17–31 · Desbordada 32+.</li>
+<li><strong>PV base 16</strong> — Sano/Herido/Tullido 16/16/16. Desbordamiento: cabeza/extremidad con impacto único ≥16 · torso ≥32.</li>
 <li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤17 (−20% hasta 33) · <strong>Créditos</strong> 4.500 PC</li>
 </ul>
@@ -412,7 +412,7 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 35 · <strong>CON</strong> 30 · <strong>FUE</strong> 30 · <strong>HAB</strong> 30 · <strong>CAR</strong> 50 · <strong>INT</strong> 40 · <strong>PER</strong> 40 · <strong>VOL</strong> 25</li>
-<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–4 · Media 5–8 (−10) · Grave 9–15 (−20 y sangrado si orgánica) · Desbordada 16+. Torso: Leve 1–8 · Media 9–16 · Grave 17–31 · Desbordada 32+.</li>
+<li><strong>PV base 16</strong> — Sano/Herido/Tullido 16/16/16. Desbordamiento: cabeza/extremidad con impacto único ≥16 · torso ≥32.</li>
 <li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤15 (−20% hasta 30) · <strong>Créditos</strong> 4.000 PC (+ tarjeta con 940 PC)</li>
 </ul>
@@ -435,7 +435,7 @@
 </blockquote>
 <ul>
 <li><strong>AGI</strong> 45 · <strong>CON</strong> 30 · <strong>FUE</strong> 45 · <strong>HAB</strong> 40 · <strong>CAR</strong> 25 · <strong>INT</strong> 25 · <strong>PER</strong> 35 · <strong>VOL</strong> 35</li>
-<li><strong>Vida por zona:</strong> cabeza/extremidad: Leve 1–5 · Media 6–10 (−10) · Grave 11–19 (−20 y sangrado si orgánica) · Desbordada 20+. Torso: Leve 1–10 · Media 11–20 · Grave 21–39 · Desbordada 40+.</li>
+<li><strong>PV base 20</strong> — Sano/Herido/Tullido 20/20/20. Desbordamiento: cabeza/extremidad con impacto único ≥20 · torso ≥40.</li>
 <li><strong>Humanidad</strong> 100 · <strong>Salud Mental</strong> 100 (Referencia trauma 100) · <strong>Alma</strong> 8 (máxima 10) · <strong>Deriva</strong> 0</li>
 <li><strong>Carga libre</strong> ≤19 (−20% hasta 38) · <strong>Créditos</strong> 2.500 PC</li>
 </ul>
