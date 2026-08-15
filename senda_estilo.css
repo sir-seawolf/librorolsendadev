@@ -684,6 +684,17 @@ body.landing {
 .landing .aid-link-narrador::before { background: var(--color-combate, #ff3b3b); }
 .landing .aid-link-narrador .aid-audiencia { color: var(--color-combate, #ff3b3b); }
 
+/* Descargas PDF: mismo audiencia-color que su ayuda HTML, un peldano
+   mas discreto - nunca se presentan como modulo o tarjeta principal. */
+.landing .aid-link-pdf {
+    margin-left: 14px;
+    font-size: 11px;
+    opacity: .82;
+}
+.landing .aid-link-pdf::before { width: 5px; height: 5px; }
+.landing .aid-link-pdf .aid-audiencia { font-size: 9px; }
+.landing .aid-link-pdf:hover { opacity: 1; }
+
 .landing .card-dlc:focus-visible,
 .landing .card-module:focus-visible,
 .landing .aid-link:focus-visible {
