@@ -1,0 +1,26 @@
+[
+  {
+    "id": "predator_n52",
+    "title": "Predator N-5.2",
+    "subtitle": "Las guerras secretas",
+    "description": "Un chip robado, una corporación que lo quiere de vuelta y una tarde que se tuerce en un callejón. El módulo de referencia del motor.",
+    "enabled": true,
+    "status": "playable"
+  },
+  {
+    "id": "centesima_alma",
+    "title": "La Centésima Alma",
+    "subtitle": null,
+    "description": null,
+    "enabled": false,
+    "status": "coming_soon"
+  },
+  {
+    "id": "derecho_a_reparar",
+    "title": "El Derecho a Reparar",
+    "subtitle": null,
+    "description": null,
+    "enabled": false,
+    "status": "coming_soon"
+  }
+]

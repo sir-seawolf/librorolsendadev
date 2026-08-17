@@ -1,0 +1,78 @@
+{
+  "id": "callejon_entorno",
+  "grid": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 1, 0, 0, 0, 1, 3, 1],
+    [1, 0, 0, 1, 0, 5, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 5, 0, 0, 0, 1],
+    [1, 2, 2, 1, 0, 1, 1, 2, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 1, 0, 1, 0, 1],
+    [1, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 4, 1, 0, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  ],
+  "wallTypes": {
+    "1": { "nombre": "hormigón", "atlasTile": "concrete_smooth" },
+    "2": { "nombre": "ladrillo", "atlasTile": "brick_red" },
+    "5": { "nombre": "metal", "atlasTile": "metal_smooth" }
+  },
+  "goals": {
+    "3": { "id": "refugio", "final": "refugio" },
+    "4": { "id": "vehiculo", "requiresRoll": { "skill": "Tecnológica", "difficulty": -10, "difficultyLabel": "Difícil", "label": "Puentear el vehículo", "executors": "party", "allowsHelp": true }, "onSuccessFinal": "vehiculo", "onFailureTransition": "combate_inicial" }
+  },
+  "start": { "x": 1.5, "y": 1.5, "angle": 0 },
+  "pursuer": { "x": 8.5, "y": 1.5, "speed": 0.028, "catchDistance": 0.7 },
+  "player": { "speed": 0.045, "turnSpeed": 0.035 },
+  "availableParty": ["player", "bishop", "salim"],
+  "onCatch": { "transition": "combate_inicial", "registerDecision": "Persecución: alcanzado por el perseguidor." },
+  "interactionPoints": [
+    {
+      "id": "puerta",
+      "x": 4.5, "y": 3.5,
+      "radius": 0.9,
+      "label": "FORZAR PUERTA",
+      "executors": "party",
+      "delegationTitle": "¿Quién fuerza la puerta?",
+      "roll": { "skill": "Seguridad", "fallbackSkill": "Tecnológica", "difficulty": -10, "difficultyLabel": "Difícil", "label": "Forzar la puerta", "allowsHelp": true },
+      "onSuccess": { "text": "La cerradura cede. Ganas terreno.", "setFlags": ["puerta_forzada"], "pursuerPauseTicks": 60 },
+      "onFailure": { "text": "La cerradura no cede. Pierdes un instante precioso.", "pursuerBoostTicks": 30 }
+    },
+    {
+      "id": "contenedor",
+      "x": 1.5, "y": 5.5,
+      "radius": 0.9,
+      "sprite": "container",
+      "label": "ESCONDERSE TRAS EL CONTENEDOR",
+      "executors": "party",
+      "delegationTitle": "¿Quién se esconde?",
+      "rollNota": "Sin allowsHelp a propósito: Sigilo es un intento individual — más gente moviéndose junto al contenedor aumenta el riesgo de ser visto u oído, no lo reduce. Ver docs/QS_RULE_MAP.md.",
+      "roll": { "skill": "Sigilo", "difficulty": 0, "difficultyLabel": "Normal", "label": "Esconderse un instante" },
+      "onSuccess": { "text": "Te pegas al metal frío. El perseguidor duda de rumbo y pierde el paso.", "pursuerPauseTicks": 90 },
+      "onFailure": { "text": "No hay tiempo de esconderse bien — sigue tu rastro.", "pursuerBoostTicks": 20 }
+    },
+    {
+      "id": "cruce",
+      "x": 6.5, "y": 5.5,
+      "radius": 0.9,
+      "label": "BUSCAR EL ATAJO",
+      "executors": "party",
+      "delegationTitle": "¿Quién busca el atajo?",
+      "roll": { "skill": "Alerta", "fallbackSkill": "Percepción", "difficulty": 0, "difficultyLabel": "Normal", "label": "Encontrar la ruta más rápida", "allowsHelp": true },
+      "onSuccess": { "text": "Reconoces el cruce: un atajo entre contenedores te ahorra distancia.", "pursuerPauseTicks": 45 },
+      "onFailure": { "text": "Dudas de ruta un segundo de más.", "pursuerBoostTicks": 15 }
+    },
+    {
+      "id": "verja",
+      "x": 8.5, "y": 7.5,
+      "radius": 0.9,
+      "sprite": "fence_gate",
+      "label": "SALTAR LA VERJA",
+      "executors": "party",
+      "delegationTitle": "¿Quién salta la verja?",
+      "roll": { "skill": "Atlética", "difficulty": -10, "difficultyLabel": "Difícil", "label": "Saltar la verja", "allowsHelp": true },
+      "onSuccess": { "text": "Saltas limpio y sigues corriendo.", "pursuerPauseTicks": 50 },
+      "onFailure": { "text": "Te enganchas en la verja y pierdes el equilibrio un momento.", "pursuerBoostTicks": 25 }
+    }
+  ]
+}

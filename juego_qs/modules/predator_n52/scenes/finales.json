@@ -1,0 +1,52 @@
+{
+  "id": "finales",
+  "type": "ending",
+  "title": "Resolución",
+  "defaultEnding": "combate_victoria",
+  "endings": {
+    "refugio": {
+      "titulo": "A SALVO — POR AHORA",
+      "texto": "Cierras la puerta del refugio de un golpe y te dejas caer contra la pared, sin aliento. Fuera, los pasos metálicos se alejan, indecisos. Has escapado del callejón — pero el chip que llevas encima dice CHAFRY CORP, y algo te dice que esto no ha hecho más que empezar."
+    },
+    "vehiculo": {
+      "titulo": "LA CALLE QUEDA ATRÁS",
+      "texto": "El motor arranca al segundo intento. Aceleras entre callejones estrechos, dejando atrás las luces del perseguidor en el retrovisor. En el asiento del copiloto, el chip de Arthur Dicking sigue ahí, esperando a que alguien decida qué hacer con él."
+    },
+    "vehiculo_fallido": {
+      "titulo": "EL MOTOR NO ARRANCA",
+      "texto": "Forcejeas con el contacto, pero el motor tose y muere. Antes de que puedas intentarlo de nuevo, unos pasos metálicos se detienen justo detrás de ti."
+    },
+    "combate_victoria": {
+      "titulo": "EL CALLEJÓN, DE NUEVO EN SILENCIO",
+      "texto": "El segundo ejecutor cae junto al primero. El silencio vuelve al callejón, roto solo por tu respiración agitada. El chip sigue en tu bolsillo. Has ganado esta ronda — pero MORT, o quien sea que los haya enviado, no va a dejarlo pasar."
+    },
+    "casi_muerto": {
+      "titulo": "PARECÍA QUE HABÍAS MUERTO",
+      "texto": "El mundo se apaga de golpe. Cuando vuelves en ti, sigues en el suelo del callejón, el pecho ardiendo, pero vivo. Alguien — o algo — decidió que tu historia no terminaba aquí."
+    },
+    "muerte": {
+      "titulo": "FIN DE LA PARTIDA",
+      "texto": "El disparo no da lugar a una segunda oportunidad. Tu historia con La Senda de los Errantes termina en un callejón cualquiera, un martes lluvioso, con un chip que ya no significa nada para ti."
+    },
+    "checkpoint_drake_street": {
+      "titulo": "CITA EN DRAKE STREET",
+      "texto": "Decidís esperar. El sábado, a las 23:00, un callejón trasero de mala muerte os espera en Drake Street — código de entrada: \"Indigo es Azul\". Lo que hay al otro lado de esa puerta de acero queda para la próxima vez que se cuente esta historia."
+    },
+    "checkpoint_contacto_corporativo": {
+      "titulo": "UNA LLAMADA DISCRETA",
+      "texto": "Alguien con contactos en el mundo corporativo se ofrece a investigar a Arthur Dicking Thompson por su cuenta. Es la vía más segura — y la más lenta. Lo que averigüe queda para la próxima vez que se cuente esta historia."
+    },
+    "checkpoint_chafry": {
+      "titulo": "LLAMANDO A CHAFRY CORP",
+      "texto": "Contactar directamente con CHAFRY es jugar con fuego: lo del PREDATOR N-5.2 es secreto, y una corporación acorralada no negocia limpio. La llamada se hace de todos modos. Cómo responde CHAFRY queda para la próxima vez que se cuente esta historia."
+    },
+    "checkpoint_cinthia": {
+      "titulo": "UNA COMIDA INTERRUMPIDA",
+      "texto": "Cinthia acaba contando lo que recuerda: a media comida, hace un par de días, a Arthur le sonó el móvil, contestó, y se puso pálido. Canceló el resto de la comida sin dar explicaciones — parecía una mala noticia. No es mucho, pero encaja con todo lo demás. El resto — Drake Street, CHAFRY, MORT — queda para la próxima vez que se cuente esta historia."
+    },
+    "checkpoint_cinthia_sin_info": {
+      "titulo": "UNA PISTA QUE NO LLEGA",
+      "texto": "Cinthia no tiene nada más que contar — o no quiere. La conversación se queda en lo de siempre: comieron hace un par de días, Arthur parecía el de siempre, ella no sabe nada más. Si hay algo que ella sepa y no ha dicho, se queda con ella. El resto — Drake Street, CHAFRY, MORT — queda para la próxima vez que se cuente esta historia."
+    }
+  }
+}

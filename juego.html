@@ -21,6 +21,13 @@
 <div class="hero">
   <h1>Juego de <em>Rol</em></h1>
   <p class="sub">Todo lo que necesitas para jugar</p>
+  <div class="puertas" style="margin-bottom:36px">
+    <a href="juego_qs/index.html" class="puerta jugar" id="jugar-link">
+      <span class="ico">🎮</span>
+      <span class="tit">Jugar</span>
+      <span class="txt">Prototipo jugable — Predator N-5.2, primera escena</span>
+    </a>
+  </div>
   <div class="nav">
     <a href="manual.html">Manual completo</a>
     <a href="quickstart.html" class="alt">Quickstart</a>
@@ -31,5 +38,18 @@
   </div>
   <p class="volver"><a href="index.html">&larr; Volver al inicio</a></p>
 </div>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var link = document.getElementById("jugar-link");
+  if (!link || reduce) return; // sin JS o con "menos movimiento": navegación normal, sin transición
+  link.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    document.body.classList.add("senda-transicion-jugar");
+    setTimeout(function () { window.location.href = link.href; }, 320);
+  });
+})();
+</script>
 </body>
 </html>

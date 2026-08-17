@@ -1,0 +1,38 @@
+{
+  "id": "rastrear_tarjeta",
+  "type": "single_roll",
+  "title": "Rastrear la tarjeta-llave",
+  "background": "assets/backgrounds/callejon.jpg",
+  "sheetContext": "callejon",
+  "availableParty": ["player", "bishop", "salim"],
+  "introText": "Con el peligro inmediato atrás, hay tiempo de mirar con calma lo que llevabas encima: el chip, la cartera de Arthur Dicking, y una tarjeta-llave electrónica sin ninguna dirección visible. Rastrear a qué edificio pertenece es cuestión de electrónica y paciencia.",
+  "actions": [
+    { "id": "rastrear", "label": "Rastrear la tarjeta (Tecnológica)" }
+  ],
+  "interactions": [
+    {
+      "id": "rastrear_tarjeta",
+      "trigger": { "action": "rastrear" },
+      "executors": "party",
+      "delegationTitle": "¿Quién rastrea la tarjeta?",
+      "roll": {
+        "skill": "Tecnológica",
+        "difficulty": -10,
+        "difficultyLabel": "Difícil",
+        "label": "Rastrear la tarjeta-llave",
+        "allowsHelp": true
+      },
+      "rollNota": "QS L.22 pide 'Electrónica + Tecnológica'; ningún pregenerado tiene 'Electrónica' como habilidad propia en su ficha (solo Tecnológica), así que se usa Tecnológica sola — desviación documentada en docs/QS_RULE_MAP.md.",
+      "onSuccess": {
+        "registerDecision": "Tarjeta-llave rastreada sin problemas.",
+        "text": "Un par de consultas cruzadas y el sistema escupe una dirección: un bloque de apartamentos baratos en el extrarradio, tercer piso. Rápido y limpio.",
+        "transition": "arthur_apartamento"
+      },
+      "onFailure": {
+        "registerDecision": "Tarjeta-llave rastreada tras varios intentos.",
+        "text": "Cuesta más de lo esperado — el sistema de la tarjeta está pensado para no ser rastreado fácilmente — pero al final aparece una dirección: un bloque de apartamentos baratos en el extrarradio, tercer piso.",
+        "transition": "arthur_apartamento"
+      }
+    }
+  ]
+}

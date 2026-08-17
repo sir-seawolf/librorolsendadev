@@ -1,0 +1,28 @@
+{
+  "id": "predator_n52",
+  "title": "Predator N-5.2",
+  "subtitle": "Las guerras secretas",
+  "system": "senda_qs",
+  "version": "0.2",
+  "startScene": "callejon",
+  "referenceModule": true,
+  "credits": [
+    "Vertical slice no oficial basado en el Quick Starter <em>Predator N-5.2 — Las guerras secretas</em> de <strong>La Senda de los Errantes</strong>.",
+    "Reglas, personajes y arte: fuente original del Kit de Inicio. Ver <code>docs/QS_RULE_MAP.md</code> para la trazabilidad completa de cada mecánica.",
+    "Prototipo jugable — placeholders donde no hay arte original disponible (ver <code>modules/predator_n52/docs/ASSET_NEEDS.md</code>)."
+  ],
+  "allowImportedCharacters": false,
+  "allowImportedCharactersNota": "El QS define 5 pregenerados específicos para esta experiencia concreta (ver docs/CHARACTER_IMPORT_SPEC.md) — el motor sí soporta personajes importados (característica genérica), Predator N-5.2 simplemente no los ofrece todavía en su menú.",
+  "paths": {
+    "scenes": "scenes/",
+    "maps": "maps/",
+    "encounters": "encounters/",
+    "characters": "characters/characters.json",
+    "enemies": "enemies/enemies.json",
+    "weapons": "weapons/weapons.json",
+    "assets": "assets/"
+  },
+  "engineRequirements": {
+    "sceneTypes": ["point_click", "decision", "single_roll", "raycast", "combat", "ending", "dialogue"]
+  }
+}
