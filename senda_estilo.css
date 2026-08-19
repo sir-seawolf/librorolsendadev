@@ -466,24 +466,44 @@ body.landing {
 .landing .footer { text-align: center; padding: 30px; font-size: 12px; color: #475569; font-family: 'Share Tech Mono', monospace; }
 .landing .footer a { color: #94a3b8; text-decoration: none; }
 
-/* Anomalía — huevo de Pascua discreto hacia la zona de juego (JUEGO_QS,
-   juego.html). Sustituye a la antigua tarjeta JUGAR visible: el acceso debe
-   parecer algo que el visitante DESCUBRE, no un botón más del menú. El
-   marcador es un carácter suelto, casi invisible hasta que se pasa el ratón
-   o el foco de teclado por encima. Una vez descubierta (localStorage
-   la_senda_gateway_discovered_v1), un pulso leve la hace algo más fácil de
-   volver a encontrar — nunca un botón grande. Toda animación respeta
+/* Anomalía — huevo de Pascua hacia la zona de juego (JUEGO_QS, juego.html).
+   Sustituye a la antigua tarjeta JUGAR visible: el acceso debe parecer algo
+   que el visitante DESCUBRE, no un botón más del menú. El marcador es un
+   recorte fantasmal de la misma lámina glitch_game_gateway.png que se usa
+   en la transición — atenuado, con un latido de brillo/desenfoque que da
+   aspecto de interferencia intermitente en vez de un botón fijo. Al pasar
+   el ratón/foco se estabiliza y aclara. Toda animación respeta
    prefers-reduced-motion. */
 .anomalia {
-    position: fixed; right: 18px; bottom: 16px; z-index: 200;
-    width: 28px; height: 28px; padding: 0; border: none; background: none;
-    font-family: 'Share Tech Mono', monospace; font-size: 13px; line-height: 28px;
-    color: rgba(148,163,184,.22); cursor: default; transition: color .3s, text-shadow .3s;
+    position: fixed; right: 10px; bottom: 8px; z-index: 200;
+    width: 190px; height: 127px; padding: 0; border: none; background: none;
+    cursor: pointer;
 }
-.anomalia:hover, .anomalia:focus-visible { color: #22d3ee; text-shadow: 0 0 6px rgba(34,211,238,.7); cursor: pointer; outline: none; }
-.anomalia.encontrada { color: rgba(34,211,238,.3); animation: anomaliaPulso 3.4s ease-in-out infinite; }
-.anomalia.encontrada:hover, .anomalia.encontrada:focus-visible { color: #22d3ee; text-shadow: 0 0 8px rgba(34,211,238,.85); }
-@keyframes anomaliaPulso { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+.anomalia-img {
+    width: 100%; height: 100%; object-fit: contain; object-position: center; display: block;
+    filter: brightness(1.15) contrast(1.2) drop-shadow(0 0 16px rgba(34,211,238,.6));
+    animation: anomaliaGlitch 6s ease-in-out infinite;
+    transition: opacity .3s, filter .3s;
+}
+.anomalia:hover .anomalia-img, .anomalia:focus-visible .anomalia-img {
+    opacity: 1 !important; filter: brightness(1.3) contrast(1.25) drop-shadow(0 0 22px rgba(34,211,238,.85)); animation-play-state: paused;
+}
+.anomalia:focus-visible { outline: 1px solid rgba(34,211,238,.5); outline-offset: 2px; }
+.anomalia.encontrada .anomalia-img { animation-name: anomaliaGlitchEncontrada; }
+@keyframes anomaliaGlitch {
+    0%, 78%, 100% { opacity: .78; filter: brightness(1.05) contrast(1.15) drop-shadow(0 0 10px rgba(34,211,238,.4)); transform: translateX(0); }
+    80% { opacity: 1; filter: brightness(1.5) contrast(1.4) hue-rotate(8deg) drop-shadow(0 0 22px rgba(34,211,238,.9)); transform: translateX(-4px); }
+    83% { opacity: .85; transform: translateX(4px); }
+    86% { opacity: 1; filter: brightness(1.35) drop-shadow(0 0 18px rgba(34,211,238,.75)); transform: translateX(-2px); }
+    90%, 96% { opacity: .78; transform: translateX(0); }
+}
+@keyframes anomaliaGlitchEncontrada {
+    0%, 70%, 100% { opacity: .85; filter: brightness(1.1) contrast(1.2) drop-shadow(0 0 12px rgba(34,211,238,.5)); transform: translateX(0); }
+    73% { opacity: 1; filter: brightness(1.5) contrast(1.35) hue-rotate(6deg) drop-shadow(0 0 24px rgba(34,211,238,.95)); transform: translateX(-4px); }
+    77% { opacity: .9; transform: translateX(4px); }
+    82% { opacity: 1; filter: brightness(1.35) drop-shadow(0 0 20px rgba(34,211,238,.8)); transform: translateX(-2px); }
+    88%, 96% { opacity: .85; transform: translateX(0); }
+}
 
 .anomalia-panel {
     position: fixed; inset: 0; z-index: 210; display: flex; align-items: center; justify-content: center;
@@ -527,7 +547,7 @@ body.landing {
     100% { opacity: 1; transform: translateX(0); filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .anomalia.encontrada { animation: none !important; }
+    .anomalia-img { animation: none !important; opacity: .85 !important; filter: brightness(1.1) contrast(1.2) drop-shadow(0 0 14px rgba(34,211,238,.55)) !important; }
     .ap-linea1 { animation: none !important; }
     .gateway-glitch.activo img { animation: none !important; opacity: 1 !important; }
 }
