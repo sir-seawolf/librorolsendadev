@@ -1,6 +1,7 @@
 {
   "id": "combate_inicial",
   "type": "combat",
+  "musicState": "combat",
   "title": "Combate — Callejón",
   "background": "assets/backgrounds/callejon.jpg",
   "sheetContext": "combate",

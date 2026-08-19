@@ -1,6 +1,7 @@
 {
   "id": "rastrear_tarjeta",
   "type": "single_roll",
+  "musicState": "exploration",
   "title": "Rastrear la tarjeta-llave",
   "background": "assets/backgrounds/callejon.jpg",
   "sheetContext": "callejon",

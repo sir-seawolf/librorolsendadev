@@ -6,7 +6,7 @@ export const config = {
     vignette: true,      // viñeta CSS en los bordes de la vista 2.5D
     headBob: true,       // leve balanceo de cámara al moverse
     screenShake: true,   // sacudida breve al recibir daño / ser alcanzado
-    rain: false,          // overlay de lluvia (coste de dibujo por frame, apagado por defecto)
+    rain: true,           // overlay de lluvia (CSS puro, sin coste de dibujo por frame) — activado en 0.2 visual (pasada 2) para la atmósfera húmeda/noir de Predator
     muzzleFlash: true,    // destello breve al disparar
     impactFlash: true,    // destello breve al impactar/recibir un impacto
     sceneFade: true        // fundido breve al cambiar de escena

@@ -76,8 +76,41 @@
     if (e.key === "Escape" && !panel.hidden) cerrarPanel();
   });
 
+  // Música del gateway (Iteración Audio, punto 14): esta página vive FUERA
+  // de JUEGO_QS y se abandona por completo al navegar a DESTINO — no existe
+  // forma de mantener un <audio> sonando a través de una navegación de
+  // documento completa, así que no hay crossfade real cruzando esa frontera
+  // (ver docs/AUDIO_SYSTEM.md, limitación documentada a propósito). Lo que
+  // sí se hace: sonar aquí mismo durante el gesto real del usuario (este
+  // click SÍ cuenta como desbloqueo de autoplay para ESTE documento) y
+  // apagarse con un fade corto en vez de cortar en seco antes de navegar;
+  // el documento nuevo (index.html) arranca su propia música de game_zone
+  // desde silencio, dando la sensación de continuidad aunque técnicamente
+  // sean dos reproducciones distintas.
+  function reproducirGatewayConFade() {
+    try {
+      var prefsRaw = localStorage.getItem("la_senda_audio_settings_v1");
+      var prefs = prefsRaw ? JSON.parse(prefsRaw) : null;
+      if (prefs && prefs.musicEnabled === false) return;
+      var volumenBase = (prefs && typeof prefs.musicVolume === "number") ? prefs.musicVolume : 0.65;
+      var audio = new Audio("juego_qs/assets/shared/audio/music/senda_gateway.mp3");
+      audio.volume = volumenBase;
+      var intento = audio.play();
+      if (intento && intento.catch) intento.catch(function () {}); // autoplay bloqueado: silencioso, nunca rompe la navegación
+      var pasos = 6, paso = 0;
+      var fade = setInterval(function () {
+        paso++;
+        audio.volume = Math.max(0, volumenBase * (1 - paso / pasos));
+        if (paso >= pasos) { clearInterval(fade); try { audio.pause(); } catch (e) {} }
+      }, 100);
+    } catch (e) {
+      // Nunca bloquear la navegación del gateway por un fallo de audio.
+    }
+  }
+
   btnRastrear.addEventListener("click", function () {
     try { localStorage.setItem(FLAG, "1"); } catch (e) {}
+    reproducirGatewayConFade();
     if (reduce) { window.location.href = DESTINO; return; } // sin animación: navegación directa
     panel.hidden = true;
     glitch.hidden = false;

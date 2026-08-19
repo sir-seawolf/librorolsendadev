@@ -1,6 +1,7 @@
 {
   "id": "decision_arthur",
   "type": "decision",
+  "musicState": "exploration",
   "title": "¿Y ahora qué?",
   "background": null,
   "sheetContext": "callejon",

@@ -5,12 +5,35 @@ import { montarSelectorModulos } from "./scenes/moduleMenu.js";
 import { montarEscenaPorId } from "./engine/renderers/index.js";
 import { cargarEscena } from "./engine/sceneEngine.js";
 import { aplicarAccesibilidad, config } from "./config.js";
+import { audioManager } from "./engine/audioManager.js";
+import { montarAjustesAudio } from "./ui/audioSettings.js";
+import { moduloIdActivo } from "./engine/moduleLoader.js";
 
 const scenario = document.getElementById("scenario");
 const sheetPanel = document.getElementById("sheet-panel");
+const configPanel = document.getElementById("config-panel");
+const configToggle = document.getElementById("config-toggle");
 
 aplicarAccesibilidad();
 migrarGuardadoAntiguoSiExiste(); // ver docs/SAVE_MIGRATION.md — no-op si no hay nada que migrar
+
+// Audio (Iteración Audio): se inicializa siempre, pero no suena nada hasta
+// desbloquear() — el primer gesto real del usuario en ESTE documento (los
+// gestos de una página anterior, p.ej. el gateway en juego.html, no
+// desbloquean el autoplay de un documento nuevo tras una navegación
+// completa; ver docs/AUDIO_SYSTEM.md). Un solo listener, una sola vez.
+if (audioManager) {
+  audioManager.inicializar();
+  function primerGestoDesbloqueaAudio() {
+    audioManager.desbloquear();
+    document.removeEventListener("pointerdown", primerGestoDesbloqueaAudio);
+    document.removeEventListener("keydown", primerGestoDesbloqueaAudio);
+  }
+  document.addEventListener("pointerdown", primerGestoDesbloqueaAudio, { once: true });
+  document.addEventListener("keydown", primerGestoDesbloqueaAudio, { once: true });
+  document.addEventListener("visibilitychange", () => audioManager.alCambiarVisibilidad(document.hidden));
+  if (configPanel && configToggle) montarAjustesAudio(configPanel, configToggle, audioManager);
+}
 
 let renderToken = 0;
 let sheetContextActual = null; // qué contexto de ficha pinta la escena montada ahora mismo
@@ -31,6 +54,7 @@ async function renderEscena() {
     montarSelectorModulos(scenario);
     sheetContextActual = null;
     sheetPanel.innerHTML = "";
+    audioManager?.reproducirEstado(null, "menu"); // "menu" global = senda_game_zone.mp3, ver src/data/audio/audioConfig.json
     return;
   }
 
@@ -38,6 +62,7 @@ async function renderEscena() {
     montarMenu(scenario);
     sheetContextActual = null;
     sheetPanel.innerHTML = "";
+    audioManager?.reproducirEstado(moduloIdActivo(), "exploration"); // menú del módulo ya es "entrar" al módulo (punto 15) — state.moduloId todavía no existe aquí, solo se rellena en iniciarPartida()
     return;
   }
 
@@ -46,6 +71,11 @@ async function renderEscena() {
 
   await montarEscenaPorId(scenario, state.escena);
   if (miToken !== renderToken) return;
+
+  // Música por ESTADO musical de la escena, no por su id (punto 10): si la
+  // escena no declara "musicState", se deja sonando lo que ya sonaba — no
+  // se asume silencio ni se reinicia nada.
+  if (escena.musicState) audioManager?.reproducirEstado(moduloIdActivo(), escena.musicState);
 
   sheetContextActual = escena.sheetContext || null;
   renderFichaSiProcede();

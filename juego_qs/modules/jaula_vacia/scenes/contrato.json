@@ -1,6 +1,7 @@
 {
   "id": "contrato",
   "type": "decision",
+  "musicState": "exploration",
   "title": "La jaula llegó vacía",
   "background": "assets/backgrounds/puesto_fronterizo.webp",
   "sheetContext": "contrato",

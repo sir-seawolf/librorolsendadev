@@ -1,9 +1,10 @@
 {
   "id": "sendero",
   "type": "point_click",
+  "musicState": "exploration",
   "title": "Una ruta que vuelve a crecer",
-  "background": "assets/backgrounds/sendero_jungla.webp",
-  "backgroundNota": "Zonas colocadas a ojo sobre la lámina real (aprobada para este one-shot) — pendiente de remedir con precisión si el módulo crece más allá de esta vertical slice, mismo criterio que se siguió con el apartamento de Arthur en predator_n52 (ver docs/ASSET_NEEDS.md).",
+  "background": "assets/backgrounds/sendero_lomo_blanco.jpg",
+  "backgroundNota": "0.2 visual — pasada 2: sustituye la lámina genérica 'sendero' (recorte de jaula_environment_sheet.png, iteración 1) por sendero_lomo_blanco.jpg, generada expresamente para esta escena — compone en una sola imagen los 5 elementos reales de las zonas (lianas, posición abandonada, patrulla a lo lejos, huellas/sangre, el Lomo Blanco). Coordenadas de zonas remedidas sobre la imagen real (recorte-y-verificación con Pillow, no a ojo): posicion_militar y senales ya encajaban casi exactas; patrulla y lomo_blanco se han desplazado porque el recorte anterior solo mostraba follaje, no las siluetas/la criatura. Ver docs/JAULA_VISUAL_02.md.",
   "sheetContext": "sendero",
   "availableParty": ["player", "yara", "bram"],
   "verbs": ["MIRAR", "COGER", "USAR", "HABLAR", "MOVERSE"],
@@ -12,10 +13,10 @@
   "gmNotes": "SOURCE_OVERRIDE: escena fusionada — el one-shot original reparte esto en dos escenas (trayecto + encuentro con el equipo rival). Esta adaptación corta prescinde del equipo rival de Kess (ver docs/ADAPTATION_NOTES.md) y concentra el trayecto y la captura en una sola localización, fiel al espíritu de 'tres elementos fijos, sin tirar por cada kilómetro' del original.",
   "zones": [
     { "id": "lianas", "label": "lianas densas", "rect": [4.0, 10.0, 22.0, 70.0] },
-    { "id": "posicion_militar", "label": "posición militar abandonada", "rect": [30.0, 8.0, 20.0, 35.0] },
-    { "id": "patrulla", "label": "patrulla corporativa a lo lejos", "rect": [55.0, 15.0, 18.0, 30.0] },
+    { "id": "posicion_militar", "label": "posición militar abandonada", "rect": [30.0, 8.0, 18.0, 35.0] },
+    { "id": "patrulla", "label": "patrulla corporativa a lo lejos", "rect": [50.0, 26.0, 13.0, 15.0] },
     { "id": "senales", "label": "huellas y marcas en el suelo", "rect": [30.0, 55.0, 25.0, 30.0] },
-    { "id": "lomo_blanco", "label": "el Lomo Blanco, entre la vegetación", "rect": [62.0, 45.0, 30.0, 45.0] },
+    { "id": "lomo_blanco", "label": "el Lomo Blanco, entre la vegetación", "rect": [58.0, 36.0, 38.0, 30.0] },
     { "id": "salida", "label": "volver hacia el Puesto", "rect": [0.0, 0.0, 3.5, 100.0] }
   ],
   "interactions": [

@@ -15,7 +15,7 @@
     "pvBase": 18,
     "pvBaseNota": "prototype_only: el QS no da PV de ejecutores genéricos — se usa un único pool aproximado a partir de atributos típicos de combatiente, en vez de niveles Sano/Herido/Tullido. Ver docs/QS_RULE_MAP.md.",
     "prototype_only": true,
-    "arma": { "nombre": "Subfusil", "danio": 5, "cadenciaMax": "Fuego sostenido" },
+    "arma": { "nombre": "Subfusil", "danio": 5, "cadenciaMax": "Fuego sostenido", "magazineSize": 40, "ammoReserve": 60, "magazineSizeCanon": "CANON_PENDING — el QS no da capacidad de cargador para PNJ genéricos (mismo motivo que characters.json). 40+60 es una reserva deliberadamente generosa (nunca 'Infinity': un PNJ no necesita munición infinita para no quedarse corto en un combate de pocas rondas, y un número finito documentado es más auditable). Ver docs/AMMO_SYSTEM.md." },
     "armaSecundaria": { "nombre": "Pistola", "danio": 3 },
     "armaCCEquipo": { "nombre": "Machete", "danio": 4 },
     "comportamiento": "dispara_a_distancia_alterna_cadencia",

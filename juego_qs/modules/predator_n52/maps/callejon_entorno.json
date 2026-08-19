@@ -26,6 +26,24 @@
   "player": { "speed": 0.045, "turnSpeed": 0.035 },
   "availableParty": ["player", "bishop", "salim"],
   "onCatch": { "transition": "combate_inicial", "registerDecision": "Persecución: alcanzado por el perseguidor." },
+  "skyline": [
+    { "file": "raycast/environments/skyline_ciudad_02.png", "parallax": 1, "opacity": 0.75 },
+    { "file": "raycast/environments/skyline_industrial.png", "parallax": 1.6, "opacity": 0.9 }
+  ],
+  "skylineNota": "Pasada 2: segunda capa 'mid' (skyline_industrial, parallax 1.6 — gira más rápido que la cámara, da sensación de estar más cerca que la capa far). Se descartó 'azoteas.png' para esta capa: la mitad inferior de esa lámina es un suelo de azotea en primer plano, no cielo — al mapear la imagen completa a la franja fija [0, horizonte] el suelo de azotea habría quedado cortado a media altura, con aspecto raro. skyline_industrial es cielo+estructuras de borde a borde, igual que la capa far, por eso encaja con la proyección cilíndrica sin recortes raros.",
+  "decorativeSprites": [
+    { "file": "raycast/decals/sombra_suelo.png", "x": 2.3, "y": 3.3, "worldHeight": 0.09, "opacity": 0.5 },
+    { "file": "raycast/props/vehiculo_mort.png", "x": 2.3, "y": 3.3, "worldHeight": 0.46 },
+    { "file": "raycast/props/farola.png", "x": 6.3, "y": 1.7, "worldHeight": 0.85 },
+    { "file": "raycast/fx/halo_farola.png", "x": 6.3, "y": 1.7, "worldHeight": 0.8, "opacity": 0.65 },
+    { "file": "raycast/decals/tuberias.png", "x": 4.5, "y": 1.5, "worldHeight": 0.55 },
+    { "file": "raycast/decals/graffiti.png", "x": 5.5, "y": 5.5, "worldHeight": 0.4 },
+    { "file": "raycast/decals/rejilla.png", "x": 3.5, "y": 7.5, "worldHeight": 0.4 },
+    { "file": "raycast/decals/carteles_mort.png", "x": 7.5, "y": 3.5, "worldHeight": 0.42 },
+    { "file": "raycast/fx/luz_roja.png", "x": 5.2, "y": 3.6, "worldHeight": 0.5, "opacity": 0.85 }
+  ],
+  "decalsNota": "4 decals de los 8 recortados (punto 9 del encargo: elegir 3-5, no toda la sheet). Se resuelven con el mismo mecanismo que los props (billboard ground-anchored) en vez de un sistema nuevo de proyección sobre la pared — más simple, sin tocar el pintado columna a columna de render(). Colocados en celdas de suelo abiertas, alejadas entre sí y de los puntos interactivos/props ya existentes, sin repetir el mismo decal dos veces.",
+  "decorativeSpritesNota": "worldHeight tomado de docs/RAYCAST_WORLD_SCALE.md (ajustado en la pasada 2: vehiculo_mort 0.42->0.46, farola 0.6->0.85 tras comparar visualmente las 16 imagenes de predator_raycast_props_sheet.png entre si). El vehiculo lleva una sombra propia (sombra_suelo, worldHeight muy bajo + opacity 0.5) declarada ANTES en el array para que se pinte debajo — billboards con la misma x/y e igual distancia mantienen su orden de entrada (Array.sort estable).",
   "interactionPoints": [
     {
       "id": "puerta",
@@ -43,6 +61,7 @@
       "x": 1.5, "y": 5.5,
       "radius": 0.9,
       "sprite": "container",
+      "spriteWorldHeight": 0.32,
       "label": "ESCONDERSE TRAS EL CONTENEDOR",
       "executors": "party",
       "delegationTitle": "¿Quién se esconde?",
@@ -67,6 +86,7 @@
       "x": 8.5, "y": 7.5,
       "radius": 0.9,
       "sprite": "fence_gate",
+      "spriteWorldHeight": 0.55,
       "label": "SALTAR LA VERJA",
       "executors": "party",
       "delegationTitle": "¿Quién salta la verja?",

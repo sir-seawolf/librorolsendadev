@@ -3,13 +3,15 @@
 // lo declara — un encuentro data-driven (composición de enemigos, cobertura,
 // condiciones de victoria/retirada) en vez de tenerlo cableado en la propia
 // escena. No conoce ningún módulo, enemigo ni escena concreta por nombre —
-// todo sale de datos. Ver docs/MODULE_ARCHITECTURE.md, sección "Encuentros".
+// todo sale de datos. Ver docs/MODULE_ARCHITECTURE.md, sección "Encuentros",
+// y docs/COMBAT_UX.md para munición/cobertura/modos automáticos (0.2).
 import {
   state, obtenerMiembro, esJugador, miembrosDisponibles, aplicarDanio,
-  nivelHeridaDe, gastarPuntoEpico, registrarDecision, cambiarEscena, establecerDisponibilidad
+  nivelHeridaDe, gastarPuntoEpico, registrarDecision, cambiarEscena, establecerDisponibilidad,
+  consumirMunicion, recargarArma, establecerCobertura
 } from "../../gameState.js";
 import { resolverAtaque, ordenDeActuacion, modificadorCadencia, cargarCadencia } from "../../combat/combat.js";
-import { valorCobertura, etiquetaCoberturaVisible } from "../../rules/cover.js";
+import { valorCobertura, etiquetaCoberturaVisible, NIVELES_COBERTURA } from "../../rules/cover.js";
 import { mostrarTirada } from "../../ui/rollDisplay.js";
 import { cargarEscena, aplicarConsecuencias } from "../sceneEngine.js";
 import { rutaDeManifiesto, rutaAsset } from "../moduleLoader.js";
@@ -53,6 +55,10 @@ function flashEfecto(wrap, clase) {
   el.classList.add("activo");
 }
 
+function claveCoberturaDeValor(valor) {
+  return Object.keys(NIVELES_COBERTURA).find(k => NIVELES_COBERTURA[k].valor === valor) || "ninguna";
+}
+
 function habilidadArmaDe(base) {
   if (!base.arma) return { nombre: "Sin Armas", valor: base.habilidades["Sin Armas"] ?? 30 };
   if (base.arma.nombre === "Subfusil") return { nombre: "Distancia Media", valor: base.habilidades["Distancia Media"] };
@@ -74,12 +80,34 @@ function construirEnemigos(escena, catalogo, numPresentes) {
     || [...tabla].sort((a, b) => a.personajes - b.personajes).find(f => f.personajes >= numPresentes)
     || tabla[tabla.length - 1];
   const plantilla = catalogo[fila.enemyId];
-  return Array.from({ length: fila.cantidad }, (_, i) => ({
-    id: `${fila.enemyId}-${i}`,
-    nombre: `${plantilla.nombre} ${i + 1}`,
-    ...JSON.parse(JSON.stringify(plantilla)),
-    pv: plantilla.pvBase
-  }));
+  return Array.from({ length: fila.cantidad }, (_, i) => {
+    const copia = JSON.parse(JSON.stringify(plantilla));
+    return {
+      id: `${fila.enemyId}-${i}`,
+      nombre: `${plantilla.nombre} ${i + 1}`,
+      ...copia,
+      pv: plantilla.pvBase,
+      cobertura: 0,
+      // Munición propia del enemigo si su arma la declara (punto 27 del
+      // encargo Combat UX): mismo sistema que el jugador, reserva generosa
+      // documentada en enemies.json — nunca Infinity (complica el guardado
+      // y ni siquiera hace falta: los enemigos no persisten entre partidas).
+      municion: copia.arma?.magazineSize !== undefined
+        ? { cargador: copia.arma.magazineSize, reserva: copia.arma.ammoReserve ?? 0 }
+        : null
+    };
+  });
+}
+
+// Velocidad de presentación (punto 16 del encargo): 1×/2×/4× solo escala
+// pausas de puesta en escena entre acciones — nunca probabilidades, tiradas
+// ni reglas (esas siguen exactamente el mismo resolvedor a cualquier
+// velocidad). La animación del dado en sí (rollDisplay.js) no se toca —
+// tiene su propio ritmo ya probado desde la Iteración 6 — pero en modos
+// automáticos el "Continuar" se pulsa solo (ver autoContinuarSiProcede),
+// así que la velocidad sí nota en el tiempo total entre turnos.
+function ms(base, velocidad) {
+  return Math.max(60, Math.round(base / velocidad));
 }
 
 export async function montarCombate(container, escenaId) {
@@ -91,7 +119,16 @@ export async function montarCombate(container, escenaId) {
   const party = miembrosDisponibles(escena.availableParty);
   const enemigos = construirEnemigos(escena, catalogo, party.length);
 
-  const combateState = { coberturaPorActor: {}, orden: [], log: [] };
+  // modo: "manual" (todo el mundo se controla a mano, comportamiento previo
+  // a esta iteración, DEFAULT — punto 34: conservador para partidas ya en
+  // curso) | "pj_manual_auto" (el jugador controla solo su PJ, el motor
+  // resuelve compañeros con la misma regla que "Automático" ya tenía) |
+  // "automatico" (el motor resuelve TODO el grupo, incluido el PJ, con el
+  // mismo resolvedor real — nunca un simulador aparte, punto 14).
+  // resolviendo: guarda de doble-clic (punto 41) — mientras una acción está
+  // en curso (tirada abierta, turno automático resolviéndose) no se acepta
+  // otra hasta que termine.
+  const combateState = { orden: [], log: [], modo: "manual", velocidad: 1, resolviendo: false };
 
   const wrap = document.createElement("div");
   wrap.className = "combate-wrap";
@@ -102,8 +139,10 @@ export async function montarCombate(container, escenaId) {
       <div class="fx-overlay fx-danio"></div>
       <div class="combate-turno-indicador" id="turno-indicador">Iniciativa...</div>
       <div class="combate-orden" id="combate-orden"></div>
+      <div class="combate-tactico" id="combate-tactico"></div>
       <div class="combate-log" id="combate-log"></div>
     </div>
+    <div class="combate-modo" id="combate-modo"></div>
     <div class="combate-acciones" id="combate-acciones"></div>
   `;
   container.appendChild(wrap);
@@ -112,6 +151,8 @@ export async function montarCombate(container, escenaId) {
   const accionesEl = wrap.querySelector("#combate-acciones");
   const turnoEl = wrap.querySelector("#turno-indicador");
   const ordenEl = wrap.querySelector("#combate-orden");
+  const tacticoEl = wrap.querySelector("#combate-tactico");
+  const modoEl = wrap.querySelector("#combate-modo");
 
   function log(msg) {
     combateState.log.push(msg);
@@ -133,6 +174,27 @@ export async function montarCombate(container, escenaId) {
     ordenEl.textContent = proximos.length ? proximos.join(" → ") : "";
   }
 
+  // Estado táctico compacto (puntos 9-11, 23): vida/cobertura/munición de
+  // cada miembro del grupo, visible SIEMPRE, no solo cuando le toca actuar
+  // — así nunca hay que recordar qué se hizo dos turnos antes. Cobertura
+  // vive en el propio runtime del combatiente (m.cobertura, gameState.js),
+  // no en un booleano suelto del combate: por eso puede leerse aquí igual
+  // que desde la ficha lateral (src/ui/sheet.js).
+  function renderTactico() {
+    const filas = party.map(m => {
+      const cob = m.cobertura > 0
+        ? `<span class="tactico-cobertura activa">${etiquetaCoberturaVisible(claveCoberturaDeValor(m.cobertura))}</span>`
+        : `<span class="tactico-cobertura">sin cobertura</span>`;
+      const mun = m.municion ? `<span class="tactico-municion">${m.municion.cargador}/${m.municion.reserva}</span>` : "";
+      const vivo = (m.vidaActual.sano + m.vidaActual.herido + m.vidaActual.tullido) > 0;
+      return `<div class="tactico-fila ${vivo ? "" : "caido"}">
+        <span class="tactico-nombre">${m.base.nombre}${esJugador(m.baseId) ? "" : ` <em>(${combateState.modo === "manual" ? "manual" : "auto"})</em>`}</span>
+        ${cob}${mun}
+      </div>`;
+    }).join("");
+    tacticoEl.innerHTML = filas;
+  }
+
   log(escena.introText);
 
   function generarOrden() {
@@ -147,8 +209,69 @@ export async function montarCombate(container, escenaId) {
   function enemigosVivos() { return enemigos.filter(e => e.pv > 0); }
   function partyVivo() { return party.filter(m => m.vidaActual.sano + m.vidaActual.herido + m.vidaActual.tullido > 0); }
 
+  // Selector de modo (punto 33: dentro del combate, no en Configuración
+  // global) + velocidad + DETENER AUTO. DETENER AUTO no interrumpe nada a
+  // media tirada (punto 15): solo cambia combateState.modo a "manual", y el
+  // próximo punto de decisión real (siguienteTurno(), que se llama tras
+  // CADA acción resuelta) ya lo respeta — nunca corta una resolución en curso.
+  function renderControlModo() {
+    const enAuto = combateState.modo !== "manual";
+    modoEl.innerHTML = `
+      <div class="modo-fila">
+        <button type="button" class="modo-btn ${combateState.modo === "manual" ? "activo" : ""}" data-modo="manual">MANUAL</button>
+        <button type="button" class="modo-btn ${combateState.modo === "pj_manual_auto" ? "activo" : ""}" data-modo="pj_manual_auto">PJ MANUAL · COMPAÑEROS AUTO</button>
+        <button type="button" class="modo-btn ${combateState.modo === "automatico" ? "activo" : ""}" data-modo="automatico">AUTOMÁTICO</button>
+      </div>
+      ${enAuto ? `
+      <div class="modo-fila modo-fila-velocidad">
+        ${[1, 2, 4].map(v => `<button type="button" class="modo-vel ${combateState.velocidad === v ? "activo" : ""}" data-vel="${v}">${v}×</button>`).join("")}
+        <button type="button" class="modo-detener" id="btn-detener-auto">DETENER AUTO</button>
+      </div>` : ""}
+    `;
+    modoEl.querySelectorAll(".modo-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (combateState.resolviendo) return; // guarda de doble-clic: no cambiar de modo a media resolución
+        combateState.modo = btn.dataset.modo;
+        renderControlModo();
+        renderTactico();
+      });
+    });
+    modoEl.querySelectorAll(".modo-vel").forEach(btn => {
+      btn.addEventListener("click", () => {
+        combateState.velocidad = Number(btn.dataset.vel);
+        renderControlModo();
+      });
+    });
+    modoEl.querySelector("#btn-detener-auto")?.addEventListener("click", () => {
+      combateState.modo = "manual";
+      renderControlModo();
+      renderTactico();
+    });
+  }
+  renderControlModo();
+
+  // Pulsa "Continuar" en cuanto el resultado de la tirada está pintado —
+  // solo se usa para acciones resueltas automáticamente (compañeros/auto
+  // completo): un jugador manual sigue pulsando "Continuar" él mismo,
+  // porque ahí es donde decide si gasta un Punto Épico (Iteración 6, no se
+  // toca). No interrumpe la animación del dado, solo evita la espera de un
+  // clic AL FINAL, cuando ya no hay ninguna decisión real que tomar.
+  function autoContinuarSiProcede() {
+    const intervalo = setInterval(() => {
+      const btn = document.querySelector(".roll-overlay #rl-continuar");
+      if (btn && !btn.hidden) {
+        clearInterval(intervalo);
+        setTimeout(() => btn.click(), ms(300, combateState.velocidad));
+      }
+    }, 80);
+  }
+
   function siguienteTurno() {
+    combateState.resolviendo = false;
+    renderTactico();
     if (enemigosVivos().length === 0) {
+      accionesEl.innerHTML = "";
+      turnoEl.textContent = "Victoria";
       aplicarConsecuencias(escena.onVictory, party[0].baseId, { onTexto: () => {} });
       return;
     }
@@ -162,7 +285,14 @@ export async function montarCombate(container, escenaId) {
     if (miembroActor) {
       if (!partyVivo().includes(miembroActor)) return siguienteTurno();
       turnoEl.textContent = `Turno de ${miembroActor.base.nombre}`;
-      if (esJugador(miembroActor.baseId)) {
+      const esPJ = esJugador(miembroActor.baseId);
+      const modoAutoParaEste = combateState.modo === "automatico" || (combateState.modo === "pj_manual_auto" && !esPJ);
+      if (modoAutoParaEste) {
+        combateState.resolviendo = true;
+        accionesEl.innerHTML = "";
+        const armaInfo = habilidadArmaDe(miembroActor.base);
+        setTimeout(() => ejecutarAccionAutomatica(miembroActor, armaInfo), ms(500, combateState.velocidad));
+      } else if (esPJ) {
         renderAccionesJugador(miembroActor);
       } else {
         renderAccionesCompanero(miembroActor);
@@ -172,7 +302,8 @@ export async function montarCombate(container, escenaId) {
       if (!enemigo || enemigo.pv <= 0) return siguienteTurno();
       turnoEl.textContent = `Turno de ${enemigo.nombre}`;
       accionesEl.innerHTML = "";
-      setTimeout(() => turnoEnemigo(enemigo), 700);
+      combateState.resolviendo = true;
+      setTimeout(() => turnoEnemigo(enemigo), ms(700, combateState.velocidad));
     }
   }
 
@@ -242,20 +373,38 @@ export async function montarCombate(container, escenaId) {
     });
   }
 
+  // Cuánta munición consume cada acción — regla fija QS L.166-168 (punto 5
+  // del encargo): Disparo 1, Ráfaga 3. Nunca se confunde con el bonus de
+  // éxitos de cadencia (modificadorCadencia), que es un efecto de la
+  // tirada, no de cuánta munición se gasta.
+  const COSTO_MUNICION = { disparar: 1, rafaga: 3 };
+
   function renderAccionesJugador(miembro) {
     const base = miembro.base;
     const armaInfo = habilidadArmaDe(base);
     accionesEl.innerHTML = "";
 
-    const tieneDisparo = !!(base.arma && base.arma.municion !== undefined);
+    const tieneArmaDistancia = !!(base.arma && miembro.municion);
+    const cargador = miembro.municion?.cargador ?? 0;
+    const reserva = miembro.municion?.reserva ?? 0;
+    const magSize = base.arma?.magazineSize ?? cargador;
+
+    if (tieneArmaDistancia) {
+      const armaEl = document.createElement("div");
+      armaEl.className = "combate-hud-arma";
+      armaEl.innerHTML = `<span class="hud-arma-nombre">${base.arma.nombre}</span><span class="hud-arma-municion">${cargador} / ${reserva}</span>`;
+      accionesEl.appendChild(armaEl);
+    }
+
     const acciones = [
       // "principal" es la primera acción ofensiva disponible (disparar si
       // el actor lleva arma a distancia, si no cuerpo a cuerpo) — nunca
       // hardcodeada por id, se decide por lo que el propio actor lleva
       // encima (dato, no una lista de casos especiales).
-      { id: "disparar", etiqueta: "Disparar", visible: tieneDisparo, rol: "principal" },
-      { id: "rafaga", etiqueta: "Ráfaga", visible: base.arma?.cadenciaMax && base.arma.cadenciaMax !== "Tiro a tiro", rol: "secundaria" },
-      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: !!base.armaCC && base.armaCC.danio > 0, rol: tieneDisparo ? "secundaria" : "principal" },
+      { id: "disparar", etiqueta: "Disparo", tag: "[1]", visible: tieneArmaDistancia, disabled: cargador < COSTO_MUNICION.disparar, rol: "principal" },
+      { id: "rafaga", etiqueta: "Ráfaga", tag: "[3]", visible: tieneArmaDistancia && base.arma?.cadenciaMax && base.arma.cadenciaMax !== "Tiro a tiro", disabled: cargador < COSTO_MUNICION.rafaga, rol: "secundaria" },
+      { id: "recargar", etiqueta: "Recargar", visible: tieneArmaDistancia && cargador < magSize, disabled: reserva <= 0, rol: "secundaria" },
+      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: !!base.armaCC && base.armaCC.danio > 0, rol: tieneArmaDistancia ? "secundaria" : "principal" },
       { id: "cubrirse", etiqueta: "Cubrirse", visible: true, rol: "secundaria" },
       { id: "mover", etiqueta: "Mover", visible: true, rol: "secundaria" },
       { id: "huir", etiqueta: "Huir", visible: true, rol: "salida" }
@@ -264,13 +413,21 @@ export async function montarCombate(container, escenaId) {
     acciones.filter(a => a.visible).forEach(a => {
       const btn = document.createElement("button");
       btn.className = `btn-accion btn-accion-${a.rol}`;
+      btn.disabled = !!a.disabled;
       if (a.id === "disparar" || a.id === "rafaga") {
         const prob = Math.min(100, armaInfo.valor);
-        btn.innerHTML = `${a.etiqueta} <span class="combate-prob">(${prob}%${a.id === "rafaga" ? " +cadencia" : ""})</span>`;
+        btn.innerHTML = `${a.etiqueta} <span class="combate-tag">${a.tag}</span> <span class="combate-prob">(${prob}%${a.id === "rafaga" ? " +cadencia" : ""})</span>`;
+        if (a.disabled) btn.title = "Sin munición suficiente en el cargador";
+      } else if (a.id === "recargar") {
+        btn.textContent = a.etiqueta;
+        if (a.disabled) btn.title = "Sin munición de reserva";
       } else {
         btn.textContent = a.etiqueta;
       }
-      btn.addEventListener("click", () => ejecutarAccionJugador(miembro, a.id, armaInfo));
+      btn.addEventListener("click", () => {
+        if (combateState.resolviendo) return; // guarda de doble-clic (punto 41)
+        ejecutarAccionJugador(miembro, a.id, armaInfo);
+      });
       accionesEl.appendChild(btn);
     });
   }
@@ -288,8 +445,12 @@ export async function montarCombate(container, escenaId) {
     aviso.textContent = `${base.nombre} puede actuar`;
     accionesEl.appendChild(aviso);
 
+    const cargador = miembro.municion?.cargador ?? 0;
+    const magSize = base.arma?.magazineSize ?? cargador;
+
     const acciones = [
-      { id: "disparar", etiqueta: "Disparar", visible: !!(base.arma && base.arma.municion !== undefined) },
+      { id: "disparar", etiqueta: "Disparar", visible: !!(base.arma && miembro.municion), disabled: cargador < COSTO_MUNICION.disparar },
+      { id: "recargar", etiqueta: "Recargar", visible: !!(base.arma && miembro.municion) && cargador < magSize, disabled: (miembro.municion?.reserva ?? 0) <= 0 },
       { id: "cubrirse", etiqueta: "Cubrirse", visible: true },
       { id: "mover", etiqueta: "Mover", visible: true },
       { id: "automatico", etiqueta: "Automático", visible: true }
@@ -298,8 +459,10 @@ export async function montarCombate(container, escenaId) {
     acciones.filter(a => a.visible).forEach(a => {
       const btn = document.createElement("button");
       btn.className = "btn-accion";
+      btn.disabled = !!a.disabled;
       btn.textContent = a.etiqueta;
       btn.addEventListener("click", () => {
+        if (combateState.resolviendo) return;
         if (a.id === "automatico") return ejecutarAccionAutomatica(miembro, armaInfo);
         ejecutarAccionJugador(miembro, a.id, armaInfo);
       });
@@ -307,18 +470,36 @@ export async function montarCombate(container, escenaId) {
     });
   }
 
-  // Regla fija y transparente, no una IA: dispara si tiene arma a distancia
-  // (al objetivo con menos vida visible), si no puede disparar se cubre.
+  // Regla fija y transparente, no una IA compleja (punto 13 del encargo):
+  //   1. si necesita recargar y puede -> recarga;
+  //   2. si tiene arma a distancia con munición -> dispara al objetivo con
+  //      menos vida visible;
+  //   3. si no puede disparar (sin munición o sin arma) -> se cubre.
+  // Nunca usa información que el personaje no tendría (solo estado visible:
+  // estadoVisibleEnemigo(), nunca los PV exactos). Reutiliza exactamente
+  // dispararA()/mostrarTirada() — el mismo resolvedor que el modo manual,
+  // nunca un simulador aparte (punto 14).
   function ejecutarAccionAutomatica(miembro, armaInfo) {
     const base = miembro.base;
-    if (base.arma && base.arma.municion !== undefined) {
+    const cargador = miembro.municion?.cargador ?? 0;
+    const magSize = base.arma?.magazineSize ?? cargador;
+
+    if (miembro.municion && cargador < COSTO_MUNICION.disparar && miembro.municion.reserva > 0) {
+      const transferido = recargarArma(miembro.baseId);
+      log(`${base.nombre} (automático) recarga — ${transferido} proyectiles al cargador.`);
+      return siguienteTurno();
+    }
+    if (base.arma && miembro.municion && cargador >= COSTO_MUNICION.disparar) {
       const vivos = enemigosVivos();
       const objetivoDebil = [...vivos].sort((a, b) => a.pv - b.pv)[0];
       log(`${base.nombre} (automático) dispara al objetivo más débil visible.`);
       dispararA(miembro, "disparar", armaInfo, objetivoDebil);
+      autoContinuarSiProcede();
     } else {
       const opcion = opcionesCobertura()[0];
-      combateState.coberturaPorActor[miembro.baseId] = valorCobertura(opcion.nivel);
+      const nivel = valorCobertura(opcion.nivel);
+      miembro.cobertura = nivel;
+      establecerCobertura(miembro.baseId, nivel);
       log(`${base.nombre} (automático) se cubre tras ${opcion.etiqueta.toLowerCase()} (${etiquetaCoberturaVisible(opcion.nivel)}).`);
       siguienteTurno();
     }
@@ -338,13 +519,22 @@ export async function montarCombate(container, escenaId) {
 
     if (id === "cubrirse") {
       return elegirCobertura(opcion => {
-        combateState.coberturaPorActor[miembro.baseId] = valorCobertura(opcion.nivel);
+        const nivel = valorCobertura(opcion.nivel);
+        miembro.cobertura = nivel;
+        establecerCobertura(miembro.baseId, nivel);
         log(`${base.nombre} se agazapa tras ${opcion.etiqueta.toLowerCase()} (${etiquetaCoberturaVisible(opcion.nivel)}) hasta su próxima acción ofensiva.`);
         siguienteTurno();
       });
     }
     if (id === "mover") {
       log(`${base.nombre} se reposiciona.`);
+      return siguienteTurno();
+    }
+    if (id === "recargar") {
+      const transferido = recargarArma(miembro.baseId);
+      if (transferido <= 0) { log(`${base.nombre} no tiene munición de reserva.`); return siguienteTurno(); }
+      log(`${base.nombre} recarga — ${transferido} ${transferido === 1 ? "proyectil pasa" : "proyectiles pasan"} al cargador (${miembro.municion.cargador}/${miembro.municion.reserva}).`);
+      renderAccionesJugador(miembro); // sigue siendo su turno: recargar consume la acción, pero refresca el HUD antes de resolver
       return siguienteTurno();
     }
     if (id === "huir") return intentarHuir(miembro);
@@ -363,6 +553,8 @@ export async function montarCombate(container, escenaId) {
       danioBase = base.armaCC.danio;
       etiqueta = `${base.armaCC.nombre} cuerpo a cuerpo`;
     } else {
+      const costo = COSTO_MUNICION[id] ?? 1;
+      if (!consumirMunicion(miembro.baseId, costo)) { log(`${base.nombre} no tiene munición suficiente.`); return siguienteTurno(); }
       skillId = armaInfo.nombre;
       habilidadBase = miembro.habilidades[skillId] ?? armaInfo.valor;
       danioBase = base.arma.danio;
@@ -373,8 +565,10 @@ export async function montarCombate(container, escenaId) {
       }
     }
 
-    combateState.coberturaPorActor[miembro.baseId] = 0; // atacar rompe la cobertura activa
+    miembro.cobertura = 0; // atacar rompe la cobertura activa
+    establecerCobertura(miembro.baseId, 0);
 
+    combateState.resolviendo = true;
     mostrarTirada({
       actorId: miembro.baseId,
       etiquetaHabilidad: etiqueta,
@@ -395,7 +589,7 @@ export async function montarCombate(container, escenaId) {
       log(`${nombreAtacante} falla contra ${objetivo.nombre}.`);
       return siguienteTurno();
     }
-    const blindajeEfectivo = Math.max(0, objetivo.blindaje - 0);
+    const blindajeEfectivo = Math.max(0, objetivo.blindaje + (objetivo.cobertura || 0));
     let exitosNetos = tirada.exitos - blindajeEfectivo + cadenciaBonus;
     if (exitosNetos <= 0) {
       log(`El blindaje de ${objetivo.nombre} absorbe el impacto.`);
@@ -410,6 +604,7 @@ export async function montarCombate(container, escenaId) {
   }
 
   function intentarHuir(miembro) {
+    combateState.resolviendo = true;
     mostrarTirada({
       actorId: miembro.baseId,
       etiquetaHabilidad: "Movimiento evasivo para huir",
@@ -436,9 +631,21 @@ export async function montarCombate(container, escenaId) {
     if (objetivos.length === 0) return;
     const objetivo = objetivos[Math.floor(Math.random() * objetivos.length)];
 
-    const usaRafaga = Math.random() > 0.5;
+    // Munición del enemigo (si su arma la declara): sin cargador suficiente
+    // para ráfaga, cae a tiro simple; sin nada de cargador, no dispara ese
+    // turno (misma regla que el jugador — punto 6 del encargo).
+    const tieneMunicionEnemigo = !enemigo.municion || enemigo.municion.cargador >= 1;
+    if (!tieneMunicionEnemigo) {
+      log(`${enemigo.nombre} se queda sin munición y se cubre.`);
+      enemigo.cobertura = valorCobertura("parcial");
+      return siguienteTurno();
+    }
+    const puedeRafaga = !enemigo.municion || enemigo.municion.cargador >= 3;
+    const usaRafaga = puedeRafaga && Math.random() > 0.5;
+    if (enemigo.municion) enemigo.municion.cargador -= (usaRafaga ? 3 : 1);
     const cadenciaBonus = usaRafaga ? modificadorCadencia("rafaga", cadenciaData) : 0;
-    const cobertura = combateState.coberturaPorActor[objetivo.baseId] || 0;
+    const cobertura = objetivo.cobertura || 0;
+    enemigo.cobertura = 0; // atacar rompe su propia cobertura, igual que al jugador
 
     const resultado = resolverAtaque({
       habilidadBase: enemigo.distancia,
@@ -477,6 +684,23 @@ export async function montarCombate(container, escenaId) {
 
     if (muerte) {
       if (objetivo.puntosEpicosActuales > 0) {
+        // Bajo control automático (compañero en modo auto, o CUALQUIERA en
+        // AUTOMÁTICO) nadie va a pulsar este diálogo — dejarlo esperando
+        // congelaría el combate para siempre (punto 15/36 del encargo: el
+        // motor nunca debe quedarse colgado en un modo automático). La
+        // decisión por defecto de un piloto automático es sobrevivir:
+        // gastar el Punto Épico, igual que casi cualquier jugador real
+        // elegiría en su lugar. En modo manual (o PJ manual con este
+        // miembro bajo control humano) se sigue preguntando de verdad.
+        const bajoControlAutomatico = combateState.modo === "automatico"
+          || (combateState.modo === "pj_manual_auto" && !esJugador(objetivo.baseId));
+        if (bajoControlAutomatico) {
+          log(`${objetivo.base.nombre} (automático) gasta un Punto Épico para sobrevivir al golpe.`);
+          gastarPuntoEpico(objetivo.baseId);
+          establecerDisponibilidad(objetivo.baseId, "inconsciente");
+          aplicarConsecuencias(escena.onDeathWithEpicPoint, objetivo.baseId, { onTexto: () => {} });
+          return;
+        }
         mostrarConfirmPE(objetivo, () => {
           gastarPuntoEpico(objetivo.baseId);
           establecerDisponibilidad(objetivo.baseId, "inconsciente");
@@ -511,5 +735,6 @@ export async function montarCombate(container, escenaId) {
     overlay.querySelector("#pe-no").addEventListener("click", () => { overlay.remove(); onNo(); });
   }
 
+  renderTactico();
   siguienteTurno();
 }

@@ -1,8 +1,9 @@
 {
   "id": "hibrido",
   "type": "combat",
+  "musicState": "combat",
   "title": "La caza cambia de dueño",
-  "background": "assets/backgrounds/sendero_jungla.webp",
+  "background": "assets/generated/environments/puente_vegetal.png",
   "sheetContext": "hibrido",
   "availableParty": ["player", "yara", "bram"],
   "introText": "El Depredador Híbrido entra en el territorio — dos cabezas, una vigilando mientras la otra ataca. No busca pelea con vosotros: busca la presa más débil disponible, y ahora mismo eso podéis ser vosotros, o la jaula.",

@@ -66,9 +66,47 @@ export class Raycaster {
     this.rutaManifiestoTexturas = rutaManifiestoTexturas;
     this.resolverAsset = resolverAsset;
     this.texturasPorTipo = {}; // tipoDeCelda -> HTMLImageElement | null
+    this.skyline = []; // [{image, parallax, opacity}], lejos->cerca (ver setSkyline)
     canvas.width = anchoInterno;
     canvas.height = altoInterno;
     this._prepararTexturas();
+  }
+
+  // El renderer no carga sus propias imágenes de skyline (igual que no carga
+  // sprites): el llamador (src/engine/renderers/raycast.js) las resuelve vía
+  // rutaAsset()/cargarImagen() del módulo activo y las pasa ya cargadas.
+  // `capas` en orden lejos->cerca; cada una: { image, parallax=1, opacity=1 }.
+  // parallax=1 gira al mismo ritmo que la cámara (capa "far"); >1 se mueve
+  // más deprisa, dando sensación de estar más cerca (capa "mid") — nunca al
+  // revés, para no romper la ilusión de profundidad.
+  setSkyline(capas) {
+    this.skyline = capas || [];
+    if (this._ultimoRender) this.render(...this._ultimoRender);
+  }
+
+  _dibujarCapaSkyline(capa, angulo) {
+    const { ctx, anchoInterno, altoInterno, fov } = this;
+    const img = capa.image;
+    const parallax = capa.parallax ?? 1;
+    const opacidad = capa.opacity ?? 1;
+    // Proyección cilíndrica simple: la lámina entera representa una vuelta
+    // completa (360°). Con el fov actual, una vuelta completa ocupa
+    // anchoInterno * (2π/fov) píxeles de pantalla a la misma escala que se
+    // ve el resto de la escena — así una capa con parallax=1 gira exactamente
+    // al mismo ritmo angular que la cámara (ni patina ni se adelanta).
+    // Nunca se escala en vertical por distancia: siempre altoInterno/2 de
+    // alto, fondo "infinitamente lejano". Se dibujan 3 copias consecutivas
+    // para que la costura de la imagen no deje un hueco al cruzarla.
+    const horizonte = altoInterno / 2;
+    const anchoVuelta = anchoInterno * (2 * Math.PI / fov);
+    const u = (((angulo * parallax) / (2 * Math.PI)) % 1 + 1) % 1;
+    const despX = -u * anchoVuelta;
+    ctx.save();
+    ctx.globalAlpha = opacidad;
+    for (let copia = -1; copia <= 1; copia++) {
+      ctx.drawImage(img, 0, 0, img.width, img.height, despX + copia * anchoVuelta, 0, anchoVuelta, horizonte);
+    }
+    ctx.restore();
   }
 
   async _prepararTexturas() {
@@ -106,10 +144,25 @@ export class Raycaster {
   render(px, py, angulo) {
     this._ultimoRender = [px, py, angulo];
     const { ctx, anchoInterno, altoInterno, fov } = this;
-    ctx.fillStyle = "#1a1a1a"; // techo
+    ctx.fillStyle = "#1a1a1a"; // techo (también fallback si no hay skyline)
     ctx.fillRect(0, 0, anchoInterno, altoInterno / 2);
     ctx.fillStyle = "#26221f"; // suelo
     ctx.fillRect(0, altoInterno / 2, anchoInterno, altoInterno / 2);
+
+    // Skyline/panorama por encima de las paredes (punto 9 del encargo): se
+    // pinta ANTES de las columnas de pared, ocupando siempre la misma franja
+    // [0, altoInterno/2] (el horizonte) — cada capa se desplaza horizontalmente
+    // según el ángulo de cámara (proyección cilíndrica simple, envolviendo la
+    // imagen), pero NUNCA se escala verticalmente por distancia: es un fondo
+    // "infinitamente lejano", no geometría 3D. Las columnas de pared que se
+    // dibujan después tapan la parte de abajo donde corresponda de forma
+    // natural (más pared cerca = menos franja de cielo visible encima).
+    if (this.skyline?.length) {
+      for (const capa of this.skyline) {
+        if (!capa.image) continue;
+        this._dibujarCapaSkyline(capa, angulo);
+      }
+    }
 
     this.zBuffer = this.zBuffer || new Array(anchoInterno);
 
@@ -171,8 +224,26 @@ export class Raycaster {
 
   // Sprites billboard: siempre de cara a la cámara, escalados por distancia,
   // ocultos tras paredes más cercanas (comparando contra el zBuffer que
-  // `render()` ya dejó relleno columna a columna). `sprites` es
-  // [{ x, y, image, escala }]; se ordenan de más lejos a más cerca (pintor).
+  // `render()` ya dejó relleno columna a columna). Nunca estira ancho y
+  // alto por separado — `anchoSprite` sale siempre de `alturaSprite *
+  // aspectoOriginal`, así que la proporción real del PNG jamás se deforma
+  // (punto 5 del encargo 0.2 visual).
+  //
+  // `sprites` es una lista de:
+  //   { x, y, image,
+  //     anchor: "ground" | "center" (por defecto "center", compatibilidad),
+  //     worldHeight,   // ground: altura real en "unidades de pared" (1 =
+  //                    // una pared llena de suelo a techo); ej. persona
+  //                    // ~0.55-0.6, coche ~0.35-0.4, farola >1
+  //     escala }       // center (legado): multiplicador simple, sin anclaje
+  //
+  // "ground": la base del sprite coincide siempre con la línea de suelo
+  // aparente a esa distancia (la misma que usa `render()` para las paredes:
+  // altoInterno/dist), así nunca flota ni se hunde al cambiar de distancia.
+  // "center" sigue existiendo tal cual para no romper llamadas ya probadas
+  // (ver tests/raycaster.test.mjs) — nuevo código debería usar "ground" para
+  // cualquier cosa apoyada en el suelo (vehículos, personajes, farolas...).
+  // Se ordenan de más lejos a más cerca (pintor).
   renderSprites(px, py, angulo, sprites) {
     const { ctx, anchoInterno, altoInterno, fov } = this;
     if (!this.zBuffer) return;
@@ -191,12 +262,29 @@ export class Raycaster {
       .sort((a, b) => b.dist - a.dist);
 
     for (const s of conDistancia) {
-      const escala = s.escala ?? 1;
-      const alturaSprite = Math.min(altoInterno * 1.6, (altoInterno / s.dist) * escala);
       const aspecto = s.image.width / s.image.height;
+      const anchor = s.anchor ?? "center";
+      let alturaSprite, yTop;
+
+      if (anchor === "ground") {
+        // Misma relación distancia->altura que usan las paredes
+        // (altoInterno/dist = una "unidad de pared" completa a esa
+        // distancia), multiplicada por la altura real del objeto en esas
+        // unidades. Sin el tope de 1.6x de las paredes: un sprite ground sí
+        // debe poder llenar la pantalla si está pegado a la cámara.
+        const worldHeight = s.worldHeight ?? 0.55;
+        alturaSprite = (altoInterno / s.dist) * worldHeight;
+        const alturaParedLlena = altoInterno / s.dist;
+        const sueloAparente = altoInterno / 2 + alturaParedLlena / 2;
+        yTop = sueloAparente - alturaSprite;
+      } else {
+        const escala = s.escala ?? 1;
+        alturaSprite = Math.min(altoInterno * 1.6, (altoInterno / s.dist) * escala);
+        yTop = (altoInterno - alturaSprite) / 2;
+      }
+
       const anchoSprite = alturaSprite * aspecto;
       const centroX = (anchoInterno / 2) * (1 + s.anguloRel / (fov / 2));
-      const yTop = (altoInterno - alturaSprite) / 2;
       const xIzq = centroX - anchoSprite / 2;
 
       const colIni = Math.max(0, Math.floor(xIzq));
@@ -206,6 +294,12 @@ export class Raycaster {
       const sombra = Math.max(0.25, 1 - s.dist / 14);
       ctx.save();
       ctx.filter = sombra < 1 ? `brightness(${sombra})` : "none";
+      // Opacidad propia del sprite (además del oscurecimiento por
+      // distancia) — pensada para decals planos tipo "sombra en el suelo"
+      // (worldHeight muy bajo + opacity < 1), que deben leerse como una
+      // mancha tenue, no como un objeto opaco de pie (punto 6/12 del
+      // encargo 0.2 visual, pasada 2).
+      if (s.opacity !== undefined) ctx.globalAlpha = s.opacity;
       for (let col = colIni; col < colFin; col++) {
         if (s.dist >= (this.zBuffer[col] ?? Infinity)) continue; // tras una pared: no se dibuja
         const uCol = (col - xIzq) / anchoSprite;

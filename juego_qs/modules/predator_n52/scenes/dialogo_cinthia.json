@@ -1,6 +1,7 @@
 {
   "id": "dialogo_cinthia",
   "type": "dialogue",
+  "musicState": "exploration",
   "title": "Cinthia Mollis",
   "background": null,
   "sheetContext": "callejon",

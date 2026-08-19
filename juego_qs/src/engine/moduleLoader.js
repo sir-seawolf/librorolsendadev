@@ -8,6 +8,7 @@
 
 // SOURCE_OVERRIDE: ninguno — esto es arquitectura del prototipo, no una regla
 // de La Senda de los Errantes.
+import { audioManager } from "./audioManager.js";
 //
 // Excepción de migración documentada (ver docs/SAVE_MIGRATION.md): el único
 // guardado que existía antes de que el motor tuviera módulos era el de
@@ -113,8 +114,13 @@ export async function cargarModulo(moduleId) {
   moduloActual = { id: moduleId, manifest, base };
   // El título de la pestaña es del módulo cargado, nunca de "la zona de
   // juego" en general — nada anterior a este punto (selector de módulos,
-  // gateway en juego.html) debe nombrar un módulo concreto.
+  // gateway en juego.html) debe nombrarse ninguno concreto.
   if (typeof document !== "undefined") document.title = manifest.title;
+  // Mapa musical del módulo (Iteración Audio): campo genérico "music" en
+  // module.json, motor-agnóstico — moduleLoader no sabe qué estados declara
+  // cada módulo, solo los pasa tal cual al gestor de audio. audioManager es
+  // null en Node/tests (no hay `window`), por eso el guard.
+  if (audioManager) audioManager.registrarMapaModulo(moduleId, manifest.music || {});
   return moduloActual;
 }
 

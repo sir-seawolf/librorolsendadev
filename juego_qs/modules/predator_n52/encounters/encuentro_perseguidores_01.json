@@ -16,7 +16,8 @@
       { "personajes": 5, "enemyId": "ejecutorMort", "cantidad": 6 }
     ]
   },
-  "onVictory": { "setFinalTipo": "combate_victoria", "registerDecision": "Combate: victoria.", "transition": "finales" },
+  "onVictory": { "registerDecision": "Combate: victoria — ejecutores MORT derrotados.", "transition": "rastrear_tarjeta" },
+  "onVictoryNota": "COMBAT UX 0.2: antes transicionaba a 'finales' (pantalla de expediente cerrado), dando la sensación de que la aventura terminaba al ganar — bug de datos, no del motor (aplicarConsecuencias() ya soportaba transition a cualquier escena). Corregido al checkpoint narrativo real más próximo: el mismo siguiente paso que la rama de éxito de 'esconderse' (rastrear_tarjeta -> arthur_apartamento, Escena 2 del QS) — ganar el combate deja al grupo exactamente en la misma situación que perderles el rastro con sigilo: con la tarjeta-llave del muerto y el peligro inmediato atrás. 'combate_victoria' se retira de finales.json por quedar inalcanzable.",
   "onFlee": { "registerDecision": "Combate: huida exitosa a mitad de combate.", "transition": "persecucion" },
   "onDeathWithEpicPoint": { "setFinalTipo": "casi_muerto", "registerDecision": "Combate: \"Parecía que había muerto\" — Punto Épico gastado.", "transition": "finales" },
   "onDeath": { "setFinalTipo": "muerte", "registerDecision": "Combate: derrota.", "transition": "finales" }

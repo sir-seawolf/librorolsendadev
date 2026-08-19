@@ -21,5 +21,11 @@
   },
   "engineRequirements": {
     "sceneTypes": ["decision", "point_click", "combat", "ending"]
+  },
+  "music": {
+    "exploration": "jaula_exploration.mp3",
+    "tension": "jaula_tension.mp3",
+    "action": "jaula_danger.mp3",
+    "combat": "jaula_combat.mp3"
   }
 }

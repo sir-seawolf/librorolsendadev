@@ -1,8 +1,10 @@
 {
   "id": "finales",
   "type": "ending",
+  "musicState": "ending",
   "title": "Resolución",
-  "defaultEnding": "combate_victoria",
+  "defaultEnding": "refugio",
+  "defaultEndingNota": "COMBAT UX 0.2: era 'combate_victoria' — retirado (ver abajo), no puede seguir siendo el fallback de un final que ya no existe.",
   "endings": {
     "refugio": {
       "titulo": "A SALVO — POR AHORA",
@@ -15,10 +17,6 @@
     "vehiculo_fallido": {
       "titulo": "EL MOTOR NO ARRANCA",
       "texto": "Forcejeas con el contacto, pero el motor tose y muere. Antes de que puedas intentarlo de nuevo, unos pasos metálicos se detienen justo detrás de ti."
-    },
-    "combate_victoria": {
-      "titulo": "EL CALLEJÓN, DE NUEVO EN SILENCIO",
-      "texto": "El segundo ejecutor cae junto al primero. El silencio vuelve al callejón, roto solo por tu respiración agitada. El chip sigue en tu bolsillo. Has ganado esta ronda — pero MORT, o quien sea que los haya enviado, no va a dejarlo pasar."
     },
     "casi_muerto": {
       "titulo": "PARECÍA QUE HABÍAS MUERTO",

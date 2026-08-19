@@ -1,6 +1,7 @@
 {
   "id": "decision",
   "type": "decision",
+  "musicState": "tension",
   "title": "Decisión — perseguidores",
   "background": "assets/backgrounds/callejon.jpg",
   "sheetContext": "callejon",

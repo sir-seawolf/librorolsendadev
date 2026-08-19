@@ -24,5 +24,11 @@
   },
   "engineRequirements": {
     "sceneTypes": ["point_click", "decision", "single_roll", "raycast", "combat", "ending", "dialogue"]
+  },
+  "music": {
+    "exploration": "predator_exploration.mp3",
+    "tension": "predator_tension.mp3",
+    "chase": "predator_chase.mp3",
+    "combat": "predator_combat.mp3"
   }
 }

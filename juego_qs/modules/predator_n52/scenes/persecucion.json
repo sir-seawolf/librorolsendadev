@@ -1,6 +1,7 @@
 {
   "id": "persecucion",
   "type": "raycast",
+  "musicState": "chase",
   "title": "Persecución — calles",
   "sheetContext": "persecucion",
   "map": "callejon_entorno",

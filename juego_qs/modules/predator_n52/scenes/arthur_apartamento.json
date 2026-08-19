@@ -1,6 +1,7 @@
 {
   "id": "arthur_apartamento",
   "type": "point_click",
+  "musicState": "exploration",
   "title": "Escena 2 — La casa de Arthur Dicking",
   "background": "assets/backgrounds/arthur_apartamento.jpg",
   "backgroundNota": "Iteración 6: arte real integrado (ver docs/ASSET_NEEDS.md, ahora resuelto). Fuente: assets/backgrounds/arthur_apartamento_bg.png (lámina original, con una franja de rótulos de catalogación al pie que no es parte de la escena) → recortada a assets/backgrounds/arthur_apartamento.jpg (1536x900, sin la franja) — la lámina original se conserva sin modificar, nunca se sobrescribe. Los carteles de la pared ('LA VERDAD NO ES GRATUITA', 'CONFIANZA ES UN RUIDO...') son ambientación del propio arte, no pistas — no se han convertido en zonas interactivas.",

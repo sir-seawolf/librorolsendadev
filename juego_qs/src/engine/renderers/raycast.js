@@ -29,6 +29,25 @@ async function cargarManifiestoSprites() {
   return manifiestoSpritesCache;
 }
 
+// Skyline y props decorativos (iteración 0.2 visual): a diferencia de
+// cargarSprite(), estos assets ya son PNG finales bajo assets/generated/
+// (recortados por tools/slice_generated_assets.py) y no necesitan pasar por
+// sprites.json — se cargan directo por ruta relativa. Fallback igual de
+// seguro: si la imagen no carga, se resuelve a null y el llamador
+// simplemente no la dibuja (nunca rompe el render, punto 25 del encargo).
+const imagenesDirectasCache = new Map();
+function cargarImagenDirecta(rutaRelativa) {
+  if (imagenesDirectasCache.has(rutaRelativa)) return imagenesDirectasCache.get(rutaRelativa);
+  const promesa = new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = rutaAsset(`assets/generated/${rutaRelativa}`);
+  });
+  imagenesDirectasCache.set(rutaRelativa, promesa);
+  return promesa;
+}
+
 const imagenesSpriteCache = new Map();
 // Sprite billboard con fallback: si el asset no está disponible, devuelve
 // null y el renderer simplemente no dibuja ese billboard (nunca rompe el
@@ -86,6 +105,31 @@ export async function montarPersecucion(container, escenaId) {
     wallTypes: mapa.wallTypes,
     rutaManifiestoTexturas: rutaDeManifiesto("assets") + "textures.json",
     resolverAsset: rutaAsset
+  });
+
+  // Skyline (punto 9 del encargo 0.2 visual): opcional en el mapa
+  // (`mapa.skyline`), motor-genérico — cualquier módulo puede declararlo o
+  // no. Cada capa se carga en paralelo; setSkyline() se llama solo cuando
+  // TODAS han resuelto (cargadas o null) para no repintar con huecos, y una
+  // capa que falla en cargar simplemente no forma parte del array (no rompe
+  // las demás ni el render).
+  if (mapa.skyline?.length) {
+    Promise.all(mapa.skyline.map(capa => cargarImagenDirecta(capa.file).then(image => ({ ...capa, image }))))
+      .then(capas => raycaster.setSkyline(capas.filter(c => c.image)));
+  }
+
+  // Props decorativos (punto 11-12): objetos de mundo sin interacción propia
+  // (no aparecen en interactionPoints, no consumen turno ni tirada) — solo
+  // rompen la sensación de "pasillo de cajas". Se cargan una vez y se
+  // añaden a los billboards de cada frame en tick().
+  const decorativeSprites = [];
+  (mapa.decorativeSprites || []).forEach(d => {
+    cargarImagenDirecta(d.file).then(image => {
+      if (!image) return;
+      const sprite = { x: d.x, y: d.y, image, anchor: "ground", worldHeight: d.worldHeight ?? 0.5 };
+      if (d.opacity !== undefined) sprite.opacity = d.opacity;
+      decorativeSprites.push(sprite);
+    });
   });
 
   // `mapa.start.angle` es el nombre del campo en los datos (inglés, como el
@@ -253,12 +297,20 @@ export async function montarPersecucion(container, escenaId) {
 
     raycaster.render(jugador.x, jugador.y, jugador.angulo);
 
-    const billboards = [{ x: perseguidor.x, y: perseguidor.y, image: spritePerseguidor.image, escala: 1.1 }];
+    // anchor:"ground" (punto 6 del encargo 0.2 visual): el perseguidor y los
+    // objetos de puntos interactivos son figuras/objetos apoyados en el
+    // suelo — con esto su base queda siempre sobre la línea de suelo
+    // aparente, en vez de flotar/hundirse centrados verticalmente como
+    // antes. worldHeight por punto es opcional en el JSON del mapa
+    // (`spriteWorldHeight`); si no se declara, 0.5 (aprox. una persona) es
+    // un valor razonable por defecto para objetos de calle de tamaño medio.
+    const billboards = [{ x: perseguidor.x, y: perseguidor.y, image: spritePerseguidor.image, anchor: "ground", worldHeight: 0.5 }];
     (mapa.interactionPoints || []).forEach(p => {
       if (puntosUsados.has(p.id)) return; // ya resuelto: el objeto "se consumió" narrativamente
       const img = spritesPuntos.get(p.id);
-      if (img) billboards.push({ x: p.x, y: p.y, image: img, escala: 0.9 });
+      if (img) billboards.push({ x: p.x, y: p.y, image: img, anchor: "ground", worldHeight: p.spriteWorldHeight ?? 0.5 });
     });
+    billboards.push(...decorativeSprites);
     raycaster.renderSprites(jugador.x, jugador.y, jugador.angulo, billboards);
 
     dibujarMinimapa(wrap, mapa, jugador, perseguidor);

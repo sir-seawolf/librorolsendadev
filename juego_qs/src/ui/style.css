@@ -34,6 +34,39 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
   overflow-y: auto;
 }
 
+/* ---------- Configuración de audio (Iteración Audio, punto 22-23) ----------
+   Botón discreto, fijo, coherente con el resto del cromado (mismo patrón que
+   la anomalía del gateway): nunca tapa HUD/joystick/INTERACTUAR, que viven
+   dentro de #scenario con sus propios z-index más altos cuando hace falta. */
+#config-toggle {
+  position: fixed; right: 12px; bottom: 12px; z-index: 250;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(10,10,12,.75); border: 1px solid var(--color-borde, #333);
+  color: var(--color-texto-tenue, #8a94a3); font-size: 16px; line-height: 1;
+  cursor: pointer; transition: color .2s, border-color .2s;
+}
+#config-toggle:hover, #config-toggle:focus-visible { color: var(--color-informacion, #6cb6e0); border-color: var(--color-informacion, #6cb6e0); outline: none; }
+.ajustes-caja {
+  position: fixed; right: 12px; bottom: 54px; z-index: 250;
+  width: min(260px, 80vw); padding: 16px; background: #0c0e14;
+  border: 1px solid var(--color-borde, #333); box-shadow: 0 4px 24px rgba(0,0,0,.5);
+  font-family: "Share Tech Mono", monospace;
+}
+.ajustes-fila { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.ajustes-etiqueta { font-size: .78em; letter-spacing: 1px; color: var(--color-texto-tenue, #8a94a3); text-transform: uppercase; }
+.ajustes-onoff {
+  min-width: 52px; padding: 5px 10px; background: rgba(255,255,255,.05);
+  border: 1px solid var(--color-borde, #333); color: var(--ink); cursor: pointer; font-family: inherit;
+}
+.ajustes-onoff[aria-pressed="true"] { border-color: var(--color-informacion, #6cb6e0); color: var(--color-informacion, #6cb6e0); }
+.ajustes-cerrar {
+  width: 100%; padding: 8px; margin-top: 4px; background: none;
+  border: 1px solid var(--color-borde, #333); color: var(--color-texto-tenue, #8a94a3);
+  cursor: pointer; font-family: inherit; letter-spacing: 1px;
+}
+.ajustes-cerrar:hover, .ajustes-cerrar:focus-visible { color: var(--ink); border-color: var(--ink); outline: none; }
+#ajustes-volumen { width: 130px; }
+
 /* ---------- Menú ---------- */
 .menu-screen {
   flex: 1;
@@ -346,6 +379,34 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .combate-turno-indicador { position: absolute; top: 8px; left: 12px; background: rgba(0,0,0,.6); padding: 4px 10px; font-size: .8em; }
 .combate-orden { position: absolute; top: 8px; right: 12px; background: rgba(0,0,0,.6); padding: 4px 10px; font-size: .7em; color: var(--muted); letter-spacing: .5px; max-width: 60%; text-align: right; }
 .combate-companero-aviso { width: 100%; color: var(--accent-2); font-size: .82em; margin-bottom: 4px; letter-spacing: .5px; }
+.combate-tag { font-size: .72em; color: var(--muted); }
+
+/* Munición del actor en turno — cargador/reserva siempre visibles mientras
+   decide, no solo tras disparar (Combat UX 0.2, punto 8). */
+.combate-hud-arma { width: 100%; display: flex; justify-content: space-between; font-size: .78em; color: var(--muted); letter-spacing: .3px; margin-bottom: 2px; }
+.hud-arma-municion { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* Estado táctico persistente (punto 9-11, 23): vida/cobertura/munición de
+   todo el grupo, visible en todo momento — no solo en el turno de cada
+   uno, para no tener que recordar qué se hizo dos turnos antes. */
+.combate-tactico { position: absolute; bottom: 8px; left: 12px; right: 12px; display: flex; flex-wrap: wrap; gap: 4px 14px; background: rgba(0,0,0,.55); padding: 6px 10px; font-size: .72em; }
+.tactico-fila { display: flex; align-items: center; gap: 6px; opacity: .95; }
+.tactico-fila.caido { opacity: .4; text-decoration: line-through; }
+.tactico-nombre { color: var(--ink); letter-spacing: .3px; }
+.tactico-nombre em { color: var(--muted); font-style: normal; font-size: .9em; }
+.tactico-cobertura { color: var(--color-texto-tenue); }
+.tactico-cobertura.activa { color: var(--color-informacion); }
+.tactico-municion { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Selector de modo/velocidad — vive DENTRO de la pantalla de combate
+   (punto 33 del encargo), no en Configuración global. */
+.combate-modo { display: flex; flex-direction: column; gap: 4px; padding: 6px 14px; background: #050607; border-top: 1px solid #222; }
+.modo-fila { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.modo-btn, .modo-vel, .modo-detener { background: var(--panel-2); border: 1px solid #333; color: var(--muted); padding: 5px 10px; font-size: .72em; letter-spacing: .3px; cursor: pointer; font-family: inherit; }
+.modo-btn:hover, .modo-vel:hover { border-color: var(--accent); color: var(--ink); }
+.modo-btn.activo, .modo-vel.activo { border-color: var(--accent); color: var(--ink); background: #1a1a1a; }
+.modo-detener { margin-left: auto; border-color: var(--color-peligro); color: var(--color-peligro); }
+.modo-detener:hover { background: var(--color-peligro); color: #fff; }
 
 /* ---------- Final — "expediente cerrado", no card genérica con botón
    (Iteración 7.2). Documento alineado a la izquierda, con una franja de

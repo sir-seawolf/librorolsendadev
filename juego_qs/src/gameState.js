@@ -57,6 +57,17 @@ export const state = {
   finalTipo: null
 };
 
+// Munición (Combat UX & Resources 0.2): cargador/reserva separados, solo
+// para armas a distancia que declaren magazineSize en su base — un arma
+// cuerpo a cuerpo (o un actor sin arma a distancia) no tiene concepto de
+// munición y `municion` se queda en null (ver docs/AMMO_SYSTEM.md, "armas
+// sin munición" — nunca un hack por módulo, el motor ya lo distingue por
+// dato). ammoReserve ausente cuenta como 0, nunca como "infinita".
+function municionInicialDesdeArma(arma) {
+  if (!arma || arma.magazineSize === undefined) return null;
+  return { cargador: arma.magazineSize, reserva: arma.ammoReserve ?? 0 };
+}
+
 function crearRuntimeDesdeBase(base) {
   return {
     baseId: base.id,
@@ -65,8 +76,25 @@ function crearRuntimeDesdeBase(base) {
     vidaActual: { ...base.niveles },
     puntosEpicosActuales: base.puntosEpicos,
     inventario: [...base.equipo],
-    estadoDisponibilidad: "disponible"           // disponible | separado | herido | inconsciente | ocupado | ausente
+    estadoDisponibilidad: "disponible",          // disponible | separado | herido | inconsciente | ocupado | ausente
+    municion: municionInicialDesdeArma(base.arma),
+    cobertura: 0                                 // nivel de cobertura activo (src/rules/cover.js) — por combatiente, no un booleano global de la escena (ver docs/COMBAT_UX.md)
   };
+}
+
+// Migración de saves anteriores a esta iteración (punto 26 del encargo):
+// una partida guardada antes de que existiera `municion`/`cobertura` en el
+// runtime no los tiene — Object.assign(state, datos) en cargar() sobrescribe
+// state.partyMembers entero con lo guardado, así que hay que rellenarlos
+// después de cargar, nunca antes. Nunca revienta una partida antigua: si al
+// personaje ya guardado le falta municion, se le da una carga completa
+// nueva (no hay munición "gastada" que preservar de antes de que el sistema
+// existiera) a partir de la propia arma que el save ya tenía serializada.
+function migrarRecursosCombateSiFalta() {
+  Object.values(state.partyMembers).forEach(m => {
+    if (m.municion === undefined) m.municion = municionInicialDesdeArma(m.base?.arma);
+    if (m.cobertura === undefined) m.cobertura = 0;
+  });
 }
 
 // Arranca una partida nueva: crea runtime para TODOS los pregenerados (barato, son
@@ -155,6 +183,47 @@ export function establecerFlag(nombre, valor = true) {
 
 export function tieneFlag(nombre) {
   return !!state.flags[nombre];
+}
+
+// Munición (Combat UX & Resources 0.2) — mutaciones centralizadas aquí,
+// igual que gastarPuntoEpico/aplicarDanio, para que combat.js solo orqueste
+// turnos y nunca toque el estado del combatiente directamente.
+export function tieneMunicionPara(miembroId, cantidad) {
+  const m = obtenerMiembro(miembroId);
+  return !!(m?.municion && m.municion.cargador >= cantidad);
+}
+
+export function consumirMunicion(miembroId, cantidad) {
+  const m = obtenerMiembro(miembroId);
+  if (!m?.municion || m.municion.cargador < cantidad) return false;
+  m.municion.cargador -= cantidad;
+  notificarFicha();
+  guardar();
+  return true;
+}
+
+// Nunca crea munición: solo mueve reserva -> cargador hasta el máximo del
+// arma. Devuelve cuánto se transfirió realmente (0 si no había nada que
+// recargar, para que la UI pueda decir "no hace falta"/"sin reserva").
+export function recargarArma(miembroId) {
+  const m = obtenerMiembro(miembroId);
+  if (!m?.municion) return 0;
+  const magazineSize = m.base?.arma?.magazineSize ?? m.municion.cargador;
+  const hueco = Math.max(0, magazineSize - m.municion.cargador);
+  const transferido = Math.min(hueco, m.municion.reserva);
+  m.municion.cargador += transferido;
+  m.municion.reserva -= transferido;
+  notificarFicha();
+  guardar();
+  return transferido;
+}
+
+export function establecerCobertura(miembroId, nivel) {
+  const m = obtenerMiembro(miembroId);
+  if (!m) return;
+  m.cobertura = nivel;
+  notificarFicha();
+  guardar();
 }
 
 export function gastarPuntoEpico(miembroId = "player") {
@@ -269,6 +338,7 @@ export function cargar() {
     if (!raw) return false;
     const datos = JSON.parse(raw);
     Object.assign(state, datos);
+    migrarRecursosCombateSiFalta();
     notificarEscena();
     return true;
   } catch (e) {

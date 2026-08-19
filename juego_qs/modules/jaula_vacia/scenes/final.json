@@ -1,6 +1,7 @@
 {
   "id": "final",
   "type": "ending",
+  "musicState": "ending",
   "title": "Resolución",
   "defaultEnding": "captura_limpia",
   "endings": {

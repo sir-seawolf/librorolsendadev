@@ -1,6 +1,7 @@
 {
   "id": "callejon",
   "type": "point_click",
+  "musicState": "exploration",
   "title": "Escena 1 — El Callejón",
   "background": "assets/backgrounds/callejon.jpg",
   "ambient": null,
