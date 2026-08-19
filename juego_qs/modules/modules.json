@@ -22,5 +22,13 @@
     "description": null,
     "enabled": false,
     "status": "coming_soon"
+  },
+  {
+    "id": "jaula_vacia",
+    "title": "La Jaula Llegó Vacía",
+    "subtitle": "Monstruoplantas — captura profesional",
+    "description": "Un cazador territorial, un contrato de circo y seis horas antes de que el transporte parta. Segundo módulo independiente del motor.",
+    "enabled": true,
+    "status": "playable"
   }
 ]

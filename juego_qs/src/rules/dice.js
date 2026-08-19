@@ -6,13 +6,15 @@ export function rollD100() {
   return Math.floor(Math.random() * 100); // 0-99 (00 se representa como 0)
 }
 
-// habilidadBase: categoria + habilidad concreta ya sumadas (tal como vienen en characters.json)
-// dificultad: uno de +20,+10,0,-10,-20
-// puntoEpicoGastado: boolean, aplica +50 tras conocer la dificultad
-export function resolverTirada({ habilidadBase, dificultad = 0, puntoEpicoGastado = false }) {
-  const habilidadEfectiva = habilidadBase + dificultad + (puntoEpicoGastado ? 50 : 0);
-  const tirada = rollD100();
-
+// Única fuente de verdad para interpretar un d100 YA TIRADO contra una
+// Habilidad efectiva: no genera ningún número aleatorio — es pura función
+// de (tirada, habilidadEfectiva) -> veredicto. Existe separada de
+// resolverTirada() para que gastar un Punto Épico DESPUÉS de ver el
+// resultado (src/ui/rollDisplay.js) pueda re-evaluar el mismo número ya
+// salido con la nueva Habilidad efectiva, sin volver a tirar el dado (que
+// sería literalmente otra tirada, no "el mismo resultado mejorado") y sin
+// duplicar esta lógica en ningún otro sitio. Ver docs/QS_RULE_MAP.md.
+export function interpretarTirada({ tirada, habilidadEfectiva }) {
   const esPifia = tirada === 97 || tirada === 98 || tirada === 99;
   const esCriticoPorNumero = tirada === 0 || tirada === 1 || tirada === 2;
 
@@ -43,9 +45,6 @@ export function resolverTirada({ habilidadBase, dificultad = 0, puntoEpicoGastad
   }
 
   return {
-    habilidadBase,
-    dificultad,
-    puntoEpicoGastado,
     habilidadEfectiva,
     tirada,
     tiradaTexto: String(tirada).padStart(2, "0"),
@@ -55,6 +54,24 @@ export function resolverTirada({ habilidadBase, dificultad = 0, puntoEpicoGastad
     esPifia,
     esCabezaAutomatica: tirada === 0 && esCritico
   };
+}
+
+// habilidadBase: categoria + habilidad concreta ya sumadas (tal como vienen en characters.json)
+// dificultad: uno de +20,+10,0,-10,-20
+// puntoEpicoGastado: boolean, aplica +50 tras conocer la dificultad
+//
+// Envoltorio fino sobre interpretarTirada(): tira el dado UNA vez y lo
+// interpreta contra la Habilidad efectiva ya conocida en el momento de la
+// llamada. La mayoría de tiradas del motor (enemigos, escenas sin selector
+// de Punto Épico post-resultado) solo necesitan esto. rollDisplay.js, que sí
+// permite gastar el PE después de ver el resultado, llama a rollD100() +
+// interpretarTirada() por separado para poder re-interpretar la MISMA
+// tirada — ver el comentario de interpretarTirada().
+export function resolverTirada({ habilidadBase, dificultad = 0, puntoEpicoGastado = false }) {
+  const habilidadEfectiva = habilidadBase + dificultad + (puntoEpicoGastado ? 50 : 0);
+  const tirada = rollD100();
+  const interpretacion = interpretarTirada({ tirada, habilidadEfectiva });
+  return { habilidadBase, dificultad, puntoEpicoGastado, ...interpretacion };
 }
 
 export function localizacionPorUnidad(tirada) {

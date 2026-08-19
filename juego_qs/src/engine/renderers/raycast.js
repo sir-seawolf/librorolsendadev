@@ -55,9 +55,18 @@ export async function montarPersecucion(container, escenaId) {
   const wrap = document.createElement("div");
   wrap.className = "persecucion-wrap";
   wrap.innerHTML = `
-    <canvas id="raycast-canvas"></canvas>
-    ${config.visualEffects.vignette ? '<div class="raycast-vignette"></div>' : ""}
-    ${config.visualEffects.rain ? '<div class="raycast-rain"></div>' : ""}
+    <div class="raycast-viewport">
+      <canvas id="raycast-canvas"></canvas>
+      ${config.visualEffects.vignette ? '<div class="raycast-vignette"></div>' : ""}
+      ${config.visualEffects.rain ? '<div class="raycast-rain"></div>' : ""}
+      <div class="touch-controls" id="touch-controls" hidden>
+        <div class="touch-stick" id="touch-stick">
+          <div class="touch-stick-nub" id="touch-stick-nub"></div>
+        </div>
+        <button type="button" class="touch-interact" id="touch-interact" aria-label="Interactuar">E</button>
+      </div>
+      <div class="orientacion-sugerencia">Gira el dispositivo para una mejor experiencia</div>
+    </div>
     <div class="interaction-prompt" id="prompt" hidden></div>
     <div class="persecucion-hud">
       <div class="hud-datos">
@@ -109,6 +118,17 @@ export async function montarPersecucion(container, escenaId) {
   window.addEventListener("keydown", onKeyDown);
   window.addEventListener("keyup", onKeyUp);
 
+  // Entrada táctil: NUNCA sustituye el teclado (WASD/flechas siguen intactos
+  // arriba) — es una entrada más que se combina en tick() con lo que ya
+  // haya en `teclas`. El joystick controla giro (eje X, como flechas/Q) y
+  // avance/retroceso (eje Y, como W/S); no hay strafe táctil dedicado, pero
+  // girar + avanzar basta para recorrer cualquier trazado del mapa —
+  // esquema clásico de los raycasters táctiles (p.ej. ports móviles de
+  // Wolfenstein). Un empuje del stick cerca del máximo cuenta como correr,
+  // igual que MAYÚS en teclado.
+  const entradaTactil = { turn: 0, forward: 0 };
+  configurarControlesTactiles(wrap, entradaTactil, intentarInteractuar);
+
   function esMuro(x, y) {
     const celda = mapa.grid[Math.floor(y)]?.[Math.floor(x)];
     return celda === undefined || (celda !== 0 && !mapa.goals[celda]);
@@ -152,18 +172,24 @@ export async function montarPersecucion(container, escenaId) {
   function tick() {
     if (!activo) return;
 
-    const corriendo = !!teclas["shift"];
+    const corriendo = !!teclas["shift"] || Math.abs(entradaTactil.forward) > 0.85;
     const vel = (mapa.player?.speed ?? 0.045) * (corriendo ? 1.6 : 1);
     const giro = mapa.player?.turnSpeed ?? 0.035;
-    // "E" queda reservada para interactuar — girar usa flechas o Q (izquierda).
+    // "E" queda reservada para interactuar — girar usa flechas, Q (izquierda)
+    // o el eje X del joystick táctil.
     if (teclas["arrowleft"] || teclas["q"]) jugador.angulo -= giro;
     if (teclas["arrowright"]) jugador.angulo += giro;
+    jugador.angulo += entradaTactil.turn * giro;
 
     let mx = 0, my = 0;
     if (teclas["w"] || teclas["arrowup"]) { mx += Math.cos(jugador.angulo); my += Math.sin(jugador.angulo); }
     if (teclas["s"] || teclas["arrowdown"]) { mx -= Math.cos(jugador.angulo); my -= Math.sin(jugador.angulo); }
     if (teclas["a"]) { mx += Math.cos(jugador.angulo - Math.PI / 2); my += Math.sin(jugador.angulo - Math.PI / 2); }
     if (teclas["d"]) { mx += Math.cos(jugador.angulo + Math.PI / 2); my += Math.sin(jugador.angulo + Math.PI / 2); }
+    if (entradaTactil.forward !== 0) {
+      mx += Math.cos(jugador.angulo) * entradaTactil.forward;
+      my += Math.sin(jugador.angulo) * entradaTactil.forward;
+    }
 
     const moviendo = mx !== 0 || my !== 0;
     const nx = jugador.x + mx * vel;
@@ -272,6 +298,97 @@ export async function montarPersecucion(container, escenaId) {
   // requestAnimationFrame no se dispara hasta que vuelve a primer plano — sin
   // esto la escena se queda en negro/sin textura hasta el primer movimiento.
   tick();
+}
+
+// Muestra/oculta y cablea el joystick virtual + botón INTERACTUAR. No sabe
+// nada del mapa ni del bucle de juego: escribe en `entradaTactil` (leído por
+// tick()) y llama a `alInteractuar` — misma separación que el teclado.
+function configurarControlesTactiles(wrap, entradaTactil, alInteractuar) {
+  const panel = wrap.querySelector("#touch-controls");
+  const stickBase = wrap.querySelector("#touch-stick");
+  const nub = wrap.querySelector("#touch-stick-nub");
+  const btnInteractuar = wrap.querySelector("#touch-interact");
+  if (!panel || !stickBase || !nub || !btnInteractuar) return;
+
+  const modoConfigurado = config.input?.touchControls ?? "auto";
+  const soportaTouch = (navigator.maxTouchPoints || 0) > 0 || "ontouchstart" in window;
+
+  function activar(lado) {
+    panel.hidden = false;
+    panel.classList.remove("lado-left", "lado-right");
+    panel.classList.add(`lado-${lado}`);
+  }
+
+  if (modoConfigurado === "left" || modoConfigurado === "right") {
+    activar(modoConfigurado);
+  } else if (modoConfigurado !== "off" && soportaTouch) {
+    activar("left");
+  } else if (modoConfigurado !== "off") {
+    // "auto" sin soporte detectado por capacidades: no asumimos que el
+    // dispositivo no es táctil solo por eso (algunos lo infrarreportan) —
+    // en cuanto llega un touchstart real en la escena, se activan.
+    wrap.addEventListener("touchstart", function primerToqueReal() {
+      activar("left");
+      wrap.removeEventListener("touchstart", primerToqueReal);
+    }, { once: true, passive: true });
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  let stickTouchId = null;
+
+  function moverStick(clientX, clientY) {
+    const rect = stickBase.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const radio = rect.width / 2;
+    let dx = clientX - cx, dy = clientY - cy;
+    const dist = Math.hypot(dx, dy);
+    if (dist > radio) { dx = (dx / dist) * radio; dy = (dy / dist) * radio; }
+    nub.style.transform = `translate(${dx}px, ${dy}px)`;
+    entradaTactil.turn = clamp(dx / radio, -1, 1);
+    entradaTactil.forward = clamp(-dy / radio, -1, 1); // arriba = avanzar
+  }
+
+  function soltarStick() {
+    stickTouchId = null;
+    entradaTactil.turn = 0;
+    entradaTactil.forward = 0;
+    nub.style.transform = "translate(0,0)";
+  }
+
+  stickBase.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    const t = e.changedTouches[0];
+    stickTouchId = t.identifier;
+    moverStick(t.clientX, t.clientY);
+  }, { passive: false });
+
+  stickBase.addEventListener("touchmove", (e) => {
+    if (stickTouchId === null) return;
+    const t = Array.from(e.changedTouches).find(t => t.identifier === stickTouchId);
+    if (!t) return;
+    e.preventDefault();
+    moverStick(t.clientX, t.clientY);
+  }, { passive: false });
+
+  stickBase.addEventListener("touchend", (e) => {
+    if (Array.from(e.changedTouches).some(t => t.identifier === stickTouchId)) soltarStick();
+  });
+  stickBase.addEventListener("touchcancel", soltarStick);
+
+  function pulsarInteractuar(e) {
+    if (e) e.preventDefault();
+    btnInteractuar.classList.add("pressed");
+    alInteractuar();
+  }
+  function soltarInteractuar() { btnInteractuar.classList.remove("pressed"); }
+  btnInteractuar.addEventListener("touchstart", pulsarInteractuar, { passive: false });
+  btnInteractuar.addEventListener("touchend", soltarInteractuar);
+  btnInteractuar.addEventListener("touchcancel", soltarInteractuar);
+  // click cubre entradas de puntero no táctiles (p.ej. mando/ratón sobre el
+  // botón en un dispositivo híbrido) — no duplica el touchstart porque
+  // preventDefault() en touchstart cancela el click sintético que lo seguiría.
+  btnInteractuar.addEventListener("click", () => alInteractuar());
 }
 
 function dibujarMinimapa(wrap, mapa, jugador, perseguidor) {

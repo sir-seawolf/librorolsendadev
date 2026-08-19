@@ -36,6 +36,40 @@ export async function montarNarrativa(container, escenaId) {
     ejecutarInteraccion({ escenaId, escena, interaccion, onTexto });
   }
 
+  // Tap directo (móvil): capacidad táctil real, nunca solo user-agent —
+  // mismo criterio que src/engine/renderers/raycast.js. En escritorio el
+  // flujo de verbos (botón -> zona) sigue intacto y sin cambios.
+  const esTactil = (navigator.maxTouchPoints || 0) > 0 || "ontouchstart" in window;
+
+  // De todos los verbos declarados por la escena, ¿cuáles tienen de verdad
+  // una interacción válida (respetando flags) para esta zona ahora mismo?
+  // Así un tap puede resolver la acción sin obligar a elegir MIRAR primero.
+  function verbosDisponiblesPara(zoneId) {
+    return (escena.verbs || []).filter(v => buscarInteraccion(escena, { verb: v, zone: zoneId }));
+  }
+
+  function menuContextual(hs, zoneId, verbos) {
+    const previo = wrap.querySelector(".hotspot-menu");
+    if (previo) previo.remove();
+    const menu = document.createElement("div");
+    menu.className = "hotspot-menu";
+    menu.style.cssText = `left:${hs.style.left};top:calc(${hs.style.top} + ${hs.style.height});`;
+    verbos.forEach(v => {
+      const btn = document.createElement("button");
+      btn.className = "hotspot-menu-opcion";
+      btn.textContent = v;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menu.remove();
+        disparar({ verb: v, zone: zoneId });
+      });
+      menu.appendChild(btn);
+    });
+    hotspotsEl.appendChild(menu);
+    const cerrar = (e) => { if (!menu.contains(e.target)) { menu.remove(); document.removeEventListener("click", cerrar); } };
+    setTimeout(() => document.addEventListener("click", cerrar), 0);
+  }
+
   if (escena.type === "point_click") {
     controlesEl.className = "acciones-bar";
     (escena.verbs || []).forEach(v => {
@@ -57,6 +91,12 @@ export async function montarNarrativa(container, escenaId) {
       hs.style.cssText = `left:${x}%;top:${y}%;width:${w}%;height:${h}%`;
       hs.textContent = z.label;
       hs.addEventListener("click", () => {
+        if (esTactil) {
+          const verbos = verbosDisponiblesPara(z.id);
+          if (verbos.length === 0) return disparar({ verb: local.verbo || escena.verbs?.[0], zone: z.id });
+          if (verbos.length === 1) return disparar({ verb: verbos[0], zone: z.id });
+          return menuContextual(hs, z.id, verbos);
+        }
         if (!local.verbo) return;
         disparar({ verb: local.verbo, zone: z.id });
       });

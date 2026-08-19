@@ -73,7 +73,7 @@ export async function montarDialogo(container, escenaId) {
 
     (nodo.choices || []).filter(cumpleRequisitos).forEach(c => {
       const btn = document.createElement("button");
-      btn.className = "btn-decision";
+      btn.className = "dialogo-opcion";
       btn.textContent = c.label;
       btn.addEventListener("click", () => {
         if (c.next) return irANodo(c.next);

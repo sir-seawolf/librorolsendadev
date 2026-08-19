@@ -1,0 +1,26 @@
+{
+  "depredadorHibrido": {
+    "id": "depredadorHibrido",
+    "nombre": "Depredador Híbrido",
+    "fuente": "DLC_Monstruoplantas.md líneas 434-445 (sección Depredadores Mutantes) + MODULO_La_Jaula_Llego_Vacia_BORRADOR.md (\"reutiliza su ficha vigente... sin inflar sus estadísticas\").",
+    "distancia": 70,
+    "distanciaNota": "Ficha original: Melé 70%. El motor de combate solo tiene un canal de ataque a distancia por enemigo (turnoEnemigo() en src/engine/renderers/combat.js) — se reutiliza ese mismo campo para su ataque de mordisco, con arma.tipo:\"cc\" para que el registro de combate diga \"ataca\" en vez de \"dispara\".",
+    "iniciativa": 45,
+    "blindaje": 3,
+    "pvBase": 30,
+    "arma": { "nombre": "Mordisco (dos cabezas)", "danio": 10, "tipo": "cc" },
+    "comportamiento": "melee_unico_objetivo",
+    "comportamientoNota": "Simplificación documentada (docs/ADAPTATION_NOTES.md): la ficha original reparte su 70% en dos tiradas simultáneas contra dos objetivos (\"División de habilidad\") y regenera 2 PV/asalto. Ninguna de las dos mecánicas existe en el motor de combate genérico (un único ataque por turno, sin regeneración) y añadirlas sería lógica nueva no reutilizable por otro módulo — se usa un único ataque por turno sin regeneración, documentado como diferencia deliberada respecto a la ficha del manual."
+  },
+  "cazadorCuadruped_referencia": {
+    "id": "cazadorCuadruped_referencia",
+    "nombre": "Cazador Cuádrupedo (Lomo Blanco) — no jugado como combate",
+    "fuente": "DLC_Monstruoplantas.md líneas 434-445.",
+    "usadoEn": "No aparece como enemigo de combate en esta adaptación: su captura se resuelve como una tirada (ver scenes/sendero.json, interacción 'capturar_lomo_blanco'), fiel al propio one-shot original (\"Métodos de captura\" no exige combate). Datos conservados aquí solo como referencia de trazabilidad.",
+    "distancia": 75,
+    "iniciativa": 55,
+    "blindaje": 2,
+    "pvBase": 25,
+    "arma": { "nombre": "Colmillos", "danio": 9, "tipo": "cc" }
+  }
+}

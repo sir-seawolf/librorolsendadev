@@ -21,14 +21,7 @@
 <div class="hero">
   <h1>Juego de <em>Rol</em></h1>
   <p class="sub">Todo lo que necesitas para jugar</p>
-  <div class="puertas" style="margin-bottom:36px">
-    <a href="juego_qs/index.html" class="puerta jugar" id="jugar-link">
-      <span class="ico">🎮</span>
-      <span class="tit">Jugar</span>
-      <span class="txt">Prototipo jugable — Predator N-5.2, primera escena</span>
-    </a>
-  </div>
-  <div class="nav">
+  <div class="nav" style="margin-bottom:36px">
     <a href="manual.html">Manual completo</a>
     <a href="quickstart.html" class="alt">Quickstart</a>
     <a href="ficha.html" class="alt">Ficha de Personaje</a>
@@ -38,16 +31,56 @@
   </div>
   <p class="volver"><a href="index.html">&larr; Volver al inicio</a></p>
 </div>
+
+<button type="button" class="anomalia" id="anomalia" aria-label="?" title="">·</button>
+
+<div class="anomalia-panel" id="anomalia-panel" hidden>
+  <div class="ap-box">
+    <button type="button" class="ap-cerrar" id="btn-cerrar-anomalia" aria-label="Cerrar">✕</button>
+    <p class="ap-linea1">SEÑAL ANÓMALA DETECTADA</p>
+    <p class="ap-linea2">ORIGEN: DESCONOCIDO</p>
+    <button type="button" class="ap-rastrear" id="btn-rastrear">Rastrear</button>
+  </div>
+</div>
+
+<div class="gateway-glitch" id="gateway-glitch" hidden>
+  <img src="juego_qs/assets/shared/ui/glitch_game_gateway.png" alt="">
+</div>
+
 <script>
 (function () {
+  var FLAG = "la_senda_gateway_discovered_v1";
+  var DESTINO = "juego_qs/index.html";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var link = document.getElementById("jugar-link");
-  if (!link || reduce) return; // sin JS o con "menos movimiento": navegación normal, sin transición
-  link.addEventListener("click", function (e) {
-    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    e.preventDefault();
-    document.body.classList.add("senda-transicion-jugar");
-    setTimeout(function () { window.location.href = link.href; }, 320);
+
+  var anomalia = document.getElementById("anomalia");
+  var panel = document.getElementById("anomalia-panel");
+  var glitch = document.getElementById("gateway-glitch");
+  var btnRastrear = document.getElementById("btn-rastrear");
+  var btnCerrar = document.getElementById("btn-cerrar-anomalia");
+  if (!anomalia || !panel || !glitch || !btnRastrear || !btnCerrar) return;
+
+  var yaDescubierta = false;
+  try { yaDescubierta = localStorage.getItem(FLAG) === "1"; } catch (e) {}
+  if (yaDescubierta) anomalia.classList.add("encontrada");
+
+  function abrirPanel() { panel.hidden = false; btnRastrear.focus(); }
+  function cerrarPanel() { panel.hidden = true; anomalia.focus(); }
+
+  anomalia.addEventListener("click", abrirPanel);
+  btnCerrar.addEventListener("click", cerrarPanel);
+  panel.addEventListener("click", function (e) { if (e.target === panel) cerrarPanel(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !panel.hidden) cerrarPanel();
+  });
+
+  btnRastrear.addEventListener("click", function () {
+    try { localStorage.setItem(FLAG, "1"); } catch (e) {}
+    if (reduce) { window.location.href = DESTINO; return; } // sin animación: navegación directa
+    panel.hidden = true;
+    glitch.hidden = false;
+    glitch.classList.add("activo");
+    setTimeout(function () { window.location.href = DESTINO; }, 650);
   });
 })();
 </script>

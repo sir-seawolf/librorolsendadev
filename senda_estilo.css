@@ -466,54 +466,70 @@ body.landing {
 .landing .footer { text-align: center; padding: 30px; font-size: 12px; color: #475569; font-family: 'Share Tech Mono', monospace; }
 .landing .footer a { color: #94a3b8; text-decoration: none; }
 
-/* JUGAR — entrada destacada al prototipo jugable JUEGO_QS (juego.html).
-   Acento cian para diferenciarla de manual(rojo)/lore(azul)/dlc(morado).
-   El glitch es puramente decorativo (CSS, sin JS) y respeta
-   prefers-reduced-motion; la transición al hacer clic sí usa un JS mínimo
-   opcional (ver el <script> al final de juego.html), con fallback a
-   navegación normal si JS falla o el usuario pide menos movimiento. */
-.landing .puerta.jugar { border-color: #22d3ee; background: rgba(34,211,238,.05); position: relative; overflow: hidden; }
-.landing .puerta.jugar:hover, .landing .puerta.jugar:focus-visible { background: #22d3ee; color: #000; }
-.landing .puerta.jugar:hover .txt, .landing .puerta.jugar:focus-visible .txt { color: inherit; }
-.landing .puerta.jugar::before, .landing .puerta.jugar::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
-    mix-blend-mode: screen;
-    background: repeating-linear-gradient(0deg, rgba(255,59,59,.5) 0 2px, transparent 2px 4px);
+/* Anomalía — huevo de Pascua discreto hacia la zona de juego (JUEGO_QS,
+   juego.html). Sustituye a la antigua tarjeta JUGAR visible: el acceso debe
+   parecer algo que el visitante DESCUBRE, no un botón más del menú. El
+   marcador es un carácter suelto, casi invisible hasta que se pasa el ratón
+   o el foco de teclado por encima. Una vez descubierta (localStorage
+   la_senda_gateway_discovered_v1), un pulso leve la hace algo más fácil de
+   volver a encontrar — nunca un botón grande. Toda animación respeta
+   prefers-reduced-motion. */
+.anomalia {
+    position: fixed; right: 18px; bottom: 16px; z-index: 200;
+    width: 28px; height: 28px; padding: 0; border: none; background: none;
+    font-family: 'Share Tech Mono', monospace; font-size: 13px; line-height: 28px;
+    color: rgba(148,163,184,.22); cursor: default; transition: color .3s, text-shadow .3s;
 }
-.landing .puerta.jugar::after { background: repeating-linear-gradient(90deg, rgba(29,111,163,.5) 0 2px, transparent 2px 4px); }
-.landing .puerta.jugar:hover::before, .landing .puerta.jugar:focus-visible::before { animation: sendaGlitchLineas .5s steps(2,end) 1; }
-.landing .puerta.jugar:hover::after, .landing .puerta.jugar:focus-visible::after { animation: sendaGlitchDesplaza .5s steps(3,end) 1; }
-.landing .puerta.jugar:hover .tit, .landing .puerta.jugar:focus-visible .tit { animation: sendaGlitchTexto .5s steps(4,end) 1; }
-@keyframes sendaGlitchLineas {
-    0% { opacity: .6; transform: translate(-2px,1px); }
-    30% { opacity: .3; transform: translate(2px,-1px); }
-    60% { opacity: .5; transform: translate(-1px,0); }
-    100% { opacity: 0; transform: translate(0,0); }
+.anomalia:hover, .anomalia:focus-visible { color: #22d3ee; text-shadow: 0 0 6px rgba(34,211,238,.7); cursor: pointer; outline: none; }
+.anomalia.encontrada { color: rgba(34,211,238,.3); animation: anomaliaPulso 3.4s ease-in-out infinite; }
+.anomalia.encontrada:hover, .anomalia.encontrada:focus-visible { color: #22d3ee; text-shadow: 0 0 8px rgba(34,211,238,.85); }
+@keyframes anomaliaPulso { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+
+.anomalia-panel {
+    position: fixed; inset: 0; z-index: 210; display: flex; align-items: center; justify-content: center;
+    background: rgba(5,6,10,.82); backdrop-filter: blur(2px);
 }
-@keyframes sendaGlitchDesplaza {
-    0% { opacity: .5; transform: translate(2px,-1px); }
-    40% { opacity: .35; transform: translate(-2px,1px); }
-    100% { opacity: 0; transform: translate(0,0); }
+.anomalia-panel[hidden] { display: none; }
+.ap-box {
+    position: relative; width: min(320px, 86vw); padding: 26px 22px; text-align: center;
+    background: #0c0e14; border: 1px solid #22d3ee; box-shadow: 0 0 30px rgba(34,211,238,.25);
+    font-family: 'Share Tech Mono', monospace;
 }
-@keyframes sendaGlitchTexto {
-    0%, 100% { text-shadow: none; }
-    20% { text-shadow: -2px 0 #ff3b3b, 2px 0 #1d6fa3; }
-    40% { text-shadow: 2px 0 #ff3b3b, -2px 0 #1d6fa3; }
-    60% { text-shadow: -1px 0 #ff3b3b, 1px 0 #1d6fa3; }
-    80% { text-shadow: 1px 0 #22d3ee; }
+.ap-linea1 { color: #22d3ee; letter-spacing: 2px; font-size: 13px; margin: 0 0 6px; animation: anomaliaParpadeo 1.6s steps(1,end) infinite; }
+.ap-linea2 { color: #64748b; letter-spacing: 1px; font-size: 11px; margin: 0 0 20px; }
+@keyframes anomaliaParpadeo { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 94% { opacity: .3; } 96% { opacity: 1; } }
+.ap-rastrear {
+    font-family: 'Orbitron', sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 2px;
+    padding: 10px 26px; border: 2px solid #22d3ee; background: rgba(34,211,238,.06); color: #fff;
+    cursor: pointer; transition: all .2s;
 }
-/* Transición breve de página al hacer clic en JUGAR (opcional, ver JS). */
-body.senda-transicion-jugar { cursor: wait; }
-body.senda-transicion-jugar::after {
-    content: ""; position: fixed; inset: 0; z-index: 999; background: #05060a;
-    animation: sendaTransicionJugar .32s ease-in forwards; pointer-events: none;
+.ap-rastrear:hover, .ap-rastrear:focus-visible { background: #22d3ee; color: #000; }
+.ap-cerrar {
+    position: absolute; top: 8px; right: 10px; background: none; border: none; color: #475569;
+    font-size: 16px; line-height: 1; cursor: pointer; padding: 4px;
 }
-@keyframes sendaTransicionJugar { from { opacity: 0; } to { opacity: 1; } }
+.ap-cerrar:hover, .ap-cerrar:focus-visible { color: #fff; }
+
+/* Transición al confirmar RASTREAR: glitch breve con la lámina compartida
+   glitch_game_gateway.png antes de entrar en /juego_qs/. */
+.gateway-glitch {
+    position: fixed; inset: 0; z-index: 220; background: #05060a; overflow: hidden;
+}
+.gateway-glitch[hidden] { display: none; }
+.gateway-glitch img { width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.gateway-glitch.activo img { animation: gatewayGlitchImg .65s steps(6,end) forwards; }
+@keyframes gatewayGlitchImg {
+    0% { opacity: 0; filter: brightness(2) contrast(1.4); transform: translateX(0); }
+    15% { opacity: 1; transform: translateX(-6px); }
+    30% { transform: translateX(5px); filter: brightness(1.6) contrast(1.6) hue-rotate(15deg); }
+    45% { transform: translateX(-3px); }
+    60% { opacity: 1; transform: translateX(2px); filter: brightness(1.1); }
+    100% { opacity: 1; transform: translateX(0); filter: none; }
+}
 @media (prefers-reduced-motion: reduce) {
-    .landing .puerta.jugar::before, .landing .puerta.jugar::after,
-    .landing .puerta.jugar:hover::before, .landing .puerta.jugar:hover::after,
-    .landing .puerta.jugar:hover .tit { animation: none !important; }
-    body.senda-transicion-jugar::after { animation: none !important; }
+    .anomalia.encontrada { animation: none !important; }
+    .ap-linea1 { animation: none !important; }
+    .gateway-glitch.activo img { animation: none !important; opacity: 1 !important; }
 }
 
 /* Nav de botones (juego.html) */

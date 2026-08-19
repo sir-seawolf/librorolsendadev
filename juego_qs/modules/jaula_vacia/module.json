@@ -1,0 +1,25 @@
+{
+  "id": "jaula_vacia",
+  "title": "La Jaula Llegó Vacía",
+  "subtitle": "Monstruoplantas — captura profesional",
+  "system": "senda_qs",
+  "version": "0.1",
+  "startScene": "contrato",
+  "credits": [
+    "Vertical slice no oficial basado en el one-shot <em>La jaula llegó vacía</em> (Monstruoplantas) de <strong>La Senda de los Errantes</strong>.",
+    "Adaptación recortada a una sesión corta (20-30 min) para demostrar que el motor de JUEGO_QS soporta módulos independientes — ver docs/ADAPTATION_NOTES.md.",
+    "Prototipo jugable — retratos de personaje son placeholders (ver modules/jaula_vacia/docs/ASSET_NEEDS.md)."
+  ],
+  "allowImportedCharacters": false,
+  "paths": {
+    "scenes": "scenes/",
+    "encounters": "encounters/",
+    "characters": "characters/characters.json",
+    "enemies": "enemies/enemies.json",
+    "weapons": "weapons/weapons.json",
+    "assets": "assets/"
+  },
+  "engineRequirements": {
+    "sceneTypes": ["decision", "point_click", "combat", "ending"]
+  }
+}

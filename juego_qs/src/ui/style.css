@@ -1,15 +1,6 @@
+/* Tokens de color: ver theme.css (cargado antes que este archivo) — aquí
+   solo queda lo que no es un token de color. */
 :root {
-  --bg: #0d0f12;
-  --panel: #15181d;
-  --panel-2: #1c2028;
-  --ink: #e6e6e6;
-  --muted: #8b93a1;
-  --accent: #b3323c;
-  --accent-2: #3ba0c9;
-  --success: #3f9e5e;
-  --fail: #7a7f88;
-  --critico: #d4af37;
-  --pifia: #b3323c;
   font-family: "Courier New", monospace;
 }
 
@@ -70,25 +61,42 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .volver-modulos a { color: var(--muted); text-decoration: none; }
 .volver-modulos a:hover { color: var(--ink); }
 
-/* ---------- Selector de módulos (nivel 1) ---------- */
-.modulos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; width: 100%; max-width: 900px; }
-.card-modulo { background: var(--panel-2); border: 1px solid #333; padding: 18px; text-align: left; }
-.card-modulo.jugable { cursor: pointer; }
-.card-modulo.jugable:hover { border-color: var(--accent-2); }
-.card-modulo.bloqueado { opacity: .5; }
-.card-modulo .cm-titulo { font-weight: bold; font-size: 1.1em; letter-spacing: 1px; }
-.card-modulo .cm-subtitulo { color: var(--accent-2); font-size: .85em; margin-top: 2px; }
-.card-modulo .cm-desc { color: var(--muted); font-size: .8em; margin-top: 8px; line-height: 1.4; }
-.card-modulo .cm-estado { display: inline-block; margin-top: 12px; font-size: .75em; letter-spacing: 1px; padding: 3px 10px; border: 1px solid var(--accent); color: var(--accent); }
-.card-modulo.bloqueado .cm-estado { border-color: var(--muted); color: var(--muted); }
+/* ---------- Selector de módulos (nivel 1) — registro de expedientes, no
+   tienda de tarjetas (§11/§15 de la guía de Iteración 7). Lista vertical,
+   numerada, con el estado como un sello alineado a la derecha en vez de
+   una badge redondeada — sigue siendo 100% data-driven desde
+   modules/modules.json (ver moduleMenu.js), ningún id hardcodeado aquí. */
+.modulos-lista { display: flex; flex-direction: column; width: 100%; max-width: 640px; border-top: 1px solid var(--color-borde); }
+.expediente {
+  display: flex; align-items: baseline; gap: 14px; padding: 16px 6px;
+  border-bottom: 1px solid var(--color-borde); text-align: left; background: none;
+}
+.expediente.jugable { cursor: pointer; }
+.expediente.jugable:hover, .expediente.jugable:focus-visible { background: rgba(201,162,39,.06); outline: none; }
+.expediente.jugable:hover .exp-titulo, .expediente.jugable:focus-visible .exp-titulo { color: var(--color-seleccion); }
+.expediente.bloqueado { opacity: .45; }
+.exp-num { font-size: .78em; color: var(--color-texto-tenue); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
+.exp-cuerpo { flex: 1; min-width: 0; }
+.exp-titulo { font-weight: bold; font-size: 1.05em; letter-spacing: .5px; }
+.exp-subtitulo { font-weight: normal; color: var(--color-informacion); font-size: .88em; }
+.exp-desc { color: var(--color-texto-tenue); font-size: .8em; margin-top: 5px; line-height: 1.4; }
+.exp-estado {
+  font-size: .68em; letter-spacing: 1.5px; color: var(--color-peligro); flex-shrink: 0;
+  text-transform: uppercase; padding-top: 3px; white-space: nowrap;
+}
+.expediente.bloqueado .exp-estado { color: var(--color-texto-tenue); }
 
 /* ---------- Selección de personaje ---------- */
-.seleccion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; width: 100%; max-width: 900px; }
-.card-pj { background: var(--panel-2); border: 1px solid #333; cursor: pointer; padding: 10px; text-align: center; }
-.card-pj:hover { border-color: var(--accent-2); }
-.card-pj img { width: 100%; height: 140px; object-fit: cover; }
-.card-pj .cp-nombre { font-weight: bold; margin-top: 6px; }
-.card-pj .cp-rol { color: var(--muted); font-size: .8em; }
+.seleccion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; width: 100%; max-width: 900px; }
+/* El retrato domina la tarjeta (§12): marco mínimo, más alto, la fortaleza
+   mecánica va siempre visible (no solo al pasar el ratón — en móvil no hay
+   hover) para decidir sin abrir la ficha completa. */
+.card-pj { background: var(--color-superficie-alta); border: 1px solid var(--color-borde); cursor: pointer; padding: 0 0 10px; text-align: center; overflow: hidden; }
+.card-pj:hover, .card-pj:focus-visible { border-color: var(--color-seleccion); outline: none; }
+.card-pj img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.card-pj .cp-nombre { font-weight: bold; margin-top: 8px; letter-spacing: .5px; }
+.card-pj .cp-rol { color: var(--color-texto-tenue); font-size: .8em; }
+.card-pj .cp-fortaleza { color: var(--color-informacion); font-size: .72em; margin-top: 5px; padding: 0 8px; line-height: 1.35; }
 
 /* ---------- Escena narrativa ---------- */
 .narrativa {
@@ -107,10 +115,21 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
   background: rgba(10,10,12,.94); padding: 16px 20px; border-top: 2px solid var(--accent);
   max-height: 55%; overflow-y: auto;
 }
-.dialogo-hablante { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; color: var(--accent-2); font-size: .85em; margin-bottom: 6px; }
+.dialogo-hablante { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; color: var(--color-informacion); font-size: .85em; margin-bottom: 6px; }
 .dialogo-texto { line-height: 1.6; font-size: .95em; }
-.dialogo-opciones { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
-.dialogo-opciones .btn-decision { text-align: left; padding: 10px 16px; font-size: .95em; }
+/* Respuestas como líneas narrativas, no botones de formulario (§9): sin
+   caja/borde propio, una marca `>` que se ilumina en selección/foco en
+   vez de un rectángulo — el objetivo táctil sigue siendo >=44px de alto. */
+.dialogo-opciones { display: flex; flex-direction: column; gap: 2px; margin-top: 14px; border-top: 1px solid var(--color-borde); }
+.dialogo-opcion {
+  display: block; width: 100%; text-align: left; background: none; border: none;
+  border-bottom: 1px solid var(--color-borde); color: var(--color-texto);
+  font-family: inherit; font-size: .95em; letter-spacing: .3px;
+  padding: 12px 4px 12px 20px; min-height: 44px; cursor: pointer; position: relative;
+}
+.dialogo-opcion::before { content: "›"; position: absolute; left: 2px; color: var(--color-texto-tenue); font-weight: 700; }
+.dialogo-opcion:hover, .dialogo-opcion:focus-visible { color: var(--color-seleccion); outline: none; }
+.dialogo-opcion:hover::before, .dialogo-opcion:focus-visible::before { color: var(--color-seleccion); }
 .acciones-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 18px; background: #08090b; border-top: 1px solid #222; }
 .btn-accion {
   background: var(--panel-2); color: var(--ink); border: 1px solid #333; padding: 8px 14px;
@@ -126,33 +145,77 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
   display: flex; align-items: flex-end; justify-content: center; color: #fff;
   font-size: .75em; text-shadow: 0 0 4px #000;
 }
-.hotspot:hover { border-color: var(--accent-2); background: rgba(59,160,201,.1); }
+.hotspot:hover { border-color: var(--color-seleccion); background: rgba(201,162,39,.12); }
 .hotspot.descubierto { border-style: solid; }
 
-/* ---------- Tiradas ---------- */
+/* Menú contextual táctil (narrative.js: tap directo sobre una zona con
+   varias acciones válidas) — pequeño, anclado a la zona, no un panel a
+   toda anchura. Objetivos >=44px de alto (§20 de la guía de Iteración 7). */
+.hotspot-menu {
+  position: absolute; z-index: 20; display: flex; flex-direction: column;
+  background: var(--color-superficie-alta); border: 1px solid var(--color-seleccion);
+  min-width: 140px; box-shadow: 0 4px 14px rgba(0,0,0,.5);
+}
+.hotspot-menu-opcion {
+  background: transparent; border: none; border-bottom: 1px solid var(--color-borde);
+  color: var(--color-texto); font-family: inherit; font-size: .85em; letter-spacing: .5px;
+  padding: 12px 14px; min-height: 44px; text-align: left; cursor: pointer;
+}
+.hotspot-menu-opcion:last-child { border-bottom: none; }
+.hotspot-menu-opcion:hover, .hotspot-menu-opcion:active { background: rgba(201,162,39,.15); color: var(--color-seleccion); }
+
+/* ---------- Tiradas ----------
+   Jerarquía deliberada (§6): quién/qué -> efectiva -> EL DADO (dominante
+   un instante) -> resultado -> consecuencia. Los números de desglose
+   (base, dificultad, herida) quedan en <details> — existen, pero no son
+   lo primero que se lee. Nunca modal de formulario: sin líneas
+   etiqueta/valor a lo largo de toda la tarjeta. */
 .roll-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,.75);
   display: flex; align-items: center; justify-content: center; z-index: 100;
 }
 .roll-card {
-  background: var(--panel-2); border: 1px solid var(--accent); padding: 24px 30px;
+  background: var(--color-superficie-alta); border: 1px solid var(--color-peligro); padding: 22px 28px;
   width: 320px; text-align: center;
 }
-.roll-header { font-size: 1.1em; letter-spacing: 1px; margin-bottom: 12px; color: var(--accent-2); }
-.roll-line { display: flex; justify-content: space-between; padding: 3px 0; font-size: .9em; }
-.roll-efectiva { border-top: 1px solid #333; margin-top: 4px; padding-top: 6px; font-size: 1em; }
+.roll-quien { margin-bottom: 10px; }
+.roll-actor { display: block; font-size: .95em; letter-spacing: 1px; color: var(--color-texto); }
+.roll-habilidad { display: block; font-size: .82em; color: var(--color-informacion); margin-top: 2px; }
+.roll-efectiva-cifra { display: flex; align-items: baseline; justify-content: center; gap: 8px; }
+.roll-efectiva-cifra strong { font-size: 1.8em; font-weight: 700; }
+.roll-efectiva-cifra span { font-size: .68em; letter-spacing: 1.5px; color: var(--color-texto-tenue); text-transform: uppercase; }
+.roll-detalles { margin-top: 10px; text-align: left; }
+.roll-detalles summary { cursor: pointer; font-size: .72em; letter-spacing: 1px; color: var(--color-texto-tenue); text-transform: uppercase; }
+.roll-detalles summary:hover { color: var(--color-seleccion); }
+.roll-line { display: flex; justify-content: space-between; padding: 3px 0; font-size: .85em; }
 .res-herida { color: var(--pifia); }
-.btn-epico { margin: 10px 0; background: #2a1216; border: 1px solid var(--critico); color: var(--critico); padding: 6px 10px; cursor: pointer; font-family: inherit; width: 100%; }
-.roll-dice { font-size: 2.6em; margin: 14px 0; letter-spacing: 4px; }
+.btn-epico {
+  margin: 12px 0; background: rgba(201,162,39,.1); border: 1px solid var(--color-critico);
+  color: var(--color-critico); padding: 8px 10px; cursor: pointer; font-family: inherit; width: 100%;
+  font-size: .82em; letter-spacing: .5px;
+}
+.btn-epico span { margin-left: 4px; font-weight: 700; }
+.btn-epico:disabled { opacity: .55; cursor: default; }
+/* El dado domina un instante: tipografía grande, sin decoración, entre la
+   habilidad efectiva y el resultado — nunca comparte peso con el resto. */
+.roll-dado { font-size: 3.2em; font-weight: 700; margin: 10px 0 6px; letter-spacing: 4px; line-height: 1; }
 .roll-result { min-height: 50px; }
-.res-titulo { font-size: 1.2em; font-weight: bold; }
-.res-sub { color: var(--muted); font-size: .8em; margin-top: 4px; }
-.res-progreso { color: var(--critico); font-size: .78em; margin-top: 6px; border-top: 1px dashed #333; padding-top: 5px; }
-.res-exito .res-titulo { color: var(--success); }
-.res-fallo .res-titulo { color: var(--fail); }
-.res-critico .res-titulo { color: var(--critico); }
-.res-pifia .res-titulo { color: var(--pifia); }
-.btn-continuar { margin-top: 14px; background: var(--accent); border: none; color: #fff; padding: 8px 20px; cursor: pointer; font-family: inherit; }
+.res-titulo { font-size: 1.15em; font-weight: bold; letter-spacing: 1px; }
+.res-sub { color: var(--color-texto-tenue); font-size: .78em; margin-top: 4px; }
+.res-progreso { color: var(--color-critico); font-size: .76em; margin-top: 6px; border-top: 1px dashed var(--color-borde); padding-top: 5px; }
+.res-exito .res-titulo { color: var(--color-exito); }
+.res-fallo .res-titulo { color: var(--color-fallo); }
+.res-critico .res-titulo { color: var(--color-critico); }
+.res-pifia .res-titulo { color: var(--color-pifia); }
+/* Vínculo visual con el Punto Épico (§7): un borde propio y sobrio en el
+   bloque de resultado cuando ese resultado ya incorpora el PE gastado —
+   nunca el glitch del gateway (reservado a Mosaico/anomalía). */
+.roll-result-pe { position: relative; }
+.roll-result-pe::before {
+  content: ""; position: absolute; left: -14px; top: 0; bottom: 0; width: 2px;
+  background: var(--color-critico); box-shadow: 0 0 6px rgba(212,175,55,.6);
+}
+.btn-continuar { margin-top: 14px; background: var(--color-peligro); border: none; color: #fff; padding: 10px 20px; cursor: pointer; font-family: inherit; min-height: 44px; }
 
 /* ---------- Ficha lateral ---------- */
 .ficha { display: flex; flex-direction: column; gap: 11px; font-size: 1.04em; }
@@ -169,7 +232,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .ep-dot.activo { color: var(--critico); }
 .ficha-inventario { margin: 0; padding-left: 16px; font-size: .85em; color: var(--muted); line-height: 1.5; }
 .btn-historial { margin-top: 4px; background: transparent; border: 1px solid #333; color: var(--muted); padding: 6px; cursor: pointer; font-family: inherit; font-size: .72em; letter-spacing: .5px; }
-.btn-historial:hover { border-color: var(--accent-2); color: var(--ink); }
+.btn-historial:hover { border-color: var(--color-seleccion); color: var(--ink); }
 
 /* ---------- Historial de tiradas ---------- */
 .log-table { width: 100%; border-collapse: collapse; font-size: .72em; }
@@ -181,7 +244,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 /* ---------- Delegación ---------- */
 .delegar-lista { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
 .delegar-opcion { display: flex; justify-content: space-between; gap: 10px; background: var(--panel-2); border: 1px solid #333; padding: 8px 12px; cursor: pointer; font-family: inherit; color: var(--ink); text-align: left; }
-.delegar-opcion:hover { border-color: var(--accent-2); }
+.delegar-opcion:hover { border-color: var(--color-seleccion); }
 .delegar-opcion .deleg-hab { color: var(--muted); font-size: .82em; }
 
 /* ---------- Notificación breve ---------- */
@@ -195,7 +258,35 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 
 /* ---------- Persecución 2.5D ---------- */
 .persecucion-wrap { flex: 1; display: flex; flex-direction: column; position: relative; }
+.raycast-viewport { flex: 1; display: flex; position: relative; overflow: hidden; }
 #raycast-canvas { width: 100%; flex: 1; image-rendering: pixelated; background: #111; transition: transform .05s; }
+
+/* Controles táctiles (config.js -> input.touchControls). Ocultos por
+   defecto ([hidden]); activados desde raycast.js según capacidad táctil o
+   configuración explícita — nunca sustituyen WASD, solo se suman. Zona
+   inferior, pulgar-friendly, con margen de safe-area para notch/gestos. */
+.touch-controls { position: absolute; inset: 0; pointer-events: none; z-index: 8; }
+.touch-controls[hidden] { display: none; }
+.touch-stick, .touch-interact {
+  position: absolute; bottom: max(18px, env(safe-area-inset-bottom)); pointer-events: auto; touch-action: none;
+}
+.touch-stick {
+  width: 108px; height: 108px; border-radius: 50%;
+  background: rgba(20,22,28,.5); border: 2px solid rgba(201,162,39,.35);
+}
+.touch-stick-nub {
+  position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px;
+  border-radius: 50%; background: rgba(201,162,39,.55); transition: background .1s;
+}
+.touch-controls.lado-left .touch-stick { left: max(18px, env(safe-area-inset-left)); }
+.touch-controls.lado-left .touch-interact { right: max(18px, env(safe-area-inset-right)); }
+.touch-controls.lado-right .touch-stick { right: max(18px, env(safe-area-inset-right)); }
+.touch-controls.lado-right .touch-interact { left: max(18px, env(safe-area-inset-left)); }
+.touch-interact {
+  width: 76px; height: 76px; border-radius: 50%; border: 2px solid var(--color-peligro);
+  background: rgba(20,22,28,.55); color: var(--color-texto); font-family: inherit; font-size: 1.1em; letter-spacing: 1px;
+}
+.touch-interact.pressed, .touch-stick:active .touch-stick-nub { background: var(--color-peligro); color: #000; }
 .persecucion-hud { display: flex; flex-direction: column; gap: 4px; padding: 10px 16px; background: #08090b; border-top: 2px solid var(--accent); }
 .hud-datos { display: flex; gap: 22px; }
 .hud-datos > div { display: flex; flex-direction: column; }
@@ -207,6 +298,17 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .raycast-rain { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(100deg, transparent 0 6px, rgba(180,200,220,.06) 6px 8px); animation: rain-fall 0.25s linear infinite; }
 @keyframes rain-fall { from { background-position: 0 0; } to { background-position: -12px 20px; } }
 .interaction-prompt { position: absolute; left: 50%; bottom: 20%; transform: translateX(-50%); background: rgba(0,0,0,.75); border: 1px solid var(--accent-2); color: var(--ink); padding: 6px 14px; font-size: .82em; letter-spacing: .5px; }
+
+/* Sugerencia discreta de landscape (§21) — solo dispositivos táctiles en
+   portrait (pointer:coarse, no user-agent). Nunca bloquea la partida. */
+.orientacion-sugerencia { display: none; }
+@media (orientation: portrait) and (pointer: coarse) {
+  .orientacion-sugerencia {
+    display: block; position: absolute; top: max(10px, env(safe-area-inset-top)); left: 50%;
+    transform: translateX(-50%); background: rgba(0,0,0,.7); color: var(--color-texto-tenue);
+    font-size: .68em; letter-spacing: .5px; padding: 5px 12px; z-index: 9; pointer-events: none;
+  }
+}
 .screen-shake { animation: shake .3s; }
 @keyframes shake { 0%,100% { transform: translate(0,0); } 25% { transform: translate(-4px,2px); } 50% { transform: translate(4px,-2px); } 75% { transform: translate(-3px,-3px); } }
 
@@ -231,12 +333,36 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .combate-wrap { flex: 1; display: flex; flex-direction: column; }
 .combate-escena { flex: 1; background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-end; padding: 12px; }
 .combate-log { background: rgba(0,0,0,.5); padding: 8px; font-size: .78em; max-height: 90px; overflow-y: auto; width: 100%; }
-.combate-acciones { display: flex; gap: 8px; padding: 10px 14px; background: #08090b; flex-wrap: wrap; }
+.combate-acciones { display: flex; gap: 8px; padding: 10px 14px; background: #08090b; flex-wrap: wrap; align-items: center; }
+/* Jerarquía de acciones (§10): la ofensiva disponible domina; cubrirse/
+   mover quedan como apoyo; huir se distingue como salida, nunca al mismo
+   peso visual que atacar. */
+.btn-accion-principal { background: var(--color-peligro); border-color: var(--color-peligro); color: #fff; font-size: 1.05em; padding: 10px 20px; order: -1; }
+.btn-accion-principal:hover { background: #d13c47; }
+.btn-accion-secundaria { opacity: .85; font-size: .92em; }
+.btn-accion-salida { margin-left: auto; border-color: var(--color-texto-tenue); color: var(--color-texto-tenue); background: transparent; }
+.btn-accion-salida:hover { border-color: var(--color-informacion); color: var(--color-informacion); }
 .combate-prob { font-size: .75em; color: var(--muted); }
 .combate-turno-indicador { position: absolute; top: 8px; left: 12px; background: rgba(0,0,0,.6); padding: 4px 10px; font-size: .8em; }
 .combate-orden { position: absolute; top: 8px; right: 12px; background: rgba(0,0,0,.6); padding: 4px 10px; font-size: .7em; color: var(--muted); letter-spacing: .5px; max-width: 60%; text-align: right; }
 .combate-companero-aviso { width: 100%; color: var(--accent-2); font-size: .82em; margin-bottom: 4px; letter-spacing: .5px; }
 
-/* ---------- Final ---------- */
-.final-screen { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 30px; }
-.final-titulo { font-size: 1.8em; color: var(--accent); letter-spacing: 2px; }
+/* ---------- Final — "expediente cerrado", no card genérica con botón
+   (Iteración 7.2). Documento alineado a la izquierda, con una franja de
+   cierre y los datos reales de la partida (personaje, vida, Puntos
+   Épicos, pistas, decisiones) como líneas de expediente — nunca una
+   card centrada con glow. Genérico: no conoce el módulo activo. ---------- */
+.final-screen { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+.final-expediente { width: 100%; max-width: 560px; border-left: 3px solid var(--color-peligro); padding: 4px 0 4px 22px; }
+.final-eyebrow { font-size: .68em; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-texto-tenue); margin-bottom: 10px; }
+.final-titulo { font-size: 1.55em; letter-spacing: 1px; color: var(--color-texto); line-height: 1.3; }
+.final-texto { margin-top: 12px; line-height: 1.6; font-size: .92em; color: var(--color-texto); }
+.final-datos { margin-top: 22px; border-top: 1px solid var(--color-borde); padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
+.final-dato { display: flex; justify-content: space-between; gap: 16px; font-size: .8em; }
+.final-dato span { color: var(--color-texto-tenue); letter-spacing: .5px; flex-shrink: 0; }
+.final-dato strong { color: var(--color-informacion); text-align: right; font-weight: normal; }
+.btn-cerrar-expediente {
+  margin-top: 22px; background: none; border: 1px solid var(--color-borde); color: var(--color-texto-tenue);
+  padding: 10px 18px; min-height: 44px; cursor: pointer; font-family: inherit; font-size: .85em; letter-spacing: .5px;
+}
+.btn-cerrar-expediente:hover, .btn-cerrar-expediente:focus-visible { border-color: var(--color-seleccion); color: var(--color-seleccion); outline: none; }

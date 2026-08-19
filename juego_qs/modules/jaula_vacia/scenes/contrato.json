@@ -1,0 +1,47 @@
+{
+  "id": "contrato",
+  "type": "decision",
+  "title": "La jaula llegó vacía",
+  "background": "assets/backgrounds/puesto_fronterizo.webp",
+  "sheetContext": "contrato",
+  "availableParty": ["player", "yara", "bram"],
+  "introText": "El Circo de las Siete Gravedades necesita un Cazador Cuádrupedo vivo — un adulto concreto, con una franja clara en el lomo, visto en la Pared Calcárea. El transporte hacia el espaciopuerto sale en seis horas. Luma Vey, cuidadora del circo, os entrega la jaula, sedantes, un señuelo mecánico, cuerda y anclajes. No es un encargo trampa: es un animal territorial y experimentado que lleva días estudiando las rutas humanas. Nadie os dice cómo hacerlo — solo que vuelva vivo.",
+  "gmNotes": "SOURCE_OVERRIDE: adaptación recortada del one-shot completo (ver modules/jaula_vacia/docs/ADAPTATION_NOTES.md). El equipo rival de Sonya Kess (Rusk/Ena/Treinta) y la escena de negociación entre equipos no se han incluido en esta vertical slice — quedan documentadas como semilla para una versión más larga.",
+  "choices": [
+    { "id": "senuelo", "label": "SEÑUELO Y COMIDA" },
+    { "id": "sedantes", "label": "SEDANTES A DISTANCIA" },
+    { "id": "trampa", "label": "TRAMPA FÍSICA" }
+  ],
+  "interactions": [
+    {
+      "id": "elegir_senuelo",
+      "trigger": { "choice": "senuelo" },
+      "onAlways": {
+        "setFlags": ["metodo_senuelo"],
+        "registerDecision": "Método elegido: señuelo mecánico y comida.",
+        "text": "Cargáis el señuelo mecánico y un poco de carne curada. Si el Lomo Blanco muerde el anzuelo, tendréis una ventana corta para cerrar la jaula.",
+        "transition": "sendero"
+      }
+    },
+    {
+      "id": "elegir_sedantes",
+      "trigger": { "choice": "sedantes" },
+      "onAlways": {
+        "setFlags": ["metodo_sedantes"],
+        "registerDecision": "Método elegido: sedantes a distancia.",
+        "text": "Preparáis los rifles con dosis calculadas para un adulto sano. Si falláis la dosis, o el animal se mueve demasiado pronto, no tendréis una segunda oportunidad fácil.",
+        "transition": "sendero"
+      }
+    },
+    {
+      "id": "elegir_trampa",
+      "trigger": { "choice": "trampa" },
+      "onAlways": {
+        "setFlags": ["metodo_trampa"],
+        "registerDecision": "Método elegido: trampa física.",
+        "text": "Montáis cuerdas y anclajes en un punto de paso probable. Una trampa no entrega la captura sola — pero limita al animal si acierta el sitio.",
+        "transition": "sendero"
+      }
+    }
+  ]
+}

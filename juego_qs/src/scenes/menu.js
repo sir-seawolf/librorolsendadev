@@ -58,6 +58,7 @@ async function montarSeleccion(container) {
           <img src="${rutaAsset(p.retrato)}" alt="${p.nombre}">
           <div class="cp-nombre">${p.nombre}</div>
           <div class="cp-rol">${p.rol}</div>
+          ${p.fortaleza ? `<div class="cp-fortaleza">${p.fortaleza}</div>` : ""}
         </div>`).join("")}
     </div>
     <button class="btn-menu" id="btn-volver" style="width:320px;margin-top:10px">Volver</button>

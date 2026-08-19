@@ -1,0 +1,11 @@
+{
+  "id": "hibrido",
+  "type": "combat",
+  "title": "La caza cambia de dueño",
+  "background": "assets/backgrounds/sendero_jungla.webp",
+  "sheetContext": "hibrido",
+  "availableParty": ["player", "yara", "bram"],
+  "introText": "El Depredador Híbrido entra en el territorio — dos cabezas, una vigilando mientras la otra ataca. No busca pelea con vosotros: busca la presa más débil disponible, y ahora mismo eso podéis ser vosotros, o la jaula.",
+  "encounter": "encuentro_hibrido",
+  "encounterNota": "Composición táctica en modules/jaula_vacia/encounters/encuentro_hibrido.json — el motor de combate no sabe qué es un 'Depredador Híbrido', solo lee campos genéricos, igual que con los ejecutores MORT de predator_n52."
+}

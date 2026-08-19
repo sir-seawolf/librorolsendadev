@@ -1,0 +1,99 @@
+{
+  "id": "sendero",
+  "type": "point_click",
+  "title": "Una ruta que vuelve a crecer",
+  "background": "assets/backgrounds/sendero_jungla.webp",
+  "backgroundNota": "Zonas colocadas a ojo sobre la lámina real (aprobada para este one-shot) — pendiente de remedir con precisión si el módulo crece más allá de esta vertical slice, mismo criterio que se siguió con el apartamento de Arthur en predator_n52 (ver docs/ASSET_NEEDS.md).",
+  "sheetContext": "sendero",
+  "availableParty": ["player", "yara", "bram"],
+  "verbs": ["MIRAR", "COGER", "USAR", "HABLAR", "MOVERSE"],
+  "introText": "La jungla ha vuelto a crecer sobre lo que quedó de una posición mucho más ordenada. Lianas densas cierran parte del paso; huellas frescas rodean lo que podría ser el territorio del Lomo Blanco.",
+  "defaultText": "No parece que puedas hacer eso ahí.",
+  "gmNotes": "SOURCE_OVERRIDE: escena fusionada — el one-shot original reparte esto en dos escenas (trayecto + encuentro con el equipo rival). Esta adaptación corta prescinde del equipo rival de Kess (ver docs/ADAPTATION_NOTES.md) y concentra el trayecto y la captura en una sola localización, fiel al espíritu de 'tres elementos fijos, sin tirar por cada kilómetro' del original.",
+  "zones": [
+    { "id": "lianas", "label": "lianas densas", "rect": [4.0, 10.0, 22.0, 70.0] },
+    { "id": "posicion_militar", "label": "posición militar abandonada", "rect": [30.0, 8.0, 20.0, 35.0] },
+    { "id": "patrulla", "label": "patrulla corporativa a lo lejos", "rect": [55.0, 15.0, 18.0, 30.0] },
+    { "id": "senales", "label": "huellas y marcas en el suelo", "rect": [30.0, 55.0, 25.0, 30.0] },
+    { "id": "lomo_blanco", "label": "el Lomo Blanco, entre la vegetación", "rect": [62.0, 45.0, 30.0, 45.0] },
+    { "id": "salida", "label": "volver hacia el Puesto", "rect": [0.0, 0.0, 3.5, 100.0] }
+  ],
+  "interactions": [
+    {
+      "id": "mirar_lianas",
+      "trigger": { "verb": "MIRAR", "zone": "lianas" },
+      "onAlways": { "text": "Lianas gruesas, entrelazadas, reaccionan al menor movimiento brusco. Rodearlas cuesta tiempo; cortarlas hace ruido; cruzarlas con cuidado es lento pero silencioso." }
+    },
+    {
+      "id": "mirar_posicion_militar",
+      "trigger": { "verb": "MIRAR", "zone": "posicion_militar" },
+      "onAlways": {
+        "text": "Hormigón agrietado y una plataforma elevada — todo lo que queda de un puesto mucho más ordenado. Sobre una placa metálica rayada, alguien grabó dos frases con lo que tenía a mano: «La naturaleza es libre hasta que alguien cobra por verla» — y, más abajo, una mano distinta respondió: «Dominar una criatura no es comprenderla.»"
+      }
+    },
+    {
+      "id": "hablar_patrulla",
+      "trigger": { "verb": "HABLAR", "zone": "patrulla" },
+      "blockedByFlags": ["patrulla_hablada"],
+      "onAlways": {
+        "setFlags": ["patrulla_hablada"],
+        "discoverClues": ["Según la patrulla corporativa: algo grande ha estado desplazando fauna por la zona en los últimos días."],
+        "text": "La patrulla no se acerca, pero grita lo justo para ser oída: otro equipo ya pasó por aquí antes, y algo grande está desplazando a la fauna local. No dan más detalles — tienen su propia ruta."
+      }
+    },
+    {
+      "id": "mirar_senales",
+      "trigger": { "verb": "MIRAR", "zone": "senales" },
+      "blockedByFlags": ["senales_revisadas"],
+      "onAlways": {
+        "setFlags": ["senales_revisadas"],
+        "discoverClues": ["Huellas frescas rodeando un desnivel — el Lomo Blanco ya ha probado esta ruta antes.", "Arañazos en altura y comida a medio consumir: usa las paredes para impulsarse y prueba el terreno antes de comprometerse."],
+        "text": "Huellas, arañazos en altura, comida movida sin terminar de comer. El animal conoce esta ruta — y os está poniendo a prueba a vosotros también."
+      }
+    },
+    {
+      "id": "capturar_lomo_blanco_repetido",
+      "trigger": { "verb": "USAR", "zone": "lomo_blanco" },
+      "requiresFlags": ["lomo_capturado"],
+      "onAlways": { "text": "El Lomo Blanco ya está asegurado en la jaula. No hace falta insistir." }
+    },
+    {
+      "id": "capturar_lomo_blanco_alertado",
+      "trigger": { "verb": "USAR", "zone": "lomo_blanco" },
+      "requiresFlags": ["lomo_alerta"],
+      "onAlways": { "text": "El animal ya os reconoce — no vais a acercaros una segunda vez con el mismo truco. Es hora de moverse antes de que la situación empeore." }
+    },
+    {
+      "id": "capturar_lomo_blanco",
+      "trigger": { "verb": "USAR", "zone": "lomo_blanco" },
+      "blockedByFlags": ["lomo_capturado", "lomo_alerta"],
+      "executors": "party",
+      "delegationTitle": "¿Quién se acerca a intentar la captura?",
+      "roll": {
+        "skill": "Sigilo",
+        "difficulty": -10,
+        "difficultyLabel": "Difícil",
+        "label": "Acercarse al Lomo Blanco sin alertarlo"
+      },
+      "onSuccess": {
+        "setFlags": ["lomo_capturado"],
+        "discoverClues": ["El Lomo Blanco queda asegurado en la jaula, tenso pero ileso."],
+        "text": "Os movéis despacio, contra el viento. El Lomo Blanco duda, prueba el aire — y entra en el radio de la jaula. El cierre se acciona antes de que pueda reaccionar. Está dentro."
+      },
+      "onFailure": {
+        "setFlags": ["lomo_alerta"],
+        "text": "Una rama cede bajo el peso equivocado. El Lomo Blanco se revuelve, enseña los dientes y desaparece entre las lianas hacia el arco de raíces — alertado, y no solo por vosotros."
+      }
+    },
+    {
+      "id": "moverse_salida",
+      "trigger": { "verb": "MOVERSE", "zone": "salida" },
+      "onAlways": {
+        "setFlags": ["expedicion_completa"],
+        "registerDecision": "Fin del trayecto por la Pared Calcárea, de vuelta hacia el Puesto.",
+        "text": "Emprendéis el camino de vuelta. El aire cambia — dos pares de ojos brillan un instante entre los árboles, y las pisadas que se acercan no son las vuestras.",
+        "transition": "hibrido"
+      }
+    }
+  ]
+}

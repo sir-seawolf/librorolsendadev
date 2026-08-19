@@ -1,0 +1,16 @@
+{
+  "cadencia": {
+    "fuente": "Misma tabla que predator_n52/weapons/weapons.json — regla común del motor, no específica de este módulo (QUICKSTART_Kit_de_Inicio_v2.md líneas 162-170).",
+    "tiroATiro": { "municion": 1, "bonusExitos": 0, "etiqueta": "Tiro a tiro" },
+    "rafaga": { "municion": 3, "bonusExitos": 1, "etiqueta": "Ráfaga" },
+    "fuegoSostenido": { "municion": 9, "bonusExitos": 2, "etiqueta": "Fuego sostenido" }
+  },
+  "armas": {
+    "rifleTranquilizante": { "nombre": "Rifle tranquilizante", "danio": 4, "danioNoLetal": true, "tipo": "distancia", "cadenciaMax": "tiroATiro", "penetracion": 0, "habilidad": "Distancia Corta" },
+    "pistolaDardos": { "nombre": "Pistola de dardos", "danio": 3, "danioNoLetal": true, "tipo": "distancia", "cadenciaMax": "tiroATiro", "penetracion": 0, "habilidad": "Distancia Corta" },
+    "cuchilloCaza": { "nombre": "Cuchillo de caza", "danio": 3, "tipo": "cc", "habilidad": "Arma CC Corta" }
+  },
+  "armaduras": {
+    "expedicion": { "nombre": "Chaleco de expedición", "blindaje": 1, "zonas": ["torso"] }
+  }
+}

@@ -247,18 +247,23 @@ export async function montarCombate(container, escenaId) {
     const armaInfo = habilidadArmaDe(base);
     accionesEl.innerHTML = "";
 
+    const tieneDisparo = !!(base.arma && base.arma.municion !== undefined);
     const acciones = [
-      { id: "disparar", etiqueta: "Disparar", visible: !!(base.arma && base.arma.municion !== undefined) },
-      { id: "rafaga", etiqueta: "Ráfaga", visible: base.arma?.cadenciaMax && base.arma.cadenciaMax !== "Tiro a tiro" },
-      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: !!base.armaCC && base.armaCC.danio > 0 },
-      { id: "cubrirse", etiqueta: "Cubrirse", visible: true },
-      { id: "huir", etiqueta: "Huir", visible: true },
-      { id: "mover", etiqueta: "Mover", visible: true }
+      // "principal" es la primera acción ofensiva disponible (disparar si
+      // el actor lleva arma a distancia, si no cuerpo a cuerpo) — nunca
+      // hardcodeada por id, se decide por lo que el propio actor lleva
+      // encima (dato, no una lista de casos especiales).
+      { id: "disparar", etiqueta: "Disparar", visible: tieneDisparo, rol: "principal" },
+      { id: "rafaga", etiqueta: "Ráfaga", visible: base.arma?.cadenciaMax && base.arma.cadenciaMax !== "Tiro a tiro", rol: "secundaria" },
+      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: !!base.armaCC && base.armaCC.danio > 0, rol: tieneDisparo ? "secundaria" : "principal" },
+      { id: "cubrirse", etiqueta: "Cubrirse", visible: true, rol: "secundaria" },
+      { id: "mover", etiqueta: "Mover", visible: true, rol: "secundaria" },
+      { id: "huir", etiqueta: "Huir", visible: true, rol: "salida" }
     ];
 
     acciones.filter(a => a.visible).forEach(a => {
       const btn = document.createElement("button");
-      btn.className = "btn-accion";
+      btn.className = `btn-accion btn-accion-${a.rol}`;
       if (a.id === "disparar" || a.id === "rafaga") {
         const prob = Math.min(100, armaInfo.valor);
         btn.innerHTML = `${a.etiqueta} <span class="combate-prob">(${prob}%${a.id === "rafaga" ? " +cadencia" : ""})</span>`;
@@ -445,12 +450,19 @@ export async function montarCombate(container, escenaId) {
       danioBase: enemigo.arma.danio
     });
 
+    // Verbo genérico según el tipo de arma del enemigo (dato, no lógica
+    // específica de ningún módulo) — evita que una criatura cuerpo a cuerpo
+    // (arma.tipo:"cc") "dispare" en el registro de combate.
+    const esCC = enemigo.arma?.tipo === "cc";
+    const verboAccion = esCC ? "ataca a" : "dispara a";
+    const verboImpacto = esCC ? "el golpe" : "el disparo";
+
     if (!resultado.exito) {
-      log(`${enemigo.nombre} dispara a ${objetivo.base.nombre} (tirada ${resultado.tiradaTexto} vs ${enemigo.distancia}) y falla.`);
+      log(`${enemigo.nombre} ${verboAccion} ${objetivo.base.nombre} (tirada ${resultado.tiradaTexto} vs ${enemigo.distancia}) y falla.`);
       return siguienteTurno();
     }
     if (resultado.exitosNetos <= 0) {
-      log(`${enemigo.nombre} impacta a ${objetivo.base.nombre} (tirada ${resultado.tiradaTexto}) pero su protección absorbe el disparo.`);
+      log(`${enemigo.nombre} impacta a ${objetivo.base.nombre} (tirada ${resultado.tiradaTexto}) pero su protección absorbe ${verboImpacto}.`);
       return siguienteTurno();
     }
 

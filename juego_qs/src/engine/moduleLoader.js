@@ -111,6 +111,10 @@ export async function cargarModulo(moduleId) {
     cacheManifiestos.set(moduleId, manifest);
   }
   moduloActual = { id: moduleId, manifest, base };
+  // El título de la pestaña es del módulo cargado, nunca de "la zona de
+  // juego" en general — nada anterior a este punto (selector de módulos,
+  // gateway en juego.html) debe nombrar un módulo concreto.
+  if (typeof document !== "undefined") document.title = manifest.title;
   return moduloActual;
 }
 

@@ -1,0 +1,70 @@
+/* theme.css — lenguaje visual semántico de La Senda de los Errantes (Iteración 7).
+   Consolida y nombra por SIGNIFICADO, no por color, los tokens que ya
+   existían sueltos en style.css (--accent, --accent-2...) y añade los que
+   faltaban. Cargar ANTES de style.css — solo declara variables, no reglas.
+
+   Principio de identidad: el cian saturado (--color-mosaico) NO es un
+   acento decorativo — está reservado para anomalía/Mosaico/interferencia
+   (ver senda_estilo.css del gateway en juego.html, y §19 de la guía de
+   Iteración 7: "no reutilizar su estética para botones normales"). El
+   motor NO debe usarlo como color de hover/selección genérico: por eso
+   existe --color-seleccion, un tono cálido (ámbar) que enlaza
+   deliberadamente con los Puntos Épicos — la selección del jugador es su
+   propia agencia dentro de la partida, no "porque queda futurista". */
+:root {
+  /* Fondo y superficie */
+  --color-fondo: #0d0f12;
+  --color-superficie: #15181d;
+  --color-superficie-alta: #1c2028;
+  --color-borde: #2a2f38;
+
+  /* Texto */
+  --color-texto: #e6e6e6;
+  --color-texto-tenue: #8b93a1;
+
+  /* Información — lecturas de sistema, etiquetas, texto secundario.
+     Azul apagado deliberadamente distinto del cian de Mosaico: informa,
+     no señala una anomalía. */
+  --color-informacion: #6f93a8;
+
+  /* Selección — hover/foco/elegido. Ámbar, familia de --color-critico:
+     la elección del jugador comparte lenguaje visual con sus Puntos
+     Épicos, no con la tecnología corporativa (rojo) ni con el Mosaico
+     (cian). */
+  --color-seleccion: #c9a227;
+
+  /* Peligro — corporaciones, amenazas, la marca roja de La Senda desde
+     el callejón original. */
+  --color-peligro: #b3323c;
+
+  /* Tecnología / Mosaico / anomalía — reservado, no decorativo. Mismo
+     valor que usa juego.html para el gateway; aquí solo para elementos
+     que de verdad son tecnología del Mosaico (p.ej. iconografía futura de
+     habilidades Tecnológicas), nunca para hover genérico. */
+  --color-mosaico: #22d3ee;
+
+  /* Heridas — Sano/Herido/Tullido comparten la familia de peligro pero
+     más apagada; el rojo pleno queda para pifia/crítico de daño real. */
+  --color-herida: #b3323c;
+
+  /* Resultados de tirada */
+  --color-exito: #3f9e5e;
+  --color-fallo: #7a7f88;
+  --color-critico: #d4af37;
+  --color-pifia: #b3323c;
+
+  /* Compatibilidad: nombres antiguos usados en el resto de style.css
+     durante la migración — apuntan a los tokens semánticos de arriba.
+     Se pueden retirar cuando ya no quede ningún var(--accent...) suelto. */
+  --bg: var(--color-fondo);
+  --panel: var(--color-superficie);
+  --panel-2: var(--color-superficie-alta);
+  --ink: var(--color-texto);
+  --muted: var(--color-texto-tenue);
+  --accent: var(--color-peligro);
+  --accent-2: var(--color-informacion);
+  --success: var(--color-exito);
+  --fail: var(--color-fallo);
+  --critico: var(--color-critico);
+  --pifia: var(--color-pifia);
+}

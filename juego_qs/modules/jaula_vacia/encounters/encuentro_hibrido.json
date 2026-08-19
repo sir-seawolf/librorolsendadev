@@ -1,0 +1,19 @@
+{
+  "id": "encuentro_hibrido",
+  "descripcion": "El Depredador Híbrido entra en el territorio mientras el grupo intenta asegurar al Lomo Blanco. Fuerza fija (no escala con el tamaño del grupo, tal como pide el one-shot original: 'no escales estos números') — un único Híbrido, siempre.",
+  "coberturaDisponible": [
+    { "id": "arco_raices", "etiqueta": "Arco de raíces", "nivel": "parcial" },
+    { "id": "roca_calcarea", "etiqueta": "Roca calcárea", "nivel": "solida" }
+  ],
+  "ajusteEjecutores": {
+    "fuente": "Fuerzas fijas del one-shot (MODULO_La_Jaula_Llego_Vacia_BORRADOR.md, sección Ecología: 'no escales estos números').",
+    "tabla": [
+      { "personajes": 1, "enemyId": "depredadorHibrido", "cantidad": 1 },
+      { "personajes": 2, "enemyId": "depredadorHibrido", "cantidad": 1 }
+    ]
+  },
+  "onVictory": { "setFinalTipo": "captura_limpia", "registerDecision": "Híbrido rechazado: la captura del Lomo Blanco queda asegurada.", "transition": "final" },
+  "onFlee": { "setFinalTipo": "jaula_vacia", "registerDecision": "El grupo rompe el contacto con el Híbrido y abandona la captura.", "transition": "final" },
+  "onDeathWithEpicPoint": { "setFinalTipo": "casi_muerto", "registerDecision": "Combate contra el Híbrido: \"Parecía que había muerto\" — Punto Épico gastado.", "transition": "final" },
+  "onDeath": { "setFinalTipo": "muerte", "registerDecision": "Combate contra el Híbrido: derrota.", "transition": "final" }
+}

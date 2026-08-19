@@ -14,6 +14,15 @@ export const config = {
   accessibility: {
     reduceMotion: false,  // desactiva headBob y suaviza el screenShake
     largeUI: false         // aumenta el tamaño de fuente base de la interfaz
+  },
+  input: {
+    // "auto": se muestran solo si el dispositivo declara soporte táctil
+    // (navigator.maxTouchPoints/ontouchstart — nunca solo por user-agent) o,
+    // si ni eso lo detecta, en cuanto llega el primer touchstart real.
+    // "left"/"right": fuerza el joystick a ese lado (INTERACTUAR va al
+    // contrario). "off": nunca se muestran. Nunca sustituye WASD/flechas en
+    // escritorio — ver src/engine/renderers/raycast.js.
+    touchControls: "auto"
   }
 };
 
