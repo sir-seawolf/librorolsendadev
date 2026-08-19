@@ -266,6 +266,56 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .ficha-inventario { margin: 0; padding-left: 16px; font-size: .85em; color: var(--muted); line-height: 1.5; }
 .btn-historial { margin-top: 4px; background: transparent; border: 1px solid #333; color: var(--muted); padding: 6px; cursor: pointer; font-family: inherit; font-size: .72em; letter-spacing: .5px; }
 .btn-historial:hover { border-color: var(--color-seleccion); color: var(--ink); }
+.ficha-municion { font-size: .82em; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
+
+/* ---------- Ficha plegable (Iteración 0.3, punto 7-9 del encargo) ----------
+   El escenario es el protagonista: la ficha debe poder recuperar su espacio.
+   #sheet-panel.colapsada la reduce a una tira compacta legible (nunca solo
+   iconos); #app reacciona vía :has() para devolver el ancho/alto al
+   escenario — sin duplicar el estado en dos sitios. */
+/* BUG real encontrado con Playwright (ver docs/UI_UX_03.md): un botón
+   posicionado para "salirse" del borde de #sheet-panel y solaparse
+   visualmente sobre #scenario terminaba con el hit-test ganado por
+   #hotspots (la capa de zonas point&click), pase lo que pase con z-index —
+   ambos son items directos del mismo grid y #hotspots vive dentro de un
+   descendiente con su propio position:relative, así que ninguna
+   combinación de z-index del lado de la ficha llegaba a ganarle de forma
+   fiable. Solución más simple y robusta: el botón se queda DENTRO de la
+   caja de #sheet-panel (nunca se solapa con #scenario), evitando el
+   problema de raíz en vez de perseguir el stacking context. */
+#sheet-panel { position: relative; }
+.ficha-toggle {
+  position: absolute; top: 8px; right: 8px;
+  width: 30px; height: 44px; min-height: 44px; /* objetivo táctil suficiente (punto 9) */
+  background: var(--panel-2); border: 1px solid #333;
+  color: var(--muted); cursor: pointer; font-family: inherit; font-size: 1em;
+  display: flex; align-items: center; justify-content: center;
+}
+.ficha-toggle:hover { color: var(--ink); border-color: var(--color-seleccion); }
+
+.ficha-compacta {
+  display: flex; flex-direction: column; gap: 4px; padding-top: 6px; padding-right: 34px;
+  cursor: pointer; height: 100%; justify-content: center;
+}
+.fc-nombre { font-size: .92em; letter-spacing: .5px; }
+.fc-vida, .fc-pe { font-size: .75em; color: var(--muted); }
+
+#sheet-panel.colapsada { padding: 10px 8px; }
+
+/* BUG real encontrado con Playwright (ver docs/UI_UX_03.md): esta regla
+   vivía sin media query, así que en móvil su especificidad
+   (#app:has(#sheet-panel...) > #app a secas) ganaba a la del layout
+   móvil de una sola columna y volvía a partir la pantalla en dos columnas
+   incluso en 375px de ancho. Debe quedar exclusivamente dentro del
+   breakpoint de escritorio. */
+@media (min-width: 901px) {
+  #app:has(#sheet-panel.colapsada) { grid-template-columns: 1fr 150px; }
+}
+@media (max-width: 900px) {
+  #app:has(#sheet-panel.colapsada) { grid-template-rows: 1fr 56px; }
+  #sheet-panel.colapsada .ficha-toggle { top: 6px; right: 6px; }
+  #sheet-panel.colapsada .ficha-compacta { flex-direction: row; gap: 14px; align-items: center; padding: 0 44px 0 12px; }
+}
 
 /* ---------- Historial de tiradas ---------- */
 .log-table { width: 100%; border-collapse: collapse; font-size: .72em; }
