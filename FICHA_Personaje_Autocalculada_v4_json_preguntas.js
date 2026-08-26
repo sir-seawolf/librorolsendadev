@@ -1353,6 +1353,7 @@ function renderFichaFinal(){
   const box = qs('#fichaFinal');
   if(!box) return;
 
+  try{
   const nombre = qs('#personaje').value || '—';
   const jugador = qs('#jugador').value || '—';
   const corp = qs('#corporacion').value || '—';
@@ -1468,6 +1469,10 @@ function renderFichaFinal(){
     </section>`;
 
   box.innerHTML = pagina1 + pagina2 + pagina3 + pagina4;
+  }catch(e){
+    console.error('renderFichaFinal:', e);
+    box.innerHTML = '<p class="muted">No se pudo generar la ficha final (la página aún está cargando datos). Espera un momento y pulsa «Actualizar ficha final».</p>';
+  }
 }
 window.renderFichaFinal = renderFichaFinal;
 
@@ -1482,10 +1487,9 @@ const V3_ACAD = ["Ciencias","Biotecnología","Navegación","Burocracia","Buscar 
 const V3_TEC = ["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"];
 const V3_ATL = ["Acrobacias","Resistir","Proezas"];
 const V3_SOC = ["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"];
-// La v3 solo tiene 3 huecos de ataque (.capr data-i 0-2): no hay sitio para los tramos
-// Corta/Larga. Se dejan fuera a propósito — indexOf() no los encuentra y fillV3Skill
-// no escribe nada para ellos (sin errores); la v3 solo refleja el tramo Media de cada rama.
-const V3_COMBAT = ["Distancia Media","Sin Armas","Arma CC Media"];
+// v3 ya tiene sus 3 tramos (Corta/Media/Larga) desde la reestructuracion en 4 paginas —
+// mismo orden que SKILLS.combate en este archivo (sin Iniciativa/Alerta/Esquivar, que van a V3_INIC).
+const V3_COMBAT = ["Distancia Corta","Distancia Media","Distancia Larga","Sin Armas","Arma CC Corta","Arma CC Media","Arma CC Larga"];
 const V3_INIC = ["Iniciativa","Alerta","Esquivar"];
 const V3_DISC = ["Proyección de Energía","Protección de Energía","Invocación de Energía","Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Herrero Rúnico","Tatuador Rúnico"];
 

@@ -127,20 +127,28 @@
   .p2-table input,.p2-table select,.p2-table textarea{width:100%;border:1px solid var(--border);border-radius:3px;background:#fffef5;font-family:'Rajdhani',sans-serif;font-size:12px;padding:0 3px;line-height:1.0;}
   .p2-table textarea{min-height:40px;resize:vertical;}
   .veh-dibujo td{height:70px;vertical-align:top;}
-  .page2 .page2-col:nth-child(3) .p2-table input,
-  .page2 .page2-col:nth-child(3) .p2-table textarea,
-  .page2 .page2-col:nth-child(4) .p2-table input,
-  .page2 .page2-col:nth-child(4) .p2-table textarea{
+  .page-vehrefugio .page2-col:nth-child(3) .p2-table input,
+  .page-vehrefugio .page2-col:nth-child(3) .p2-table textarea,
+  .page-vehrefugio .page2-col:nth-child(4) .p2-table input,
+  .page-vehrefugio .page2-col:nth-child(4) .p2-table textarea{
     font-size:13px;
     min-height:20px;
     padding:1px 4px;
     line-height:1.05;
   }
-  .page2 .page2-col:nth-child(3) .p2-table th,
-  .page2 .page2-col:nth-child(4) .p2-table th{
+  .page-vehrefugio .page2-col:nth-child(3) .p2-table th,
+  .page-vehrefugio .page2-col:nth-child(4) .p2-table th{
     font-size:9px;
     padding:1px 3px;
   }
+  /* Páginas 2-4 (Equipamiento/Iniciados/Instrucciones) reutilizan .page2/.page2-title/.page2-col/
+     .page2-block para el look y el salto de página en print; solo cambian el número de columnas. */
+  .page3-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;align-items:stretch;min-height:89vh;}
+  .page4-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;align-items:start;}
+  .instr-col{font-size:12px;line-height:1.5;}
+  .instr-col h3{font-family:'Share Tech Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--accent2);margin:8px 0 2px;}
+  .instr-col h3:first-child{margin-top:0;}
+  .instr-col p{margin-bottom:2px;}
   @media screen and (max-width: 900px){
     body{padding:6px;font-size:13px;}
     .sheet{padding:8px 10px;}
@@ -218,10 +226,15 @@
     .auto-cell,.total,.lifegrid .v{background:#fff !important;border:1px solid #666 !important;color:#000 !important;}
     .cat-base{background:#fff !important;color:#000 !important;border:1px solid #666 !important;}
     .page1{height:190mm;overflow:hidden;}
-    .page1-scale{zoom:.77;}
+    .page1-scale{zoom:1;}
     .page2{page-break-before:always;break-before:page;border-top:none;margin-top:0;padding-top:0;height:190mm;min-height:190mm;overflow:hidden;}
     .page2-title{font-size:12px;}
     .page2-grid{grid-template-columns:1.05fr 1fr 1.2fr 1.15fr;grid-template-rows:1fr;gap:5px;height:184mm;min-height:0;}
+    .page3-grid{grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr;gap:5px;height:184mm;min-height:0;}
+    .page4-grid{gap:10px;}
+    .instr-col{font-size:9.5px;line-height:1.3;}
+    .instr-col h3{font-size:9px;margin:5px 0 1px;}
+    .instr-col h3:first-child{margin-top:0;}
     .page2-col{gap:5px;}
     .page2-block{padding:3px;border:1px solid #666;background:#fff;}
     .p2-table input,.p2-table select{min-height:4mm;}
@@ -296,7 +309,7 @@
           <div class="hd" style="text-align:left;">PV/niv</div>
           <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
         </div>
-        <div class="note">PV base=(A+C+F)/6, igual en los tres niveles. Total=<span id="vidaTotal">0</span>. Desbordamiento: impacto único ≥ PV base (cabeza/extremidad) o ≥ PV base×2 (torso) → muerte (cabeza/torso) o 1d6 amputación (extremidad). Detalle y Resistencia: CAP03.</div>
+        <div class="note">Total: <span id="vidaTotal">0</span> (reglas → Instrucciones)</div>
         <div class="lifegrid lifegrid-dano">
           <div class="hd" style="text-align:left;">Daño</div>
           <div class="v dano-box"><input type="text"></div>
@@ -314,15 +327,7 @@
         <div><span>Deriva</span><input type="number" style="width:44px;"></div>
         <div><span>Dinero(I×100)</span><span class="auto-cell" id="dinero">0</span></div>
       </div>
-      <div class="note">SM: Crisis a SM ≤ Voluntad; Quiebra a SM ≤ Voluntad/2.</div>
-      <div class="caminos-row" id="caminosRow">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:9px;text-transform:uppercase;color:var(--muted);">Camino de Alma:</span>
-        <label><input type="checkbox" name="camino" value="La Paz"> La Paz</label>
-        <label><input type="checkbox" name="camino" value="La Pobreza"> La Pobreza</label>
-        <label><input type="checkbox" name="camino" value="El Servicio"> El Servicio</label>
-        <label><input type="checkbox" name="camino" value="La Carne"> La Carne</label>
-        <span>Sesiones seguidas</span><input type="number" title="5 sesiones consecutivas = +1 PA. Si se abandona el camino, el contador vuelve a 0 (CAP04e).">
-      </div>
+      <div class="note">SM: Crisis a SM ≤ Voluntad; Quiebra a SM ≤ Voluntad/2. Camino de Alma → página Iniciados.</div>
 
       <h2>Carga</h2>
       <div class="metrics">
@@ -367,100 +372,27 @@
       </table>
       <div class="note note-inic">Iniciativa: tirada = 2d10 (leído como d100) + Total Iniciativa. Esquivar consume la acción del asalto. Bases: Iniciativa=(AGI+PER)/2, Alerta=(PER+INT)/2, Esquivar=(AGI+HAB)/2.</div>
 
-      <h2><span>Combate</span><span class="cat-formula">Distancia/Esquivar=(AGI+HAB)/2 · Sin Armas=(FUE+CON+AGI)/3 · Arma CC=(FUE+AGI+HAB)/3</span></h2>
+      <h2><span>Combate</span></h2>
       <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
         <tr><th class="skill-h">Habilidad</th><th>Bas</th><th>Apr</th><th>Mod</th><th>Tot</th></tr>
         <tbody id="combatTable"></tbody>
       </table>
-      <h2>Armas</h2>
-      <table class="armastbl"><colgroup><col><col class="c-s"><col class="c-s"><col class="c-s"></colgroup>
-        <tr><th class="skill-h">Nombre</th><th>%</th><th>Dñ</th><th>Pen</th></tr>
-        <tbody id="armasTable"></tbody>
-      </table>
-      <h2>Localizaciones / Armadura</h2>
-      <div class="armor-visual">
-        <img class="armor-bg" src="img/Modelolocalizaciones2.png" alt="Modelo de localizaciones corporales">
-        <div class="loctbl-wrap">
-          <table class="loctbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
-            <tr><th class="skill-h">Zona</th><th>Bld</th><th>PV</th><th>Act</th></tr>
-            <tbody id="locGrid"></tbody>
-          </table>
-        </div>
-      </div>
     </div>
 
-    <!-- GRID 2: Académicas + Atlética + Medikits (rellena el hueco bajo Atlética) -->
+    <!-- GRID 2: Académicas + Atlética -->
     <div class="col-g2">
       <div id="catA"></div>
       <div id="catC"></div>
-      <h2>Medikits (Rack Médico)</h2>
-      <div class="rackmed">
-        <div class="hdrline"><span>Tipo</span><input type="text"><span>Cant.</span><input type="number"></div>
-        <div class="lvl"><span>MKB</span><div class="boxrow" id="medLeves"></div></div>
-        <div class="lvl"><span>MKG</span><div class="boxrow" id="medGraves"></div></div>
-      </div>
     </div>
 
-    <!-- GRID 3: Tecnológica + Social + Munición (rellena el hueco bajo Social) -->
+    <!-- GRID 3: Tecnológica + Social -->
     <div class="col-g3">
       <div id="catB"></div>
       <div id="catD"></div>
-      <h2>Munición (por arma)</h2>
-      <div id="municionRows"></div>
     </div>
   </div>
 
-  <!-- BANDA INFERIOR: alterna entre Distorsión (magia) y Vehículo/Droideum (tecnología) -->
-  <div class="disc-band">
-    <h2><span>Distorsión (Hechicería / Taumaturgia / Marcas)</span><button class="toggle" id="discToggleBtn" onclick="toggleDiscAlt()">Ver Vehículo / Droideum ▾</button></h2>
-    <div id="discBlock" class="disc-inner">
-      <div id="discNormal">
-        <div id="discBlockWrap"></div>
-        <div>
-          <div class="pegrid">
-            <div><span>Tinta temp (PV)</span><input type="number" style="width:38px;"></div>
-            <div><span>Tinta perm (PV)</span><input type="number" style="width:38px;"></div>
-            <div><span>Perlas blancas</span><input type="number" style="width:38px;"></div>
-            <div><span>Perlas grises</span><input type="number" style="width:38px;"></div>
-            <div><span>Perlas gastadas</span><input type="number" style="width:38px;"></div>
-          </div>
-          <table style="margin-top:3px;"><colgroup><col><col style="width:38px;"><col></colgroup>
-            <tr><th class="skill-h">Runa</th><th>Niv</th><th>Nota</th></tr><tbody id="runaTable"></tbody></table>
-          <div class="note">Bases de disciplina por atributo (CAP04b): Proyección=Hab, Protección=Per, Invocación=Int, Detección=Per, Manipulación=Vol, Portales=sin base(0), Herrero=Vol, Tatuador=Car. Perlas: blancas=100PD; "grises"=perlas manchadas (valor reducido); gastadas=uso acumulado.</div>
-        </div>
-      </div>
-      <div id="discAlt" class="hidden">
-        <div>
-          <h4>Vehículo (resumen)</h4>
-          <table class="p2-table">
-            <tr><th>Nombre</th><td><input type="text"></td></tr>
-            <tr><th>PDE (act/max)</th><td><input type="text"></td></tr>
-            <tr><th>Blindaje</th><td><input type="text"></td></tr>
-            <tr><th>Maniobra</th><td><input type="number" style="width:50px"></td></tr>
-            <tr><th>Velocidad</th><td><input type="text"></td></tr>
-          </table>
-        </div>
-        <div>
-          <h4>Droideum (raza)</h4>
-          <table class="p2-table">
-            <tr><th>Chasis</th><td>
-              <select>
-                <option>Servicio (rack chips 1 slot, sin blindaje/arma)</option>
-                <option>Combate (Bld 1 + 1 arma, −20 Sociales)</option>
-                <option>Exploración (+10 Vigilar/Rastrear, Bld máx 2, sin arma)</option>
-                <option>Transporte (1-2 pasajeros, −20 Sigilo)</option>
-              </select>
-            </td></tr>
-            <tr><th>Atributos</th><td>Todos 20 (plano — solo suben con piezas + taller)</td></tr>
-            <tr><th>Cap. rúnica</th><td>Pequeño ≤5 / Mediano ≤10 (solo almacena, no activa)</td></tr>
-            <tr><th>Restricciones</th><td>Sin Distorsión/Perlas/PA/Cristalización/Humanidad. Sociales −10 vs quien sepa qué es.</td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footnote">Uso: escribe los 8 atributos y se calculan solas las casillas resaltadas. En cada habilidad: Base de categoría (auto) + Apr. (aprendido) + Mod. (implante/chip/objeto) = Total. Para imprimir, usa orientación Horizontal: la ficha ocupa exactamente 2 páginas A4 apaisadas.</div>
+  <div class="footnote">Uso: escribe los 8 atributos y se calculan solas las casillas resaltadas. En cada habilidad: Base de categoría (auto) + Apr. (aprendido) + Mod. (implante/chip/objeto) = Total. Para imprimir, usa orientación Horizontal: la ficha ocupa 5 páginas A4 apaisadas.</div>
 
   <div class="btns">
     <button onclick="guardar()">Guardar (descargar)</button>
@@ -470,8 +402,157 @@
 
   </div></div>
 
+  <!-- PÁGINA 2 · EQUIPAMIENTO — reutiliza el patrón visual/de salto de página de .page2 -->
   <div class="page2">
-    <div class="page2-title">La Senda de los Errantes · Página 2</div>
+    <div class="page2-title">La Senda de los Errantes · Equipamiento</div>
+    <div class="page3-grid">
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Armas</h3>
+          <table class="armastbl"><colgroup><col><col class="c-s"><col class="c-s"><col class="c-s"></colgroup>
+            <tr><th class="skill-h">Nombre</th><th>%</th><th>Dñ</th><th>Pen</th></tr>
+            <tbody id="armasTable"></tbody>
+          </table>
+        </div>
+        <div class="page2-block">
+          <h3>Munición (por arma)</h3>
+          <div id="municionRows"></div>
+        </div>
+      </div>
+      <div class="page2-col">
+        <div class="page2-block grow">
+          <h3>Localizaciones / Armadura</h3>
+          <div class="armor-visual">
+            <img class="armor-bg" src="img/Modelolocalizaciones2.png" alt="Modelo de localizaciones corporales">
+            <div class="loctbl-wrap">
+              <table class="loctbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
+                <tr><th class="skill-h">Zona</th><th>Bld</th><th>PV</th><th>Act</th></tr>
+                <tbody id="locGrid"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Medikits (Rack Médico)</h3>
+          <div class="rackmed">
+            <div class="hdrline"><span>Tipo</span><input type="text"><span>Cant.</span><input type="number"></div>
+            <div class="lvl"><span>MKB</span><div class="boxrow" id="medLeves"></div></div>
+            <div class="lvl"><span>MKG</span><div class="boxrow" id="medGraves"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 3 · INICIADOS -->
+  <div class="page2">
+    <div class="page2-title">La Senda de los Errantes · Iniciados</div>
+    <div class="page3-grid">
+      <div class="page2-col">
+        <div class="page2-block grow">
+          <h3>Distorsión (Hechicería / Taumaturgia / Marcas)</h3>
+          <div id="discBlock" class="disc-inner">
+            <div id="discNormal">
+              <div id="discBlockWrap"></div>
+            </div>
+            <div id="discAlt" class="hidden">
+              <div>
+                <h4>Vehículo (resumen)</h4>
+                <table class="p2-table">
+                  <tr><th>Nombre</th><td><input type="text"></td></tr>
+                  <tr><th>PDE (act/max)</th><td><input type="text"></td></tr>
+                  <tr><th>Blindaje</th><td><input type="text"></td></tr>
+                  <tr><th>Maniobra</th><td><input type="number" style="width:50px"></td></tr>
+                  <tr><th>Velocidad</th><td><input type="text"></td></tr>
+                </table>
+              </div>
+              <div>
+                <h4>Droideum (raza)</h4>
+                <table class="p2-table">
+                  <tr><th>Chasis</th><td>
+                    <select>
+                      <option>Servicio (rack chips 1 slot, sin blindaje/arma)</option>
+                      <option>Combate (Bld 1 + 1 arma, −20 Sociales)</option>
+                      <option>Exploración (+10 Vigilar/Rastrear, Bld máx 2, sin arma)</option>
+                      <option>Transporte (1-2 pasajeros, −20 Sigilo)</option>
+                    </select>
+                  </td></tr>
+                  <tr><th>Atributos</th><td>Todos 20 (plano — solo suben con piezas + taller)</td></tr>
+                  <tr><th>Cap. rúnica</th><td>Pequeño ≤5 / Mediano ≤10 (solo almacena, no activa)</td></tr>
+                  <tr><th>Restricciones</th><td>Sin Distorsión/Perlas/PA/Cristalización/Humanidad. Sociales −10 vs quien sepa qué es.</td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <button class="toggle" id="discToggleBtn" onclick="toggleDiscAlt()" style="margin-top:4px;">Ver Vehículo / Droideum ▾</button>
+        </div>
+      </div>
+      <div class="page2-col">
+        <div class="page2-block">
+          <h3>Camino de Alma</h3>
+          <div class="caminos-row" id="caminosRow">
+            <label><input type="checkbox" name="camino" value="La Paz"> La Paz</label>
+            <label><input type="checkbox" name="camino" value="La Pobreza"> La Pobreza</label>
+            <label><input type="checkbox" name="camino" value="El Servicio"> El Servicio</label>
+            <label><input type="checkbox" name="camino" value="La Carne"> La Carne</label>
+          </div>
+          <div class="metrics" style="margin-top:4px;">
+            <div><span>Sesiones seguidas</span><input type="number" style="width:44px;" title="5 sesiones consecutivas = +1 PA. Si se abandona el camino, el contador vuelve a 0 (CAP04e)."></div>
+          </div>
+        </div>
+        <div class="page2-block">
+          <h3>Perlas y tintas</h3>
+          <div class="pegrid">
+            <div><span>Tinta temp (PV)</span><input type="number" style="width:38px;"></div>
+            <div><span>Tinta perm (PV)</span><input type="number" style="width:38px;"></div>
+            <div><span>Perlas blancas</span><input type="number" style="width:38px;"></div>
+            <div><span>Perlas grises</span><input type="number" style="width:38px;"></div>
+            <div><span>Perlas gastadas</span><input type="number" style="width:38px;"></div>
+          </div>
+          <div class="note">Perlas: blancas=100PD; "grises"=perlas manchadas (valor reducido); gastadas=uso acumulado.</div>
+        </div>
+        <div class="page2-block grow">
+          <h3>Runas</h3>
+          <table><colgroup><col><col style="width:38px;"><col></colgroup>
+            <tr><th class="skill-h">Runa</th><th>Niv</th><th>Nota</th></tr><tbody id="runaTable"></tbody></table>
+          <div class="note">Bases de disciplina por atributo (CAP04b): Proyección=Hab, Protección=Per, Invocación=Int, Detección=Per, Manipulación=Vol, Portales=sin base(0), Herrero=Vol, Tatuador=Car.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 4 · INSTRUCCIONES -->
+  <div class="page2">
+    <div class="page2-title">La Senda de los Errantes · Instrucciones</div>
+    <div class="page4-grid">
+      <div class="instr-col">
+        <h3>Cómo leer esta ficha</h3>
+        <p>Cada habilidad muestra su <b>Total</b> ya calculado a partir de Base de categoría (automática) + Apr. (aprendido) + Mod. (implante/chip/objeto).</p>
+        <h3>Tiradas y dificultad</h3>
+        <p>Tira d100 e intenta sacar igual o menos que tu habilidad. El Narrador aplica un modificador entre <b>−20 y +20</b> (múltiplos de 5) según la dificultad: muy fácil +20, fácil +10, normal 0, difícil −10, extremadamente difícil −20.</p>
+        <h3>Tiradas enfrentadas</h3>
+        <p>Cuando dos personajes se oponen directamente, ambos tiran contra su propia habilidad y gana quien saque más éxitos.</p>
+        <h3>Heridas</h3>
+        <p>PV base=(A+C+F)/6, igual en los tres niveles — Sano, Herido (−10) y Tullido (−20). Desbordamiento: impacto único ≥ PV base (cabeza/extremidad) o ≥ PV base×2 (torso) → muerte (cabeza/torso) o 1d6 amputación (extremidad). Detalle y Resistencia: CAP03.</p>
+        <h3>Redondeo</h3>
+        <p>Si un cálculo deja decimales, siempre se redondea hacia arriba.</p>
+      </div>
+      <div class="instr-col">
+        <h3>Salud Mental</h3>
+        <p>Crisis a SM ≤ Voluntad; Quiebra a SM ≤ Voluntad/2.</p>
+        <h3>Reconocimiento</h3>
+        <p>La suma de habilidades de una categoría es su Reconocimiento (progresión profesional / valor de contratos). Ver CAP03.</p>
+        <h3>Combate por tramos</h3>
+        <p>Distancia/Esquivar=(AGI+HAB)/2 · Sin Armas=(FUE+CON+AGI)/3 · Arma CC=(FUE+AGI+HAB)/3. Distancia y Arma CC se tiran en su tramo correspondiente (Corta/Media/Larga) según la separación real en el asalto — misma fórmula base en los tres, el Apr./Mod. puede variar por especialización en cada tramo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 5 · VEHÍCULO / REFUGIO / EQUIPO -->
+  <div class="page2 page-vehrefugio">
+    <div class="page2-title">La Senda de los Errantes · Vehículo · Refugio · Equipo</div>
     <div class="page2-grid">
 
       <!-- COLUMNA 1: VEHÍCULOS -->
@@ -720,10 +801,16 @@ const CATS = [
     skills:["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo","—"] },
 ];
 // Combate: cada habilidad tiene su propia fórmula (Anexo Méritos/Habilidades) — no una única para las 3.
+// Distancia y Arma CC se desdoblan en sus 3 tramos (Corta/Media/Larga, CAP03) — misma base
+// en los tres, la distincion es de Apr/Mod por tramo, no de formula.
 const COMBAT = [
-  { name:"Distancia", attrs:['A','H'], base:()=>round((num('A')+num('H'))/2) },
+  { name:"Distancia Corta", attrs:['A','H'], base:()=>round((num('A')+num('H'))/2) },
+  { name:"Distancia Media", attrs:['A','H'], base:()=>round((num('A')+num('H'))/2) },
+  { name:"Distancia Larga", attrs:['A','H'], base:()=>round((num('A')+num('H'))/2) },
   { name:"Sin Armas", attrs:['F','C','A'], base:()=>round((num('F')+num('C')+num('A'))/3) },
-  { name:"Arma CC", attrs:['F','A','H'], base:()=>round((num('F')+num('A')+num('H'))/3) },
+  { name:"Arma CC Corta", attrs:['F','A','H'], base:()=>round((num('F')+num('A')+num('H'))/3) },
+  { name:"Arma CC Media", attrs:['F','A','H'], base:()=>round((num('F')+num('A')+num('H'))/3) },
+  { name:"Arma CC Larga", attrs:['F','A','H'], base:()=>round((num('F')+num('A')+num('H'))/3) },
 ];
 const INIC = [
   { name:"Iniciativa", attrs:['A','P'], base:()=>round((num('A')+num('P'))/2) },
