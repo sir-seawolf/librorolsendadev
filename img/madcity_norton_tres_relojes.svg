@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2622"/>
+      <stop offset="1" stop-color="#1c1815"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="url(#bg)"/>
+  <rect x="18" y="18" width="1564" height="864" fill="none" stroke="#8a6d4b" stroke-width="4"/>
+  <rect x="30" y="30" width="1540" height="840" fill="none" stroke="#5a4a38" stroke-width="1"/>
+
+  <text x="800" y="82" text-anchor="middle" fill="#e8d9b8" font-size="42" letter-spacing="3">NORTON — TRES PLAZOS PARALELOS</text>
+  <text x="800" y="114" text-anchor="middle" fill="#a9967a" font-size="21" font-style="italic">Ninguno de los tres compradores es mas legitimo que los otros</text>
+
+  <!-- Time axis reference: x=180 -> H+0:00, x=1460 -> H+5:00. Scale: 256px/hora -->
+  <!-- Axis ticks -->
+  <g font-size="18" fill="#a9967a" text-anchor="middle">
+    <line x1="180" y1="170" x2="180" y2="800" stroke="#5a4a38" stroke-width="1"/>
+    <text x="180" y="155">H+0:00</text>
+    <line x1="436" y1="170" x2="436" y2="800" stroke="#5a4a38" stroke-width="1"/>
+    <text x="436" y="155">H+1:00</text>
+    <line x1="692" y1="170" x2="692" y2="800" stroke="#5a4a38" stroke-width="1"/>
+    <text x="692" y="155">H+2:00</text>
+    <line x1="948" y1="170" x2="948" y2="800" stroke="#5a4a38" stroke-width="1"/>
+    <text x="948" y="155">H+3:00</text>
+    <line x1="1204" y1="170" x2="1204" y2="800" stroke="#5a4a38" stroke-width="1"/>
+    <text x="1204" y="155">H+4:00</text>
+    <line x1="1460" y1="170" x2="1460" y2="800" stroke="#5a4a38" stroke-width="1"/>
+    <text x="1460" y="155">H+5:00</text>
+  </g>
+
+  <!-- Start marker -->
+  <circle cx="180" cy="480" r="8" fill="#e8d9b8"/>
+  <text x="180" y="200" text-anchor="middle" fill="#e8d9b8" font-size="16">Entrega no</text>
+  <text x="180" y="220" text-anchor="middle" fill="#e8d9b8" font-size="16">localizada</text>
+
+  <!-- Shared fraud-completion marker at H+3:30 = x = 180 + 3.5*256 = 1076 -->
+  <line x1="1076" y1="230" x2="1076" y2="770" stroke="#9c3f34" stroke-width="3" stroke-dasharray="10,8"/>
+  <text x="1076" y="215" text-anchor="middle" fill="#e0a892" font-size="18" font-weight="bold">H+3:30</text>
+  <text x="1076" y="790" text-anchor="middle" fill="#e0a892" font-size="16">Bosk completa la</text>
+  <text x="1076" y="808" text-anchor="middle" fill="#e0a892" font-size="16">sustitucion fraudulenta</text>
+  <text x="1076" y="826" text-anchor="middle" fill="#e0a892" font-size="16">si nadie ha intervenido</text>
+
+  <!-- Row 1: CLINICA (Lian) - deadline H+1:30 = x = 180+1.5*256 = 564 -->
+  <g>
+    <text x="70" y="290" fill="#e8d9b8" font-size="24" font-weight="bold">CLINICA</text>
+    <text x="70" y="314" fill="#a9967a" font-size="17">Doctora Lian Orbe</text>
+    <line x1="180" y1="340" x2="564" y2="340" stroke="#7a8f7a" stroke-width="6"/>
+    <line x1="564" y1="340" x2="1460" y2="340" stroke="#4a453f" stroke-width="3" stroke-dasharray="4,6"/>
+    <circle cx="564" cy="340" r="12" fill="#7a8f7a" stroke="#e8d9b8" stroke-width="2"/>
+    <text x="564" y="370" text-anchor="middle" fill="#e8d9b8" font-size="18" font-weight="bold">H+1:30</text>
+    <text x="564" y="392" text-anchor="middle" fill="#c9b892" font-size="15">Plazo mas corto</text>
+  </g>
+
+  <!-- Row 2: PORTAL (Erea) - deadline H+3:00 = x = 948 -->
+  <g>
+    <text x="70" y="470" fill="#e8d9b8" font-size="24" font-weight="bold">PORTAL</text>
+    <text x="70" y="494" fill="#a9967a" font-size="17">Maestra Erea Sal</text>
+    <line x1="180" y1="520" x2="948" y2="520" stroke="#b8934f" stroke-width="6"/>
+    <line x1="948" y1="520" x2="1460" y2="520" stroke="#4a453f" stroke-width="3" stroke-dasharray="4,6"/>
+    <circle cx="948" cy="520" r="12" fill="#b8934f" stroke="#e8d9b8" stroke-width="2"/>
+    <text x="948" y="550" text-anchor="middle" fill="#e8d9b8" font-size="18" font-weight="bold">H+3:00</text>
+    <text x="948" y="572" text-anchor="middle" fill="#c9b892" font-size="15">Plazo intermedio</text>
+  </g>
+
+  <!-- Row 3: SOPORTE DOMESTICO (Tessa) - deadline H+5:00 = x = 1460 -->
+  <g>
+    <text x="70" y="650" fill="#e8d9b8" font-size="24" font-weight="bold">SOPORTE DOMÉSTICO</text>
+    <text x="70" y="674" fill="#a9967a" font-size="17">Tessa Brom</text>
+    <line x1="180" y1="700" x2="1460" y2="700" stroke="#b06a3f" stroke-width="6"/>
+    <circle cx="1460" cy="700" r="12" fill="#b06a3f" stroke="#e8d9b8" stroke-width="2"/>
+    <text x="1460" y="730" text-anchor="middle" fill="#e8d9b8" font-size="18" font-weight="bold">H+5:00</text>
+    <text x="1400" y="752" text-anchor="end" fill="#c9b892" font-size="15">Margen mas amplio, no infinito</text>
+  </g>
+
+  <line x1="70" y1="845" x2="1530" y2="845" stroke="#8a6d4b" stroke-width="2"/>
+  <text x="800" y="875" text-anchor="middle" fill="#a9967a" font-size="17" font-style="italic">Ninguno de los tres plazos fuerza una eleccion mortal — hay salidas tecnicas, economicas o legales para estirar cualquiera a tiempo.</text>
+</svg>
