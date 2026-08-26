@@ -8,9 +8,16 @@
 import {
   state, obtenerMiembro, esJugador, miembrosDisponibles, aplicarDanio,
   nivelHeridaDe, gastarPuntoEpico, registrarDecision, cambiarEscena, establecerDisponibilidad,
-  consumirMunicion, recargarArma, establecerCobertura
+  consumirMunicion, recargarArma, establecerCobertura, tieneFlag
 } from "../../gameState.js";
-import { resolverAtaque, ordenDeActuacion, modificadorCadencia, cargarCadencia } from "../../combat/combat.js";
+import { ordenDeActuacion, modificadorCadencia, cargarCadencia, modificadorMovimientoEvasivo } from "../../combat/combat.js";
+import {
+  resolveIntent, createActivation, movementRemaining, actuacionAgotada,
+  applyResourceCost, MOVIMIENTO_BASE_METROS,
+  costeAccionesPorTamano, avanzarProgreso, effectiveBaseDamage,
+  isFlanking, FLANQUEO_BONUS, penalizadorMultiplesAdversarios, limitarModificadorSituacional,
+  aplicarSorpresaSiDisponible
+} from "../../combat/rulesEngine.js";
 import { valorCobertura, etiquetaCoberturaVisible, NIVELES_COBERTURA } from "../../rules/cover.js";
 import { mostrarTirada } from "../../ui/rollDisplay.js";
 import { cargarEscena, aplicarConsecuencias } from "../sceneEngine.js";
@@ -33,7 +40,13 @@ const cacheEncuentros = new Map();
 // (como antes de esta iteración) o delegar la composición táctica a un
 // encuentro reutilizable/nombrado. La escena SIEMPRE gana si declara el
 // mismo campo que el encuentro, para poder sobreescribir puntualmente.
-async function cargarEncuentroSiProcede(escena) {
+// Exportado (Production Integration Phase 4,
+// docs/TACTICAL_PRODUCTION_PHASE4.md) -- el gateway táctico
+// (src/tactical/tacticalPhaserRenderer.js) reutiliza esta MISMA función
+// para leer escena.tactical.definitionId del encounter payload real, en
+// vez de reimplementar su propio fetch+merge (punto 2 del encargo P4:
+// "no crear una ruta paralela"). Comportamiento sin cambios.
+export async function cargarEncuentroSiProcede(escena) {
   if (!escena.encounter) return escena;
   if (!cacheEncuentros.has(escena.encounter)) {
     const res = await fetch(`${rutaDeManifiesto("encounters")}${escena.encounter}.json`);
@@ -74,18 +87,27 @@ function estadoVisibleEnemigo(enemigo) {
   return "muy dañado";
 }
 
-function construirEnemigos(escena, catalogo, numPresentes) {
+export function construirEnemigos(escena, catalogo, numPresentes) {
   const tabla = escena.ajusteEjecutores?.tabla || [];
   const fila = tabla.find(f => f.personajes === numPresentes)
     || [...tabla].sort((a, b) => a.personajes - b.personajes).find(f => f.personajes >= numPresentes)
     || tabla[tabla.length - 1];
   const plantilla = catalogo[fila.enemyId];
+  // Identidad oculta genérica (Iteración 0.3.1, docs/PREMATURE_INFORMATION_AUDIT.md):
+  // si la plantilla declara "nombreOculto"/"revelarConFlag", el nombre real
+  // (plantilla.nombre) solo se muestra cuando ese flag está activo en la
+  // partida; si no hay "nombreOculto" declarado, el comportamiento es
+  // idéntico al de antes (se usa siempre plantilla.nombre) para no afectar
+  // a ningún otro enemigo del juego.
+  const nombreBase = plantilla.nombreOculto && !tieneFlag(plantilla.revelarConFlag)
+    ? plantilla.nombreOculto
+    : plantilla.nombre;
   return Array.from({ length: fila.cantidad }, (_, i) => {
     const copia = JSON.parse(JSON.stringify(plantilla));
     return {
       id: `${fila.enemyId}-${i}`,
-      nombre: `${plantilla.nombre} ${i + 1}`,
       ...copia,
+      nombre: `${nombreBase} ${i + 1}`,
       pv: plantilla.pvBase,
       cobertura: 0,
       // Munición propia del enemigo si su arma la declara (punto 27 del
@@ -119,6 +141,30 @@ export async function montarCombate(container, escenaId) {
   const party = miembrosDisponibles(escena.availableParty);
   const enemigos = construirEnemigos(escena, catalogo, party.length);
 
+  // Fase 4A/4B (docs/COMBAT_PHASE4_RESULT.md): estado runtime por
+  // combatiente que debe sobrevivir ENTRE actuaciones (no vive en
+  // activationState, que se resetea cada actuación -- punto 5 del
+  // encargo). armaActiva empieza en "distancia" si el actor lleva arma a
+  // distancia (equipado desde el inicio del encuentro -- punto 39: no se
+  // fuerza READY_WEAPON al empezar un combate ya en curso). recarga:
+  // progreso de RELOAD (null = sin recarga en curso).
+  // sorpresaDisponible (Fase 4C, AUTHOR_RULE_CURRENT, +20 al primer ataque
+  // si hay sorpresa narrativamente justificada): dato OPCIONAL de encuentro
+  // (`escena.sorpresa.lado`: "party" | "enemigos"), nunca asumido. Ningún
+  // encuentro existente lo declara todavía -- añadirlo cambiaría la
+  // dificultad de un combate ya balanceado, y el encargo pide explícitamente
+  // no balancear ningún encuentro existente en esta fase (punto 43) -- ver
+  // docs/COMBAT_PHASE4_RESULT.md, bloque 4C.
+  party.forEach(m => {
+    m.armaActiva = m.base.arma ? "distancia" : "cc";
+    m.recarga = null;
+    m.sorpresaDisponible = escena.sorpresa?.lado === "party";
+  });
+  enemigos.forEach(e => {
+    e.recarga = null;
+    e.sorpresaDisponible = escena.sorpresa?.lado === "enemigos";
+  });
+
   // modo: "manual" (todo el mundo se controla a mano, comportamiento previo
   // a esta iteración, DEFAULT — punto 34: conservador para partidas ya en
   // curso) | "pj_manual_auto" (el jugador controla solo su PJ, el motor
@@ -128,12 +174,38 @@ export async function montarCombate(container, escenaId) {
   // resolviendo: guarda de doble-clic (punto 41) — mientras una acción está
   // en curso (tirada abierta, turno automático resolviéndose) no se acepta
   // otra hasta que termine.
-  const combateState = { orden: [], log: [], modo: "manual", velocidad: 1, resolviendo: false };
+  // Fase 3 (docs/COMBAT_PHASE3_RESULT.md): round/activation/activationCounter
+  // formalizan la economía de actuaciones (asalto -> actuación -> acción
+  // principal/menor/movimiento). `activation` es la actuación EN CURSO del
+  // combatiente activo -- se crea de cero (createActivation) cada vez que
+  // siguienteTurno() asigna un nuevo evento de la cola de Iniciativa, así
+  // que una actuación nueva nunca hereda gasto de una anterior del mismo
+  // actor (punto 16 del encargo), aunque tenga varias en el mismo asalto.
+  // Fase 4B: contextoCC (atacantesCC/facingTargetId por defensor -- múltiples
+  // adversarios y flanqueo, docs/COMBAT_PHASE4_RESULT.md bloque 4B) y
+  // efectosDefensivos (defensa dividida/Esquiva total/movimiento evasivo,
+  // "hasta la siguiente actuación" del propio actor, punto 14 del encargo)
+  // viven en combateState -- sobreviven a lo largo del asalto, no de una
+  // sola actuación, y se limpian según su propia semántica (contextoCC en
+  // cada generarOrden(), efectosDefensivos cuando ese actor arranca su
+  // siguiente actuación) en vez de con un sistema de buffs genérico.
+  const combateState = {
+    orden: [], log: [], modo: "manual", velocidad: 1, resolviendo: false, round: 0, activationCounter: 0, activation: null,
+    contextoCC: { atacantesCC: {}, facingTargetId: {} },
+    efectosDefensivos: {}
+  };
 
+  // CORRECCIÓN (encargo de auditoría de brechas, 2026-08-22): sin fondo
+  // declarado -- caso real ahora que existen combates de tipo "combat"
+  // sin arte propio (drake_street_combate.json, satelite_aterrizaje.json)
+  // -- rutaAsset(null) devuelve null y el string quedaba literalmente
+  // como url('null'), una petición de red real a "/null" (404). Mismo
+  // criterio de guard que ya usa narrative.js para su fondo opcional.
+  const fondoStyle = escena.background ? `background-image:url('${rutaAsset(escena.background)}')` : "";
   const wrap = document.createElement("div");
   wrap.className = "combate-wrap";
   wrap.innerHTML = `
-    <div class="combate-escena" style="background-image:url('${rutaAsset(escena.background)}')">
+    <div class="combate-escena" style="${fondoStyle}">
       <div class="fx-overlay fx-muzzle"></div>
       <div class="fx-overlay fx-impact"></div>
       <div class="fx-overlay fx-danio"></div>
@@ -197,7 +269,18 @@ export async function montarCombate(container, escenaId) {
 
   log(escena.introText);
 
+  // Cada llamada representa un asalto (round) nuevo -- la primera, al
+  // montar el combate, ya cuenta como el asalto 1. No se rediseña la
+  // Iniciativa en sí (punto 18 del encargo): sigue siendo exactamente
+  // ordenDeActuacion(), solo se numera el asalto que genera.
   function generarOrden() {
+    combateState.round += 1;
+    // Fase 4B: el encaramiento/flanqueo de un asalto no se traslada al
+    // siguiente (DIGITAL_ADAPTATION explícita, docs/COMBAT_PHASE4_RESULT.md
+    // -- CAP03 no define cuánto dura la orientación relativa; un asalto
+    // nuevo es un límite razonable y consistente con cómo ya se trata la
+    // cobertura, que tampoco persiste indefinidamente sin volver a declararse).
+    combateState.contextoCC = { atacantesCC: {}, facingTargetId: {} };
     const combatientes = [
       ...party.map(m => ({ id: m.baseId, iniciativa: m.habilidades["Iniciativa"] ?? 30 })),
       ...enemigos.map(e => ({ id: e.id, iniciativa: e.iniciativa }))
@@ -280,6 +363,19 @@ export async function montarCombate(container, escenaId) {
     if (combateState.orden.length === 0) generarOrden();
     const evento = combateState.orden.shift();
     renderOrden();
+
+    // Actuación nueva, recursos completos (punto 5/16 del encargo) --
+    // ver comentario de combateState más arriba.
+    combateState.activationCounter += 1;
+    combateState.activation = createActivation({
+      actorId: evento.id, round: combateState.round, activationIndex: combateState.activationCounter
+    });
+    // Fase 4A (punto 14 del encargo): un efecto "hasta la siguiente
+    // actuación" (defensa dividida/Esquiva total/movimiento evasivo) expira
+    // exactamente aquí -- cuando a ESE actor le vuelve a tocar actuar, nunca
+    // por round+1 (semántica "tu turno" ya cerrada, COMBAT_CANON_MATRIX.md
+    // punto 3).
+    delete combateState.efectosDefensivos[evento.id];
 
     const miembroActor = party.find(m => m.baseId === evento.id);
     if (miembroActor) {
@@ -379,15 +475,59 @@ export async function montarCombate(container, escenaId) {
   // tirada, no de cuánta munición se gasta.
   const COSTO_MUNICION = { disparar: 1, rafaga: 3 };
 
+  // Recurso de movimiento por click de "Mover" (punto 8/10 del encargo):
+  // sin sistema espacial real en este renderer (no hay mapa/grid), un
+  // click abstracto consume un tramo fijo -- suficiente para demostrar
+  // movimiento DIVIDIDO de verdad en la UI (varios clicks, con una acción
+  // en medio) sin inventar coordenadas tácticas. Ver docs/COMBAT_PHASE3_RESULT.md,
+  // "RENDERER_MOVEMENT_LIMITED".
+  const TRAMO_MOVIMIENTO_METROS = 5;
+
+  // Fase 4A: etiqueta de "Recargar" que muestra el progreso 1/2, 2/3, etc.
+  // cuando el arma necesita más de una acción (AUTHOR_CLARIFICATION,
+  // COMBAT_CANON_MATRIX.md punto 4) -- sin progreso en curso, etiqueta normal.
+  function reglaMuestraRecarga(miembro) {
+    if (!miembro.recarga) return "Recargar";
+    return `Recargar (${miembro.recarga.progress}/${miembro.recarga.required})`;
+  }
+
+  // Fase 4A: avanza (o inicia) el progreso de recarga del arma activa de un
+  // combatiente -- vive en el runtime del combatiente (miembro.recarga /
+  // enemigo.recarga), NUNCA en activationState (punto 5 del encargo: debe
+  // sobrevivir entre actuaciones). Solo transfiere reserva->cargador
+  // (recargarArma real, gameState.js) cuando el progreso se completa.
+  function avanzarRecargaDe(combatiente, armaData) {
+    const required = costeAccionesPorTamano(armaData?.tamano);
+    return avanzarProgreso(combatiente.recarga, required);
+  }
+
+  // HUD compacto de la actuación en curso (punto 22: nada de card soup).
+  // "Menor ✓" se muestra siempre disponible porque ningún intent la
+  // consume todavía (punto 20 del encargo) -- documentado, no inventado.
+  function renderRecursosActuacion() {
+    const activation = combateState.activation;
+    if (!activation) return "";
+    const principal = activation.mainActionAvailable ? "✓" : "✗";
+    const menor = activation.minorActionAvailable ? "✓" : "✗";
+    return `<div class="combate-recursos-actuacion">
+      <span>Principal ${principal}</span>
+      <span>Menor ${menor}</span>
+      <span>Movimiento ${movementRemaining(activation)}/${activation.movementTotal} m</span>
+    </div>`;
+  }
+
   function renderAccionesJugador(miembro) {
     const base = miembro.base;
     const armaInfo = habilidadArmaDe(base);
-    accionesEl.innerHTML = "";
+    accionesEl.innerHTML = renderRecursosActuacion();
 
     const tieneArmaDistancia = !!(base.arma && miembro.municion);
     const cargador = miembro.municion?.cargador ?? 0;
     const reserva = miembro.municion?.reserva ?? 0;
     const magSize = base.arma?.magazineSize ?? cargador;
+    const activation = combateState.activation;
+    const principalDisponible = activation ? activation.mainActionAvailable : true;
+    const movRestante = activation ? movementRemaining(activation) : 0;
 
     if (tieneArmaDistancia) {
       const armaEl = document.createElement("div");
@@ -396,17 +536,37 @@ export async function montarCombate(container, escenaId) {
       accionesEl.appendChild(armaEl);
     }
 
+    // Fase 4A (punto 10 del encargo): CHANGE_WEAPON es la acción menor real
+    // de CAP03:555 ("cambiar de arma") -- cuando el actor lleva las dos
+    // clases de arma, Disparo/Ráfaga y Cuerpo a cuerpo ya NO están
+    // disponibles simultáneamente (CANON_PHASE4_BEHAVIOR: antes de Fase 4
+    // ambas convivían siempre, DIGITAL_ADAPTATION de Fase 1/2 sin base
+    // canónica -- ver docs/COMBAT_PHASE4_RESULT.md). Cambiar de arma solo
+    // tiene sentido si hay dos armas reales entre las que elegir.
+    const tieneArmaCC = !!base.armaCC && base.armaCC.danio > 0;
+    const puedeCambiarArma = tieneArmaDistancia && tieneArmaCC;
+    const armaActivaEsDistancia = miembro.armaActiva === "distancia";
+    const menorDisponible = activation ? activation.minorActionAvailable : true;
+
     const acciones = [
       // "principal" es la primera acción ofensiva disponible (disparar si
       // el actor lleva arma a distancia, si no cuerpo a cuerpo) — nunca
       // hardcodeada por id, se decide por lo que el propio actor lleva
-      // encima (dato, no una lista de casos especiales).
-      { id: "disparar", etiqueta: "Disparo", tag: "[1]", visible: tieneArmaDistancia, disabled: cargador < COSTO_MUNICION.disparar, rol: "principal" },
-      { id: "rafaga", etiqueta: "Ráfaga", tag: "[3]", visible: tieneArmaDistancia && base.arma?.cadenciaMax && base.arma.cadenciaMax !== "Tiro a tiro", disabled: cargador < COSTO_MUNICION.rafaga, rol: "secundaria" },
-      { id: "recargar", etiqueta: "Recargar", visible: tieneArmaDistancia && cargador < magSize, disabled: reserva <= 0, rol: "secundaria" },
-      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: !!base.armaCC && base.armaCC.danio > 0, rol: tieneArmaDistancia ? "secundaria" : "principal" },
+      // encima (dato, no una lista de casos especiales). Gateadas también
+      // por si la acción principal de la actuación ya se gastó (Fase 3), y
+      // por armaActiva (Fase 4: no se puede disparar con el arma CC en
+      // mano, ni golpear con el arma a distancia en mano).
+      { id: "disparar", etiqueta: "Disparo", tag: "[1]", visible: tieneArmaDistancia && armaActivaEsDistancia && principalDisponible, disabled: cargador < COSTO_MUNICION.disparar, rol: "principal" },
+      { id: "rafaga", etiqueta: "Ráfaga", tag: "[3]", visible: tieneArmaDistancia && armaActivaEsDistancia && principalDisponible && base.arma?.cadenciaMax && base.arma.cadenciaMax !== "Tiro a tiro", disabled: cargador < COSTO_MUNICION.rafaga, rol: "secundaria" },
+      { id: "recargar", etiqueta: reglaMuestraRecarga(miembro), visible: tieneArmaDistancia && armaActivaEsDistancia && (cargador < magSize || miembro.recarga), disabled: reserva <= 0 && !miembro.recarga, rol: "secundaria" },
+      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: tieneArmaCC && (!tieneArmaDistancia || !armaActivaEsDistancia) && principalDisponible, rol: tieneArmaDistancia ? "secundaria" : "principal" },
+      { id: "cambiar_arma", etiqueta: armaActivaEsDistancia ? `Cambiar a ${base.armaCC.nombre}` : `Cambiar a ${base.arma.nombre}`, visible: puedeCambiarArma && menorDisponible, rol: "secundaria" },
+      { id: "defensa_dividida", etiqueta: "División defensiva (CC)", visible: tieneArmaCC && !armaActivaEsDistancia && principalDisponible, rol: "secundaria" },
+      { id: "esquiva_total", etiqueta: "Esquiva total (CC)", visible: tieneArmaCC && !armaActivaEsDistancia && principalDisponible, rol: "secundaria" },
+      { id: "movimiento_evasivo", etiqueta: "Movimiento evasivo", visible: principalDisponible, rol: "secundaria" },
       { id: "cubrirse", etiqueta: "Cubrirse", visible: true, rol: "secundaria" },
-      { id: "mover", etiqueta: "Mover", visible: true, rol: "secundaria" },
+      { id: "mover", etiqueta: `Mover (${Math.min(TRAMO_MOVIMIENTO_METROS, movRestante)}m)`, visible: movRestante > 0, rol: "secundaria" },
+      { id: "finalizar", etiqueta: "Finalizar actuación", visible: true, rol: "secundaria" },
       { id: "huir", etiqueta: "Huir", visible: true, rol: "salida" }
     ];
 
@@ -438,7 +598,7 @@ export async function montarCombate(container, escenaId) {
   function renderAccionesCompanero(miembro) {
     const base = miembro.base;
     const armaInfo = habilidadArmaDe(base);
-    accionesEl.innerHTML = "";
+    accionesEl.innerHTML = renderRecursosActuacion();
 
     const aviso = document.createElement("div");
     aviso.className = "combate-companero-aviso";
@@ -447,12 +607,28 @@ export async function montarCombate(container, escenaId) {
 
     const cargador = miembro.municion?.cargador ?? 0;
     const magSize = base.arma?.magazineSize ?? cargador;
+    const activation = combateState.activation;
+    const principalDisponible = activation ? activation.mainActionAvailable : true;
+    const menorDisponible = activation ? activation.minorActionAvailable : true;
+    const movRestante = activation ? movementRemaining(activation) : 0;
+    const tieneArmaCC = !!base.armaCC && base.armaCC.danio > 0;
+    const puedeCambiarArma = !!(base.arma && miembro.municion) && tieneArmaCC;
+    const armaActivaEsDistancia = miembro.armaActiva === "distancia";
 
+    // Menú reducido (punto 36 del encargo: "adaptar únicamente lo
+    // necesario", sin card soup) -- un compañero controlado a mano recibe
+    // recarga progresiva/cambio de arma/movimiento evasivo (las piezas más
+    // frecuentes), pero no el menú completo de defensa activa CC que sí
+    // tiene el jugador; en modo Automático ninguna de estas dos se usa.
     const acciones = [
-      { id: "disparar", etiqueta: "Disparar", visible: !!(base.arma && miembro.municion), disabled: cargador < COSTO_MUNICION.disparar },
-      { id: "recargar", etiqueta: "Recargar", visible: !!(base.arma && miembro.municion) && cargador < magSize, disabled: (miembro.municion?.reserva ?? 0) <= 0 },
+      { id: "disparar", etiqueta: "Disparar", visible: !!(base.arma && miembro.municion) && armaActivaEsDistancia && principalDisponible, disabled: cargador < COSTO_MUNICION.disparar },
+      { id: "cc", etiqueta: "Cuerpo a cuerpo", visible: tieneArmaCC && !armaActivaEsDistancia && principalDisponible },
+      { id: "cambiar_arma", etiqueta: armaActivaEsDistancia ? `Cambiar a ${base.armaCC?.nombre}` : `Cambiar a ${base.arma?.nombre}`, visible: puedeCambiarArma && menorDisponible },
+      { id: "recargar", etiqueta: reglaMuestraRecarga(miembro), visible: !!(base.arma && miembro.municion) && armaActivaEsDistancia && (cargador < magSize || miembro.recarga), disabled: (miembro.municion?.reserva ?? 0) <= 0 && !miembro.recarga },
+      { id: "movimiento_evasivo", etiqueta: "Movimiento evasivo", visible: principalDisponible },
       { id: "cubrirse", etiqueta: "Cubrirse", visible: true },
-      { id: "mover", etiqueta: "Mover", visible: true },
+      { id: "mover", etiqueta: `Mover (${Math.min(TRAMO_MOVIMIENTO_METROS, movRestante)}m)`, visible: movRestante > 0 },
+      { id: "finalizar", etiqueta: "Finalizar actuación", visible: true },
       { id: "automatico", etiqueta: "Automático", visible: true }
     ];
 
@@ -485,15 +661,31 @@ export async function montarCombate(container, escenaId) {
     const magSize = base.arma?.magazineSize ?? cargador;
 
     if (miembro.municion && cargador < COSTO_MUNICION.disparar && miembro.municion.reserva > 0) {
-      const transferido = recargarArma(miembro.baseId);
-      log(`${base.nombre} (automático) recarga — ${transferido} proyectiles al cargador.`);
+      // Fase 4A: mismo progreso 1/2/3 que el modo manual -- ver
+      // avanzarRecargaDe(). Sin IA de movimiento (punto 21 del encargo, ya
+      // establecido en Fase 3): termina la actuación igual que antes,
+      // complete o no la recarga en esta pasada.
+      const progreso = avanzarRecargaDe(miembro, base.arma);
+      const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "RELOAD" });
+      combateState.activation = nuevaActivation;
+      if (progreso.completo) {
+        miembro.recarga = null;
+        const transferido = recargarArma(miembro.baseId);
+        log(`${base.nombre} (automático) completa la recarga — ${transferido} proyectiles al cargador.`);
+      } else {
+        miembro.recarga = progreso;
+        log(`${base.nombre} (automático) recarga (${progreso.progress}/${progreso.required}).`);
+      }
       return siguienteTurno();
     }
     if (base.arma && miembro.municion && cargador >= COSTO_MUNICION.disparar) {
       const vivos = enemigosVivos();
       const objetivoDebil = [...vivos].sort((a, b) => a.pv - b.pv)[0];
       log(`${base.nombre} (automático) dispara al objetivo más débil visible.`);
-      dispararA(miembro, "disparar", armaInfo, objetivoDebil);
+      // automatico:true (punto 23 del encargo Fase 3) -- sin IA táctica de
+      // movimiento, termina la actuación en cuanto actúa, tenga o no
+      // movimiento sobrante disponible.
+      dispararA(miembro, "disparar", armaInfo, objetivoDebil, { automatico: true });
       autoContinuarSiProcede();
     } else {
       const opcion = opcionesCobertura()[0];
@@ -527,31 +719,183 @@ export async function montarCombate(container, escenaId) {
       });
     }
     if (id === "mover") {
-      log(`${base.nombre} se reposiciona.`);
+      const activation = combateState.activation;
+      const distancia = Math.min(TRAMO_MOVIMIENTO_METROS, movementRemaining(activation));
+      const { activation: nuevaActivation, events } = applyResourceCost(activation, { type: "MOVE", distance: distancia });
+      combateState.activation = nuevaActivation;
+      log(`${base.nombre} se reposiciona (${distancia}m — quedan ${movementRemaining(nuevaActivation)}m).`);
+      return continuarOFinalizarActuacion(miembro);
+    }
+    if (id === "finalizar") {
+      const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "END_ACTIVATION" });
+      combateState.activation = nuevaActivation;
+      log(`${base.nombre} da por terminada su actuación.`);
       return siguienteTurno();
     }
     if (id === "recargar") {
+      // CANON_PHASE4_BEHAVIOR (docs/COMBAT_PHASE4_RESULT.md, bloque 4A):
+      // sustituye el LEGACY_BEHAVIOR_PENDING_PHASE4 de Fase 3 -- recargar
+      // consume UNA acción principal por ejecución, con progreso 1/2/3
+      // según el tamaño del arma (AUTHOR_CLARIFICATION). Solo transfiere
+      // reserva->cargador cuando el progreso se completa.
+      const progreso = avanzarRecargaDe(miembro, base.arma);
+      const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "RELOAD" });
+      combateState.activation = nuevaActivation;
+      if (!progreso.completo) {
+        miembro.recarga = progreso;
+        log(`${base.nombre} recarga (${progreso.progress}/${progreso.required}) -- necesita seguir en su próxima actuación.`);
+        return continuarOFinalizarActuacion(miembro);
+      }
+      miembro.recarga = null;
       const transferido = recargarArma(miembro.baseId);
-      if (transferido <= 0) { log(`${base.nombre} no tiene munición de reserva.`); return siguienteTurno(); }
-      log(`${base.nombre} recarga — ${transferido} ${transferido === 1 ? "proyectil pasa" : "proyectiles pasan"} al cargador (${miembro.municion.cargador}/${miembro.municion.reserva}).`);
-      renderAccionesJugador(miembro); // sigue siendo su turno: recargar consume la acción, pero refresca el HUD antes de resolver
-      return siguienteTurno();
+      log(`${base.nombre} completa la recarga — ${transferido} ${transferido === 1 ? "proyectil pasa" : "proyectiles pasan"} al cargador (${miembro.municion.cargador}/${miembro.municion.reserva}).`);
+      return continuarOFinalizarActuacion(miembro);
     }
+    if (id === "cambiar_arma") {
+      // CAP03:555 -- acción menor real (punto 10 del encargo Fase 4).
+      const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "CHANGE_WEAPON" });
+      combateState.activation = nuevaActivation;
+      miembro.armaActiva = miembro.armaActiva === "distancia" ? "cc" : "distancia";
+      const nombreNueva = miembro.armaActiva === "distancia" ? base.arma.nombre : base.armaCC.nombre;
+      log(`${base.nombre} cambia a ${nombreNueva}.`);
+      return continuarOFinalizarActuacion(miembro);
+    }
+    if (id === "defensa_dividida") return declararDefensaDividida(miembro);
+    if (id === "esquiva_total") return declararEsquivaTotal(miembro);
+    if (id === "movimiento_evasivo") return declararMovimientoEvasivo(miembro);
     if (id === "huir") return intentarHuir(miembro);
 
     elegirObjetivo(objetivo => dispararA(miembro, id, armaInfo, objetivo));
   }
 
-  function dispararA(miembro, id, armaInfo, objetivo) {
+  // ===== Defensa activa CC + movimiento evasivo (Fase 4A, CAP03:1003-1036)
+  // ===== Producen un efecto que dura "hasta la siguiente actuación" del
+  // propio actor (combateState.efectosDefensivos, limpiado en
+  // siguienteTurno() -- ver comentario junto a esa función). División
+  // defensiva usa un reparto 50/50 redondeado a múltiplos de 5: CAP03:1007
+  // no cuantifica "los mínimos existentes" del reparto (a diferencia de la
+  // división de ataques múltiples, que sí exige 50/25) -- BLOCKED_CANON_QUESTION
+  // documentada en docs/COMBAT_PHASE4_RESULT.md; 50/50 es una simplificación
+  // de UI declarada, no una regla nueva, para no exigir un selector
+  // numérico (punto 36: "no crear card soup").
+  function declararDefensaDividida(miembro) {
+    const base = miembro.base;
+    const habilidadTotal = miembro.habilidades["Arma CC Corta"] ?? miembro.habilidades["Sin Armas"] ?? 30;
+    const mitad = Math.round(habilidadTotal / 2 / 5) * 5;
+    const ataque = mitad;
+    const defensa = habilidadTotal - mitad;
+    const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "DEFEND_SPLIT" });
+    combateState.activation = nuevaActivation;
+    combateState.resolviendo = true;
+    mostrarTirada({
+      actorId: miembro.baseId,
+      etiquetaHabilidad: `División defensiva (${ataque} ataque / ${defensa} defensa)`,
+      skillId: "Arma CC Corta",
+      habilidadBase: defensa,
+      dificultad: 0,
+      dificultadTexto: "Normal",
+      escenaId,
+      onResuelto: (resultado) => {
+        const exitosDefensa = resultado.exito ? resultado.exitos : 0;
+        combateState.efectosDefensivos[miembro.baseId] = { tipo: "DEFEND_SPLIT", exitosDefensa };
+        log(`${base.nombre} divide su habilidad CC (${ataque}/${defensa}) — ${exitosDefensa > 0 ? `defensa activa hasta su próxima actuación (${exitosDefensa} éxitos)` : "sin éxito en la tirada de defensa"}.`);
+        return continuarOFinalizarActuacion(miembro);
+      }
+    });
+  }
+
+  function declararEsquivaTotal(miembro) {
+    const base = miembro.base;
+    const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "DODGE_TOTAL" });
+    combateState.activation = nuevaActivation;
+    combateState.resolviendo = true;
+    mostrarTirada({
+      actorId: miembro.baseId,
+      etiquetaHabilidad: "Esquiva total (cuerpo a cuerpo)",
+      skillId: "Esquivar",
+      habilidadBase: miembro.habilidades["Esquivar"] ?? 30,
+      dificultad: 0,
+      dificultadTexto: "Normal",
+      escenaId,
+      onResuelto: (resultado) => {
+        combateState.efectosDefensivos[miembro.baseId] = { tipo: "DODGE_TOTAL", cancelaDanioCC: resultado.exito };
+        log(`${base.nombre} se dedica a esquivar en cuerpo a cuerpo${resultado.exito ? " — cancela el daño del próximo golpe CC hasta su próxima actuación" : ", sin éxito"}.`);
+        return continuarOFinalizarActuacion(miembro);
+      }
+    });
+  }
+
+  function declararMovimientoEvasivo(miembro) {
+    const base = miembro.base;
+    const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: "EVASIVE_MOVEMENT" });
+    combateState.activation = nuevaActivation;
+    combateState.resolviendo = true;
+    mostrarTirada({
+      actorId: miembro.baseId,
+      etiquetaHabilidad: "Movimiento evasivo",
+      skillId: "Esquivar",
+      habilidadBase: miembro.habilidades["Esquivar"] ?? 30,
+      dificultad: 0,
+      dificultadTexto: "Normal",
+      escenaId,
+      onResuelto: (resultado) => {
+        const penalizador = modificadorMovimientoEvasivo(resultado.exito ? resultado.exitos : 0);
+        combateState.efectosDefensivos[miembro.baseId] = { tipo: "EVASIVE_MOVEMENT", penalizadorAtacantes: penalizador };
+        log(`${base.nombre} se mueve de forma imprevisible${penalizador ? ` (${penalizador} a quien le dispare hasta su próxima actuación)` : ", sin éxito"}.`);
+        // CAP03:1021 -- consume la actuación COMPLETA, no continuarOFinalizarActuacion().
+        return siguienteTurno();
+      }
+    });
+  }
+
+  // Punto 15 del encargo Fase 3 ("NO AUTO-END PREMATURO"): tras resolver
+  // una acción, si a la actuación le queda algún recurso canónico
+  // (movimiento -- la acción principal ya se comprueba en
+  // actuacionAgotada()), NO se pasa de turno automáticamente. Se vuelve a
+  // pintar el menú del propio actor para que decida mover, o finalizar.
+  function continuarOFinalizarActuacion(miembro) {
+    if (actuacionAgotada(combateState.activation)) return siguienteTurno();
+    combateState.resolviendo = false;
+    if (esJugador(miembro.baseId)) renderAccionesJugador(miembro);
+    else renderAccionesCompanero(miembro);
+  }
+
+  function dispararA(miembro, id, armaInfo, objetivo, opts = {}) {
     const base = miembro.base;
     if (!objetivo) return siguienteTurno();
 
-    let habilidadBase, skillId, danioBase, cadenciaBonus = 0, etiqueta;
+    let habilidadBase, skillId, danioBase, cadenciaBonus = 0, etiqueta, dificultadSituacional = 0;
     if (id === "cc") {
       skillId = "Arma CC Corta";
       habilidadBase = miembro.habilidades[skillId] ?? miembro.habilidades["Sin Armas"];
-      danioBase = base.armaCC.danio;
+      // Fase 4B: Fuerza->Daño CaC (CANON_SOURCE, CAP03:887-919) -- no muta
+      // base.armaCC.danio (punto 25 del encargo), se calcula por ataque.
+      danioBase = effectiveBaseDamage(base.armaCC.danio, base.atributos?.FUE ?? 0, base.armaCC.fuerzaMinima ?? 0);
       etiqueta = `${base.armaCC.nombre} cuerpo a cuerpo`;
+
+      // Fase 4B: contexto CC del objetivo (múltiples adversarios/flanqueo,
+      // docs/COMBAT_PHASE4_RESULT.md bloque 4B). El objetivo sin agencia
+      // propia para "declarar" hacia quién está encarado (un enemigo con IA
+      // simple) queda encarado por defecto hacia el PRIMER atacante CC que
+      // lo trabó este asalto -- DIGITAL_ADAPTATION explícita, ver comentario
+      // de contextoCC más arriba.
+      const ctx = combateState.contextoCC;
+      if (!ctx.atacantesCC[objetivo.id]) ctx.atacantesCC[objetivo.id] = [];
+      if (!ctx.atacantesCC[objetivo.id].includes(miembro.baseId)) ctx.atacantesCC[objetivo.id].push(miembro.baseId);
+      if (!ctx.facingTargetId[objetivo.id]) ctx.facingTargetId[objetivo.id] = miembro.baseId;
+      if (isFlanking(miembro.baseId, objetivo.id, ctx)) {
+        dificultadSituacional += FLANQUEO_BONUS;
+        etiqueta += " (flanqueo +10)";
+      }
+      // Múltiples adversarios CC (CAP03:872-883): penaliza al ATACANTE si
+      // ÉL MISMO está siendo trabado por varios adversarios en CC
+      // simultáneamente -- se consulta ctx.atacantesCC[miembro.baseId]
+      // (quién está atacando EN CC a miembro, no a objetivo). Con los datos
+      // actuales de este encuentro ningún enemigo lleva arma CC, así que
+      // esta lista siempre está vacía en vivo (RULES_READY, no exercisable
+      // con este encuentro concreto -- ver docs/COMBAT_PHASE4_RESULT.md).
+      const numAdversariosDelAtacante = ctx.atacantesCC[miembro.baseId]?.length ?? 0;
+      dificultadSituacional += penalizadorMultiplesAdversarios(numAdversariosDelAtacante);
     } else {
       const costo = COSTO_MUNICION[id] ?? 1;
       if (!consumirMunicion(miembro.baseId, costo)) { log(`${base.nombre} no tiene munición suficiente.`); return siguienteTurno(); }
@@ -568,39 +912,91 @@ export async function montarCombate(container, escenaId) {
     miembro.cobertura = 0; // atacar rompe la cobertura activa
     establecerCobertura(miembro.baseId, 0);
 
+    // Fase 4C: sorpresa (+20, AUTHOR_RULE_CURRENT) sobre el primer ataque
+    // si el encuentro la declara -- se combina con flanqueo/múltiples
+    // adversarios (Fase 4B) bajo el mismo límite situacional ±20
+    // (COMBAT_CANON_MATRIX.md punto 9: nunca se aplica a Pen/Blindaje).
+    const conSorpresa = aplicarSorpresaSiDisponible(dificultadSituacional, miembro.sorpresaDisponible);
+    const dificultadFinal = limitarModificadorSituacional(conSorpresa);
+    if (miembro.sorpresaDisponible) etiqueta += " (sorpresa +20)";
+
     combateState.resolviendo = true;
     mostrarTirada({
       actorId: miembro.baseId,
       etiquetaHabilidad: etiqueta,
       skillId,
       habilidadBase,
-      dificultad: 0,
-      dificultadTexto: "Normal",
+      dificultad: dificultadFinal,
+      dificultadTexto: dificultadFinal === 0 ? "Normal" : (dificultadFinal > 0 ? `+${dificultadFinal}` : String(dificultadFinal)),
       escenaId,
       onResuelto: (tiradaResultado) => {
         if (id === "disparar" || id === "rafaga") flashEfecto(wrap, "fx-muzzle");
-        aplicarResultadoAtaqueJugador(objetivo, tiradaResultado, danioBase, cadenciaBonus, base.nombre);
+        // Sorpresa se consume tras aplicarse UNA vez, independientemente del
+        // resultado (AUTHOR_RULE_CURRENT, COMBAT_CANON_MATRIX.md punto 6).
+        miembro.sorpresaDisponible = false;
+        aplicarResultadoAtaqueJugador(miembro, objetivo, tiradaResultado, danioBase, cadenciaBonus, base.nombre, opts.automatico, id === "cc");
       }
     });
   }
 
-  function aplicarResultadoAtaqueJugador(objetivo, tirada, danioBase, cadenciaBonus, nombreAtacante) {
+  // Antes (0.3.1 y anteriores) esta función reimplementaba a mano la fórmula
+  // de Blindaje/Penetración/cadencia/daño que ya existía en combat/combat.js
+  // (usada por los enemigos) -- misma matemática, escrita dos veces, sin
+  // Penetración en esta copia (inofensivo hoy porque las armas del jugador
+  // declaran penetracion:0, pero un riesgo real si eso cambiara). Fase 2
+  // (docs/COMBAT_PHASE12_CODE_MAP.md): ahora pasa por resolveIntent(), la
+  // misma función que usa turnoEnemigo() -- una sola fuente de verdad.
+  //
+  // Fase 3: ATTACK/BURST son canónicamente la acción principal (CAP03:555)
+  // -- se consume aquí con applyResourceCost() en TODOS los desenlaces
+  // (fallo, blindaje absorbe, impacto: apuntar y fallar sigue gastando tu
+  // acción). `automatico` (modo auto/compañeros auto, punto 23 del
+  // encargo): sin IA de movimiento, termina la actuación de inmediato en
+  // vez de ofrecer mover/finalizar. Un jugador manual, si le queda
+  // movimiento, sigue teniendo el control (continuarOFinalizarActuacion).
+  function aplicarResultadoAtaqueJugador(actorRuntime, objetivo, tirada, danioBase, cadenciaBonus, nombreAtacante, automatico, esCC) {
+    // Fase 4A: si el objetivo (un enemigo) declaró defensa activa CC, se
+    // aplica aquí -- Esquiva total cancela el daño por completo, defensa
+    // dividida resta sus éxitos ANTES del blindaje (resolverImpacto,
+    // exitosDefensa). Ninguna IA de enemigo declara esto todavía (punto 38
+    // del encargo: "no crear IA táctica sofisticada"), así que en vivo esta
+    // rama nunca se activa con los enemigos actuales -- pero funciona igual
+    // para cualquier objetivo que sí la tenga.
+    const efectoObjetivo = esCC ? combateState.efectosDefensivos[objetivo.id ?? objetivo.baseId] : null;
+    if (esCC && efectoObjetivo?.tipo === "DODGE_TOTAL" && efectoObjetivo.cancelaDanioCC) {
+      log(`${objetivo.nombre} esquiva por completo el ataque de ${nombreAtacante}.`);
+      const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: cadenciaBonus > 0 ? "BURST" : "ATTACK" });
+      combateState.activation = nuevaActivation;
+      return automatico ? siguienteTurno() : continuarOFinalizarActuacion(actorRuntime);
+    }
+    const exitosDefensa = esCC && efectoObjetivo?.tipo === "DEFEND_SPLIT" ? efectoObjetivo.exitosDefensa : 0;
+
+    const { result } = resolveIntent(
+      { id: actorRuntime.baseId },
+      { id: objetivo.id },
+      { type: cadenciaBonus > 0 ? "BURST" : "ATTACK", tiradaYaResuelta: tirada, penetracion: 0, blindajeObjetivo: objetivo.blindaje, coberturaObjetivo: objetivo.cobertura || 0, cadenciaBonus, danioBase, exitosDefensa }
+    );
+    const { activation: nuevaActivation } = applyResourceCost(combateState.activation, { type: cadenciaBonus > 0 ? "BURST" : "ATTACK" });
+    combateState.activation = nuevaActivation;
+
+    function continuar() {
+      if (automatico) return siguienteTurno();
+      return continuarOFinalizarActuacion(actorRuntime);
+    }
+
     if (!tirada.exito) {
       log(`${nombreAtacante} falla contra ${objetivo.nombre}.`);
-      return siguienteTurno();
+      return continuar();
     }
-    const blindajeEfectivo = Math.max(0, objetivo.blindaje + (objetivo.cobertura || 0));
-    let exitosNetos = tirada.exitos - blindajeEfectivo + cadenciaBonus;
-    if (exitosNetos <= 0) {
-      log(`El blindaje de ${objetivo.nombre} absorbe el impacto.`);
-      return siguienteTurno();
+    if (!result.impacto) {
+      log(exitosDefensa > 0 ? `${objetivo.nombre} defiende el golpe de ${nombreAtacante}.` : `El blindaje de ${objetivo.nombre} absorbe el impacto.`);
+      return continuar();
     }
-    const danio = danioBase * exitosNetos;
-    objetivo.pv -= danio;
+    objetivo.pv -= result.danioFinal;
     flashEfecto(wrap, "fx-impact");
-    log(`${tirada.esCritico ? "¡CRÍTICO! " : ""}${nombreAtacante} impacta a ${objetivo.nombre} por ${danio} de daño (${exitosNetos} éxitos netos).`);
+    log(`${tirada.esCritico ? "¡CRÍTICO! " : ""}${nombreAtacante} impacta a ${objetivo.nombre} por ${result.danioFinal} de daño (${result.exitosNetos} éxitos netos).`);
     if (objetivo.pv <= 0) log(`${objetivo.nombre} cae.`);
-    siguienteTurno();
+    continuar();
   }
 
   function intentarHuir(miembro) {
@@ -647,15 +1043,12 @@ export async function montarCombate(container, escenaId) {
     const cobertura = objetivo.cobertura || 0;
     enemigo.cobertura = 0; // atacar rompe su propia cobertura, igual que al jugador
 
-    const resultado = resolverAtaque({
-      habilidadBase: enemigo.distancia,
-      dificultad: 0,
-      penetracion: 0,
-      blindajeObjetivo: objetivo.base.armadura?.blindaje ?? 0,
-      coberturaObjetivo: cobertura,
-      cadenciaBonus,
-      danioBase: enemigo.arma.danio
-    });
+    // Punto 25 del encargo Fase 3: los enemigos también reciben recursos de
+    // actuación (creados en siguienteTurno()), pero su IA no sabe usar
+    // movimiento -- consumen la acción principal y terminan, sin ofrecer
+    // "mover"/"finalizar" (no hay UI para enemigos). El recurso está
+    // disponible según canon aunque no se aproveche.
+    ({ activation: combateState.activation } = applyResourceCost(combateState.activation, { type: usaRafaga ? "BURST" : "ATTACK" }));
 
     // Verbo genérico según el tipo de arma del enemigo (dato, no lógica
     // específica de ningún módulo) — evita que una criatura cuerpo a cuerpo
@@ -663,6 +1056,58 @@ export async function montarCombate(container, escenaId) {
     const esCC = enemigo.arma?.tipo === "cc";
     const verboAccion = esCC ? "ataca a" : "dispara a";
     const verboImpacto = esCC ? "el golpe" : "el disparo";
+
+    // Fase 4A: efecto defensivo declarado por el objetivo "hasta su
+    // próxima actuación" (docs/COMBAT_PHASE4_RESULT.md). Movimiento
+    // evasivo penaliza la Habilidad efectiva de CUALQUIER atacante a
+    // distancia (CAP03:1017-1036) -- esto SÍ es exercisable en vivo con
+    // enemigos que disparan. Esquiva total/defensa dividida solo protegen
+    // contra CC (CAP03:1015/1040) -- con los enemigos actuales (todos a
+    // distancia) esas dos ramas son RULES_READY pero no exercisables en
+    // vivo con los encuentros existentes.
+    const efectoObjetivo = combateState.efectosDefensivos[objetivo.baseId];
+    // DODGE_TOTAL no protege contra disparos (CAP03:1015) -- solo se
+    // consulta cuando esCC es true, a propósito.
+    if (esCC && efectoObjetivo?.tipo === "DODGE_TOTAL" && efectoObjetivo.cancelaDanioCC) {
+      log(`${objetivo.base.nombre} esquiva por completo el golpe de ${enemigo.nombre}.`);
+      return siguienteTurno();
+    }
+    const exitosDefensa = esCC && efectoObjetivo?.tipo === "DEFEND_SPLIT" ? efectoObjetivo.exitosDefensa : 0;
+    const penalizadorEvasivo = !esCC && efectoObjetivo?.tipo === "EVASIVE_MOVEMENT" ? efectoObjetivo.penalizadorAtacantes : 0;
+
+    // Fase 4B: FUE->Daño CaC del enemigo (CANON_SOURCE, CAP03:887-919) --
+    // los enemigos de los encuentros existentes son todos "distancia"
+    // (esCC=false), así que danioBase coincide siempre con
+    // enemigo.arma.danio en vivo; wireado igual para cualquier enemigo CC
+    // futuro.
+    const danioBaseEnemigo = esCC
+      ? effectiveBaseDamage(enemigo.arma.danio, enemigo.fuerza ?? 0, enemigo.arma.fuerzaMinima ?? 0)
+      : enemigo.arma.danio;
+
+    // Fase 4C: sorpresa del enemigo (si el encuentro la declara para
+    // "enemigos" -- ningún encuentro existente lo hace, ver inicialización
+    // de sorpresaDisponible más arriba) + límite situacional ±20.
+    const dificultadSituacional = limitarModificadorSituacional(
+      aplicarSorpresaSiDisponible(penalizadorEvasivo, enemigo.sorpresaDisponible)
+    );
+    enemigo.sorpresaDisponible = false;
+
+    // Fase 2: mismo resolveIntent() que usa el jugador (aplicarResultadoAtaqueJugador)
+    // -- una sola ruta de resolución para ambos lados del combate.
+    const { result: resultado } = resolveIntent(
+      { id: enemigo.id }, { id: objetivo.baseId },
+      {
+        type: usaRafaga ? "BURST" : "ATTACK",
+        habilidadBase: enemigo.distancia,
+        dificultad: dificultadSituacional,
+        penetracion: 0,
+        blindajeObjetivo: objetivo.base.armadura?.blindaje ?? 0,
+        coberturaObjetivo: cobertura,
+        cadenciaBonus,
+        danioBase: danioBaseEnemigo,
+        exitosDefensa
+      }
+    );
 
     if (!resultado.exito) {
       log(`${enemigo.nombre} ${verboAccion} ${objetivo.base.nombre} (tirada ${resultado.tiradaTexto} vs ${enemigo.distancia}) y falla.`);

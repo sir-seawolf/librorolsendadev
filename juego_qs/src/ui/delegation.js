@@ -4,6 +4,9 @@
 export function elegirEjecutor({ titulo, candidatos, onElegido }) {
   const overlay = document.createElement("div");
   overlay.className = "roll-overlay";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", titulo);
   overlay.innerHTML = `
     <div class="roll-card">
       <div class="roll-header">${titulo}</div>
@@ -14,15 +17,25 @@ export function elegirEjecutor({ titulo, candidatos, onElegido }) {
             <span class="deleg-hab">${c.habilidadNombre} ${c.habilidadValor}</span>
           </button>`).join("")}
       </div>
+      <button type="button" class="delegar-cancelar">Cancelar</button>
     </div>
   `;
   document.body.appendChild(overlay);
-  overlay.querySelectorAll(".delegar-opcion").forEach(btn => {
+  const opciones = [...overlay.querySelectorAll(".delegar-opcion")];
+  const cerrar = () => overlay.remove();
+  overlay.querySelector(".delegar-cancelar").addEventListener("click", cerrar);
+  overlay.addEventListener("keydown", event => {
+    if (event.key === "Escape") cerrar();
+  });
+  opciones.forEach(btn => {
     btn.addEventListener("click", () => {
+      if (btn.disabled) return;
+      opciones.forEach(opcion => { opcion.disabled = true; });
       overlay.remove();
       onElegido(btn.dataset.id);
     });
   });
+  opciones[0]?.focus();
 }
 
 export function mostrarToast(texto) {

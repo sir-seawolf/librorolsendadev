@@ -38,6 +38,7 @@ export async function montarDialogo(container, escenaId) {
   }
 
   function renderNodo(nodo) {
+    if (nodo.consequence) aplicarConsecuencias(nodo.consequence, "player", { onTexto: () => {} });
     caja.innerHTML = `
       <div class="dialogo-hablante">${nombreDeHablante(nodo.speaker)}</div>
       <div class="dialogo-texto">${nodo.text}</div>

@@ -45,11 +45,13 @@ export const state = {
   partyMembers: {},        // id -> runtime (ver crearRuntimeDesdeBase)
   posicion: "callejon",
   escena: "module_select",
+  entrySpawnId: null,       // punto de llegada solicitado al cambiar entre localizaciones Tiled
   flags: {},                // banderas genéricas que leen/escriben las escenas JSON
   enemigosActivos: [],
   objetosDescubiertos: [],
   pistasDescubiertas: [],
   decisiones: [],
+  resources: {},            // contadores narrativos declarativos (PC, tiempo, favores...)
   historialTiradas: [],     // log de tiradas — ver registrarTirada()
   mapaDescubierto: {},      // fog-of-war del minimapa: { "x,y": true }
   estadoPersecucion: null,
@@ -114,8 +116,10 @@ export function iniciarPartida(pregenerados, playerBaseId) {
   state.objetosDescubiertos = [];
   state.pistasDescubiertas = [];
   state.decisiones = [];
+  state.resources = {};
   state.historialTiradas = [];
   state.mapaDescubierto = {};
+  state.entrySpawnId = null;
   state.finalTipo = null;
   notificarEscena();
 }
@@ -273,8 +277,12 @@ export function nivelHeridaActual() {
   return j ? nivelHeridaDe(j) : "sano";
 }
 
-export function cambiarEscena(nombre) {
+export function cambiarEscena(nombre, { spawnId = null } = {}) {
   state.escena = nombre;
+  // Las escenas que no declaran destino limpian cualquier llegada anterior.
+  // Así una transición narrativa normal nunca hereda por accidente el spawn
+  // de una localización panorámica visitada antes.
+  state.entrySpawnId = spawnId;
   notificarEscena();
   guardar();
 }

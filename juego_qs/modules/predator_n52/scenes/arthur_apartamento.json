@@ -74,6 +74,8 @@
       "blockedByFlags": ["bloc_revelado"],
       "executors": "party",
       "delegationTitle": "¿Quién revela las marcas del bloc?",
+      "oncePerActor": true,
+      "noExecutorText": "Todos los miembros disponibles del grupo ya han intentado revelar las marcas del bloc.",
       "rollNota": "Sin allowsHelp a propósito: pasar el lápiz sobre la hoja es un gesto de una sola persona — tener más gente mirando no ayuda a revelar mejor la marca. Distinto de 'revisar los cajones', donde varias manos sí cubren más superficie.",
       "roll": {
         "skill": "Investigación",
@@ -92,9 +94,12 @@
         "text": "Pasas el lápiz de lado sobre la hoja en blanco. Las marcas de lo que se escribió en la hoja de arriba emergen en gris: una cita, un código, un plazo — y un par de anotaciones sueltas que no encajan todavía."
       },
       "onFailure": {
-        "setFlags": ["bloc_revelado"],
         "discoverClues": ["Nota revelada a medias: \"Drake Street Nº34. Próximo ---- a las 23:00. -------- Indigo es Azul\"."],
-        "text": "El lápiz revela algo, pero la presión no fue uniforme: entre las marcas legibles hay huecos que no puedes rellenar. \"Drake Street Nº34. Próximo ---- a las 23:00. -------- Indigo es Azul\"."
+        "text": "El lápiz revela algo, pero la presión no fue uniforme: entre las marcas legibles hay huecos. Ese personaje no puede repetir el procedimiento, aunque otro miembro del grupo todavía puede intentarlo. \"Drake Street Nº34. Próximo ---- a las 23:00. -------- Indigo es Azul\"."
+      },
+      "onExhausted": {
+        "setFlags": ["bloc_revelado"],
+        "text": "Todos habéis probado ya sobre la misma hoja. Las marcas parciales son lo único que habéis conseguido recuperar."
       }
     },
     {
@@ -109,6 +114,8 @@
       "blockedByFlags": ["extracto_revisado"],
       "executors": "party",
       "delegationTitle": "¿Quién revisa los cajones?",
+      "oncePerActor": true,
+      "noExecutorText": "Todos los miembros disponibles del grupo ya han revisado los cajones.",
       "roll": {
         "skill": "Alerta",
         "fallbackSkill": "Percepción",
@@ -123,8 +130,11 @@
         "text": "Bajo una pila de ropa mal doblada, un extracto bancario del National Bank. La nómina cuadra con CHAFRY — los 3.000 PC extra de los dos últimos meses, no."
       },
       "onFailure": {
+        "text": "Revuelves entre ropa y papeles sueltos sin encontrar nada que llame la atención. Ese personaje ya ha agotado su búsqueda, aunque otro miembro del grupo todavía puede revisar los cajones."
+      },
+      "onExhausted": {
         "setFlags": ["extracto_revisado"],
-        "text": "Revuelves entre ropa y papeles sueltos sin encontrar nada que llame la atención. Si hay algo más aquí, se te escapa."
+        "text": "Todos los miembros disponibles del grupo han revisado ya los cajones sin encontrar nada más."
       }
     },
     {

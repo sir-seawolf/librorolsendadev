@@ -46,13 +46,21 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
   cursor: pointer; transition: color .2s, border-color .2s;
 }
 #config-toggle:hover, #config-toggle:focus-visible { color: var(--color-informacion, #6cb6e0); border-color: var(--color-informacion, #6cb6e0); outline: none; }
+#config-panel {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,.35);
+}
+#config-panel[hidden] { display: none; }
 .ajustes-caja {
-  position: fixed; right: 12px; bottom: 54px; z-index: 250;
-  width: min(260px, 80vw); padding: 16px; background: #0c0e14;
+  position: fixed; right: 12px; bottom: 54px; z-index: 301;
+  width: min(260px, 80vw); max-height: calc(100vh - 66px); overflow-y: auto;
+  padding: 16px; background: #0c0e14;
   border: 1px solid var(--color-borde, #333); box-shadow: 0 4px 24px rgba(0,0,0,.5);
   font-family: "Share Tech Mono", monospace;
 }
 .ajustes-fila { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.ajustes-fila-bus { display: grid; grid-template-columns: 1fr auto; }
+.ajustes-fila-bus input { grid-column: 1 / -1; width: 100%; }
 .ajustes-etiqueta { font-size: .78em; letter-spacing: 1px; color: var(--color-texto-tenue, #8a94a3); text-transform: uppercase; }
 .ajustes-onoff {
   min-width: 52px; padding: 5px 10px; background: rgba(255,255,255,.05);
@@ -89,6 +97,14 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 }
 .btn-menu:hover { background: var(--accent); border-color: var(--accent); }
 .btn-menu:disabled { opacity: .4; cursor: not-allowed; }
+
+/* Entradas de desarrollo (module.json: devEntryPoints) -- claramente
+   diferenciadas del menú real: etiqueta propia, borde distinto, nunca se
+   confunden con "Nueva partida" ni con el recorrido narrativo real. */
+.menu-dev-entradas { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; width: 320px; border-top: 1px dashed var(--color-borde); padding-top: 14px; }
+.menu-dev-etiqueta { font-size: .68em; letter-spacing: 1.5px; color: var(--color-texto-tenue); text-transform: uppercase; text-align: center; }
+.btn-menu-dev { border-color: var(--color-informacion); color: var(--color-informacion); }
+.btn-menu-dev:hover { background: var(--color-informacion); color: #08090b; border-color: var(--color-informacion); }
 
 .volver-modulos { margin-top: 6px; font-size: .85em; }
 .volver-modulos a { color: var(--muted); text-decoration: none; }
@@ -134,14 +150,34 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 /* ---------- Escena narrativa ---------- */
 .narrativa {
   flex: 1; display: flex; flex-direction: column;
-  background-size: cover; background-position: center;
+  min-height: 0; background-size: cover; background-position: center;
 }
-.narrativa-fondo { flex: 1; background-size: cover; background-position: center; position: relative; }
+.narrativa-fondo { flex: 1; min-height: 0; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+.narrativa-presentacion {
+  position: absolute; left: 50%; top: 50%; transform-origin: center;
+  pointer-events: none;
+}
+.narrativa-fondo > .hotspots { z-index: 300; }
 .narrativa-texto {
   background: rgba(10,10,12,.92); padding: 14px 18px; border-top: 2px solid var(--accent);
   max-height: 40%; overflow-y: auto; font-size: .95em; line-height: 1.5;
 }
 .narrativa-texto em { color: var(--accent-2); }
+
+/* En una composición por capas el escenario no debe cambiar de tamaño
+   cuando el texto pasa de una a varias líneas. Texto y acciones forman un
+   HUD inferior superpuesto; cada uno gestiona su propio desbordamiento. */
+.narrativa-con-presentacion { position: relative; overflow: hidden; }
+.narrativa-con-presentacion .narrativa-fondo { position: absolute; inset: 0; }
+.narrativa-con-presentacion .narrativa-texto {
+  position: absolute; left: 0; right: 0; bottom: 62px; z-index: 320;
+  height: clamp(96px, 18vh, 150px); box-sizing: border-box; overflow-y: auto;
+  background: linear-gradient(to top, rgba(8,9,11,.97), rgba(8,9,11,.86));
+}
+.narrativa-con-presentacion #controles {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 321;
+}
+.narrativa-con-presentacion .acciones-bar { min-height: 62px; align-items: center; }
 
 /* ---------- Diálogo (type: "dialogue") ---------- */
 .dialogo-caja {
@@ -183,9 +219,18 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 
 /* Menú contextual táctil (narrative.js: tap directo sobre una zona con
    varias acciones válidas) — pequeño, anclado a la zona, no un panel a
-   toda anchura. Objetivos >=44px de alto (§20 de la guía de Iteración 7). */
+   toda anchura. Objetivos >=44px de alto (§20 de la guía de Iteración 7).
+   BUG real encontrado con Playwright (2026-08-21, sesión de playtest):
+   antes vivía DENTRO de #scenario (overflow:hidden) posicionado con
+   porcentajes -- con zonas de varios verbos y poco alto disponible
+   (móvil horizontal) se recortaba y #sheet-panel se veía a través del
+   hueco. Ahora narrative.js lo monta en document.body (capa de overlay
+   común, fuera de cualquier overflow:hidden/grid de página) con
+   position:fixed y coordenadas de píxel reales, con abrazadera al
+   viewport -- position:fixed aquí es la mitad del arreglo, la otra
+   mitad (el cálculo de posición) vive en menuContextual(). */
 .hotspot-menu {
-  position: absolute; z-index: 20; display: flex; flex-direction: column;
+  position: fixed; z-index: 260; display: flex; flex-direction: column;
   background: var(--color-superficie-alta); border: 1px solid var(--color-seleccion);
   min-width: 140px; box-shadow: 0 4px 14px rgba(0,0,0,.5);
 }
@@ -197,6 +242,165 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .hotspot-menu-opcion:last-child { border-bottom: none; }
 .hotspot-menu-opcion:hover, .hotspot-menu-opcion:active { background: rgba(201,162,39,.15); color: var(--color-seleccion); }
 
+/* ---------- Escena panorámica (Localización C, docs/CONTRATO_VISUAL_PREDATOR.md) ----------
+   .panoramica-viewport recorta; .panoramica-escala ajusta el fondo maestro
+   (2400x900) a la altura disponible con un solo transform:scale; dentro de
+   ella, .panoramica-mundo vive a tamaño natural y se desplaza en X (cámara)
+   -- así todas las coordenadas de mundo del JSON (hotspots, objetos, avatar)
+   se declaran en píxeles del maestro, sin depender del viewport real. */
+.panoramica { flex: 1; display: flex; flex-direction: column; position: relative; }
+.panoramica-viewport { flex: 1; position: relative; overflow: hidden; background: #000; }
+.panoramica-escala { position: absolute; top: 0; left: 0; transform-origin: top left; }
+.panoramica-mundo { position: relative; will-change: transform; }
+.panoramica-fondo-master { position: absolute; top: 0; left: 0; display: block; pointer-events: none; }
+.panoramica-capas { display: contents; }
+.panoramica-capa { position: absolute; display: block; max-width: none; will-change: transform; }
+.panoramica-capa--lighting { mix-blend-mode: screen; }
+.panoramica-capa-sombras { z-index: 10; }
+.panoramica-capa-objetos { z-index: 20; }
+.panoramica-avatar-grupo { z-index: 30; }
+.panoramica-capa-oclusion { z-index: 40; }
+.panoramica-capa-luces { z-index: 50; }
+.panoramica-capa-primer-plano { z-index: 100; }
+.panoramica-hotspots { z-index: 200; }
+.panoramica-capa-sombras, .panoramica-capa-objetos, .panoramica-capa-luces, .panoramica-capa-oclusion, .panoramica-capa-primer-plano, .panoramica-hotspots { position: absolute; inset: 0; }
+.panoramica-capa-sombras, .panoramica-capa-luces, .panoramica-capa-primer-plano, .panoramica-hotspots { pointer-events: none; }
+.panoramica-hotspots > * { pointer-events: auto; }
+.panoramica-objeto, .panoramica-luz { position: absolute; display: block; pointer-events: none; }
+/* Sombra de contacto: elipse difusa bajo el punto de apoyo del objeto —
+   CSS puro (radial-gradient + blur), ningún PNG original se toca. */
+.panoramica-sombra-contacto {
+  position: absolute; height: 22px; border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.55) 0%, rgba(0,0,0,.28) 55%, transparent 80%);
+  filter: blur(3px); transform: translateX(-50%);
+}
+
+/* ---------- Avatar: silueta provisional real (calibración 2026-08-22) ----------
+   modules/predator_n52/assets/panoramic/callejon/actor_silueta_provisional.svg
+   -- autoría propia, lienzo 180x240 con los pies ya en el borde inferior:
+   a diferencia del sprite anterior (executor_side.png, enemigo reutilizado
+   con una etiqueta de texto incrustada de la lámina fuente), este archivo
+   no necesita ningún recorte por CSS. Anclado en los pies: el grupo se
+   posiciona por su ESQUINA superior izquierda ya calculada en JS a partir
+   de avatarX/walkable.y, no por transform. */
+.panoramica-avatar-grupo { position: absolute; }
+.panoramica-avatar { display: block; transform-origin: bottom center; }
+.panoramica-avatar-grupo.caminando .panoramica-avatar-sombra { transform: translateX(-50%) scaleX(.86); opacity: .72; }
+.panoramica-avatar-sombra {
+  position: absolute; bottom: -4px; left: 50%; width: 70%; height: 14px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.5) 0%, transparent 75%);
+  transform: translateX(-50%); filter: blur(2px);
+}
+
+/* El contenedor vive en .panoramica-capa-oclusion, montada DESPUÉS del
+   avatar en el DOM: siempre que el avatar quede geométricamente detrás de
+   su footprint, el contenedor lo cubre -- máscara de oclusión estructural,
+   sin ningún flag de por medio. */
+.panoramica-capa-oclusion .panoramica-objeto { pointer-events: none; }
+
+/* Primer plano parallax: silueta oscura, deliberadamente sin detalle. Se
+   desplaza un poco más que el mundo para aportar profundidad sin generar
+   otra ilustración completa ni convertir la escena en un falso 3D. */
+.panoramica-primer-plano {
+  position: absolute; display: block; pointer-events: none;
+  transform-origin: bottom left; will-change: transform;
+  filter: drop-shadow(8px 0 12px rgba(0,0,0,.55));
+}
+
+/* Luces de la farola: mix-blend-mode:screen -- funde el resplandor con la
+   fotografía (aditivo) en vez de pegarlo encima con alfa normal, que es lo
+   que producía la "caja" cálida rectangular perceptible (Hallazgo de
+   auditoría visual, 2026-08-22). Los PNG en sí ya son degradados radiales
+   limpios (ver MANIFIESTO_PROCEDENCIA.md) -- el arreglo es puramente de
+   composición, no se ha tocado ningún archivo de imagen. */
+.panoramica-luz { mix-blend-mode: screen; }
+
+/* ---------- Hotspots independientes del dibujo ----------
+   Sin círculo/rótulo permanentes en presentación normal (Hallazgo de
+   auditoría visual): el área interactiva (tamaño real, igual que antes)
+   sigue ahí y sigue siendo alcanzable por teclado -- solo la MARCA VISUAL es
+   contextual, aparece por proximidad real (.cerca, actualizada en cada
+   movimiento) o por foco de teclado, nunca por hover exclusivamente. */
+.panoramica-hotspot {
+  position: absolute; cursor: pointer;
+  background: transparent; border: none;
+}
+.panoramica-hotspot:focus-visible { outline: 2px solid var(--color-seleccion); outline-offset: 2px; }
+/* `display` (no opacity/transition): se alterna directamente desde JS por
+   proximidad/foco (panoramic.js, actualizarProximidadHotspots()) -- un
+   estado binario sin fotogramas intermedios, para no depender de que un
+   `transition` de opacidad quede bien compuesto en cualquier motor de
+   render (se observó un artefacto real de repintado con la versión
+   anterior basada en opacity+transform, reproducido tanto en Playwright
+   como en un navegador real).
+   Flota ENCIMA de la caja del hotspot (bottom:100%, no centrada dentro de
+   ella): la caja ahora coincide con el hueco real del objeto, así que un
+   rótulo centrado quedaría a la altura del propio personaje al acercarse
+   -- tapándolo (Hallazgo de calibración, 2026-08-22, punto 8: "el rótulo
+   FORZAR PUERTA no puede tapar al personaje"). */
+.panoramica-hotspot-etiqueta {
+  position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); margin-bottom: 6px;
+  background: rgba(8,9,11,.92); color: #fff; border: 1px solid var(--color-seleccion);
+  font-size: .78em; font-weight: 600; letter-spacing: .5px; white-space: nowrap;
+  padding: 6px 12px; border-radius: 3px; pointer-events: none;
+}
+/* Depuración (config.debug.showHotspotAreas, en `false` por defecto): deja
+   el área y el rótulo siempre visibles, para verificar cobertura sin tener
+   que acercar el avatar a cada uno -- panoramic.js ya fuerza `display` a
+   "block" en este modo; el borde punteado es solo la señal adicional del
+   área en sí. */
+.panoramica.debug-hotspots .panoramica-hotspot { border: 1px dashed rgba(255,255,255,.35); background: rgba(255,255,255,.04); }
+
+/* ---------- Nota técnica del piloto (config.debug.showPanoramicDevNote,
+   en `false` por defecto) ---------- Fuera del flujo (position:fixed): en
+   cualquier estado (visible u oculta) nunca resta alto al escenario, a
+   diferencia de la maqueta anterior donde ocupaba una franja fija debajo
+   del viewport (Hallazgo de auditoría visual). */
+.panoramica-dev-nota {
+  position: fixed; left: 12px; bottom: 12px; z-index: 230; max-width: min(520px, 80vw);
+  background: rgba(8,9,11,.92); border: 1px solid var(--color-borde); color: var(--color-texto-tenue);
+  font-size: .72em; line-height: 1.4; padding: 8px 12px; pointer-events: none;
+}
+
+/* ---------- Capa de calibración (config.debug.showPanoramicCalibration,
+   "false" por defecto) ---------- Vive DENTRO de #mundo (panoramicCalibration.js
+   la monta como hija más), así que hereda la misma transformación de
+   escala/cámara que el fondo y los objetos -- ninguna coordenada propia en
+   píxeles de viewport. Genérica: no conoce "callejón" ni ningún id. */
+.panoramica-calibracion { position: absolute; top: 0; left: 0; pointer-events: none; }
+.cal-grid line { stroke: rgba(255,255,255,.12); stroke-width: 1; }
+.cal-grid text { fill: rgba(255,255,255,.35); font-size: 11px; font-family: monospace; }
+.cal-banda { fill: rgba(80,180,255,.12); stroke: rgba(80,180,255,.4); stroke-width: 1; }
+.cal-linea-pies { stroke: rgba(80,255,140,.7); stroke-width: 2; stroke-dasharray: 6 4; }
+.cal-caja-objeto { fill: none; stroke: rgba(255,210,60,.85); stroke-width: 2; }
+.cal-caja-hotspot { fill: none; stroke: rgba(255,90,90,.85); stroke-width: 2; stroke-dasharray: 4 3; }
+.cal-anclaje line { stroke: rgba(255,60,220,.95); stroke-width: 2; }
+.cal-etiqueta { fill: rgba(255,210,60,.95); font-size: 12px; font-family: monospace; font-weight: bold; }
+
+.panoramica-controles-movimiento { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px; background: #08090b; border-top: 1px solid #222; }
+.panoramica-mov-btn {
+  background: var(--panel-2); color: var(--ink); border: 1px solid #333;
+  min-width: 56px; min-height: 44px; font-size: 1.1em; cursor: pointer; font-family: inherit;
+}
+.panoramica-mov-btn:hover { border-color: var(--accent); }
+.panoramica-efectos-toggle {
+  background: none; color: var(--color-texto-tenue); border: 1px solid var(--color-borde);
+  min-height: 44px; padding: 0 12px; font-size: .72em; letter-spacing: 1px; cursor: pointer; font-family: inherit;
+}
+.panoramica-efectos-toggle[aria-pressed="true"] { color: var(--color-informacion); border-color: var(--color-informacion); }
+.panoramica-texto {
+  background: rgba(10,10,12,.92); padding: 12px 18px; border-top: 2px solid var(--accent);
+  max-height: 30%; overflow-y: auto; font-size: .9em; line-height: 1.5;
+}
+.panoramica-texto em { color: var(--accent-2); }
+/* Reutiliza los breakpoints ya existentes de #app (móvil vertical/horizontal
+   comparten los mismos umbrales que el resto del motor) -- el panel de
+   controles se compacta, nunca se oculta (accesibilidad táctil). */
+@media (max-width: 900px) {
+  .panoramica-mov-btn { min-width: 48px; }
+  .panoramica-efectos-toggle { font-size: .64em; padding: 0 8px; }
+}
+
 /* ---------- Tiradas ----------
    Jerarquía deliberada (§6): quién/qué -> efectiva -> EL DADO (dominante
    un instante) -> resultado -> consecuencia. Los números de desglose
@@ -205,7 +409,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
    etiqueta/valor a lo largo de toda la tarjeta. */
 .roll-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,.75);
-  display: flex; align-items: center; justify-content: center; z-index: 100;
+  display: flex; align-items: center; justify-content: center; z-index: 400;
 }
 .roll-card {
   background: var(--color-superficie-alta); border: 1px solid var(--color-peligro); padding: 22px 28px;
@@ -294,11 +498,18 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .ficha-toggle:hover { color: var(--ink); border-color: var(--color-seleccion); }
 
 .ficha-compacta {
-  display: flex; flex-direction: column; gap: 4px; padding-top: 6px; padding-right: 34px;
+  display: flex; flex-direction: column; gap: 7px; padding: 7px 34px 7px 8px;
   cursor: pointer; height: 100%; justify-content: center;
 }
 .fc-nombre { font-size: .92em; letter-spacing: .5px; }
-.fc-vida, .fc-pe { font-size: .75em; color: var(--muted); }
+.fc-recursos { display: flex; flex-direction: column; gap: 5px; }
+.fc-vida-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; width: 100%; height: 7px; }
+.fc-vida-segmento { display: block; overflow: hidden; background: #242932; border: 1px solid rgba(255,255,255,.08); }
+.fc-vida-segmento i { display: block; height: 100%; background: var(--color-informacion); }
+.fc-vida-segmento.herido i { background: var(--color-seleccion); }
+.fc-vida-segmento.tullido i { background: var(--color-peligro); }
+.fc-pe { display: flex; gap: 4px; color: #56606b; font-size: .72em; line-height: 1; }
+.fc-pe-punto.activo { color: var(--color-seleccion); text-shadow: 0 0 7px rgba(201,162,39,.45); }
 
 #sheet-panel.colapsada { padding: 10px 8px; }
 
@@ -317,6 +528,49 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
   #sheet-panel.colapsada .ficha-compacta { flex-direction: row; gap: 14px; align-items: center; padding: 0 44px 0 12px; }
 }
 
+/* ---------- Ficha en cajón superpuesto (escena.sheetLayout === "overlay",
+   piloto de Localización C, docs/CONTRATO_VISUAL_PREDATOR.md) ----------
+   El escenario debe ocupar todo el ancho/alto en escenas panorámicas; la
+   ficha deja de reservar columna/fila y sale del flujo del grid
+   (position:fixed) para aparecer como cajón temporal sobre la escena.
+   Reutiliza intacto TODO lo de arriba (#sheet-panel, .colapsada,
+   .ficha-toggle, .ficha-compacta, renderFicha()) -- ninguna implementación
+   nueva, solo su posicionamiento cambia en este modo. */
+#app.ficha-superpuesta,
+#app.ficha-superpuesta:has(#sheet-panel.colapsada) {
+  grid-template-columns: 1fr;
+}
+#app.ficha-superpuesta #sheet-panel {
+  position: fixed; top: 0; right: 0; height: 100vh; z-index: 220;
+  width: min(320px, 86vw);
+  box-shadow: -10px 0 26px rgba(0,0,0,.55);
+  transition: width .2s ease;
+}
+/* Colapsada: SOLO una pestaña (alto ajustado al contenido, no 100vh) -- si
+   ocupara toda la altura se solapaba con la barra de controles de
+   movimiento al pie de la pantalla en móvil vertical, tapando parte de
+   "◀"/"▶" (Hallazgo de calibración, 2026-08-22, punto 2: "ningún control
+   de movimiento puede quedar recortado"). Expandida sigue a pantalla
+   completa (100vh, desplazable) para caber toda la ficha real. */
+#app.ficha-superpuesta #sheet-panel.colapsada { width: 116px; height: auto; max-height: calc(100vh - 24px); }
+@media (max-width: 900px) {
+  #app.ficha-superpuesta,
+  #app.ficha-superpuesta:has(#sheet-panel.colapsada) {
+    grid-template-rows: 1fr;
+  }
+  /* La regla móvil de más arriba (línea ~382) pone la ficha compacta en
+     fila porque ahí el panel colapsado es una TIRA HORIZONTAL al pie de la
+     pantalla (56px de alto, ancho completo). Aquí, en cajón superpuesto, el
+     panel colapsado sigue siendo una columna vertical angosta (150px de
+     ancho) igual que en escritorio -- forzar "row" la rompía (Hallazgo de
+     auditoría visual: texto solapado/cortado en móvil). */
+  #app.ficha-superpuesta #sheet-panel.colapsada { width: 104px; }
+  #app.ficha-superpuesta #sheet-panel.colapsada .ficha-compacta {
+    flex-direction: column; align-items: stretch; gap: 4px; padding: 0 6px;
+  }
+  #app.ficha-superpuesta #sheet-panel.colapsada .ficha-toggle { top: 8px; right: 8px; }
+}
+
 /* ---------- Historial de tiradas ---------- */
 .log-table { width: 100%; border-collapse: collapse; font-size: .72em; }
 .log-table th, .log-table td { border-bottom: 1px solid #262a31; padding: 4px 6px; text-align: left; white-space: nowrap; }
@@ -328,7 +582,15 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 .delegar-lista { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
 .delegar-opcion { display: flex; justify-content: space-between; gap: 10px; background: var(--panel-2); border: 1px solid #333; padding: 8px 12px; cursor: pointer; font-family: inherit; color: var(--ink); text-align: left; }
 .delegar-opcion:hover { border-color: var(--color-seleccion); }
+.delegar-opcion:focus-visible { border-color: var(--color-seleccion); outline: 2px solid var(--color-informacion); outline-offset: 2px; }
+.delegar-opcion:disabled { opacity: .55; cursor: wait; }
 .delegar-opcion .deleg-hab { color: var(--muted); font-size: .82em; }
+.delegar-cancelar {
+  width: 100%; margin-top: 10px; min-height: 44px; cursor: pointer;
+  background: transparent; border: 1px solid var(--color-borde);
+  color: var(--color-texto-tenue); font: inherit;
+}
+.delegar-cancelar:hover, .delegar-cancelar:focus-visible { color: var(--color-texto); border-color: var(--color-seleccion); outline: none; }
 
 /* ---------- Notificación breve ---------- */
 .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--panel-2); border: 1px solid var(--critico); color: var(--critico); padding: 8px 16px; font-size: .82em; z-index: 200; opacity: 0; transition: opacity .3s; }
@@ -408,6 +670,24 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); 
 /* ---------- Fundido entre escenas ---------- */
 #scenario.fundiendo { animation: escena-fade .18s ease-in; }
 @keyframes escena-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Carga y error recuperable entre escenas (Hallazgo 7) ---------- */
+.escena-cargando {
+  display: flex; align-items: center; justify-content: center; height: 100%;
+  color: var(--muted); font-size: .9em; letter-spacing: .5px;
+}
+.escena-error {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  height: 100%; padding: 24px; text-align: center; color: var(--ink);
+}
+.escena-error-titulo { font-size: 1.1em; color: var(--color-peligro); }
+.escena-error-detalle { color: var(--muted); font-size: .82em; max-width: 480px; }
+.escena-error-botones { display: flex; gap: 10px; }
+.escena-error-botones button {
+  background: var(--panel-2); border: 1px solid var(--color-borde); color: var(--ink);
+  padding: 10px 18px; font-family: inherit; cursor: pointer; min-height: 44px;
+}
+.escena-error-botones button:hover { border-color: var(--color-seleccion); }
 
 :root.reduce-motion .screen-shake { animation: none; }
 :root.large-ui { font-size: 18px; }

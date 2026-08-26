@@ -116,11 +116,24 @@ export async function cargarModulo(moduleId) {
   // juego" en general — nada anterior a este punto (selector de módulos,
   // gateway en juego.html) debe nombrarse ninguno concreto.
   if (typeof document !== "undefined") document.title = manifest.title;
+  // Tema visual del módulo (encargo de sesión, 2026-08-21): campo genérico
+  // "theme" en module.json, mismo patrón que "music" justo abajo —
+  // moduleLoader no conoce ningún id de tema concreto, solo selecciona el
+  // bloque `:root[data-theme="..."]` que theme.css declare para él (ver
+  // theme.css). Sin "theme" declarado, cae al tema base de La Senda (el
+  // `:root` sin atributo, ya existente).
+  if (typeof document !== "undefined") {
+    if (manifest.theme) document.documentElement.dataset.theme = manifest.theme;
+    else delete document.documentElement.dataset.theme;
+  }
   // Mapa musical del módulo (Iteración Audio): campo genérico "music" en
   // module.json, motor-agnóstico — moduleLoader no sabe qué estados declara
   // cada módulo, solo los pasa tal cual al gestor de audio. audioManager es
   // null en Node/tests (no hay `window`), por eso el guard.
-  if (audioManager) audioManager.registrarMapaModulo(moduleId, manifest.music || {});
+  if (audioManager) {
+    audioManager.registrarMapaModulo(moduleId, manifest.music || {});
+    audioManager.registrarManifiestoAudio(moduleId, manifest.audio || {});
+  }
   return moduloActual;
 }
 

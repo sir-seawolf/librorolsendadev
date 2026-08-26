@@ -2,20 +2,32 @@
   "id": "rastrear_tarjeta",
   "type": "single_roll",
   "musicState": "exploration",
-  "title": "Rastrear la tarjeta-llave",
-  "background": "assets/backgrounds/callejon.jpg",
+  "title": "Interior del vehículo — seguir el rastro",
+  "background": "assets/backgrounds/interior_vehiculo_noche.png",
   "sheetContext": "callejon",
-  "availableParty": ["player", "bishop", "salim"],
-  "introText": "Con el peligro inmediato atrás, hay tiempo de mirar con calma lo que llevabas encima: el chip, la cartera de Arthur Dicking, y una tarjeta-llave electrónica sin ninguna dirección visible. Rastrear a qué edificio pertenece es cuestión de electrónica y paciencia.",
+  "sheetLayout": "overlay",
+  "availableParty": [
+    "player",
+    "bishop",
+    "salim"
+  ],
+  "introText": "La lluvia golpea el parabrisas mientras dejáis atrás el aparcamiento. Sobre la consola descansan el chip CHAFRY recuperado del cadáver de Arthur y la tarjeta-llave electrónica. El lector portátil puede buscar a qué edificio pertenece la tarjeta sin obligaros a detener el vehículo.",
   "actions": [
-    { "id": "rastrear", "label": "Rastrear la tarjeta (Tecnológica)" }
+    {
+      "id": "rastrear",
+      "label": "Rastrear la tarjeta-llave — Difícil −10"
+    }
   ],
   "interactions": [
     {
       "id": "rastrear_tarjeta",
-      "trigger": { "action": "rastrear" },
+      "trigger": {
+        "action": "rastrear"
+      },
       "executors": "party",
-      "delegationTitle": "¿Quién rastrea la tarjeta?",
+      "delegationTitle": "¿Quién maneja el lector?",
+      "oncePerActor": true,
+      "noExecutorText": "Todos los que podían interpretar el lector ya lo han intentado. Repetir los mismos pasos no dará un resultado distinto.",
       "roll": {
         "skill": "Tecnológica",
         "difficulty": -10,
@@ -25,15 +37,253 @@
       },
       "rollNota": "QS L.22 pide 'Electrónica + Tecnológica'; ningún pregenerado tiene 'Electrónica' como habilidad propia en su ficha (solo Tecnológica), así que se usa Tecnológica sola — desviación documentada en docs/QS_RULE_MAP.md.",
       "onSuccess": {
-        "registerDecision": "Tarjeta-llave rastreada sin problemas.",
-        "text": "Un par de consultas cruzadas y el sistema escupe una dirección: un bloque de apartamentos baratos en el extrarradio, tercer piso. Rápido y limpio.",
-        "transition": "arthur_apartamento"
+        "setFlags": [
+          "direccion_arthur_localizada"
+        ],
+        "discoverClues": [
+          "La tarjeta-llave pertenece a un bloque de apartamentos baratos del extrarradio, tercer piso."
+        ],
+        "registerDecision": "Tarjeta-llave rastreada desde el vehículo.",
+        "text": "El lector enlaza varios registros y dibuja una ruta: un bloque de apartamentos baratos en el extrarradio, tercer piso. La dirección queda marcada en el navegador.",
+        "transition": "mapa_investigacion",
+        "transitionDelay": 1500
       },
       "onFailure": {
-        "registerDecision": "Tarjeta-llave rastreada tras varios intentos.",
-        "text": "Cuesta más de lo esperado — el sistema de la tarjeta está pensado para no ser rastreado fácilmente — pero al final aparece una dirección: un bloque de apartamentos baratos en el extrarradio, tercer piso.",
-        "transition": "arthur_apartamento"
+        "registerDecision": "Un miembro del grupo no logró rastrear la tarjeta-llave desde el vehículo.",
+        "text": "El lector devuelve identificadores incompatibles. Ese enfoque ya está agotado para quien lo intentó; otro miembro del grupo puede probar con sus propios conocimientos."
+      },
+      "onExhausted": {
+        "setFlags": [
+          "direccion_arthur_localizada",
+          "rastreo_por_fragmentos"
+        ],
+        "discoverClues": [
+          "Al cruzar los fragmentos obtenidos por el grupo, la tarjeta-llave señala un bloque de apartamentos baratos del extrarradio, tercer piso."
+        ],
+        "registerDecision": "La dirección de Arthur se reconstruyó combinando varios rastreos incompletos.",
+        "text": "Nadie logra descifrar el sistema completo, pero los fragmentos no fallan en el mismo sitio. Al superponerlos aparece una dirección suficiente para continuar: extrarradio, tercer piso.",
+        "transition": "mapa_investigacion",
+        "transitionDelay": 1800
       }
     }
-  ]
+  ],
+  "audio": {
+    "ambience": "vehicle_cabin_rain",
+    "events": {
+      "scan": "chip_reader_scan",
+      "success": "chip_reader_confirm"
+    }
+  },
+  "presentationNote": "La imagen compuesta existente sigue siendo el fallback y la base del habitáculo. Exterior, lluvia y primer plano se superponen mediante encuadre declarativo. Los ocupantes permanecen definidos como capas independientes, pero se ocultan en producción hasta disponer de siluetas transparentes apropiadas: los retratos cuadrados no representan cuerpos dentro del vehículo.",
+  "presentation": {
+    "schemaVersion": 1,
+    "width": 1672,
+    "height": 941,
+    "layers": [
+      {
+        "id": "vehicle-cabin-base",
+        "resource": "assets/backgrounds/interior_vehiculo_noche.png",
+        "fallback": "assets/backgrounds/interior_vehiculo_noche.png",
+        "depth": 0,
+        "semantic": "architecture",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "size": {
+          "width": 1672,
+          "height": 941
+        },
+        "fit": "cover",
+        "parallax": {
+          "x": 1,
+          "y": 1
+        },
+        "pointer": {
+          "x": 0.25,
+          "y": 0.15
+        },
+        "oscillation": {
+          "x": 0.25,
+          "y": 0.2,
+          "periodMs": 12000
+        }
+      },
+      {
+        "id": "window-exterior",
+        "resource": "assets/generated/raycast/environments/skyline_ciudad_02.png",
+        "optional": true,
+        "depth": 10,
+        "semantic": "background",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "size": {
+          "width": 1672,
+          "height": 941
+        },
+        "fit": "cover",
+        "frame": {
+          "clip": {
+            "top": 0.08,
+            "right": 0.18,
+            "bottom": 0.42,
+            "left": 0.18
+          },
+          "focus": {
+            "x": 0.5,
+            "y": 0.46
+          }
+        },
+        "parallax": {
+          "x": 0.9,
+          "y": 0.92
+        },
+        "pointer": {
+          "x": 4,
+          "y": 2
+        },
+        "oscillation": {
+          "x": 2,
+          "y": 0.8,
+          "periodMs": 11000
+        }
+      },
+      {
+        "id": "window-rain",
+        "resource": "assets/generated/effects/fx_rain.png",
+        "optional": true,
+        "depth": 20,
+        "semantic": "lighting",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "size": {
+          "width": 1672,
+          "height": 941
+        },
+        "fit": "cover",
+        "frame": {
+          "clip": {
+            "top": 0.08,
+            "right": 0.18,
+            "bottom": 0.42,
+            "left": 0.18
+          }
+        },
+        "parallax": {
+          "x": 0.94,
+          "y": 0.94
+        },
+        "pointer": {
+          "x": 2,
+          "y": 1
+        },
+        "oscillation": {
+          "x": 0.8,
+          "y": 1.2,
+          "periodMs": 9000
+        }
+      },
+      {
+        "id": "civil-dashboard-indicator",
+        "resource": "assets/generated/ui/ui_success.png",
+        "optional": true,
+        "depth": 50,
+        "semantic": "object",
+        "position": {
+          "x": 810,
+          "y": 655
+        },
+        "size": {
+          "width": 42,
+          "height": 53
+        },
+        "visibility": {
+          "all": [
+            "vehiculo_civil_robado"
+          ]
+        }
+      },
+      {
+        "id": "van-dashboard-indicator",
+        "resource": "assets/generated/ui/ui_armor.png",
+        "optional": true,
+        "depth": 50,
+        "semantic": "object",
+        "position": {
+          "x": 810,
+          "y": 655
+        },
+        "size": {
+          "width": 45,
+          "height": 50
+        },
+        "visibility": {
+          "all": [
+            "furgoneta_reparto_robada"
+          ]
+        }
+      },
+      {
+        "id": "prototype-dashboard-indicator",
+        "resource": "assets/generated/ui/ui_alert.png",
+        "optional": true,
+        "depth": 50,
+        "semantic": "object",
+        "position": {
+          "x": 810,
+          "y": 655
+        },
+        "size": {
+          "width": 40,
+          "height": 50
+        },
+        "visibility": {
+          "all": [
+            "prototipo_mort_robado"
+          ]
+        }
+      },
+      {
+        "id": "dashboard-foreground",
+        "resource": "assets/backgrounds/interior_vehiculo_noche.png",
+        "fallback": "assets/backgrounds/interior_vehiculo_noche.png",
+        "depth": 60,
+        "semantic": "foreground",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "size": {
+          "width": 1672,
+          "height": 941
+        },
+        "fit": "cover",
+        "frame": {
+          "clip": {
+            "top": 0.58,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        "parallax": {
+          "x": 1,
+          "y": 1
+        },
+        "pointer": {
+          "x": 0.45,
+          "y": 0.25
+        },
+        "oscillation": {
+          "x": 0.4,
+          "y": 0.3,
+          "periodMs": 12000
+        }
+      }
+    ]
+  }
 }

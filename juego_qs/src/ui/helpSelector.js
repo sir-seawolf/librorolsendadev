@@ -7,6 +7,9 @@ export function elegirAyudantes({ titulo, primario, candidatos, onConfirmar }) {
 
   const overlay = document.createElement("div");
   overlay.className = "roll-overlay";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", titulo);
   overlay.innerHTML = `
     <div class="roll-card">
       <div class="roll-header">${titulo}</div>
@@ -23,12 +26,22 @@ export function elegirAyudantes({ titulo, primario, candidatos, onConfirmar }) {
           </label>`).join("")}
       </div>
       <button class="btn-continuar" id="ayuda-confirmar" style="margin-top:10px;width:100%">Confirmar</button>
+      <button type="button" class="delegar-cancelar">Cancelar</button>
     </div>
   `;
   document.body.appendChild(overlay);
-  overlay.querySelector("#ayuda-confirmar").addEventListener("click", () => {
+  const confirmar = overlay.querySelector("#ayuda-confirmar");
+  const cerrar = () => overlay.remove();
+  overlay.querySelector(".delegar-cancelar").addEventListener("click", cerrar);
+  overlay.addEventListener("keydown", event => {
+    if (event.key === "Escape") cerrar();
+  });
+  confirmar.addEventListener("click", () => {
+    if (confirmar.disabled) return;
+    confirmar.disabled = true;
     const elegidos = [...overlay.querySelectorAll('input[type="checkbox"]:checked')].map(i => i.value);
     overlay.remove();
     onConfirmar(elegidos);
   });
+  confirmar.focus();
 }

@@ -7,6 +7,8 @@ import { montarPersecucion } from "./raycast.js";
 import { montarCombate } from "./combat.js";
 import { montarFinal } from "./ending.js";
 import { montarDialogo } from "./dialogue.js";
+import { montarPanoramica } from "./panoramic.js";
+import { montarCombateTactico } from "../../tactical/tacticalPhaserRenderer.js";
 
 const RENDERERS_POR_TIPO = {
   point_click: montarNarrativa,
@@ -15,7 +17,15 @@ const RENDERERS_POR_TIPO = {
   raycast: montarPersecucion,
   combat: montarCombate,
   ending: montarFinal,
-  dialogue: montarDialogo
+  dialogue: montarDialogo,
+  // Localización C (docs/CONTRATO_VISUAL_PREDATOR.md): cámara panorámica con
+  // zona muerta, objetos con estado, hotspots independientes del dibujo.
+  // Piloto único por ahora: callejon_panoramico_piloto.json.
+  panoramic: montarPanoramica,
+  // Fase 1 de integración productiva (docs/TACTICAL_PRODUCTION_PHASE1.md):
+  // con TACTICAL_PHASER_ENABLED=false (default) cae siempre al renderer de
+  // combate actual -- ningún módulo existente lo usa todavía.
+  "tactical-phaser": montarCombateTactico
 };
 
 export async function montarEscenaPorId(container, escenaId) {

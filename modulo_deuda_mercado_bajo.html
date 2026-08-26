@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — La deuda del mercado bajo</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — La deuda del mercado bajo</h1>
+<p><em>Colección de one-shots de MadCity — episodio 4 de 6. Estado: BORRADOR, pendiente de playtest.</em></p>
+<blockquote>
+<p>«No debes nada por respirar. El alquiler del aire se cobra mañana.»</p>
+</blockquote>
+<p><img alt="El Mercado de los Siete Remaches con el Muro de las Respuestas al fondo, puestos plurales y persianas a medio subir" src="img/madcity_deuda_mercado_siete_remaches.png" /><br />
+<em>El Mercado de los Siete Remaches, hoy sin abrir la persiana del todo.</em></p>
+<hr />
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> el Mercado de los Siete Remaches no ha abierto la persiana esta mañana. Alguien ha robado el registro cifrado de deudas y favores que sostiene medio mercado — no es un libro de cuentas frío, es la memoria de quién le cubrió un turno a quién, quién prestó una herramienta, quién adelantó una medicina. La ladrona es Tamsin Voro, una aprendiz que solo quería borrar una deuda injusta heredada de su familia. Al abrir el registro descubrió dos cosas que no esperaba: que su custodio ha estado protegiendo en secreto a familias vulnerables alterando algunas entradas, y que un intermediario vinculado al mercado negro ha colado deudas predatorias disfrazadas de acuerdos comunitarios.</p>
+<p><strong>Duración:</strong> una sesión de 4-6 horas. Escala local: un mercado, un puñado de deudas concretas con nombre y cara, tres cobradores contratados. Esto no decide el destino de MadCity.</p>
+<p><strong>Qué saben los PJ:</strong> que el Mercado de los Siete Remaches sigue cerrado, que corre el rumor de un robo, y que la gente está más preocupada por sus propios acuerdos pendientes que por encontrar un culpable.</p>
+<p><strong>Verdad del Narrador:</strong> no hay villano limpio. Tamsin robó por una razón comprensible; Karel quiere el registro de vuelta porque sin él el mercado deja de confiar; el custodio original mintió por protección, no por beneficio propio; el intermediario de Mort sí actúa con intención predatoria, pero incluso él cree que solo está haciendo negocios normales.</p>
+<p><strong>Objetivo inmediato:</strong> recuperar (o decidir qué hacer con) el registro antes de que el mercado abra su siguiente turno y varios acuerdos deban liquidarse.</p>
+<p><strong>Pregunta de fondo:</strong> ¿qué es una deuda cuando no hay banco de por medio — solo memoria, confianza y la palabra de alguien?</p>
+<p><strong>Si nadie interviene:</strong> el mercado abre igualmente, pero sin el registro los comerciantes congelan preventivamente préstamos y herramientas compartidas. Nadie muere, pero el tejido de confianza que sostiene el Mercado de los Siete Remaches se resiente durante semanas.</p>
+<h3>Desarrollo en cinco escenas</h3>
+<ol>
+<li>La persiana no sube — mercado detenido, robo descubierto y primeras acusaciones.</li>
+<li>Favores que pesan — hablar con deudores, custodios y comerciantes.</li>
+<li>La ruta de las reparaciones — persecución breve por talleres, conductos y la Pasarela de las Mil Fachadas.</li>
+<li>La deuda dentro de la deuda — confrontar a Tamsin y descubrir las dos manipulaciones.</li>
+<li>Abrir el mercado — decidir el destino del registro.</li>
+</ol>
+<hr />
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Reloj — hasta la apertura del siguiente turno del mercado:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tiempo</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0:00</td>
+<td>El mercado no abre. Escena 1 empieza aquí.</td>
+</tr>
+<tr>
+<td>H+0:30</td>
+<td>Los rumores sobre el robo ya circulan por todo el mercado — cada comerciante tiene su propia teoría.</td>
+</tr>
+<tr>
+<td>H+1:30</td>
+<td>Casimir Dray, el intermediario de Mort, empieza a mover a sus cobradores para recuperar el registro por su cuenta antes que nadie más.</td>
+</tr>
+<tr>
+<td>H+2:30</td>
+<td>Última ventana razonable para encontrar a Tamsin antes de que decida destruir el registro por miedo, convencida de que no hay salida limpia.</td>
+</tr>
+<tr>
+<td>H+3:00</td>
+<td>El turno siguiente empieza a formarse en las entradas del mercado. Sin resolución, los comerciantes empiezan a congelar preventivamente préstamos y herramientas — Escena 5 se juega con esta presión encima.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cómo avanza el tiempo de ficción:</strong> no lo simules minuto a minuto — avanza el reloj cuando los PJ cambien de zona del mercado, investiguen a fondo, o esperen una respuesta.</p>
+<ul>
+<li>Hablar con un comerciante o deudor: 5-15 min, según cuánto quiera contar.</li>
+<li>Moverse entre puestos del mercado: 5 min.</li>
+<li>Mercado → Pasarela de las Mil Fachadas (persecución, Escena 3): 10-15 min de ruta normal, menos si se corta camino por un taller o conducto conocido.</li>
+<li>Confrontar a Tamsin con calma en vez de por la fuerza: 15-20 min, pero evita que destruya el registro por pánico.</li>
+</ul>
+<p><strong>Las tres partes, en una frase:</strong><br />
+- <strong>Karel «Tres Llaves»</strong> → recuperar el registro porque sin él el mercado deja de confiar en los acuerdos informales.<br />
+- <strong>Casimir Dray</strong> → recuperar el registro porque ahí están sus deudas predatorias disfrazadas, y no quiere que salgan a la luz.<br />
+- <strong>Tamsin Voro</strong> → borrar una deuda injusta sin que nadie salga perjudicado — objetivo que ya se le ha complicado más de lo que esperaba.</p>
+<p><strong>No hay villano de manual.</strong> Casimir es el que más se acerca, pero incluso él cree sinceramente que sus términos son "de mercado" — no se ve a sí mismo como depredador. La violencia solo aparece si sus cobradores se sienten acorralados sin salida.</p>
+<p><strong>La deuda, en mesa — hazla física, no abstracta:</strong> cada deuda importante de este módulo tiene un objeto, una cara y un plazo concretos — un taladro sin devolver, un turno cubierto durante una enfermedad, una medicina adelantada para un nieto, un tejado de puesto reparado sin cobrar. Evita hablar de "deudas" en abstracto o en cifras de PC salvo cuando sea explícitamente el dinero de Casimir — el resto del mercado no funciona con números, funciona con memoria y con objetos que se pueden señalar.</p>
+<p><strong>Textura de mercado (1d6, para ambientar sin planificar):</strong> úsala dos o tres veces a lo largo de las Escenas 1 y 2.</p>
+<table>
+<thead>
+<tr>
+<th>d6</th>
+<th>Momento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Un comerciante intenta cobrar un favor viejo a un PJ que nunca ha estado allí — confusión con otra persona.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dos vecinos discuten en voz alta sobre quién le debe a quién un turno de limpieza del conducto principal — uno alega que todavía "está pagando" la reparación de urgencia que un técnico le hizo gratis durante la fiesta del Glass-Dog.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Alguien ofrece a los PJ un trato claramente ventajoso a cambio de "un pequeño favor más adelante".</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Un niño reparte agua entre los puestos cerrados, cobrando en historias en vez de en PC — la mejor es la del ascensor de la Línea 25 que "desapareció trece minutos", que él jura que fueron horas.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Un vendedor cuenta, sin que nadie se lo pida, una versión completamente distinta del robo.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Karel repara algo gratis para alguien que claramente no puede pagar, sin decírselo a nadie.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>Tamsin Voro, aprendiz del Mercado de los Siete Remaches, robó el registro cifrado de deudas y favores porque quería borrar una deuda que su familia arrastraba desde hace años — una deuda que ella considera injusta, contraída por su madre en un momento de necesidad real. Al abrir el registro con ayuda de Reko Ansa, su amigo y cómplice, descubrió dos cosas que no esperaba.</p>
+<p>Primero: el custodio anterior del registro modificó, con el tiempo, algunas entradas para proteger a familias vulnerables — reduciendo o retrasando deudas de quien claramente no podía pagar, sin decírselo a nadie. Una forma de justicia silenciosa, técnicamente una falsificación.</p>
+<p>Segundo: Casimir Dray, intermediario vinculado al mercado negro de Mort, ha estado introduciendo deudas predatorias en el registro disfrazadas de acuerdos comunitarios normales — préstamos con condiciones muy superiores a las habituales del mercado, aprovechando la confianza que la gente deposita en el sistema informal.</p>
+<p>Tamsin no sabe qué hacer con lo que ha descubierto. Karel quiere el registro de vuelta porque sin él el mercado entero pierde su forma de recordar los acuerdos. Casimir quiere recuperarlo antes de que alguien note sus entradas. Ninguna solución deja intactas la confianza, la justicia y la supervivencia económica del mercado a la vez.</p>
+<h3>Qué saben los PJ y qué no</h3>
+<p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si el robo fue un acto egoísta o desesperado — eso se aclara, con matices, en la Escena 4.</p>
+<h3>Tono</h3>
+<p>Investigación social cálida y tensa a la vez — mucha gente real con necesidades reales, poca violencia, ninguna solución perfecta. El mercado debe sentirse vivo y concreto, no como telón de fondo.</p>
+<hr />
+<h2>Reparto y relaciones</h2>
+<h3>Karel «Tres Llaves» — técnico Nakel y mediador</h3>
+<p><em>Aspecto:</em> rápido, impaciente, mucho más limpio de lo que permite su taller habitual; hoy más serio de lo normal, con las manos manchadas de grasa incluso sin estar reparando nada.</p>
+<p>PNJ interpretable (4-5 profesiones), compartida con el resto de la colección — misma ficha ya publicada en <em>El Glass-Dog que nadie vio</em>.</p>
+<p>F30/A45/P55/V45 | PV 15/15/15 | Bld 0 | Mecánica/Reparación 65% | Alerta 55% | Sigilo 40%</p>
+<ul>
+<li>Quiere que los acuerdos informales sigan siendo fiables — sin el registro, el mercado empieza a desconfiar de todo.</li>
+<li>Falla previsible: oculta lo que sabe para proteger a su gente, incluso cuando compartirlo ayudaría.</li>
+<li>Sin PJ: intenta encontrar a Tamsin por su cuenta, sin éxito garantizado, mientras Casimir se le adelanta.</li>
+</ul>
+<h3>Tamsin Voro — la aprendiz</h3>
+<p><em>Aspecto:</em> dieciocho o diecinueve años, manos ya curtidas de aprendiz de taller, mirada de quien ha tomado una decisión de la que ya no está segura.</p>
+<p>PNJ interpretable (2-3 profesiones), sin ficha de combate relevante.</p>
+<p>Mecánica 35% | Sigilo 40%</p>
+<ul>
+<li>Quiere borrar la deuda de su familia sin que nadie más salga perjudicado — objetivo que ya no controla del todo.</li>
+<li>No es una ladrona profesional: actuó movida por desesperación, no por cálculo.</li>
+<li>Sin PJ: si nadie la encuentra antes de H+2:30, destruye el registro por miedo, convencida de que no hay salida limpia.</li>
+</ul>
+<h3>Reko Ansa — el amigo cómplice</h3>
+<p>PNJ funcional (1-2 profesiones). Ayudó a Tamsin por lealtad, no por convicción propia; es quien más rápido cedería si alguien le ofrece una salida razonable para ambos.</p>
+<p>Sigilo 35% | sin ficha de combate relevante.</p>
+<h3>Yara Solt y Ben Achara — mediadores del mercado</h3>
+<p>PNJ funcionales (2 profesiones cada uno). Gestionan el día a día del mercado en ausencia del registro; Yara es pragmática y quiere una solución rápida, Ben insiste en hacer las cosas "como se debe", aunque tarde más.</p>
+<p>Social 45% cada uno | sin ficha de combate relevante.</p>
+<h3>Casimir Dray — intermediario de Mort</h3>
+<p><em>Aspecto:</em> traje de corte caro para el barrio en el que se mueve, sonrisa fácil que no llega a los ojos, siempre con alguien más cerca de lo estrictamente necesario.</p>
+<p>PNJ interpretable (4 profesiones). Vinculado al mercado negro de Mort; cree sinceramente que sus términos son "de mercado", no depredadores.</p>
+<p>F25/A30/P45/V45 | PV 14/14/14 | Bld 1 | Social/Negociación 60% | Intimidación 45%</p>
+<ul>
+<li>Quiere el registro de vuelta antes de que alguien note sus entradas predatorias.</li>
+<li>No ordenará un ataque abierto en pleno mercado — prefiere presión y amenaza velada a la violencia directa.</li>
+<li>Sin PJ: sus cobradores localizan a Tamsin casi a la vez que cualquiera que la busque, y negocian (o fuerzan) la devolución del registro a su manera.</li>
+</ul>
+<h3>Marro Kest y dos cobradores</h3>
+<p><em>Aspecto:</em> equipamiento estandarizado, sin nada personal a la vista — la única seña de para quién trabajan de verdad es un distintivo gris oscuro y fucsia cosido por dentro del cuello, visible solo si alguien se acerca demasiado.</p>
+<p>PNJ funcionales (2 profesiones cada uno, fuerza fija — no crece con el número de PJ). Trabajan para Casimir; profesionales, no sádicos.</p>
+<p>F35/A35/P30/V30 | PV 15/15/15 | Bld 2 | Sin Armas 50% | Daño 6 (no letal por defecto)</p>
+<ul>
+<li>Suben la apuesta solo si los acorralan sin salida — igual que en el resto de la colección, la violencia aquí es síntoma de mala gestión, no el plan.</li>
+</ul>
+<h3>Deudas concretas del mercado (usa dos o tres, no todas)</h3>
+<ul>
+<li><strong>Iolanda</strong>, vendedora de telas, le reparó gratis el tejado del puesto a un vecino enfermo — el registro decía que ese vecino "debía" a Iolanda un tejado nuevo, no dinero.</li>
+<li><strong>Vieja Mérida</strong> adelantó su ración de medicina a su nieto hace meses; el registro lo anotaba como favor pendiente de devolver "cuando se pueda", sin plazo fijo — una de las entradas que el custodio anterior protegió.</li>
+<li><strong>Tor Ilven</strong>, herrero, prestó un taladro industrial hace un año y nunca lo recuperó — uno de los pocos casos donde la deuda es simplemente eso: un objeto concreto sin devolver, sin drama añadido.</li>
+</ul>
+<h3>Relaciones para el Narrador</h3>
+<ul>
+<li>Karel y Tamsin se conocen del taller; él la trató siempre como aprendiz de confianza, lo que hace su decisión más dolorosa para ambos.</li>
+<li>Casimir y Karel se toleran en público y desconfían en privado — Karel sabe qué es Casimir, pero no tiene pruebas limpias.</li>
+<li>Reko seguiría a Tamsin a cualquier parte, pero preferiría no tener que hacerlo.</li>
+<li>Los mediadores (Yara y Ben) representan dos formas distintas de gestionar la crisis: rapidez frente a procedimiento.</li>
+</ul>
+<hr />
+<h2>Lugares necesarios</h2>
+<p><strong>Mercado de los Siete Remaches:</strong> puestos cerrados, el Muro de las Respuestas con las Dos Voces respondiéndose desde hace años. Centro de las Escenas 1, 2 y 5.</p>
+<p><strong>Talleres y conductos cercanos:</strong> rutas de trabajo y mantenimiento que conectan el mercado con el resto del gajo. Escenario de parte de la persecución de la Escena 3.</p>
+<p><strong>Pasarela de las Mil Fachadas:</strong> tramo final de la persecución, compartido con <em>El Glass-Dog que nadie vio</em>.</p>
+<p><strong>Escondite de Tamsin:</strong> un rincón discreto, probablemente en los mismos talleres o conductos — no necesita ser un lugar nuevo con nombre propio.</p>
+<p><img alt="Mapa esquemático de las conexiones confirmadas entre la Plaza del Primer Vuelo, la Pasarela de las Mil Fachadas y el Mercado de los Siete Remaches" src="img/madcity_mapa_plaza_pasarela_mercado.png" /><br />
+<em>Diagrama esquemático, no ilustración — el Mercado y la Plaza no tienen conexión directa; solo vía Pasarela o, con transbordo, por la Línea Vertical 25.</em></p>
+<hr />
+<h2>Las cinco escenas</h2>
+<p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
+<h3>Escena 1 — La persiana no sube</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El Mercado de los Siete Remaches, en silencio a una hora en que debería estar lleno de voces regateando. Una persiana a medio subir. Y un grupo pequeño de comerciantes discutiendo en voz baja junto a la oficina del registro, como si hablar alto fuera a empeorar las cosas.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el mercado no ha abierto. El robo del registro se ha descubierto hace poco y las primeras acusaciones ya circulan.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Yara Solt y Ben Achara</strong> — intentan gestionar la crisis sin que cunda el pánico; Yara quiere una solución rápida, Ben quiere hacerlo "bien" aunque tarde (<em>fichas: ver Reparto</em>).<br />
+- <strong>Karel «Tres Llaves»</strong> — ya está allí, más serio de lo normal, evitando dar su opinión sobre quién pudo hacerlo (<em>Aspecto</em> y ficha: ver Reparto).<br />
+- Comerciantes y deudores, como comunidad, con reacciones variadas — preocupación, indignación, o silencio incómodo de quien tiene algo que ocultar.</p>
+<p><strong>Qué saben / qué dicen:</strong> el registro ha desaparecido de la oficina custodiada; nadie vio entrar ni salir a nadie sospechoso a plena luz.</p>
+<p><strong>Obstáculos y acontecimientos:</strong> usa la Textura de mercado (1d6, arriba) una vez si hace falta llenar el momento.</p>
+<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
+- <strong>Investigación o Alerta</strong> (examinar la oficina del registro): éxito → encuentras una marca de herramienta de taller en la cerradura forzada, apuntando a alguien con acceso técnico; fallo → confirmas el robo, sin pista adicional.<br />
+- <strong>Social</strong> (hablar con los comerciantes presentes): éxito → alguien menciona, sin darle importancia, que Tamsin no ha aparecido hoy — la primera pista real; fallo → solo rumores contradictorios.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Karel empieza a preguntar por su cuenta, con más lentitud que un grupo dedicado.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene una primera pista (la marca de herramienta, la ausencia de Tamsin, o ambas) y decide cómo seguir investigando.</p>
+<p><strong>Después:</strong> cuánta confianza ganaron aquí con los comerciantes condiciona cuánto cuentan en la Escena 2.</p>
+<blockquote>
+<p>«Aquí no hace falta un banco. Hace falta que la gente se acuerde. Y ahora no se acuerda nadie de nada.»</p>
+</blockquote>
+<h3>Escena 2 — Favores que pesan</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Puesto por puesto, la misma pregunta cambia de forma cada vez: no es "¿quién robó?", es "¿qué me deben, y a quién se lo debo yo?". El registro no era una lista. Era la memoria de un barrio entero.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> investigación entre deudores, comerciantes y custodios para entender qué sostenía realmente el registro — y para acercarse a Tamsin.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Iolanda, Vieja Mérida, Tor Ilven</strong> — cada uno con su deuda concreta (ver Reparto), dispuestos a hablar si se les trata con respeto, no como sospechosos.<br />
+- <strong>Karel</strong>, si acompaña — conoce a casi todo el mundo aquí y puede abrir puertas que un forastero no abriría solo.<br />
+- <strong>Casimir Dray</strong>, si ronda la zona — observa desde la distancia, sin intervenir directamente todavía (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> hablando con suficiente gente, queda claro que el registro protegía a algunos deudores más de lo esperado — la primera señal de las entradas modificadas del custodio anterior.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social</strong> (ganarse la confianza de los comerciantes): éxito → alguien confirma haber visto a Tamsin y Reko cerca de los talleres hace unas horas; fallo → la gente protege a los suyos por instinto, sin mentir directamente.<br />
+- <strong>Investigación</strong> (cruzar varias historias de deudas): éxito → detectas que algunas entradas no encajan con la lógica normal del mercado — demasiado protectoras o demasiado duras; fallo → confirmas que el registro era complejo, sin identificar el patrón todavía.<br />
+- <strong>Alerta</strong> (notar a Casimir si está presente): éxito → reconoces que su interés en el tema es demasiado insistente para ser casual; fallo → pasa desapercibido.</p>
+<p><strong>Si los PJ no hacen nada:</strong> los cobradores de Casimir llegan a la misma pista de los talleres casi al mismo tiempo, con menos escrúpulos para conseguirla.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene la ubicación aproximada de Tamsin y una primera idea de que el registro escondía más de una capa de manipulación.</p>
+<p><strong>Después:</strong> la calidad de la información conseguida aquí determina si la Escena 3 empieza con ventaja o ya en marcha.</p>
+<h3>Escena 3 — La ruta de las reparaciones</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Talleres medio vacíos, conductos de mantenimiento que huelen a metal caliente, y al fondo, dos siluetas que corren en cuanto ven que alguien se acerca demasiado.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> persecución breve hacia Tamsin y Reko, con los cobradores de Casimir moviéndose en paralelo si llegaron antes o al mismo tiempo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Tamsin y Reko</strong> — huyen, asustados, sin intención de hacer daño a nadie.<br />
+- <strong>Marro Kest y dos cobradores</strong>, si Casimir ya está en juego — buscan recuperar el registro por la fuerza si hace falta, aunque prefieren evitarlo en público (<em>ficha: ver Reparto</em>).</p>
+<p><strong>Qué saben / qué dicen:</strong> nada nuevo — escena de acción y decisión, no de información.</p>
+<p><strong>Obstáculos y acontecimientos:</strong> los talleres y conductos son estrechos; correr sin cuidado puede volcar equipo o alertar a más gente de la que conviene.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Atletismo o Acrobacias</strong> (seguir el ritmo de la persecución): éxito → alcanzas a Tamsin y Reko antes que los cobradores; fallo → llegas a la vez que ellos, complicando la Escena 4.<br />
+- <strong>Social</strong> (gritar algo que detenga a Tamsin en vez de perseguirla como una amenaza): éxito → se para a escuchar, aunque con desconfianza; fallo → sigue corriendo, asumiendo lo peor.<br />
+- <strong>Combate no letal</strong>, solo si los cobradores fuerzan la situación: usa las reglas vigentes — ni Casimir ni Marro quieren un incidente público, así que cualquier combate aquí escala la tensión sin llegar a fuerza letal por defecto.</p>
+<p><strong>Si los PJ no hacen nada:</strong> los cobradores de Casimir alcanzan a Tamsin primero y la presionan directamente, sin violencia todavía pero con amenaza real.</p>
+<p><strong>Cómo termina:</strong> el grupo alcanza a Tamsin, con o sin los cobradores de Casimir también presentes.</p>
+<p><strong>Después:</strong> quién llegó primero y cómo condiciona si la Escena 4 empieza como conversación o como confrontación a tres bandas.</p>
+<h3>Escena 4 — La deuda dentro de la deuda</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Tamsin, acorralada, con el registro apretado contra el pecho como si fuera lo único que todavía puede controlar. «No lo entendéis», dice, antes de que nadie le pregunte nada.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> confrontación con Tamsin. El grupo descubre las dos manipulaciones del registro: la protectora del custodio anterior y la predatoria de Casimir.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Tamsin y Reko</strong> — a la defensiva, dispuestos a explicarse si alguien los escucha en vez de juzgarlos de entrada (<em>fichas: ver Reparto</em>).<br />
+- <strong>Marro Kest y cobradores</strong>, si llegaron también — presionan por el registro, sin llegar a la violencia salvo que se les acorrale sin salida.</p>
+<p><strong>Qué saben / qué dicen:</strong> Tamsin puede confirmar toda la verdad completa si se le da la oportunidad — su motivo original, el descubrimiento de las entradas protectoras, y las entradas predatorias de Casimir.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social o Empatía</strong> (convencer a Tamsin de que hay una salida mejor que destruir el registro): éxito → accede a colaborar en vez de actuar por pánico; fallo → duda, pero no ataca ni huye de nuevo si se le trata con respeto.<br />
+- <strong>Investigación</strong> (examinar el registro directamente, si Tamsin lo permite): éxito → confirmas con precisión qué entradas son protectoras y cuáles predatorias, información clave para la Escena 5; fallo → confirmas que hay dos tipos de manipulación, sin el detalle completo.<br />
+- <strong>Liderazgo o Social</strong> (gestionar la tensión si los cobradores de Casimir también están presentes): éxito → se retiran sin incidente, avisando a Casimir de que "esto no ha terminado"; fallo → un forcejeo breve, no letal, antes de que se retiren igualmente.</p>
+<p><strong>Si los PJ no hacen nada:</strong> si no llegan a tiempo, Tamsin destruye el registro por miedo — perdiendo tanto las entradas protectoras como la prueba contra Casimir.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene el registro (o su destrucción confirmada) y toda la información necesaria para decidir qué hacer con él en la Escena 5.</p>
+<p><strong>Después:</strong> cómo trataron a Tamsin aquí condiciona su disposición a participar en la asamblea de la Escena 5.</p>
+<h3>Escena 5 — Abrir el mercado</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El mercado, todavía cerrado, pero ahora con la mayoría del barrio reunido junto al Muro de las Respuestas, esperando una decisión que no es solo sobre un objeto robado, sino sobre qué tipo de memoria quiere tener esta comunidad.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con el registro recuperado (o perdido), toca decidir su destino ante la comunidad — devolverlo, corregirlo, destruirlo, dividirlo o transformarlo mediante una asamblea o acuerdo verificable.</p>
+<p><strong>PNJ presentes:</strong> Karel, Yara y Ben, Tamsin (si sobrevivió a la Escena 4 sin huir de nuevo), comerciantes y deudores como comunidad interesada.</p>
+<p><strong>Qué saben / qué dicen:</strong> la verdad completa puede compartirse con la comunidad, negociarse en privado, o gestionarse solo entre unos pocos — ninguna opción es automáticamente correcta.</p>
+<p><strong>Tiradas posibles:</strong> Social o Liderazgo para inclinar la asamblea; ninguna sustituye la decisión de la mesa.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Karel y los mediadores deciden por su cuenta, con un resultado más frágil y menos favorable para todos que si los PJ median.</p>
+<p><strong>Cómo termina:</strong> queda decidido el destino del registro y qué pasa con Tamsin y con las entradas predatorias de Casimir.</p>
+<p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
+<h3>Textos para leer</h3>
+<p><strong>El mercado cerrado</strong></p>
+<blockquote>
+<p>El Mercado de los Siete Remaches, en silencio a una hora en que debería estar lleno de voces regateando. Una persiana a medio subir.</p>
+</blockquote>
+<p><strong>La persecución</strong></p>
+<blockquote>
+<p>Talleres medio vacíos, conductos de mantenimiento que huelen a metal caliente, y al fondo, dos siluetas que corren en cuanto ven que alguien se acerca demasiado.</p>
+</blockquote>
+<p><strong>La asamblea</strong></p>
+<blockquote>
+<p>El mercado, todavía cerrado, pero ahora con la mayoría del barrio reunido junto al Muro de las Respuestas, esperando una decisión que no es solo sobre un objeto robado.</p>
+</blockquote>
+<hr />
+<h2>Pistas e información</h2>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Revela</th>
+<th>Vía alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oficina del registro forzada (Escena 1)</td>
+<td>Marca de herramienta de taller en la cerradura</td>
+<td>Comerciante que menciona la ausencia de Tamsin</td>
+</tr>
+<tr>
+<td>Deudores y comerciantes (Escena 2)</td>
+<td>Patrón de entradas protectoras del custodio anterior</td>
+<td>Observar el interés insistente de Casimir</td>
+</tr>
+<tr>
+<td>Cruce de historias de deudas (Escena 2)</td>
+<td>Ubicación aproximada de Tamsin en los talleres</td>
+<td>Karel, si acompaña, reconoce sus escondites habituales</td>
+</tr>
+<tr>
+<td>Confrontar a Tamsin (Escena 4)</td>
+<td>Verdad completa: motivo, entradas protectoras y predatorias</td>
+<td>Examinar el registro directamente si ella lo permite</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recompensas y gastos</h2>
+<p>La misión no debe dejar a los PJ con pérdidas netas por gastos o equipo dañado — cúbrelo antes de repartir nada más.</p>
+<p><strong>Recompensa económica:</strong> entre 150 y 300 PC por PJ — más baja que en los módulos corporativos de la colección, a propósito: este es un encargo comunitario, pagado en una mezcla de PC, favores y reputación, gestionado por Karel y los mediadores del mercado.</p>
+<p><strong>Beneficios alternativos:</strong> reputación fuerte en el Mercado de los Siete Remaches; favores concretos de los deudores nombrados (Iolanda, Vieja Mérida, Tor Ilven) gestionables más adelante; relación con Karel reforzada para el resto de la colección.</p>
+<hr />
+<h2>Desenlaces combinables</h2>
+<p><strong>Registro restaurado con transparencia.</strong> Se corrigen las entradas predatorias, se mantienen (o se hacen públicas con cuidado) las protectoras. El mercado gana confianza a medio plazo, aunque algunas verdades incómodas salen a la luz.</p>
+<p><strong>Registro dividido.</strong> Se separan las deudas comunitarias normales de las vinculadas a Casimir, documentando estas últimas como prueba independiente. Solución técnica, menos dramática, muy defendible.</p>
+<p><strong>Registro destruido, empezar de nuevo.</strong> Si se perdió en la Escena 4 o se decide destruirlo deliberadamente, el mercado reconstruye su memoria desde cero, con Karel como garante temporal. Pierde historia, gana un borrón y cuenta nueva.</p>
+<p><strong>Tamsin asume su parte.</strong> Combinable con cualquiera de los anteriores: dependiendo de cómo se la trató, puede quedar como aprendiz reivindicada, como responsable de un daño que debe reparar, o en algún punto intermedio.</p>
+<p><strong>Casimir queda expuesto o no.</strong> Si se reunieron pruebas claras en la Escena 4, sus deudas predatorias pueden anularse formalmente ante la comunidad — con el coste de convertirlo en enemigo declarado de los PJ y de Mort como telón de fondo.</p>
+<hr />
+<h2>Continuidad opcional</h2>
+<ul>
+<li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de la colección.</li>
+<li><strong>Si se han jugado otros episodios:</strong> el resultado del Mercado altera confianza, precios o rumores en el resto de la colección, sin bloquear compras futuras.</li>
+</ul>
+<p>Ejemplo de puerta abierta: Karel conoce a alguien que necesita material de otro mundo — enlace natural hacia cualquier otro DLC, sin obligar a aceptarlo.</p>
+<hr />
+<h2>Las Dos Voces</h2>
+<p>Voz satírica en el Muro de las Respuestas:</p>
+<blockquote>
+<p>«No debes nada por respirar. El alquiler del aire se cobra mañana.»</p>
+</blockquote>
+<p>Respuesta estoica, tejida con recibos cancelados:</p>
+<blockquote>
+<p>«Aceptar ayuda crea memoria. No siempre crea dueño.»</p>
+</blockquote>
+<p>Una intervención, no más — ni oráculo ni pista indispensable.</p>
+<hr />
+<h2>Límites de este módulo</h2>
+<ul>
+<li>No presentar todos los préstamos como explotación ni toda deuda como sagrada.</li>
+<li>Los Nakel no son una cultura homogénea de pobreza o delincuencia — el mercado es plural, no exclusivamente Nakel.</li>
+<li>Reputación y relaciones deben importar más que un gran pago en PC, pero los gastos del encargo deben cubrirse.</li>
+<li>Permitir soluciones no previstas: auditoría, registros separados, mediación externa o reparación técnica.</li>
+<li>No revelar ni insinuar el secreto de Proctor.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p>Reloj hasta la apertura del siguiente turno del mercado, con tiempos de desplazamiento fijados en el Panel del Narrador. Cinco escenas autosuficientes: mercado cerrado → investigación social → persecución breve → confrontación → asamblea, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Ninguna deuda de este módulo es una cifra abstracta: cada una tiene cara, objeto y plazo. Ningún desenlace es el correcto.</p>
+<hr />
+<p><em>MadCity — colección de one-shots. Comparte lugares, PNJ y dirección visual con el resto de la colección, sin formar una campaña obligatoria.</em></p>
+</div>
+</body>
+</html>

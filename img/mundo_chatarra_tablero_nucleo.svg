@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2622"/>
+      <stop offset="1" stop-color="#1c1815"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="1120" fill="url(#bg)"/>
+  <rect x="18" y="18" width="1564" height="1084" fill="none" stroke="#8a6d4b" stroke-width="4"/>
+  <rect x="30" y="30" width="1540" height="1060" fill="none" stroke="#5a4a38" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="800" y="88" text-anchor="middle" fill="#e8d9b8" font-size="46" letter-spacing="4">EL NÚCLEO — TABLERO DE FABRICACIÓN</text>
+  <text x="800" y="122" text-anchor="middle" fill="#a9967a" font-size="24" font-style="italic">Escena 4 · reparte las cuatro tareas entre el grupo o subgrupos</text>
+
+  <line x1="70" y1="150" x2="1530" y2="150" stroke="#8a6d4b" stroke-width="2"/>
+
+  <!-- Four task cells -->
+  <g font-size="30" fill="#e8d9b8">
+    <!-- ENERGIA -->
+    <rect x="70" y="180" width="355" height="230" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <rect x="98" y="204" width="40" height="40" fill="none" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="150" y="234" font-size="32" font-weight="bold" letter-spacing="2">ENERGÍA</text>
+    <text x="98" y="278" font-size="21" fill="#c9b892">Estabilizar el</text>
+    <text x="98" y="304" font-size="21" fill="#c9b892">suministro.</text>
+    <text x="98" y="344" font-size="19" fill="#a9967a">Electrónica (natural).</text>
+    <text x="98" y="368" font-size="19" fill="#a9967a">Mecánica: +1 escalón</text>
+    <text x="98" y="392" font-size="19" fill="#a9967a">de dificultad.</text>
+
+    <!-- MATERIA PRIMA -->
+    <rect x="440" y="180" width="355" height="230" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <rect x="468" y="204" width="40" height="40" fill="none" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="520" y="234" font-size="24" font-weight="bold" letter-spacing="1">MATERIA PRIMA</text>
+    <text x="468" y="278" font-size="21" fill="#c9b892">Aportar material</text>
+    <text x="468" y="304" font-size="21" fill="#c9b892">suficiente.</text>
+    <text x="468" y="344" font-size="19" fill="#a9967a">Mecánica o Alerta.</text>
+    <text x="468" y="368" font-size="19" fill="#a9967a">Piezas pesadas:</text>
+    <text x="468" y="392" font-size="19" fill="#a9967a">Fuerza o Habilidad.</text>
+
+    <!-- CALIBRACION -->
+    <rect x="810" y="180" width="355" height="230" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <rect x="838" y="204" width="40" height="40" fill="none" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="890" y="234" font-size="32" font-weight="bold" letter-spacing="2">CALIBRACIÓN</text>
+    <text x="838" y="278" font-size="21" fill="#c9b892">Ajustar a partir de</text>
+    <text x="838" y="304" font-size="21" fill="#c9b892">la pieza rota.</text>
+    <text x="838" y="344" font-size="19" fill="#a9967a">Electrónica o Mecánica.</text>
+    <text x="838" y="368" font-size="19" fill="#a9967a">Iria ayuda especialmente</text>
+    <text x="838" y="392" font-size="19" fill="#a9967a">aquí, si está presente.</text>
+
+    <!-- CICLO -->
+    <rect x="1180" y="180" width="355" height="230" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <rect x="1208" y="204" width="40" height="40" fill="none" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="1260" y="234" font-size="32" font-weight="bold" letter-spacing="2">CICLO</text>
+    <text x="1208" y="278" font-size="21" fill="#c9b892">Mantener el proceso</text>
+    <text x="1208" y="304" font-size="21" fill="#c9b892">mientras dura.</text>
+    <text x="1208" y="344" font-size="19" fill="#a9967a">Mecánica.</text>
+    <text x="1208" y="368" font-size="19" fill="#a9967a">Máximo rendimiento de</text>
+    <text x="1208" y="392" font-size="19" fill="#a9967a">Ingeniería de Oportunidad.</text>
+  </g>
+
+  <!-- Resolution key -->
+  <text x="70" y="450" fill="#c9b892" font-size="20">
+    <tspan font-weight="bold" fill="#e8d9b8">Éxito</tspan> marca la casilla · <tspan font-weight="bold" fill="#e8d9b8">Éxito excepcional</tspan> ayuda a otra tarea abierta ·
+  </text>
+  <text x="70" y="478" fill="#c9b892" font-size="20">
+    <tspan font-weight="bold" fill="#e8d9b8">Fallo</tspan> añade su complicación (abajo) · <tspan font-weight="bold" fill="#e8d9b8">Nadie la atiende</tspan> sube un escalón de Defensas
+  </text>
+
+  <line x1="70" y1="510" x2="1530" y2="510" stroke="#8a6d4b" stroke-width="2"/>
+
+  <!-- DEFENSAS escalation bar -->
+  <text x="800" y="552" text-anchor="middle" fill="#e8d9b8" font-size="34" font-weight="bold" letter-spacing="3">DEFENSAS</text>
+
+  <g font-size="24" fill="#1c1815">
+    <circle cx="245" cy="610" r="42" fill="#7a8f7a" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="245" y="620" text-anchor="middle" font-size="34" font-weight="bold">1</text>
+    <circle cx="565" cy="610" r="42" fill="#9aa06a" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="565" y="620" text-anchor="middle" font-size="34" font-weight="bold">2</text>
+    <circle cx="885" cy="610" r="42" fill="#b8934f" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="885" y="620" text-anchor="middle" font-size="34" font-weight="bold">3</text>
+    <circle cx="1205" cy="610" r="42" fill="#b06a3f" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="1205" y="620" text-anchor="middle" font-size="34" font-weight="bold">4</text>
+    <circle cx="1500" cy="610" r="42" fill="#9c3f34" stroke="#e8d9b8" stroke-width="3"/>
+    <text x="1500" y="620" text-anchor="middle" font-size="34" font-weight="bold">5</text>
+  </g>
+  <line x1="287" y1="610" x2="523" y2="610" stroke="#8a6d4b" stroke-width="4"/>
+  <line x1="607" y1="610" x2="843" y2="610" stroke="#8a6d4b" stroke-width="4"/>
+  <line x1="927" y1="610" x2="1163" y2="610" stroke="#8a6d4b" stroke-width="4"/>
+  <line x1="1247" y1="610" x2="1458" y2="610" stroke="#8a6d4b" stroke-width="4"/>
+
+  <g font-size="17" fill="#c9b892" text-anchor="middle">
+    <text x="245" y="672">Advertencias</text>
+    <text x="245" y="694">y puertas</text>
+    <text x="565" y="672">Retirada de herr.</text>
+    <text x="565" y="694">y separación</text>
+    <text x="885" y="672">Espuma, redes,</text>
+    <text x="885" y="694">brazos industr.</text>
+    <text x="1205" y="672">Custodios +</text>
+    <text x="1205" y="694">cargador pesado</text>
+    <text x="1500" y="672">Sellado de</text>
+    <text x="1500" y="694">emergencia</text>
+  </g>
+
+  <line x1="70" y1="730" x2="1530" y2="730" stroke="#8a6d4b" stroke-width="2"/>
+
+  <!-- Failure complications -->
+  <text x="70" y="770" fill="#e8d9b8" font-size="26" font-weight="bold" letter-spacing="1">SI FALLA CADA TAREA</text>
+
+  <g font-size="20" fill="#c9b892">
+    <text x="70" y="812"><tspan font-weight="bold" fill="#e8d9b8">ENERGÍA:</tspan> se apagan las luces; arranca iluminación de emergencia para otra especie.</text>
+    <text x="70" y="852"><tspan font-weight="bold" fill="#e8d9b8">MATERIA PRIMA:</tspan> el sistema rechaza parte del material como «contaminante» — por el conducto equivocado.</text>
+    <text x="70" y="892"><tspan font-weight="bold" fill="#e8d9b8">CALIBRACIÓN:</tspan> produce una pieza perfecta… a escala 1:4.</text>
+    <text x="70" y="932"><tspan font-weight="bold" fill="#e8d9b8">CICLO:</tspan> un brazo decide que quien trabaja necesita ser apartado «por seguridad».</text>
+  </g>
+
+  <line x1="70" y1="965" x2="1530" y2="965" stroke="#8a6d4b" stroke-width="2"/>
+
+  <text x="800" y="1005" text-anchor="middle" fill="#a9967a" font-size="19" font-style="italic">Solo fuerza potencialmente letal si alguien destruye el núcleo o provoca una sobrecarga grave.</text>
+  <text x="800" y="1035" text-anchor="middle" fill="#a9967a" font-size="19" font-style="italic">Reparar daños, obedecer parcialmente o justificar la emergencia puede bajar el escalón.</text>
+  <text x="800" y="1075" text-anchor="middle" fill="#8a6d4b" font-size="16" letter-spacing="2">EL DERECHO A REPARAR — AYUDA DE MESA</text>
+</svg>

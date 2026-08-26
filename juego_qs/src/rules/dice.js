@@ -2,8 +2,13 @@
 // comunes a cualquier módulo (verificadas por primera vez contra la PARTE 1
 // de un Quick Starter concreto). Referencia y trazabilidad: docs/QS_RULE_MAP.md
 
-export function rollD100() {
-  return Math.floor(Math.random() * 100); // 0-99 (00 se representa como 0)
+// rng inyectable (Fase 1/2, docs/COMBAT_RULES_INTERFACE.md): por defecto
+// Math.random, sustituible por un generador con semilla en tests para
+// tiradas deterministas -- sin introducir ningun framework de random, un
+// parametro con valor por defecto basta. Compatible con todo el codigo
+// existente (nadie pasaba un segundo argumento antes).
+export function rollD100(rng = Math.random) {
+  return Math.floor(rng() * 100); // 0-99 (00 se representa como 0)
 }
 
 // Única fuente de verdad para interpretar un d100 YA TIRADO contra una
@@ -67,9 +72,9 @@ export function interpretarTirada({ tirada, habilidadEfectiva }) {
 // permite gastar el PE después de ver el resultado, llama a rollD100() +
 // interpretarTirada() por separado para poder re-interpretar la MISMA
 // tirada — ver el comentario de interpretarTirada().
-export function resolverTirada({ habilidadBase, dificultad = 0, puntoEpicoGastado = false }) {
+export function resolverTirada({ habilidadBase, dificultad = 0, puntoEpicoGastado = false, rng = Math.random }) {
   const habilidadEfectiva = habilidadBase + dificultad + (puntoEpicoGastado ? 50 : 0);
-  const tirada = rollD100();
+  const tirada = rollD100(rng);
   const interpretacion = interpretarTirada({ tirada, habilidadEfectiva });
   return { habilidadBase, dificultad, puntoEpicoGastado, ...interpretacion };
 }

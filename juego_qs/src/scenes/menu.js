@@ -1,4 +1,4 @@
-import { iniciarPartida, cambiarEscena, cargar, hayPartidaGuardada, borrarGuardado } from "../gameState.js";
+import { state, iniciarPartida, cambiarEscena, cargar, hayPartidaGuardada, borrarGuardado } from "../gameState.js";
 import { manifiestoActivo, rutaDeManifiesto, rutaAsset } from "../engine/moduleLoader.js";
 
 const personajesCachePorModulo = new Map();
@@ -16,6 +16,11 @@ export function montarMenu(container) {
   const wrap = document.createElement("div");
   wrap.className = "menu-screen";
   const continuarDisponible = hayPartidaGuardada();
+  // Entradas de desarrollo (encargo de calibración, 2026-08-22): campo
+  // genérico del module.json, mismo patrón que "theme"/"music" -- este
+  // archivo no conoce ningún id de escena por nombre, solo pinta lo que el
+  // manifiesto declare. Ningún módulo sin devEntryPoints ve nada distinto.
+  const entradasDev = manifest.devEntryPoints || [];
   wrap.innerHTML = `
     <div class="menu-titulo">LA SENDA DE LOS ERRANTES</div>
     <div class="menu-subtitulo">${manifest.title}${manifest.subtitle ? " — " + manifest.subtitle : ""}</div>
@@ -26,6 +31,11 @@ export function montarMenu(container) {
       <button class="btn-menu" id="btn-creditos">Créditos / prototipo</button>
       <button class="btn-menu" id="btn-borrar" ${continuarDisponible ? "" : "disabled"}>Borrar partida</button>
     </div>
+    ${entradasDev.length ? `
+    <div class="menu-dev-entradas">
+      <div class="menu-dev-etiqueta">Desarrollo</div>
+      ${entradasDev.map(e => `<button class="btn-menu btn-menu-dev" data-dev-scene="${e.id}" title="${e.nota || ""}">${e.label}</button>`).join("")}
+    </div>` : ""}
     <p class="volver-modulos"><a href="#" id="link-cambiar-modulo">&larr; Cambiar de módulo</a></p>
   `;
   container.appendChild(wrap);
@@ -43,6 +53,20 @@ export function montarMenu(container) {
   wrap.querySelector("#link-cambiar-modulo").addEventListener("click", (e) => {
     e.preventDefault();
     cambiarEscena("module_select");
+  });
+  wrap.querySelectorAll(".btn-menu-dev").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      // Una entrada de desarrollo debe poder abrirse sin pasar antes por la
+      // selección de personaje real -- si no hay ya un personaje activo EN
+      // MEMORIA (no solo guardado en disco, para no pisar una partida en
+      // curso sin guardar), arranca con el primer pregenerado solo para
+      // tener un actor con el que probar la escena.
+      if (!state.playerCharacterId) {
+        const personajes = await cargarPersonajes();
+        iniciarPartida(personajes, personajes[0].id);
+      }
+      cambiarEscena(btn.dataset.devScene);
+    });
   });
 }
 

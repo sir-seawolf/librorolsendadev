@@ -1,0 +1,92 @@
+{
+  "commands": [],
+  "compatibilityVersion": 1100,
+  "extensions": ["tmj"],
+  "folders": ["."],
+  "propertyTypes": [
+    {
+      "color": "#ff3c8d40",
+      "drawFill": true,
+      "id": 1,
+      "members": [],
+      "name": "WalkableRegion",
+      "type": "class",
+      "useAs": ["object"]
+    },
+    {
+      "color": "#ff546e7a",
+      "drawFill": true,
+      "id": 2,
+      "members": [
+        { "name": "approachPoint", "type": "object", "value": 0 },
+        { "name": "interactionId", "type": "string", "value": "" },
+        { "name": "occlusionProfileId", "type": "string", "value": "" }
+      ],
+      "name": "Occluder",
+      "type": "class",
+      "useAs": ["object"]
+    },
+    {
+      "color": "#ff8d6e63",
+      "drawFill": true,
+      "id": 3,
+      "members": [
+        { "name": "approachPoint", "type": "object", "value": 0 },
+        { "name": "doorProfileId", "type": "string", "value": "" },
+        { "name": "initialState", "type": "string", "value": "closed" },
+        { "name": "interactionId", "type": "string", "value": "" },
+        { "name": "stateId", "type": "string", "value": "" }
+      ],
+      "name": "Door",
+      "type": "class",
+      "useAs": ["object"]
+    },
+    {
+      "color": "#ffffa000",
+      "drawFill": true,
+      "id": 4,
+      "members": [
+        { "name": "approachPoint", "type": "object", "value": 0 },
+        { "name": "interactionId", "type": "string", "value": "" }
+      ],
+      "name": "Interactable",
+      "type": "class",
+      "useAs": ["object"]
+    },
+    {
+      "color": "#ff00897b",
+      "drawFill": true,
+      "id": 5,
+      "members": [
+        { "name": "spawnId", "type": "string", "value": "" }
+      ],
+      "name": "Spawn",
+      "type": "class",
+      "useAs": ["object"]
+    },
+    {
+      "color": "#ff3949ab",
+      "drawFill": true,
+      "id": 6,
+      "members": [
+        { "name": "targetScene", "type": "string", "value": "" },
+        { "name": "targetSpawnId", "type": "string", "value": "" }
+      ],
+      "name": "Exit",
+      "type": "class",
+      "useAs": ["object"]
+    },
+    {
+      "color": "#ffd81b60",
+      "drawFill": true,
+      "id": 7,
+      "members": [
+        { "name": "encounterId", "type": "string", "value": "" }
+      ],
+      "name": "EncounterTrigger",
+      "type": "class",
+      "useAs": ["object"]
+    }
+  ],
+  "type": "project"
+}

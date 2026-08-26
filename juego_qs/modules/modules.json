@@ -3,9 +3,11 @@
     "id": "predator_n52",
     "title": "Predator N-5.2",
     "subtitle": "Las guerras secretas",
-    "description": "Un chip robado, una corporación que lo quiere de vuelta y una tarde que se tuerce en un callejón. El módulo de referencia del motor.",
+    "description": "Un chip robado, una corporación que lo quiere de vuelta y una huida que atraviesa El Mosaico.",
     "enabled": true,
-    "status": "playable"
+    "status": "playable",
+    "publishable": true,
+    "visible": true
   },
   {
     "id": "centesima_alma",
@@ -13,7 +15,9 @@
     "subtitle": null,
     "description": null,
     "enabled": false,
-    "status": "coming_soon"
+    "status": "coming_soon",
+    "publishable": false,
+    "visible": false
   },
   {
     "id": "derecho_a_reparar",
@@ -21,7 +25,9 @@
     "subtitle": null,
     "description": null,
     "enabled": false,
-    "status": "coming_soon"
+    "status": "coming_soon",
+    "publishable": false,
+    "visible": false
   },
   {
     "id": "jaula_vacia",
@@ -29,6 +35,8 @@
     "subtitle": "Monstruoplantas — captura profesional",
     "description": "Un cazador territorial, un contrato de circo y seis horas antes de que el transporte parta. Segundo módulo independiente del motor.",
     "enabled": true,
-    "status": "playable"
+    "status": "in_review",
+    "publishable": false,
+    "visible": false
   }
 ]

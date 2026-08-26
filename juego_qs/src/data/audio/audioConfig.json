@@ -2,6 +2,12 @@
   "basePath": "assets/shared/audio/music/",
   "defaultVolume": 0.65,
   "defaultFadeMs": 2500,
+  "buses": {
+    "music": { "defaultVolume": 0.65 },
+    "ambience": { "defaultVolume": 0.65 },
+    "sfx": { "defaultVolume": 0.8, "maxVoices": 6 },
+    "ui": { "defaultVolume": 0.8, "maxVoices": 4 }
+  },
   "global": {
     "gateway": "senda_gateway.mp3",
     "menu": "senda_game_zone.mp3"

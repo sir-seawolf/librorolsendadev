@@ -11,14 +11,22 @@ const ETIQUETA_ESTADO = {
   playable: "JUGAR",
   development: "EN DESARROLLO",
   coming_soon: "PRÓXIMAMENTE",
-  disabled: "NO DISPONIBLE"
+  disabled: "NO DISPONIBLE",
+  // Estado genérico (cualquier módulo puede declararlo en modules.json,
+  // el motor no conoce ids concretos) para marcar un módulo temporalmente
+  // fuera de alcance de una demo sin tocar sus datos ni escenas -- solo
+  // afecta al listado, nunca oculta ni borra nada.
+  in_review: "EN REVISIÓN"
 };
 
 export async function montarSelectorModulos(container) {
   // Título neutro de la zona de juego: en este punto todavía no hay ningún
   // módulo concreto cargado (ni debe nombrarse ninguno).
   if (typeof document !== "undefined") document.title = "La Senda de los Errantes — Zona de juego";
-  const modulos = await cargarListaModulos();
+  // La publicación es explícita y `visible:false` permite retirar temporalmente
+  // una entrada sin borrar sus datos. Ambas condiciones deben cumplirse.
+  const modulos = (await cargarListaModulos())
+    .filter(m => m.publishable === true && m.visible !== false);
   const wrap = document.createElement("div");
   wrap.className = "menu-screen";
   wrap.innerHTML = `

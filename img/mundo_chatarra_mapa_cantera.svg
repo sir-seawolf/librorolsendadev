@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <linearGradient id="bgc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2622"/>
+      <stop offset="1" stop-color="#1c1815"/>
+    </linearGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a4038"/>
+      <stop offset="1" stop-color="#332b25"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="1200" fill="url(#bgc)"/>
+  <rect x="18" y="18" width="1564" height="1164" fill="none" stroke="#8a6d4b" stroke-width="4"/>
+  <rect x="30" y="30" width="1540" height="1140" fill="none" stroke="#5a4a38" stroke-width="1"/>
+
+  <text x="800" y="82" text-anchor="middle" fill="#e8d9b8" font-size="42" letter-spacing="3">LA CANTERA — CORTE ESQUEMÁTICO</text>
+  <text x="800" y="114" text-anchor="middle" fill="#a9967a" font-size="21" font-style="italic">Vista de perfil, escalonada en niveles — de C-A (borde) a C-F (fondo, la Grieta)</text>
+
+  <!-- Quarry cross-section: stepped trapezoid, wide at top narrow at bottom -->
+  <polygon points="140,180 1460,180 1180,380 420,380" fill="url(#rock)" stroke="#8a6d4b" stroke-width="2"/>
+  <polygon points="420,380 1180,380 1000,560 600,560" fill="url(#rock)" stroke="#8a6d4b" stroke-width="2"/>
+  <polygon points="600,560 1000,560 860,760 740,760" fill="url(#rock)" stroke="#8a6d4b" stroke-width="2"/>
+  <polygon points="740,760 860,760 820,900 780,900" fill="#241f1b" stroke="#9c3f34" stroke-width="3"/>
+
+  <!-- C-A Borde superior -->
+  <rect x="1230" y="195" width="200" height="70" fill="#241f1b" stroke="#e8d9b8" stroke-width="2"/>
+  <text x="1330" y="222" text-anchor="middle" fill="#e8d9b8" font-size="22" font-weight="bold">C-A</text>
+  <text x="1330" y="248" text-anchor="middle" fill="#c9b892" font-size="16">Borde superior</text>
+
+  <!-- C-B Rampa norte (fast, dashed left) -->
+  <path d="M 200 250 L 470 400" fill="none" stroke="#b06a3f" stroke-width="5" stroke-dasharray="14,10"/>
+  <rect x="150" y="270" width="220" height="70" fill="#241f1b" stroke="#b06a3f" stroke-width="2"/>
+  <text x="260" y="297" text-anchor="middle" fill="#e8d9b8" font-size="22" font-weight="bold">C-B</text>
+  <text x="260" y="320" text-anchor="middle" fill="#c9b892" font-size="15">Rampa norte (rápida)</text>
+
+  <!-- C-C Rampa sur (safe) -->
+  <path d="M 1420 250 L 1080 470" fill="none" stroke="#7a8f7a" stroke-width="5"/>
+  <rect x="1370" y="270" width="220" height="70" fill="#241f1b" stroke="#7a8f7a" stroke-width="2"/>
+  <text x="1480" y="297" text-anchor="middle" fill="#e8d9b8" font-size="22" font-weight="bold">C-C</text>
+  <text x="1480" y="320" text-anchor="middle" fill="#c9b892" font-size="15">Rampa sur (segura)</text>
+
+  <!-- C-D Nivel intermedio activo -->
+  <rect x="440" y="430" width="230" height="70" fill="#241f1b" stroke="#e8d9b8" stroke-width="2"/>
+  <text x="555" y="457" text-anchor="middle" fill="#e8d9b8" font-size="22" font-weight="bold">C-D</text>
+  <text x="555" y="482" text-anchor="middle" fill="#c9b892" font-size="15">Nivel activo</text>
+
+  <!-- C-E Nivel intermedio abandonado -->
+  <rect x="930" y="430" width="230" height="70" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+  <text x="1045" y="457" text-anchor="middle" fill="#e8d9b8" font-size="22" font-weight="bold">C-E</text>
+  <text x="1045" y="482" text-anchor="middle" fill="#c9b892" font-size="15">Nivel abandonado</text>
+
+  <!-- C-F Fondo / Grieta -->
+  <rect x="680" y="810" width="240" height="80" fill="#3a1815" stroke="#9c3f34" stroke-width="3"/>
+  <text x="800" y="840" text-anchor="middle" fill="#e8d9b8" font-size="24" font-weight="bold">C-F — LA GRIETA</text>
+  <text x="800" y="866" text-anchor="middle" fill="#e0a892" font-size="16">Acceso a La Matriz</text>
+
+  <!-- connecting lines between D/E and F -->
+  <path d="M 620 500 L 760 810" fill="none" stroke="#5a4a38" stroke-width="3"/>
+  <path d="M 980 500 L 850 810" fill="none" stroke="#5a4a38" stroke-width="3"/>
+
+  <!-- Side pockets: C-G, C-H, C-I, C-J as satellite nodes -->
+  <g font-size="15">
+    <rect x="60" y="560" width="220" height="90" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <text x="170" y="588" text-anchor="middle" fill="#e8d9b8" font-size="20" font-weight="bold">C-G</text>
+    <text x="170" y="612" text-anchor="middle" fill="#c9b892">Depósitos de</text>
+    <text x="170" y="632" text-anchor="middle" fill="#c9b892">material</text>
+    <path d="M 280 605 L 440 465" fill="none" stroke="#5a4a38" stroke-width="2" stroke-dasharray="6,6"/>
+
+    <rect x="60" y="680" width="220" height="90" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <text x="170" y="708" text-anchor="middle" fill="#e8d9b8" font-size="20" font-weight="bold">C-H</text>
+    <text x="170" y="732" text-anchor="middle" fill="#c9b892">Refugios de</text>
+    <text x="170" y="752" text-anchor="middle" fill="#c9b892">cuadrilla</text>
+    <path d="M 280 715 L 440 470" fill="none" stroke="#5a4a38" stroke-width="2" stroke-dasharray="6,6"/>
+
+    <rect x="1320" y="560" width="220" height="90" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <text x="1430" y="588" text-anchor="middle" fill="#e8d9b8" font-size="20" font-weight="bold">C-I</text>
+    <text x="1430" y="612" text-anchor="middle" fill="#c9b892">Punto de</text>
+    <text x="1430" y="632" text-anchor="middle" fill="#c9b892">observación</text>
+    <path d="M 1320 605 L 1160 465" fill="none" stroke="#5a4a38" stroke-width="2" stroke-dasharray="6,6"/>
+
+    <rect x="1320" y="680" width="220" height="90" fill="#241f1b" stroke="#8a6d4b" stroke-width="2"/>
+    <text x="1430" y="708" text-anchor="middle" fill="#e8d9b8" font-size="20" font-weight="bold">C-J</text>
+    <text x="1430" y="732" text-anchor="middle" fill="#c9b892">Área cerrada</text>
+    <text x="1430" y="752" text-anchor="middle" fill="#c9b892">(derrumbe)</text>
+    <path d="M 1320 715 L 1160 470" fill="none" stroke="#5a4a38" stroke-width="2" stroke-dasharray="6,6"/>
+  </g>
+
+  <line x1="70" y1="930" x2="1530" y2="930" stroke="#8a6d4b" stroke-width="2"/>
+
+  <!-- Legend -->
+  <text x="70" y="968" fill="#e8d9b8" font-size="24" font-weight="bold" letter-spacing="1">LEYENDA</text>
+  <g font-size="19" fill="#c9b892">
+    <line x1="70" y1="995" x2="120" y2="995" stroke="#b06a3f" stroke-width="5" stroke-dasharray="10,7"/>
+    <text x="132" y="1001">C-B, ruta rápida — más corta, riesgo de desprendimiento (1d6, ver Complicaciones de cantera)</text>
+
+    <line x1="70" y1="1028" x2="120" y2="1028" stroke="#7a8f7a" stroke-width="5"/>
+    <text x="132" y="1034">C-C, ruta segura — más larga, vigilada por cuadrillas con carga</text>
+
+    <line x1="70" y1="1061" x2="120" y2="1061" stroke="#5a4a38" stroke-width="2" stroke-dasharray="6,6"/>
+    <text x="132" y="1067">Conexión secundaria a una zona lateral (C-G a C-J)</text>
+
+    <rect x="70" y="1082" width="50" height="26" fill="#3a1815" stroke="#9c3f34" stroke-width="3"/>
+    <text x="132" y="1101">C-F, fondo de la cantera — la Grieta de acceso a La Matriz</text>
+  </g>
+
+  <text x="800" y="1150" text-anchor="middle" fill="#a9967a" font-size="18" font-style="italic">Descripciones completas de cada zona: ver «La Cantera», en el Anexo.</text>
+  <text x="800" y="1178" text-anchor="middle" fill="#8a6d4b" font-size="16" letter-spacing="2">EL DERECHO A REPARAR — AYUDA DE MESA</text>
+</svg>

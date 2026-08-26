@@ -60,6 +60,19 @@ function resolverListaEjecutores(spec, escena) {
   return ["player"]; // por defecto, solo el jugador
 }
 
+// Algunas acciones representan un intento material que no puede repetirse
+// indefinidamente (forzar una cerradura, descifrar un chip...). La clave vive
+// en el guardado genérico como flag y combina escena, interacción y actor: el
+// contenido decide cuándo usar la regla mediante `oncePerActor`, mientras el
+// motor evita que cada renderer tenga que reinventarla.
+export function claveIntentoActor(escenaId, interaccionId, actorId) {
+  return `intento:${escenaId}:${interaccionId}:${actorId}`;
+}
+
+export function actorYaIntento(escenaId, interaccionId, actorId) {
+  return tieneFlag(claveIntentoActor(escenaId, interaccionId, actorId));
+}
+
 // habilidad concreta -> si no existe, cae a fallbackSkill -> si tampoco existe,
 // 0 (QS línea 98: "Habilidad a 0: si no se tiene, se puede intentar con un
 // penalizador de −20" — el penalizador de dificultad ya lo declara la propia
@@ -84,6 +97,16 @@ export function aplicarConsecuencias(consecuencia, actorId, { onTexto, onCustom 
   (consecuencia.discoverClues || []).forEach(descubrirPista);
   (consecuencia.discoverObjects || []).forEach(descubrirObjeto);
   if (consecuencia.inventoryAdd && actor) actor.inventario.push(...consecuencia.inventoryAdd);
+  if (consecuencia.inventoryRemove && actor) {
+    const retirados = new Set(consecuencia.inventoryRemove);
+    actor.inventario = actor.inventario.filter(item => !retirados.has(item));
+  }
+  if (consecuencia.adjustResources) {
+    state.resources ||= {};
+    for (const [id, delta] of Object.entries(consecuencia.adjustResources)) {
+      state.resources[id] = (Number(state.resources[id]) || 0) + Number(delta || 0);
+    }
+  }
   if (consecuencia.registerDecision) registrarDecision(consecuencia.registerDecision);
   if (consecuencia.setFinalTipo) state.finalTipo = consecuencia.setFinalTipo;
 
@@ -94,7 +117,9 @@ export function aplicarConsecuencias(consecuencia, actorId, { onTexto, onCustom 
 
   if (consecuencia.transition) {
     const delay = consecuencia.transitionDelay ?? 0;
-    setTimeout(() => cambiarEscena(consecuencia.transition), delay);
+    setTimeout(() => cambiarEscena(consecuencia.transition, {
+      spawnId: consecuencia.transitionSpawnId ?? null
+    }), delay);
   }
 }
 
@@ -102,10 +127,19 @@ export function aplicarConsecuencias(consecuencia, actorId, { onTexto, onCustom 
 // hay varios candidatos disponibles), tira si hace falta, y aplica consecuencias.
 export function ejecutarInteraccion({ escenaId, escena, interaccion, onTexto, onCustom }) {
   const idsElegibles = resolverListaEjecutores(interaccion.executors, escena);
-  const disponibles = miembrosDisponibles(idsElegibles);
+  const disponiblesBase = miembrosDisponibles(idsElegibles);
+  const disponibles = interaccion.oncePerActor
+    ? disponiblesBase.filter(m => !actorYaIntento(escenaId, interaccion.id, m.baseId))
+    : disponiblesBase;
 
   if (disponibles.length === 0) {
-    onTexto(interaccion.noExecutorText || "No hay nadie disponible para hacer esto ahora mismo.");
+    if (interaccion.oncePerActor && disponiblesBase.length > 0 && interaccion.onExhausted) {
+      aplicarConsecuencias(interaccion.onExhausted, "player", { onTexto, onCustom });
+      return;
+    }
+    onTexto(interaccion.noExecutorText || (interaccion.oncePerActor
+      ? "Nadie del grupo puede volver a intentar exactamente lo mismo."
+      : "No hay nadie disponible para hacer esto ahora mismo."));
     return;
   }
 
@@ -167,6 +201,11 @@ export function ejecutarInteraccion({ escenaId, escena, interaccion, onTexto, on
   function ejecutarTiradaColaborativa(actorId, idsAyudantes) {
     const participantes = [actorId, ...idsAyudantes];
     const resultados = [];
+
+    if (interaccion.oncePerActor) {
+      participantes.forEach(id => establecerFlag(claveIntentoActor(escenaId, interaccion.id, id), true));
+      actualizar();
+    }
 
     rodarSiguiente(0);
 

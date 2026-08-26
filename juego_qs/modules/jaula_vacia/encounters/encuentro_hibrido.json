@@ -13,6 +13,7 @@
     ]
   },
   "onVictory": { "setFinalTipo": "captura_limpia", "registerDecision": "Híbrido rechazado: la captura del Lomo Blanco queda asegurada.", "transition": "final" },
+  "onVictoryNota": "A diferencia de Predator (encuentro_perseguidores_01.json), aquí SÍ es correcto que la victoria lleve directamente a un final: este es un one-shot corto donde el combate contra el Depredador Híbrido es el clímax real, no un obstáculo a mitad de una aventura más larga — no hay ninguna 'Escena 2' a la que continuar después. Ver docs/UI_UX_03_1.md, auditoría de postcombate (Iteración 0.3.1).",
   "onFlee": { "setFinalTipo": "jaula_vacia", "registerDecision": "El grupo rompe el contacto con el Híbrido y abandona la captura.", "transition": "final" },
   "onDeathWithEpicPoint": { "setFinalTipo": "casi_muerto", "registerDecision": "Combate contra el Híbrido: \"Parecía que había muerto\" — Punto Épico gastado.", "transition": "final" },
   "onDeath": { "setFinalTipo": "muerte", "registerDecision": "Combate contra el Híbrido: derrota.", "transition": "final" }

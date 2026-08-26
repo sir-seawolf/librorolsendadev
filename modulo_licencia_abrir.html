@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — Una licencia para abrir</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — Una licencia para abrir</h1>
+<p><em>Colección de one-shots de MadCity — episodio 5 de 6. Estado: BORRADOR, pendiente de playtest.</em></p>
+<blockquote>
+<p>«Toda salida es libre cuando alguien ha pagado por la llave.»</p>
+</blockquote>
+<p><img alt="La sala de examen de la Galería de Puertas en el instante de la apertura incorrecta, un fragmento de la vivienda sellada visible al otro lado" src="img/madcity_licencia_galeria_puertas.png" /><br />
+<em>La apertura fue técnicamente perfecta. La dirección, no.</em></p>
+<hr />
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> en la Galería de Puertas de Capricornio, la aprendiz Ilo Sarn se examina hoy de la Prueba de Certificación en Camino de Portales 25 — el umbral que le permitiría, por fin, abrir portales completos por su cuenta. Su apertura es técnicamente perfecta. El problema es la dirección: la baliza de examen, manipulada de antemano, la envía a una vivienda sellada que no debería figurar en ningún recorrido autorizado. Varias personas cruzan en ambos sentidos antes de que la puerta se cierre. Nadie manipuló la baliza para hacer daño: alguien solo quería recuperar documentos y objetos de esa vivienda antes de un plazo administrativo que se agota.</p>
+<p><strong>Duración:</strong> una sesión de 4-6 horas. Escala local: una sala de examen, una vivienda sellada, un puñado de personas desplazadas y una institución que tiene que decidir cómo responde sin quemarse a sí misma.</p>
+<p><strong>Qué saben los PJ:</strong> que ha habido un incidente durante un examen oficial del Magisterio, que hay gente que no debería estar donde está, y que la Galería de Puertas ya está considerando suspender el lote entero de balizas — lo que afectaría otros servicios de tránsito dimensional del gajo.</p>
+<p><strong>Verdad del Narrador:</strong> Ilo no falló su examen. Alguien insertó una dirección antigua en la baliza. Esa persona, Ren Dovic, conocía el procedimiento pero no calculó que la dirección arrastraría también a residentes y objetos cercanos a la puerta, no solo a quien cruzara deliberadamente.</p>
+<p><strong>Objetivo inmediato:</strong> identificar y devolver a los desplazados, entender qué manipuló la baliza y por qué, y decidir qué le pasa a Ilo antes de que el Magisterio actúe por precaución institucional en vez de por los hechos.</p>
+<p><strong>Pregunta de fondo:</strong> ¿qué debe una institución a quien confió en su procedimiento, cuando el procedimiento fue sabotaje ajeno, no error propio?</p>
+<p><strong>Si nadie interviene:</strong> el Magisterio suspende cautelarmente la licencia de Ilo mientras dura la investigación — meses, quizás años, de carrera detenida por algo que no hizo. Los desplazados acaban siendo recuperados de todos modos, pero tarde y con una investigación mucho más costosa.</p>
+<h3>Desarrollo en cinco escenas</h3>
+<ol>
+<li>La prueba perfecta — demostración, apertura incorrecta y cruces inesperados.</li>
+<li>¿Quién abrió qué? — asegurar la sala, identificar desplazados y proteger a Ilo de una condena precipitada.</li>
+<li>Una dirección borrada — seguir la baliza, los permisos, los testigos y el motivo de quien la manipuló.</li>
+<li>La puerta vuelve — reapertura controlada o imprevista, búsqueda y conflicto con quien necesita recuperar algo.</li>
+<li>Licencia concedida o retirada — devolver personas, establecer responsabilidad y decidir qué aprende la institución.</li>
+</ol>
+<hr />
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Reloj — la baliza conserva la dirección durante unas horas:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tiempo</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0:00</td>
+<td>La apertura incorrecta ocurre durante el examen. Escena 1 empieza aquí.</td>
+</tr>
+<tr>
+<td>H+0:30</td>
+<td>La sala queda asegurada; empieza el recuento de desplazados y el papeleo formal de incidencia.</td>
+</tr>
+<tr>
+<td>H+1:00</td>
+<td>El comité de certificación se reúne para decidir si suspende cautelarmente a Ilo — su recurso formal, si se presenta, debe entrar antes de que termine esta reunión (ver Escena 2).</td>
+</tr>
+<tr>
+<td>H+2:30</td>
+<td>Última ventana razonable para reabrir la dirección de forma controlada, con la baliza todavía calibrada.</td>
+</tr>
+<tr>
+<td>H+3:00</td>
+<td>La dirección se pierde de la memoria de la baliza. Recuperar a cualquiera que siga dentro exige una investigación mucho mayor, fuera del alcance de este módulo.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cómo avanza el tiempo de ficción:</strong> no lo simules minuto a minuto — avanza el reloj cuando los PJ cambien de zona de la Galería, investiguen a fondo, o presenten un trámite formal.</p>
+<ul>
+<li>Hablar con un testigo o desplazado: 5-15 min.</li>
+<li>Moverse entre la sala de examen, el almacén de balizas y las oficinas administrativas: 5-10 min.</li>
+<li>Presentar un recurso o trámite formal: 15-20 min, más si faltan firmas o testigos.</li>
+<li>Reapertura controlada de la dirección (Escena 4): 20-30 min de preparación antes de cruzar.</li>
+</ul>
+<p><strong>Las tres partes, en una frase:</strong><br />
+- <strong>Maestra Erea Sal</strong> → confirmar qué pasó de verdad antes de que el comité actúe por puro procedimiento.<br />
+- <strong>El comité de certificación</strong> (Dara Wint y Oskar Belen) → cerrar el expediente de forma defendible, cada uno a su manera.<br />
+- <strong>Ren Dovic</strong> → recuperar documentos y objetos familiares antes de que un plazo de subasta se los quite para siempre.</p>
+<p><strong>No hay villano.</strong> Ren no quiso desplazar a nadie — no calculó el alcance real de la dirección. El comité no es cruel: aplica un procedimiento diseñado para proteger a la ciudad, que en este caso concreto perjudica a alguien inocente. Ilo no cometió ningún error técnico.</p>
+<p><strong>La burocracia, en mesa — hazla concreta, con humor amable, no un chiste sobre incompetencia:</strong> cada requisito tiene una razón — razonable, absurda, interesada o heredada de cómo funciona MadCity — y al menos un funcionario debe demostrar que de verdad intenta ayudar dentro de un procedimiento que no siempre ayuda. Usa objetos y formularios reales, no "consigue tres sellos" en abstracto.</p>
+<p><strong>Textura administrativa (1d6, para ambientar sin planificar):</strong> úsala dos o tres veces a lo largo de las Escenas 2 y 3.</p>
+<table>
+<thead>
+<tr>
+<th>d6</th>
+<th>Momento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Un formulario pide "número de extremidades para calzado reglamentario" — nadie ha actualizado la casilla en treinta años.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Oskar Belen encuentra, en los archivos, un permiso de hace 94 años para "cultivo de líquenes luminosos" en la vivienda sellada, nunca revocado formalmente.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Dara Wint rellena un impreso a mano porque el sistema oficial lleva media hora caído — y lo hace con una letra perfecta, por costumbre.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Un funcionario de otra ventanilla intenta derivar el caso a "gestión de fauna urbana", convencido de que es un problema distinto.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Alguien pregunta, muy en serio, si el incidente cuenta como "viaje de empresa" a efectos de dietas. Erea comenta, sin levantar la vista, que todavía está rellenando informes de otro cierre de emergencia — algo de una cabina de la Línea 25 que no llegó a su hora.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Un cartel administrativo, claramente desactualizado, sigue anunciando un procedimiento que ya no existe.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>Ren Dovic vivió, de niña, en la vivienda que hoy está sellada — precintada tras un litigio de herencia entre su familia y un pariente lejano que nunca se resolvió del todo. Con el litigio a punto de cerrarse por prescripción y los bienes de la vivienda a punto de subastarse, Ren necesitaba recuperar documentos y objetos concretos que probarían el derecho de su familia antes de que fuera demasiado tarde.</p>
+<p>Conocía el procedimiento del Magisterio lo suficiente como para insertar la dirección antigua de la vivienda en una baliza de examen — sabía que un examen abriría una puerta real, aunque fuera solo un instante. Lo que no calculó fue que la dirección arrastraría también a personas y objetos cercanos a la puerta en ambos lados, no solo a quien cruzara con intención.</p>
+<p>La Maestra Erea Sal y su comité no ordenaron nada de esto y no lo sabían. El procedimiento de suspensión cautelar existe para proteger a la ciudad de errores reales de los aprendices — un procedimiento razonable que, en este caso concreto, perjudica a alguien que no hizo nada mal.</p>
+<h3>Qué saben los PJ y qué no</h3>
+<p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si Ren actuó por necesidad legítima o por puro interés — ambas cosas son ciertas a la vez, y eso se aclara con matices en la Escena 4.</p>
+<h3>Tono</h3>
+<p>Tenso pero con humor amable de fondo — la burocracia como fricción real, no como chiste fácil sobre incompetencia. Al menos un funcionario debe resultar entrañable por lo mucho que se esfuerza dentro de un sistema que no siempre coopera.</p>
+<hr />
+<h2>Reparto y relaciones</h2>
+<h3>Ilo Sarn — la aprendiz examinada</h3>
+<p><em>Aspecto:</em> uniforme de examen impecable hasta hace una hora, ahora con una mancha de tinta administrativa en la manga; mantiene la compostura por pura disciplina, aunque le tiemblan las manos.</p>
+<p>PNJ interpretable (2-3 profesiones), sin ficha de combate relevante.</p>
+<p>Camino de Portales 30% | Voluntad V45</p>
+<ul>
+<li>Quiere que se demuestre su inocencia técnica antes de que el comité decida por precaución.</li>
+<li>No oculta nada — está tan confundida como cualquiera sobre lo que ha pasado.</li>
+</ul>
+<h3>Maestra Erea Sal — examinadora de portales</h3>
+<p><em>Aspecto:</em> formal, precisa, uniforme del Magisterio sin una arruga; una llave física le cuelga del cuello aunque su trabajo real abra cerraduras tecnológicas; protección reforzada en el brazo derecho, el que cruza primero. Menos severa de lo que sugiere a primera vista, aunque tarda en mostrarlo.</p>
+<p>PNJ interpretable (6-7 profesiones), compartida con el resto de la colección — misma ficha ya publicada en <em>El ascensor de los trece minutos</em>.</p>
+<p>F20/A30/P55/V60 | PV 11/11/11 | Bld 0 | Camino de Portales 70% | Investigación 55% | Voluntad alta (V60)</p>
+<ul>
+<li>Quiere confirmar qué pasó de verdad antes de que el comité actúe solo por procedimiento.</li>
+<li>Respeta prudencia, preparación y reconocer los límites propios.</li>
+<li>Falla previsible: confía demasiado en el procedimiento cuando alguien conoce el procedimiento y lo manipula — la misma falla que ya mostró en <em>Ascensor</em>, coherente con su carácter.</li>
+</ul>
+<h3>Dara Wint y Oskar Belen — comité de certificación</h3>
+<p><em>Aspecto de Dara:</em> impecable, letra perfecta incluso rellenando formularios a mano, cita el reglamento de memoria sin sonar nunca hostil — cree de verdad que el procedimiento protege a la gente.</p>
+<p><em>Aspecto de Oskar:</em> desbordado por la carga de trabajo, pero de los que se quedan media hora tarde buscando una excepción aplicable en vez de cerrar el expediente sin más.</p>
+<p>PNJ funcionales (2-3 profesiones cada uno). Ninguno es incompetente ni cruel — ambos intentan hacer bien su trabajo dentro de un sistema imperfecto.</p>
+<p>Gestión/Procedimiento 55% (Dara) | Investigación administrativa 45% (Oskar) | sin ficha de combate.</p>
+<ul>
+<li>Dara quiere cerrar el expediente de forma defendible, siguiendo el procedimiento al pie de la letra.</li>
+<li>Oskar quiere encontrar la excepción correcta antes de aplicar la sanción más dura por defecto.</li>
+<li>Sin PJ: el comité vota suspender cautelarmente a Ilo a H+1:00, salvo que alguien presente un recurso formal antes.</li>
+</ul>
+<h3>Ren Dovic — quien manipuló la baliza</h3>
+<p><em>Aspecto:</em> ropa práctica de quien ha pasado semanas entre archivos y despachos, una carpeta gastada de tanto abrirla y cerrarla, mirada de quien ha calculado un riesgo y ahora no está segura de haberlo calculado bien.</p>
+<p>PNJ interpretable (3 profesiones). Antigua residente de la vivienda sellada; necesita documentos concretos antes de que expire un plazo de subasta por prescripción de un litigio de herencia.</p>
+<p>F20/A30/P45/V40 | PV 12/12/12 | Bld 0 | Tecnología (sistemas de balizas) 50% | Social 40%</p>
+<ul>
+<li>Quiere recuperar documentos y objetos familiares concretos antes del plazo de subasta.</li>
+<li>No pondrá en peligro deliberado a nadie más — está aterrada por las consecuencias de lo que ya ha causado.</li>
+<li>Sin PJ: intenta una segunda manipulación de baliza por su cuenta antes de H+2:30, con más riesgo de fallar y quedar expuesta.</li>
+</ul>
+<h3>Cato Ime y Bettina Corsi — desplazados con nombre</h3>
+<p>PNJ funcionales (1 profesión cada uno), sin ficha de combate.</p>
+<ul>
+<li><strong>Cato Ime</strong>: cruzó por curiosidad al ver la puerta abierta; pragmático, más molesto por perder tiempo que asustado.</li>
+<li><strong>Bettina Corsi</strong>: vecina de la vivienda sellada, cruzó sin darse cuenta desde el otro lado; desorientada, cree al principio que es un robo en curso.</li>
+</ul>
+<h3>Otros dos desplazados</h3>
+<p>Grupo funcional, sin ficha propia — reaccionan con una mezcla razonable de confusión y indignación administrativa.</p>
+<h3>Máquina doméstica desplazada</h3>
+<p>Un autómata de mantenimiento doméstico, atravesado desde la vivienda sellada, sigue ejecutando su programación antigua sin adaptarse al entorno — ofrece té a quien se le acerque, insiste en "reportar la ausencia de los propietarios" a cualquiera con autoridad aparente. No hostil, Detección 30%, puede confundirse y bloquear pasillos sin darse cuenta.</p>
+<h3>Relaciones para el Narrador</h3>
+<ul>
+<li>Erea confía en Ilo profesionalmente, pero no puede saltarse el procedimiento sin una razón formal — de ahí que un recurso presentado a tiempo por los PJ tenga peso real.</li>
+<li>Dara y Oskar se respetan, aunque discrepan en cómo aplicar el mismo reglamento.</li>
+<li>Ren conocía a Bettina de niña, cuando ambas vivían en el mismo edificio — puede ser un punto de contacto humano si alguien lo descubre.</li>
+<li>Ilo no sabe nada de Ren ni de la manipulación — es tan víctima del procedimiento como cualquiera de los desplazados.</li>
+</ul>
+<hr />
+<h2>Lugares necesarios</h2>
+<p><strong>Sala de examen:</strong> donde ocurrió la apertura incorrecta. Cámara de entrada sucesiva antes de la propia sala de portal, contrapesos y sellos de emergencia visibles en el marco, cámaras de seguridad espacial, la baliza dañada, restos del procedimiento de examen.</p>
+<p><strong>Almacén de balizas:</strong> pasillos compartimentados a propósito — nada de línea directa entre el exterior y ninguna baliza activa — registros de mantenimiento y de asignación de direcciones.</p>
+<p><strong>Oficinas administrativas:</strong> donde se gestiona el expediente de Ilo y donde Dara y Oskar trabajan.</p>
+<p><strong>La vivienda sellada:</strong> al otro lado de la dirección borrada — polvorienta, detenida en el tiempo desde el litigio, con los objetos que Ren necesita recuperar.</p>
+<hr />
+<h2>Las cinco escenas</h2>
+<p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
+<h3>Escena 1 — La prueba perfecta</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La sala de examen huele a ozono y a papel oficial. Ilo traza el gesto exacto, la baliza responde exactamente como debería — y la puerta que se abre no es la que nadie esperaba. Durante unos segundos, dos lugares distintos comparten el mismo umbral.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> la apertura, técnicamente perfecta, conduce a una vivienda sellada. Varias personas cruzan en ambos sentidos antes de que se cierre.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Ilo Sarn</strong> — conmocionada, insiste en que hizo todo bien (<em>Aspecto</em> y ficha: ver Reparto).<br />
+- <strong>Maestra Erea Sal</strong> — toma el control de la sala de inmediato, prioriza contar cabezas antes que buscar culpables (<em>Aspecto</em> y ficha: ver Reparto).<br />
+- <strong>Cato Ime y Bettina Corsi</strong>, entre los desplazados — confundidos, cada uno a su manera (<em>fichas: ver Reparto</em>).<br />
+- La <strong>máquina doméstica</strong>, atravesada también — ofreciendo té a quien se le acerque (ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> nadie sabe todavía que la dirección fue manipulada — solo que algo salió mal con un examen que debería haber sido rutinario.</p>
+<p><strong>Obstáculos y acontecimientos:</strong> usa la Textura administrativa (1d6, arriba) una vez si hace falta llenar el momento.</p>
+<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
+- <strong>Investigación o Camino de Portales</strong> (examinar la baliza dañada): éxito → detectas que la dirección fue insertada manualmente, no generada por el examen; fallo → confirmas el fallo, sin identificar la causa.<br />
+- <strong>Alerta</strong> (contar y observar a los desplazados): éxito → identificas correctamente a los cuatro desplazados y notas que uno de los "examinados" no encaja del todo (Ren, si se coló entre la confusión); fallo → recuento incompleto, alguien queda sin identificar por ahora.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Erea asegura la sala por su cuenta y empieza el procedimiento estándar, sin la ventaja de la información que un PJ atento podría aportar.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene una primera pista sobre la manipulación y sabe que hay desplazados que devolver.</p>
+<p><strong>Después:</strong> cuánta información reunieron aquí condiciona si llegan a la Escena 2 con ventaja ante el comité.</p>
+<blockquote>
+<p>«Con este historial, la certificación es automática. ¿Alguien puede explicarme por qué la sala huele a otra casa?»</p>
+</blockquote>
+<h3>Escena 2 — ¿Quién abrió qué?</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Pasillos administrativos, formularios en cascada, y un reloj de pared que de repente importa mucho más de lo que debería. En algún despacho, alguien está a punto de firmar algo que va a decidir el resto de la carrera de Ilo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> aseguramiento formal del incidente, identificación de los desplazados, y la amenaza administrativa inmediata: el comité se reúne para decidir si suspende cautelarmente a Ilo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Dara Wint y Oskar Belen</strong> — gestionan el expediente, cada uno a su manera (<em>Aspecto</em> y ficha: ver Reparto).<br />
+- <strong>Erea</strong>, si sigue presente — puede orientar sobre qué recurso formal existe, sin poder presentarlo ella misma en nombre de Ilo.<br />
+- <strong>Ilo</strong>, esperando noticias — cada vez más nerviosa.</p>
+<p><strong>Qué saben / qué dicen:</strong> existe un "recurso de garantía procedimental" que puede detener la suspensión cautelar si se presenta con dos testigos y una objeción escrita antes de que termine la reunión del comité (ver Reloj).</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Investigación o Social</strong> (encontrar y entender el procedimiento de recurso correcto): éxito → localizas el trámite exacto y qué requiere; fallo → encuentras un trámite relacionado pero no el correcto, perdiendo tiempo.<br />
+- <strong>Social</strong> (conseguir que Oskar ayude activamente a interpretar una excepción a favor de Ilo): éxito → Oskar encuentra una lectura del reglamento que juega a favor; fallo → Oskar quiere ayudar pero no encuentra base suficiente todavía.<br />
+- <strong>Liderazgo o Social</strong> (presentar el recurso formal ante Dara con los testigos y la objeción en regla): éxito → la suspensión cautelar se detiene, ganando tiempo para investigar; fallo → Dara aplica el procedimiento tal cual, y la suspensión sigue adelante mientras se investiga.</p>
+<p><strong>Si los PJ no hacen nada:</strong> el comité suspende cautelarmente a Ilo a H+1:00.</p>
+<p><strong>Cómo termina:</strong> queda decidido, de momento, si Ilo sigue certificada mientras dura la investigación o si su licencia queda en suspenso.</p>
+<p><strong>Después:</strong> el resultado aquí no cierra el caso — solo determina la presión con la que se juega el resto del módulo.</p>
+<h3>Escena 3 — Una dirección borrada</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Registros de mantenimiento, permisos que nadie ha mirado en décadas, y un nombre que empieza a repetirse en los márgenes de varios documentos distintos: alguien que conocía este sistema mejor de lo que debería un simple visitante.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> investigación de la baliza, los permisos de la vivienda sellada, y los testigos, para llegar hasta Ren Dovic y entender su motivo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Oskar Belen</strong>, si coopera desde la Escena 2 — ayuda a bucear en archivos antiguos, con genuino interés en entender qué pasó.<br />
+- <strong>Bettina Corsi</strong>, si se le pregunta con calma — recuerda a Ren de niña, aunque no la reconoce de inmediato con el nombre actual.</p>
+<p><strong>Qué saben / qué dicen:</strong> los registros conectan la dirección con un litigio de herencia sin resolver y un plazo de subasta que se acerca.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Tecnología</strong> (analizar la baliza manipulada técnicamente): éxito → identificas el método usado y una firma de acceso que apunta a Ren; fallo → confirmas la manipulación, sin identificar a la responsable todavía.<br />
+- <strong>Investigación</strong> (revisar los registros de litigio y permisos de la vivienda): éxito → descubres el plazo de subasta y el litigio de herencia como motivo probable; fallo → información parcial, suficiente para seguir pero no para actuar con certeza.<br />
+- <strong>Social</strong> (hablar con Bettina sobre la vivienda y sus antiguos residentes): éxito → obtienes el nombre de la familia de Ren y una pista de dónde localizarla; fallo → recuerdos vagos, sin nombre claro.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Ren intenta una segunda manipulación de baliza por su cuenta antes de H+2:30, con más riesgo de fallar y quedar expuesta de forma más dura.</p>
+<p><strong>Cómo termina:</strong> el grupo sabe quién manipuló la baliza y por qué, y decide cómo abordarla antes de que se acabe el tiempo.</p>
+<p><strong>Después:</strong> el nivel de comprensión conseguido aquí sobre el motivo de Ren condiciona el tono de la Escena 4 — confrontación o negociación.</p>
+<h3>Escena 4 — La puerta vuelve</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La baliza, recalibrada, abre la dirección una vez más. Al otro lado, polvo suspendido en la luz, muebles cubiertos, y una mujer con una carpeta gastada que se gira demasiado rápido al oír pasos.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> reapertura de la dirección (controlada por el grupo, o forzada por Ren si actuó primero) hacia la vivienda sellada.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Ren Dovic</strong> — buscando sus documentos, dispuesta a explicarse si se le da la oportunidad en vez de tratarla como una amenaza (<em>Aspecto</em> y ficha: ver Reparto).<br />
+- Cualquier desplazado que quedara sin recuperar de la Escena 1.</p>
+<p><strong>Qué saben / qué dicen:</strong> Ren puede confirmar la verdad completa de su motivo si se le escucha con calma — el litigio, el plazo de subasta, y su cálculo erróneo sobre el alcance de la dirección.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social o Empatía</strong> (convencer a Ren de colaborar en vez de intentar huir con lo que ha encontrado): éxito → coopera, entrega lo que ha recuperado y explica todo; fallo → duda, pero no ataca ni se resiste violentamente si se le trata con respeto.<br />
+- <strong>Investigación</strong> (localizar los documentos concretos que Ren necesita antes que ella, o junto a ella): éxito → encontráis lo que prueba el derecho de su familia; fallo → la vivienda es grande y el tiempo apremia — se pierde parte de lo buscado.<br />
+- <strong>Tecnología</strong> (estabilizar la dirección para una salida segura de todos): éxito → todos cruzan sin complicaciones; fallo → la dirección empieza a inestabilizarse antes de tiempo, obligando a salir con prisa pero sin daño real.</p>
+<p><strong>Si los PJ no hacen nada:</strong> la dirección se pierde a H+3:00 con Ren todavía dentro si no ha salido antes — perdida para la investigación, aunque no necesariamente en peligro real.</p>
+<p><strong>Cómo termina:</strong> Ren queda identificada y, con o sin sus documentos, la situación queda lista para resolverse formalmente en la Escena 5.</p>
+<p><strong>Después:</strong> cómo trataron a Ren aquí condiciona qué desenlaces están disponibles.</p>
+<h3>Escena 5 — Licencia concedida o retirada</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>De vuelta en la Galería, con los desplazados devueltos y la dirección cerrada para siempre. Queda una firma pendiente: la que decide si Ilo sigue siendo Maestra de Portales certificada, y qué le pasa a Ren.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con la emergencia resuelta, el comité (y la mesa) deciden la responsabilidad final y qué aprende la institución.</p>
+<p><strong>PNJ presentes:</strong> Erea, Dara, Oskar, Ilo, Ren (si fue localizada y no huyó), los desplazados como testigos.</p>
+<p><strong>Qué saben / qué dicen:</strong> la verdad completa puede presentarse formalmente al comité, negociarse en privado con Ren, o gestionarse de forma incompleta — ninguna opción es automáticamente correcta.</p>
+<p><strong>Tiradas posibles:</strong> Social o Liderazgo para inclinar la decisión final; ninguna sustituye la decisión de la mesa.</p>
+<p><strong>Si los PJ no hacen nada:</strong> el comité cierra el expediente con la información que tenga, probablemente perjudicando a Ilo si no se presentó el recurso a tiempo en la Escena 2.</p>
+<p><strong>Cómo termina:</strong> queda decidido el estado final de la licencia de Ilo y qué le pasa a Ren.</p>
+<p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
+<h3>Textos para leer</h3>
+<p><strong>La apertura incorrecta</strong></p>
+<blockquote>
+<p>La sala de examen huele a ozono y a papel oficial. Ilo traza el gesto exacto, la baliza responde exactamente como debería — y la puerta que se abre no es la que nadie esperaba.</p>
+</blockquote>
+<p><strong>Los archivos</strong></p>
+<blockquote>
+<p>Registros de mantenimiento, permisos que nadie ha mirado en décadas, y un nombre que empieza a repetirse en los márgenes de varios documentos distintos.</p>
+</blockquote>
+<p><strong>La vivienda sellada</strong></p>
+<blockquote>
+<p>Polvo suspendido en la luz, muebles cubiertos, y una mujer con una carpeta gastada que se gira demasiado rápido al oír pasos.</p>
+</blockquote>
+<hr />
+<h2>Pistas e información</h2>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Revela</th>
+<th>Vía alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baliza dañada (Escena 1)</td>
+<td>Dirección insertada manualmente, no generada por el examen</td>
+<td>Recuento de desplazados que detecta a Ren entre ellos</td>
+</tr>
+<tr>
+<td>Trámite de recurso (Escena 2)</td>
+<td>Existe un recurso formal que detiene la suspensión cautelar</td>
+<td>Preguntar directamente a Erea qué opciones hay</td>
+</tr>
+<tr>
+<td>Análisis técnico de la baliza (Escena 3)</td>
+<td>Firma de acceso que apunta a Ren</td>
+<td>Registros de litigio y permisos de la vivienda</td>
+</tr>
+<tr>
+<td>Hablar con Bettina Corsi (Escena 3)</td>
+<td>Nombre e identidad de Ren, antigua vecina</td>
+<td>Archivos administrativos de la vivienda sellada</td>
+</tr>
+<tr>
+<td>Hablar con Ren (Escena 4)</td>
+<td>Verdad completa: litigio, plazo de subasta, cálculo erróneo</td>
+<td>Documentación recuperada de la propia vivienda</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recompensas y gastos</h2>
+<p>La misión no debe dejar a los PJ con pérdidas netas por gastos o equipo dañado — cúbrelo antes de repartir nada más.</p>
+<p><strong>Recompensa económica:</strong> entre 200 y 400 PC por PJ, pagados por el Magisterio como gestión de incidencia resuelta — un pago administrativo, no un contrato corporativo.</p>
+<p><strong>Beneficios alternativos:</strong> relación con Erea Sal reforzada; acceso o trato preferente en trámites futuros de la Galería de Puertas; gratitud de Ilo, gestionable como favor pequeño más adelante; contacto con Ren si el desenlace lo permite.</p>
+<hr />
+<h2>Desenlaces combinables</h2>
+<p><strong>Licencia confirmada sin mancha.</strong> El comité reconoce formalmente que Ilo no cometió ningún error. Su certificación queda limpia, y el caso se documenta como sabotaje externo.</p>
+<p><strong>Licencia confirmada con nota.</strong> Ilo mantiene su certificación, pero el expediente incluye una nota sobre "vulnerabilidad del procedimiento de examen" — no la perjudica directamente, pero queda registrada.</p>
+<p><strong>Licencia suspendida temporalmente.</strong> Si los PJ no lograron el recurso a tiempo, Ilo pasa un periodo de suspensión antes de que la verdad complete la investigación — injusto, pero no permanente.</p>
+<p><strong>Ren sancionada formalmente.</strong> Enfrenta consecuencias reales por la manipulación, incluso si su motivo era comprensible — el Magisterio no puede ignorar el método, aunque entienda la necesidad.</p>
+<p><strong>Ren y su familia recuperan su derecho.</strong> Si consiguió los documentos, su reclamación de herencia avanza — combinable con cualquier grado de sanción por el método usado.</p>
+<hr />
+<h2>Continuidad opcional</h2>
+<ul>
+<li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de la colección.</li>
+<li><strong>Si se han jugado otros episodios:</strong> la relación con Erea modifica la recepción del grupo en el Magisterio en futuros encuentros de la colección.</li>
+</ul>
+<p>Ejemplo de puerta abierta: Erea necesita verificar una ruta de portal relacionada en otro contexto — enlace natural hacia cualquier otro DLC con presencia del Magisterio, sin obligar a aceptarlo.</p>
+<hr />
+<h2>Las Dos Voces</h2>
+<p>Voz satírica sobre una puerta administrativa:</p>
+<blockquote>
+<p>«Toda salida es libre cuando alguien ha pagado por la llave.»</p>
+</blockquote>
+<p>Respuesta estoica en el marco interior:</p>
+<blockquote>
+<p>«Abrir no siempre libera. Cerrar no siempre protege.»</p>
+</blockquote>
+<p>Una intervención, no más — ni oráculo ni pista indispensable.</p>
+<hr />
+<h2>Límites de este módulo</h2>
+<ul>
+<li>No hacer que un aprendiz anterior a Camino de Portales 25 abra portales completos — Ilo se examina precisamente de ese umbral.</li>
+<li>No alterar costes, Parpadeo, Alma, PD ni PV — el examen y la manipulación se resuelven con las reglas de tiradas y enfrentadas vigentes.</li>
+<li>No revelar ni insinuar el secreto de Proctor.</li>
+<li>La burocracia debe tener humor amable, no convertir a todos los funcionarios en incompetentes — al menos uno (Oskar) debe demostrar ayuda genuina dentro del sistema.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p>Reloj hasta que la baliza pierde la dirección, con tiempos de desplazamiento fijados en el Panel del Narrador. Cinco escenas autosuficientes: examen fallido → aseguramiento y amenaza administrativa → investigación de archivos → reapertura y confrontación → decisión institucional, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Ningún requisito burocrático es arbitrario: cada uno tiene una razón, y al menos una persona dentro del sistema intenta de verdad ayudar.</p>
+<hr />
+<p><em>MadCity — colección de one-shots. Comparte lugares, PNJ y dirección visual con el resto de la colección, sin formar una campaña obligatoria.</em></p>
+</div>
+</body>
+</html>

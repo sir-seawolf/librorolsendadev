@@ -1,19 +1,22 @@
-// Gestor de audio común del motor (Iteración Audio). Motor-genérico a
-// propósito: no conoce "Predator" ni "Jaula" ni ningún nombre de archivo —
-// solo conceptos: track, musicState, volume, muted, fade, moduleMusicMap.
-// Los nombres de fichero viven en datos (src/data/audio/audioConfig.json
-// para lo global, module.json → "music" para lo de cada módulo).
-// Ver docs/AUDIO_SYSTEM.md para la arquitectura completa.
+// Gestor de audio común y agnóstico del motor.
 //
-// Dos canales (A/B) para crossfade real — nunca una sola instancia de
-// audio intentando hacer fade contra sí misma. En cada transición se carga
-// la pista siguiente en el canal INACTIVO y se cruzan los volúmenes; el
-// canal que pierde queda en pausa (no se destruye ni se resetea su
-// posición) por si el mismo estado vuelve a pedirse más tarde en la misma
-// sesión (punto 11 del encargo: reanudar sin reiniciar, aprovechando que
-// ya son solo 2 canales por diseño).
-
+// La música conserva sus dos canales A/B y la API histórica. Los demás buses
+// se crean bajo demanda: un canal de ambiente en bucle y pools acotados para
+// reproducciones puntuales. El contenido solo entrega identificadores; un
+// manifiesto registrado desde fuera resuelve esos ids a recursos físicos.
 const CLAVE_PREFERENCIAS = "la_senda_audio_settings_v1";
+const BUSES = Object.freeze(["music", "ambience", "sfx", "ui"]);
+const BUSES_PUNTUALES = new Set(["sfx", "ui"]);
+const DEFAULT_BUS_PREFS = Object.freeze({
+  music: { enabled: true, volume: 0.65 },
+  ambience: { enabled: true, volume: 0.65 },
+  sfx: { enabled: true, volume: 0.8 },
+  ui: { enabled: true, volume: 0.8 }
+});
+
+function limitar01(valor) {
+  return Math.max(0, Math.min(1, Number(valor)));
+}
 
 function resolverFadeMs(config, from, to) {
   const regla = (config.fadeRules || []).find(r =>
@@ -22,29 +25,48 @@ function resolverFadeMs(config, from, to) {
   return regla ? regla.fadeMs : config.defaultFadeMs;
 }
 
+function normalizarPreferencias(datos) {
+  if (!datos || typeof datos !== "object") return null;
+  const legacyValido = typeof datos.musicEnabled === "boolean" && typeof datos.musicVolume === "number";
+  const busesGuardados = datos.buses && typeof datos.buses === "object" ? datos.buses : {};
+  if (!legacyValido && !Object.keys(busesGuardados).length) return null;
+
+  const buses = {};
+  for (const bus of BUSES) {
+    const guardado = busesGuardados[bus];
+    const fallback = DEFAULT_BUS_PREFS[bus];
+    const enabled = typeof guardado?.enabled === "boolean"
+      ? guardado.enabled
+      : (bus === "music" && legacyValido ? datos.musicEnabled : fallback.enabled);
+    const volume = typeof guardado?.volume === "number"
+      ? limitar01(guardado.volume)
+      : (bus === "music" && legacyValido ? limitar01(datos.musicVolume) : fallback.volume);
+    buses[bus] = { enabled, volume };
+  }
+  return buses;
+}
+
 function cargarPreferencias(storage) {
   try {
     const raw = storage?.getItem(CLAVE_PREFERENCIAS);
-    if (!raw) return null;
-    const datos = JSON.parse(raw);
-    if (typeof datos.musicEnabled !== "boolean" || typeof datos.musicVolume !== "number") return null;
-    return datos;
-  } catch (e) {
+    return raw ? normalizarPreferencias(JSON.parse(raw)) : null;
+  } catch {
     return null;
   }
 }
 
-function guardarPreferencias(storage, prefs) {
+function guardarPreferencias(storage, buses) {
   try {
-    storage?.setItem(CLAVE_PREFERENCIAS, JSON.stringify(prefs));
-  } catch (e) {
-    // localStorage no disponible (file://, cuota llena...) — nunca bloquear el audio por esto.
+    storage?.setItem(CLAVE_PREFERENCIAS, JSON.stringify({
+      musicEnabled: buses.music.enabled,
+      musicVolume: buses.music.volume,
+      buses
+    }));
+  } catch {
+    // La persistencia nunca debe bloquear el audio.
   }
 }
 
-// crearCanal() por defecto construye un <audio> real; los tests inyectan un
-// doble que registra llamadas (play/pause/volume/src) sin reproducir nada
-// de verdad — ver tests/audioManager.test.mjs.
 function canalPorDefecto() {
   const audio = new Audio();
   audio.preload = "none";
@@ -56,25 +78,55 @@ export function crearGestorAudio({
   storage = (typeof localStorage !== "undefined" ? localStorage : null),
   config = null,
   debug = false,
+  resolverRecurso = (src) => src,
   log = (...args) => { if (debug) console.log("[audio]", ...args); }
 } = {}) {
+  // Estos son y seguirán siendo exclusivamente los dos canales musicales A/B.
   const canales = [crearCanal(), crearCanal()];
-  const canalTrackUrl = [null, null]; // qué URL lógica tiene cargada cada canal (no el .src normalizado del navegador)
-  let activo = -1; // índice del canal que suena ahora, -1 = silencio
+  const canalTrackUrl = [null, null];
+  let activo = -1;
   let estadoActual = null;
   let moduloIdActual = null;
-  let mapasPorModulo = {}; // moduloId -> { estado: archivo }
-  let cfg = config; // se rellena con inicializar() si no se pasa ya cargado
+  let mapasPorModulo = {};
+  let cfg = config;
   let desbloqueado = false;
-  let pendiente = null; // { moduloId, estado, opts } último pedido mientras estaba bloqueado
-  let fadeTimer = null; // id de setInterval del fade en curso (nunca más de uno)
+  let pendiente = null;
+  let ambientePendiente = null;
+  let fadeTimer = null;
 
   const prefsGuardadas = cargarPreferencias(storage);
-  let muted = prefsGuardadas ? !prefsGuardadas.musicEnabled : false;
-  let volumen = prefsGuardadas ? prefsGuardadas.musicVolume : 0.65; // se ajusta a defaultVolume tras inicializar() si no había preferencia
+  const preferencias = structuredClone(prefsGuardadas || DEFAULT_BUS_PREFS);
+  const manifiestos = new Map();
+  let canalAmbiente = null;
+  let ambienteActual = null;
+  let ambienteBaseVolume = 1;
+  const pools = { sfx: [], ui: [] };
+  const limitesPuntuales = { sfx: 6, ui: 4 };
 
-  function volumenEfectivo() {
-    return muted ? 0 : volumen;
+  function prepararCanal(canal, etiqueta) {
+    canal.preload = "none";
+    canal.volume = 0;
+    canal.onerror = () => log("error al cargar", etiqueta, canal.src);
+    return canal;
+  }
+
+  function volumenEfectivo(bus, baseVolume = 1) {
+    const pref = preferencias[bus];
+    return pref.enabled ? pref.volume * limitar01(baseVolume) : 0;
+  }
+
+  function aplicarDefaultsConfig() {
+    for (const bus of BUSES) {
+      const configurado = cfg?.buses?.[bus];
+      if (!prefsGuardadas && typeof configurado?.defaultVolume === "number") {
+        preferencias[bus].volume = limitar01(configurado.defaultVolume);
+      }
+    }
+    if (!prefsGuardadas && typeof cfg?.defaultVolume === "number") {
+      preferencias.music.volume = limitar01(cfg.defaultVolume);
+    }
+    limitesPuntuales.sfx = Math.max(1, Math.trunc(cfg?.buses?.sfx?.maxVoices ?? 6));
+    limitesPuntuales.ui = Math.max(1, Math.trunc(cfg?.buses?.ui?.maxVoices ?? 4));
   }
 
   async function inicializar(rutaConfig = "src/data/audio/audioConfig.json") {
@@ -82,28 +134,57 @@ export function crearGestorAudio({
       try {
         const res = await fetch(rutaConfig);
         cfg = await res.json();
-      } catch (e) {
-        cfg = { basePath: "assets/shared/audio/music/", defaultVolume: 0.65, defaultFadeMs: 2500, global: {}, fadeRules: [] };
+      } catch {
+        cfg = {
+          basePath: "assets/shared/audio/music/",
+          defaultVolume: 0.65,
+          defaultFadeMs: 2500,
+          global: {},
+          fadeRules: [],
+          buses: {}
+        };
       }
     }
-    if (!prefsGuardadas) volumen = cfg.defaultVolume ?? 0.65;
-    canales.forEach(c => { c.volume = 0; c.onerror = () => log("error al cargar", c.src); });
+    aplicarDefaultsConfig();
+    canales.forEach((canal, i) => prepararCanal(canal, `music:${i}`));
   }
 
+  // Fachada musical histórica: se conserva para todos los consumidores actuales.
   function registrarMapaModulo(moduloId, mapaMusica) {
     mapasPorModulo[moduloId] = mapaMusica || {};
   }
 
-  function resolverArchivo(moduloId, estado) {
+  function resolverArchivoMusical(moduloId, estado) {
     if (!cfg) return null;
     if (estado === "gateway" || estado === "menu") return cfg.global?.[estado] || null;
     return mapasPorModulo[moduloId]?.[estado] || null;
   }
 
-  function resolverUrl(moduloId, estado) {
-    const archivo = resolverArchivo(moduloId, estado);
-    if (!archivo) return null;
-    return cfg.basePath + archivo;
+  function resolverUrlMusical(moduloId, estado) {
+    const archivo = resolverArchivoMusical(moduloId, estado);
+    return archivo ? cfg.basePath + archivo : null;
+  }
+
+  // Puerto nuevo: el nombre de ámbito es opaco para el gestor. Puede ser un
+  // módulo, un paquete común o cualquier adaptador futuro.
+  function registrarManifiestoAudio(ambito, manifiesto) {
+    manifiestos.set(ambito, manifiesto?.sounds || manifiesto || {});
+  }
+
+  function resolverSonido(ambito, identificador) {
+    try {
+      const entrada = manifiestos.get(ambito)?.[identificador];
+      if (!entrada) return null;
+      const descriptor = typeof entrada === "string" ? { src: entrada } : entrada;
+      if (!descriptor?.src) return null;
+      return {
+        url: resolverRecurso(descriptor.src, { ambito, identificador }),
+        volume: typeof descriptor.volume === "number" ? limitar01(descriptor.volume) : 1
+      };
+    } catch (error) {
+      log("no se pudo resolver", ambito, identificador, error);
+      return null;
+    }
   }
 
   function cancelarFadeEnCurso() {
@@ -113,16 +194,15 @@ export function crearGestorAudio({
     }
   }
 
-  // Silencia y pausa TODOS los canales de golpe (fallback / estado "silence").
   function irASilencioInmediato() {
     cancelarFadeEnCurso();
-    canales.forEach(c => { c.volume = 0; try { c.pause(); } catch (e) {} });
+    canales.forEach(c => { c.volume = 0; try { c.pause(); } catch {} });
     activo = -1;
   }
 
   function iniciarCrossfade(moduloId, estado, url, fadeMs) {
     cancelarFadeEnCurso();
-    const destino = activo === 0 ? 1 : 0; // si activo===-1, destino=1 (arbitrario, consistente)
+    const destino = activo === 0 ? 1 : 0;
     const origen = activo;
     const canalDestino = canales[destino];
     const canalOrigen = origen >= 0 ? canales[origen] : null;
@@ -131,24 +211,24 @@ export function crearGestorAudio({
       canalDestino.src = url;
       canalDestino.currentTime = 0;
       canalTrackUrl[destino] = url;
-    } // si ya estaba cargada (misma pista sonó antes en este canal), se reanuda desde donde iba
+    }
 
     canalDestino.volume = 0;
     canalDestino.loop = true;
     const intentoPlay = canalDestino.play?.();
     if (intentoPlay?.catch) intentoPlay.catch(() => log("play() bloqueado/rechazado para", url));
 
-    const vFinal = volumenEfectivo();
     const pasos = Math.max(1, Math.round(fadeMs / 100));
     let paso = 0;
     fadeTimer = setInterval(() => {
       paso++;
       const t = Math.min(1, paso / pasos);
+      const vFinal = volumenEfectivo("music");
       canalDestino.volume = vFinal * t;
       if (canalOrigen) canalOrigen.volume = vFinal * (1 - t);
       if (t >= 1) {
         cancelarFadeEnCurso();
-        if (canalOrigen) { try { canalOrigen.pause(); } catch (e) {} } // se queda cargado, NO se resetea posición (reanudable)
+        if (canalOrigen) { try { canalOrigen.pause(); } catch {} }
         activo = destino;
       }
     }, 100);
@@ -157,95 +237,219 @@ export function crearGestorAudio({
     moduloIdActual = moduloId;
   }
 
-  // Salto directo al estado final de un fade en curso — solo para tests
-  // deterministas (no se depende de temporizadores reales para verificar
-  // el resultado de una transición).
   function _forzarFinDeFade() {
     if (fadeTimer === null) return;
     clearInterval(fadeTimer);
     fadeTimer = null;
-    // Mismo cálculo de "canal destino" que iniciarCrossfade() usó para
-    // arrancar este fade (activo todavía no se actualiza hasta que el fade
-    // termina, así que sigue apuntando al canal que estaba sonando ANTES).
     const destino = activo === 0 ? 1 : 0;
-    const vFinal = volumenEfectivo();
+    const vFinal = volumenEfectivo("music");
     canales.forEach((c, i) => {
-      if (i === destino) { c.volume = vFinal; }
-      else { c.volume = 0; try { c.pause(); } catch (e) {} }
+      if (i === destino) c.volume = vFinal;
+      else { c.volume = 0; try { c.pause(); } catch {} }
     });
     activo = destino;
   }
 
   function reproducirEstado(moduloId, estado, opts = {}) {
     if (!desbloqueado) { pendiente = { moduloId, estado, opts }; return; }
-    if (!cfg) return; // inicializar() no ha terminado todavía — se ignora, nunca rompe
-
-    // Punto 10: mismo estado + mismo módulo + ya sonando -> no reiniciar nada.
+    if (!cfg) return;
     if (estado === estadoActual && moduloId === moduloIdActual && activo >= 0) return;
 
-    const url = resolverUrl(moduloId, estado);
-    if (!url) { irASilencioInmediato(); estadoActual = estado; moduloIdActual = moduloId; return; }
+    const url = resolverUrlMusical(moduloId, estado);
+    if (!url) {
+      irASilencioInmediato();
+      estadoActual = estado;
+      moduloIdActual = moduloId;
+      return;
+    }
 
     const fadeMs = opts.fadeMs ?? resolverFadeMs(cfg, estadoActual, estado);
     iniciarCrossfade(moduloId, estado, url, fadeMs);
+  }
+
+  function asegurarCanalAmbiente() {
+    if (!canalAmbiente) canalAmbiente = prepararCanal(crearCanal(), "ambience");
+    return canalAmbiente;
+  }
+
+  function detenerAmbiente() {
+    if (!canalAmbiente) {
+      ambienteActual = null;
+      return;
+    }
+    try { canalAmbiente.pause(); } catch {}
+    canalAmbiente.volume = 0;
+    ambienteActual = null;
+  }
+
+  function reproducirAmbiente(ambito, identificador) {
+    if (!desbloqueado) {
+      ambientePendiente = { ambito, identificador };
+      return true;
+    }
+    const sonido = resolverSonido(ambito, identificador);
+    if (!sonido) {
+      detenerAmbiente();
+      return false;
+    }
+    if (ambienteActual?.ambito === ambito && ambienteActual?.identificador === identificador) return true;
+
+    const canal = asegurarCanalAmbiente();
+    try { canal.pause(); } catch {}
+    canal.src = sonido.url;
+    canal.currentTime = 0;
+    canal.loop = true;
+    ambienteBaseVolume = sonido.volume;
+    canal.volume = volumenEfectivo("ambience", ambienteBaseVolume);
+    ambienteActual = { ambito, identificador };
+    const intento = canal.play?.();
+    if (intento?.catch) intento.catch(() => log("play() bloqueado/rechazado para ambiente", sonido.url));
+    return true;
+  }
+
+  function obtenerCanalPuntual(bus) {
+    const pool = pools[bus];
+    const libre = pool.find(canal => canal.ended || canal.paused);
+    if (libre) return libre;
+    if (pool.length < limitesPuntuales[bus]) {
+      const nuevo = prepararCanal(crearCanal(), bus);
+      pool.push(nuevo);
+      return nuevo;
+    }
+    const reciclado = pool.shift();
+    pool.push(reciclado);
+    try { reciclado.pause(); } catch {}
+    return reciclado;
+  }
+
+  function reproducirPuntual(bus, ambito, identificador) {
+    if (!BUSES_PUNTUALES.has(bus) || !desbloqueado) return false;
+    const sonido = resolverSonido(ambito, identificador);
+    if (!sonido) return false;
+
+    const canal = obtenerCanalPuntual(bus);
+    canal.src = sonido.url;
+    canal.currentTime = 0;
+    canal.loop = false;
+    canal._audioBaseVolume = sonido.volume;
+    canal.volume = volumenEfectivo(bus, sonido.volume);
+    const intento = canal.play?.();
+    if (intento?.catch) intento.catch(() => log("play() bloqueado/rechazado para", bus, sonido.url));
+    return true;
   }
 
   function desbloquear() {
     if (desbloqueado) return;
     desbloqueado = true;
     if (pendiente) {
-      const { moduloId, estado, opts } = pendiente;
+      const pedido = pendiente;
       pendiente = null;
-      reproducirEstado(moduloId, estado, opts);
+      reproducirEstado(pedido.moduloId, pedido.estado, pedido.opts);
+    }
+    if (ambientePendiente) {
+      const pedido = ambientePendiente;
+      ambientePendiente = null;
+      reproducirAmbiente(pedido.ambito, pedido.identificador);
     }
   }
 
-  function establecerMute(valor) {
-    muted = !!valor;
-    if (activo >= 0) canales[activo].volume = volumenEfectivo();
-    guardarPreferencias(storage, { musicEnabled: !muted, musicVolume: volumen });
+  function actualizarVolumenBus(bus) {
+    if (bus === "music" && activo >= 0) canales[activo].volume = volumenEfectivo("music");
+    if (bus === "ambience" && canalAmbiente) canalAmbiente.volume = volumenEfectivo("ambience", ambienteBaseVolume);
+    if (BUSES_PUNTUALES.has(bus)) {
+      pools[bus].forEach(canal => {
+        canal.volume = volumenEfectivo(bus, canal._audioBaseVolume ?? 1);
+      });
+    }
   }
 
-  function establecerVolumen(v) {
-    volumen = Math.max(0, Math.min(1, v));
-    if (activo >= 0) canales[activo].volume = volumenEfectivo();
-    guardarPreferencias(storage, { musicEnabled: !muted, musicVolume: volumen });
+  function establecerMuteBus(bus, valor) {
+    if (!BUSES.includes(bus)) return false;
+    preferencias[bus].enabled = !valor;
+    actualizarVolumenBus(bus);
+    guardarPreferencias(storage, preferencias);
+    return true;
+  }
+
+  function establecerVolumenBus(bus, valor) {
+    if (!BUSES.includes(bus)) return false;
+    preferencias[bus].volume = limitar01(valor);
+    actualizarVolumenBus(bus);
+    guardarPreferencias(storage, preferencias);
+    return true;
+  }
+
+  // Alias obligatorios de compatibilidad musical.
+  function establecerMute(valor) {
+    establecerMuteBus("music", valor);
+  }
+
+  function establecerVolumen(valor) {
+    establecerVolumenBus("music", valor);
   }
 
   function obtenerPreferencias() {
-    return { musicEnabled: !muted, musicVolume: volumen };
+    const buses = structuredClone(preferencias);
+    return {
+      musicEnabled: buses.music.enabled,
+      musicVolume: buses.music.volume,
+      buses
+    };
   }
 
-  // Visibilidad de pestaña (punto 38): pausa sin resetear posición al
-  // ocultarse, reanuda al volver — nunca desde el principio.
   function alCambiarVisibilidad(oculto) {
-    if (activo < 0) return;
-    if (oculto) { try { canales[activo].pause(); } catch (e) {} }
-    else { const p = canales[activo].play?.(); if (p?.catch) p.catch(() => {}); }
+    const activos = [];
+    if (activo >= 0) activos.push(canales[activo]);
+    if (canalAmbiente && ambienteActual) activos.push(canalAmbiente);
+    for (const canal of activos) {
+      if (oculto) {
+        try { canal.pause(); } catch {}
+      } else {
+        const intento = canal.play?.();
+        if (intento?.catch) intento.catch(() => log("no se pudo reanudar audio"));
+      }
+    }
   }
 
-  function _estado() { // solo para tests/depuración
-    return { activo, estadoActual, moduloIdActual, desbloqueado, muted, volumen, canalTrackUrl: [...canalTrackUrl] };
+  function _estado() {
+    return {
+      activo,
+      estadoActual,
+      moduloIdActual,
+      desbloqueado,
+      muted: !preferencias.music.enabled,
+      volumen: preferencias.music.volume,
+      canalTrackUrl: [...canalTrackUrl],
+      ambienteActual,
+      limitesPuntuales: { ...limitesPuntuales },
+      vocesPuntuales: { sfx: pools.sfx.length, ui: pools.ui.length }
+    };
   }
 
   return {
     inicializar,
     registrarMapaModulo,
     reproducirEstado,
+    registrarManifiestoAudio,
+    reproducirAmbiente,
+    detenerAmbiente,
+    reproducirPuntual,
     desbloquear,
     establecerMute,
     establecerVolumen,
+    establecerMuteBus,
+    establecerVolumenBus,
     obtenerPreferencias,
     alCambiarVisibilidad,
     irASilencioInmediato,
     _forzarFinDeFade,
     _estado,
-    _canales: canales // solo para tests — nunca usar desde código de producción
+    _canales: canales,
+    _canalAmbiente: () => canalAmbiente,
+    _pools: pools
   };
 }
 
-// Instancia única para la app real (browser). Los tests crean sus propias
-// instancias aisladas con crearGestorAudio({...dobles...}).
 export const audioManager = (typeof window !== "undefined") ? crearGestorAudio() : null;
 
-export { resolverFadeMs }; // exportado aparte para poder testear la resolución de reglas sin montar un gestor completo
+export { resolverFadeMs, BUSES };

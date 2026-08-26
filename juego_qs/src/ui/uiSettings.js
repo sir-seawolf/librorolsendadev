@@ -23,12 +23,29 @@ function escribir(datos) {
   }
 }
 
-export function fichaColapsada() {
-  return !!leer().fichaColapsada;
+// `layout` distingue el estado plegado/expandido según cómo se presenta la
+// ficha: "docked" (columna fija de #app, el comportamiento de siempre) vs
+// "overlay" (cajón superpuesto que no reserva ancho del escenario — piloto
+// de Localización C, ver docs/CONTRATO_VISUAL_PREDATOR.md). Es la MISMA
+// preferencia persistida, solo con una clave y un valor por defecto propios
+// por layout: en "docked" arrancar expandida no roba nada (siempre hubo
+// columna reservada); en "overlay" arrancar expandida taparía la escena
+// panorámica sin que el jugador lo haya pedido, así que su valor por
+// defecto es plegada (el escenario ocupa todo el ancho al entrar).
+function claveColapsada(layout) {
+  return layout === "overlay" ? "fichaColapsadaOverlay" : "fichaColapsada";
+}
+function porDefecto(layout) {
+  return layout === "overlay";
 }
 
-export function establecerFichaColapsada(valor) {
+export function fichaColapsada(layout = "docked") {
+  const valor = leer()[claveColapsada(layout)];
+  return valor === undefined ? porDefecto(layout) : !!valor;
+}
+
+export function establecerFichaColapsada(valor, layout = "docked") {
   const datos = leer();
-  datos.fichaColapsada = !!valor;
+  datos[claveColapsada(layout)] = !!valor;
   escribir(datos);
 }
