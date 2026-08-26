@@ -159,7 +159,8 @@
     .metrics{grid-template-columns:repeat(2,1fr);}
     .pegrid{grid-template-columns:repeat(2,1fr);}
     .recon-grid{grid-template-columns:repeat(2,1fr);}
-    table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    table{display:table;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    td.skill{white-space:normal;}
     input,select{font-size:13px;padding:3px 5px;}
     input[type=number]{width:44px;}
     .disc-inner{flex-direction:column;gap:8px;}
@@ -168,6 +169,9 @@
     h2{font-size:11px;}
     .portrait-box{min-height:160px;}
     .page2-grid{grid-template-columns:1fr;}
+    .page3-grid{grid-template-columns:1fr;}
+    .page4-grid{grid-template-columns:1fr;}
+    .armor-visual{min-height:0;}
     .btns{flex-wrap:wrap;}
     button{font-size:12px;padding:8px 16px;}
   }
@@ -284,14 +288,16 @@
       <h2>Atributos</h2>
       <table class="skilltbl"><colgroup><col><col class="c-num"><col class="c-num"><col class="c-num"></colgroup>
         <tr><th class="skill-h">Atributo</th><th>Base</th><th>Impl</th><th>Tot</th></tr>
-        <tr><td class="skill" title="Carisma">Carisma</td><td><input type="number" id="Ca_b" oninput="calc()"></td><td><input type="number" id="Ca_m" oninput="calc()"></td><td class="total" id="Ca">0</td></tr>
+        <tr class="disc-cat-row"><td colspan="4">Físicos</td></tr>
         <tr><td class="skill" title="Agilidad">Agilidad</td><td><input type="number" id="A_b" oninput="calc()"></td><td><input type="number" id="A_m" oninput="calc()"></td><td class="total" id="A">0</td></tr>
-        <tr><td class="skill" title="Percepción">Percepción</td><td><input type="number" id="P_b" oninput="calc()"></td><td><input type="number" id="P_m" oninput="calc()"></td><td class="total" id="P">0</td></tr>
         <tr><td class="skill" title="Constitución">Constitución</td><td><input type="number" id="C_b" oninput="calc()"></td><td><input type="number" id="C_m" oninput="calc()"></td><td class="total" id="C">0</td></tr>
-        <tr><td class="skill" title="Inteligencia">Inteligencia</td><td><input type="number" id="I_b" oninput="calc()"></td><td><input type="number" id="I_m" oninput="calc()"></td><td class="total" id="I">0</td></tr>
         <tr><td class="skill" title="Fuerza">Fuerza</td><td><input type="number" id="F_b" oninput="calc()"></td><td><input type="number" id="F_m" oninput="calc()"></td><td class="total" id="F">0</td></tr>
-        <tr><td class="skill" title="Voluntad">Voluntad</td><td><input type="number" id="V_b" oninput="calc()"></td><td><input type="number" id="V_m" oninput="calc()"></td><td class="total" id="V">0</td></tr>
         <tr><td class="skill" title="Habilidad">Habilidad</td><td><input type="number" id="H_b" oninput="calc()"></td><td><input type="number" id="H_m" oninput="calc()"></td><td class="total" id="H">0</td></tr>
+        <tr class="disc-cat-row"><td colspan="4">Mentales</td></tr>
+        <tr><td class="skill" title="Carisma">Carisma</td><td><input type="number" id="Ca_b" oninput="calc()"></td><td><input type="number" id="Ca_m" oninput="calc()"></td><td class="total" id="Ca">0</td></tr>
+        <tr><td class="skill" title="Inteligencia">Inteligencia</td><td><input type="number" id="I_b" oninput="calc()"></td><td><input type="number" id="I_m" oninput="calc()"></td><td class="total" id="I">0</td></tr>
+        <tr><td class="skill" title="Percepción">Percepción</td><td><input type="number" id="P_b" oninput="calc()"></td><td><input type="number" id="P_m" oninput="calc()"></td><td class="total" id="P">0</td></tr>
+        <tr><td class="skill" title="Voluntad">Voluntad</td><td><input type="number" id="V_b" oninput="calc()"></td><td><input type="number" id="V_m" oninput="calc()"></td><td class="total" id="V">0</td></tr>
       </table>
 
       <h2>PV base — Sano / Herido / Tullido</h2>
@@ -309,7 +315,7 @@
           <div class="hd" style="text-align:left;">PV/niv</div>
           <div class="v" id="vidaLeve">0</div><div class="v" id="vidaMedio">0</div><div class="v" id="vidaGrave">0</div>
         </div>
-        <div class="note">Total: <span id="vidaTotal">0</span> (reglas → Instrucciones)</div>
+        <div class="note">PV total: <span id="vidaTotal">0</span> · reglas de heridas en Instrucciones</div>
         <div class="lifegrid lifegrid-dano">
           <div class="hd" style="text-align:left;">Daño</div>
           <div class="v dano-box"><input type="text"></div>
@@ -836,7 +842,11 @@ function buildSkills(){
 }
 function buildCombat(){
   const tb=document.getElementById('combatTable');tb.innerHTML='';
-  COMBAT.forEach((c,i)=>{tb.innerHTML+=`<tr><td class="skill">${c.name}</td><td class="cat-base combatbase-${i}">0</td><td><input type="number" class="capr" data-i="${i}" oninput="calc()"></td><td><input type="number" class="cmod" data-i="${i}" oninput="calc()"></td><td class="total" id="ctot-${i}">0</td></tr>`;});
+  COMBAT.forEach((c,i)=>{
+    if(i===0) tb.innerHTML+=`<tr class="disc-cat-row"><td colspan="5">A distancia</td></tr>`;
+    if(i===3) tb.innerHTML+=`<tr class="disc-cat-row"><td colspan="5">Cuerpo a cuerpo</td></tr>`;
+    tb.innerHTML+=`<tr><td class="skill">${c.name}</td><td class="cat-base combatbase-${i}">0</td><td><input type="number" class="capr" data-i="${i}" oninput="calc()"></td><td><input type="number" class="cmod" data-i="${i}" oninput="calc()"></td><td class="total" id="ctot-${i}">0</td></tr>`;
+  });
 }
 function buildInic(){
   const tb=document.getElementById('inicTable');tb.innerHTML='';
