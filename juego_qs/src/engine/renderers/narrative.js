@@ -2,7 +2,8 @@
 // Las tres comparten el mismo motor de interacciones (sceneEngine.js); solo
 // cambia qué controles se dibujan. Ninguna escena concreta se nombra aquí.
 import { cargarEscena, buscarInteraccion, ejecutarInteraccion } from "../sceneEngine.js";
-import { rutaAsset } from "../moduleLoader.js";
+import { moduloIdActivo, rutaAsset } from "../moduleLoader.js";
+import { audioManager } from "../audioManager.js";
 import { state } from "../../gameState.js";
 import { config } from "../../config.js";
 import { normalizeSceneLayers } from "../sceneLayers.js";
@@ -94,9 +95,17 @@ export async function montarNarrativa(container, escenaId) {
       onTexto(escena.defaultText || "No parece que puedas hacer eso ahí.");
       return;
     }
+    function reproducirEvento(evento) {
+      const sonido = escena.audio?.events?.[evento];
+      if (sonido) audioManager?.reproducirPuntual("sfx", moduloIdActivo(), sonido);
+    }
+    reproducirEvento(interaccion.audioEvent);
     ejecutarInteraccion({
       escenaId, escena, interaccion, onTexto,
-      onCustom: () => updateLayerPresentation()
+      onCustom: consecuencia => {
+        updateLayerPresentation();
+        reproducirEvento(consecuencia?.audioEvent);
+      }
     });
   }
 

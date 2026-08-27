@@ -50,34 +50,37 @@
     .step-btn{flex:1 1 100%}
   }
 
-  /* ===== Ficha final — 4 páginas (Principal/Equipamiento/Iniciados/Instrucciones) ===== */
-  .ficha-pagina{background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:18px 22px;margin-bottom:16px;max-width:900px}
+  /* ===== Ficha final — 4 páginas (Principal/Equipamiento/Iniciados/Instrucciones) =====
+     Mismo lenguaje visual que ficha.html (v3): marco negro grueso, cabeceras en barra
+     oscura, Bas/Apr/Mod/Tot como raya en vez de recuadro, letra grande y apretada. */
+  .ficha-pagina{background:#fff;border:3px solid #000;border-radius:0;padding:18px 22px;margin-bottom:16px;max-width:900px}
   .ficha-pagina + .ficha-pagina{break-before:page}
-  .ficha-pagina h2{margin-top:0;font-family:'Orbitron',sans-serif;letter-spacing:1px;font-size:16px;border-bottom:2px solid #1d4ed8;padding-bottom:4px}
-  .ficha-cab{display:grid;grid-template-columns:repeat(4,1fr);gap:4px 14px;font-size:12px;margin-bottom:10px}
+  .ficha-pagina h2{margin:0 0 8px;font-family:'Orbitron',sans-serif;letter-spacing:1px;font-size:15px;text-transform:uppercase;background:#0f1115;color:#fff;padding:4px 10px;border-bottom:none}
+  .ficha-cab{display:grid;grid-template-columns:repeat(4,1fr);gap:4px 14px;font-size:13px;margin-bottom:10px}
   .ficha-cab div b{display:block;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px}
   .ficha-attrs{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:10px}
   .ficha-attrs div{border:1px solid #dbe3ef;border-radius:4px;text-align:center;padding:4px 2px}
-  .ficha-attrs div b{display:block;font-size:10px;color:#64748b}
-  .ficha-attrs div span{font-size:16px;font-weight:700}
-  .ficha-stats{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;margin-bottom:10px;border:1px solid #dbe3ef;border-radius:6px;padding:6px 10px;background:#f8fafc}
+  .ficha-attrs div b{display:block;font-size:10px;color:#64748b;font-variant:small-caps;letter-spacing:-0.2px}
+  .ficha-attrs div span{font-size:19px;font-weight:700}
+  .ficha-stats{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;margin-bottom:10px;border:1px solid #dbe3ef;border-radius:6px;padding:6px 10px;background:#f8fafc}
   .ficha-skills{display:grid;grid-template-columns:repeat(2,1fr);gap:0 16px}
   .ficha-skills-cat{margin-bottom:8px;break-inside:avoid}
-  .ficha-skills-cat h4{margin:4px 0 2px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#1d4ed8;border-bottom:1px solid #dbe3ef}
-  .ficha-skill-row{display:grid;grid-template-columns:1fr 120px 34px;align-items:center;gap:4px;font-size:11.5px;padding:1px 0;border-bottom:1px dotted #e2e8f0}
-  .ficha-skill-row .esp{border-bottom:1px solid #94a3b8;height:12px}
-  .ficha-skill-row .tot{text-align:center;font-weight:700;border:1px solid #94a3b8;border-radius:3px}
+  .ficha-skills-cat h4{margin:4px 0 2px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;background:#0f1115;color:#fff;padding:2px 6px;border-bottom:none}
+  .ficha-skill-row{display:grid;grid-template-columns:1fr 120px 34px;align-items:center;gap:4px;font-size:13.5px;padding:1px 0;border-bottom:none;letter-spacing:-0.2px}
+  .ficha-skill-row .esp{border-bottom:1px solid #000;height:12px}
+  .ficha-skill-row .tot{text-align:center;font-weight:700;border:none;border-bottom:1.5px solid #000;border-radius:0;background:transparent}
   .ficha-combate{display:grid;grid-template-columns:repeat(3,1fr);gap:0 16px;margin-top:6px}
   .ficha-blank-table{width:100%;border-collapse:collapse;margin-top:6px}
   .ficha-blank-table th,.ficha-blank-table td{border:1px solid #cbd5e1;font-size:11px;padding:6px 4px;height:22px}
+  .ficha-blank-table th{background:#0f1115;color:#fff;text-transform:uppercase;font-size:9px}
   .ficha-pv-box{display:flex;gap:14px;margin-top:8px}
-  .ficha-pv-nivel{flex:1;border:1px solid #cbd5e1;border-radius:6px;padding:8px;text-align:center}
+  .ficha-pv-nivel{flex:1;border:2px solid #000;border-radius:0;padding:8px;text-align:center}
   .ficha-pv-nivel b{display:block;font-size:11px;text-transform:uppercase;color:#64748b}
   .ficha-pv-boxes{display:flex;justify-content:center;gap:3px;flex-wrap:wrap;margin-top:4px}
-  .ficha-pv-boxes span{width:14px;height:14px;border:1px solid #94a3b8;display:inline-block;border-radius:2px}
+  .ficha-pv-boxes span{width:14px;height:14px;border:1px solid #000;display:inline-block;border-radius:2px}
   .ficha-instr h3{font-size:13px;margin:10px 0 4px}
   .ficha-instr p, .ficha-instr li{font-size:12px;line-height:1.5}
-  @page{size:auto;margin:10mm 9mm}
+  @page{size:A4 landscape;margin:5mm}
   @media print{
     body{background:#fff;padding:0;font-size:10px}
     .layout{display:block}
@@ -85,25 +88,25 @@
     .step{display:none !important}
     .step[data-step="10"]{display:block !important}
     #fichaFinal{display:block}
-    .ficha-pagina{border:none;box-shadow:none;padding:0;margin-bottom:0;max-width:100%}
+    .ficha-pagina{border:3px solid #000;box-shadow:none;padding:2mm 3mm;margin-bottom:0;max-width:100%}
     .ficha-pagina + .ficha-pagina{break-before:page}
     /* Página Principal es la más densa: apretar todo lo posible para que quepa en una sola hoja física. */
-    .ficha-pagina h2{font-size:13px;padding-bottom:2px;margin-bottom:6px}
-    .ficha-cab{gap:2px 12px;margin-bottom:6px;font-size:10px}
-    .ficha-cab div b{font-size:8px}
-    .ficha-attrs{margin-bottom:6px;gap:3px}
+    .ficha-pagina h2{font-size:14px;padding:3px 8px;margin-bottom:5px}
+    .ficha-cab{gap:1px 12px;margin-bottom:5px;font-size:11px}
+    .ficha-cab div b{font-size:9px}
+    .ficha-attrs{margin-bottom:5px;gap:3px}
     .ficha-attrs div{padding:2px 1px}
-    .ficha-attrs div b{font-size:8px}
-    .ficha-attrs div span{font-size:13px}
-    .ficha-stats{margin-bottom:6px;padding:4px 8px;font-size:10px;gap:3px 12px}
-    .ficha-skills-cat{margin-bottom:3px}
-    .ficha-skills-cat h4{font-size:9px;margin:2px 0 1px}
-    .ficha-skill-row{font-size:9.5px;padding:0;grid-template-columns:1fr 70px 26px}
-    .ficha-skill-row .tot{border-radius:2px}
-    .ficha-combate{margin-top:3px}
-    .ficha-instr h3{font-size:11px;margin:6px 0 2px}
-    .ficha-instr p, .ficha-instr li{font-size:10px;line-height:1.35}
-    .ficha-blank-table th,.ficha-blank-table td{font-size:9px;padding:3px 3px;height:16px}
+    .ficha-attrs div b{font-size:9px}
+    .ficha-attrs div span{font-size:15px}
+    .ficha-stats{margin-bottom:5px;padding:4px 8px;font-size:11px;gap:2px 12px}
+    .ficha-skills{grid-template-columns:repeat(3,1fr);gap:0 10px}
+    .ficha-skills-cat{margin-bottom:2px;break-inside:avoid}
+    .ficha-skills-cat h4{font-size:10px;margin:2px 0;padding:1px 4px;line-height:1.3}
+    .ficha-skill-row{font-size:10.5px;padding:0;line-height:1.2;grid-template-columns:1fr 44px 22px;gap:2px;letter-spacing:-0.2px}
+    .ficha-combate{margin-top:3px;grid-template-columns:repeat(4,1fr)}
+    .ficha-instr h3{font-size:12px;margin:6px 0 2px}
+    .ficha-instr p, .ficha-instr li{font-size:11px;line-height:1.35}
+    .ficha-blank-table th,.ficha-blank-table td{font-size:10px;padding:3px 3px;height:16px}
     .ficha-pv-boxes span{width:11px;height:11px}
   }
 </style>

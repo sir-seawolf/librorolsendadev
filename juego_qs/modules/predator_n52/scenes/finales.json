@@ -18,10 +18,6 @@
       "definitivo": false,
       "continuacion": "rastrear_tarjeta"
     },
-    "vehiculo_fallido": {
-      "titulo": "EL MOTOR NO ARRANCA",
-      "texto": "Forcejeas con el contacto, pero el motor tose y muere. Antes de que puedas intentarlo de nuevo, unos pasos metálicos se detienen justo detrás de ti."
-    },
     "casi_muerto": {
       "titulo": "PARECÍA QUE HABÍAS MUERTO",
       "texto": "El mundo se apaga de golpe. Cuando vuelves en ti, sigues en el suelo del callejón, el pecho ardiendo, pero vivo. Alguien — o algo — decidió que tu historia no terminaba aquí.",
@@ -30,47 +26,8 @@
     },
     "muerte": {
       "titulo": "FIN DE LA PARTIDA",
-      "texto": "El disparo no da lugar a una segunda oportunidad. Tu historia con La Senda de los Errantes termina en un callejón cualquiera, un martes lluvioso, con un chip que ya no significa nada para ti."
-    },
-    "checkpoint_drake_street": {
-      "titulo": "CITA EN DRAKE STREET",
-      "texto": "Decidís esperar. El sábado, a las 23:00, un callejón trasero de mala muerte os espera en Drake Street — código de entrada: \"Indigo es Azul\". Lo que hay al otro lado de esa puerta de acero queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_contacto_corporativo": {
-      "titulo": "UNA LLAMADA DISCRETA",
-      "texto": "Alguien con contactos en el mundo corporativo se ofrece a investigar a Arthur Dicking Thompson por su cuenta. Es la vía más segura — y la más lenta. Lo que averigüe queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_chafry": {
-      "titulo": "LLAMANDO A CHAFRY CORP",
-      "texto": "Contactar directamente con CHAFRY es jugar con fuego: lo del PREDATOR N-5.2 es secreto, y una corporación acorralada no negocia limpio. La llamada se hace de todos modos. Confirman el contrato de Arthur sin dudar un segundo — casi demasiado rápido, como una respuesta ya ensayada. Si de verdad jugaba a dos bandas para alguien más, esta llamada no lo va a sacar a la luz. Cómo responde CHAFRY de verdad, y quién más mueve los hilos detrás, queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_cinthia": {
-      "titulo": "UNA COMIDA INTERRUMPIDA",
-      "texto": "Cinthia acaba contando lo que recuerda: a media comida, hace un par de días, a Arthur le sonó el móvil, contestó, y se puso pálido. Canceló el resto de la comida sin dar explicaciones — parecía una mala noticia. No es mucho, pero encaja con todo lo demás. El resto — Drake Street, CHAFRY, MORT — queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_cinthia_sin_info": {
-      "titulo": "UNA PISTA QUE NO LLEGA",
-      "texto": "Cinthia no tiene nada más que contar — o no quiere. La conversación se queda en lo de siempre: comieron hace un par de días, Arthur parecía el de siempre, ella no sabe nada más. Si hay algo que ella sepa y no ha dicho, se queda con ella. El resto — Drake Street, CHAFRY, MORT — queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_drake_street_sin_pasaje": {
-      "titulo": "TRATO HECHO, SIN MÁS PREGUNTAS",
-      "texto": "El dinero cambia de manos y la puerta se cierra tras vosotros. 5.000 PC más ligeros de problema, y el callejón de Drake Street vuelve a quedar en silencio. Seguís en la ciudad, con Chafry ahí fuera buscando — pero eso, de momento, queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_drake_street_combate_ganado": {
-      "titulo": "LA SALA TRASERA, EN SILENCIO",
-      "texto": "El tiroteo termina tan rápido como empezó. Los ejecutores de MORT ya no se mueven. Quedáis de pie en su propia sala trasera, con el chip todavía encima y ninguna certeza de qué hacer con una base de MORT abierta de par en par a vuestro alrededor. Qué se hace con esto queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
-    },
-    "checkpoint_drake_street_huida": {
-      "titulo": "FUERA, ENTRE DISPAROS",
-      "texto": "Salís de la sala trasera a la carrera, con el eco de los disparos todavía en los oídos. Nadie os sigue de cerca, pero tampoco hay ninguna duda de que MORT sabe ahora exactamente quiénes sois. Adónde os lleva esto queda para la próxima vez que se cuente esta historia.",
-      "definitivo": false
+      "texto": "El disparo no da lugar a una segunda oportunidad. Tu historia con La Senda de los Errantes termina en un callejón cualquiera, un martes lluvioso, con un chip que ya no significa nada para ti.",
+      "definitivo": true
     },
     "cierre_predator_mundo_maquina": {
       "titulo": "MUNDO MÁQUINA",

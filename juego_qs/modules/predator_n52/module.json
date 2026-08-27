@@ -67,16 +67,22 @@
   "audio": {
     "sounds": {
       "vehicle_cabin_rain": {
-        "src": null,
-        "status": "pending"
+        "src": "assets/audio/vehicle_cabin_rain.wav",
+        "status": "ready",
+        "volume": 0.55,
+        "license": "original-project"
       },
       "chip_reader_scan": {
-        "src": null,
-        "status": "pending"
+        "src": "assets/audio/chip_reader_scan.wav",
+        "status": "ready",
+        "volume": 0.7,
+        "license": "original-project"
       },
       "chip_reader_confirm": {
-        "src": null,
-        "status": "pending"
+        "src": "assets/audio/chip_reader_confirm.wav",
+        "status": "ready",
+        "volume": 0.72,
+        "license": "original-project"
       }
     }
   },

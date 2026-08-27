@@ -45,6 +45,20 @@ export function rutaAsset(rutaRelativa, modulo = moduloActual) {
   return rutaModulo(rutaRelativa, modulo);
 }
 
+// El manifiesto de audio, igual que fondos y sprites, declara rutas relativas
+// a la carpeta del módulo. Se resuelven al registrar el ámbito para que el
+// gestor común no necesite conocer la estructura `modules/<id>/`.
+export function resolverManifiestoAudio(manifiestoAudio, modulo = moduloActual) {
+  const sonidos = manifiestoAudio?.sounds || manifiestoAudio || {};
+  return {
+    sounds: Object.fromEntries(Object.entries(sonidos).map(([id, entrada]) => {
+      if (typeof entrada === "string") return [id, rutaModulo(entrada, modulo)];
+      if (!entrada || typeof entrada !== "object" || !entrada.src) return [id, entrada];
+      return [id, { ...entrada, src: rutaModulo(entrada.src, modulo) }];
+    }))
+  };
+}
+
 export function moduloActivo() {
   return moduloActual;
 }
@@ -132,7 +146,7 @@ export async function cargarModulo(moduleId) {
   // null en Node/tests (no hay `window`), por eso el guard.
   if (audioManager) {
     audioManager.registrarMapaModulo(moduleId, manifest.music || {});
-    audioManager.registrarManifiestoAudio(moduleId, manifest.audio || {});
+    audioManager.registrarManifiestoAudio(moduleId, resolverManifiestoAudio(manifest.audio || {}, moduloActual));
   }
   return moduloActual;
 }

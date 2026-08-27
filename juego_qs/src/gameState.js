@@ -54,6 +54,7 @@ export const state = {
   resources: {},            // contadores narrativos declarativos (PC, tiempo, favores...)
   historialTiradas: [],     // log de tiradas — ver registrarTirada()
   mapaDescubierto: {},      // fog-of-war del minimapa: { "x,y": true }
+  progresoEscenas: {},      // estado reanudable propio de renderers: { escenaId: datos JSON-safe }
   estadoPersecucion: null,
   estadoCombate: null,
   finalTipo: null
@@ -119,6 +120,7 @@ export function iniciarPartida(pregenerados, playerBaseId) {
   state.resources = {};
   state.historialTiradas = [];
   state.mapaDescubierto = {};
+  state.progresoEscenas = {};
   state.entrySpawnId = null;
   state.finalTipo = null;
   notificarEscena();
@@ -187,6 +189,22 @@ export function establecerFlag(nombre, valor = true) {
 
 export function tieneFlag(nombre) {
   return !!state.flags[nombre];
+}
+
+export function obtenerProgresoEscena(escenaId) {
+  return state.progresoEscenas?.[escenaId] ?? null;
+}
+
+export function guardarProgresoEscena(escenaId, progreso) {
+  state.progresoEscenas ||= {};
+  state.progresoEscenas[escenaId] = structuredClone(progreso);
+  guardar();
+}
+
+export function limpiarProgresoEscena(escenaId) {
+  if (!state.progresoEscenas?.[escenaId]) return;
+  delete state.progresoEscenas[escenaId];
+  guardar();
 }
 
 // Munición (Combat UX & Resources 0.2) — mutaciones centralizadas aquí,
@@ -346,6 +364,7 @@ export function cargar() {
     if (!raw) return false;
     const datos = JSON.parse(raw);
     Object.assign(state, datos);
+    state.progresoEscenas ||= {};
     migrarRecursosCombateSiFalta();
     notificarEscena();
     return true;
