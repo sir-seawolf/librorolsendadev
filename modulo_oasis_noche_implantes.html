@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — La noche de los implantes</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — La noche de los implantes</h1>
+<p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Puede ganar riqueza opcional si se jugó "Las Desapariciones", nunca la necesita. Estado: BORRADOR, pendiente de playtest.</em></p>
+<blockquote>
+<p>«Una redada no separa lo legal de lo ilegal. Separa lo que alguien quiere que se vea de lo que alguien quiere que se pierda en el papeleo.»</p>
+</blockquote>
+<hr />
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> la policía y los Federales organizan una redada mayor contra el mercado negro de implantes de Oasis — la más grande en años, con varios puestos y almacenes caídos la misma noche. Entre lo incautado hay mucho más de lo que los propios organizadores esperaban encontrar, y separar lo que de verdad importa del ruido, antes de que se pierda en el papeleo, depende de quién esté prestando atención esa noche.</p>
+<p><strong>Duración:</strong> una sesión de 4-6 horas, en una sola noche de redada con procesado de pruebas al día siguiente. Periodo: antes del despertar. Perspectiva: nativos.</p>
+<p><strong>Qué saben los PJ:</strong> que hay una redada grande en marcha esta noche — como personal de apoyo, informantes pagados, civiles atrapados en el operativo, o investigadores independientes que aprovechan el caos, según cómo la mesa quiera entrar.</p>
+<p><strong>Verdad del Narrador:</strong> dos tramas quedan enredadas en la misma redada sin que nadie lo planeara así. Primera: parte de lo incautado pertenece a una red de compradores de implantes de origen turbio —si se jugó <em>Las Desapariciones</em> y esa red sobrevivió, es literalmente esa misma operación, cayendo por fin; si no se jugó, es una red genérica equivalente, sin necesitar ese contexto. Segunda, y la que nadie esperaba: un oficial de evidencias, Renner, lleva años desviando piezas valiosas de las incautaciones para revenderlas él mismo, y va a aprovechar el volumen y el caos de esta redada concreta para cubrir sus propias huellas — o, si hace falta, cargarle la culpa a alguien más.</p>
+<p><strong>Objetivo inmediato:</strong> ayudar a que la evidencia importante no se pierda en el papeleo ni en manos de quien no debería tenerla — sea la red de compradores, sea Renner.</p>
+<p><strong>Pregunta de fondo:</strong> en una ciudad donde el mercado negro de implantes existe porque la desigualdad real lo alimenta, ¿qué significa realmente "limpiar" una redada — y para quién?</p>
+<p><strong>Si nadie interviene:</strong> parte de la evidencia importante se pierde o se vende de nuevo por otro canal, Renner sigue operando sin que nadie lo note, y la redada se recuerda oficialmente como un éxito rotundo que en realidad resolvió menos de lo que parece.</p>
+<h3>Desarrollo en cinco escenas</h3>
+<ol>
+<li>La redada — el operativo en marcha, caos controlado.</li>
+<li>Lo que no debería estar ahí — primeras piezas que no encajan del todo.</li>
+<li>Dos tramas, un almacén de pruebas — separar lo que importa de lo que no.</li>
+<li>Renner se mueve — el oficial corrupto intenta cubrirse antes de que sea tarde.</li>
+<li>Lo que queda en el informe final — qué se cuenta, qué se pierde, y a quién le conviene cada versión.</li>
+</ol>
+<hr />
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Sin cuenta atrás de horas — la noche tiene su propio ritmo:</strong> la redada dura lo que dura una operación policial real — no hace falta cronometrarla. La presión viene de que el papeleo y el procesado de pruebas avanzan igualmente rápido esté el grupo listo o no: cada escena que se demora demasiado deja que más evidencia pase por manos de Renner sin supervisión.</p>
+<p><strong>Cómo avanza el tiempo de ficción:</strong> la Escena 1 ocurre esa misma noche; las Escenas 2 a 5 pueden ocurrir esa noche o a la mañana siguiente, durante el procesado — resuélvelo con una frase de transición si hace falta.</p>
+<p><strong>Las tres partes, en una frase:</strong><br />
+- <strong>La red de compradores</strong> (si aparece) → salvar lo que puedan de la redada y desaparecer del radar.<br />
+- <strong>Renner</strong> → cubrir años de desvíos aprovechando el caos de esta noche concreta.<br />
+- <strong>Los organizadores de la redada</strong> (policía y Federales) → cerrar la operación como un éxito, sin necesariamente entender del todo lo que han encontrado.</p>
+<p><strong>No hay villano de manual en la red de compradores</strong> — son las mismas personas turbias y pragmáticas ya descritas en el resto del DLC, no una organización nueva. <strong>Renner sí es corrupto de verdad</strong>, pero no es un monstruo: empezó desviando piezas pequeñas por necesidad y lleva años sin saber cómo parar sin exponerse.</p>
+<hr />
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>La redada se organizó por razones completamente rutinarias — presión pública creciente sobre el mercado negro de implantes, alimentada en parte por el propio caso de las desapariciones si se jugó ese módulo. Nadie planeó que cayeran dos tramas distintas la misma noche.</p>
+<p>Renner, oficial de evidencias con años de servicio limpio en apariencia, ha desviado piezas cibernéticas valiosas de incautaciones anteriores durante mucho tiempo, revendiéndolas él mismo a través de contactos discretos. El volumen de esta redada es, para él, una oportunidad y un riesgo a la vez: puede perder piezas propias entre el caos sin que se note — o puede que, por primera vez, alguien preste la atención suficiente como para notar el patrón.</p>
+<p>Si <em>Las Desapariciones</em> se jugó y la red de compradores de Mort sobrevivió, esta redada la alcanza por fin: parte del material incautado tiene un origen que, bien investigado, conecta directamente con aquel caso. Si no se jugó, el material incautado pertenece a una red genérica de compradores de implantes turbios, igual de real, sin ninguna conexión necesaria.</p>
+<h3>Qué saben los PJ y qué no</h3>
+<p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es que hay dos tramas separadas, no una — la sorpresa de la Escena 3 es precisamente descubrir que el material "raro" no tiene un solo origen.</p>
+<h3>Tono</h3>
+<p>Caos controlado con textura procedimental real — radios, formularios, cadenas de custodia, gente cansada haciendo un trabajo real. Renner debe sentirse como un compañero de trabajo antes que como un criminal, hasta que deja de serlo.</p>
+<hr />
+<h2>Reparto</h2>
+<h3>Capitana Bellik — al mando de la redada</h3>
+<p><em>Aspecto:</em> uniforme impecable a pesar de las horas, radio siempre en la mano, la clase de mando que dirige gritando lo mínimo posible porque no le hace falta más.</p>
+<p>PNJ interpretable (3-4 profesiones). F30/A30/P40/V40 | PV 15/15/15 | Bld 3 | Liderazgo/Mando 55% | Investigación 40%</p>
+<ul>
+<li>Quiere que la redada se recuerde como un éxito limpio, con o sin saber todo lo que realmente ha caído.</li>
+<li>Respeta el trabajo bien hecho y a quien no le complica el papeleo sin motivo.</li>
+<li>Sin PJ: procesa la redada según el procedimiento estándar, sin detectar ni la red de compradores en profundidad ni a Renner.</li>
+</ul>
+<h3>Oficial Renner — evidencias, corrupto</h3>
+<p><em>Aspecto:</em> de los que nadie mira dos veces en una comisaría — mediana edad, gesto cansado permanente, manos rápidas ordenando cajas que nadie más se molesta en revisar dos veces.</p>
+<p>PNJ interpretable (2-3 profesiones), sin ficha de combate relevante más allá de lo estándar.</p>
+<p>F25/A30/P35/V35 | PV 13/13/13 | Bld 1 | Tecnología (catalogación) 50% | Sigilo 40%</p>
+<ul>
+<li>Quiere cubrir años de desvíos sin que nadie más salga perjudicado si puede evitarlo — aunque está dispuesto a cargarle la culpa a otro si se ve realmente acorralado.</li>
+<li>No es violento por naturaleza — su arma es el papeleo, no la fuerza.</li>
+<li>Sin PJ: consigue desviar y perder suficiente evidencia propia entre el caos, sin que nadie lo note esta vez tampoco.</li>
+</ul>
+<h3>Mando Federal Marcus — presencia opcional (PNJ ya publicado en el DLC)</h3>
+<p>Si la mesa quiere una cara familiar entre los Federales presentes, Marcus puede supervisar la parte Federal del operativo — mismo criterio y ficha ya publicados en el resto del DLC. No es necesario para este módulo.</p>
+<h3>El comprador de Mort — presencia opcional (PNJ ya publicado en <em>Las Desapariciones</em>, si se jugó)</h3>
+<p>Mismo criterio y ficha ya publicados. Si no se jugó ese módulo, sustitúyelo sin más por un operador genérico de mercado negro con el mismo perfil funcional.</p>
+<hr />
+<h2>Lugares necesarios</h2>
+<p><strong>Los puestos y almacenes de la redada:</strong> varios puntos caídos la misma noche — mercado de implantes, un almacén discreto, una trastienda.</p>
+<p><strong>El almacén de pruebas:</strong> donde se procesa todo lo incautado — cajas, formularios, cadena de custodia.</p>
+<p><strong>Oficina de Renner:</strong> discreta, ordenada, nada que llame la atención a primera vista.</p>
+<hr />
+<h2>Las cinco escenas</h2>
+<p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
+<h3>Escena 1 — La redada</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Luces, radios cruzándose, puertas forzadas en varios puntos a la vez. La Capitana Bellik coordina el caos con la calma de quien ya ha hecho esto cien veces — aunque nunca a esta escala.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el operativo cae sobre varios puntos del mercado negro de implantes a la vez.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Capitana Bellik</strong> — coordina el operativo, quiere un cierre limpio (<em>Aspecto</em> y ficha: ver Reparto).<br />
+- <strong>Marcus</strong>, si aparece — supervisa la parte Federal (ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> el volumen de lo incautado es mayor de lo esperado — nadie tiene todavía una imagen clara de qué es cada cosa.</p>
+<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
+- <strong>Alerta o Investigación</strong> (ayudar a clasificar lo que se incauta sobre la marcha): éxito → notas al menos un lote que no encaja con el resto del material típico; fallo → todo se procesa junto, sin distinción, complicando la Escena 2.<br />
+- <strong>Social</strong> (coordinarse bien con el personal del operativo): éxito → ganas acceso de confianza para moverte entre las distintas escenas de la redada; fallo → te tratan como observador, con menos margen de maniobra.</p>
+<p><strong>Si los PJ no hacen nada:</strong> la redada se completa igualmente, con el material mezclado sin distinción.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene una primera pista de que no todo lo incautado es del mismo origen.</p>
+<p><strong>Después:</strong> cuánta distinción lograron aquí facilita separar las dos tramas en la Escena 3.</p>
+<h3>Escena 2 — Lo que no debería estar ahí</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Entre cajas de implantes de segunda mano cualquiera, una pieza demasiado bien catalogada, con un número de registro que no debería existir todavía.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> al revisar lo incautado con más calma, aparecen las primeras señales de que algo no encaja del todo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Renner</strong>, si está presente en el almacén — nervioso de una forma que nadie más nota todavía, revisando cajas con más atención de la normal (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> hay piezas con numeración de registro anterior a esta redada, mezcladas entre lo recién incautado — algo que no debería estar ahí si todo viniera de esta única operación.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Investigación</strong> (revisar los números de registro y catalogación): éxito → confirmas que parte del material ya estaba registrado en incautaciones anteriores, no en esta; fallo → notas una irregularidad sin poder ubicarla todavía.<br />
+- <strong>Alerta</strong> (observar a Renner mientras trabaja): éxito → notas que se pone especialmente nervioso cerca de una caja concreta; fallo → parece tan ocupado como cualquiera esta noche.</p>
+<p><strong>Si los PJ no hacen nada:</strong> las irregularidades se pierden entre el volumen general de la redada.</p>
+<p><strong>Cómo termina:</strong> el grupo confirma que hay algo raro en parte del material incautado.</p>
+<p><strong>Después:</strong> esta pista concreta es lo que permite separar las dos tramas en la Escena 3.</p>
+<h3>Escena 3 — Dos tramas, un almacén de pruebas</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Cajas y más cajas, cada una con su etiqueta, cada una contando una historia distinta si alguien se para a leerlas todas.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo separa metódicamente lo incautado esta noche de lo que, evidentemente, ya llevaba tiempo circulando por otro canal — descubriendo que hay dos tramas distintas, no una.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Capitana Bellik</strong>, si se le informa — quiere entender qué está pasando sin que le compliquen el cierre del operativo.<br />
+- <strong>El comprador de Mort</strong>, si aplica — detenido entre los incautados, dispuesto a hablar si le conviene.</p>
+<p><strong>Qué saben / qué dicen:</strong> una trama es la red de compradores (de <em>Las Desapariciones</em>, si se jugó, o genérica si no); la otra es material desviado de incautaciones previas, sin relación con la redada de esta noche.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Investigación</strong> (clasificar completamente el material según su origen real): éxito → separas con claridad las dos tramas, identificando qué pertenece a cada una; fallo → distinción parcial, suficiente para seguir pero no del todo limpia.<br />
+- <strong>Social</strong> (interrogar al comprador detenido, si aplica): éxito → confirma la conexión con la red de compradores, y de paso confirma que él no tiene nada que ver con el material "viejo"; fallo → coopera poco, ralentizando la Escena 4.</p>
+<p><strong>Si los PJ no hacen nada:</strong> las dos tramas se procesan mezcladas, y ninguna de las dos queda resuelta con claridad.</p>
+<p><strong>Cómo termina:</strong> el grupo entiende que hay un problema interno (material desviado) además del externo (la red de compradores).</p>
+<p><strong>Después:</strong> esta claridad es lo que permite confrontar a Renner directamente en la Escena 4.</p>
+<h3>Escena 4 — Renner se mueve</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Una oficina ordenada, demasiado ordenada para una noche como esta. Renner no levanta la vista cuando entran — hasta que se da cuenta de qué es exactamente lo que llevan en la mano.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con la pista suficiente, el grupo confronta a Renner antes de que termine de cubrir sus huellas.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Renner</strong> — intenta cubrirse, y si se ve realmente acorralado, intenta cargarle la culpa a alguien más (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> Renner, si se le confronta con pruebas suficientes, puede confirmar años de desvíos — o intentar desviar la culpa hacia el comprador detenido o hacia otro compañero, si no se le da una salida mejor.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social o Investigación</strong> (presentar las pruebas de forma que no deje salida a negarlo): éxito → admite lo que ha hecho, sin poder cargarle la culpa a nadie más; fallo → intenta convincentemente desviar la responsabilidad, complicando la Escena 5.<br />
+- <strong>Alerta</strong> (notar si intenta destruir o esconder algo mientras habla): éxito → lo detienes antes de que consiga deshacerse de la prueba clave; fallo → pierde una pieza de evidencia, aunque no toda.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Renner consigue cubrir suficiente rastro como para que su implicación quede solo como sospecha, nunca como prueba.</p>
+<p><strong>Cómo termina:</strong> queda claro (o no, según cómo fue la escena) el grado real de implicación de Renner.</p>
+<p><strong>Después:</strong> este resultado determina qué puede incluirse honestamente en el informe final de la Escena 5.</p>
+<h3>Escena 5 — Lo que queda en el informe final</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La redada ya se anuncia oficialmente como un éxito. Lo que queda por decidir es qué parte de la verdad entra en ese informe, y qué parte se queda en la memoria de quienes estuvieron allí esa noche.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con ambas tramas resueltas o no, toca decidir qué se documenta oficialmente y qué se gestiona de otra forma.</p>
+<p><strong>PNJ presentes:</strong> Capitana Bellik, Renner (si sigue disponible para dar la cara), el comprador detenido si aplica.</p>
+<p><strong>Qué saben / qué dicen:</strong> la verdad completa puede documentarse íntegra, parcialmente (protegiendo a la institución de un escándalo de corrupción interna), o casi no documentarse en absoluto si el grupo decide gestionarlo de forma extraoficial.</p>
+<p><strong>Tiradas posibles:</strong> Social o Liderazgo para inclinar qué versión prevalece; ninguna sustituye la decisión de la mesa.</p>
+<p><strong>Si los PJ no hacen nada:</strong> la redada se cierra oficialmente como un éxito rotundo contra el mercado negro, sin mención alguna a Renner ni a la trama interna, que sigue sin resolverse en otra parte.</p>
+<p><strong>Cómo termina:</strong> queda decidido qué versión de esta noche pasa a la historia oficial de Oasis.</p>
+<p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
+<hr />
+<h2>Pistas e información</h2>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Revela</th>
+<th>Vía alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clasificar lo incautado (Escena 1)</td>
+<td>Un lote que no encaja con el resto</td>
+<td>Coordinarse con el personal del operativo</td>
+</tr>
+<tr>
+<td>Números de registro irregulares (Escena 2)</td>
+<td>Material previo mezclado con lo de esta noche</td>
+<td>Observar el nerviosismo de Renner directamente</td>
+</tr>
+<tr>
+<td>Separación completa del material (Escena 3)</td>
+<td>Dos tramas distintas, no una</td>
+<td>Interrogar al comprador detenido</td>
+</tr>
+<tr>
+<td>Confrontar a Renner (Escena 4)</td>
+<td>Verdad completa de los desvíos</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recompensas y gastos</h2>
+<p><strong>Recompensa económica:</strong> entre 150 y 300 créditos locales por PJ, si participaron como personal de apoyo oficial pagado; menor o inexistente si entraron por otra vía (informantes, civiles atrapados) — ajusta según cómo entraron a la trama.</p>
+<p><strong>Beneficios alternativos:</strong> relación de confianza con la Capitana Bellik; si se jugó <em>Las Desapariciones</em> y esta redada cierra esa red de compradores, un cierre narrativo real para ese hilo; conocimiento directo de cómo se gestiona (o no) la corrupción interna en la policía de Oasis.</p>
+<hr />
+<h2>Desenlaces combinables</h2>
+<p><strong>Informe íntegro.</strong> Ambas tramas se documentan completas — golpe reputacional real para la institución, pero verdad completa a la vista de quien la busque después.</p>
+<p><strong>Informe parcial.</strong> Se documenta la red de compradores como un éxito claro; el caso de Renner se gestiona internamente, sin escándalo público.</p>
+<p><strong>Renner cae solo.</strong> Si consiguió desviar la culpa hacia el comprador detenido u otro compañero, alguien inocente carga con parte de las consecuencias — desenlace incómodo, no un fallo de partida.</p>
+<p><strong>La red de compradores sigue intacta.</strong> Si esa trama no se resolvió del todo en la Escena 3, sigue operando en otro punto de la ciudad — gancho abierto para el futuro.</p>
+<hr />
+<h2>Continuidad opcional</h2>
+<ul>
+<li><strong>Versión independiente:</strong> no exige haber jugado <em>Las Desapariciones</em> — la red de compradores puede sustituirse por una genérica sin perder nada esencial.</li>
+<li><strong>Si se jugó <em>Las Desapariciones</em>:</strong> esta redada puede ser el cierre narrativo real de esa red de compradores, con el mismo PNJ reaparecido.</li>
+</ul>
+<p>Ejemplo de puerta abierta: si Renner queda libre de sospecha formal pero el grupo sabe la verdad, esa tensión puede reaparecer en cualquier módulo futuro que necesite un contacto policial poco fiable.</p>
+<hr />
+<h2>Límites de este módulo</h2>
+<ul>
+<li>Renner es corrupto, no un monstruo — su arma es el papeleo y la evasión, no la violencia.</li>
+<li>La red de compradores mantiene el mismo perfil pragmático y sin escrúpulos de manual ya establecido en el resto del DLC.</li>
+<li>No revelar ni insinuar el despertar en este módulo.</li>
+<li>Ninguna de las dos tramas debe resolverse automáticamente bien — ambas admiten desenlaces incómodos.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p>Redada policial sin reloj de horas — la presión es el propio ritmo de una operación real, no una cuenta atrás. Cinco escenas autosuficientes: el operativo → las primeras señales → separar las tramas → confrontar a Renner → el informe final, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Dos tramas enredadas sin que nadie las planeara juntas — ninguna se resuelve del todo limpia.</p>
+<hr />
+<p><em>Oasis — tesela recién despertada. Desarrolla la semilla "La noche de los implantes" (Punto 16 del DLC). Gana riqueza opcional si se jugó "Las Desapariciones" — nunca la necesita.</em></p>
+</div>
+</body>
+</html>

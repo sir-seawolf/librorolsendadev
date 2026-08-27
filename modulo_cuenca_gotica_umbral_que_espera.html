@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El umbral que espera</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — El umbral que espera</h1>
+<p><em>Ambientado en Cuenca Gótica (El Dominio del Abrazado) — módulo independiente, colgado del DLC Cuenca Gótica. Estado: BORRADOR, pendiente de playtest.</em></p>
+<blockquote>
+<p>«No es una prisión. Es un archivo vivo. Y nosotros somos las páginas.»</p>
+</blockquote>
+<hr />
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> Dessin, un Errante que usó el Códice de la Urdimbre, rechazó la misión que La Que Teje le impuso. Su consciencia quedó atrapada en Cuenca Gótica; su cuerpo, en algún lugar del mosaico, sigue en coma. Ilyara, Maestra de Portales veterana, ha aceptado hacer algo que pocos harían dos veces: quemar todos sus Puntos de Alma para abrir una grieta en el sello del Cónclave, lo bastante ancha y lo bastante larga como para que un grupo entre a buscarlo — y salga con él, si puede.</p>
+<p><strong>Duración:</strong> una sesión de 4-6 horas. Escala local: un rescate concreto, dentro de un lugar del que oficialmente no se sale.</p>
+<p><strong>Qué saben los PJ:</strong> que Dessin desapareció usando un objeto que nadie del grupo debería tener cerca; que Ilyara puede abrirles una puerta, una sola vez, por poco tiempo.</p>
+<p><strong>Verdad del Narrador:</strong> Cuenca Gótica es una cuarentena, no una tesela vampírica — los "vampiros" son Maestros de Portales antiguos que aprendieron a alimentarse de la distorsión ambiental para sobrevivir. Dessin sigue dentro, pero no intacto: el Castillo recuerda a quienes entran, y lo que queda de él puede no ser del todo lo que el grupo espera encontrar.</p>
+<p><strong>Objetivo inmediato:</strong> entrar por la grieta de Ilyara, encontrar a Dessin, y volver a cruzar antes de que se cierre.</p>
+<p><strong>Pregunta de fondo:</strong> ¿qué se rescata, exactamente, cuando lo que queda de alguien ya no es del todo esa persona?</p>
+<p><strong>Si nadie interviene:</strong> Ilyara no vuelve a intentarlo — el coste ya la ha dejado sin PA que quemar dos veces. Dessin queda dentro para siempre, como todos los demás.</p>
+<h3>Desarrollo en cinco escenas</h3>
+<ol>
+<li>La ventana — Ilyara explica lo que está a punto de hacer y lo que sabe.</li>
+<li>Cruzar el umbral — la primera entrada al Dominio.</li>
+<li>El que recuerda tu nombre — un Maestro Corrompido del Castillo, y las primeras señales de dónde está Dessin.</li>
+<li>Lo que queda de Dessin — el rescate, y lo que realmente encuentran.</li>
+<li>La ventana se cierra — la carrera de vuelta, con el Castillo ya despierto.</li>
+</ol>
+<hr />
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Sí hay reloj esta vez — encaja con el género y con la propia mecánica del Dominio:</strong> la grieta de Ilyara se mantiene abierta un tiempo limitado y no volverá a abrirse. Usa una ventana narrativa, no una cuenta de asaltos exacta: <strong>cinco escenas, cinco tramos de la ventana</strong>. Cuando la Escena 5 empieza, la grieta ya está cerrándose — lo que ocurra ahí determina si el grupo sale a tiempo.</p>
+<p><strong>Las tres partes, en una frase:</strong><br />
+- <strong>Ilyara</strong> → abrir la grieta, sobrevivir a su propio sacrificio, y no tener que volver a intentarlo nunca.<br />
+- <strong>Dessin</strong> (lo que queda de él) → una mezcla de deseo de salir y de algo que ya no recuerda del todo por qué debería querer hacerlo.<br />
+- <strong>El Castillo</strong> → no quiere nada. Simplemente nota. Y cuando nota lo suficiente, reacciona.</p>
+<p><strong>No hay villano de manual.</strong> El Dominio no odia a nadie — el propio DLC es explícito: el Abrazado es una fuerza natural, no se puede derrotar, solo contener. Este módulo no lo enfrenta directamente en ningún momento — el peligro es el Dominio en general, no un enemigo final.</p>
+<p><strong>Ilyara, en mesa:</strong> serena hasta un punto incómodo — ya ha aceptado el coste antes de que empiece la sesión. No es un sacrificio dramático de última hora: es una decisión ya tomada, con la calma de quien no tiene nada más que perder en esto.</p>
+<p><strong>Dessin, en mesa:</strong> reconocible, pero no intacto. Recuerda fragmentos, confunde otros, y en algún momento de la Escena 4 puede decir algo que revele cuánto —o cuán poco— queda realmente de la persona que el grupo vino a buscar.</p>
+<hr />
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>Dessin usó el Códice de la Urdimbre y recibió una misión que consideró moralmente inaceptable — el propio Códice no negocia sus términos. La rechazó. Su cuerpo entró en coma en el lugar donde lo usó; su consciencia quedó anclada en Cuenca Gótica, donde ha pasado un tiempo indeterminado —para él, mucho más largo de lo que ha pasado fuera— expuesto a la misma distorsión que transforma a los Maestros antiguos en lo que son ahora.</p>
+<p>No se ha convertido en un Maestro Corrompido del todo. Está en un punto intermedio: consciente casi todo el tiempo, con fragmentos de memoria que se le escapan cuando menos lo espera, y una relación con el tiempo y con su propio nombre que ya no es del todo estable.</p>
+<p>Ilyara conocía a Dessin — el módulo no necesita explicar la relación exacta salvo que la mesa quiera desarrollarla; basta con que sea suficiente para justificar el coste que está dispuesta a pagar.</p>
+<h3>Qué saben los PJ y qué no</h3>
+<p>Pueden llegar a saber todo lo anterior según avanza el módulo. Lo que no deben saber desde el principio es en qué estado exacto encontrarán a Dessin — esa incertidumbre es el corazón de la Escena 4.</p>
+<h3>Tono</h3>
+<p>Horror gótico contenido, no combate constante. El Dominio es hostil por naturaleza, pero este módulo no lo convierte en una sucesión de encuentros — el peligro real es quedarse atrapado, no morir en combate.</p>
+<hr />
+<h2>Reparto</h2>
+<h3>Ilyara — Maestra de Portales veterana</h3>
+<p><em>Aspecto:</em> capa reforzada ya desgastada de mil cruces, una llave física al cuello que ya no abre ninguna cerradura conocida, manos firmes incluso sabiendo lo que está a punto de perder.</p>
+<p>PNJ interpretable (6-7 profesiones). F25/A35/P50/V60 | PV 14/14/14 | Bld 1 | Camino de Portales 80% | Investigación 50%</p>
+<ul>
+<li>Quiere que el grupo salga con Dessin, o sin él, pero que salga.</li>
+<li>Respeta la decisión de quien entra sabiendo el riesgo, más que cualquier heroísmo improvisado.</li>
+<li>Sin PJ: no hay módulo — Ilyara necesita un grupo dispuesto a entrar. Si nadie acepta, la grieta se cierra sin abrirse del todo.</li>
+</ul>
+<h3>Dessin — el atrapado</h3>
+<p><em>Aspecto:</em> reconocible, pero con algo desplazado en la mirada — como alguien que lleva demasiado tiempo escuchando algo que los demás no oyen. Ropa de cuando cruzó, ya desgastada por un tiempo que no debería haber pasado tan rápido para él.</p>
+<p>PNJ funcional (2 profesiones), sin ficha de combate hostil — no ataca al grupo bajo ninguna circunstancia normal.</p>
+<ul>
+<li>Quiere salir, aunque no siempre recuerda por qué debería importarle.</li>
+<li>Puede, en un momento de lucidez o de confusión, decir algo que el grupo no esperaba oír.</li>
+</ul>
+<h3>Maestro Corrompido — encuentro del Castillo</h3>
+<p>Ficha ya publicada en el DLC, reutilizada tal cual: <strong>F45/A50/P60 | PV 30/30/30 | Bld 5 | Esquiva 65%</strong> — Toque de Deriva 70% (Pen 0, Daño 3 + −1 Deriva), Drenaje de vitalidad 60% (Daño 2, recupera la mitad como PV propios), Apertura residual (Camino Portales −20).</p>
+<ul>
+<li>No todos atacan por defecto — este puede reconocer a Dessin, o al propio grupo si ya visitaron antes. Decide su actitud (hostil, neutral, dialogante) según el tono que la mesa quiera para la Escena 3.</li>
+</ul>
+<h3>El Castillo — presencia, no personaje</h3>
+<p>No tiene ficha ni encuentro fijo. Es el propio Dominio notando al grupo cada vez con más claridad conforme avanza el módulo — representa esa presencia con detalles ambientales crecientes (paredes que recuerdan, pasillos que se reconfiguran), no con un enemigo final.</p>
+<hr />
+<h2>Lugares necesarios</h2>
+<p><strong>La grieta de Ilyara:</strong> un punto concreto de la urdimbre, fuera de Cuenca Gótica, donde ella abre el paso.</p>
+<p><strong>El Castillo Principal:</strong> planta baja (salas de observación), primer piso (celdas de los Maestros), segundo piso (la Biblioteca) — el grupo no necesita explorarlo entero.</p>
+<p><strong>Donde está Dessin:</strong> una de las celdas del primer piso, o una sala adyacente — el Castillo lo ha mantenido cerca de donde entró, no perdido en su interior más profundo.</p>
+<hr />
+<h2>Las cinco escenas</h2>
+<p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
+<h3>Escena 1 — La ventana</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Ilyara no pide que se sienten. Habla de pie, con la calma de quien ya ha aceptado el precio de lo que va a hacer, y solo necesita que alguien más acepte el suyo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Ilyara explica lo que va a hacer, por qué, y qué sabe sobre dónde está Dessin.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Ilyara</strong> — serena, directa, sin dramatizar su propio sacrificio (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> Dessin usó el Códice, rechazó la misión, y su consciencia quedó atrapada; el cuerpo sigue en coma en algún lugar del mosaico, sin urgencia médica inmediata pero sin poder despertar tampoco.</p>
+<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
+- <strong>Social o Empatía</strong> (entender la relación de Ilyara con Dessin, si la mesa quiere desarrollarla): éxito → Ilyara comparte algo personal sobre por qué está dispuesta a este coste; fallo → mantiene la explicación estrictamente práctica.<br />
+- <strong>Investigación</strong> (preguntar por las reglas del Dominio antes de entrar): éxito → confirma las reglas de salida ya conocidas (Códice, un Maestro nivel 8+, o que el propio Abrazado decida dejarlos ir) y las reglas del Abrazo y del Sol (ver DLC); fallo → información general, sin el detalle mecánico.</p>
+<p><strong>Si los PJ no hacen nada:</strong> no hay módulo sin que el grupo acepte — Ilyara no fuerza a nadie a entrar.</p>
+<p><strong>Cómo termina:</strong> el grupo acepta y se prepara para cruzar.</p>
+<p><strong>Después:</strong> cuánto preguntaron aquí condiciona cuánto saben al entrar en la Escena 2.</p>
+<blockquote>
+<p>«No voy a mentiros diciendo que esto es sencillo. Voy a deciros la verdad: es la única vez que voy a poder abrir esta puerta.»</p>
+</blockquote>
+<h3>Escena 2 — Cruzar el umbral</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La grieta no se parece a ningún portal conocido. Es más una costura mal cerrada que una puerta — y al otro lado, la luz es la misma de siempre, pero algo en ella está mal.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo cruza al Dominio del Abrazado por primera vez.</p>
+<p><strong>PNJ presentes:</strong> ninguno fijo — escena de primer contacto sensorial con el lugar.</p>
+<p><strong>Qué saben / qué dicen:</strong> nada nuevo — es una escena de atmósfera y primera impresión.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Voluntad</strong> (resistir la primera impresión del lugar sin quedar paralizado): éxito → el grupo mantiene la compostura y avanza con claridad; fallo → un momento de desorientación, sin daño real, que cuesta parte de la ventana de tiempo.<br />
+- <strong>Investigación o Alerta</strong> (orientarse hacia el Castillo Principal): éxito → encuentran la ruta más directa; fallo → una ruta más larga, consumiendo más de la ventana.</p>
+<p><strong>Si los PJ no hacen nada:</strong> el grupo se queda parado en el umbral, consumiendo tiempo de la ventana sin avanzar.</p>
+<p><strong>Cómo termina:</strong> el grupo llega a las inmediaciones del Castillo Principal.</p>
+<p><strong>Después:</strong> cuánto tiempo de la ventana consumieron aquí (rápido o lento) se nota en la presión de la Escena 5.</p>
+<h3>Escena 3 — El que recuerda tu nombre</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El primer piso del Castillo — celdas que no deberían tener espacio dentro de estos muros. Algo, al fondo de un pasillo, se detiene al verlos pasar.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo se cruza con un Maestro Corrompido mientras busca a Dessin.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Maestro Corrompido</strong> — su actitud (hostil, neutral, dialogante) la decide la mesa; puede reconocer a Dessin, o incluso al propio grupo si ya visitaron antes (<em>ficha: ver Reparto</em>).</p>
+<p><strong>Qué saben / qué dicen:</strong> si es dialogante, puede confirmar dónde está Dessin a cambio de algo pequeño —información, un objeto, simplemente ser escuchado.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social</strong> (intentar hablar con el Maestro Corrompido en vez de atacar): éxito → obtienes la ubicación exacta de Dessin sin combate; fallo → no coopera, pero tampoco ataca sin motivo.<br />
+- <strong>Combate</strong>, si escala: usa la ficha ya publicada del Maestro Corrompido — no persigue fuera del Castillo, así que huir es siempre una salida real.</p>
+<p><strong>Si los PJ no hacen nada:</strong> el Maestro Corrompido pierde interés y se retira, sin dar ni quitar información.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene la ubicación de Dessin, con o sin el coste de un combate.</p>
+<p><strong>Después:</strong> el ruido hecho aquí (si hubo combate) puede acelerar que el Castillo "note" al grupo antes en la Escena 5.</p>
+<h3>Escena 4 — Lo que queda de Dessin</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Una celda, o algo parecido a una celda. Y dentro, alguien reconocible — hasta que dice algo que no debería saber, o deja de recordar algo que sí debería.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo encuentra a Dessin y decide cómo sacarlo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Dessin</strong> — reconocible pero no intacto; quiere salir, aunque no siempre recuerda del todo por qué (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> Dessin puede confirmar, con fragmentos, qué le pasó y qué se siente estar atrapado — sin que el módulo deba explicarlo todo de golpe.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Empatía o Social</strong> (ayudar a Dessin a orientarse y confiar en que es momento de salir): éxito → coopera con claridad; fallo → duda, confundido, ralentizando la salida.<br />
+- <strong>Voluntad</strong>, si Dessin dice algo perturbador sobre lo que ha vivido: SM en juego para quien escuche con atención — no es un ataque, es la propia verdad incómoda del lugar.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Dessin no sale por su cuenta — necesita que el grupo lo guíe activamente.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene (o no) a Dessin dispuesto a moverse hacia la salida.</p>
+<p><strong>Después:</strong> el estado de Dessin aquí (lúcido, confundido, o algo intermedio) condiciona cómo se juega la carrera de la Escena 5.</p>
+<h3>Escena 5 — La ventana se cierra</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El Castillo ya no finge no darse cuenta. Los pasillos se reconfiguran con más frecuencia. Algo, en algún lugar, ha empezado a prestar atención de verdad.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> la carrera de vuelta hasta la grieta de Ilyara, con la ventana cerrándose y el Castillo cada vez más consciente del grupo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Ilyara</strong>, esperando al otro lado — sostiene la grieta con lo último que le queda.<br />
+- Cualquier Maestro Corrompido u obstáculo adicional que la mesa quiera introducir, coherente con lo jugado antes.</p>
+<p><strong>Qué saben / qué dicen:</strong> nada nuevo — escena de tensión y decisión final.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Atletismo o Voluntad</strong> (mantener el ritmo de la huida sin perder a Dessin ni a nadie del grupo): éxito → llegan a tiempo; fallo → un contratiempo real —no necesariamente letal— que pone a prueba si consiguen cruzar de todos modos, quizás dejando algo (o a alguien) atrás.<br />
+- <strong>Camino de Portales</strong>, si algún PJ tiene la habilidad y quiere ayudar a Ilyara a sostener la grieta: puede aliviar parte del coste, sin eliminarlo del todo.</p>
+<p><strong>Si los PJ no hacen nada:</strong> la ventana se cierra sin ellos — desenlace posible, no deseable, pero jugable: quedan atrapados como todos los demás.</p>
+<p><strong>Cómo termina:</strong> el grupo cruza (con o sin Dessin, con o sin bajas) antes de que la grieta se cierre para siempre.</p>
+<p><strong>Después:</strong> ver Desenlaces combinables.</p>
+<hr />
+<h2>Pistas e información</h2>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Revela</th>
+<th>Vía alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ilyara (Escena 1)</td>
+<td>Reglas de salida del Dominio, estado de Dessin</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Orientación en el Dominio (Escena 2)</td>
+<td>Ruta más directa al Castillo</td>
+<td>Explorar más lento, consumiendo tiempo</td>
+</tr>
+<tr>
+<td>Maestro Corrompido (Escena 3)</td>
+<td>Ubicación exacta de Dessin</td>
+<td>Buscar sistemáticamente planta por planta, más lento</td>
+</tr>
+<tr>
+<td>Dessin (Escena 4)</td>
+<td>Qué le pasó realmente, y en qué estado está</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recompensas y gastos</h2>
+<p><strong>Recompensa económica:</strong> este módulo no tiene contratante formal — la recompensa es la relación con Ilyara y con Dessin (si sobrevive), no un pago en créditos o PC.</p>
+<p><strong>Beneficios alternativos:</strong> relación de gratitud con Ilyara, si sobrevive al coste de abrir la grieta; conocimiento directo y de primera mano de las reglas del Dominio, útil para cualquier futuro módulo de Cuenca Gótica; si Dessin sale con vida (o consciencia intacta), un contacto que ha visto el Dominio desde dentro.</p>
+<hr />
+<h2>Desenlaces combinables</h2>
+<p><strong>Rescate completo.</strong> Dessin sale, reconocible y estable — el mejor resultado posible, no el más probable si la mesa quiere mantener el peso del Dominio.</p>
+<p><strong>Rescate incompleto.</strong> Dessin sale, pero no del todo el mismo — fragmentos de lo vivido dentro se quedan con él de forma permanente (a discreción de la mesa: una secuela narrativa, no necesariamente mecánica).</p>
+<p><strong>Dessin se queda.</strong> Si no llegan a tiempo o él decide no cruzar —posible si su estado en la Escena 4 es lo bastante confuso—, la ventana se cierra sin él. Agridulce, no un fallo de partida.</p>
+<p><strong>Alguien más se queda.</strong> Si la Escena 5 sale mal, un PJ o el propio grupo puede quedar atrapado en su lugar — desenlace duro, coherente con las reglas ya fijadas del Dominio, nunca obligatorio.</p>
+<hr />
+<h2>Continuidad opcional</h2>
+<ul>
+<li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo ni conocer las crónicas canónicas del DLC (Anapana, Jp, Seawolf) — puede mencionarlas como rumor de fondo sin que sean necesarias.</li>
+<li><strong>Si se juega con conocimiento de las crónicas:</strong> el Maestro Corrompido de la Escena 3 puede ser, si la mesa quiere, alguien reconocible de esas crónicas, sin que el módulo lo exija.</li>
+</ul>
+<p>Ejemplo de puerta abierta: si Ilyara sobrevive, puede convertirse en un contacto recurrente para cualquier futuro módulo que necesite un Maestro de Portales veterana y dispuesta a ayudar, aunque ya sin PA para otra hazaña similar.</p>
+<hr />
+<h2>Límites de este módulo</h2>
+<ul>
+<li>No enfrentar al Abrazado directamente — es una fuerza narrativa, no un encuentro de combate (regla explícita del DLC).</li>
+<li>No romper el sello del Cónclave de forma permanente — la grieta de Ilyara es una excepción puntual y agotada, no una solución repetible.</li>
+<li>Dessin no es hostil bajo ninguna circunstancia normal — el horror de este módulo es existencial, no de amenaza física por su parte.</li>
+<li>Respetar las reglas ya fijadas del Dominio (Abrazo, Sol, Nombre, Salida) sin inventar excepciones nuevas.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p>Rescate contrarreloj dentro de una cuarentena de la que oficialmente no se sale — ventana narrativa de cinco tramos en vez de reloj de horas exacto, coherente con el género. Cinco escenas autosuficientes: la ventana → cruzar el umbral → el Castillo → el rescate → la carrera de vuelta, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. El Dominio no es un enemigo que vencer — es una fuerza que sobrevivir, y lo que se rescata puede no ser exactamente lo que se fue a buscar.</p>
+<hr />
+<p><em>Cuenca Gótica — El Dominio del Abrazado. Desarrolla el gancho de Punto 6.5 del DLC ("Un PJ decide no completar una misión... deben entrar... sabiendo que no pueden salir... descubren que el Castillo no es una prisión. Es un organismo. Y está despierto"). Respeta la regla canónica: el Abrazado no se derrota, solo se contiene.</em></p>
+</div>
+</body>
+</html>

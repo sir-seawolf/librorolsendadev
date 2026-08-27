@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — La caída de la Red Única</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — La caída de la Red Única</h1>
+<p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Puede ganar riqueza opcional si se jugó "La Trampilla Vigilada", nunca la necesita. Estado: BORRADOR, pendiente de playtest.</em></p>
+<blockquote>
+<p>«Cuanto más cerca de una respuesta, más se parece esto a un mito. Y no todos quieren que deje de serlo.»</p>
+</blockquote>
+<hr />
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> la Dra. Elin Farrow —con un fragmento de datos recuperado si se jugó <em>La Trampilla Vigilada</em>, o con años de investigación propia si no— cree haber localizado una segunda vía de acceso a un registro más completo de la caída de la Red Única: unas ruinas en superficie que la gente llama, sin confirmarlo del todo, "el templo". No están vigiladas por ningún gobierno ni corporación — están cuidadas, desde hace generaciones, por gente que prefiere que sigan siendo un misterio.</p>
+<p><strong>Duración:</strong> una sesión de 4-6 horas. Periodo: cualquiera — funciona igual de bien como investigación histórica actual que como flashback narrado. Perspectiva: mixta.</p>
+<p><strong>Qué saben los PJ:</strong> que existen unas falsas ruinas clásicas —columnas, una calzada de piedra artificial— cerca de un asentamiento pequeño en la selva, y que Elin Farrow cree que guardan más respuestas de las que nadie ha conseguido sacar todavía.</p>
+<p><strong>Verdad del Narrador:</strong> el registro que se puede recuperar aquí no es la explicación completa de la caída de la Red Única —eso el DLC lo deja deliberadamente abierto—, pero sí es real y añade algo concreto: una prueba de que, en algún momento avanzado de la Reconstrucción, alguien decidió fragmentar la red deliberadamente, no por accidente ni colapso técnico. El registro no dice qué intentaban detener al hacerlo. La comunidad que cuida las ruinas —liderada por Yeira, la más veterana— no oculta esto por malicia: lleva generaciones protegiendo el lugar como algo que merece respeto, no excavación, y teme que la respuesta completa, si existe, no vaya a gustarle a nadie.</p>
+<p><strong>Objetivo inmediato:</strong> conseguir acceso al registro sin imponerse sobre la comunidad que lo cuida, y decidir qué hacer con una pieza de la verdad que resulta ser más incómoda de lo esperado.</p>
+<p><strong>Pregunta de fondo:</strong> ¿tiene alguien derecho a convertir en dato lo que otra gente ha decidido, con cuidado, mantener como memoria y misterio?</p>
+<p><strong>Si nadie interviene:</strong> el registro sigue ahí, cuidado y sin tocar, y el misterio de fondo permanece exactamente igual de intacto que antes.</p>
+<h3>Desarrollo en cinco escenas</h3>
+<ol>
+<li>El fragmento y la académica — Elin explica lo que cree haber encontrado.</li>
+<li>El asentamiento del templo — llegada y primer contacto con la comunidad.</li>
+<li>Ganarse el permiso — Yeira decide si confía en el grupo.</li>
+<li>Lo que dice el registro — la fragmentación deliberada, sin explicación completa.</li>
+<li>Qué se hace con una verdad incómoda — Elin, Yeira, y una decisión sobre difundir o proteger.</li>
+</ol>
+<hr />
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Sin cuenta atrás de horas — la presión es de confianza, no de tiempo:</strong> este módulo no tiene reloj. La comunidad no va a destruir el registro ni a cerrar el acceso por el mero paso de las horas — la presión real es si el grupo se gana el permiso de Yeira o si decide forzar el acceso sin él, con las consecuencias sociales que eso conlleva.</p>
+<p><strong>Cómo avanza el tiempo de ficción:</strong> cada escena puede ocupar su propio día en el asentamiento — no hace falta cronometrar nada.</p>
+<p><strong>Las tres partes, en una frase:</strong><br />
+- <strong>Elin Farrow</strong> → conseguir un fragmento real de la verdad, sin destruir lo que encuentra.<br />
+- <strong>Yeira</strong> → proteger el lugar y su significado, no necesariamente el secreto en sí.<br />
+- <strong>La comunidad del templo</strong> → seguir viviendo con su propia relación con el lugar, tal como la han construido durante generaciones.</p>
+<p><strong>No hay villano.</strong> Yeira no oculta un crimen — protege un significado. Elin no es una saqueadora — es una académica que puede aprender, si se le da la oportunidad, a pedir en vez de tomar. El conflicto es de valores, no de intenciones.</p>
+<p><strong>Yeira, en mesa:</strong> calmada, observadora, nunca hostil por defecto. Decide confiar por cómo se comporta el grupo, no por lo que dice que quiere. Puede negar el acceso indefinidamente sin que eso sea un fallo de partida — es una salida narrativa legítima.</p>
+<hr />
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>Hace generaciones, durante una fase ya avanzada de la Reconstrucción, alguien con acceso a partes clave de la Red Única decidió fragmentarla deliberadamente. El registro que se conserva en este emplazamiento concreto —parte de la misma red subterránea que el búnker de <em>La Trampilla Vigilada</em>, si se jugó ese módulo, aunque este acceso es distinto— conserva una prueba parcial de esa decisión: no un accidente, no un colapso técnico espontáneo, sino una elección consciente. Qué intentaban detener al hacerlo es, deliberadamente, algo que ni este módulo ni el DLC deben responder.</p>
+<p>La comunidad del asentamiento cercano ha cuidado estas ruinas durante generaciones, construyendo alrededor de ellas una relación de respeto casi reverencial —de ahí el rumor de "templo"—, sin que eso signifique que lo consideren literalmente sagrado en sentido religioso estricto. Yeira, la más veterana, teme sobre todo que convertir el lugar en un objeto de estudio académico borre lo que la comunidad ha construido alrededor de él durante todo este tiempo.</p>
+<h3>Qué saben los PJ y qué no</h3>
+<p>Pueden llegar a saber todo lo anterior si Yeira decide confiar en ellos. Lo que este módulo nunca debe resolver es qué intentaban detener quienes fragmentaron la red — es semilla de fondo, no una respuesta pendiente de entregar.</p>
+<h3>Tono</h3>
+<p>Contemplativo y respetuoso, con tensión de confianza en vez de acción. El hallazgo debe sentirse significativo y a la vez insuficiente — una pieza real, nunca el cuadro completo.</p>
+<hr />
+<h2>Reparto</h2>
+<h3>Dra. Elin Farrow — la académica (PNJ ya publicado en el DLC)</h3>
+<p><em>Aspecto:</em> ya descrita en el DLC — apasionada hasta la obsesión, incómoda hablando de cualquier otra cosa.</p>
+<p>Ficha compartida con el resto del DLC: F20/A25/P50/V45 | PV 11/11/11 | Bld 0 | Investigación/Historia 65% | Tecnología (interfaces antiguas) 50%</p>
+<ul>
+<li>Quiere un fragmento real de la verdad, y puede aprender —si el grupo se lo muestra— que pedir funciona mejor que tomar.</li>
+<li>Sin PJ: intenta acceder por su cuenta, con más lentitud y más fricción con la comunidad.</li>
+</ul>
+<h3>Yeira — la más veterana de la comunidad del templo</h3>
+<p><em>Aspecto:</em> años marcados en las manos y en la forma de caminar por un terreno que conoce mejor que su propia casa; habla poco, y cuando lo hace, todo el mundo alrededor baja un poco la voz.</p>
+<p>PNJ interpretable (3-4 profesiones), sin ficha de combate relevante.</p>
+<p>F25/A30/P45/V50 | PV 14/14/14 | Bld 0 | Supervivencia/Selva 55% | Social 45%</p>
+<ul>
+<li>Quiere proteger el significado del lugar, no necesariamente ocultar un secreto.</li>
+<li>Respeta a quien pide antes de tomar, y a quien escucha antes de explicar.</li>
+<li>Sin PJ: mantiene el acceso cerrado indefinidamente — desenlace legítimo, no un fallo.</li>
+</ul>
+<h3>La comunidad del asentamiento</h3>
+<p>Grupo funcional, sin ficha propia — reaccionan con cautela educada al principio, cálidos si el grupo se gana su confianza a través de Yeira.</p>
+<hr />
+<h2>Lugares necesarios</h2>
+<p><strong>El asentamiento cercano a las ruinas:</strong> pequeño, autosuficiente, construido con respeto visible hacia el terreno que ocupa.</p>
+<p><strong>Las falsas ruinas clásicas:</strong> columnas, una calzada de piedra artificial, cuya función original nadie ha confirmado del todo (Punto 11 del DLC).</p>
+<p><strong>El registro subterráneo:</strong> acceso más discreto que el búnker de <em>La Trampilla Vigilada</em> — parte de la misma red, pero un punto distinto.</p>
+<hr />
+<h2>Las cinco escenas</h2>
+<p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
+<h3>Escena 1 — El fragmento y la académica</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Elin extiende sobre la mesa un mapa marcado a mano y, junto a él, un fragmento de datos que todavía no ha conseguido traducir del todo. "Hay algo más," dice, sin levantar la vista. "Y esta vez, no puedo ir yo sola."</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Elin explica su hallazgo (el fragmento de <em>La Trampilla Vigilada</em>, si se jugó, o años de investigación propia) y pide ayuda para llegar hasta el asentamiento del templo.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Elin Farrow</strong> — entusiasta, consciente de que necesita ayuda para hacerlo bien esta vez (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> Elin sabe la ubicación aproximada y sospecha que la comunidad cercana protege algo, sin saber todavía qué ni por qué.</p>
+<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
+- <strong>Investigación</strong> (revisar el fragmento y el mapa de Elin): éxito → confirmas que apunta a un acceso real, distinto del ya conocido; fallo → información general, suficiente para empezar sin más detalle.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Elin intenta llegar sola, con peor resultado y más fricción con la comunidad desde el principio.</p>
+<p><strong>Cómo termina:</strong> el grupo acepta acompañar a Elin hacia el asentamiento.</p>
+<p><strong>Después:</strong> cómo trataron a Elin aquí condiciona su comportamiento durante el resto del módulo.</p>
+<h3>Escena 2 — El asentamiento del templo</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Un asentamiento pequeño, construido sin invadir del todo el espacio de las ruinas cercanas — como si generaciones enteras hubieran aprendido a vivir alrededor de algo sin necesitar entenderlo del todo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo llega y tiene su primer contacto con la comunidad.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>La comunidad</strong>, cautelosa pero educada — observa antes de hablar.<br />
+- <strong>Yeira</strong>, si se presenta pronto — evalúa al grupo desde el primer momento (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> la comunidad no niega la existencia de las ruinas ni de un cuidado especial hacia ellas — simplemente no ofrece acceso a cualquiera que llegue pidiendo.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social</strong> (presentarse con respeto, sin exigir nada de entrada): éxito → la comunidad se muestra dispuesta a escuchar, y alguien avisa a Yeira de que hay visitantes con buenas maneras; fallo → cautela fría, sin cerrar la puerta del todo.</p>
+<p><strong>Si los PJ no hacen nada:</strong> la comunidad sigue con su rutina, sin ofrecer ni negar nada por iniciativa propia.</p>
+<p><strong>Cómo termina:</strong> el grupo consigue (o no) una audiencia con Yeira.</p>
+<p><strong>Después:</strong> el trato dado aquí a la comunidad en general influye directamente en la disposición de Yeira en la Escena 3.</p>
+<h3>Escena 3 — Ganarse el permiso</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Yeira escucha sin interrumpir. Cuando termina de hablar el grupo, deja pasar un silencio largo antes de decir nada — como si estuviera decidiendo algo mucho más importante que dar permiso para entrar en unas ruinas.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo intenta convencer a Yeira de que merece acceso al registro.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Yeira</strong> — evalúa con calma, decide por comportamiento, no por argumento retórico (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> Yeira puede explicar, si decide confiar, que el lugar guarda algo real y que su miedo no es el secreto en sí, sino que se pierda el respeto con el que la comunidad lo ha tratado siempre.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Social o Empatía</strong> (demostrar respeto genuino, no solo cortesía táctica): éxito → Yeira concede acceso, acompañando personalmente al grupo; fallo → pide una condición concreta antes de decidir (por ejemplo, que Elin se comprometa a no publicar la ubicación exacta).<br />
+- <strong>Liderazgo</strong>, si Elin intenta argumentar por su cuenta con lenguaje académico: fallo casi garantizado si no se modera — Yeira responde mejor a la sinceridad simple que a la autoridad intelectual.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Yeira no ofrece el acceso por iniciativa propia — hay que pedirlo activamente.</p>
+<p><strong>Cómo termina:</strong> el grupo consigue acceso, con o sin condiciones, o Yeira lo niega —desenlace legítimo que cierra el módulo aquí mismo, sin fallo de partida.</p>
+<p><strong>Después:</strong> las condiciones puestas aquí (si las hay) enmarcan cómo se juega la Escena 4.</p>
+<h3>Escena 4 — Lo que dice el registro</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Bajo las falsas columnas, una escalera que nadie sin permiso encontraría nunca. Y al final, una interfaz tan antigua como el resto de la Red Única, todavía capaz de mostrar algo que nadie en Oasis ha visto en generaciones.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo, con Yeira o sin ella según lo acordado, accede al registro subterráneo y recupera la prueba de la fragmentación deliberada.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Yeira</strong>, si acompaña — observa en silencio, dispuesta a intervenir solo si algo se maneja con menos cuidado del prometido.<br />
+- <strong>Elin Farrow</strong> — absorta, casi olvidando cualquier otra consideración salvo la propia investigación.</p>
+<p><strong>Qué saben / qué dicen:</strong> el registro confirma que la fragmentación fue deliberada, no accidental — sin decir qué intentaban detener quienes la provocaron.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Tecnología o Investigación</strong> (interpretar la interfaz antigua): éxito → obtienes el fragmento completo de esta prueba concreta; fallo → obtienes una versión parcial, suficiente para confirmar la intencionalidad, sin más detalle.<br />
+- <strong>Empatía</strong>, si Yeira acompaña (opcional, sin combate): notar su reacción ante lo que se descubre puede revelar cuánto sabía ya ella misma, sin que lo diga en voz alta.</p>
+<p><strong>Si los PJ no hacen nada:</strong> sin acceso, el grupo se va sin la pieza concreta de verdad, aunque conserva la relación (o no) construida con la comunidad.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene una pieza real de la historia de la Red Única — incompleta, pero genuina.</p>
+<p><strong>Después:</strong> qué hacen con esta información condiciona toda la Escena 5.</p>
+<h3>Escena 5 — Qué se hace con una verdad incómoda</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>De vuelta en el asentamiento, con algo que ya no se puede dejar de saber. La pregunta ya no es qué han encontrado — es qué van a hacer con ello, y a quién le corresponde decidirlo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con el hallazgo confirmado, toca decidir si se publica, se protege, o se comparte solo parcialmente.</p>
+<p><strong>PNJ presentes:</strong> Elin Farrow, Yeira, la comunidad como interesada indirecta.</p>
+<p><strong>Qué saben / qué dicen:</strong> publicar el hallazgo completo podría dar a Elin reconocimiento académico real, a costa de exponer el lugar a más atención de la que la comunidad quiere; protegerlo respeta el deseo de Yeira, a costa de que el conocimiento se pierda de nuevo.</p>
+<p><strong>Tiradas posibles:</strong> Social o Liderazgo para mediar entre Elin y Yeira; ninguna sustituye la decisión de la mesa.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Elin decide por su cuenta, probablemente inclinándose hacia la publicación académica si nadie la modera.</p>
+<p><strong>Cómo termina:</strong> queda decidido qué pasa con el hallazgo y qué relación queda entre Elin, Yeira y la comunidad.</p>
+<p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
+<hr />
+<h2>Pistas e información</h2>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Revela</th>
+<th>Vía alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fragmento y mapa de Elin (Escena 1)</td>
+<td>Ubicación aproximada del acceso</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ganarse la confianza de Yeira (Escena 3)</td>
+<td>Por qué la comunidad protege el lugar</td>
+<td>Observar su reacción durante la Escena 4</td>
+</tr>
+<tr>
+<td>El registro subterráneo (Escena 4)</td>
+<td>La fragmentación fue deliberada, no accidental</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recompensas y gastos</h2>
+<p><strong>Recompensa económica:</strong> entre 100 y 250 créditos locales por PJ, pagados por Elin con fondos de su propia investigación — modesta, académica, no corporativa.</p>
+<p><strong>Beneficios alternativos:</strong> relación de confianza con Yeira y la comunidad del templo; reconocimiento académico compartido si se publica el hallazgo; acceso futuro a la red subterránea si Yeira decide confiar de forma duradera.</p>
+<hr />
+<h2>Desenlaces combinables</h2>
+<p><strong>Publicación respetuosa.</strong> Elin publica el hallazgo sin revelar la ubicación exacta ni el papel de la comunidad — reconocimiento académico real, protección parcial mantenida.</p>
+<p><strong>Protección total.</strong> El grupo respeta el deseo de Yeira por completo — el conocimiento queda entre ellos, sin publicarse, y la comunidad sigue exactamente igual que antes.</p>
+<p><strong>Publicación sin cuidado.</strong> Si Elin actúa sola o sin escuchar a nadie, publica todo, incluida la ubicación — daño real a la relación con la comunidad, gancho de tensión para el futuro.</p>
+<p><strong>Acceso concedido de forma duradera</strong> — combinable con cualquiera de los anteriores: Yeira decide que el grupo (no cualquiera) puede volver si hace falta, estableciendo una relación de confianza a largo plazo.</p>
+<hr />
+<h2>Continuidad opcional</h2>
+<ul>
+<li><strong>Versión independiente:</strong> no exige haber jugado <em>La Trampilla Vigilada</em> — Elin llega al mismo punto por investigación propia si no se jugó.</li>
+<li><strong>Si se jugó <em>La Trampilla Vigilada</em>:</strong> el fragmento de datos de aquel módulo es literalmente lo que trae Elin a la Escena 1, dando peso concreto a por qué confía en esta pista.</li>
+<li><strong>Si se juega en la campaña de origen:</strong> Totovía, el anfitrión de la mansión del bosque, puede aparecer como conocido de Yeira o de la comunidad, sin necesidad de ficha nueva.</li>
+</ul>
+<p>Ejemplo de puerta abierta: si el grupo se gana la confianza duradera de Yeira, ella puede convertirse en contacto de la selva para cualquier módulo futuro de Oasis que necesite ese tipo de guía.</p>
+<hr />
+<h2>Límites de este módulo</h2>
+<ul>
+<li>No resolver qué intentaban detener quienes fragmentaron la Red Única — queda como misterio de fondo, coherente con el propio DLC.</li>
+<li>Yeira no es una guardiana hostil ni un obstáculo de manual — su negativa, si ocurre, es una decisión legítima con sus propias razones.</li>
+<li>No convertir esto en una escena de expolio arqueológico sin consecuencias — el respeto hacia la comunidad debe importar mecánica y narrativamente.</li>
+<li>No revelar ni insinuar el despertar en este módulo.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p>Investigación contemplativa sin reloj de horas — la presión es de confianza, no de tiempo. Cinco escenas autosuficientes: el encargo → el asentamiento → ganarse el permiso → el registro → la decisión final, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. El hallazgo es real pero incompleto — el misterio de fondo de la Red Única sigue, deliberadamente, sin resolverse del todo.</p>
+<hr />
+<p><em>Oasis — tesela recién despertada. Desarrolla la semilla "La caída de la Red Única" (Punto 16 del DLC). Gana riqueza opcional si se jugó "La Trampilla Vigilada", nunca la necesita.</em></p>
+</div>
+</body>
+</html>

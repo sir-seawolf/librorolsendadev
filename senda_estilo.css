@@ -705,6 +705,46 @@ body.landing {
     background: #9333ea;
 }
 
+/* Plegado de módulos: los .module-branch viven dentro de un <details>
+   nativo (sin JS) para que empiecen replegados y el lector pulse para
+   ver los módulos de cada DLC. 27/08/2026. */
+.landing details.module-toggle {
+    width: 100%;
+    margin: 0;
+}
+.landing .module-toggle-summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 0 46px;
+    padding: 6px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #c084fc;
+    border: 1px solid #9333ea;
+    border-radius: 20px;
+    background: rgba(147,51,234,.08);
+    transition: all .2s;
+    width: fit-content;
+}
+.landing .module-toggle-summary::-webkit-details-marker { display: none; }
+.landing .module-toggle-summary::before {
+    content: "▸";
+    display: inline-block;
+    transition: transform .2s;
+    font-size: 10px;
+}
+.landing details[open] > .module-toggle-summary::before { transform: rotate(90deg); }
+.landing .module-toggle-summary:hover { background: #9333ea; color: #000; }
+.landing .module-toggle-summary:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
 .landing .card-module {
     display: flex;
     flex-direction: column;
@@ -797,5 +837,6 @@ body.landing {
     .landing .card-module { max-width: 100%; }
     .landing .module-branch { margin-left: 14px; padding-left: 16px; }
     .landing .module-branch::before { width: 14px; }
+    .landing .module-toggle-summary { margin-left: 14px; }
     .landing .aid-branch { margin-left: 10px; padding-left: 14px; }
 }

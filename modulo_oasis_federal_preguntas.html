@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El Federal que hizo demasiadas preguntas</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="document-container">
+<h1>MÓDULO — El Federal que hizo demasiadas preguntas</h1>
+<p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Continuación narrativa opcional de "La Trampilla Vigilada" — jugable sin ella. Estado: BORRADOR, pendiente de playtest.</em></p>
+<blockquote>
+<p>«Las opciones de Primus no son solo matarlo o no. Eso es, precisamente, lo que las hace más difíciles de ver venir.»</p>
+</blockquote>
+<hr />
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> el mando Federal Marcus ha atado cabos. Su "asesor civil" recibe orientación de alguien que no figura en ninguna cadena de mando oficial, y las órdenes que Marcus lleva meses cumpliendo empiezan a encajar en un patrón que no le gusta. Antes de que Primus decida qué hacer con él, Marcus tiene que decidir qué hacer con lo que sabe — y no quiere hacerlo solo.</p>
+<p><strong>Duración:</strong> una sesión de 4-6 horas. Periodo: antes del despertar. Perspectiva: nativos (Federal o próximos a Marcus) o mixta.</p>
+<p><strong>Qué saben los PJ:</strong> que Marcus les pide ayuda con algo que no puede llevar por los canales normales — sin necesitar haber jugado <em>La Trampilla Vigilada</em> para que esto tenga sentido; si se jugó, Marcus es exactamente el mismo Federal, con la misma duda ya sembrada.</p>
+<p><strong>Verdad del Narrador:</strong> el Siervo de Primus ya ha notado la sospecha de Marcus. No responde con violencia como primera opción — sigue, en orden, las vías que su institución prefiere: vigilancia discreta, después desinformación con una explicación alternativa plausible, después reasignación silenciosa, y solo en circunstancias extremas, algo más definitivo. El módulo da al grupo una ventana real para influir en qué escalón se alcanza.</p>
+<p><strong>Objetivo inmediato:</strong> ayudar a Marcus a decidir qué hacer con lo que sabe, y evitar que la respuesta de Primus llegue más lejos de lo necesario.</p>
+<p><strong>Pregunta de fondo:</strong> ¿qué le debe un profesional leal a una institución que resulta no ser exactamente lo que él creía servir?</p>
+<p><strong>Si nadie interviene:</strong> Primus gestiona a Marcus por su cuenta, casi siempre mediante reasignación silenciosa — la opción menos dramática, y la que Marcus nunca llega a entender del todo.</p>
+<h3>Desarrollo en cinco escenas</h3>
+<ol>
+<li>La sospecha compartida — Marcus busca ayuda fuera de su propia cadena de mando.</li>
+<li>Confirmar el patrón — reunir pruebas concretas sin levantar sospechas.</li>
+<li>La primera respuesta — Primus empieza a moverse.</li>
+<li>La decisión de Marcus — exponer, callar, o negociar.</li>
+<li>Lo que decide Primus — consecuencias finales, según cómo se jugó todo lo anterior.</li>
+</ol>
+<hr />
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Sin cuenta atrás de horas — escalada de respuesta, no reloj:</strong> la presión de este módulo no es una hora exacta, es un nivel de respuesta de Primus que sube según lo que hagan los PJ. Usa esta escalada, tomada directamente de cómo actúa Primus en el propio DLC (Punto 7):</p>
+<ol>
+<li><strong>Vigilancia discreta.</strong> Observan, dejan hablar, ven a quién más se lo cuenta. Sin confrontación.</li>
+<li><strong>Desinformación.</strong> Ofrecen a Marcus (o a quien pregunte) una explicación alternativa plausible que cierre la pregunta sin exponer nada.</li>
+<li><strong>Reasignación silenciosa.</strong> Marcus es trasladado a un destino sin acceso a nada sensible — o sus propios superiores dejan de confiar en él sin que Primus intervenga directamente (aislamiento profesional).</li>
+<li><strong>Captación.</strong> Le ofrecen convertirse en alguien que sabe un poco más de lo normal, a cambio de su silencio activo.</li>
+<li><strong>Algo más definitivo.</strong> Solo si Marcus ya ha hablado, o está a punto de hacerlo, con alguien a quien Primus no puede alcanzar de otro modo.</li>
+</ol>
+<p>Sube un escalón cuando los PJ actúan de forma ruidosa o exponen la investigación sin cuidado; puede bajar o congelarse si actúan con discreción real. No es automático ni mecánico — es una guía de intensidad narrativa, no una tabla de tiradas.</p>
+<p><strong>Las tres partes, en una frase:</strong><br />
+- <strong>Marcus</strong> → decidir qué hacer con lo que sabe sin perder su criterio ni, si puede evitarlo, su carrera.<br />
+- <strong>El Siervo de Primus</strong> → resolver esto de la forma menos dramática posible, sin dejar un cadáver que explicar.<br />
+- <strong>Los PJ</strong> → ayudar a Marcus a decidir bien, sabiendo que cualquier error de discreción sube la escalada.</p>
+<p><strong>No hay villano.</strong> El Siervo de Primus no quiere hacerle daño a Marcus — quiere que el problema desaparezca de la forma más limpia posible, y matar a alguien es, para Primus, un fracaso operativo, no una solución preferida.</p>
+<hr />
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>Marcus lleva semanas notando que las "recomendaciones" de su asesor civil siempre llegan un paso antes de que hagan falta — demasiado a tiempo para ser casualidad. Empezó a llevar un registro discreto de coincidencias: órdenes que no venían de ningún mando identificable, casos que se cerraban sin explicación, líneas de investigación que su asesor "sugería" evitar sin nunca justificarlo. No tiene pruebas concluyentes de que su asesor sea de Primus —no conoce la palabra "Primus" en absoluto— pero sabe que algo no encaja.</p>
+<p>El Siervo de Primus ya lo ha notado. Prefiere, con mucho, resolverlo sin dejar un cadáver que explicar — y empezará por la vigilancia discreta, escalando solo si Marcus (o quien le ayude) se vuelve ruidoso o expone la investigación sin cuidado.</p>
+<h3>Qué saben los PJ y qué no</h3>
+<p>Pueden llegar a saber todo lo que sabe Marcus. Lo que no deben poder resolver desde el principio es si Primus interviene con violencia por defecto — no lo hace, y el módulo no debe sugerir lo contrario hasta que la propia escalada llegue, si llega, a su último escalón.</p>
+<h3>Tono</h3>
+<p>Tensión política e institucional, no acción. El peligro es la escalada silenciosa, no una emboscada armada. Marcus debe sentirse como un profesional real enfrentado a algo que no tiene manual, no como un investigador de novela negra.</p>
+<hr />
+<h2>Reparto</h2>
+<h3>Mando Federal Marcus (PNJ ya publicado en el DLC)</h3>
+<p><em>Aspecto:</em> ya descrito en el DLC — uniformado, disciplinado, precedido por el sonido de sus propias botas antes de que se le vea.</p>
+<p>Ficha compartida con el resto del DLC: F35/A35/P40/V40 | PV 16/16/16 | Bld 3 | Armas cortas 50% | Daño 6 | Liderazgo/Mando 45%</p>
+<ul>
+<li>Quiere decidir qué hacer con lo que sabe sin traicionar su propio criterio.</li>
+<li>Respeta la lealtad por encima de la letra de la orden.</li>
+<li>Sin PJ: sigue investigando solo, más lento y con más riesgo de exponerse antes de tener nada sólido.</li>
+</ul>
+<h3>Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</h3>
+<p><em>Aspecto:</em> amable, informado, siempre presente sin explicar del todo por qué.</p>
+<p>Ficha compartida con el resto del DLC: F20/A30/P50/V55 | PV 12/12/12 | Bld 0 | Investigación 55% | Social 50% | Voluntad alta</p>
+<ul>
+<li>Quiere resolver esto de la forma menos dramática posible.</li>
+<li>Teme, sobre todo, que Marcus hable con alguien a quien Primus no pueda alcanzar fácilmente.</li>
+<li>Sin PJ: gestiona a Marcus solo, casi siempre mediante reasignación silenciosa.</li>
+</ul>
+<h3>Rensa y Coy — soldados de la unidad de Marcus (PNJ ya publicados, si se jugó <em>La Trampilla Vigilada</em>; funcionales aquí en cualquier caso)</h3>
+<p>PNJ funcionales (1-2 profesiones cada uno). F30/A35/P30/V30 | PV 14/14/14 | Bld 3 | Armas cortas 45% (no letal por defecto) | Daño 5</p>
+<ul>
+<li>Leales a Marcus, pero no saben nada de lo que él sospecha — su reacción, si se enteran, depende de cómo se les cuente.</li>
+</ul>
+<hr />
+<h2>Lugares necesarios</h2>
+<p><strong>Comisaría o base de la unidad de Marcus:</strong> rutina Federal normal, donde cualquier movimiento fuera de lo habitual puede notarse.</p>
+<p><strong>Un lugar privado, fuera de canales oficiales:</strong> donde Marcus prefiere hablar con los PJ sin que su asesor esté cerca.</p>
+<p><strong>Archivo de registros:</strong> donde se puede confirmar (o no) el patrón de órdenes irregulares.</p>
+<hr />
+<h2>Las cinco escenas</h2>
+<p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
+<h3>Escena 1 — La sospecha compartida</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Marcus elige un sitio sin uniforme de por medio para hablar. Antes de decir nada, mira dos veces hacia la puerta — un gesto que un hombre tan disciplinado no debería necesitar.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Marcus busca a los PJ, fuera de su cadena de mando, para compartir lo que ha notado.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Marcus</strong> — nervioso a su manera contenida, necesita ayuda que no pueda pedir oficialmente (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> Marcus explica el patrón de "recomendaciones" demasiado oportunas de su asesor, sin saber todavía qué es exactamente lo que ha descubierto.</p>
+<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
+- <strong>Social o Empatía</strong> (ganarse su confianza total, no solo la inicial): éxito → comparte también los detalles más concretos de su registro privado; fallo → comparte solo lo general, reservándose el resto hasta confiar más.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Marcus busca ayuda en otra parte, con más riesgo de exponerse sin apoyo adecuado.</p>
+<p><strong>Cómo termina:</strong> el grupo acepta ayudar a Marcus y conoce el patrón que él ha notado.</p>
+<p><strong>Después:</strong> el nivel de confianza ganado aquí condiciona cuánto material aporta Marcus en la Escena 2.</p>
+<blockquote>
+<p>«No sé quién da las órdenes de verdad. Solo sé que siempre llegan justo antes de que las necesite. Eso no es suerte. Eso es vigilancia.»</p>
+</blockquote>
+<h3>Escena 2 — Confirmar el patrón</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Los archivos oficiales no mienten, pero tampoco cuentan toda la verdad. A veces basta con notar qué es lo que nunca aparece escrito.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el grupo investiga los registros y patrones para confirmar (o matizar) la sospecha de Marcus, con cuidado de no levantar sospechas propias.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Rensa o Coy</strong>, si se les involucra — leales a Marcus, curiosos pero sin saber el motivo real de la investigación.</p>
+<p><strong>Qué saben / qué dicen:</strong> los registros muestran, con suficiente análisis, un patrón real de decisiones "sugeridas" que evitan sistemáticamente ciertas líneas de investigación.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Investigación</strong> (analizar los registros de órdenes y casos cerrados): éxito → confirmas el patrón con detalle suficiente para ser tomado en serio; fallo → confirmas que algo es raro, sin poder probarlo todavía.<br />
+- <strong>Sigilo o Social</strong> (investigar sin levantar sospechas dentro de la propia comisaría): éxito → nadie nota nada fuera de lo normal; fallo → sube un escalón en la escalada de Primus (ver Panel del Narrador).</p>
+<p><strong>Si los PJ no hacen nada:</strong> Marcus reúne lo que puede por su cuenta, más lento y con más riesgo.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene pruebas concretas (o casi) del patrón, y decide cómo seguir.</p>
+<p><strong>Después:</strong> cómo de discretos fueron aquí determina en qué escalón empieza la Escena 3.</p>
+<h3>Escena 3 — La primera respuesta</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Nadie ha dicho nada directamente. Pero alguien parece saber, con una precisión incómoda, exactamente dónde ha estado el grupo esta semana.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Primus empieza a moverse, en el escalón que corresponda según cómo se jugó lo anterior — normalmente vigilancia discreta, o ya desinformación si hubo ruido.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>El Siervo de Primus</strong>, si se muestra — amable, informado, sin admitir nada directamente (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> si llega a desinformación, el Siervo (o alguien en su nombre) ofrece una explicación alternativa completamente plausible para el patrón que el grupo ha encontrado.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Alerta</strong> (notar que están siendo vigilados): éxito → confirman la vigilancia antes de que se vuelva evidente; fallo → no lo notan hasta que es demasiado obvio para ignorarlo.<br />
+- <strong>Investigación o Social</strong> (calibrar si la explicación alternativa ofrecida es creíble o hecha a medida): éxito → detectan que encaja demasiado bien para ser espontánea; fallo → la explicación cuela, y la investigación pierde fuerza.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Primus sigue observando sin escalar más, a la espera de ver qué hace el grupo a continuación.</p>
+<p><strong>Cómo termina:</strong> el grupo entiende que alguien —todavía sin nombre— está gestionando activamente la situación.</p>
+<p><strong>Después:</strong> cómo reaccionen aquí (con calma o con más ruido) decide si la escalada sube antes de la Escena 4.</p>
+<h3>Escena 4 — La decisión de Marcus</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Marcus tiene, por primera vez, algo parecido a una prueba. Lo que no tiene todavía es una decisión sobre qué hacer con ella.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con las pruebas reunidas, Marcus decide qué hacer — exponerlo, callar a cambio de seguir sirviendo, o negociar algo intermedio.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
+- <strong>Marcus</strong> — pide consejo real a los PJ antes de decidir, sin fingir que la decisión es fácil (<em>Aspecto</em> y ficha: ver Reparto).</p>
+<p><strong>Qué saben / qué dicen:</strong> ninguna opción es limpia — exponerlo puede no llevar a ninguna parte sin pruebas irrefutables, y callar significa seguir sirviendo a algo que ya no confía del todo.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Liderazgo o Social</strong> (ayudar a Marcus a decidir con claridad, sea cual sea la dirección): ninguna tirada sustituye la decisión — pero una tirada de apoyo puede ayudarle a articular mejor su propio argumento ante quien corresponda.</p>
+<p><strong>Si los PJ no hacen nada:</strong> Marcus decide solo, con el resultado que la mesa considere coherente con su carácter (probablemente: guardar silencio, dolido, por ahora).</p>
+<p><strong>Cómo termina:</strong> queda decidido qué intenta hacer Marcus con lo que sabe.</p>
+<p><strong>Después:</strong> esta decisión determina directamente cómo responde Primus en la Escena 5.</p>
+<h3>Escena 5 — Lo que decide Primus</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>No hay confrontación final, ni disparo, ni persecución. Solo una carta de traslado, o una conversación educada, o el silencio de que no ha pasado nada — cada una diciendo algo distinto sobre lo que Marcus decidió.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Primus resuelve la situación según el escalón alcanzado — vigilancia que se mantiene, desinformación que se sostiene, reasignación, captación, o —solo en el peor de los casos— algo más definitivo.</p>
+<p><strong>PNJ presentes:</strong> el Siervo de Primus, si decide mostrarse del todo; Marcus, esperando el resultado.</p>
+<p><strong>Qué saben / qué dicen:</strong> el desenlace confirma, sin necesidad de explicación adicional, qué tipo de institución es realmente Primus para quien se cruza con ella.</p>
+<p><strong>Tiradas posibles:</strong> ninguna sustituye el desenlace — es la consecuencia narrativa de todo lo jugado antes.</p>
+<p><strong>Si los PJ no hacen nada:</strong> el desenlace se resuelve según el escalón ya alcanzado, sin intervención adicional del grupo.</p>
+<p><strong>Cómo termina:</strong> Marcus sigue en su puesto, reasignado, captado, o —en el peor de los casos— algo que la mesa decide con el peso que merece.</p>
+<p><strong>Después:</strong> ver Desenlaces combinables.</p>
+<hr />
+<h2>Pistas e información</h2>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Revela</th>
+<th>Vía alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marcus (Escena 1)</td>
+<td>El patrón de "recomendaciones" oportunas</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Registros de órdenes (Escena 2)</td>
+<td>Confirmación del patrón con detalle</td>
+<td>Preguntar a Rensa o Coy por rutinas raras</td>
+</tr>
+<tr>
+<td>La explicación alternativa (Escena 3)</td>
+<td>Que Primus ya está gestionando activamente la situación</td>
+<td>Notar la vigilancia directamente con Alerta</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recompensas y gastos</h2>
+<p><strong>Recompensa económica:</strong> este módulo no tiene contratante formal — la recompensa es la relación con Marcus y lo que ella implica a futuro, no un pago en créditos. Si la mesa quiere una cifra, entre 100 y 200 créditos locales por gastos cubiertos por Marcus de su propio bolsillo, nada más.</p>
+<p><strong>Beneficios alternativos:</strong> relación de confianza duradera con Marcus, si sobrevive con su puesto o sin él; conocimiento directo de cómo opera Primus en Oasis, útil para cualquier módulo futuro que la toque.</p>
+<hr />
+<h2>Desenlaces combinables</h2>
+<p><strong>Marcus guarda silencio a cambio de seguir sirviendo.</strong> El trato tácito: mira hacia otro lado, mantiene su puesto, y carga con lo que sabe en privado.</p>
+<p><strong>Marcus expone lo que sabe.</strong> El grupo decide si lo protege o lo deja solo — sin garantía de que la exposición llegue a ninguna parte sin pruebas irrefutables de la propia existencia de Primus, algo que este módulo no debe confirmar públicamente.</p>
+<p><strong>Reasignación silenciosa.</strong> Marcus desaparece de la unidad, trasladado a un destino sin acceso a nada sensible — la opción más habitual de Primus, y la más difícil de rebatir.</p>
+<p><strong>Captación.</strong> Marcus acepta saber un poco más de lo normal, a cambio de su silencio activo — deja de ser una amenaza para convertirse en un activo, con lo que eso implica moralmente.</p>
+<hr />
+<h2>Continuidad opcional</h2>
+<ul>
+<li><strong>Versión independiente:</strong> no exige haber jugado <em>La Trampilla Vigilada</em> — Marcus llega a la misma sospecha por su cuenta si no se jugó antes.</li>
+<li><strong>Si se jugó <em>La Trampilla Vigilada</em>:</strong> la sospecha de Marcus ya estaba sembrada; este módulo es su continuación directa, y el Siervo de Primus es el mismo personaje, con el mismo criterio.</li>
+</ul>
+<p>Ejemplo de puerta abierta: si Marcus sobrevive con su puesto intacto, puede convertirse en un contacto Federal de confianza para cualquier módulo futuro de Oasis.</p>
+<hr />
+<h2>Límites de este módulo</h2>
+<ul>
+<li>Primus no responde con violencia como primera opción — la escalada completa (vigilancia → desinformación → reasignación → captación → algo más definitivo) debe respetarse en ese orden.</li>
+<li>No confirmar públicamente la existencia de Primus como corporación — Marcus puede sospechar, nunca demostrarlo del todo ante nadie externo a esta trama.</li>
+<li>Marcus no es un investigador de novela negra — es un profesional real enfrentado a algo sin manual.</li>
+<li>No revelar ni insinuar el despertar en este módulo.</li>
+</ul>
+<hr />
+<h2>Resumen para dirigir</h2>
+<p>Tensión institucional sin reloj de horas — la presión es una escalada de respuesta de cinco niveles, tomada directamente del propio comportamiento de Primus ya descrito en el DLC. Cinco escenas autosuficientes: la sospecha → confirmar el patrón → la primera respuesta → la decisión → el desenlace, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Ningún desenlace es el correcto — todos dicen algo distinto sobre qué tipo de institución es Primus.</p>
+<hr />
+<p><em>Oasis — tesela recién despertada. Desarrolla las semillas "Órdenes de nadie" y "El Federal que hizo demasiadas preguntas" (Punto 16 del DLC) como un único módulo continuo, reutilizando los PNJ ya publicados Marcus y el Siervo de Primus.</em></p>
+</div>
+</body>
+</html>
