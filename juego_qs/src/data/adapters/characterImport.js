@@ -47,7 +47,7 @@ export function normalizeCharacter(externalJson) {
     niveles: { ...externalJson.niveles },
     humanidad: externalJson.humanidad ?? 100,
     saludMental: externalJson.saludMental ?? 100,
-    alma: { ...externalJson.alma },
+    alma: { actual: 8, maxima: 10, ...(externalJson.alma ?? {}) },
     deriva: externalJson.deriva ?? 0,
     cargaLibre: externalJson.cargaLibre ?? 0,
     creditos: externalJson.creditos ?? 0,
