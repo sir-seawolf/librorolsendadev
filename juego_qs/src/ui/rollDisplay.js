@@ -51,7 +51,7 @@ export function mostrarTirada({ actorId = "player", actorNombre, etiquetaHabilid
     <div class="roll-card">
       <div class="roll-quien"><span class="roll-actor">${nombreActor}</span><span class="roll-habilidad">${etiquetaHabilidad}</span></div>
       <div class="roll-efectiva-cifra"><strong id="rl-efectiva">${habilidadBase + dificultadTotal}</strong><span>efectiva</span></div>
-      ${permitido ? `<button id="rl-pe" class="btn-epico">Gastar Punto Épico de ${nombreActor} <span>+50</span></button>` : ""}
+      ${permitido ? `<button id="rl-pe" class="btn-epico">Gastar Punto Épico de ${nombreActor} <span>+50 · quedan ${actor.puntosEpicosActuales}</span></button>` : ""}
       <div class="roll-dado" id="rl-dice">··</div>
       <div class="roll-result" id="rl-result"></div>
       <details class="roll-detalles">
@@ -165,6 +165,7 @@ export function mostrarTirada({ actorId = "player", actorNombre, etiquetaHabilid
       habilidadEfectiva: resultadoFinal.habilidadEfectiva,
       dificultad,
       penalizacionHerida,
+      puntoEpicoGastado: resultadoFinal.puntoEpicoGastado,
       d100: resultadoFinal.tirada,
       exitos: resultadoFinal.exitos,
       critico: resultadoFinal.esCritico,

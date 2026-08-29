@@ -78,6 +78,7 @@ export function crearTacticalSession(definicion) {
     // SIGNIFICA el resultado de estos pools.
     aplicarDanioLocal(actorId, danio) {
       const actor = this.configDe(actorId);
+      if (!actor || !Number.isFinite(danio) || danio <= 0) return false;
       let restante = danio;
       for (const nivel of ["sano", "herido", "tullido"]) {
         if (restante <= 0) break;
@@ -85,7 +86,8 @@ export function crearTacticalSession(definicion) {
         actor.vidaActual[nivel] -= consumido;
         restante -= consumido;
       }
-      const down = restante > 0;
+      const vidaRestante = actor.vidaActual.sano + actor.vidaActual.herido + actor.vidaActual.tullido;
+      const down = restante > 0 || vidaRestante <= 0;
       if (down) actor.estadoDisponibilidad = this.esParty(actorId) ? "inconsciente" : "muerto";
       return down;
     },

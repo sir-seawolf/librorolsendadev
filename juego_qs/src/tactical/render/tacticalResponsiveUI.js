@@ -37,7 +37,7 @@ const ESTILOS_ID = "tactical-responsive-ui-styles";
 // acento de decisión; peligro es el aviso de riesgo; información es el
 // acento instrumental, usado con moderación, nunca como color base.
 const CSS = `
-.tui-root { position: absolute; inset: 0; pointer-events: none; font-family: "Share Tech Mono", monospace; color: var(--color-texto); z-index: 500; }
+.tui-root { position: absolute; inset: 0; pointer-events: none; font-family: "Barlow Condensed", sans-serif; color: var(--color-texto); z-index: 500; }
 .tui-root * { box-sizing: border-box; }
 .tui-root button { font-family: inherit; cursor: pointer; }
 .tui-summary { position: absolute; top: 8px; left: 8px; pointer-events: auto; }

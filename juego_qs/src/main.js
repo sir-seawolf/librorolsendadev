@@ -7,13 +7,22 @@ import { cargarEscena } from "./engine/sceneEngine.js";
 import { aplicarAccesibilidad, config } from "./config.js";
 import { audioManager } from "./engine/audioManager.js";
 import { montarAjustesAudio } from "./ui/audioSettings.js";
-import { moduloIdActivo } from "./engine/moduleLoader.js";
+import { cargarListaModulos, cargarModulo, moduloIdActivo, manifiestoActivo } from "./engine/moduleLoader.js";
+import { resolverModuloRevision } from "./engine/moduleReview.js";
 
 const appEl = document.getElementById("app");
 const scenario = document.getElementById("scenario");
 const sheetPanel = document.getElementById("sheet-panel");
 const configPanel = document.getElementById("config-panel");
 const configToggle = document.getElementById("config-toggle");
+const gameModulo = document.getElementById("game-modulo");
+const gameEscena = document.getElementById("game-escena");
+
+function actualizarCabecera(tituloEscena = null) {
+  const manifiesto = manifiestoActivo();
+  gameModulo.textContent = manifiesto?.title || "ARCHIVO DE MÓDULOS";
+  gameEscena.textContent = tituloEscena || (state.escena === "menu" ? "CENTRO DE MISIÓN" : "SELECCIÓN");
+}
 
 aplicarAccesibilidad();
 migrarGuardadoAntiguoSiExiste(); // ver docs/SAVE_MIGRATION.md — no-op si no hay nada que migrar
@@ -58,6 +67,7 @@ async function renderEscena() {
   }
 
   if (state.escena === "module_select") {
+    actualizarCabecera("SELECCIÓN");
     montarSelectorModulos(scenario);
     sheetContextActual = null;
     sheetLayoutActual = "docked";
@@ -69,6 +79,7 @@ async function renderEscena() {
   }
 
   if (state.escena === "menu") {
+    actualizarCabecera("CENTRO DE MISIÓN");
     montarMenu(scenario);
     sheetContextActual = null;
     sheetLayoutActual = "docked";
@@ -100,6 +111,7 @@ async function renderEscena() {
     // pegado permanentemente junto al contenido real.
     scenario.innerHTML = "";
     await montarEscenaPorId(scenario, state.escena);
+    actualizarCabecera(escena.title || state.escena.replaceAll("_", " "));
   } catch (e) {
     if (miToken !== renderToken) return;
     mostrarErrorCargaEscena(scenario, e);
@@ -170,4 +182,22 @@ function mostrarErrorCargaEscena(container, error) {
 
 suscribirEscena(renderEscena);
 suscribirFicha(renderFichaSiProcede);
-renderEscena();
+
+async function iniciarAplicacion() {
+  try {
+    const registro = await cargarListaModulos();
+    const moduleIdRevision = resolverModuloRevision(window.location.search, registro);
+    if (moduleIdRevision) {
+      await cargarModulo(moduleIdRevision);
+      cambiarEscena("menu");
+      return;
+    }
+  } catch (error) {
+    // Un enlace de revisión roto o una red temporalmente caída no debe dejar
+    // la aplicación en blanco: el selector conserva su recuperación normal.
+    console.warn("[arranque] no se pudo abrir el módulo solicitado:", error);
+  }
+  renderEscena();
+}
+
+iniciarAplicacion();

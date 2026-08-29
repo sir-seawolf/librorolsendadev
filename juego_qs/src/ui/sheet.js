@@ -9,6 +9,20 @@ import { fichaColapsada, establecerFichaColapsada } from "./uiSettings.js";
 // cada flag) nunca acumula listeners fantasma en document.
 let limpiarCierreSuperpuesto = null;
 
+function escaparHtml(texto) {
+  return String(texto)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+export function renderInventario(items = []) {
+  if (!items.length) return '<li class="ficha-inventario-vacio">Sin objetos</li>';
+  return items.map(item => `<li>${escaparHtml(item)}</li>`).join("");
+}
+
 // Ficha lateral: solo la información necesaria en cada momento. `contexto` decide
 // qué bloques adicionales se muestran (exploración / persecución / combate) — ver
 // docs/PARTY_SYSTEM.md, sección HUD dinámico.
@@ -33,7 +47,9 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
   const colapsada = fichaColapsada(layout);
   container.classList.toggle("colapsada", colapsada);
 
-  const iconoToggle = colapsada ? "‹" : "›";
+  const iconoToggle = colapsada
+    ? '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5 2 6 6-6 6"/></svg>'
+    : '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m11 2-6 6 6 6"/></svg>';
   const tituloToggle = colapsada ? "Mostrar ficha" : "Ocultar ficha";
   const botonToggle = `<button type="button" class="ficha-toggle" id="btn-ficha-toggle" aria-label="${tituloToggle}" aria-expanded="${!colapsada}" title="${tituloToggle}">${iconoToggle}</button>`;
 
@@ -44,7 +60,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
       return `<span class="fc-vida-segmento ${tramo}" aria-hidden="true"><i style="width:${relleno}%"></i></span>`;
     }).join("");
     const epicosMini = Array.from({ length: base.puntosEpicos }, (_, i) =>
-      `<span class="fc-pe-punto ${i < m.puntosEpicosActuales ? "activo" : ""}" aria-hidden="true">${i < m.puntosEpicosActuales ? "◆" : "◇"}</span>`
+      `<span class="fc-pe-punto ${i < m.puntosEpicosActuales ? "activo" : ""}" aria-hidden="true"></span>`
     ).join("");
     container.innerHTML = `
       ${botonToggle}
@@ -65,7 +81,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
   }
 
   const epicos = Array.from({ length: base.puntosEpicos }, (_, i) =>
-    `<span class="ep-dot ${i < m.puntosEpicosActuales ? "activo" : ""}">●</span>`).join("");
+    `<span class="ep-dot ${i < m.puntosEpicosActuales ? "activo" : ""}" aria-hidden="true"></span>`).join("");
 
   let bloqueContextual = "";
   if (contexto === "combate") {
@@ -118,7 +134,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
 
       <div class="ficha-bloque">
         <div class="ficha-titulo">Inventario</div>
-        <ul class="ficha-inventario">${m.inventario.map(i => `<li>${i}</li>`).join("")}</ul>
+        <ul class="ficha-inventario">${renderInventario(m.inventario)}</ul>
       </div>
 
       <button class="btn-historial" id="btn-abrir-historial">Historial de tiradas</button>

@@ -266,7 +266,7 @@ export function registrarTirada(entrada) {
 
 export function aplicarDanio(miembroId, localizacion, danioFinal) {
   const m = obtenerMiembro(miembroId);
-  if (!m) return false;
+  if (!m || !Number.isFinite(danioFinal) || danioFinal <= 0) return false;
   let restante = danioFinal;
   for (const nivel of ["sano", "herido", "tullido"]) {
     if (restante <= 0) break;
@@ -278,7 +278,8 @@ export function aplicarDanio(miembroId, localizacion, danioFinal) {
   if (nivelHeridaDe(m) !== "sano") m.estadoDisponibilidad = m.estadoDisponibilidad === "disponible" ? "herido" : m.estadoDisponibilidad;
   notificarFicha();
   guardar();
-  return restante > 0; // true = ha muerto (desbordó Tullido)
+  const vidaRestante = m.vidaActual.sano + m.vidaActual.herido + m.vidaActual.tullido;
+  return restante > 0 || vidaRestante <= 0; // true = golpe mortal (Tullido a 0 o daño sobrante)
 }
 
 export function nivelHeridaDe(miembroRuntime) {
@@ -377,6 +378,25 @@ export function borrarGuardado() {
   const moduleId = moduloIdActivo();
   if (!moduleId) return;
   try { localStorage.removeItem(claveGuardado(moduleId)); } catch (e) {}
+}
+
+// Cierre atómico de una partida terminada: borra primero el guardado y
+// navega sin pasar por cambiarEscena(), porque esa función guarda después de
+// notificar. Usarla aquí recrearía inmediatamente un save vacío y haría que
+// el menú ofreciese una falsa opción "Continuar partida".
+export function cerrarPartidaDefinitiva(destino = "menu") {
+  const moduleId = moduloIdActivo() || state.moduloId;
+  if (moduleId) {
+    try { localStorage.removeItem(claveGuardado(moduleId)); } catch (e) {}
+  }
+  state.partyMembers = {};
+  state.playerCharacterId = null;
+  state.finalTipo = null;
+  state.escena = destino;
+  state.entrySpawnId = null;
+  state.moduloId = null;
+  state.moduloVersion = null;
+  notificarEscena();
 }
 
 // Migración del guardado de la iteración 4 (anterior al concepto de módulo,
