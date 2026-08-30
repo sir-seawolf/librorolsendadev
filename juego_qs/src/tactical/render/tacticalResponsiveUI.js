@@ -16,6 +16,7 @@
 // Detrás de `config.tactical.responsiveUI` (dev flag, default false) --
 // ver TacticalScene.js `_montarInterfazResponsive()`.
 import { construirSnapshotUI } from "./tacticalUIState.js";
+import { rutaAsset } from "../../engine/moduleLoader.js";
 
 const ESTILOS_ID = "tactical-responsive-ui-styles";
 
@@ -40,10 +41,10 @@ const CSS = `
 .tui-root { position: absolute; inset: 0; pointer-events: none; font-family: "Barlow Condensed", sans-serif; color: var(--color-texto); z-index: 500; }
 .tui-root * { box-sizing: border-box; }
 .tui-root button { font-family: inherit; cursor: pointer; }
-.tui-summary { position: absolute; top: 8px; left: 8px; pointer-events: auto; }
+.tui-summary { position: absolute; top: 10px; left: 10px; pointer-events: auto; }
 .tui-summary-btn {
-  display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px;
-  background: rgba(20,23,25,0.9); border: 1px solid var(--color-borde); border-radius: 3px; color: var(--color-texto); font-size: 12px;
+  display: flex; align-items: center; gap: 10px; min-height: 62px; padding: 6px 14px 6px 6px;
+  background: linear-gradient(105deg, rgba(8,14,17,.97), rgba(19,28,32,.92)); border: 1px solid #38515a; color: var(--color-texto); font-size: 12px;
   /* La economía de acciones (Hallazgo 3) alarga el texto de estado --
      se limita el ancho al viewport real y se deja envolver en vez de
      desbordar fuera de pantalla en móvil. */
@@ -55,11 +56,8 @@ const CSS = `
    chaflanada en vez de círculo plano -- lenguaje de "credencial/rango"
    de terminal militar, sin depender de ningún recurso de icono nuevo
    (evita abrir un sourcing CC0 para algo tan pequeño). */
-.tui-summary-portrait {
-  width: 22px; height: 22px; flex: none; background: var(--color-informacion);
-  clip-path: polygon(30% 0, 100% 0, 100% 70%, 70% 100%, 0 100%, 0 30%);
-}
-.tui-summary-portrait.abajo { background: #555; }
+.tui-summary-portrait { width: 48px; height: 48px; flex: none; background-size: cover; background-position: center 20%; filter: saturate(.72) contrast(1.08); clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%); border: 1px solid var(--color-informacion); }
+.tui-summary-portrait.abajo { filter: grayscale(1) brightness(.55); }
 .tui-summary-nombre { font-weight: bold; letter-spacing: .3px; }
 .tui-summary-estado { font-size: 10px; color: var(--color-informacion); }
 .tui-summary-estado.herido { color: var(--color-seleccion); }
@@ -87,22 +85,24 @@ const CSS = `
 .tui-sheet::after { bottom: 6px; right: 6px; border-bottom-width: 2px; border-right-width: 2px; }
 .tui-sheet h3 { margin: 0 0 8px; font-size: 14px; color: var(--color-seleccion); letter-spacing: .5px; }
 .tui-sheet .tui-close { position: sticky; top: 0; float: right; min-width: 44px; min-height: 44px; background: var(--color-fondo); border: 1px solid var(--color-borde); color: var(--color-peligro); border-radius: 3px; }
+.tui-sheet .tui-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
 .tui-sheet dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin: 0; }
 .tui-sheet dt { color: var(--color-informacion); }
 
 .tui-actionbar {
-  position: absolute; left: 0; right: 0; bottom: 0; pointer-events: auto;
-  display: flex; gap: 6px; padding: 8px; background: rgba(20,23,25,0.85); flex-wrap: wrap;
-  border-top: 1px solid var(--color-borde);
+  position: absolute; left: 50%; bottom: 8px; width: min(760px, calc(100% - 16px)); transform: translateX(-50%); pointer-events: auto;
+  display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 4px; padding: 5px; background: rgba(7,12,15,.96);
+  border: 1px solid #38515a; box-shadow: 0 12px 36px rgba(0,0,0,.62);
 }
 .tui-actionbar::before {
   content: ""; position: absolute; top: 4px; left: 4px; width: 14px; height: 14px; opacity: .55; pointer-events: none;
   border-top: 2px solid var(--color-informacion); border-left: 2px solid var(--color-informacion);
 }
 .tui-fam-btn, .tui-contextual-btn {
-  min-width: 44px; min-height: 44px; padding: 6px 14px; background: var(--color-fondo); border: 1px solid var(--color-borde);
-  color: var(--color-texto); border-radius: 3px; font-size: 13px; letter-spacing: .3px;
+  min-width: 44px; min-height: 56px; padding: 6px 14px; background: linear-gradient(#192227,#0c1215); border: 1px solid #2c3c43;
+  color: var(--color-texto); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px;
 }
+.tui-fam-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.4; }
 /* Acento por familia (MATRIZ_UI_ACCIONES_PREDATOR.md §"Lenguaje visual") --
    el color nunca es el único código: cada botón lleva su etiqueta de
    texto siempre visible, el color solo refuerza. */
@@ -114,15 +114,25 @@ const CSS = `
 .tui-contextual-btn.tui-activo { border-color: var(--color-seleccion); color: var(--color-seleccion); }
 
 .tui-tray {
-  position: absolute; left: 8px; right: 8px; bottom: 60px; pointer-events: auto;
-  background: rgba(20,23,25,0.97); border: 1px solid var(--color-borde); border-radius: 4px; padding: 8px;
-  display: flex; flex-direction: column; gap: 4px; max-height: 40vh; overflow-y: auto;
+  position: absolute; left: 50%; width: min(650px, calc(100% - 20px)); transform: translateX(-50%); bottom: 74px; pointer-events: auto;
+  background: rgba(7,12,15,.98); border: 1px solid #38515a; padding: 8px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 5px; max-height: 42vh; overflow-y: auto;
 }
 .tui-tray[hidden] { display: none; }
 .tui-action-btn {
-  min-height: 44px; padding: 6px 10px; text-align: left; background: var(--color-fondo); border: 1px solid var(--color-borde);
-  color: var(--color-texto); border-radius: 3px; font-size: 12px; display: flex; justify-content: space-between; gap: 8px;
+  min-height: 64px; padding: 8px 10px; text-align: center; background: linear-gradient(#182126,#0b1114); border: 1px solid #2d3d44;
+  color: var(--color-texto); font-size: 12px; display: flex; flex-direction: column; justify-content: center; gap: 5px; text-transform: uppercase; letter-spacing: .06em;
 }
+.tui-mode-selector { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: auto; padding: 16px; background: rgba(2,5,7,.5); backdrop-filter: blur(2px); }
+.tui-mode-card { width: min(620px, 96vw); padding: 18px; border: 1px solid #48616a; background: linear-gradient(145deg, rgba(15,24,28,.98), rgba(5,9,11,.98)); box-shadow: 0 22px 70px #000; }
+.tui-mode-card small { color: var(--color-informacion); text-transform: uppercase; letter-spacing: .16em; }
+.tui-mode-card h2 { margin: 4px 0 14px; text-transform: uppercase; letter-spacing: .08em; }
+.tui-mode-options { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+.tui-mode-options button { min-height: 88px; padding: 12px; border: 1px solid #2d3d44; background: #0c1316; color: var(--color-texto); text-align: left; }
+.tui-mode-options strong, .tui-mode-options span { display: block; }
+.tui-mode-options strong { color: var(--color-informacion); text-transform: uppercase; letter-spacing: .08em; }
+.tui-mode-options span { margin-top: 5px; color: var(--color-texto-tenue); font-size: .74rem; line-height: 1.35; }
+@media (max-width: 620px) { .tui-mode-options { grid-template-columns: 1fr; } .tui-mode-options button { min-height: 62px; } .tui-actionbar { grid-template-columns: repeat(3,1fr); } .tui-contextual-btn { grid-column: 1 / -1; min-height: 44px; } }
 .tui-action-btn[disabled] { opacity: 0.4; cursor: not-allowed; color: #999; }
 .tui-action-btn .tui-motivo { font-size: 10px; color: var(--color-peligro); }
 
@@ -165,6 +175,11 @@ function asegurarEstilos() {
 }
 
 const LABEL_FAMILIA = { ofensivas: "Ofensivas", tacticas: "Tácticas", defensivas: "Defensivas" };
+const ICONO_FAMILIA = {
+  ofensivas: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg>',
+  tacticas: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 8l4 8M8 10l8 4"/></svg>',
+  defensivas: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></svg>'
+};
 const MOTIVO_LEGIBLE = {
   NO_AMMO: "sin munición", NO_RESERVE: "sin reserva", MAIN_ACTION_SPENT: "acción ya gastada",
   MINOR_ACTION_SPENT: "acción menor ya gastada", NOT_ENOUGH_MOVEMENT: "sin movimiento suficiente",
@@ -196,7 +211,7 @@ export function montarInterfazResponsive(rootEl, scene) {
   const summaryBtn = document.createElement("button");
   summaryBtn.className = "tui-summary-btn";
   summaryBtn.setAttribute("aria-haspopup", "dialog");
-  summaryBtn.innerHTML = `<span class="tui-summary-portrait"></span><span><span class="tui-summary-nombre"></span><br><span class="tui-summary-estado"></span></span>`;
+  summaryBtn.innerHTML = `<span class="tui-summary-portrait" aria-hidden="true"></span><span><span class="tui-summary-nombre"></span><br><span class="tui-summary-estado"></span></span>`;
   summary.appendChild(summaryBtn);
 
   const sheet = document.createElement("div");
@@ -213,7 +228,7 @@ export function montarInterfazResponsive(rootEl, scene) {
     b.className = "tui-fam-btn";
     b.type = "button";
     b.dataset.familia = fam;
-    b.textContent = LABEL_FAMILIA[fam];
+    b.innerHTML = `${ICONO_FAMILIA[fam]}<span>${LABEL_FAMILIA[fam]}</span>`;
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-haspopup", "true");
     actionbar.appendChild(b);
@@ -234,7 +249,16 @@ export function montarInterfazResponsive(rootEl, scene) {
   flow.className = "tui-flow";
   flow.hidden = true;
 
-  root.append(summary, sheet, tray, flow, actionbar);
+  const selector = document.createElement("div");
+  selector.className = "tui-mode-selector";
+  const pj = scene.session.party.find(actor => actor.esPJ) ?? scene.session.party[0];
+  selector.innerHTML = `<section class="tui-mode-card"><small>Protocolo de intervención</small><h2>Asignar control</h2><div class="tui-mode-options">
+    <button type="button" data-modo="manual"><strong>Grupo manual</strong><span>Control directo de todo el equipo.</span></button>
+    <button type="button" data-modo="pj_manual"><strong>${pj?.nombre ?? "PJ"} manual</strong><span>Tu personaje bajo control; aliados automatizados.</span></button>
+    <button type="button" data-modo="auto"><strong>Automático</strong><span>Resolución completa por perfiles tácticos.</span></button>
+  </div></section>`;
+  selector.querySelectorAll("[data-modo]").forEach(btn => btn.addEventListener("click", () => { selector.remove(); scene._iniciarCombate(btn.dataset.modo); }));
+  root.append(summary, sheet, tray, flow, actionbar, selector);
   rootEl.appendChild(root);
 
   let ultimoSnapshot = construirSnapshotUI(scene.session, scene.adapter, scene.session.currentActorId, { modoMoverActivo: scene._modoMover });
@@ -327,7 +351,7 @@ export function montarInterfazResponsive(rootEl, scene) {
 
   function renderSheet() {
     const f = ultimoSnapshot.ficha;
-    sheet.innerHTML = `<div class="tui-sheet-grabber"></div><button class="tui-close" type="button" aria-label="Cerrar ficha">✕</button><h3>${f?.nombre ?? "--"}</h3>`;
+    sheet.innerHTML = `<div class="tui-sheet-grabber"></div><button class="tui-close" type="button" aria-label="Cerrar ficha"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button><h3>${f?.nombre ?? "--"}</h3>`;
     if (f) {
       const dl = document.createElement("dl");
       dl.innerHTML = `
@@ -349,6 +373,8 @@ export function montarInterfazResponsive(rootEl, scene) {
     const estadoEl = summaryBtn.querySelector(".tui-summary-estado");
     if (!r) { nombre.textContent = "Sin actor activo"; estadoEl.textContent = ""; portrait.classList.remove("abajo"); return; }
     nombre.textContent = r.nombre;
+    const actorAsset = scene.definition.assets?.actors?.[r.actorId];
+    portrait.style.backgroundImage = actorAsset ? `url("${rutaAsset(actorAsset)}")` : "none";
     portrait.classList.toggle("abajo", r.abajo);
     estadoEl.className = `tui-summary-estado ${r.nivelHerida}`;
     // "Economía de acciones visible" (Hallazgo 3 del playtest real,

@@ -143,7 +143,7 @@ export async function montarPanoramica(container, escenaId) {
           <div class="panoramica-capa-objetos" id="capa-objetos"></div>
           <div class="panoramica-avatar-grupo" id="avatar-grupo">
             <div class="panoramica-avatar-sombra"></div>
-            <img class="panoramica-avatar" id="avatar" draggable="false" alt="Personaje (silueta provisional)" />
+            <img class="panoramica-avatar" id="avatar" draggable="false" alt="Personaje jugador" />
           </div>
           <div class="panoramica-capa-oclusion" id="capa-oclusion"></div>
           <div class="panoramica-capa-luces" id="capa-luces"></div>
@@ -202,12 +202,14 @@ export async function montarPanoramica(container, escenaId) {
   const walkable = escena.walkable || { y: master.height * 0.87, xMin: 0, xMax: master.width };
   const estado = { avatarX: escena.player?.startX ?? walkable.xMin, camaraX: 0, mirandoIzquierda: false };
 
-  // ---------- Avatar: silueta provisional real, anclada en los pies ----------
-  const avatarAncho = escena.player.spriteWidth || 90;
-  const avatarAlto = escena.player.spriteHeight || 140;
+  // El módulo puede declarar una variante por personaje; el motor usa el
+  // sprite común como fallback y conserva el mismo contrato geométrico.
+  const varianteAvatar = escena.player.variants?.[state.playerCharacterId] ?? escena.player;
+  const avatarAncho = varianteAvatar.spriteWidth || escena.player.spriteWidth || 90;
+  const avatarAlto = varianteAvatar.spriteHeight || escena.player.spriteHeight || 140;
   avatarEl.style.width = `${avatarAncho}px`;
   avatarEl.style.height = `${avatarAlto}px`;
-  const fotogramasMarcha = (escena.player.walkFrames?.length ? escena.player.walkFrames : [escena.player.sprite])
+  const fotogramasMarcha = (varianteAvatar.walkFrames?.length ? varianteAvatar.walkFrames : [varianteAvatar.sprite ?? escena.player.sprite])
     .map(archivo => rutaRecursoPanoramico(escena, archivo));
   avatarEl.src = fotogramasMarcha[0];
 

@@ -38,6 +38,11 @@
   },
   "devEntryPoints": [
     {
+      "id": "combate_inicial",
+      "label": "Prueba de interfaz táctica",
+      "nota": "Entrada directa de revisión para validar el tablero, la asignación de control, la ficha compacta y las familias de acciones sin recorrer antes el flujo narrativo. El motor sigue cargando encuentro y recursos desde el JSON normal del módulo."
+    },
+    {
       "id": "callejon_panoramico_piloto",
       "label": "Prueba panorámica del callejón",
       "nota": "Piloto aislado de Localización C (docs/CONTRATO_VISUAL_PREDATOR.md). NO forma parte del recorrido narrativo de Predator todavía -- entrada temporal de desarrollo para que el autor pruebe desplazamiento, cámara, interacción, ficha y adaptación móvil. Retirar cuando se decida migrar el callejón real."

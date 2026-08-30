@@ -19,8 +19,10 @@ export async function montarNarrativa(container, escenaId) {
     <div class="narrativa-fondo" id="fondo" style="${fondoStyle}">
       <div class="hotspots" id="hotspots"></div>
     </div>
-    <div class="narrativa-texto" id="texto"><em>${escena.introText || ""}</em></div>
-    <div id="controles"></div>
+    <div class="narrativa-hud">
+      <div class="narrativa-texto" id="texto"><em>${escena.introText || ""}</em></div>
+      <div id="controles"></div>
+    </div>
   `;
   container.appendChild(wrap);
 

@@ -55,6 +55,7 @@ export class TacticalSceneOblicua extends TacticalScene {
   // no toca `_inicializarSistemaCoordenadas()` ni ningún cálculo de
   // proyección/hit-testing.
   preload() {
+    super.preload();
     this.load.image("tactical_floor_texture", "assets/shared/tactical/textures/concrete_floor_1k.jpg");
   }
 
@@ -92,12 +93,12 @@ export class TacticalSceneOblicua extends TacticalScene {
     // scrollFactor(0) -- coordenadas de viewport, no de mundo (mismo
     // criterio que la corrección en TacticalScene.js _crearHud()/
     // _crearPanelAcciones()/_crearSelectorModo()).
-    const boton = this.add.text(this.cameras.main.width - 10, 10, "[ Vista táctica clara ]", {
-      fontFamily: "monospace", fontSize: "12px", color: "#9fffb0", backgroundColor: "#111318", padding: { x: 8, y: 4 }
+    const boton = this.add.text(this.cameras.main.width - 10, 10, "VISTA DESPEJADA", {
+      fontFamily: "Barlow Condensed", fontSize: "12px", color: "#8fc8d2", backgroundColor: "#0b1114", padding: { x: 10, y: 6 }
     }).setOrigin(1, 0).setScrollFactor(0).setDepth(32).setInteractive({ useHandCursor: true });
     boton.on("pointerdown", () => {
       this._vistaClaraActiva = !this._vistaClaraActiva;
-      boton.setColor(this._vistaClaraActiva ? "#ffe27a" : "#9fffb0");
+      boton.setColor(this._vistaClaraActiva ? "#d7b35c" : "#8fc8d2");
       this._actualizarOcultamientoParedes();
     });
     this._botonVistaClara = boton;
@@ -231,10 +232,13 @@ export class TacticalSceneOblicua extends TacticalScene {
       const base = this.add.ellipse(p.x, p.y + 4, 22, 10, 0x000000, 0.35).setDepth(depth - 1);
       const circle = this.add.circle(p.x, p.y, 11, a.color ?? (esEnemigo ? 0xff6b6b : 0x9fffb0)).setDepth(depth).setInteractive({ useHandCursor: true });
       circle.setStrokeStyle(2, esEnemigo ? 0x3a0d0d : 0x0d3a1a);
+      const claveTextura = `tactical-actor-${a.id}`;
+      const token = this.textures.exists(claveTextura) ? this.add.image(p.x, p.y + 5, claveTextura).setDisplaySize(42, 56).setOrigin(.5, .88).setDepth(depth) : null;
+      if (token) circle.setFillStyle(a.color ?? (esEnemigo ? 0xff6b6b : 0x9fffb0), .16).setDepth(depth - 1);
       const label = this.add.text(p.x, p.y - 22, a.nombre, { fontFamily: "monospace", fontSize: "11px", color: esEnemigo ? "#ff9d9d" : "#dfffe4" }).setOrigin(0.5).setDepth(depth + 1);
       const vida = this.add.text(p.x, p.y + 14, "", { fontFamily: "monospace", fontSize: "9px", color: "#cccccc" }).setOrigin(0.5).setDepth(depth + 1);
       circle.on("pointerdown", () => this._onActorClicked(a.id));
-      this.actorSprites.set(a.id, { circle, label, vida, base, esEnemigo });
+      this.actorSprites.set(a.id, { circle, token, label, vida, base, esEnemigo });
     }
     this._actualizarSpritesVida();
   }
@@ -243,8 +247,9 @@ export class TacticalSceneOblicua extends TacticalScene {
     const pos = this.session.positions[actorId];
     const p = this.escalaIso.proyectar(pos.x, pos.y);
     const depth = this._profundidadEnPantalla(pos.x, pos.y);
-    const { circle, label, vida, base } = this.actorSprites.get(actorId);
+    const { circle, token, label, vida, base } = this.actorSprites.get(actorId);
     circle.setPosition(p.x, p.y).setDepth(depth);
+    token?.setPosition(p.x, p.y + 5).setDepth(depth);
     label.setPosition(p.x, p.y - 22).setDepth(depth + 1);
     vida.setPosition(p.x, p.y + 14).setDepth(depth + 1);
     base.setPosition(p.x, p.y + 4).setDepth(depth - 1);

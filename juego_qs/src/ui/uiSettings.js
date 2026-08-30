@@ -36,7 +36,7 @@ function claveColapsada(layout) {
   return layout === "overlay" ? "fichaColapsadaOverlay" : "fichaColapsada";
 }
 function porDefecto(layout) {
-  return layout === "overlay";
+  return true;
 }
 
 export function fichaColapsada(layout = "docked") {

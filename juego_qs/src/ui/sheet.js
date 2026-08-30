@@ -71,12 +71,14 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
           <div class="fc-pe" role="img" aria-label="${m.puntosEpicosActuales} de ${base.puntosEpicos} Puntos Épicos" title="PE ${m.puntosEpicosActuales}/${base.puntosEpicos}">${epicosMini}</div>
         </div>
       </div>
+      <button type="button" class="ficha-inventario-acceso" id="btn-inventario" aria-label="Abrir inventario">Inventario</button>
     `;
     const expandir = () => { establecerFichaColapsada(false, layout); renderFicha(container, contexto, layout); };
     container.querySelector("#btn-ficha-toggle")?.addEventListener("click", expandir);
     const compacta = container.querySelector("#btn-ficha-expandir");
     compacta?.addEventListener("click", expandir);
     compacta?.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); expandir(); } });
+    container.querySelector("#btn-inventario")?.addEventListener("click", () => import("./inventoryManager.js").then(({ mostrarGestorInventario }) => mostrarGestorInventario()));
     return;
   }
 
@@ -135,6 +137,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
       <div class="ficha-bloque">
         <div class="ficha-titulo">Inventario</div>
         <ul class="ficha-inventario">${renderInventario(m.inventario)}</ul>
+        <button type="button" class="ficha-inventario-gestionar" id="btn-inventario">Gestionar equipo y transferencias</button>
       </div>
 
       <button class="btn-historial" id="btn-abrir-historial">Historial de tiradas</button>
@@ -149,6 +152,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
   container.querySelector("#btn-abrir-historial")?.addEventListener("click", () => {
     import("./rollLog.js").then(m => m.mostrarHistorial());
   });
+  container.querySelector("#btn-inventario")?.addEventListener("click", () => import("./inventoryManager.js").then(({ mostrarGestorInventario }) => mostrarGestorInventario()));
 
   // Cajón superpuesto expandido: cerrar al pulsar fuera o con Escape (punto 2
   // del encargo de calibración). En layout "docked" la ficha siempre ocupó

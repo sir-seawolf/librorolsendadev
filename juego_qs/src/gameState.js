@@ -72,17 +72,42 @@ function municionInicialDesdeArma(arma) {
 }
 
 function crearRuntimeDesdeBase(base) {
+  const inventario = [...base.equipo];
   return {
     baseId: base.id,
     base,                                       // referencia de solo lectura a characters.json
     habilidades: { ...base.habilidades },        // copia mutable: aquí escribe la progresión
     vidaActual: { ...base.niveles },
     puntosEpicosActuales: base.puntosEpicos,
-    inventario: [...base.equipo],
+    inventario,
+    equipoEstados: inventario.map(item => estadoInicialDeEquipo(base, item)),
     estadoDisponibilidad: "disponible",          // disponible | separado | herido | inconsciente | ocupado | ausente
     municion: municionInicialDesdeArma(base.arma),
     cobertura: 0                                 // nivel de cobertura activo (src/rules/cover.js) — por combatiente, no un booleano global de la escena (ver docs/COMBAT_UX.md)
   };
+}
+
+const ESTADOS_EQUIPO = new Set(["equipado", "guardado", "en_uso"]);
+
+function estadoInicialDeEquipo(base, item) {
+  const nombre = String(item).toLocaleLowerCase("es");
+  const referencias = [base?.arma?.nombre, base?.armaCC?.nombre, base?.armadura?.nombre]
+    .filter(Boolean).map(valor => String(valor).toLocaleLowerCase("es"));
+  return referencias.some(ref => ref !== "sin arma" && nombre.includes(ref)) ? "equipado" : "guardado";
+}
+
+function asegurarEquipoEstado(miembro) {
+  const inventario = miembro.inventario || [];
+  if (!Array.isArray(miembro.equipoEstados)) {
+    const legado = miembro.equipoEstado || {};
+    miembro.equipoEstados = inventario.map(item => ESTADOS_EQUIPO.has(legado[item]) ? legado[item] : estadoInicialDeEquipo(miembro.base, item));
+    delete miembro.equipoEstado;
+  }
+  while (miembro.equipoEstados.length < inventario.length) {
+    const indice = miembro.equipoEstados.length;
+    miembro.equipoEstados.push(estadoInicialDeEquipo(miembro.base, inventario[indice]));
+  }
+  miembro.equipoEstados.length = inventario.length;
 }
 
 // Migración de saves anteriores a esta iteración (punto 26 del encargo):
@@ -97,6 +122,7 @@ function migrarRecursosCombateSiFalta() {
   Object.values(state.partyMembers).forEach(m => {
     if (m.municion === undefined) m.municion = municionInicialDesdeArma(m.base?.arma);
     if (m.cobertura === undefined) m.cobertura = 0;
+    asegurarEquipoEstado(m);
   });
 }
 
@@ -133,6 +159,41 @@ export function obtenerJugador() {
 export function obtenerMiembro(id) {
   if (id === "player") return obtenerJugador();
   return state.partyMembers[id] || null;
+}
+
+export function estadoEquipoDe(miembroId, item, indice = -1) {
+  const miembro = obtenerMiembro(miembroId);
+  if (!miembro || !miembro.inventario.includes(item)) return null;
+  asegurarEquipoEstado(miembro);
+  const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
+  return miembro.equipoEstados[posicion] ?? null;
+}
+
+export function establecerEstadoEquipo(miembroId, item, estado, indice = -1) {
+  const miembro = obtenerMiembro(miembroId);
+  if (!miembro || !miembro.inventario.includes(item) || !ESTADOS_EQUIPO.has(estado)) return false;
+  asegurarEquipoEstado(miembro);
+  const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
+  miembro.equipoEstados[posicion] = estado;
+  notificarFicha();
+  guardar();
+  return true;
+}
+
+export function transferirEquipo(origenId, destinoId, item, indiceOrigen = -1) {
+  const origen = obtenerMiembro(origenId);
+  const destino = obtenerMiembro(destinoId);
+  const indice = indiceOrigen >= 0 && origen?.inventario[indiceOrigen] === item ? indiceOrigen : (origen?.inventario.indexOf(item) ?? -1);
+  if (!origen || !destino || origen === destino || indice < 0) return false;
+  asegurarEquipoEstado(origen);
+  asegurarEquipoEstado(destino);
+  origen.inventario.splice(indice, 1);
+  origen.equipoEstados.splice(indice, 1);
+  destino.inventario.push(item);
+  destino.equipoEstados.push("guardado");
+  notificarFicha();
+  guardar();
+  return true;
 }
 
 // Estados que impiden delegar una acción en ese miembro. "herido" queda FUERA

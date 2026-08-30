@@ -15,8 +15,8 @@
     "limits": { "minX": 0 }
   },
   "player": {
-    "sprite": "../callejon/actor_silueta_provisional.svg",
-    "walkFrames": ["../callejon/actor_silueta_provisional.svg", "../callejon/actor_silueta_paso.svg"],
+    "sprite": "../callejon/agente_campo.png",
+    "walkFrames": ["../callejon/agente_campo.png"],
     "walkFrameMs": 130,
     "spriteWidth": 180,
     "spriteHeight": 240,

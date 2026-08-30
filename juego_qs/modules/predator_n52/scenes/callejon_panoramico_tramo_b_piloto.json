@@ -16,8 +16,8 @@
     "limits": { "minX": 0, "maxX": 1500 }
   },
   "player": {
-    "sprite": "actor_silueta_provisional.svg",
-    "walkFrames": ["actor_silueta_provisional.svg", "actor_silueta_paso.svg"],
+    "sprite": "agente_campo.png",
+    "walkFrames": ["agente_campo.png"],
     "walkFrameMs": 130,
     "spriteWidth": 90,
     "spriteHeight": 140,

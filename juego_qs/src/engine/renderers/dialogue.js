@@ -24,7 +24,9 @@ export async function montarDialogo(container, escenaId) {
   const fondoStyle = escena.background ? `background-image:url('${rutaAsset(escena.background)}')` : "";
   wrap.innerHTML = `
     <div class="narrativa-fondo" style="${fondoStyle}"></div>
-    <div class="dialogo-caja" id="dialogo-caja"></div>
+    <div class="narrativa-hud dialogo-hud">
+      <div class="dialogo-caja" id="dialogo-caja"></div>
+    </div>
   `;
   container.appendChild(wrap);
   const caja = wrap.querySelector("#dialogo-caja");

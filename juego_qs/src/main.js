@@ -110,8 +110,11 @@ async function renderEscena() {
     // cuenta, así que hay que retirarlo antes de que monten o quedaría
     // pegado permanentemente junto al contenido real.
     scenario.innerHTML = "";
-    await montarEscenaPorId(scenario, state.escena);
+    // Los renderers de larga duración (combate táctico, persecución) no
+    // resuelven su promesa hasta que termina la escena. La cabecera debe
+    // identificar la escena al entrar, no cuando el jugador ya ha salido.
     actualizarCabecera(escena.title || state.escena.replaceAll("_", " "));
+    await montarEscenaPorId(scenario, state.escena);
   } catch (e) {
     if (miToken !== renderToken) return;
     mostrarErrorCargaEscena(scenario, e);

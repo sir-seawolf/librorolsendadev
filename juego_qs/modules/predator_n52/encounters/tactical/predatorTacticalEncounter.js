@@ -219,7 +219,11 @@ export const predatorTacticalEncounter = {
     actors: {
       kova: "assets/characters/kova.png",
       bishop: "assets/characters/bishop.png",
-      salim: "assets/characters/salim.png"
+      salim: "assets/characters/salim.png",
+      ejecutor_1: "assets/generated/sprites/executor_front.png",
+      ejecutor_2: "assets/generated/sprites/executor_front.png",
+      ejecutor_3: "assets/generated/sprites/executor_front.png",
+      ejecutor_4: "assets/generated/sprites/executor_front.png"
     },
     fxProfile: "industrial"
   },
