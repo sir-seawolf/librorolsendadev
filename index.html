@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Senda de los Errantes</title>
+<meta name="description" content="Cyberpunk multiversal desde 1991. Un universo de teselas conectadas por portales inestables. Manual de rol, quickstart, ficha de personaje, blog y galería.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="senda_estilo.css">
 </head>
 <body class="landing tema-index">
-<div class="topnav">
+<nav class="topnav" aria-label="Principal">
 <a class="brand" href="index.html">La Senda</a>
 <div>
 <a href="index.html">Inicio</a>
@@ -18,9 +19,9 @@
 <a href="blog/index.html">Blog</a>
 <a href="galeria.html">Galería</a>
 <a href="dlcs.html">DLCs</a>
-</div></div>
-<div class="hero">
-  <img src="img/Portada_rol_Errantes.jpg" alt="La Senda de los Errantes">
+</div></nav>
+<main class="hero">
+  <img src="img/Portada_rol_Errantes.jpg" alt="Rosetón cósmico: un portal circular de piedra rúnica con paneles de constelaciones, nebulosas y galaxias en tonos azules y ámbar">
   <div class="hero-info">
     <h1>La Senda de <em>Los Errantes</em></h1>
     <p class="sub">Cyberpunk multiversal · Desde 1991</p>
@@ -29,6 +30,7 @@
       <a href="quickstart.html" class="primary">Descargar Quickstart</a>
       <a href="ficha_v4.html" class="secondary">Crear un Personaje</a>
     </div>
+    <p class="puertas-label">O entra directamente por:</p>
     <div class="puertas">
       <a href="juego.html" class="puerta">
         <span class="ico"><i class="fa-solid fa-dice-d20"></i></span><span class="tit">Juego de Rol</span>
@@ -44,11 +46,11 @@
       </a>
     </div>
   </div>
-</div>
-<div class="footer">
+</main>
+<footer class="footer">
   <a href="https://elpeciodeseawolf.blogspot.com">El Pecio de Seawolf</a> · Borrador v1 ·
   Actualizado: <span id="builddate">—</span>
-</div>
+</footer>
 <script>
 fetch('build_date.txt').then(r=>r.text()).then(t=>{
   var raw=t.trim();
