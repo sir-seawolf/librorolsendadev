@@ -446,26 +446,32 @@ body.landing {
 .landing .desc { max-width: 640px; text-align: center; color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 32px; }
 .landing .puertas-label { font-family: 'Share Tech Mono', monospace; color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
 
-/* Pantallas panoramicas: el hero dejaba de usar dos tercios del ancho porque
-   todo se apilaba en una columna centrada de ~900px sobre un fondo de 100vh.
-   A partir de 1400px el rosetón pasa a ocupar el primer tercio y la
-   información (titulo, cta, puertas) los otros dos, alineada a la izquierda.
+/* Pantallas panoramicas: el hero del INDEX (unico con imagen + .hero-info)
+   dejaba de usar dos tercios del ancho porque todo se apilaba en una columna
+   centrada de ~900px sobre un fondo de 100vh. A partir de 1400px el rosetón
+   pasa a ocupar el primer tercio y la información (titulo, cta, puertas)
+   los otros dos, alineada a la izquierda.
    max-width se mantiene compacto (1320px, no 1700px): con la columna de
    info más ancha que su contenido (cta + 3 puertas ~= 708px) quedaba un
    hueco asimetrico grande solo a la derecha — mas estrecho, el bloque
-   centrado deja margen simetrico en vez de un vacio sin equilibrar. */
+   centrado deja margen simetrico en vez de un vacio sin equilibrar.
+   Acotado a .tema-index: juego.html y dlcs.html reusan la misma clase
+   .hero pero con una estructura totalmente distinta (h1/sub/nav de enlaces/
+   volver, sin imagen ni .hero-info) — con el selector generico .landing
+   .hero esta regla les forzaba la misma fila horizontal y les aplastaba
+   el contenido. */
 @media (min-width: 1400px) {
-    .landing .hero {
+    .tema-index .hero {
         flex-direction: row; align-items: center; justify-content: center;
         gap: 60px; text-align: left; max-width: 1320px; margin: 0 auto;
         padding: 40px 60px;
     }
-    .landing .hero img {
+    .tema-index .hero img {
         max-width: none; width: 34%; flex: 0 0 34%; margin-bottom: 0;
     }
-    .landing .hero-info { flex: 1 1 auto; min-width: 0; }
-    .landing .hero-info .sub, .landing .hero-info .desc, .landing .hero-info .puertas-label { text-align: left; margin-left: 0; }
-    .landing .hero-info .cta, .landing .hero-info .puertas { justify-content: flex-start; }
+    .tema-index .hero-info { flex: 1 1 auto; min-width: 0; }
+    .tema-index .hero-info .sub, .tema-index .hero-info .desc, .tema-index .hero-info .puertas-label { text-align: left; margin-left: 0; }
+    .tema-index .hero-info .cta, .tema-index .hero-info .puertas { justify-content: flex-start; }
 }
 
 /* CTA principal (index.html) */
