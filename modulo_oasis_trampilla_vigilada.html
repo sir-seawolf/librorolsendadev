@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — La Trampilla Vigilada"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#reparto">Reparto</a></li><li class="toc-h3"><a href="#dra-elin-farrow-la-academica-pnj-ya-publicado-en-el-dlc">Dra. Elin Farrow — la académica (PNJ ya publicado en el DLC)</a></li><li class="toc-h3"><a href="#mando-federal-marcus-jefe-de-la-guardia-pnj-ya-publicado-en-el-dlc">Mando Federal Marcus — jefe de la guardia (PNJ ya publicado en el DLC)</a></li><li class="toc-h3"><a href="#siervo-de-primus-sin-nombre-publico-pnj-ya-publicado-en-el-dlc">Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</a></li><li class="toc-h3"><a href="#rensa-y-coy-soldados-federales-de-la-unidad-de-marcus">Rensa y Coy — soldados Federales de la unidad de Marcus</a></li><li class="toc-h3"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-la-academica-sin-acceso">Escena 1 — La académica sin acceso</a></li><li class="toc-h3"><a href="#escena-2-el-perimetro">Escena 2 — El perímetro</a></li><li class="toc-h3"><a href="#escena-3-pasar-la-guardia">Escena 3 — Pasar la guardia</a></li><li class="toc-h3"><a href="#escena-4-lo-que-todavia-funciona">Escena 4 — Lo que todavía funciona</a></li><li class="toc-h3"><a href="#escena-5-lo-que-se-hace-con-la-respuesta">Escena 5 — Lo que se hace con la respuesta</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — La Trampilla Vigilada</h1>
 <p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -38,7 +53,7 @@
 <p><img alt="Falsas columnas clásicas cubiertas de vegetación en la selva de Oasis, con una trampilla semioculta en primer plano y dos siluetas de guardia Federal al fondo del sendero" src="img/oasis_trampilla_vigilada_ruinas.png" /><br />
 <em>La selva se ha tragado casi todo, menos la vigilancia.</em></p>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> en la selva que rodea Oasis hay un acceso conocido a las Ruinas de la Red Única —una trampilla semioculta entre falsas columnas clásicas— y lleva semanas bajo vigilancia constante de una unidad Federal. Nadie explica por qué esta trampilla en concreto, entre tantas otras, merece guardia permanente. La Dra. Elin Farrow, académica especializada en la Red Única, tiene acceso restringido justo a este sector, sin que el gobierno le haya dado ninguna razón — y quiere que alguien entre donde ella ya no puede.</p>
 <p><strong>Verbo de la aventura:</strong> estamos estudiando el perímetro y preparando cómo entrar. No es un golpe complejo de varias fases ni una infiltración contra una alerta que escala sola — es observación, planificación, y una única ventana real que hay que aprovechar bien.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas. Periodo recomendado: antes del despertar. Perspectiva: nativos, agentes externos, o mixta.</p>
@@ -47,7 +62,7 @@
 <p><strong>Objetivo inmediato:</strong> conseguir acceso al búnker —negociando, evitando o burlando a la guardia Federal— y averiguar qué es lo que sigue funcionando ahí abajo, antes de que Primus decida que el riesgo de dejarlo sin resolver supera al de intervenir directamente.</p>
 <p><strong>Pregunta de fondo:</strong> ¿qué hace un gobierno legítimo cuando la explicación de por qué vigila algo ya no le pertenece del todo a él?</p>
 <p><strong>Si nadie interviene:</strong> la vigilancia continúa indefinidamente, Elin nunca consigue las respuestas que busca, y el fragmento que todavía funciona sigue ahí, sin que nadie de Oasis llegue a saber jamás que existió.</p>
-<h3>Desarrollo en cinco escenas</h3>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
 <ol>
 <li>La académica sin acceso — Elin Farrow y el encargo.</li>
 <li>El perímetro — reconocimiento jugable de la vigilancia Federal, con ventajas según el método.</li>
@@ -56,7 +71,7 @@
 <li>Lo que se hace con la respuesta — Elin, Marcus, y una decisión sobre qué se cuenta.</li>
 </ol>
 <hr />
-<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Sin cuenta atrás de horas — presión por turno de guardia, no por reloj:</strong> la unidad Federal rota su vigilancia por turnos, no por minutos. La presión de este módulo no es una hora exacta: es elegir bien el momento (turno de noche, cambio de guardia, distracción) y no repetir el mismo método dos veces sin que la unidad se adapte.</p>
 <p><strong>El perímetro, en términos funcionales</strong> — todo lo que hace falta para dirigirlo sin inventar nada nuevo en mesa:</p>
 <ul>
@@ -96,18 +111,18 @@
 <p><strong>No hay villano.</strong> Marcus no es un obstáculo cruel: es un profesional cumpliendo una orden rara. El Siervo de Primus no quiere hacer daño a nadie — quiere información, y prefiere la vigilancia discreta a cualquier otra cosa. Si hay violencia, es porque alguien la buscó activamente, no porque el módulo la exija.</p>
 <p><strong>El Siervo de Primus, en mesa:</strong> amable, informado, siempre presente sin explicar del todo por qué (ver su ficha ya publicada en el DLC). No se identifica como lo que es salvo que quede acorralado sin alternativa — y ni siquiera entonces revela más de lo estrictamente necesario.</p>
 <hr />
-<h2>Lo que ocurrió realmente</h2>
-<h3>Verdad completa</h3>
+<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
+<h3 id="verdad-completa">Verdad completa</h3>
 <p>Uno de los fragmentos mejor conservados de la Red Única, en el búnker al que da acceso esta trampilla concreta, nunca llegó a apagarse del todo. Desde hace unas semanas, ha empezado a emitir un patrón que nadie en Oasis sabe leer — pero que el asesor de Primus junto a la unidad de Marcus reconoció como algo que merece atención discreta, posiblemente relacionado con el propio ritmo del despertar (Punto 5 del DLC).</p>
 <p>Primus no sabe con certeza qué es la señal. Prefiere, por ahora, vigilar sin intervenir directamente — coherente con su prioridad de controlar el ritmo del despertar antes que impedirlo. La orden que le dio a Marcus fue deliberadamente vaga: "vigilar el acceso, sin explicaciones, prioridad alta". Marcus lleva semanas cumpliéndola sin saber por qué, y esa falta de explicación ya ha empezado a incomodarle más de lo que admite ante su propia unidad.</p>
 <p>Elin Farrow no sabe nada de Primus ni de la señal — solo sabe que el gobierno le ha cortado el acceso a un sector que llevaba años estudiando, sin ninguna razón oficial.</p>
-<h3>Qué saben los PJ y qué no</h3>
+<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si la señal tiene relación con el despertar o es solo un fallo técnico de una tecnología muy antigua — hasta la Escena 4, donde queda claro que sí importa, sin que el módulo confirme del todo qué significa a largo plazo.</p>
-<h3>Tono</h3>
+<h3 id="tono">Tono</h3>
 <p>Expedición con tensión de infiltración, no combate — la guardia Federal es un obstáculo a sortear o negociar, no un enemigo a eliminar. El contenido del búnker debe sentirse extraño y significativo, no simplemente "otro tesoro tecnológico".</p>
 <hr />
-<h2>Reparto</h2>
-<h3>Dra. Elin Farrow — la académica (PNJ ya publicado en el DLC)</h3>
+<h2 id="reparto">Reparto</h2>
+<h3 id="dra-elin-farrow-la-academica-pnj-ya-publicado-en-el-dlc">Dra. Elin Farrow — la académica (PNJ ya publicado en el DLC)</h3>
 <p><em>Aspecto:</em> ya descrita en el DLC — apasionada hasta la obsesión, incómoda hablando de cualquier otra cosa.</p>
 <p>PNJ interpretable (4-5 profesiones). F20/A25/P50/V45 | PV 11/11/11 | Bld 0 | Investigación/Historia 65% | Tecnología (interfaces antiguas) 50%</p>
 <ul>
@@ -115,7 +130,7 @@
 <li>No pondrá a nadie en peligro deliberado — su obsesión es intelectual, no temeraria.</li>
 <li>Sin PJ: sigue pidiendo el acceso por canales oficiales, sin éxito, indefinidamente.</li>
 </ul>
-<h3>Mando Federal Marcus — jefe de la guardia (PNJ ya publicado en el DLC)</h3>
+<h3 id="mando-federal-marcus-jefe-de-la-guardia-pnj-ya-publicado-en-el-dlc">Mando Federal Marcus — jefe de la guardia (PNJ ya publicado en el DLC)</h3>
 <p><em>Aspecto:</em> ya descrito en el DLC — uniformado, disciplinado, precedido por el sonido de sus propias botas antes de que se le vea.</p>
 <p>Ficha compartida con el resto del DLC: F35/A35/P40/V40 | PV 16/16/16 | Bld 3 | Armas cortas 50% | Daño 6 | Liderazgo/Mando 45%</p>
 <ul>
@@ -123,7 +138,7 @@
 <li>Respeta la lealtad por encima de la letra de la orden — puede ceder ante un argumento honesto mejor que ante presión o soborno.</li>
 <li>Sin PJ: sigue vigilando indefinidamente, cada vez más incómodo con no saber por qué.</li>
 </ul>
-<h3>Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</h3>
+<h3 id="siervo-de-primus-sin-nombre-publico-pnj-ya-publicado-en-el-dlc">Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</h3>
 <p><em>Aspecto:</em> amable, informado, siempre presente sin explicar del todo por qué.</p>
 <p>PNJ interpretable (5-6 profesiones). F20/A30/P50/V55 | PV 12/12/12 | Bld 0 | Investigación 55% | Social 50% | Voluntad alta</p>
 <ul>
@@ -131,28 +146,28 @@
 <li>No ordenará daño a los PJ salvo que amenacen con exponerlo directamente — prefiere la vigilancia discreta, la desinformación o la reasignación silenciosa (ver su ficha completa en el DLC, Punto 7).</li>
 <li>Sin PJ: la vigilancia continúa sin que nadie llegue a saber qué es la señal.</li>
 </ul>
-<h3>Rensa y Coy — soldados Federales de la unidad de Marcus</h3>
+<h3 id="rensa-y-coy-soldados-federales-de-la-unidad-de-marcus">Rensa y Coy — soldados Federales de la unidad de Marcus</h3>
 <p>PNJ funcionales (1-2 profesiones cada uno, fuerza fija). Profesionales, no fanáticos — cumplen órdenes, no buscan problemas.</p>
 <p>F30/A35/P30/V30 | PV 14/14/14 | Bld 3 | Armas cortas 45% (no letal por defecto) | Daño 5</p>
 <ul>
 <li>Su objetivo ante una detección es detener, identificar, separar o inmovilizar — nunca matar.</li>
 <li>No luchan hasta el final: si quedan Heridas o pierden el control de la situación, se repliegan y piden apoyo (avisan a Marcus) en vez de escalar solas.</li>
 </ul>
-<h3>Relaciones para el Narrador</h3>
+<h3 id="relaciones-para-el-narrador">Relaciones para el Narrador</h3>
 <ul>
 <li>Marcus respeta a Elin profesionalmente, aunque no puede ayudarla sin desobedecer una orden que ni él entiende del todo.</li>
 <li>El Siervo de Primus observa a Marcus de cerca, atento a si empieza a hacer las preguntas equivocadas en voz alta.</li>
 <li>Rensa y Coy no saben nada de Primus — solo cumplen el turno que les toca.</li>
 </ul>
 <hr />
-<h2>Lugares necesarios</h2>
+<h2 id="lugares-necesarios">Lugares necesarios</h2>
 <p><strong>Campamento de vigilancia:</strong> perímetro Federal alrededor de la trampilla, con turnos rotativos.</p>
 <p><strong>La trampilla:</strong> semioculta entre falsas ruinas clásicas —columnas, una calzada de piedra artificial— cuya función original nadie ha confirmado (Punto 11 del DLC).</p>
 <p><strong>El búnker:</strong> interfaces digitales incrustadas en las paredes, un fragmento de la Red Única todavía activo.</p>
 <hr />
-<h2>Las cinco escenas</h2>
+<h2 id="las-cinco-escenas">Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3>Escena 1 — La académica sin acceso</h3>
+<h3 id="escena-1-la-academica-sin-acceso">Escena 1 — La académica sin acceso</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>El despacho de Elin Farrow está cubierto de mapas de la selva y fotografías de interfaces rotas. En el centro, un permiso de acceso sellado con un "denegado" que no da ninguna razón.</p>
@@ -167,7 +182,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Elin sigue pidiendo acceso por canales oficiales, sin éxito.</p>
 <p><strong>Cómo termina:</strong> el grupo acepta (o no) ayudar a Elin y tiene la ubicación de la trampilla.</p>
 <p><strong>Después:</strong> el plano conseguido aquí, si lo hay, facilita la Escena 3.</p>
-<h3>Escena 2 — El perímetro</h3>
+<h3 id="escena-2-el-perimetro">Escena 2 — El perímetro</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Entre la vegetación, las falsas columnas clásicas asoman como restos de un templo que nunca fue templo. Y, discretas pero constantes, botas Federales marcan un perímetro que no debería necesitar tanta gente para una simple ruina.</p>
@@ -187,7 +202,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> la vigilancia sigue su rutina normal, sin cambios; el grupo puede intentar la Escena 3 igualmente, pero sin ninguna de las ventajas que la observación activa podría haber dado.</p>
 <p><strong>Cómo termina:</strong> el grupo tiene un plan de aproximación, basado en lo observado — con más o menos detalle según el método y el resultado de las tiradas. Un fallo en cualquiera de ellas nunca impide encontrar una vía de acceso: solo deja la información incompleta, hace perder la mejor ventana de esta visita, levanta una sospecha leve, identifica parcialmente al grupo, o adelanta un cambio de rutina de las guardias — nunca cierra la partida.</p>
 <p><strong>Después:</strong> lo observado aquí (el punto ciego, la cobertura vegetal, el dato humano) es exactamente lo que alimenta la Preparación real antes de la Escena 3 (ver Panel del Narrador).</p>
-<h3>Escena 3 — Pasar la guardia</h3>
+<h3 id="escena-3-pasar-la-guardia">Escena 3 — Pasar la guardia</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Un turno de guardia dura lo que dura, y luego cambia. Entre un relevo y el siguiente hay un margen — pequeño, pero real — para quien lo haya visto venir.</p>
@@ -208,7 +223,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> no hay ventana de acceso — la vigilancia sigue firme hasta que el grupo decida intentarlo activamente.</p>
 <p><strong>Cómo termina:</strong> el grupo llega a la trampilla, con o sin haber sido detectado parcialmente por el camino — o el plan fracasa de forma clara y hay que decidir si lo reintentan.</p>
 <p><strong>Después:</strong> cómo entraron —negociado, discreto, con distracción, o tras una detección parcial resuelta sin violencia— condiciona directamente cómo se juega la Escena 4.</p>
-<h3>Escena 4 — Lo que todavía funciona</h3>
+<h3 id="escena-4-lo-que-todavia-funciona">Escena 4 — Lo que todavía funciona</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Interfaces digitales incrustadas en las paredes, la mayoría muertas hace generaciones. Una no lo está. Parpadea con un patrón que no se parece a nada de lo que Oasis sabe fabricar hoy.</p>
@@ -223,7 +238,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> el grupo se va sin respuestas, y la vigilancia Federal continúa exactamente igual que antes.</p>
 <p><strong>Cómo termina:</strong> el grupo tiene un fragmento de información real sobre la Red Única y, opcionalmente, un primer contacto directo con el Siervo de Primus.</p>
 <p><strong>Después:</strong> lo que decidan hacer con esta información condiciona toda la Escena 5.</p>
-<h3>Escena 5 — Lo que se hace con la respuesta</h3>
+<h3 id="escena-5-lo-que-se-hace-con-la-respuesta">Escena 5 — Lo que se hace con la respuesta</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>De vuelta en la superficie, con más preguntas que antes de bajar. Elin espera una respuesta que solo el grupo puede darle — y decidir cuánta verdad le cuentan es, en sí mismo, la última decisión de este módulo.</p>
@@ -236,7 +251,7 @@
 <p><strong>Cómo termina:</strong> queda decidido cuánto sabe cada parte al final, y qué relación queda entre los PJ, Elin, Marcus y —si llegó a revelarse— el propio Siervo de Primus. Cómo se trató a Rensa y Coy durante la Escena 3 (con respeto, con engaño, con violencia si la hubo) también queda como relación abierta, aunque sean PNJ funcionales sin ficha propia de continuidad.</p>
 <p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
 <hr />
-<h2>Pistas e información</h2>
+<h2 id="pistas-e-informacion">Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -264,25 +279,25 @@
 </tbody>
 </table>
 <hr />
-<h2>Recompensas y gastos</h2>
+<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
 <p>La misión no debe dejar a los PJ con pérdidas netas por gastos o equipo dañado — cúbrelo antes de repartir nada más.</p>
 <p><strong>Recompensa económica:</strong> entre 150 y 350 créditos locales por PJ, pagados por Elin Farrow con fondos de su propia investigación — modesta, coherente con un encargo académico, no corporativo.</p>
 <p><strong>Beneficios alternativos:</strong> acceso académico futuro a los hallazgos de Elin; relación con Marcus si se le trató con respeto; conocimiento de una ruta discreta hacia las Ruinas de la Red Única para futuras expediciones.</p>
 <hr />
-<h2>Desenlaces combinables</h2>
+<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
 <p><strong>Respuesta compartida con Elin.</strong> Ella obtiene lo que buscaba, sin saber la parte de Primus — satisfecha, con más preguntas para seguir investigando.</p>
 <p><strong>Marcus entiende su propia orden.</strong> Si se le cuenta lo suficiente, empieza a sospechar de su asesor sin llegar a confirmarlo del todo — abre la puerta a la semilla "Órdenes de nadie" (Punto 16 del DLC) para una mesa que quiera desarrollarla después.</p>
 <p><strong>El Siervo de Primus gestiona la exposición.</strong> Si se reveló, decide cómo manejar a quienes ya saben demasiado — vigilancia discreta, desinformación o algo más, según cómo lo trate el grupo (ver su ficha completa en el DLC).</p>
 <p><strong>Silencio total.</strong> El grupo decide no contarle nada a nadie — Elin sigue sin respuestas, la vigilancia continúa, y el secreto queda solo entre los PJ.</p>
 <hr />
-<h2>Continuidad opcional</h2>
+<h2 id="continuidad-opcional">Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de Oasis.</li>
 <li><strong>Si se juega en la campaña de origen:</strong> Totovía, el anfitrión de la mansión del bosque, puede aportar contexto adicional sobre la selva y las ruinas si el grupo pasa por su propiedad de camino.</li>
 </ul>
 <p>Ejemplo de puerta abierta: si Marcus empieza a sospechar de su asesor, esto puede desarrollarse más adelante en un módulo propio ("Órdenes de nadie", ya esbozado en el DLC) — sin obligar a la mesa a continuarlo.</p>
 <hr />
-<h2>Límites de este módulo</h2>
+<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
 <ul>
 <li>No confirmar del todo qué es la señal ni su relación exacta con el despertar — mantenlo como misterio de fondo, coherente con el propio DLC.</li>
 <li>El Siervo de Primus no debe usar violencia como primera respuesta — prefiere vigilancia, desinformación o reasignación (ver su ficha en el DLC).</li>
@@ -293,10 +308,10 @@
 <li>No convertir este módulo en un heist de varias fases — es una operación pequeña, con una ventana real y tres formas de acceso, no una serie de golpes coordinados.</li>
 </ul>
 <hr />
-<h2>Resumen para dirigir</h2>
+<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
 <p>Observación, planificación e infiltración sin reloj de horas — la presión viene de los turnos de guardia, no de una cuenta atrás. Cinco escenas autosuficientes: el encargo → el perímetro → pasar la guardia → el búnker → la decisión final, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. El perímetro se explica con hechos concretos —quién patrulla, cuándo hay relevo, dónde hay cobertura—, no con un plano complejo ni un contador de alerta. Ni Marcus ni el Siervo de Primus son enemigos de manual — son dos personas cumpliendo su función dentro de un secreto que ninguna de las dos controla del todo.</p>
 <hr />
 <p><em>Oasis — tesela recién despertada. Basado en la ambientación de la campaña de Luis Clemente (Arco II, "Oasis y las Raíces"). Desarrolla el gancho de "La Trampilla Vigilada" ya esbozado en el DLC (Punto 16), reutilizando los PNJ Elin Farrow, Marcus y el Siervo de Primus ya publicados.</em></p>
-</div>
+</main>
 </body>
 </html>

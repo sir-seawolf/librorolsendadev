@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El Federal que hizo demasiadas preguntas"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#reparto">Reparto</a></li><li class="toc-h3"><a href="#mando-federal-marcus-pnj-ya-publicado-en-el-dlc">Mando Federal Marcus (PNJ ya publicado en el DLC)</a></li><li class="toc-h3"><a href="#siervo-de-primus-sin-nombre-publico-pnj-ya-publicado-en-el-dlc">Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</a></li><li class="toc-h3"><a href="#rensa-y-coy-soldados-de-la-unidad-de-marcus-pnj-ya-publicados-si-se-jugo-la-trampilla-vigilada-funcionales-aqui-en-cualquier-caso">Rensa y Coy — soldados de la unidad de Marcus (PNJ ya publicados, si se jugó La Trampilla Vigilada; funcionales aquí en cualquier caso)</a></li><li class="toc-h3"><a href="#dos-federales-bajo-indicacion-del-asesor-agentes-de-contencion-no-letal-solo-si-la-escalada-llega-a-4-5">Dos Federales bajo indicación del asesor — agentes de contención no letal (solo si la escalada llega a 4-5)</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-la-sospecha-compartida">Escena 1 — La sospecha compartida</a></li><li class="toc-h3"><a href="#escena-2-preparar-el-cebo">Escena 2 — Preparar el cebo</a></li><li class="toc-h3"><a href="#escena-3-seguir-la-respuesta">Escena 3 — Seguir la respuesta</a></li><li class="toc-h3"><a href="#escena-4-elegir-la-maniobra">Escena 4 — Elegir la maniobra</a></li><li class="toc-h3"><a href="#escena-5-ejecutar-la-salida">Escena 5 — Ejecutar la salida</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — El Federal que hizo demasiadas preguntas</h1>
 <p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Continuación narrativa opcional de "La Trampilla Vigilada" — jugable sin ella. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -38,7 +53,7 @@
 <p><img alt="Marcus, sin uniforme, sentado de espaldas junto a una lámpara en un local discreto de noche, con la ciudad de Oasis iluminada de neón al otro lado de la ventana" src="img/oasis_federal_preguntas_encuentro.png" /><br />
 <em>Antes de decir nada, mira dos veces hacia la puerta.</em></p>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> el mando Federal Marcus ha atado cabos. Su "asesor civil" recibe orientación de alguien que no figura en ninguna cadena de mando oficial, y las órdenes que Marcus lleva meses cumpliendo empiezan a encajar en un patrón que no le gusta. No tiene forma de confirmarlo sin exponerse — así que necesita a alguien fuera de su cadena de mando dispuesto a montar una operación real: alimentar información falsa al sistema, ver qué cebo muerde el asesor, y usar esa respuesta para descubrir quién vigila a Marcus antes de que Primus cierre todas las opciones.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas. Periodo: antes del despertar. Perspectiva: nativos (Federal o próximos a Marcus) o mixta.</p>
 <p><strong>Qué saben los PJ:</strong> que Marcus les pide ayuda con algo que no puede llevar por los canales normales — sin necesitar haber jugado <em>La Trampilla Vigilada</em> para que esto tenga sentido; si se jugó, Marcus es exactamente el mismo Federal, con la misma duda ya sembrada.</p>
@@ -46,7 +61,7 @@
 <p><strong>Objetivo inmediato:</strong> montar una operación de contrainteligencia — sembrar información falsa por canales distintos, observar cuál provoca una reacción, identificar por dónde se filtra, y ejecutar una maniobra final antes de que la escalada de Primus llegue más lejos de lo necesario.</p>
 <p><strong>Pregunta de fondo:</strong> ¿qué le debe un profesional leal a una institución que resulta no ser exactamente lo que él creía servir — y qué están dispuestos a arriesgar otros para ayudarle a averiguarlo?</p>
 <p><strong>Si nadie interviene:</strong> Primus gestiona a Marcus por su cuenta, casi siempre mediante reasignación silenciosa — la opción menos dramática, y la que Marcus nunca llega a entender del todo.</p>
-<h3>Desarrollo en cinco escenas</h3>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
 <ol>
 <li>La sospecha compartida — Marcus comparte el patrón; los PJ deciden qué necesitan y qué arriesgan.</li>
 <li>Preparar el cebo — diseñan e introducen información falsa por canales distintos.</li>
@@ -55,7 +70,7 @@
 <li>Ejecutar la salida — el grupo ejecuta el plan mientras Primus intenta cerrarlo.</li>
 </ol>
 <hr />
-<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Sin cuenta atrás de horas — escalada de respuesta, no reloj:</strong> la presión de este módulo no es una hora exacta, es un nivel de respuesta de Primus que sube según lo que hagan los PJ. Usa esta escalada, tomada directamente de cómo actúa Primus en el propio DLC (Punto 7):</p>
 <ol>
 <li><strong>Vigilancia discreta.</strong> Observan, dejan hablar, ven a quién más se lo cuenta. Sin confrontación.</li>
@@ -87,17 +102,17 @@
 - <strong>Los PJ</strong> → diseñar y ejecutar la operación de contrainteligencia, sabiendo que cualquier error de discreción sube la escalada.</p>
 <p><strong>No hay villano.</strong> El Siervo de Primus no quiere hacerle daño a Marcus — quiere que el problema desaparezca de la forma más limpia posible, y matar a alguien es, para Primus, un fracaso operativo, no una solución preferida. Su oposición evita la sangre, pero puede causar daño real: destruir una carrera, separar una unidad, confiscar o borrar pruebas, aislar a Marcus, desacreditar al grupo, o ejecutar una extracción no letal.</p>
 <hr />
-<h2>Lo que ocurrió realmente</h2>
-<h3>Verdad completa</h3>
+<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
+<h3 id="verdad-completa">Verdad completa</h3>
 <p>Marcus lleva semanas notando que las "recomendaciones" de su asesor civil siempre llegan un paso antes de que hagan falta — demasiado a tiempo para ser casualidad. Empezó a llevar un registro discreto de coincidencias: órdenes que no venían de ningún mando identificable, casos que se cerraban sin explicación, líneas de investigación que su asesor "sugería" evitar sin nunca justificarlo. No tiene pruebas concluyentes de que su asesor sea de Primus —no conoce la palabra "Primus" en absoluto— pero sabe que algo no encaja.</p>
 <p>El Siervo de Primus ya lo ha notado. Prefiere, con mucho, resolverlo sin dejar un cadáver que explicar — y empezará por la vigilancia discreta, escalando solo si Marcus (o quien le ayude) se vuelve ruidoso o expone la investigación sin cuidado.</p>
-<h3>Qué saben los PJ y qué no</h3>
+<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo que sabe Marcus. Lo que no deben poder resolver desde el principio es si Primus interviene con violencia por defecto — no lo hace, y el módulo no debe sugerir lo contrario hasta que la propia escalada llegue, si llega, a su último escalón.</p>
-<h3>Tono</h3>
+<h3 id="tono">Tono</h3>
 <p>Tensión política e institucional, no acción. El peligro es la escalada silenciosa, no una emboscada armada. Marcus debe sentirse como un profesional real enfrentado a algo que no tiene manual, no como un investigador de novela negra.</p>
 <hr />
-<h2>Reparto</h2>
-<h3>Mando Federal Marcus (PNJ ya publicado en el DLC)</h3>
+<h2 id="reparto">Reparto</h2>
+<h3 id="mando-federal-marcus-pnj-ya-publicado-en-el-dlc">Mando Federal Marcus (PNJ ya publicado en el DLC)</h3>
 <p><em>Aspecto:</em> ya descrito en el DLC — uniformado, disciplinado, precedido por el sonido de sus propias botas antes de que se le vea.</p>
 <p>Ficha compartida con el resto del DLC: F35/A35/P40/V40 | PV 16/16/16 | Bld 3 | Armas cortas 50% | Daño 6 | Liderazgo/Mando 45%</p>
 <ul>
@@ -105,7 +120,7 @@
 <li>Respeta la lealtad por encima de la letra de la orden.</li>
 <li>Sin PJ: sigue investigando solo, más lento y con más riesgo de exponerse antes de tener nada sólido.</li>
 </ul>
-<h3>Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</h3>
+<h3 id="siervo-de-primus-sin-nombre-publico-pnj-ya-publicado-en-el-dlc">Siervo de Primus, sin nombre público (PNJ ya publicado en el DLC)</h3>
 <p><em>Aspecto:</em> amable, informado, siempre presente sin explicar del todo por qué.</p>
 <p>Ficha compartida con el resto del DLC: F20/A30/P50/V55 | PV 12/12/12 | Bld 0 | Investigación 55% | Social 50% | Voluntad alta</p>
 <ul>
@@ -113,12 +128,12 @@
 <li>Teme, sobre todo, que Marcus hable con alguien a quien Primus no pueda alcanzar fácilmente.</li>
 <li>Sin PJ: gestiona a Marcus solo, casi siempre mediante reasignación silenciosa.</li>
 </ul>
-<h3>Rensa y Coy — soldados de la unidad de Marcus (PNJ ya publicados, si se jugó <em>La Trampilla Vigilada</em>; funcionales aquí en cualquier caso)</h3>
+<h3 id="rensa-y-coy-soldados-de-la-unidad-de-marcus-pnj-ya-publicados-si-se-jugo-la-trampilla-vigilada-funcionales-aqui-en-cualquier-caso">Rensa y Coy — soldados de la unidad de Marcus (PNJ ya publicados, si se jugó <em>La Trampilla Vigilada</em>; funcionales aquí en cualquier caso)</h3>
 <p>PNJ funcionales (1-2 profesiones cada uno). F30/A35/P30/V30 | PV 14/14/14 | Bld 3 | Armas cortas 45% (no letal por defecto) | Daño 5</p>
 <ul>
 <li>Leales a Marcus, pero no saben nada de lo que él sospecha — su reacción, si se enteran, depende de cómo se les cuente.</li>
 </ul>
-<h3>Dos Federales bajo indicación del asesor — agentes de contención no letal (solo si la escalada llega a 4-5)</h3>
+<h3 id="dos-federales-bajo-indicacion-del-asesor-agentes-de-contencion-no-letal-solo-si-la-escalada-llega-a-4-5">Dos Federales bajo indicación del asesor — agentes de contención no letal (solo si la escalada llega a 4-5)</h3>
 <p>PNJ funcionales, sin nombre propio. Ficha compartida con Rensa y Coy — mismo perfil genérico de soldado Federal, con los mismos números tal cual: F30/A35/P30/V30 | PV 14/14/14 | Bld 3 | Armas cortas 45% (no letal por defecto) | Daño 5. No son matones de Primus: son Federales normales, reasignados o "sugeridos" por el asesor civil de Marcus para una tarea concreta, sin saber —o sin querer preguntar— por qué es tan urgente.</p>
 <ul>
 <li>Objetivo según la escena: recuperar una copia, retener a Marcus, bloquear una salida, inmovilizar a un PJ, ganar tiempo, o identificar al observador — nunca "matar a los PJ".</li>
@@ -126,15 +141,15 @@
 <li>Coherente con el propio DLC (Punto 7): Primus nunca actúa como corporación visible — incluso su contención física llega disfrazada de procedimiento Federal ordinario.</li>
 </ul>
 <hr />
-<h2>Lugares necesarios</h2>
+<h2 id="lugares-necesarios">Lugares necesarios</h2>
 <p><strong>Comisaría o base de la unidad de Marcus:</strong> rutina Federal normal, donde cualquier movimiento fuera de lo habitual puede notarse.</p>
 <p><strong>Un lugar privado, fuera de canales oficiales:</strong> donde Marcus prefiere hablar con los PJ sin que su asesor esté cerca.</p>
 <p><strong>Archivo de registros:</strong> donde se puede confirmar (o no) el patrón de órdenes irregulares, y donde se planta el cebo de Archivo si se elige esa vía.</p>
 <p><strong>Sala de comunicaciones o agenda de la comisaría:</strong> donde se introduce el cebo de Comunicaciones (una reunión inexistente) si se elige esa vía.</p>
 <hr />
-<h2>Las cinco escenas</h2>
+<h2 id="las-cinco-escenas">Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3>Escena 1 — La sospecha compartida</h3>
+<h3 id="escena-1-la-sospecha-compartida">Escena 1 — La sospecha compartida</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Marcus elige un sitio sin uniforme de por medio para hablar. Antes de decir nada, mira dos veces hacia la puerta — un gesto que un hombre tan disciplinado no debería necesitar.</p>
@@ -152,7 +167,7 @@
 <blockquote>
 <p>«No sé quién da las órdenes de verdad. Solo sé que siempre llegan justo antes de que las necesite. Eso no es suerte. Eso es vigilancia.»</p>
 </blockquote>
-<h3>Escena 2 — Preparar el cebo</h3>
+<h3 id="escena-2-preparar-el-cebo">Escena 2 — Preparar el cebo</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Los archivos oficiales no mienten, pero tampoco cuentan toda la verdad. Fabricar una mentira que sí la cuente —solo esta vez, solo para quien no debería estar mirando— es un trabajo distinto a investigar.</p>
@@ -170,7 +185,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Marcus no tiene forma de avanzar solo — la operación se estanca, y el patrón de vigilancia sigue exactamente igual que al principio.</p>
 <p><strong>Cómo termina:</strong> al menos un cebo queda plantado (pueden ser los tres), y el grupo espera a ver cuál provoca una reacción.</p>
 <p><strong>Después:</strong> cuántos cebos se usaron y con cuánto cuidado determina cuánta información obtiene el grupo en la Escena 3, y en qué escalón empieza esa escena.</p>
-<h3>Escena 3 — Seguir la respuesta</h3>
+<h3 id="escena-3-seguir-la-respuesta">Escena 3 — Seguir la respuesta</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Nadie ha dicho nada directamente. Pero alguien parece saber, con una precisión incómoda, exactamente dónde ha estado el grupo esta semana — y uno de los tres cebos, solo uno, acaba de moverse.</p>
@@ -190,7 +205,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Primus sigue observando sin escalar más, a la espera de ver qué hace el grupo a continuación — pero el cebo ya plantado no se desperdicia: la próxima vez que actúen, la respuesta llega más rápido.</p>
 <p><strong>Cómo termina:</strong> el grupo sabe (con certeza o con sospecha razonable) por qué canal se filtra la información, y ha visto de primera mano cómo actúa quien vigila a Marcus.</p>
 <p><strong>Después:</strong> cómo reaccionaron aquí (con calma o con más ruido, con o sin conflicto físico) decide en qué escalón empieza la Escena 4.</p>
-<h3>Escena 4 — Elegir la maniobra</h3>
+<h3 id="escena-4-elegir-la-maniobra">Escena 4 — Elegir la maniobra</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Marcus tiene, por primera vez, algo parecido a una prueba real: un canal identificado, una reacción observada. Lo que no tiene todavía es un plan — y esta vez, el plan no puede ser solo suyo.</p>
@@ -206,7 +221,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Marcus decide solo, con el resultado que la mesa considere coherente con su carácter (probablemente: guardar silencio, dolido, por ahora) — sin la operación de los PJ detrás, tiene muchas menos opciones reales.</p>
 <p><strong>Cómo termina:</strong> queda elegida una maniobra concreta, con un plan mínimamente definido.</p>
 <p><strong>Después:</strong> esta elección determina directamente cómo se juega la ejecución en la Escena 5.</p>
-<h3>Escena 5 — Ejecutar la salida</h3>
+<h3 id="escena-5-ejecutar-la-salida">Escena 5 — Ejecutar la salida</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>No es un epílogo. Es el momento en que el plan deja de ser una idea y se convierte en algo que puede salir mal delante de todos.</p>
@@ -227,7 +242,7 @@
 <p><strong>Cómo termina:</strong> Marcus sigue en su puesto, reasignado, captado, o —en el peor de los casos— algo que la mesa decide con el peso que merece; el resultado depende directamente de la escalada alcanzada y de la maniobra ejecutada, no de una tirada única.</p>
 <p><strong>Después:</strong> ver Desenlaces combinables.</p>
 <hr />
-<h2>Pistas e información</h2>
+<h2 id="pistas-e-informacion">Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -260,25 +275,25 @@
 </tbody>
 </table>
 <hr />
-<h2>Recompensas y gastos</h2>
+<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
 <p><strong>Recompensa económica:</strong> este módulo no tiene contratante formal — la recompensa es la relación con Marcus y lo que ella implica a futuro, no un pago en créditos. Si la mesa quiere una cifra, entre 100 y 200 créditos locales por gastos cubiertos por Marcus de su propio bolsillo, nada más.</p>
 <p><strong>Beneficios alternativos:</strong> relación de confianza duradera con Marcus, si sobrevive con su puesto o sin él; conocimiento directo de cómo opera Primus en Oasis, útil para cualquier módulo futuro que la toque; experiencia real montando una operación de contrainteligencia, reutilizable como referencia narrativa en cualquier módulo futuro con vigilancia encubierta de por medio.</p>
 <hr />
-<h2>Desenlaces combinables</h2>
+<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
 <p><strong>Marcus guarda silencio a cambio de seguir sirviendo.</strong> El trato tácito: mira hacia otro lado, mantiene su puesto, y carga con lo que sabe en privado.</p>
 <p><strong>Marcus expone lo que sabe.</strong> El grupo decide si lo protege o lo deja solo — sin garantía de que la exposición llegue a ninguna parte sin pruebas irrefutables de la propia existencia de Primus, algo que este módulo no debe confirmar públicamente.</p>
 <p><strong>Reasignación silenciosa.</strong> Marcus desaparece de la unidad, trasladado a un destino sin acceso a nada sensible — la opción más habitual de Primus, y la más difícil de rebatir.</p>
 <p><strong>Captación.</strong> Marcus acepta saber un poco más de lo normal, a cambio de su silencio activo — deja de ser una amenaza para convertirse en un activo, con lo que eso implica moralmente.</p>
 <p><strong>La operación se descubre a medias.</strong> Si la Escena 5 termina con complicaciones sin resolver del todo, Primus sabe que alguien maneja a Marcus desde fuera sin saber exactamente quién — gancho de tensión abierto para el futuro, no un fallo de partida.</p>
 <hr />
-<h2>Continuidad opcional</h2>
+<h2 id="continuidad-opcional">Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado <em>La Trampilla Vigilada</em> — Marcus llega a la misma sospecha por su cuenta si no se jugó antes.</li>
 <li><strong>Si se jugó <em>La Trampilla Vigilada</em>:</strong> la sospecha de Marcus ya estaba sembrada; este módulo es su continuación directa, y el Siervo de Primus es el mismo personaje, con el mismo criterio.</li>
 </ul>
 <p>Ejemplo de puerta abierta: si Marcus sobrevive con su puesto intacto, puede convertirse en un contacto Federal de confianza para cualquier módulo futuro de Oasis.</p>
 <hr />
-<h2>Límites de este módulo</h2>
+<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
 <ul>
 <li>Primus no responde con violencia como primera opción — la escalada completa (vigilancia → desinformación → reasignación → captación → algo más definitivo) debe respetarse en ese orden.</li>
 <li>No confirmar públicamente la existencia de Primus como corporación — Marcus puede sospechar, nunca demostrarlo del todo ante nadie externo a esta trama.</li>
@@ -288,10 +303,10 @@
 <li>No revelar ni insinuar el despertar en este módulo.</li>
 </ul>
 <hr />
-<h2>Resumen para dirigir</h2>
+<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
 <p>Operación de contrainteligencia sin reloj de horas — la presión es una escalada de respuesta de cinco niveles, tomada directamente del propio comportamiento de Primus ya descrito en el DLC. Cinco escenas autosuficientes: la sospecha → preparar el cebo → seguir la respuesta → elegir la maniobra → ejecutar la salida, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Marcus conserva su conflicto moral, pero son los PJ quienes diseñan los cebos, siguen la respuesta y ejecutan el plan final — con posibilidad de conflicto físico opcional y no letal si la escalada llega a su punto más alto. Ningún desenlace es el correcto — todos dicen algo distinto sobre qué tipo de institución es Primus.</p>
 <hr />
 <p><em>Oasis — tesela recién despertada. Desarrolla las semillas "Órdenes de nadie" y "El Federal que hizo demasiadas preguntas" (Punto 16 del DLC) como un único módulo continuo, reutilizando los PNJ ya publicados Marcus y el Siervo de Primus.</em></p>
-</div>
+</main>
 </body>
 </html>

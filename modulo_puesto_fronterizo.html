@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO 1 — PUESTO FRONTERIZO"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#nota-para-quien-dirige">Nota para quien dirige</a></li><li class="toc-h2"><a href="#como-usar-este-modulo-el-mundo-no-espera">Cómo usar este módulo — el mundo no espera</a></li><li class="toc-h2"><a href="#reparto-y-relaciones">Reparto y relaciones</a></li><li class="toc-h3"><a href="#capitan-broile-mando-militar-del-puesto">Capitán Broile — mando militar del Puesto</a></li><li class="toc-h3"><a href="#comandante-varice-autoridad-corporativa-de-tecnostealer-en-la-zona">Comandante Varice — autoridad corporativa de TecnoStealer en la zona</a></li><li class="toc-h3"><a href="#teniente-a-s-pitt">Teniente A. S. Pitt</a></li><li class="toc-h3"><a href="#teniente-corliss-zalaoa-luego-capitana-corliss">Teniente Corliss Zalaoa (luego Capitana Corliss)</a></li><li class="toc-h3"><a href="#marcus-shepard-maestro-de-drones">Marcus Shepard — Maestro de Drones</a></li><li class="toc-h3"><a href="#nicolauss-hierro-koen">Nicolauss «Hierro» Koen</a></li><li class="toc-h3"><a href="#misty-junker-sargento-1o-de-corliss">Misty Junker — Sargento 1º de Corliss</a></li><li class="toc-h3"><a href="#niebla">Niebla</a></li><li class="toc-h3"><a href="#valiente-y-snacker-los-dos-nakel-de-niebla">Valiente y Snacker — los dos Nakel de Niebla</a></li><li class="toc-h3"><a href="#inquisidor-de-capricornio">Inquisidor de Capricornio</a></li><li class="toc-h3"><a href="#el-resto-del-organigrama">El resto del organigrama</a></li><li class="toc-h2"><a href="#trayectorias-profesionales">Trayectorias profesionales</a></li><li class="toc-h2"><a href="#cronologia-privada">Cronología privada</a></li><li class="toc-h2"><a href="#acto-i-el-campamento-atacado">ACTO I — EL CAMPAMENTO ATACADO</a></li><li class="toc-h3"><a href="#hechos-ya-ocurridos">Hechos ya ocurridos</a></li><li class="toc-h3"><a href="#planes-en-marcha">Planes en marcha</a></li><li class="toc-h3"><a href="#mision-inicial">Misión inicial</a></li><li class="toc-h3"><a href="#fuerza-fija-segunda-vaina-no-escalar-por-numero-de-jugadores">Fuerza fija — segunda vaina (no escalar por número de jugadores)</a></li><li class="toc-h3"><a href="#que-pueden-hacer-los-personajes">Qué pueden hacer los personajes</a></li><li class="toc-h3"><a href="#niebla-y-los-nakel">Niebla y los Nakel</a></li><li class="toc-h3"><a href="#primer-momento-humano">Primer momento humano</a></li><li class="toc-h3"><a href="#pistas-iniciales">Pistas iniciales</a></li><li class="toc-h2"><a href="#acto-ii-vida-en-el-puesto-fronterizo">ACTO II — VIDA EN EL PUESTO FRONTERIZO</a></li><li class="toc-h3"><a href="#hechos-ya-ocurridos-2">Hechos ya ocurridos</a></li><li class="toc-h3"><a href="#duracion-y-forma-de-dirigirlo">Duración y forma de dirigirlo</a></li><li class="toc-h3"><a href="#rutinas-banco-de-trabajos">Rutinas — banco de trabajos</a></li><li class="toc-h3"><a href="#el-puesto-esta-vivo">El Puesto está vivo</a></li><li class="toc-h3"><a href="#niebla-y-los-nakel-durante-los-dos-meses">Niebla y los Nakel durante los dos meses</a></li><li class="toc-h3"><a href="#vecinos-corporativos">Vecinos corporativos</a></li><li class="toc-h3"><a href="#montaje-de-los-dos-meses">Montaje de los dos meses</a></li><li class="toc-h3"><a href="#escenas-recomendadas-para-construir-la-convivencia">Escenas recomendadas para construir la convivencia</a></li><li class="toc-h2"><a href="#acto-iii-la-acusacion-contra-pitt">ACTO III — LA ACUSACIÓN CONTRA PITT</a></li><li class="toc-h3"><a href="#verdad-completa-informacion-exclusiva-del-narrador">Verdad completa (información exclusiva del Narrador)</a></li><li class="toc-h3"><a href="#metodo-de-corliss">Método de Corliss</a></li><li class="toc-h3"><a href="#tabla-de-pruebas">Tabla de pruebas</a></li><li class="toc-h3"><a href="#distribucion-fisica-y-temporal-de-las-pistas">Distribución física y temporal de las pistas</a></li><li class="toc-h3"><a href="#shepard-en-este-acto">Shepard en este Acto</a></li><li class="toc-h3"><a href="#capricornio-en-este-acto">Capricornio en este Acto</a></li><li class="toc-h3"><a href="#respuestas-posibles-de-los-personajes">Respuestas posibles de los personajes</a></li><li class="toc-h3"><a href="#escalada-de-corliss">Escalada de Corliss</a></li><li class="toc-h3"><a href="#el-vinculo-humano-de-corliss">El vínculo humano de Corliss</a></li><li class="toc-h2"><a href="#acto-iv-punta-de-lanza-b">ACTO IV — PUNTA DE LANZA B</a></li><li class="toc-h3"><a href="#hechos-ya-ocurridos-varian-segun-como-termino-el-acto-iii">Hechos ya ocurridos — varían según cómo terminó el Acto III</a></li><li class="toc-h3"><a href="#si-los-personajes-no-acompanan-a-corliss-a-punta-b">Si los personajes no acompañan a Corliss a Punta B</a></li><li class="toc-h3"><a href="#duracion">Duración</a></li><li class="toc-h3"><a href="#localizacion-esquema-de-ocho-zonas">Localización — esquema de ocho zonas</a></li><li class="toc-h3"><a href="#preparaciones">Preparaciones</a></li><li class="toc-h3"><a href="#objetivos-de-serpent">Objetivos de Serpent</a></li><li class="toc-h3"><a href="#fuerza-fija-de-serpent-no-escalar">Fuerza fija de Serpent (no escalar)</a></li><li class="toc-h3"><a href="#la-transmision">La transmisión</a></li><li class="toc-h3"><a href="#fases-del-asedio">Fases del asedio</a></li><li class="toc-h3"><a href="#maestro-de-drones-en-juego">Maestro de Drones en juego</a></li><li class="toc-h3"><a href="#ayuda-de-tecnostealer">Ayuda de TecnoStealer</a></li><li class="toc-h3"><a href="#capsula-de-corliss">Cápsula de Corliss</a></li><li class="toc-h2"><a href="#acto-v-desenlaces">ACTO V — DESENLACES</a></li><li class="toc-h3"><a href="#1-el-puesto">1. El Puesto</a></li><li class="toc-h3"><a href="#2-pitt">2. Pitt</a></li><li class="toc-h3"><a href="#3-corliss">3. Corliss</a></li><li class="toc-h3"><a href="#4-la-comunidad-del-puesto">4. La comunidad del Puesto</a></li><li class="toc-h3"><a href="#5-las-pruebas">5. Las pruebas</a></li><li class="toc-h3"><a href="#combinaciones-de-ejemplo">Combinaciones de ejemplo</a></li><li class="toc-h3"><a href="#rendicion-e-intercambio-posibilidad-no-final-obligatorio">Rendición e intercambio (posibilidad, no final obligatorio)</a></li><li class="toc-h3"><a href="#recompensas-posibles">Recompensas posibles</a></li><li class="toc-h3"><a href="#epilogo-humano">Epílogo humano</a></li><li class="toc-h2"><a href="#fichas">FICHAS</a></li><li class="toc-h3"><a href="#pauta-general-para-habilidades-no-listadas">Pauta general para habilidades no listadas</a></li><li class="toc-h3"><a href="#pnj-completos-participan-repetidamente-en-investigacion-o-combate">PNJ completos (participan repetidamente en investigación o combate)</a></li><li class="toc-h3"><a href="#pnj-funcionales-formato-ligero">PNJ funcionales (formato ligero)</a></li><li class="toc-h3"><a href="#maquinas-tipo-b-conservan-su-propio-sistema-de-pv">Máquinas (Tipo B — conservan su propio sistema de PV)</a></li><li class="toc-h3"><a href="#maestro-de-drones-y-asedio-inventario-de-shepard">Maestro de Drones y asedio — inventario de Shepard</a></li><li class="toc-h3"><a href="#ruta-de-prision-semilla-narrativa-sin-fichas-de-combate-auditadas">Ruta de prisión — semilla narrativa, sin fichas de combate auditadas</a></li><li class="toc-h2"><a href="#modulos-existentes-y-posibles">MÓDULOS EXISTENTES Y POSIBLES</a></li><li class="toc-h3"><a href="#conexiones-existentes">Conexiones existentes</a></li><li class="toc-h3"><a href="#posibles-modulos-derivados">Posibles módulos derivados</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO 1 — PUESTO FRONTERIZO</h1>
 <p><strong>Estado:</strong> BORRADOR — pendiente de playtest, corrección y maquetación.</p>
 <blockquote>
@@ -49,12 +64,12 @@
 </blockquote>
 <p><img alt="Vista vertical del Puesto Fronterizo, un bunker-castillo aferrado a los acantilados de la Pared Calcárea sobre la jungla de Monstruoplantas" src="img/puesto_fronterizo_portada.webp" /></p>
 <hr />
-<h2>Nota para quien dirige</h2>
+<h2 id="nota-para-quien-dirige">Nota para quien dirige</h2>
 <p>Las corporaciones propuestas —TecnoStealer, Serpent, Chafry, Primus, Workhouse, las Pseudo-Arkanitas— pueden sustituirse por otras que encajen mejor en una campaña particular. Si se sustituyen, deben conservarse sus funciones narrativas, sus recursos, sus rivalidades y sus objetivos: alguien tiene que seguir queriendo desacreditar a un infiltrado, alguien tiene que seguir presionando por cuotas de extracción, alguien tiene que seguir vigilando desde fuera del mando.</p>
 <p>Para describir armaduras, equipo y espacios de TecnoStealer con algo más de detalle que el Blindaje de cada ficha —negro y plateado, paneles recuperados integrados con cuidado, reparaciones visibles como mérito—, existe una referencia aparte de identidad visual corporativa. Es un recurso opcional para quien lo quiera; el módulo funciona igual sin él.</p>
 <p>La configuración publicada está equilibrada por relaciones, información y disponibilidad de recursos — no ajustando automáticamente el número de enemigos. <strong>No escales las fuerzas de las máquinas ni de Serpent según cuántos PJ haya en mesa.</strong> Las cifras de este módulo son fijas (ver cada Acto). Si el grupo es pequeño o va mal equipado, la aventura se vuelve más peligrosa de verdad, no más fácil por decreto — para eso están la preparación, los aliados y la retirada como opciones válidas.</p>
 <hr />
-<h2>Cómo usar este módulo — el mundo no espera</h2>
+<h2 id="como-usar-este-modulo-el-mundo-no-espera">Cómo usar este módulo — el mundo no espera</h2>
 <p>Los PNJ de Puesto Fronterizo actúan con su propia información, sus propios recursos, su propia personalidad y su propio tiempo. La conspiración contra Pitt ya está en marcha antes de que los personajes lleguen. El ataque a Punta de Lanza B ya está preparado antes de que termine el Acto III. <strong>Los personajes no activan la existencia de ninguna de las dos cosas.</strong></p>
 <p>Lo que sí cambian sus decisiones:</p>
 <ul>
@@ -80,11 +95,11 @@
 <li><strong>Consecuencias si nadie actúa</strong> — qué pasa igualmente, sin heroísmo de por medio.</li>
 </ul>
 <hr />
-<h2>Reparto y relaciones</h2>
+<h2 id="reparto-y-relaciones">Reparto y relaciones</h2>
 <p>Para cada PNJ importante: primera impresión, qué sabe, qué cree equivocadamente, qué quiere, a quién protege, de quién desconfía, qué ofrece, qué le molesta, qué hace si nadie interviene, qué hace durante el asedio, qué puede cambiar su opinión, y sus relaciones concretas con otros PNJ. No deberías tener que adivinar cómo reacciona ninguno de ellos.</p>
 <p><img alt="Reparto principal de TecnoStealer en el Puesto Fronterizo, mando, tropa y personal técnico reunidos" src="img/puesto_fronterizo_reparto.webp" /><br />
 <em>Lámina conceptual del reparto principal — no un retrato exacto y contractual de cada PNJ.</em></p>
-<h3>Capitán Broile — mando militar del Puesto</h3>
+<h3 id="capitan-broile-mando-militar-del-puesto">Capitán Broile — mando militar del Puesto</h3>
 <p><strong>Primera impresión:</strong> veterano curtido, se mueve poco pero decide rápido; trato profesional, ni cálido ni suspicaz por defecto.<br />
 <strong>Qué sabe:</strong> el estado real de la guarnición; las cuotas que le exige Varice; que alguien filtró la posición del campamento anterior; que la evidencia contra Pitt "encaja demasiado bien" para su gusto, aunque no sepa articular por qué le incomoda.<br />
 <strong>Qué cree equivocadamente:</strong> que la lealtad de Corliss es sincera y que su ascenso reciente es mérito puro.<br />
@@ -97,7 +112,7 @@
 <strong>Qué hace durante el asedio de Punta de Lanza B:</strong> permanece en el Puesto Fronterizo principal — Punta B está bajo mando de Corliss, no del suyo. Coordina desde allí la respuesta de TecnoStealer, gestiona comunicaciones y refuerzos, y decide qué recursos del Puesto principal puede permitirse enviar. Solo se desplaza en persona a Punta B si algo ha cambiado antes su destino de forma expresa (por ejemplo, si releva a Corliss o si el propio Puesto principal deja de estar en peligro inmediato).<br />
 <strong>Qué puede cambiar su opinión:</strong> pruebas concretas, nunca sospechas sueltas; el testimonio directo de Shepard.<br />
 <strong>Relaciones:</strong> fricción funcional y constante con Varice (ver más abajo); respeta a Pitt como combatiente; confía en Hierro; correcto pero distante con Corliss, a quien nunca ha tenido motivo real para cuestionar.</p>
-<h3>Comandante Varice — autoridad corporativa de TecnoStealer en la zona</h3>
+<h3 id="comandante-varice-autoridad-corporativa-de-tecnostealer-en-la-zona">Comandante Varice — autoridad corporativa de TecnoStealer en la zona</h3>
 <p><strong>Primera impresión:</strong> cínico, cicatrices de radiación, exige resultados sin rodeos.<br />
 <strong>Qué sabe:</strong> que la cuota de extracción de este ciclo no se cubre; que hay más de una corporación con intereses cerca del Puesto; del escándalo de Pitt, solo de oídas.<br />
 <strong>Qué cree equivocadamente:</strong> que el asunto de Pitt es ruido interno de TS sin relación con sus cuotas — no conecta a Corliss ni a Serpent hasta que resulte evidente.<br />
@@ -110,7 +125,7 @@
 <strong>Qué hace durante el asedio:</strong> prioriza salvar artefactos y registros de valor sobre la posición en sí; puede pedir directamente a los PJ que recuperen material antes que a gente, un dilema real, no retórico.<br />
 <strong>Qué puede cambiar su opinión:</strong> pérdidas que afecten a su propia cuota o a su posición ante TS; una amenaza a su propio pellejo.<br />
 <strong>Relaciones:</strong> fricción funcional con Broile —<strong>Broile quiere conservar personal y posiciones defendibles; Varice acepta riesgos mayores para cumplir cuotas y conseguir artefactos o muestras. Broile puede discutir o rechazar una orden tácticamente inviable; Varice puede presionarlo mediante suministros, refuerzos, evaluaciones o prioridades corporativas.</strong> Ninguno de los dos es el villano de esa fricción — ambos tienen razón según la situación, y los personajes pueden acudir a uno u otro y recibir respuestas distintas. Corliss, consciente de esa división administrativa, la usa a su favor cuando le conviene. Varice no dirige patrullas ni sustituye a Broile en el campo; Broile no puede ignorar que reemplazos, recursos y prioridades corporativas dependen de Varice.</p>
-<h3>Teniente A. S. Pitt</h3>
+<h3 id="teniente-a-s-pitt">Teniente A. S. Pitt</h3>
 <p><strong>Primera impresión:</strong> agrio, seco, no busca caer bien.<br />
 <strong>Qué sabe:</strong> su propia misión real para Ladino (accesos clandestinos a sistemas concretos, nunca la posición del campamento atacado); sospecha, sin certeza al principio, que alguien ha usado su identidad operativa de Serpent sin su consentimiento.<br />
 <strong>Qué cree equivocadamente:</strong> durante buena parte del módulo no sabe que es Corliss quien lo usa — si sospecha de alguien, sospecha mal.<br />
@@ -123,7 +138,7 @@
 <strong>Qué hace durante el asedio:</strong> combate con eficacia brutal; si lo capturan, no delata la misión de Ladino aunque le cueste caro.<br />
 <strong>Qué puede cambiar su opinión:</strong> que alguien demuestre entender su situación sin exigirle exponer su tapadera.<br />
 <strong>Relaciones:</strong> recela de Corliss sin saber todavía por qué; Hierro lo respeta como combatiente; Broile lo trata con neutralidad profesional, no con sospecha activa.</p>
-<h3>Teniente Corliss Zalaoa (luego Capitana Corliss)</h3>
+<h3 id="teniente-corliss-zalaoa-luego-capitana-corliss">Teniente Corliss Zalaoa (luego Capitana Corliss)</h3>
 <p><strong>Primera impresión:</strong> cálida, ayuda de verdad, cae bien con facilidad.<br />
 <strong>Qué sabe:</strong> toda la operación, de principio a fin — su identidad real, el uso de la identidad de Pitt, cómo transmitió la información, qué fragmentos quedaron sin borrar en dron, repetidor y antena.<br />
 <strong>Qué cree equivocadamente:</strong> que su extracción, si algo sale mal, será limpia y rápida. No sabe que Serpent está dispuesta a sacrificarla si hace falta.<br />
@@ -136,7 +151,7 @@
 <strong>Qué hace durante el asedio:</strong> sigue su escalada de preferencias (ver Acto III) y activa su plan de fuga en la cápsula.<br />
 <strong>Qué puede cambiar su opinión:</strong> el vínculo humano con el PJ — puede dudar, advertir, u ofrecerle un sitio en la cápsula. Nada de esto la redime automáticamente.<br />
 <strong>Relaciones:</strong> figura en el organigrama al mismo nivel que Pitt pero no coordina con él; Shepard y Hierro le reportan sobre el papel, sin lealtad personal; Capricornio es la amenaza que no controla; Varice, sin saberlo, le sirve de palanca administrativa.</p>
-<h3>Marcus Shepard — Maestro de Drones</h3>
+<h3 id="marcus-shepard-maestro-de-drones">Marcus Shepard — Maestro de Drones</h3>
 <p><img alt="Taller de mantenimiento de Marcus Shepard, drones de distinto tamaño en reparación entre chatarra y herramientas" src="img/puesto_fronterizo_taller_drones.webp" /></p>
 <p><img alt="Marcus Shepard junto a la identidad visual TecnoStealer, con enjambres de drones pequeños transportados en mochila" src="img/puesto_fronterizo_personajes_drones.webp" /><br />
 <em>Lámina conceptual de Shepard y sus drones — no un retrato contractual exacto.</em></p>
@@ -152,7 +167,7 @@
 <strong>Qué hace durante el asedio:</strong> despliega sus enjambres y es clave en la defensa técnica; su presencia enseña Maestro de Drones jugando, no exponiendo.<br />
 <strong>Qué puede cambiar su opinión:</strong> pruebas técnicas adicionales que los PJ le acerquen.<br />
 <strong>Relaciones:</strong> lealtad institucional a TecnoStealer, no personal a Corliss; rivalidad afectuosa con Hierro; respeta a Broile. Es leal a TecnoStealer, no a Corliss — y eso acaba pesando.</p>
-<h3>Nicolauss «Hierro» Koen</h3>
+<h3 id="nicolauss-hierro-koen">Nicolauss «Hierro» Koen</h3>
 <p><strong>Primera impresión:</strong> intimidante, exagerado, grita para enseñar, no para humillar.<br />
 <strong>Qué sabe:</strong> cómo se mueve la moral de la tropa; cada rincón del Puesto; rumores de pasillo sobre Pitt y Corliss.<br />
 <strong>Qué cree equivocadamente:</strong> confía en la cadena de mando por encima de su propio instinto — tarda en admitir que algo no cuadra.<br />
@@ -165,13 +180,13 @@
 <strong>Qué hace durante el asedio:</strong> organiza personal y defensas; presenta opciones a los PJ, nunca decide por ellos.<br />
 <strong>Qué puede cambiar su opinión:</strong> ver con sus propios ojos que el sistema falla a uno de los suyos.<br />
 <strong>Relaciones:</strong> rivalidad afectuosa con Shepard; respeto sincero por Pitt; lealtad formal a Corliss (es uno de sus sargentos) con un instinto que empieza, poco a poco, a dudar de ella.</p>
-<h3>Misty Junker — Sargento 1º de Corliss</h3>
+<h3 id="misty-junker-sargento-1o-de-corliss">Misty Junker — Sargento 1º de Corliss</h3>
 <p><strong>Primera impresión:</strong> eficiente, discreta, la que de verdad hace funcionar la sección de Corliss.<br />
 <strong>Qué sabe:</strong> la logística diaria de su sección; quién falta a su turno; quién ha estado raro últimamente.<br />
 <strong>Qué quiere:</strong> que su sección funcione sin sobresaltos.<br />
 <strong>Qué hace si nadie interviene:</strong> sigue las órdenes de Corliss sin cuestionarlas — es su mano derecha eficaz, sin saber a quién sirve en realidad.<br />
 <strong>Relaciones:</strong> leal a Corliss por respeto profesional, no por afecto; coordina el día a día con Hierro y Shepard.</p>
-<h3>Niebla</h3>
+<h3 id="niebla">Niebla</h3>
 <p><strong>Primera impresión:</strong> una niña. No un arma, no un enigma que resolver.<br />
 <strong>Qué sabe:</strong> quién ha sido amable con ella; dónde se esconden las máquinas cerca de la torre; poco del panorama político del Puesto.<br />
 <strong>Qué quiere:</strong> estar a salvo, estar con Valiente y Snacker, que no le hagan más preguntas de las necesarias.<br />
@@ -182,7 +197,7 @@
 <strong>Qué hace si nadie interviene:</strong> se mantiene oculta con Valiente y Snacker. Si el peligro es demasiado, usa su marca de teleportación y desaparece de la escena — sin garantía de a dónde va ni de cuándo vuelve a aparecer en esta historia.<br />
 <strong>Qué puede cambiar su opinión:</strong> trato paciente y honesto, nunca promesas vacías.<br />
 <strong>Nota mecánica:</strong> no representes sus capacidades mediante profesiones ni las infles para justificar su importancia narrativa (ver Trayectorias profesionales).</p>
-<h3>Valiente y Snacker — los dos Nakel de Niebla</h3>
+<h3 id="valiente-y-snacker-los-dos-nakel-de-niebla">Valiente y Snacker — los dos Nakel de Niebla</h3>
 <p>Aparecen casi siempre juntos y comparten la mayoría de estos rasgos.</p>
 <p><strong>Primera impresión:</strong> protectores fieros, silenciosos hasta que hace falta dejar de serlo.<br />
 <strong>Qué saben:</strong> el terreno alrededor de la torre; las rutinas de las máquinas atacantes; poco de la política interna del Puesto.<br />
@@ -196,7 +211,7 @@
 <strong>Qué puede cambiar su opinión:</strong> que alguien demuestre, con hechos y no con palabras, que quiere proteger a Niebla y no usarla.<br />
 <strong>Nota de presentación:</strong> son <strong>Nakel</strong> — llamarlos "Hombres Rata" es cosa de quien no los conoce, no el nombre que ellos usan entre sí. Úsalo como apelativo ajeno cuando un PNJ que no los conoce hable de ellos, no como nombre por defecto.<br />
 <strong>Ícaro:</strong> la rata voladora de Valiente (INT 20). Acompaña, explora y hace de mensajero a corta distancia; no combate.</p>
-<h3>Inquisidor de Capricornio</h3>
+<h3 id="inquisidor-de-capricornio">Inquisidor de Capricornio</h3>
 <p><strong>Primera impresión:</strong> formal, metódico; la máscara no oculta la curiosidad genuina.<br />
 <strong>Qué sabe:</strong> los mismos fragmentos de prueba que reuniría cualquier investigador competente. Puede haber recibido un empujón no confirmado de algún miembro del Triunvirato — el módulo no confirma quién ni si ocurrió realmente.<br />
 <strong>Qué cree equivocadamente:</strong> durante buena parte de su investigación, que Pitt es probablemente culpable — las pruebas iniciales lo sostienen de buena fe.<br />
@@ -209,7 +224,7 @@
 <strong>Qué hace durante el asedio:</strong> mantiene su vigilancia discreta; puede intervenir si detecta a tiempo la implicación de Corliss, sin garantía de conseguirlo.<br />
 <strong>Qué puede cambiar su opinión:</strong> pruebas verificables. Nunca súplicas, nunca presión.<br />
 <strong>Relaciones:</strong> independiente de Corliss, que no puede controlarlo ni ordenarle una conclusión; puede colaborar con discreción si los PJ se ganan su confianza con hechos; su punto ciego —confiar demasiado en procedimientos rigurosos y pruebas bien preparadas— puede ser aprovechado por una manipulación cuidadosa. Con Broile: cooperación formal y respeto profesional — Broile acepta la investigación como parte legítima del procedimiento, aunque protege la operatividad del Puesto por encima de facilitarle el paso libre. Con Varice: colaboración útil pero incómoda — Varice no lo obstruye, pero lo considera una interferencia imprevisible sobre cuotas, plazos y autoridad corporativa, no un enemigo declarado. Con Shepard: fuente técnica valiosa — escucha sus dudas con atención, pero no las trata como prueba hasta que puedan sostenerse por sí solas.</p>
-<h3>El resto del organigrama</h3>
+<h3 id="el-resto-del-organigrama">El resto del organigrama</h3>
 <table>
 <thead>
 <tr>
@@ -252,7 +267,7 @@
 </tbody>
 </table>
 <hr />
-<h2>Trayectorias profesionales</h2>
+<h2 id="trayectorias-profesionales">Trayectorias profesionales</h2>
 <p>Usa la escala orientativa de una a diez profesiones (El Narrador) para construir y verificar a estos PNJ, no para inflarlos. El número de profesiones no concede PV, Blindaje, daño ni autoridad por sí mismo — cada ficha justifica sus cifras por separado.</p>
 <table>
 <thead>
@@ -333,7 +348,7 @@
 <p>Para Shepard, la trayectoria cumple el requisito de desbloqueo de Maestro de Drones (Técnico 2× o Combatiente 2×, más Programación o Liderazgo 50) sin necesidad de detallarlo más: su bolsa de REC Tecnológico ronda 55, cómodamente por encima del umbral.</p>
 <p>Solo genera REC/POT completos para los PNJ que puedan participar repetidamente en investigación o combate (ver Fichas, al final del módulo). El resto de sargentos y auxiliares no necesitan ficha completa: la tabla de arriba y un rasgo distintivo bastan.</p>
 <hr />
-<h2>Cronología privada</h2>
+<h2 id="cronologia-privada">Cronología privada</h2>
 <p>Cuadro general — se puede comprimir o ampliar, pero conserva la causalidad entre filas.</p>
 <table>
 <thead>
@@ -427,22 +442,22 @@
 - <em>Alteraciones posibles:</em> según cómo salga la transmisión —completa, interrumpida o alterada— cambia lo que Serpent sabe del emplazamiento.<br />
 - <em>Reacción si fracasa (para Serpent):</em> el ataque no se cancela; se ejecuta igual, con más incertidumbre y más margen de sorpresa para los defensores.</p>
 <hr />
-<h2>ACTO I — EL CAMPAMENTO ATACADO</h2>
-<h3>Hechos ya ocurridos</h3>
+<h2 id="acto-i-el-campamento-atacado">ACTO I — EL CAMPAMENTO ATACADO</h2>
+<h3 id="hechos-ya-ocurridos">Hechos ya ocurridos</h3>
 <p>El campamento avanzado —el enclave principal antes de que existiera el Puesto Fronterizo tal y como está hoy— dejó de comunicarse hace tres días. Cayeron sobre él <strong>dos vainas sin marcas</strong>. La guarnición del campamento logró destruir la dotación de la primera vaina antes de caer; la segunda vaina quedó <strong>perfectamente establecida</strong> y su dotación sigue activa cuando llegan los personajes.</p>
 <p><strong>Objetivo real del ataque (información exclusiva del Narrador).</strong> El campamento conservaba registros parciales de movimientos, comunicaciones y consultas que, cruzados con cuidado, podían demostrar que el patrón de accesos de Pitt no coincidía con el patrón realmente usado para filtrar la posición —es decir, contenían la prueba de que Corliss, no Pitt, era la responsable—. Serpent quería destruir esos registros y, de paso, recuperar cualquier información que reforzara el montaje contra Pitt. Las máquinas debían además eliminar a cualquier testigo capaz de describir el ataque o la voz que lo dirigió. Por último, el ataque tenía una función política: producir una pérdida real y visible hacía creíble, ante el resto de TecnoStealer, que alguien había filtrado la posición — y ese "alguien" ya tenía un candidato preparado. Las máquinas no saquearon al azar: buscaban esos registros concretos, destruyeron las comunicaciones y eliminaron testigos siguiendo ese objetivo. En la base ya no queda casi nada de valor evidente —necrochips y combustible sin recoger, el resto robado, comido por la jungla o destruido—, pero sí quedan fragmentos: registros parcialmente borrados, un sistema de comunicaciones intacto en uno de los <strong>Droides</strong> del campamento, y pruebas que apuntan, todavía de forma incompleta, a la traición de un oficial del Puesto Fronterizo. Los personajes pueden llegar a recuperar solo fragmentos de todo esto — el Narrador conoce el objetivo completo desde el principio, aunque el grupo nunca lo reconstruya del todo.</p>
 <p><strong>Por qué lo que sobrevive apunta contra Pitt.</strong> No es casualidad. Lo que las máquinas priorizaron destruir fue precisamente lo exculpatorio —los registros que habrían demostrado que el patrón de accesos de Pitt no coincidía con el usado para filtrar la posición—, y lo que dejaron o generaron de paso fue una pérdida creíble y unos restos que, leídos sin ese contraste, refuerzan el montaje. Lo que libraría a Pitt se pierde por diseño; lo que lo incrimina sobrevive por diseño. Las "Pistas iniciales" de más abajo son justo ese resto sesgado — no un reflejo neutral de lo ocurrido.</p>
 <p>En una torre del complejo que las máquinas no han tomado se ocultan <strong>Niebla</strong> y sus dos Nakel, <strong>Valiente</strong> y <strong>Snacker</strong>. Niebla mantiene a raya a las tropas robóticas desde allí; los personajes no sabrán que existe hasta que la pongan a salvo. Si no lo consiguen, usará su marca de teleportación de emergencia y desaparecerá de la escena — activarla tiene un coste real en PV que la deja al menos Herida (ver Fichas, más abajo, para el efecto exacto).</p>
-<h3>Planes en marcha</h3>
+<h3 id="planes-en-marcha">Planes en marcha</h3>
 <p>Las máquinas de la segunda vaina siguen ejecutando su misión: consultar y borrar registros, localizar y eliminar cualquier testigo humano superviviente, y mantener la posición hasta agotar su cometido o ser destruidas. No tienen orden de retirarse ni de perseguir más allá del campamento.</p>
-<h3>Misión inicial</h3>
+<h3 id="mision-inicial">Misión inicial</h3>
 <p>El Capitán Broile encarga a los personajes investigar por qué el campamento avanzado ha dejado de comunicarse y recuperar, si es posible, supervivientes, registros, material sensible e información sobre los atacantes. El Comandante Varice, por su cuenta, deja claro que cualquier tecnología o muestra recuperable interesa a su cuota — una petición añadida, no una orden que sustituya a la de Broile.</p>
 <p>En este planeta las comunicaciones de largo alcance son difíciles: un extraño núcleo radiactivo interfiere hasta con los satélites. Los envían en <strong>jet-packs</strong>, con módulos de salto intraorbital para el viaje de ida — 20 km a recorrer.</p>
 <blockquote>
 <p><strong>Jet-pack (nota de reglas):</strong> mochilas de 5 asaltos de viaje, 4 km/asalto + 1 km por éxito. Para aterrizar hace falta un éxito; con menos, tirada de daño (sin protección de blindaje) igual a los éxitos que falten. Se puede despegar desde el suelo, pero gasta 1 asalto de viaje.</p>
 </blockquote>
 <p>A su llegada —o antes, con una tirada de Alerta— los personajes ven que en el emplazamiento han caído las dos vainas descritas arriba: la primera destruida, la segunda perfectamente establecida.</p>
-<h3>Fuerza fija — segunda vaina (no escalar por número de jugadores)</h3>
+<h3 id="fuerza-fija-segunda-vaina-no-escalar-por-numero-de-jugadores">Fuerza fija — segunda vaina (no escalar por número de jugadores)</h3>
 <table>
 <thead>
 <tr>
@@ -473,9 +488,9 @@
 <strong>2 Bots artillería ligera</strong> — Blindaje 5, Distancia 50%, Daño 10, Pen 2, PV 20.<br />
 <strong>4 Droides C30</strong> — Blindaje 2, Distancia 40%, Daño 3, Cadencia 3 (ráfaga, +1 éxito adicional); puede usar Fuego repartido si asigna al menos 25 puntos de Distancia a cada objetivo, PV 12.</p>
 <p>Son máquinas, no organismos: su PV es un valor único, no una progresión Sano/Herido/Tullido — no necesitan esa terminología orgánica. Con solo 7 máquinas repartidas en tres tipos distintos, no suele haber cinco unidades homogéneas del mismo tipo para aplicar Ataque en grupo (Mecánicas del Sistema, exige unidades homogéneas — ver el ejemplo detallado en Acto IV, Fase 4) — resuelve normalmente cada máquina por separado; solo agrúpalas si, por la escena, llegan a coincidir cinco C30 o más en una posición compatible.</p>
-<h3>Qué pueden hacer los personajes</h3>
+<h3 id="que-pueden-hacer-los-personajes">Qué pueden hacer los personajes</h3>
 <p>Combatir, reconocer el terreno antes de decidir, infiltrarse, rescatar supervivientes, recuperar registros, reparar las comunicaciones, seguir rastros, retirarse y pedir refuerzos, o idear cualquier otra solución razonable. Ninguna de estas opciones es la "correcta" — la fuerza fija de siete máquinas no se reduce ni se multiplica según lo que decidan; solo cambia cómo de caro o barato les sale conseguir lo que buscan.</p>
-<h3>Niebla y los Nakel</h3>
+<h3 id="niebla-y-los-nakel">Niebla y los Nakel</h3>
 <p>Valiente y Snacker son <strong>Nakel</strong> — llamarlos "Hombres Rata" es cosa de quien no los conoce (ver Reparto y relaciones para su ficha de relación completa). Han sostenido la torre desde el ataque, sin saber cuánto más podrán aguantar. Niebla:</p>
 <ul>
 <li>es una niña excepcional, no un detector automático de culpables;</li>
@@ -484,9 +499,9 @@
 <li>sigue siendo una niña aunque tenga capacidades extraordinarias — trátala como tal en la mesa.</li>
 </ul>
 <p>Si los personajes llegan hasta la torre y consiguen que confíen en ellos, Valiente e Ícaro pueden guiarlos por el resto del campamento; si no, la situación se resuelve como decida el Narrador según lo que hayan hecho hasta entonces (rescate, retirada de Niebla por su cuenta, o algo peor).</p>
-<h3>Primer momento humano</h3>
+<h3 id="primer-momento-humano">Primer momento humano</h3>
 <p>En algún punto del reconocimiento, los personajes encuentran a un grupo de supervivientes encerrados en un refugio junto a una <strong>impresora alimentaria averiada</strong> que no deja de producir la misma sopa o pasta, sin parar, desde que empezó el ataque. La primera preocupación que expresan en voz alta puede no ser el peligro que acaban de vivir, sino cómo apagar la maldita máquina. Juega esta escena para aliviar la tensión y para mostrar, de entrada, que el campamento era un lugar vivido de verdad — no solo un escenario de combate.</p>
-<h3>Pistas iniciales</h3>
+<h3 id="pistas-iniciales">Pistas iniciales</h3>
 <p>No presentes todavía a Pitt como culpable demostrado — estas pistas apuntan en su dirección sin cerrarla.</p>
 <table>
 <thead>
@@ -523,10 +538,10 @@
 </tbody>
 </table>
 <hr />
-<h2>ACTO II — VIDA EN EL PUESTO FRONTERIZO</h2>
-<h3>Hechos ya ocurridos</h3>
+<h2 id="acto-ii-vida-en-el-puesto-fronterizo">ACTO II — VIDA EN EL PUESTO FRONTERIZO</h2>
+<h3 id="hechos-ya-ocurridos-2">Hechos ya ocurridos</h3>
 <p>Los personajes ya están instalados en el Puesto Fronterizo: un bunker-castillo en lo alto de la Pared Calcárea, muy pequeño —media hectárea, la mitad de un campo de fútbol—, agarrado a los acantilados que dan nombre a la región (ver DLC Monstruoplantas, Geografía y regiones). El rumor sobre Pitt circula ya en voz baja entre la tropa; nadie lo dice a la cara todavía.</p>
-<h3>Duración y forma de dirigirlo</h3>
+<h3 id="duracion-y-forma-de-dirigirlo">Duración y forma de dirigirlo</h3>
 <p>Este Acto cubre un mínimo de dos meses de convivencia potencial. <strong>No hace falta escribir una cronología día a día</strong> — usa las escenas de más abajo como piezas sueltas y monta con ellas tantas sesiones como el grupo necesite. Cada periodo de tiempo que decidas jugar puede contener, sin que hagan falta los cuatro a la vez:</p>
 <ul>
 <li>una misión o trabajo concreto;</li>
@@ -534,11 +549,11 @@
 <li>una pista sobre la trama de Pitt y Corliss;</li>
 <li>un cambio visible en el Puesto o en la jungla que lo rodea.</li>
 </ul>
-<h3>Rutinas — banco de trabajos</h3>
+<h3 id="rutinas-banco-de-trabajos">Rutinas — banco de trabajos</h3>
 <p>Usa esta lista como generador de escenas, no como lista de tareas obligatorias:</p>
 <p>Patrullas del perímetro · escolta de científicos al campo · recogida de muestras · reparación de torres · mantenimiento de impresoras · defensa del perímetro · apertura de rutas · entrenamiento con Hierro · turnos de enfermería · gestión de suministros · exploración de ruinas cercanas · búsqueda de personas perdidas · operaciones corporativas para Varice o para otra corporación presente · comercio y descanso durante la apertura semanal del portal.</p>
 <p>Para fauna, flora, encuentros de jungla y ganchos locales, el DLC Monstruoplantas es cantera directa: sus tablas de encuentro de la Pared Calcárea, sus criaturas y sus ganchos iniciales encajan sin fricción con cualquiera de estos trabajos.</p>
-<h3>El Puesto está vivo</h3>
+<h3 id="el-puesto-esta-vivo">El Puesto está vivo</h3>
 <p>Muestra estos elementos con regularidad, sin necesidad de anunciarlos como escena aparte:</p>
 <ul>
 <li>la jungla avanza uno o dos metros durante algunas noches; alguien tiene que despejarla cada pocos días;</li>
@@ -549,9 +564,9 @@
 <li>escasez puntual y precios que suben y bajan según lo que traiga el portal esa semana;</li>
 <li>motes, amistades, objetos acumulados y reparaciones improvisadas que le dan personalidad al lugar.</li>
 </ul>
-<h3>Niebla y los Nakel durante los dos meses</h3>
+<h3 id="niebla-y-los-nakel-durante-los-dos-meses">Niebla y los Nakel durante los dos meses</h3>
 <p>Por defecto, Niebla, Valiente y Snacker <strong>permanecen en el Puesto</strong> durante los dos o tres meses del Acto II, alojados en una zona relativamente tranquila bajo la protección práctica de Hierro — no de un servicio oficial de tutela, sino de la misma manera informal en que él cuida de su gente. Participan con naturalidad en rutinas y escenas cotidianas: pueden aparecer en la Guerra del Rancho, en tareas menores, en conversaciones de pasillo, en momentos de descanso o en pequeños incidentes sin peso narrativo propio. No son mascotas ni decoración de fondo — el Narrador puede usarlos para mantener la continuidad humana con el Acto I, dejando que alguien pregunte por ellos, les ofrezca algo, o simplemente los vea de lejos en su vida diaria. Esto no abre una subtrama obligatoria: es solo la situación por defecto si nadie decide lo contrario.</p>
-<h3>Vecinos corporativos</h3>
+<h3 id="vecinos-corporativos">Vecinos corporativos</h3>
 <p>El Puesto no es solo TecnoStealer. Otras corporaciones tienen presencia real aquí, y son un escaparate útil de política corporativa sin que ninguna de ellas tenga que tomar el centro de la trama de Pitt y Corliss. Sus fichas completas están en DLC Monstruoplantas, Facciones y fuerzas presentes — no las repitas aquí, solo su función en el día a día del Puesto:</p>
 <table>
 <thead>
@@ -595,7 +610,7 @@
 </tbody>
 </table>
 <p>Cualquiera de ellos puede protagonizar una escena de rutina o un gancho lateral sin tocar la trama central — precisamente lo que hace que el Puesto se sienta como un lugar real y no como el escenario de una sola historia.</p>
-<h3>Montaje de los dos meses</h3>
+<h3 id="montaje-de-los-dos-meses">Montaje de los dos meses</h3>
 <p>Herramienta para construir varias semanas de convivencia sin escribir un calendario día a día. Rellena una fila por cada periodo que decidas jugar —una fila puede ser una sesión entera o solo diez minutos de mesa—; no hace falta rellenar las seis columnas cada vez.</p>
 <table>
 <thead>
@@ -651,7 +666,7 @@
 <li><strong>Inserción de aventuras propias</strong> — intercala contratos, ganchos de Monstruoplantas o material de tu propia mesa entre las semanas marcadas de la cronología privada, siempre que no desplacen los momentos causales (Semana 4, 5, 7, 9 y 10 en particular).</li>
 </ul>
 <p>Cualquiera de las tres formas debe conservar la cronología causal confirmada: lo que ocurre en la Semana 4 depende de que hayan pasado las semanas anteriores, aunque no se hayan jugado todas en detalle.</p>
-<h3>Escenas recomendadas para construir la convivencia</h3>
+<h3 id="escenas-recomendadas-para-construir-la-convivencia">Escenas recomendadas para construir la convivencia</h3>
 <p>Estas cinco escenas están pensadas para dar forma a los dos meses de convivencia. El Narrador puede sustituirlas por otras equivalentes si conservan su función — lo importante es lo que cada una aporta a la trama y al Puesto, no la escena exacta tal y como está escrita aquí. Ninguna necesita una tirada obligatoria para resolverse.</p>
 <h4>Llegada y primera cena</h4>
 <p><img alt="Comedor, zona médica y de descanso del Puesto Fronterizo durante la vida cotidiana entre asaltos" src="img/puesto_fronterizo_comedor_enfermeria.webp" /><br />
@@ -729,13 +744,13 @@
 <li><strong>Apertura del portal semanal</strong> — mercado, contrabando discreto, correo y reemplazos llegando de golpe. Ver DLC Monstruoplantas, Vida alrededor del portal semanal, para más detalle de ambiente.</li>
 </ul>
 <hr />
-<h2>ACTO III — LA ACUSACIÓN CONTRA PITT</h2>
+<h2 id="acto-iii-la-acusacion-contra-pitt">ACTO III — LA ACUSACIÓN CONTRA PITT</h2>
 <p><img alt="Centro de mando e inteligencia del Puesto Fronterizo, pantallas y registros donde se coordina la investigación" src="img/puesto_fronterizo_centro_mando.webp" /><br />
 <em>Referencia visual para la investigación y la coordinación del caso — no una localización nueva ni fija.</em></p>
-<h3>Verdad completa (información exclusiva del Narrador)</h3>
+<h3 id="verdad-completa-informacion-exclusiva-del-narrador">Verdad completa (información exclusiva del Narrador)</h3>
 <p><strong>Pitt fue infiltrado por las unidades de Ladino dentro de Serpent.</strong> Su antigua identidad operativa de Serpent es auténtica y nunca fue revocada. Pitt la ha seguido usando —accesos clandestinos, contactos, protocolos— para una misión real que Ladino le encargó, ajena por completo al ataque al campamento. Es culpable de ocultar información y de entrar en sistemas sin autorización, pero <strong>no transmitió la posición del campamento</strong> ni traicionó a nadie del Puesto.</p>
 <p><strong>Corliss es la agente doble de Serpent.</strong> Usó la identidad operativa de Pitt —sin que él lo supiera hasta que empieza a notar las consecuencias— para pasar la información que permitió el ataque, y ahora sostiene con cuidado la conclusión de que Pitt es el culpable.</p>
-<h3>Método de Corliss</h3>
+<h3 id="metodo-de-corliss">Método de Corliss</h3>
 <ul>
 <li>Utilizó la identidad operativa auténtica de Pitt para dar credibilidad al tráfico.</li>
 <li>Preparó un paquete de información sobre el campamento.</li>
@@ -746,7 +761,7 @@
 <li>Dejó, sin querer, fragmentos en las memorias locales del dron, del repetidor y de una antena.</li>
 </ul>
 <p>Corliss no fabrica pruebas falsas perfectas: <strong>construye una conclusión falsa a partir de hechos verdaderos</strong>. Eso es lo que la hace peligrosa y lo que hace falta desmontar pieza a pieza.</p>
-<h3>Tabla de pruebas</h3>
+<h3 id="tabla-de-pruebas">Tabla de pruebas</h3>
 <p>Ninguna tirada aislada resuelve el caso completo. Cada prueba, investigada por separado, aporta una pieza. Una tirada buena aporta información adecuada a la prueba concreta que se examina — no resuelve el caso entero, y no exijas reunir un número fijo de pistas para "ganar" la investigación.</p>
 <table>
 <thead>
@@ -820,7 +835,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Distribución física y temporal de las pistas</h3>
+<h3 id="distribucion-fisica-y-temporal-de-las-pistas">Distribución física y temporal de las pistas</h3>
 <p>Tabla operativa para el Narrador: dónde vive cada pista, quién puede facilitar el acceso, y qué la protege.</p>
 <table>
 <thead>
@@ -939,14 +954,14 @@
 </tbody>
 </table>
 <p>Distingue, al valorar lo que el grupo reúne: <strong>sospecha</strong> (algo no cuadra, sin sustento), <strong>contradicción</strong> (dos piezas que no encajan entre sí), <strong>prueba técnica</strong> (verificable por análisis), <strong>testimonio</strong> (palabra de alguien, sin verificación independiente) y <strong>prueba suficiente para una acusación institucional</strong> (varias piezas técnicas y de coartada que se sostienen juntas). Solo el último nivel convence a alguien como Capricornio sin más esfuerzo.</p>
-<h3>Shepard en este Acto</h3>
+<h3 id="shepard-en-este-acto">Shepard en este Acto</h3>
 <p>Shepard es leal a TecnoStealer, no a Corliss, aunque figure como uno de sus sargentos. Sospecha por los rastros técnicos que encontró en el Acto II y comparte sus dudas solo en lugares seguros. Ayuda activamente si los personajes lo ayudan a él primero —con tiempo, con discreción, con una razón real para confiar—. Si Corliss lo engaña o si no puede demostrar nada, sigue obedeciendo la cadena de mando: no se planta solo con una corazonada. En algún momento puede llegar a decir, casi para sí mismo: <em>"Alguien necesita que Pitt sea culpable. Eso no significa que Pitt sea inocente de todo."</em></p>
-<h3>Capricornio en este Acto</h3>
+<h3 id="capricornio-en-este-acto">Capricornio en este Acto</h3>
 <p>El mismo Inquisidor de <em>La centésima alma</em> (ver el lore de TecnoStealer, sección Los Inquisidores). Curioso, formal, metódico, independiente de Corliss. Puede haber recibido un empujón no confirmado de algún miembro del Triunvirato — el módulo no confirma quién ni si ocurrió realmente, y no hace falta que lo hagas tú tampoco.</p>
 <p>Considera inicialmente plausible la culpabilidad de Pitt: las pruebas iniciales son técnicamente sólidas. Puede vigilar, interrogar, restringir movimientos, detener o fingir una detención — la prisión es una herramienta y una ruta posible, nunca un paso obligatorio. Puede equivocarse sinceramente. <strong>No resuelve la investigación por los personajes</strong> — si ellos no aportan nada, concluye con lo que tenga cuando le corresponda concluir (ver Cronología privada, Semana 8).</p>
-<h3>Respuestas posibles de los personajes</h3>
+<h3 id="respuestas-posibles-de-los-personajes">Respuestas posibles de los personajes</h3>
 <p>Investigación oficial · colaboración con Capricornio · colaboración con Shepard · ayuda clandestina a Pitt · examen técnico de dron, repetidor y antena · búsqueda de testigos · vigilancia sobre Corliss · usar información falsa como trampa para descubrir quién muerde el anzuelo · buscar la misión real de Ladino · entregar el caso a otra corporación · negociar · desentenderse por completo · cualquier plan que no se te haya ocurrido a ti pero sí a ellos.</p>
-<h3>Escalada de Corliss</h3>
+<h3 id="escalada-de-corliss">Escalada de Corliss</h3>
 <p>Si los personajes se acercan demasiado a la verdad, Corliss no salta directamente a la violencia. Sigue este orden de preferencia, y solo pasa al siguiente paso si el anterior no basta:</p>
 <ol>
 <li>Manipulación.</li>
@@ -957,27 +972,27 @@
 <li>Violencia mediante terceros.</li>
 <li>Asesinato — solo como último recurso, y solo si no le queda ninguna otra salida.</li>
 </ol>
-<h3>El vínculo humano de Corliss</h3>
+<h3 id="el-vinculo-humano-de-corliss">El vínculo humano de Corliss</h3>
 <p>En algún momento del Acto, Corliss establece una relación genuina con uno de los personajes a través de algo compartido: un origen parecido, un arma con historia similar, una infancia difícil, una pérdida comparable, un implante o una cicatriz con la misma procedencia, una afición común, o una experiencia militar compartida. Elige el que mejor encaje con la mesa real, no el primero de la lista.</p>
 <p>A través de ese vínculo, Corliss puede proteger a ese PJ, advertirle, dudar de su propio plan por un instante, u ofrecerle un sitio en su cápsula de escape (ver Acto IV). <strong>La oferta no es redención automática, ni obliga al PJ a traicionar a nadie.</strong> Es una grieta humana en alguien que, por lo demás, está jugando a ganar.</p>
 <hr />
-<h2>ACTO IV — PUNTA DE LANZA B</h2>
+<h2 id="acto-iv-punta-de-lanza-b">ACTO IV — PUNTA DE LANZA B</h2>
 <p><img alt="Combate corporativo bajo la lluvia en la jungla, referencia de atmósfera para el asalto a Punta de Lanza B" src="img/monstruoplantas_guerra_jungla.webp" /><br />
 <em>Una posibilidad de cómo se ve el asalto entre muchas — no una reconstrucción exacta de la escena.</em></p>
-<h3>Hechos ya ocurridos — varían según cómo terminó el Acto III</h3>
+<h3 id="hechos-ya-ocurridos-varian-segun-como-termino-el-acto-iii">Hechos ya ocurridos — varían según cómo terminó el Acto III</h3>
 <p>En los tres casos, <strong>la reapertura de Punta de Lanza B es una operación militar legítima</strong> —nunca una gran conspiración orquestada desde arriba— y la teniente Corliss termina al mando de la nueva posición, ascendida a <strong>Capitana Corliss</strong>. Lo que cambia es el contexto exacto en el que llega hasta ahí. <strong>No le regales a los mandos de TecnoStealer una conclusión que los personajes no lograron descubrir o demostrar</strong> — el nivel de sospecha oficial sobre Corliss depende de lo que el grupo consiguió sacar a la luz, ni más ni menos.</p>
 <p><strong>Si el montaje quedó demostrado</strong> (los personajes probaron que Corliss manipuló las pruebas contra Pitt): Pitt puede haber sido exonerado total o parcialmente. Corliss está bajo sospecha, vigilada o todavía protegida por falta de pruebas definitivas que resistan un procedimiento formal — nadie ha podido apartarla del todo, y termina al mando de Punta B de todos modos, ya sea porque la investigación sigue abierta sin conclusión firme o porque sus superiores prefieren vigilarla de cerca antes que actuar sin pruebas sólidas. Capricornio interviene las antenas porque espera que el responsable vuelva a actuar.</p>
 <p><strong>Si solo quedaron contradicciones o dudas</strong> (los personajes reunieron piezas sueltas, sin resolver el caso del todo): el caso no está cerrado de manera satisfactoria. Capricornio mantiene abierta una investigación discreta e interviene las antenas como medida preventiva, sin que eso impida a Corliss asumir el mando de la nueva posición con normalidad aparente.</p>
 <p><strong>Si Pitt parece culpable</strong> (los personajes no descubrieron la verdad, o el caso oficial se cerró contra él): la dirección considera el caso resuelto o casi resuelto. Corliss asciende por su aparente eficacia — nadie en la cúpula sabe lo que ella sabe de verdad. Capricornio conserva una reserva personal y vigila las antenas porque el caso le resulta demasiado perfecto, no porque conozca la verdad.</p>
-<h3>Si los personajes no acompañan a Corliss a Punta B</h3>
+<h3 id="si-los-personajes-no-acompanan-a-corliss-a-punta-b">Si los personajes no acompañan a Corliss a Punta B</h3>
 <p><strong>El traslado a Punta B no es obligatorio.</strong> Corliss asciende y manda la nueva posición pase lo que pase, pero que los personajes vayan con ella es una decisión suya, no un hecho automático del guion. Si deciden quedarse en el Puesto Fronterizo principal —o son reasignados allí—, <strong>el asedio sucede exactamente igual</strong>: las siete fases, las fuerzas fijas y la cronología de Serpent no dependen de la presencia de los PJ en el lugar.</p>
 <p><strong>Broile es la perspectiva y el enlace desde el Puesto principal</strong> — su propia ficha ya lo establece: coordina la respuesta de TecnoStealer, gestiona comunicaciones y refuerzos, y decide qué puede permitirse enviar (ver Reparto y relaciones). Úsalo como el canal por el que los personajes viven el asedio desde fuera.</p>
 <p>Desde esa posición, los PJ pueden: recibir comunicaciones fragmentarias e incompletas sobre cómo avanza cada fase; pedir a Broile que los despliegue hacia Punta B en algún punto del asedio (llegando como refuerzo tardío, con las consecuencias de tiempo que eso implique); realizar tareas concretas desde el Puesto principal (gestionar la respuesta de TecnoStealer, preparar una vía de refuerzo, sostener la retaguardia); o decidir, con conocimiento de causa, no intervenir en absoluto.</p>
 <p><strong>No inventes un segundo Acto IV completo.</strong> No hace falta narrar las siete fases dos veces. Para cada frente en el que los PJ no estén presentes, resuélvelo fuera de cámara con la misma lógica que ya usa la Fase 4 para los frentes desatendidos (una tirada del responsable, modificada por la preparación previa — ver Preparaciones y Frentes de ruptura) y comunica después las consecuencias como noticias que llegan al Puesto principal: quién resistió, qué se perdió, qué pasó con Pitt y con Corliss. Si los PJ piden desplegarse a mitad del asedio, insértalos en la fase que esté en curso en ese momento.</p>
 <p><strong>No los traslades automáticamente ni les quites la decisión.</strong> Si el grupo elige quedarse, esa elección es válida y tiene sus propias consecuencias narrativas — no una versión empobrecida del Acto IV, sino el mismo Acto IV visto y vivido desde otro lugar.</p>
-<h3>Duración</h3>
+<h3 id="duracion">Duración</h3>
 <p>Varios días, aproximadamente una semana de preparación — no otros dos meses. Este Acto se juega con urgencia real.</p>
-<h3>Localización — esquema de ocho zonas</h3>
+<h3 id="localizacion-esquema-de-ocho-zonas">Localización — esquema de ocho zonas</h3>
 <p>No hace falta todavía un mapa gráfico, pero este esquema debe permitir crear uno después:</p>
 <ol>
 <li><strong>Módulo de mando</strong> — coordinación, comunicaciones internas, mapa de situación.</li>
@@ -989,7 +1004,7 @@
 <li><strong>Conducto o túnel antiguo</strong>, de unos dos kilómetros, hacia una torre semiderruida — restos de una presencia anterior de Serpent en la zona, con ordenadores incompletos y fragmentos de información parcial. No contiene una solución obligatoria ni resuelve la investigación por sí solo: es terreno, no un atajo narrativo.</li>
 <li><strong>Cápsula oculta de Corliss</strong>, fuera del perímetro — ver más abajo.</li>
 </ol>
-<h3>Preparaciones</h3>
+<h3 id="preparaciones">Preparaciones</h3>
 <p><strong>Los personajes no pueden completarlo todo</strong> en el tiempo disponible — una semana escasa exige elegir. <strong>La preparación altera las condiciones del asedio, no borra enemigos ni elimina dotaciones completas</strong> salvo que los personajes preparen y ejecuten una acción concreta que lógicamente lo consiga. Una zona bien preparada retrasa al enemigo, revela información antes de tiempo, abre rutas, preserva recursos, salva vidas, permite actuar con ventaja o cambia cuándo llega la ayuda; una zona descuidada colapsa antes y sin aviso. La fuerza de Serpent (más abajo) es fija en cualquier caso.</p>
 <table>
 <thead>
@@ -1082,7 +1097,7 @@
 </tbody>
 </table>
 <p>No conviertas esta tabla en un minijuego de gestión ni inventes puntos abstractos de construcción — cada preparación es una escena o una tirada concreta, resuelta una vez, con un efecto claro.</p>
-<h3>Objetivos de Serpent</h3>
+<h3 id="objetivos-de-serpent">Objetivos de Serpent</h3>
 <ol>
 <li>Deslegitimar a Pitt.</li>
 <li>Presentarlo como colaborador de Serpent.</li>
@@ -1093,7 +1108,7 @@
 <li>Retirarse antes de que llegue una respuesta superior.</li>
 </ol>
 <p>Corliss espera una extracción quirúrgica y discreta. <strong>Serpent envía una fuerza masiva</strong> — y de paso demuestra, sin decirlo, que ella también es prescindible.</p>
-<h3>Fuerza fija de Serpent (no escalar)</h3>
+<h3 id="fuerza-fija-de-serpent-no-escalar">Fuerza fija de Serpent (no escalar)</h3>
 <table>
 <thead>
 <tr>
@@ -1128,7 +1143,7 @@
 <p>Usa las mismas fichas del Acto I (Sierpe, Bots artillería ligera, Droides C30) — no cambian, solo se multiplican por cinco.</p>
 <p><strong>Apoyo aéreo:</strong> una nave grande con artillería media, y dos <strong>Speedsters</strong> (naves de ataque a vuelo con cañón ligero).</p>
 <p>Los personajes <strong>no tienen que destruir personalmente toda la fuerza</strong> — el asedio se resuelve por objetivos y decisiones, no por contar bajas una a una.</p>
-<h3>La transmisión</h3>
+<h3 id="la-transmision">La transmisión</h3>
 <p>Corliss transmite desde las antenas porque no puede hacerlo desde el puesto orbital —a ella la destinan al campamento, no a la órbita—. Capricornio ya las ha intervenido. Según cómo salga esa transmisión:</p>
 <ul>
 <li><strong>Completa:</strong> Serpent conoce las defensas de Punta de Lanza B con detalle.</li>
@@ -1136,7 +1151,7 @@
 <li><strong>Alterada:</strong> parte del desembarco de Serpent puede caer directamente en una trampa preparada por los personajes.</li>
 </ul>
 <p><strong>El ataque ya está preparado y no se cancela automáticamente en ningún caso</strong> — lo que cambia con la transmisión es cuánto sabe Serpent, no si viene.</p>
-<h3>Fases del asedio</h3>
+<h3 id="fases-del-asedio">Fases del asedio</h3>
 <p>Siete escenas encadenadas, no siete combates iguales. Cada una tiene su propia situación, sus propios frentes y su propia transición a la siguiente.</p>
 <h4>Fase 1 — Interferencia</h4>
 <p><strong>Qué está ocurriendo:</strong> Serpent activa un dispositivo de interferencia de corto alcance sobre Punta de Lanza B, momentos antes del desembarco.<br />
@@ -1284,11 +1299,11 @@
 - <strong>Tarde:</strong> Serpent ya se ha retirado con lo que consiguió, dejando máquinas abandonadas o dañadas como único rastro.<br />
 - <strong>Demasiado tarde:</strong> la respuesta solo llega a tiempo de asistir en la evacuación y el recuento de daños, no de cambiar el resultado del asedio.</p>
 <p><strong>No debe borrar lo realizado por los personajes.</strong> La respuesta de TecnoStealer resuelve lo que quede pendiente del asedio militar — no deshace las decisiones ya tomadas sobre el destino de Pitt, de Corliss o del propio Puesto.</p>
-<h3>Maestro de Drones en juego</h3>
+<h3 id="maestro-de-drones-en-juego">Maestro de Drones en juego</h3>
 <p>Shepard despliega en este Acto su mochila militar completa: 5 drones ordinarios (2 Espía, 2 Escudo, 1 Ataque) y una mochila de 20 drones de ataque, 20 de defensa y cuatro enjambres de cada tipo, ya organizados en grupos de cinco (ver El Taller del Errante, y Fichas más abajo). Deja que su presencia enseñe la Especialización jugando el asedio, no explicándola antes de empezar. Ejemplos concretos de despliegue, más abajo en "Maestro de Drones y asedio".</p>
-<h3>Ayuda de TecnoStealer</h3>
+<h3 id="ayuda-de-tecnostealer">Ayuda de TecnoStealer</h3>
 <p><strong>No hay una flota escondida esperando la señal.</strong> La respuesta se moviliza solo después de la transmisión interceptada o de la alarma del propio asedio. Su tiempo de llegada depende de las comunicaciones disponibles, de si queda una baliza operativa, de la precisión de la información que reciban, de cualquier sabotaje sufrido, y de las acciones concretas de los personajes. Puede llegar pronto, puede llegar tarde, y puede llegar demasiado tarde para salvar la posición — no des por hecho ninguno de los tres desenlaces de antemano.</p>
-<h3>Cápsula de Corliss</h3>
+<h3 id="capsula-de-corliss">Cápsula de Corliss</h3>
 <ul>
 <li>Diseñada para una sola persona.</li>
 <li>Dos personas caben físicamente, pero con ello pierde autonomía, maniobra y seguridad.</li>
@@ -1297,15 +1312,15 @@
 <li><strong>La oferta no es redención automática ni obliga al PJ a traicionar a nadie.</strong></li>
 </ul>
 <hr />
-<h2>ACTO V — DESENLACES</h2>
+<h2 id="acto-v-desenlaces">ACTO V — DESENLACES</h2>
 <p>No uses una única victoria o derrota. Evalúa por separado estos cinco ejes — la combinación real de los cinco es el desenlace de la campaña, no una tabla que marcar de arriba abajo.</p>
-<h3>1. El Puesto</h3>
+<h3 id="1-el-puesto">1. El Puesto</h3>
 <ul>
 <li><strong>Conservado</strong> — resiste el asedio en pie.</li>
 <li><strong>Inutilizado pero evacuado</strong> — se pierde como posición, pero la gente sale con vida.</li>
 <li><strong>Destruido</strong> — se pierde todo, con las bajas que eso implique.</li>
 </ul>
-<h3>2. Pitt</h3>
+<h3 id="2-pitt">2. Pitt</h3>
 <ul>
 <li><strong>Exonerado</strong> — su implicación real queda aclarada ante quien importa.</li>
 <li><strong>Vivo pero sospechoso</strong> — sobrevive, pero la sombra no se disipa del todo.</li>
@@ -1313,7 +1328,7 @@
 <li><strong>Muerto</strong>.</li>
 <li><strong>Entregado voluntariamente</strong> — se entrega para proteger algo o a alguien, sabiendo el coste.</li>
 </ul>
-<h3>3. Corliss</h3>
+<h3 id="3-corliss">3. Corliss</h3>
 <ul>
 <li><strong>Escapa sola</strong>.</li>
 <li><strong>Escapa con el PJ vinculado</strong>.</li>
@@ -1322,20 +1337,20 @@
 <li><strong>Muere</strong>.</li>
 <li><strong>Ayuda parcialmente y después huye o es detenida</strong> — colabora lo justo antes de intentar salvarse.</li>
 </ul>
-<h3>4. La comunidad del Puesto</h3>
+<h3 id="4-la-comunidad-del-puesto">4. La comunidad del Puesto</h3>
 <ul>
 <li><strong>Unida</strong> — el Puesto que sobrevive sale más cohesionado de lo que entró.</li>
 <li><strong>Fracturada</strong> — quedan recriminaciones, desconfianza entre secciones, culpas mal repartidas.</li>
 <li><strong>Dispersa</strong> — traslados, bajas y reasignaciones deshacen buena parte del grupo humano que los personajes llegaron a conocer.</li>
 </ul>
-<h3>5. Las pruebas</h3>
+<h3 id="5-las-pruebas">5. Las pruebas</h3>
 <ul>
 <li><strong>Completas</strong> — el caso queda documentado sin ambigüedad.</li>
 <li><strong>Parciales</strong> — hay piezas, pero no todas encajan de forma incuestionable.</li>
 <li><strong>Solo testimonios</strong> — nada técnico sobrevive, solo lo que la gente vio y recuerda.</li>
 <li><strong>Perdidas</strong> — el asedio se llevó por delante hasta la posibilidad de demostrar nada.</li>
 </ul>
-<h3>Combinaciones de ejemplo</h3>
+<h3 id="combinaciones-de-ejemplo">Combinaciones de ejemplo</h3>
 <p>Los cinco ejes se combinan libremente — estos ejemplos ilustran cómo leerlos juntos. <strong>No son finales obligatorios</strong>, solo puntos de referencia.</p>
 <p><strong>Puesto destruido + comunidad salvada + pruebas completas.</strong> La posición se pierde, pero nadie muere que no tuviera que morir, y queda constancia clara de lo ocurrido. <em>Versión oficial probable:</em> "Punta de Lanza B cayó tras un ataque masivo de Serpent; la guarnición se replegó con éxito, sin bajas civiles." <em>Continuación posible:</em> la semilla "Recuperación de Punta B", con las pruebas ya aseguradas para respaldar cualquier decisión política posterior.</p>
 <p><strong>Puesto conservado + Pitt capturado + Corliss huida.</strong> Se gana la posición, pero se pierde a Pitt, y la responsable escapa sin que nadie lo sepa todavía con certeza. <em>Versión oficial probable:</em> "Punta de Lanza B resistió el ataque; el teniente Pitt fue capturado por fuerzas Serpent durante el asedio." <em>Continuación posible:</em> activa directamente la semilla "Rescate de Pitt".</p>
@@ -1345,20 +1360,20 @@
 <p><strong>Respuesta tardía + Pitt entregado voluntariamente.</strong> Pitt decide entregarse para evitar más muertes antes de que llegue la ayuda — un gesto que nadie le exigió. <em>Versión oficial probable:</em> normalmente omite el gesto voluntario y lo presenta como una captura más. <em>Continuación posible:</em> "Rescate de Pitt", con el matiz de que se entregó por decisión propia, no por derrota.</p>
 <p><strong>Puesto conservado + Pitt exonerado + Corliss escapa con el PJ vinculado + comunidad unida + pruebas parciales.</strong> El mejor desenlace posible en lo militar y lo humano, empañado por una decisión personal que el PJ vinculado tendrá que cargar. <em>Versión oficial probable:</em> éxito total, sin mención alguna del paradero de Corliss ni de quién viajó con ella. <em>Continuación posible:</em> "La cápsula de Corliss" se convierte en la historia personal de un solo PJ, no en un asunto oficial del Puesto.</p>
 <p><strong>Puesto destruido + Pitt muerto + Corliss capturada + comunidad dispersa + pruebas solo testimonios.</strong> El peor desenlace jugable sin ser un fracaso narrativo — todo el mundo pierde algo, y lo que queda son historias, no documentos. <em>Versión oficial probable:</em> un informe breve y frío que reduce meses de convivencia a una lista de bajas y pérdidas materiales. <em>Continuación posible:</em> "Intercambio de prisioneros" gira en torno a Corliss, ya sin nada que la proteja de las consecuencias.</p>
-<h3>Rendición e intercambio (posibilidad, no final obligatorio)</h3>
+<h3 id="rendicion-e-intercambio-posibilidad-no-final-obligatorio">Rendición e intercambio (posibilidad, no final obligatorio)</h3>
 <p>Conserva como una posibilidad más —no la única, ni la inevitable— el final original de esta aventura: la superioridad de la respuesta de TecnoStealer fuerza la rendición de las fuerzas Serpent presentes, seguida de un intercambio de prisioneros entre ambas corporaciones. Esto puede ocurrir, ocurrir parcialmente, o no ocurrir en absoluto, según cómo se haya resuelto el Acto IV.</p>
-<h3>Recompensas posibles</h3>
+<h3 id="recompensas-posibles">Recompensas posibles</h3>
 <p>Ascenso · REC y reputación según las reglas vigentes · nuevos contratos · equipo · reparación del material dañado · un favor corporativo pendiente · un contacto con Capricornio · la confianza ganada de Shepard o de Pitt · un traslado · responsabilidad sobre una unidad propia · acceso futuro a Maestro de Drones si se cumplen sus requisitos de desbloqueo · información valiosa · una deuda que Corliss deja pendiente, para bien o para mal.</p>
 <p><strong>No regales Maestro de Drones automáticamente como recompensa</strong> — sigue exigiendo sus requisitos de desbloqueo (El Taller del Errante) igual que a cualquier otro personaje.</p>
-<h3>Epílogo humano</h3>
+<h3 id="epilogo-humano">Epílogo humano</h3>
 <p>Cierra la aventura con una escena concreta, no con un resumen. Algunas opciones: el comedor, ya sin la tensión de antes o todavía con ella; Hierro pasando revista a lo que queda de su gente; un dron reparado con cariño; Pitt en una celda o en una camilla, según su desenlace; Capricornio guardando una pieza de prueba antes de irse; Niebla haciendo una pregunta que nadie sabe responder del todo; Corliss, si escapó, vista por última vez desde la cápsula; la jungla, ya empezando a cubrir lo que quedó del combate.</p>
 <p>Después de la escena, un informe oficial —más limpio, más ordenado y menos verdadero que lo que los personajes vivieron— cierra el módulo.</p>
 <hr />
-<h2>FICHAS</h2>
+<h2 id="fichas">FICHAS</h2>
 <p>Clasificación de todo lo que aparece en este módulo. Los organismos usan Sano/Herido/Tullido; las máquinas y componentes conservan su propio sistema de PV cuando su ficha lo establece, sin forzar terminología orgánica sobre ellos (Mecánicas del Sistema).</p>
-<h3>Pauta general para habilidades no listadas</h3>
+<h3 id="pauta-general-para-habilidades-no-listadas">Pauta general para habilidades no listadas</h3>
 <p>Ninguna ficha de esta sección reproduce una creación completa. Para cualquier habilidad no listada, calcula la base por atributos de la fórmula correspondiente (Mecánicas del Sistema, Tabla de fórmulas base) sin bono de profesión — y solo desarróllala del todo si una escena concreta la necesita con detalle.</p>
-<h3>PNJ completos (participan repetidamente en investigación o combate)</h3>
+<h3 id="pnj-completos-participan-repetidamente-en-investigacion-o-combate">PNJ completos (participan repetidamente en investigación o combate)</h3>
 <p><strong>Capitán Broile</strong><br />
 Atributos: AGI 30, CON 30, FUE 34, HAB 35, CAR 30, INT 28, PER 32, VOL 32.<br />
 Habilidades relevantes: Arma CC Media 65% (Daño 4, Pen 2), Distancia (fusil) 65% (Daño 4, Pen 2), Liderazgo 55% (coordinación táctica de la guarnición).<br />
@@ -1416,7 +1431,7 @@ Trayectoria: ver Trayectorias profesionales (9 — 3× Combatiente, 3× Científ
 <p><strong>Efecto sobre su ficha (PV base 10).</strong> Activada desde Sano completo (10/10), el pago de 12 PV agota los 10 de Sano y los 2 sobrantes entran en Herido: resultado <strong>Sano 0/10 · Herido 8/10 · Tullido 10/10</strong> — queda Herida (−10 a todas las habilidades) de inmediato, en cualquier caso. <strong>Si se activa ya Herida o Tullida, el pago puede dejarla Tullida o, si su Tullido restante es igual o inferior a 12, matarla</strong> — con solo 10 puntos de capacidad en Tullido, cualquier activación hecha con el Tullido ya en uso agota ese nivel por completo. Actívala en mesa como lo que es: un recurso de última hora con un coste real, nunca gratuito.<br />
 <strong>Cómo describirla en mesa:</strong> los dos ataques automáticos salen de un par de brazales integrados en sus antebrazos, más gruesos de lo que un cuerpo tan pequeño debería poder sostener; el lanzagranadas de tres cañones lo lleva a la espalda, plegado como una mochila hasta que lo despliega sobre el hombro para disparar; el ataque eléctrico chisporrotea entre sus manos desnudas, sin arma visible, como si lo sacara de sí misma; la marca de teleportación es un símbolo que lleva grabado o tatuado en la piel —visible solo cuando se activa, un instante antes de que desaparezca—. No hace falta explicar de dónde sale nada de esto: basta con describirlo así, sin más.</p>
 <p><strong>Valiente y Snacker</strong> (Nakel) — usan la ficha genérica de Nakel del Bestiario: Blindaje 5, Distancia 60% (Daño 3, Pen 2), Melé 80% (Daño 3, Pen 1; veneno: Resistir Constitución o −10 a todas las habilidades durante 1d6 asaltos), PV 8/8/8. El <code>3</code> de la línea compacta del Bestiario es Daño base, no Cadencia — no lleva ráfaga ni éxito adicional. <strong>Bonificación de Valiente:</strong> +5 a Distancia (65% total) por su mayor trayectoria (ver tabla) — pura práctica de cazador de máquinas, no una regla nueva de Nakel ni un cambio a la ficha genérica. El resto no cambia.</p>
-<h3>PNJ funcionales (formato ligero)</h3>
+<h3 id="pnj-funcionales-formato-ligero">PNJ funcionales (formato ligero)</h3>
 <p><strong>Misty Junker</strong> — Sargento 1º de Corliss.<br />
 <strong>Qué sabe:</strong> la logística diaria de su sección al detalle — energía, soporte vital, repuestos, piezas, material médico; quién falta a su turno; quién ha estado raro últimamente.<br />
 <strong>Qué cree equivocadamente:</strong> que sirve lealmente a una oficial ejemplar.<br />
@@ -1485,12 +1500,12 @@ Atributos: AGI 24, CON 22, FUE 24, HAB 28, CAR 28, INT 30, PER 32, VOL 26. Arma 
 </tbody>
 </table>
 <p><strong>Ícaro</strong> — rata voladora, mascota de Valiente. INT 20, no combate; explora y hace de mensajero a corta distancia.</p>
-<h3>Máquinas (Tipo B — conservan su propio sistema de PV)</h3>
+<h3 id="maquinas-tipo-b-conservan-su-propio-sistema-de-pv">Máquinas (Tipo B — conservan su propio sistema de PV)</h3>
 <p><strong>Sierpe</strong> — Blindaje 4, Melé 70% (eléctrico), Daño 5, Pen 2, PV 20.<br />
 <strong>Bots artillería ligera</strong> — Blindaje 5, Distancia 50%, Daño 10, Pen 2, PV 20.<br />
 <strong>Droides C30</strong> — Blindaje 2, Distancia 40%, Daño 3, Cadencia 3 (ráfaga, +1 éxito adicional); puede usar Fuego repartido si asigna al menos 25 puntos de Distancia a cada objetivo, PV 12.</p>
 <p>Estas tres fichas son las mismas del Acto I y del Acto IV — no cambian entre actos, solo se multiplican por el número de vainas caídas en cada uno.</p>
-<h3>Maestro de Drones y asedio — inventario de Shepard</h3>
+<h3 id="maestro-de-drones-y-asedio-inventario-de-shepard">Maestro de Drones y asedio — inventario de Shepard</h3>
 <p>Sigue las reglas vigentes de la Especialización avanzada (El Taller del Errante) y de enjambres (Mecánicas del Sistema, Ataque en grupo). No inventes un sistema alternativo de hordas.</p>
 <p><strong>Cinco drones ordinarios:</strong> 2 Espía (Vigilar), 2 Escudo (Blindaje +1 a quien cubran), 1 Ataque.</p>
 <p><strong>Mochila militar:</strong> 20 drones de ataque, 20 drones de defensa, repartidos en cuatro enjambres de ataque de cinco unidades y cuatro enjambres de defensa de cinco unidades.</p>
@@ -1508,7 +1523,7 @@ Atributos: AGI 24, CON 22, FUE 24, HAB 28, CAR 28, INT 30, PER 32, VOL 26. Arma 
 <li><strong>Si Shepard queda herido, aislado o pierde el enlace:</strong> los enjambres ya desplegados siguen actuando con su última orden general (defender la zona asignada, o replegarse si no tienen instrucción clara) — no desaparecen, pero no reciben nuevas órdenes tácticas hasta que Shepard recupere el control o alguien más cualificado lo sustituya.</li>
 <li><strong>Cómo puede ayudar un PJ sin convertirse en Maestro de Drones:</strong> puede operar un enjambre ya desplegado con una tirada de Programación (usando su propia habilidad, no la de Shepard) mientras Shepard está ocupado con otro frente, o simplemente proteger físicamente a Shepard para que él siga controlando los suyos — ninguna de las dos cosas desbloquea la Especialización avanzada por sí sola.</li>
 </ul>
-<h3>Ruta de prisión — semilla narrativa, sin fichas de combate auditadas</h3>
+<h3 id="ruta-de-prision-semilla-narrativa-sin-fichas-de-combate-auditadas">Ruta de prisión — semilla narrativa, sin fichas de combate auditadas</h3>
 <p>Esta ruta no tiene, de momento, fichas de combate contrastadas contra el canon vigente. Si el grupo o Pitt terminan en prisión en algún punto de la historia, dirígela como escena de investigación y ambiente; <strong>si la escena deriva en combate real, desarrolla o usa antes un módulo específico de prisión con fichas propias</strong> — no emplees números de versiones anteriores de este documento, que usaban notación ya retirada del sistema.</p>
 <p>Lo que se conserva:</p>
 <ul>
@@ -1519,10 +1534,10 @@ Atributos: AGI 24, CON 22, FUE 24, HAB 28, CAR 28, INT 30, PER 32, VOL 26. Arma 
 <p><strong>Theodore Probe («Tatu», familia Juxon)</strong> — personalidad organizada. Criado en las calles sin conocer a su familia de sangre; infancia nómada de ciudad en ciudad, en una familia de exiliados corporativos a la que considera su verdadera familia. TecnoStealer los acogió a todos y les debe mucho. La persona que más aprecia es su amante; ella cree que lo más valioso para él es el honor, pero él piensa que las personas son <strong>herramientas</strong> que usa y descarta. Objeto preciado: una antigua ocarina peruana del siglo XIV. Rival muy profesional.</p>
 <p><strong>Demóstenes (en prisión: «Berbenes»)</strong> — detenido por permitir que escapara un espía que se hizo pasar por amigo y lo traicionó. Lleva, en lugar de esqueleto, un droide de combate que protege su necrochip, además de implantes de incremento físico. Luchar contra él da la impresión de enfrentarse a una máquina imparable — su ficha de combate exacta espera al mismo desarrollo que el resto de esta ruta.</p>
 <hr />
-<h2>MÓDULOS EXISTENTES Y POSIBLES</h2>
-<h3>Conexiones existentes</h3>
+<h2 id="modulos-existentes-y-posibles">MÓDULOS EXISTENTES Y POSIBLES</h2>
+<h3 id="conexiones-existentes">Conexiones existentes</h3>
 <p>Este módulo comparte mundo con DLC Monstruoplantas (mismo planeta, mismo Puesto Fronterizo, mismo frente de guerra) y con el lore activo de TecnoStealer y de los Inquisidores, en el que el Inquisidor de Capricornio es una figura recurrente que puede reaparecer en otras aventuras de la corporación.</p>
-<h3>Posibles módulos derivados</h3>
+<h3 id="posibles-modulos-derivados">Posibles módulos derivados</h3>
 <p>Semillas nacidas de consecuencias reales de esta aventura. Ninguna es obligatoria de jugar.</p>
 <p><strong>Rescate de Pitt</strong> — si Serpent lo captura en el Acto IV. <em>Actores:</em> Serpent, los seguidores de Ladino. <em>Decisión abierta:</em> ¿hasta dónde llegar por un espía que quizá nunca lo agradezca? <em>Muestra del mundo:</em> cómo trata Serpent a un prisionero de valor propagandístico.</p>
 <p><strong>La cápsula de Corliss</strong> — si escapa. <em>Problema local:</em> dónde aterriza y en qué se convierte su huida. <em>Actores:</em> la propia Corliss, quien la reciba en territorio Serpent. <em>Muestra del mundo:</em> qué le espera a una agente que ha quemado su tapadera.</p>
@@ -1536,6 +1551,6 @@ Atributos: AGI 24, CON 22, FUE 24, HAB 28, CAR 28, INT 30, PER 32, VOL 26. Arma 
 <p><strong>Consecuencias políticas del informe de Capricornio</strong> — cómo se recibe su conclusión, sea cual sea, en las esferas altas de TecnoStealer.</p>
 <p><strong>Intercambio de prisioneros</strong> — si la rendición de Serpent llega a producirse, la logística y la tensión de ese intercambio.</p>
 <p><strong>Restos abandonados de las vainas</strong> — qué queda del material de las vainas destruidas, y quién más lo quiere.</p>
-</div>
+</main>
 </body>
 </html>

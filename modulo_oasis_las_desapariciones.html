@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — Las Desapariciones"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa-ruta-por-defecto">Verdad completa (ruta por defecto)</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h3"><a href="#rutas-alternativas-punto-15-del-dlc-no-desarrolladas-aqui-en-detalle">Rutas alternativas (Punto 15 del DLC, no desarrolladas aquí en detalle)</a></li><li class="toc-h2"><a href="#reparto">Reparto</a></li><li class="toc-h3"><a href="#verek-el-responsable">Verek — el responsable</a></li><li class="toc-h3"><a href="#dreska-vendedora-nerviosa-de-implantes-de-segunda-mano">Dreska — vendedora nerviosa de implantes de segunda mano</a></li><li class="toc-h3"><a href="#operador-de-mort-comprador-fijo">Operador de Mort — comprador fijo</a></li><li class="toc-h3"><a href="#crix-camarero-veterano-pnj-ya-establecido-en-el-dlc">Crix — camarero veterano (PNJ ya establecido en el DLC)</a></li><li class="toc-h3"><a href="#sael-una-de-las-proximas-victimas">Sael — una de las próximas víctimas</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-el-barrio-pregunta">Escena 1 — El barrio pregunta</a></li><li class="toc-h3"><a href="#escena-2-la-vendedora-nerviosa">Escena 2 — La vendedora nerviosa</a></li><li class="toc-h3"><a href="#escena-3-seguir-el-rastro">Escena 3 — Seguir el rastro</a></li><li class="toc-h3"><a href="#escena-4-el-punto-de-extraccion">Escena 4 — El punto de extracción</a></li><li class="toc-h3"><a href="#escena-5-que-se-hace-con-la-red">Escena 5 — Qué se hace con la red</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — Las Desapariciones</h1>
 <p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -38,7 +53,7 @@
 <p><img alt="Puesto de implantes de segunda mano en un mercado nocturno de los niveles bajos de Oasis, con una pieza cibernética expuesta junto a un cartel de desaparecido en la columna del fondo" src="img/oasis_desapariciones_mercado_implantes.png" /><br />
 <em>Una pieza demasiado barata y demasiado reciente. Nadie que la mira dos veces pregunta de dónde vino.</em></p>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> cinco personas han desaparecido en dos semanas, en el mismo barrio entre los niveles bajos y comerciales de Oasis. Sin notas, sin peleas previas, sin cuerpos casi nunca — y cuando aparece uno, le faltan implantes u órganos cibernéticos de valor. La policía de barrio no tiene orden clara de investigar a fondo; los propios vecinos ya han empezado a hacerlo por su cuenta.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas, en varias noches de juego dentro de la ficción (no una sola noche continua). Periodo recomendado: antes del despertar. Perspectiva: nativos o mixta.</p>
 <p><strong>Qué saben los PJ:</strong> los carteles de desaparecidos, capas y capas de ellos; el rumor de barrio; que la policía prefiere detener a un forastero antes que investigar de verdad.</p>
@@ -46,7 +61,7 @@
 <p><strong>Objetivo inmediato:</strong> encontrar a Verek y detener las extracciones antes de que desaparezca alguien más — y, si llegan a tiempo, antes de que llegue el turno de Sael, una de las próximas víctimas ya elegidas.</p>
 <p><strong>Pregunta de fondo:</strong> Oasis presume de que a nadie le faltan alimentación, sanidad ni educación por defecto — pero cuando alguien no tiene a nadie con influencia detrás, ¿qué le impide convertirse literalmente en piezas de recambio para quien sí la tiene?</p>
 <p><strong>Si nadie interviene:</strong> la cifra de desaparecidos sigue subiendo, el mercado negro de implantes se vuelve más difícil de rastrear, y la policía sigue deteniendo forasteros en vez de investigar — lo que puede golpear directamente a los propios PJ si no encajan del todo en la ciudad.</p>
-<h3>Desarrollo en cinco escenas</h3>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
 <ol>
 <li>El barrio pregunta — carteles, rumores, y un precedente que algunos todavía recuerdan.</li>
 <li>La vendedora nerviosa — un mercado de implantes de segunda mano con más respuestas de las que parece.</li>
@@ -55,7 +70,7 @@
 <li>Qué se hace con la red — Verek, el comprador, y una ciudad que decide cuánto le importa esto de verdad.</li>
 </ol>
 <hr />
-<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Presión narrativa, no cuenta atrás de horas:</strong> este módulo se investiga a lo largo de varias noches de ficción, no en una sola sesión de reloj. No fuerces horas exactas — la presión viene de que <strong>cada noche que pasa sin una pista real, el riesgo de una sexta desaparición crece</strong>. Usa esa idea para decidir cuándo introducir la Escena 3 (el grupo ya tiene lo suficiente para seguir un rastro real) en vez de una tabla de tiempo.</p>
 <p><strong>Cómo avanza el tiempo de ficción:</strong> cada escena puede ocupar su propia noche, con el día entre medias resuelto en una frase ("preguntáis durante el día, sin mucho más que rumores repetidos"). No hace falta simular las horas de luz.</p>
 <p><strong>Las tres partes, en una frase:</strong><br />
@@ -73,20 +88,20 @@
 <li><strong>Qué adelanta o retrasa a Verek:</strong> cada noche sin que el grupo actúe es una noche más cerca de que elija a su próxima víctima; una pista mal gestionada (alertarlo sin querer) lo hace más cauto y retrasa su próximo movimiento, pero no lo detiene.</li>
 </ul>
 <hr />
-<h2>Lo que ocurrió realmente</h2>
-<h3>Verdad completa (ruta por defecto)</h3>
+<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
+<h3 id="verdad-completa-ruta-por-defecto">Verdad completa (ruta por defecto)</h3>
 <p>Hace años, un caso ya cerrado —el Taller del Carnicero— consistió en un vendedor de implantes de segunda mano que resultó ser el responsable de una ola similar, descubierto demasiado tarde y silenciado por alguien antes de que pudiera hablar. Verek conocía el caso de primera mano: trabajaba entonces en el mismo gremio. Cuando perdió su licencia legítima —la reconstrucción favoreció a proveedores corporativos y grandes clínicas, dejando fuera a técnicos independientes como él— retomó el patrón en solitario, convencido de que solo está haciendo lo que el sistema ya le enseñó a hacer, con gente que el propio sistema ya había abandonado.</p>
 <p>Elige a sus víctimas entre quienes no tienen a nadie con influencia real detrás — perfiles variados a propósito, unidos solo por esa ausencia. Extrae los implantes con la misma limpieza profesional que aprendió legítimamente, y vende a través de un comprador fijo conectado con el Operador de Mort, que no hace preguntas sobre el origen.</p>
 <p>Dreska, vendedora del mercado de implantes, ha empezado a notar que circulan piezas "demasiado baratas y demasiado recientes" — sospecha de dónde vienen, pero no lo suficiente como para señalarlo sin pruebas, ni tan poco como para no ponerse nerviosa cuando se lo preguntan directamente.</p>
-<h3>Qué saben los PJ y qué no</h3>
+<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si esto tiene alguna relación con el despertar o con las corporaciones infiltradas — no la tiene, en esta ruta, y el módulo no debe insinuar lo contrario.</p>
-<h3>Tono</h3>
+<h3 id="tono">Tono</h3>
 <p>Investigación urbana con textura social real — desigualdad, precariedad, gente que nadie más va a buscar. Verek debe resultar comprensible, no un monstruo de manual. El rescate de Sael, si se logra, debe sentirse como una victoria concreta, no abstracta.</p>
-<h3>Rutas alternativas (Punto 15 del DLC, no desarrolladas aquí en detalle)</h3>
+<h3 id="rutas-alternativas-punto-15-del-dlc-no-desarrolladas-aqui-en-detalle">Rutas alternativas (Punto 15 del DLC, no desarrolladas aquí en detalle)</h3>
 <p>El propio DLC Oasis deja explícitamente abierto que estas desapariciones pueden explicarse de otras tres formas —tráfico de mano de obra hacia las colonias, contención silenciosa ligada al despertar, o una comunidad de "retiro" con un líder captador— y anima al Narrador a elegir o combinar. Este módulo desarrolla la ruta 1 (reciclaje de repuestos) al completo porque es la más concreta y autosuficiente; si la mesa prefiere otra ruta, la estructura de escenas (barrio → pista concreta → rastro → confrontación → consecuencias) sigue sirviendo — solo cambia quién y por qué en las Escenas 2 a 5.</p>
 <hr />
-<h2>Reparto</h2>
-<h3>Verek — el responsable</h3>
+<h2 id="reparto">Reparto</h2>
+<h3 id="verek-el-responsable">Verek — el responsable</h3>
 <p><em>Aspecto:</em> manos de técnico, precisas incluso temblando; ropa práctica y limpia, nada que llame la atención; mirada de quien ha ensayado su propia justificación tantas veces que ya suena sincera.</p>
 <p>PNJ interpretable (3-4 profesiones), sin ficha de combate destacada.</p>
 <p>F30/A35/P45/V40 | PV 14/14/14 | Bld 0 | Medicina/Cirugía 60% | Sigilo 40%</p>
@@ -95,14 +110,14 @@
 <li>No busca la confrontación — huye antes que luchar, salvo que lo acorralen sin salida física.</li>
 <li>Sin PJ: completa una sexta extracción y se traslada de barrio, más difícil de rastrear después.</li>
 </ul>
-<h3>Dreska — vendedora nerviosa de implantes de segunda mano</h3>
+<h3 id="dreska-vendedora-nerviosa-de-implantes-de-segunda-mano">Dreska — vendedora nerviosa de implantes de segunda mano</h3>
 <p><em>Aspecto:</em> manos rápidas de tanto regatear, mirada que evita la de quien pregunta demasiado directo, un tic de limpiarse las manos en el delantal cuando miente.</p>
 <p>PNJ funcional (1-2 profesiones), sin ficha de combate.</p>
 <ul>
 <li>Quiere protegerse sin ser cómplice activa — sospecha, no sabe con certeza.</li>
 <li>Sin PJ: sigue vendiendo, cada vez más nerviosa, sin decir nada a nadie.</li>
 </ul>
-<h3>Operador de Mort — comprador fijo</h3>
+<h3 id="operador-de-mort-comprador-fijo">Operador de Mort — comprador fijo</h3>
 <p><em>Aspecto:</em> ya descrito en el DLC — pragmático, sin ceremonias, trata cada conversación como una transacción.</p>
 <p>PNJ interpretable (2-3 profesiones). F30/A30/P40/V35 | PV 15/15/15 | Bld 1 | Social/Negociación 50% | Intimidación 40%</p>
 <ul>
@@ -110,20 +125,20 @@
 <li>No ordenó ni conoce el origen exacto de las piezas — negligencia real, no complicidad activa en el crimen.</li>
 <li>Sin PJ: sigue comprando de Verek hasta que este se traslade o lo detengan.</li>
 </ul>
-<h3>Crix — camarero veterano (PNJ ya establecido en el DLC)</h3>
+<h3 id="crix-camarero-veterano-pnj-ya-establecido-en-el-dlc">Crix — camarero veterano (PNJ ya establecido en el DLC)</h3>
 <p>Síntesis para esta mesa si no viene de la campaña original: cicatrices y un ojo biónico, protector de su gente. Recuerda el caso del Taller del Carnicero de primera mano — puede dar el precedente histórico a quien pregunte con calma en su bar.</p>
-<h3>Sael — una de las próximas víctimas</h3>
+<h3 id="sael-una-de-las-proximas-victimas">Sael — una de las próximas víctimas</h3>
 <p>PNJ funcional, sin ficha de combate. Trabaja el turno de noche en un puesto de carga del mercado de implantes —cerrando y asegurando los puestos vecinos cuando los dueños ya se han ido, un favor que le paga un vecino mayor a cambio de unos créditos— y vuelve sola cada noche por el mismo trayecto entre niveles. Sin familia con influencia en la ciudad: exactamente el perfil que Verek busca.</p>
 <p>No es un objeto que rescatar: tiene criterio propio. Si el grupo la contacta antes de la Escena 4 (vigilándola, advirtiéndola, o simplemente presentándose), puede desconfiar de desconocidos que le hablan de un peligro que no ve, colaborar activamente si se le explica con pruebas concretas, cambiar su rutina por su cuenta si se asusta lo suficiente —lo que puede sacarla de la trampa sin que el grupo llegue a intervenir directamente, o empeorar la situación si huye hacia una zona menos vigilada sin saberlo—, o negarse a creer nada y seguir con su rutina exactamente igual. Puede salvarse por más de una vía: que el grupo la proteja o advierta antes del ataque, que intercepten a Verek antes de que actúe, o que lleguen a tiempo al punto de extracción si nada de lo anterior funcionó. Solo aparece sedada y sin agencia si el grupo no consigue ninguna de las anteriores y llega justo a la Escena 4.</p>
 <hr />
-<h2>Lugares necesarios</h2>
+<h2 id="lugares-necesarios">Lugares necesarios</h2>
 <p><strong>Mercado de implantes de segunda mano (Niveles Comerciales):</strong> puestos, regateo, el lugar donde Dreska trabaja.</p>
 <p><strong>Barrio de las desapariciones (Niveles Bajos):</strong> niebla constante, carteles de desaparecidos acumulados, el bar de Crix.</p>
 <p><strong>Punto de extracción improvisado:</strong> un local o sótano discreto, cerca de rutas de paso poco vigiladas entre niveles — no necesita ser un lugar con nombre propio.</p>
 <hr />
-<h2>Las cinco escenas</h2>
+<h2 id="las-cinco-escenas">Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3>Escena 1 — El barrio pregunta</h3>
+<h3 id="escena-1-el-barrio-pregunta">Escena 1 — El barrio pregunta</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Carteles de desaparecidos, capas y capas de ellos, algunos ya descoloridos por la niebla, otros todavía frescos. En el bar de la esquina, alguien baja la voz al mencionar el nombre del último.</p>
@@ -143,7 +158,7 @@
 <blockquote>
 <p>«Ya pasó una vez. Alguien vendía piezas de gente, no de chatarra. Se calló para siempre antes de decir quién más estaba metido.»</p>
 </blockquote>
-<h3>Escena 2 — La vendedora nerviosa</h3>
+<h3 id="escena-2-la-vendedora-nerviosa">Escena 2 — La vendedora nerviosa</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>El mercado de implantes de segunda mano bulle como cualquier otro día — hasta que se pregunta por el precio demasiado bajo de una pieza demasiado nueva, y alguien deja de sonreír.</p>
@@ -159,7 +174,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Dreska no dice nada por su cuenta — el rastro se enfría, aunque no desaparece del todo.</p>
 <p><strong>Cómo termina:</strong> el grupo tiene una pista concreta (descripción del comprador, o una pieza con extracción profesional) que apunta hacia un punto de extracción.</p>
 <p><strong>Después:</strong> cómo trataron a Dreska aquí condiciona si vuelve a colaborar en la Escena 5.</p>
-<h3>Escena 3 — Seguir el rastro</h3>
+<h3 id="escena-3-seguir-el-rastro">Escena 3 — Seguir el rastro</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La niebla de los niveles bajos se traga los pasos de cualquiera que sepa por dónde caminar sin ser visto. Esta noche, alguien más camina por la misma ruta que los PJ.</p>
@@ -177,7 +192,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> el rastro se enfría durante unos días, hasta que aparece una nueva desaparición que reabre la pista desde cero — con otra víctima ocupando el lugar que habría sido de Sael.</p>
 <p><strong>Cómo termina:</strong> el grupo tiene un plan concreto —seguir, proteger, engañar o vigilar— y sabe cuándo y dónde intervenir antes de que Verek actúe sobre Sael.</p>
 <p><strong>Después:</strong> cómo llegaron aquí (con Verek alertado o no, con Sael avisada o no) condiciona directamente cómo empieza la Escena 4.</p>
-<h3>Escena 4 — El punto de extracción</h3>
+<h3 id="escena-4-el-punto-de-extraccion">Escena 4 — El punto de extracción</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Instrumental limpio sobre una mesa que no debería estar tan limpia. Y, si llegan a tiempo, alguien todavía con vida sobre ella, demasiado sedado para pedir ayuda por sí mismo.</p>
@@ -200,7 +215,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> si tardan demasiado en llegar a esta escena sin haber actuado antes en la Escena 3, Sael no está — Verek ya ha completado la extracción y se ha ido, dejando solo el punto vacío como prueba.</p>
 <p><strong>Cómo termina:</strong> Verek queda detenido, huido o muerto (solo si el propio grupo escala a violencia letal — el módulo no lo exige), y Sael está a salvo o no, según cuándo y cómo intervino el grupo.</p>
 <p><strong>Después:</strong> el resultado aquí determina qué se puede hacer en la Escena 5 con la red de compradores.</p>
-<h3>Escena 5 — Qué se hace con la red</h3>
+<h3 id="escena-5-que-se-hace-con-la-red">Escena 5 — Qué se hace con la red</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>El barrio ya sabe que algo ha pasado antes de que nadie lo anuncie oficialmente. La pregunta que queda no es solo qué le pasa a Verek — es qué le pasa al comprador que nunca preguntó de dónde salían las piezas.</p>
@@ -213,7 +228,7 @@
 <p><strong>Cómo termina:</strong> queda decidido qué pasa con Verek, con la red de compradores, y con la confianza del barrio en que alguien, por fin, investigó de verdad.</p>
 <p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
 <hr />
-<h2>Pistas e información</h2>
+<h2 id="pistas-e-informacion">Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -251,26 +266,26 @@
 </tbody>
 </table>
 <hr />
-<h2>Recompensas y gastos</h2>
+<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
 <p>La misión no debe dejar a los PJ con pérdidas netas por gastos médicos o equipo dañado — cúbrelo antes de repartir nada más.</p>
 <p><strong>Recompensa económica:</strong> entre 100 y 300 créditos locales por PJ, según cómo se resuelva — no hay un contratante formal: procede de agradecimiento del barrio, una recompensa municipal modesta si se involucra a la policía, o nada en absoluto si se resuelve de forma completamente extraoficial.</p>
 <p><strong>Beneficios alternativos:</strong> reputación fuerte en el barrio de los niveles bajos; relación con Crix como contacto de confianza; conocimiento de una ruta discreta entre niveles; si se negocia con Mort, un favor debido por parte del Operador — con lo que eso implica a largo plazo.</p>
 <hr />
-<h2>Desenlaces combinables</h2>
+<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
 <p><strong>Justicia formal.</strong> Verek es entregado a la policía o a los Federales; el caso se cierra oficialmente, aunque sin garantía de que se investigue el vínculo con Mort.</p>
 <p><strong>Justicia de barrio.</strong> La comunidad decide qué hacer con Verek sin pasar por las autoridades — más rápido, menos limpio legalmente.</p>
 <p><strong>Trato con Mort.</strong> El grupo negocia directamente con el Operador de Mort para cortar el vínculo con este comprador concreto a cambio de silencio — pragmático, moralmente incómodo.</p>
 <p><strong>La red sigue intacta.</strong> Si Verek escapó en la Escena 4, el caso queda oficialmente sin resolver — agridulce, no un fallo de partida: puede reaparecer como gancho futuro.</p>
 <p><strong>Sael a salvo.</strong> Combinable con cualquiera de los anteriores: si el grupo llegó a tiempo, esta es la consecuencia humana concreta que hace tangible el resto.</p>
 <hr />
-<h2>Continuidad opcional</h2>
+<h2 id="continuidad-opcional">Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de Oasis.</li>
 <li><strong>Si se juega en la campaña de origen:</strong> Nadine, Crix y Totovía pueden aparecer con su identidad completa de campaña en vez de la síntesis genérica.</li>
 </ul>
 <p>Ejemplo de puerta abierta: si el grupo negocia con el Operador de Mort, este recuerda el favor — enlace natural hacia cualquier futuro módulo de Oasis con presencia de Mort, sin obligar a aceptarlo.</p>
 <hr />
-<h2>Límites de este módulo</h2>
+<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
 <ul>
 <li>No revelar ni insinuar el despertar, la Urdimbre, ni la presencia de Primus o TecnoStealer en este caso — es un delito completamente humano y local.</li>
 <li>Verek no es un monstruo de manual: debe resultar comprensible, aunque no justificado.</li>
@@ -281,10 +296,10 @@
 <li>Sin subsistema nuevo: nada de contador de caza ni de alerta — adelantarse a Verek se resuelve con decisiones concretas y las habilidades ya vigentes.</li>
 </ul>
 <hr />
-<h2>Resumen para dirigir</h2>
+<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
 <p>Investigación y caza urbana sin reloj de horas — la presión viene de la posibilidad real de una sexta desaparición, no de una cuenta atrás. Cinco escenas autosuficientes: barrio → mercado → adelantarse a Verek → confrontación → consecuencias, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Cada conclusión clave (el patrón, que Sael es el objetivo, dónde y cuándo intervenir) se alcanza por más de un camino. Verek es comprensible, no un monstruo; Sael tiene criterio propio y puede salvarse de varias formas, no solo llegando a tiempo en el último momento.</p>
 <hr />
 <p><em>Oasis — tesela recién despertada. Basado en la ambientación de la campaña de Luis Clemente (Arco II, "Oasis y las Raíces"). Este módulo desarrolla la ruta 1 de "El Que Desaparece Gente" (Punto 15 del DLC); las otras tres rutas quedan disponibles para otra mesa.</em></p>
-</div>
+</main>
 </body>
 </html>

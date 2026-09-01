@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — LO QUE VOLVIÓ DEL JARDÍN"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#panel-del-narrador">PANEL DEL NARRADOR</a></li><li class="toc-h2"><a href="#1-atmosfera">1. ATMÓSFERA</a></li><li class="toc-h2"><a href="#2-que-esta-ocurriendo">2. QUÉ ESTÁ OCURRIENDO</a></li><li class="toc-h2"><a href="#3-pnj-presentes">3. PNJ PRESENTES</a></li><li class="toc-h2"><a href="#4-que-saben-dicen">4. QUÉ SABEN / DICEN</a></li><li class="toc-h2"><a href="#5-obstaculos-y-acontecimientos">5. OBSTÁCULOS Y ACONTECIMIENTOS</a></li><li class="toc-h2"><a href="#6-tiradas-posibles-enemigos">6. TIRADAS POSIBLES / ENEMIGOS</a></li><li class="toc-h2"><a href="#7-si-los-pj-no-hacen-nada">7. SI LOS PJ NO HACEN NADA</a></li><li class="toc-h2"><a href="#8-como-termina">8. CÓMO TERMINA</a></li><li class="toc-h2"><a href="#9-despues">9. DESPUÉS</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — LO QUE VOLVIÓ DEL JARDÍN</h1>
 <blockquote>
 <p><em>"Totovía no explica. Totovía ofrece té."</em> — nota de campo, Lore de Oasis.</p>
@@ -38,22 +53,22 @@
 <p><strong>Duración estimada:</strong> una sesión (3-4 horas).<br />
 <strong>Nivel recomendado:</strong> personajes con algo de experiencia — el módulo permite combate, negociación o ambas cosas, pero no es de iniciación.</p>
 <hr />
-<h2>PANEL DEL NARRADOR</h2>
+<h2 id="panel-del-narrador">PANEL DEL NARRADOR</h2>
 <p><strong>Verdad completa:</strong> hace unas semanas, el Errante <strong>Toval</strong> entró en El Jardín de los Huesos (mazmorra conocida nº3, ver DLC de Mazmorras §5) buscando la recompensa del nivel 4: una semilla capaz de crecer en cualquier tesela. La consiguió. Pero el Jardín es una mazmorra <em>viva</em> — sus "Jardineros" son entidades biológicas, no guardianes mecánicos — y para ella, todo lo que se lleva algo suyo sigue siendo, en cierto sentido, parte de ella. Desde que Toval salió, algo ha estado creciendo en él y a su alrededor: un <strong>Horror Fusionado</strong> (ficha del propio DLC, §9 — "adquiere características de víctimas previas") que se ha alimentado de su cercanía a la semilla y ahora es lo bastante grande para actuar por su cuenta.</p>
 <p>Toval no lo sabe del todo, o no quiere saberlo. Cree que solo está enfermo. No quiere soltar la semilla — es la prueba de que sobrevivió, y también cree (con razón parcial) que soltarla ahora podría matarlo, porque el Horror lleva semanas entretejido con su propio cuerpo.</p>
 <p><strong>Totovía</strong>, cuyo jardín en las afueras de la capital es funcional, no decorativo, notó la anomalía antes que nadie: algo del Jardín de los Huesos se ha "salido de su sitio", y sus propias plantas llevan días reaccionando mal. No es hostil ni aliado por defecto — es el vecino que cuida el límite entre la selva de Oasis y lo que hay debajo. Si los PJ no actúan, tarde o temprano él mismo buscará una solución — probablemente más drástica que la que un grupo dispuesto a negociar podría lograr.</p>
 <p>No hay reloj de horas. La presión es narrativa: cuanto más tiempo pase sin que el grupo intervenga, más escenas suceden fuera de su control — Toval se retrae más, el Horror gana autonomía, Totovía se impacienta. Es una escalada de contexto, no una cuenta atrás numérica.</p>
 <hr />
-<h2>1. ATMÓSFERA</h2>
+<h2 id="1-atmosfera">1. ATMÓSFERA</h2>
 <p>El límite entre la capital vertical de Oasis y la jungla que la rodea no es una frontera limpia. El asfalto se agrieta y de las grietas sale verde. Cuanto más se aleja uno de las torres, más callado se vuelve todo — no silencio vacío, sino el silencio de algo que está escuchando. La mansión victoriana de Totovía aparece donde no debería poder existir una mansión victoriana, con las luces encendidas y una tetera, siempre, en algún alféizar.</p>
 <p>Media hora más allá de la mansión, donde la jungla deja de parecer jungla y empieza a parecer <em>tejido</em>, está la entrada de El Jardín de los Huesos: una abertura en la vegetación que respira, literalmente, con un ritmo que no es el del viento.</p>
 <hr />
-<h2>2. QUÉ ESTÁ OCURRIENDO</h2>
+<h2 id="2-que-esta-ocurriendo">2. QUÉ ESTÁ OCURRIENDO</h2>
 <p>Toval volvió del Jardín hace cuatro días y se instaló en una choza abandonada a medio camino entre la mansión de Totovía y la capital — ni dentro ni fuera, como él mismo ahora. No ha vuelto a la ciudad. Dice que necesita "aclimatarse". La verdad es que teme lo que vería en un espejo, o lo que alguien más podría ver en él.</p>
 <p>El Horror Fusionado que crece en su entorno no es todavía una masa reconocible — es más bien una distorsión: la vegetación cerca de la choza ha empezado a moverse sin viento, los animales pequeños evitan la zona en un radio creciente, y por las noches se oye algo que respira demasiado despacio para ser Toval.</p>
 <p>Totovía sabe que algo pasa. No sabe exactamente qué, ni le interesa averiguarlo solo: prefiere que alguien capaz de manejarse en una mazmorra se ocupe, en vez de tener que intervenir él mismo y alterar un equilibrio que lleva mucho tiempo cuidando.</p>
 <hr />
-<h2>3. PNJ PRESENTES</h2>
+<h2 id="3-pnj-presentes">3. PNJ PRESENTES</h2>
 <p><strong>Totovía</strong> — PNJ reutilizado, sin ficha mecánica publicada (coherente con su aparición original: es una entidad que trasciende las estadísticas de combate). Anfitrión cortés, preciso, nunca alarmado en apariencia. Recibe a los PJ con té sin que se lo pidan y responde preguntas indirectas con más preguntas. Su intención inmediata: evaluar si el grupo es capaz de resolver esto sin que él tenga que "podar" — su eufemismo para una solución definitiva que probablemente incluiría a Toval.</p>
 <p><em>Aspecto sugerido si se necesita en mesa:</em> mediana edad indeterminada, vestido de otra época, movimientos exactos, nunca parece sorprendido.</p>
 <p><strong>Toval</strong> — Errante, PNJ nuevo. Antes de entrar al Jardín era, según cuenta él mismo, "nadie especial" — un explorador más buscando algo que vender. Ahora está asustado, orgulloso a la vez de haber sobrevivido, y en negación sobre lo que le está pasando al cuerpo. Su intención inmediata: que le dejen en paz un poco más, "solo hasta que se le pase".</p>
@@ -62,14 +77,14 @@
 <p><strong>El Horror Fusionado</strong> — ficha reutilizada verbatim del propio DLC (Mazmorras de los Antiguos, §9, Fauna Distorsionada): <em>"Stats variables — adquiere características de víctimas previas. DJ decide."</em> En este módulo, sus características previas son las del propio Jardín: zarcillos, resistencia vegetal, y fragmentos de lo que absorbió de Toval (algo de su velocidad, ninguno de sus recuerdos). Sugerencia de base si el DJ quiere un punto de partida rápido: F45/A35/P30 | PV 35/35/35 | Bld 3 | Ataque 50% (zarcillos, alcance 3m) | Daño 6 | Esquiva 25% — regenera 3 PV/asalto mientras siga en contacto con Toval o con la semilla.</p>
 <p><strong>Un Jardinero</strong> (opcional, si el grupo busca negociar en vez de combatir) — descrito en el DLC de mazmorras como "entidad biológica no hostil por defecto, puede negociarse", sin ficha mecánica publicada. Aparece solo si el grupo entra en El Jardín de los Huesos o si Totovía media el contacto. Su intención: recuperar lo que es suyo — no necesariamente matar a nadie para conseguirlo.</p>
 <hr />
-<h2>4. QUÉ SABEN / DICEN</h2>
+<h2 id="4-que-saben-dicen">4. QUÉ SABEN / DICEN</h2>
 <ul>
 <li><strong>Totovía</strong>, si se le pregunta directamente por Toval: <em>"Volvió con algo que no terminó de dejar atrás. No es maldad. Es que el Jardín no distingue bien entre lo que da y lo que presta."</em> No ofrece la solución — la deja para el grupo, aunque orienta con preguntas si ve que se atascan.</li>
 <li><strong>Toval</strong>, al principio niega que le pase nada. Presionado (Persuasión o Empatía, normal, sin modificador) admite el miedo: <em>"Cada noche hay menos de mí y no sé qué hay en su lugar."</em> No sabe lo de la semilla como causa exacta a menos que se le muestre evidencia (los zarcillos, el sonido nocturno).</li>
 <li><strong>Un Jardinero</strong>, si se le negocia: no habla en frases humanas — comunica impresiones. Transmite con claridad una única exigencia: <em>la semilla vuelve, o vuelve lo que creció a partir de ella — pero no las dos cosas.</em> Es decir, el grupo puede elegir salvar a Toval devolviendo la semilla, o quedarse con la semilla y perder a Toval al Horror. No hay tercera opción que el Jardinero acepte.</li>
 </ul>
 <hr />
-<h2>5. OBSTÁCULOS Y ACONTECIMIENTOS</h2>
+<h2 id="5-obstaculos-y-acontecimientos">5. OBSTÁCULOS Y ACONTECIMIENTOS</h2>
 <ul>
 <li>La choza de Toval está rodeada de vegetación que reacciona a la presencia de forasteros — no ataca por defecto, pero dificulta el acceso sigiloso (Sigilo −15 en un radio de 20m).</li>
 <li>Si el grupo tarda más de dos escenas completas en actuar, el Horror Fusionado se manifiesta de forma visible por primera vez — sale de entre los zarcillos durante la noche y ataca a quien esté de guardia, sin matar (busca "recuperar" más de lo suyo, no destruir).</li>
@@ -77,7 +92,7 @@
 <li>Totovía no interviene activamente mientras el grupo esté trabajando en ello, pero dejará claro, con la cortesía habitual, que su paciencia tiene un límite — si el grupo abandona la escena sin resolver nada, la siguiente vez que vuelvan a la zona, la choza ya no estará, y tampoco Toval.</li>
 </ul>
 <hr />
-<h2>6. TIRADAS POSIBLES / ENEMIGOS</h2>
+<h2 id="6-tiradas-posibles-enemigos">6. TIRADAS POSIBLES / ENEMIGOS</h2>
 <p><strong>Persuasión o Empatía sobre Toval</strong> (normal, sin modificador) — Éxito: admite el miedo y coopera. Fallo: se cierra, intenta huir hacia el Jardín "a terminar lo que sea que tenga que terminar" — lo que acelera todo. Éxito excepcional: Toval entiende él mismo lo que le pasa y ofrece la semilla voluntariamente, sin que haga falta convencerlo dos veces. Este éxito excepcional afecta solo a la disposición de Toval — no obliga al Jardinero a renunciar a su reclamación sobre la semilla o sobre él.</p>
 <p><strong>Combate contra el Horror Fusionado</strong> — ficha en el punto 3, sin cambios: F45/A35/P30 | PV 35/35/35 | Bld 3 | Ataque 50% (zarcillos, alcance 3m) | Daño 6 | Esquiva 25% — regenera 3 PV/asalto mientras siga en contacto con Toval o con la semilla. El combate no es una única acción repetida — es separación activa. Según el plan del grupo, pueden (sin que todas sean obligatorias, solo las que encajen):<br />
 - <strong>Contener</strong> al Horror con ataques normales.<br />
@@ -94,10 +109,10 @@
 - <strong>Éxito excepcional:</strong> revela el menor precio que estaría dispuesto a aceptar, o mejora sustancialmente las condiciones del trato ya ofrecido.<br />
 - <strong>Nunca:</strong> el Jardinero se retira sin recibir nada. Incluso el mejor resultado posible concede un trato excepcionalmente favorable, no un final gratuito.</p>
 <hr />
-<h2>7. SI LOS PJ NO HACEN NADA</h2>
+<h2 id="7-si-los-pj-no-hacen-nada">7. SI LOS PJ NO HACEN NADA</h2>
 <p>Totovía actúa. Su "poda" es exactamente lo que sugiere: aísla la zona con su propio jardín funcional, y Toval no vuelve a aparecer. Él no lo explica con más detalle si se le pregunta después — solo dice que el equilibrio está a salvo. El grupo pierde la oportunidad de resolverlo de una forma que no cueste una vida, pero el mundo sigue: Oasis no corre peligro, y El Jardín de los Huesos queda exactamente como estaba.</p>
 <hr />
-<h2>8. CÓMO TERMINA</h2>
+<h2 id="8-como-termina">8. CÓMO TERMINA</h2>
 <ul>
 <li><strong>Devuelven la semilla:</strong> Toval vive; la semilla se pierde (vuelve al Jardín); el Horror se disuelve. Toval queda débil pero vivo y sin secuelas mecánicas permanentes — psicológicamente marcado (el Narrador puede usarlo después: pesadillas, aversión a la vegetación).</li>
 <li><strong>Conservan la semilla y pierden a Toval:</strong> el grupo obtiene la recompensa original de nivel 4 (semilla capaz de crecer en cualquier tesela, ver DLC de Mazmorras §5) al precio real de su vida. Totovía lo registra sin reproche explícito, pero el trato con él queda, a partir de ahí, ligeramente más frío.</li>
@@ -106,12 +121,12 @@
 <li><strong>Totovía poda:</strong> el grupo renuncia a decidir o se queda sin actuar demasiado tiempo (ver punto 7) — Toval desaparece, y Totovía no explica el procedimiento.</li>
 </ul>
 <hr />
-<h2>9. DESPUÉS</h2>
+<h2 id="9-despues">9. DESPUÉS</h2>
 <p>Si Toval sobrevive, queda como PNJ reutilizable: alguien que ahora sabe, de primera mano, que las mazmorras "prestan" cosas más que las regalan — puede aparecer más adelante advirtiendo a otros Errantes antes de que entren a una mazmorra, o evitando activamente volver a acercarse a cualquier tesela anidada.</p>
 <p>Si el grupo trató bien a Totovía, él lo recuerda — puede ofrecer, en un gancho futuro, acceso o información sobre otra mazmorra o tesela que normalmente no compartiría con desconocidos. Si lo trataron mal o ignoraron su advertencia, simplemente deja de ofrecer té la próxima vez que se crucen.</p>
 <p><em>Riqueza opcional, nunca necesaria:</em> nada de esto exige haber jugado ningún módulo de Oasis. Si el grupo sí conoce Oasis por otros módulos, Totovía y su mansión ya les sonarán de contexto — pero el módulo se sostiene igual de bien como primer contacto con él.</p>
 <hr />
 <p><em>Enlaces: PNJ Totovía (lore de TecnoStealer y Oasis), El Jardín de los Huesos y ficha del Horror Fusionado (DLC Mazmorras de los Antiguos, §5 y §9).</em></p>
-</div>
+</main>
 </body>
 </html>

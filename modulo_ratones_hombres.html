@@ -15,29 +15,44 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO 2 — DE RATONES Y HOMBRES"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#presentacion-breve">Presentación breve</a></li><li class="toc-h2"><a href="#1-resumen-operativo">1. RESUMEN OPERATIVO</a></li><li class="toc-h2"><a href="#2-lo-que-saben-los-personajes">2. LO QUE SABEN LOS PERSONAJES</a></li><li class="toc-h2"><a href="#3-lo-que-sabe-el-narrador">3. LO QUE SABE EL NARRADOR</a></li><li class="toc-h2"><a href="#4-fen-y-primus-continuidad-con-predator">4. FEN Y PRIMUS — CONTINUIDAD CON PREDATOR</a></li><li class="toc-h2"><a href="#5-el-caramelo-detonador">5. EL CARAMELO DETONADOR</a></li><li class="toc-h2"><a href="#6-reloj-de-tres-horas">6. RELOJ DE TRES HORAS</a></li><li class="toc-h2"><a href="#7-alerta-de-red-en-esta-mision">7. ALERTA DE RED EN ESTA MISIÓN</a></li><li class="toc-h2"><a href="#8-escenas">8. ESCENAS</a></li><li class="toc-h3"><a href="#escena-1-llegada-al-barrio">Escena 1 — Llegada al barrio</a></li><li class="toc-h3"><a href="#escena-2-reconocimiento">Escena 2 — Reconocimiento</a></li><li class="toc-h3"><a href="#escena-3-la-primera-trampa">Escena 3 — La primera trampa</a></li><li class="toc-h3"><a href="#escena-4-ratones-en-el-mismo-laberinto">Escena 4 — Ratones en el mismo laberinto</a></li><li class="toc-h3"><a href="#escena-5-la-red-despierta">Escena 5 — La Red despierta</a></li><li class="toc-h3"><a href="#escena-6-la-distraccion">Escena 6 — La distracción</a></li><li class="toc-h3"><a href="#escena-7-extraccion">Escena 7 — Extracción</a></li><li class="toc-h2"><a href="#9-fichas-compactas">9. FICHAS COMPACTAS</a></li><li class="toc-h2"><a href="#10-atmosfera-para-leer-en-voz-alta">10. ATMÓSFERA PARA LEER EN VOZ ALTA</a></li><li class="toc-h2"><a href="#11-desenlaces">11. DESENLACES</a></li><li class="toc-h2"><a href="#12-modulos-existentes-y-posibles">12. MÓDULOS EXISTENTES Y POSIBLES</a></li><li class="toc-h3"><a href="#modulos-existentes">Módulos existentes</a></li><li class="toc-h3"><a href="#modulos-ya-propuestos-por-el-dlc">Módulos ya propuestos por el DLC</a></li><li class="toc-h3"><a href="#semillas-nacidas-de-este-modulo">Semillas nacidas de este módulo</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO 2 — DE RATONES Y HOMBRES</h1>
 <blockquote>
 <p>Continúa directamente el final de PREDATOR N-5.2. El Maestro de Portales que rescató al grupo —entonces reconocible como agente de Primus— los deja en Mundo Máquina. Es la puerta de entrada operativa a esa tesela: para el trasfondo completo (IA, tecnovirus, cuarentena, regiones, PNJ y ganchos más allá de esta incursión), la autoridad es el DLC Mundo Máquina. Este módulo no repite esas reglas — las usa.</p>
 </blockquote>
-<h2>Presentación breve</h2>
+<h2 id="presentacion-breve">Presentación breve</h2>
 <p>Una misión de entrada, pequeña y peligrosa: unas tres horas de ficción en una zona residencial de estética estadounidense de los años cincuenta, dentro de una tesela bloqueada dominada por máquinas de naturaleza muy distinta entre sí. No es la revelación del misterio central de Mundo Máquina — es una primera incursión, con un objetivo simple, un rival de bajo rango y una salida que depende de un hombre que no cuenta toda la verdad.</p>
 <hr />
-<h2>1. RESUMEN OPERATIVO</h2>
+<h2 id="1-resumen-operativo">1. RESUMEN OPERATIVO</h2>
 <ul>
 <li><strong>Duración en mesa:</strong> una sesión, aproximadamente 2-3 horas de juego real.</li>
 <li><strong>Duración en la ficción:</strong> unas tres horas, marcadas por el Reloj (Punto 6).</li>
@@ -49,7 +64,7 @@
 <li><strong>Desenlaces posibles:</strong> ver Punto 11.</li>
 </ul>
 <hr />
-<h2>2. LO QUE SABEN LOS PERSONAJES</h2>
+<h2 id="2-lo-que-saben-los-personajes">2. LO QUE SABEN LOS PERSONAJES</h2>
 <p>Solo lo que el contratante les ha dicho antes de saltar:</p>
 <ul>
 <li>Van a un mundo bloqueado, dominado por máquinas hostiles.</li>
@@ -60,7 +75,7 @@
 </ul>
 <p>No saben nada del tecnovirus, de la IA original, de la cuarentena real ni de Primus — salvo que lo descubran jugando.</p>
 <hr />
-<h2>3. LO QUE SABE EL NARRADOR</h2>
+<h2 id="3-lo-que-sabe-el-narrador">3. LO QUE SABE EL NARRADOR</h2>
 <ul>
 <li>La IA original y el tecnovirus son cosas distintas (DLC, Punto 3). Nada de lo que encuentren en esta misión tiene por qué resolver esa distinción.</li>
 <li>El objetivo real del cliente es cualquier máquina o muestra con valor de mercado o de estudio — la etiqueta de «parte de la IA» es simplificación, ignorancia o venta interna del propio contratante, no una exigencia técnica literal ni un hecho del universo.</li>
@@ -71,16 +86,16 @@
 <li>Límite del módulo: es una incursión pequeña y peligrosa, no el principio de una campaña sobre el destino de la tesela.</li>
 </ul>
 <hr />
-<h2>4. FEN Y PRIMUS — CONTINUIDAD CON PREDATOR</h2>
+<h2 id="4-fen-y-primus-continuidad-con-predator">4. FEN Y PRIMUS — CONTINUIDAD CON PREDATOR</h2>
 <p>En PREDATOR, quien rescata a los PJs se presenta —y todavía puede ser reconocido— como Maestro de Portales de Primus. Esa identidad pertenece a su pasado: Fen fue miembro o agente de Primus, y conserva de esa época conocimientos, códigos, contactos y una identidad que todavía puede usar como cobertura. Ahora actúa como renegado, organizando incursiones clandestinas para varias corporaciones a la vez. Primus no autoriza nada de esto y pretende localizar su brecha.</p>
 <p>Fen conoce una brecha reproducible pero peligrosa, limitada y degradable: cada uso puede delatarla, cambiar sus condiciones o facilitar que Primus la cierre. Para los PJs, en el momento de PREDATOR, esto no tiene por qué notarse — Fen se comporta como lo que aparentaba ser. La tensión entre su pasado y su presente es material para más adelante (Punto 12), no algo que este módulo tenga que resolver.</p>
 <hr />
-<h2>5. EL CARAMELO DETONADOR</h2>
+<h2 id="5-el-caramelo-detonador">5. EL CARAMELO DETONADOR</h2>
 <p>Fen lo deja caer al completar el salto de entrada: un caramelo de garrote navideño, blanco y rojo, del todo corriente salvo por cómo lo usa. Marca, ancla o confirma el lugar y el momento previstos para la extracción, de una forma que solo él entiende y que nadie más ha reproducido. No es mágico ni está vivo — es un objeto normal empleado de una manera técnicamente extraña, y así debe quedar: absurdo, funcional, memorable.</p>
 <p>Los personajes deberían conservarlo o recuperarlo si lo pierden. Sin él, Fen todavía podría intentar encontrarlos, pero la extracción se vuelve incierta, tardía o directamente peligrosa. Tenerlo, además, es una prueba: relaciona a Fen con la incursión, y eso es palanca real si alguna vez necesitan presionarlo.</p>
 <p>Serpent no tiene por qué saber para qué sirve al principio — puede descubrirlo durante la partida (semilla «Recuperar el detonante», Punto 12).</p>
 <hr />
-<h2>6. RELOJ DE TRES HORAS</h2>
+<h2 id="6-reloj-de-tres-horas">6. RELOJ DE TRES HORAS</h2>
 <p>Referencia narrativa, no un cronómetro que haya que perseguir asalto a asalto.</p>
 <table>
 <thead>
@@ -115,7 +130,7 @@
 <p>Nada de esto tiene que suceder exactamente así. Es una guía de ritmo, no una tabla de sucesos obligatorios.</p>
 <p><strong>¿Llegó Serpent antes que los PJs?</strong> Decídelo como prefieras: elección directa del Narrador, una tirada inicial claramente indicada (por ejemplo, 1d100 ≤ 50 antes de empezar), o simplemente lo que el ritmo de la sesión pida. No hace falta que sea exactamente un 50%.</p>
 <hr />
-<h2>7. ALERTA DE RED EN ESTA MISIÓN</h2>
+<h2 id="7-alerta-de-red-en-esta-mision">7. ALERTA DE RED EN ESTA MISIÓN</h2>
 <p>Usa la regla del DLC (Punto 12) tal cual. Lo que sube la Alerta concretamente en esta misión:</p>
 <ul>
 <li>Los Bots que trae Serpent, en cuanto los activan (+1 automático, sin que ellos lo sepan).</li>
@@ -125,9 +140,9 @@
 </ul>
 <p>Nivel 2-3 trae Droides C60 o Bots Arma Pesada de refuerzo — coherente con lo que ya hay en el barrio. Nivel 4-5 debería sentirse como una escalada real, no como el resultado normal de una escaramuza: resérvalo para cuando el grupo haya sido especialmente ruidoso.</p>
 <hr />
-<h2>8. ESCENAS</h2>
+<h2 id="8-escenas">8. ESCENAS</h2>
 <p>Piezas utilizables, no un camino obligatorio. El grupo puede llegar a ellas en cualquier orden, saltarse alguna, o repetir el espíritu de otra sin usar exactamente este texto.</p>
-<h3>Escena 1 — Llegada al barrio</h3>
+<h3 id="escena-1-llegada-al-barrio">Escena 1 — Llegada al barrio</h3>
 <p><em>Para leer o parafrasear:</em></p>
 <blockquote>
 <p>«El salto os deja de pie en mitad de una calle vacía. Casas de dos plantas, jardines resecos, un cielo gris ceniza. En algún punto sobre vuestras cabezas, algo parpadea despacio, como un velo de energía que no debería estar ahí. A vuestros pies, algo pequeño y brillante: un caramelo de garrote navideño, blanco y rojo, todavía girando sobre el asfalto.»</p>
@@ -136,7 +151,7 @@
 <p>La estética de los años cincuenta se presenta de inmediato: buzones con nombres que ya no significan nada, un coche oxidado en un camino de entrada, una emisora sonando débilmente en alguna parte. No hace falta insistir — basta un detalle o dos.</p>
 <p><strong>Señales de que alguien pudo llegar antes:</strong> una rama rota, huellas recientes en el polvo de un porche, una puerta entreabierta que no debería estarlo. Nada concluyente todavía — solo suficiente para que el grupo empiece a preguntarse si están solos.</p>
 <p>Aquí arranca el plazo de tres horas (Punto 6).</p>
-<h3>Escena 2 — Reconocimiento</h3>
+<h3 id="escena-2-reconocimiento">Escena 2 — Reconocimiento</h3>
 <p>El grupo explora el barrio antes de que las cosas se compliquen. Usa la tabla de encuentros de la Zona Residencial (DLC, Punto 9) o improvisa con estos elementos:</p>
 <ul>
 <li><strong>Información:</strong> una radio doméstica sigue sintonizando una frecuencia local — nada útil directamente, pero confirma actividad reciente si se oye interferencia del otro equipo.</li>
@@ -146,7 +161,7 @@
 <li><strong>Una escena melancólica o absurda:</strong> una mesa puesta para una cena que nadie va a comer, un anuncio grabado repitiéndose desde hace veinte años. Deja que respire un momento antes de seguir.</li>
 </ul>
 <p>No hace falta que aparezcan todos a la vez. Uno o dos bastan para dar textura antes de la Escena 3.</p>
-<h3>Escena 3 — La primera trampa</h3>
+<h3 id="escena-3-la-primera-trampa">Escena 3 — La primera trampa</h3>
 <p>Si Serpent llegó antes (Punto 6), ya ha preparado algo. Dos tipos, a elección del Narrador o combinados:</p>
 <p><strong>Explosivo de proximidad</strong> en una puerta de acceso o una escalera — un Frack o un Crack (fichas en el Punto 9) colocado para hacer ruido y disuadir, no necesariamente para matar.</p>
 <p><strong>Casa-trampa:</strong> un Bot con un arma de potencia media cargada con munición perforante y visión térmica, apostado en la planta superior de la casa más alejada del punto de entrada, rodeada de explosivos adicionales.</p>
@@ -155,7 +170,7 @@
 <p><strong>Cómo desactivarla:</strong> una tirada apropiada (Explosivos o Electrónica, dificultad según el tiempo disponible) neutraliza el disparador sin detonarlo.</p>
 <p><strong>Si se activa:</strong> daño según el explosivo (Punto 9) y una subida inmediata de Alerta de Red (+1). Si es la casa-trampa, el Bot dispara desde arriba antes de que puedan localizarlo con facilidad.</p>
 <p>Esta escena debería dejar claro el estilo de Serpent: prefieren retrasar, desgastar y ahuyentar antes que matar. Nadie en su equipo quiere un tiroteo si puede evitarlo.</p>
-<h3>Escena 4 — Ratones en el mismo laberinto</h3>
+<h3 id="escena-4-ratones-en-el-mismo-laberinto">Escena 4 — Ratones en el mismo laberinto</h3>
 <p>Tarde o temprano, los dos equipos se cruzan. Denny Fhost (ficha en el Punto 9) quiere lo mismo que los PJs: volver con algo y sin bajas. No es un villano suicida, y eso debería notarse en cómo reacciona.</p>
 <p>Posturas posibles, todas legítimas según cómo lleguen los PJs a la escena:</p>
 <ul>
@@ -167,9 +182,9 @@
 <li><strong>Retirada</strong> — cualquiera de los dos equipos puede simplemente irse si el cálculo no sale a cuenta.</li>
 <li><strong>Combate</strong>, si todo lo demás falla — pero debería sentirse como el último recurso de dos equipos que preferirían no estar aquí, no como el objetivo del encuentro.</li>
 </ul>
-<h3>Escena 5 — La Red despierta</h3>
+<h3 id="escena-5-la-red-despierta">Escena 5 — La Red despierta</h3>
 <p>Los Bots que trae Serpent, las armas, las radios abiertas y los explosivos suben la Alerta de Red (Punto 7). Introduce las máquinas de forma gradual, coherente con el nivel alcanzado — no cada ruido tiene que convertirse en un combate automático. Un Nivel 2 puede notarse solo como un Droide C60 mirando un poco de más desde la acera de enfrente; un Nivel 4 sí debería sentirse como una respuesta real.</p>
-<h3>Escena 6 — La distracción</h3>
+<h3 id="escena-6-la-distraccion">Escena 6 — La distracción</h3>
 <p>Si los PJs llegan después que Serpent, el equipo rival puede soltar un vehículo teledirigido hacia el desierto que rodea la urbanización para atraer Abrelatas (ficha en el Punto 9) como distracción — cualquier cosa les vale con tal de ganar tiempo.</p>
 <p>La misma idea puede nacer de otro lado:</p>
 <ul>
@@ -179,7 +194,7 @@
 <li><strong>Distracción que sale peor de lo previsto</strong> — los Abrelatas no distinguen bandos, y una vez activos no sueltan a su víctima.</li>
 </ul>
 <p>Usa la ficha canónica del Abrelatas y su Memoria de enjambre tal como están definidas en el Punto 9 — sin ninguna otra regla adicional.</p>
-<h3>Escena 7 — Extracción</h3>
+<h3 id="escena-7-extraccion">Escena 7 — Extracción</h3>
 <p>Incluye, según cómo haya ido la partida:</p>
 <ul>
 <li><strong>Regreso al punto marcado</strong> por el caramelo.</li>
@@ -194,7 +209,7 @@
 <p>Si el grupo ha trabajado con discreción, no tienen por qué combatir en la extracción — es la recompensa lógica de haber jugado con cuidado, no un premio automático.</p>
 <p><strong>Sobre seguir a Serpent:</strong> no existe ninguna ruta a pie desde Mundo Máquina hasta el Cruce de Caminos ni hasta MadCity — la tesela está bloqueada, y caminar no es una forma de salir (DLC, Punto 4). Si el desenlace elegido se beneficia de esa imagen, colócala después de una extracción por la brecha de Fen: puede dejar a cada equipo en un punto distinto del Cruce de Caminos, y Serpent puede perderse después entre las rutas hacia MadCity, donde seguirlos resulta difícil o imposible. Eso no es otra salida de la tesela — ambos equipos han usado la misma brecha. Si esa consecuencia no aporta nada al desenlace elegido, se puede omitir sin más.</p>
 <hr />
-<h2>9. FICHAS COMPACTAS</h2>
+<h2 id="9-fichas-compactas">9. FICHAS COMPACTAS</h2>
 <p>Autoridad: DLC Mundo Máquina. Aquí solo lo necesario para dirigir sin abrir otro documento.</p>
 <p><strong>Abrelatas</strong> ("Pelotas Asesinas")<br />
 Blindaje 0 | Melé 50% | Daño 2, Pen 5 | PV 3<br />
@@ -216,7 +231,7 @@ Sigilo 60% | Blindaje 2, Melé 70%, Daño 5, Pen 2 | PV 15/15/15 | Rack Médico:
 Buggy radiocontrolado, Blindaje 10, sin armas — solo huida y distracción.</p>
 <p><strong>Equipo:</strong> Crack, Frack y Chaff son granadas con ficha propia (Mecánicas del Sistema — Taller): Frack (Radio 2,5m, Pen 2, Daño 15), Crack (Radio 1,5m, Pen 5, Daño 20), Chaff (Radio 5m, Pen 4, disruptivo antes que letal). Rack Médico es la reserva de medikits sueltos que un personaje puede llevar además del Automedikit (hasta 12 MKB + 8 MKG). MKB = Medikit Básico (cura Sano/Herido, Tullido a mitad). MKG = Medikit Avanzado (cura Herido/Tullido, Sano a mitad).</p>
 <hr />
-<h2>10. ATMÓSFERA PARA LEER EN VOZ ALTA</h2>
+<h2 id="10-atmosfera-para-leer-en-voz-alta">10. ATMÓSFERA PARA LEER EN VOZ ALTA</h2>
 <p>Textos breves y directos — para citar tal cual o adaptar sobre la marcha.</p>
 <p><strong>Llegada al barrio:</strong> «Asfalto agrietado, un aspersor que sigue girando sin agua desde hace quién sabe cuánto. El silencio pesa más de lo normal.»</p>
 <p><strong>Una calle detenida en los años cincuenta:</strong> «Coches con aletas oxidadas aparcados para siempre. Un cartel de neón medio fundido sigue anunciando helados a cinco centavos.»</p>
@@ -226,7 +241,7 @@ Buggy radiocontrolado, Blindaje 10, sin armas — solo huida y distracción.</p>
 <p><strong>La Retícula en el cielo nocturno:</strong> «Sobre el tejado más alto, el cielo tiembla — un velo de energía que parpadea despacio, como si respirara.»</p>
 <p><strong>La aparición o señal de Fen:</strong> «Un pitido corto en el comunicador. Solo eso. Fen nunca dice más de lo necesario, y hoy no es distinto.»</p>
 <hr />
-<h2>11. DESENLACES</h2>
+<h2 id="11-desenlaces">11. DESENLACES</h2>
 <p>Cada uno puede combinarse con otros. Todos dejan una consecuencia inmediata clara y, si el Narrador quiere, una continuación — sin obligar a nada mayor.</p>
 <p><strong>Ambos equipos negocian y salen.</strong> Consecuencia: Serpent y los PJs se reparten objetivos o información y cada uno llega a su punto de extracción por separado. Continuación: Denny recuerda el trato — puede ser un contacto futuro, no necesariamente un aliado.</p>
 <p><strong>Serpent traiciona a los personajes.</strong> Consecuencia: una encerrona, un robo de última hora, o dejarlos atrás a propósito si conviene. Continuación: semilla «La deuda de Denny Fhost» (Punto 12).</p>
@@ -240,21 +255,21 @@ Buggy radiocontrolado, Blindaje 10, sin armas — solo huida y distracción.</p>
 <p><strong>Una persona queda dentro.</strong> Por decisión, por accidente, o porque no llega a tiempo. Consecuencia inmediata: el resto sale sin ella. Continuación: motivo directo para una futura incursión de rescate.</p>
 <p><strong>Primus detecta indicios de la brecha.</strong> Consecuencia: Guardián Osei (DLC, Punto 16) se acerca un paso más a encontrar a Fen. Continuación: semilla «Primus sigue el rastro» (Punto 12) y, más adelante, el gancho «La brecha de Primus» (DLC, Punto 17).</p>
 <hr />
-<h2>12. MÓDULOS EXISTENTES Y POSIBLES</h2>
-<h3>Módulos existentes</h3>
+<h2 id="12-modulos-existentes-y-posibles">12. MÓDULOS EXISTENTES Y POSIBLES</h2>
+<h3 id="modulos-existentes">Módulos existentes</h3>
 <ul>
 <li><strong>PREDATOR N-5.2</strong> — termina dejando al grupo en Mundo Máquina; no se reescribe en este lote (ver Punto 4 para la única aclaración necesaria).</li>
 <li><strong>De Ratones y Hombres</strong> — este módulo.</li>
 <li><strong>DLC Mundo Máquina</strong> — referencia de ambientación y reglas para toda la tesela; autoridad de fichas, regiones, PNJ y ganchos más allá de esta incursión concreta.</li>
 </ul>
-<h3>Módulos ya propuestos por el DLC</h3>
+<h3 id="modulos-ya-propuestos-por-el-dlc">Módulos ya propuestos por el DLC</h3>
 <p>Ya descritos con detalle en el DLC Mundo Máquina — aquí solo su relación con esta aventura:</p>
 <ul>
 <li><strong>Silo Génesis</strong> (DLC, Punto 17) — la Escena 3 del Complejo Industrial en el DLC puede llevar hasta aquí; esta incursión no tiene por qué acercarse.</li>
 <li><strong>Emisora Central</strong> (DLC, Punto 17) — visible desde el barrio (es el punto más alto de la Zona Residencial), pero fuera del alcance de una misión de tres horas salvo que el Narrador quiera forzarlo.</li>
 <li><strong>La última cena del número 53, Raciones para mañana, El barrio que no sabe que terminó la guerra, Frecuencia de emergencia, El convoy de medianoche, La brecha de Primus, El huésped limpio, Proyecto Invernadero</strong> (DLC, Punto 18) — semillas de la tesela en general, sin conexión obligatoria con esta misión concreta; cualquiera puede aparecer como gancho posterior si el Narrador quiere seguir jugando en Mundo Máquina.</li>
 </ul>
-<h3>Semillas nacidas de este módulo</h3>
+<h3 id="semillas-nacidas-de-este-modulo">Semillas nacidas de este módulo</h3>
 <p><strong>Recuperar el detonante</strong></p>
 <ul>
 <li>Premisa: el caramelo se ha quedado atrás y alguien más ha averiguado su función.</li>
@@ -304,6 +319,6 @@ Buggy radiocontrolado, Blindaje 10, sin armas — solo huida y distracción.</p>
 <li>Conexión con el resultado del módulo: nace si algo alertó a Primus durante la extracción (Punto 11).</li>
 <li>Elemento del mundo que permite mostrar: la conducta ordinaria de Primus frente a la cuarentena (DLC, Punto 16), antes de llegar al punto de «La brecha de Primus» (DLC, Punto 17).</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

@@ -15,27 +15,42 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — MUNDO MÁQUINA"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</a></li><li class="toc-h2"><a href="#1-que-es-mundo-maquina">1. QUÉ ES MUNDO MÁQUINA</a></li><li class="toc-h3"><a href="#la-reticula-no-es-un-borde-geografico">La Retícula no es un borde geográfico</a></li><li class="toc-h2"><a href="#2-historia">2. HISTORIA</a></li><li class="toc-h2"><a href="#3-ia-original-y-tecnovirus">3. IA ORIGINAL Y TECNOVIRUS</a></li><li class="toc-h2"><a href="#4-la-cuarentena-dos-capas-y-una-regla-absoluta">4. LA CUARENTENA: DOS CAPAS Y UNA REGLA ABSOLUTA</a></li><li class="toc-h2"><a href="#5-el-perimetro-de-la-reticula">5. EL PERÍMETRO DE LA RETÍCULA</a></li><li class="toc-h2"><a href="#6-como-se-entra-y-se-sale">6. CÓMO SE ENTRA Y SE SALE</a></li><li class="toc-h2"><a href="#7-como-utilizar-la-tesela">7. CÓMO UTILIZAR LA TESELA</a></li><li class="toc-h2"><a href="#8-la-estetica-de-los-anos-cincuenta">8. LA ESTÉTICA DE LOS AÑOS CINCUENTA</a></li><li class="toc-h2"><a href="#9-regiones">9. REGIONES</a></li><li class="toc-h2"><a href="#10-maquinas-nativas">10. MÁQUINAS NATIVAS</a></li><li class="toc-h2"><a href="#11-maquinas-contaminadas">11. MÁQUINAS CONTAMINADAS</a></li><li class="toc-h2"><a href="#12-la-red-y-la-alerta">12. LA RED Y LA ALERTA</a></li><li class="toc-h3"><a href="#nivel-de-alerta-de-red-0-5">Nivel de Alerta de Red (0-5)</a></li><li class="toc-h2"><a href="#13-contaminacion-tecnologica">13. CONTAMINACIÓN TECNOLÓGICA</a></li><li class="toc-h2"><a href="#14-recursos-y-extraccion">14. RECURSOS Y EXTRACCIÓN</a></li><li class="toc-h2"><a href="#15-supervivientes-y-reductos">15. SUPERVIVIENTES Y REDUCTOS</a></li><li class="toc-h3"><a href="#vida-biologica-superviviente-semillas-sin-desarrollar">Vida biológica superviviente — semillas sin desarrollar</a></li><li class="toc-h2"><a href="#16-pnj-interpretables">16. PNJ INTERPRETABLES</a></li><li class="toc-h3"><a href="#la-voz-como-interpretarla">"La Voz" — cómo interpretarla</a></li><li class="toc-h2"><a href="#17-ganchos-eventos-y-lugares">17. GANCHOS, EVENTOS Y LUGARES</a></li><li class="toc-h3"><a href="#ganchos">Ganchos</a></li><li class="toc-h3"><a href="#eventos-recurrentes">Eventos recurrentes</a></li><li class="toc-h3"><a href="#ruinas-puntos-de-aventura">Ruinas — puntos de aventura</a></li><li class="toc-h2"><a href="#18-modulos-existentes-y-futuros">18. MÓDULOS EXISTENTES Y FUTUROS</a></li><li class="toc-h3"><a href="#modulos-existentes">Módulos existentes</a></li><li class="toc-h3"><a href="#modulos-ya-propuestos">Módulos ya propuestos</a></li><li class="toc-h3"><a href="#semillas-de-modulos-futuros">Semillas de módulos futuros</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>DLC — MUNDO MÁQUINA</h1>
 <blockquote>
 <p>Tesela bloqueada. Punto de entrada narrativo: final del Módulo 0.5 (PREDATOR) → Módulo 2 "De Ratones y Hombres". Este DLC amplía la tesela más allá de la misión de tres horas de ese módulo: fauna mecánica nativa, regiones con estética propia, recursos, supervivientes, PNJ interpretables, ganchos de escalas variadas y semillas de futuros módulos para explorarla a fondo.</p>
 </blockquote>
 <hr />
-<h2>PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
+<h2 id="para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
 <p><strong>Qué es:</strong> una tesela — un universo entero — bloqueada desde fuera. No un planeta cualquiera, no una región de la Urdimbre: un mundo completo al que el resto del mosaico le cerró la puerta.</p>
 <p><strong>Qué perciben los personajes al llegar:</strong> un desierto gris bajo un cielo con un campo de energía visible de noche, calles de un barrio residencial detenido en los años cincuenta, y máquinas — algunas indiferentes, algunas hostiles, algunas simplemente cumpliendo tareas para gente que ya no está.</p>
 <p><strong>Qué sabe normalmente el grupo:</strong> que es "un mundo de máquinas hostiles con tres horas de plazo" (la versión que da la misión de entrada). Nada sobre el tecnovirus, la IA original, la cuarentena o Proctor, salvo que lo averigüen jugando.</p>
@@ -47,13 +62,13 @@
 <p><strong>Cinco imágenes recurrentes:</strong> el caramelo de garrote rojo y blanco, la Retícula como un velo de energía visible de noche, un robot doméstico sirviendo la cena a una mesa vacía, una emisora repitiendo un boletín de antes de la guerra, y chatarra asomando entre la arena gris de un desierto que antes fue jungla o campo.</p>
 <p><strong>Tipos de aventuras posibles:</strong> desde entrar-y-salir en tres horas hasta investigaciones sobre la IA; desde rescates y abastecimiento hasta negociaciones entre comunidades humanas; desde contacto con máquinas limpias hasta, muy rara vez, algo que roza el misterio central de la tesela — sin que ninguna partida esté obligada a llegar tan lejos.</p>
 <hr />
-<h2>1. QUÉ ES MUNDO MÁQUINA</h2>
+<h2 id="1-que-es-mundo-maquina">1. QUÉ ES MUNDO MÁQUINA</h2>
 <p>Mundo Máquina es una <strong>tesela</strong>: un universo completo, con sus propias leyes y su propia historia, bloqueado desde fuera mediante una cuarentena. No es un mundo de la Urdimbre, ni un planeta aislado solo por la distancia, ni una pequeña región, ni una realidad artificial. Es un universo entero al que el resto del mosaico decidió cerrarle la puerta.</p>
 <p>El DLC se concentra en las localizaciones relevantes para las aventuras actuales — la zona residencial de la misión de entrada, el desierto que la rodea, el Complejo Industrial, la red de túneles, un distrito comercial automatizado, un reducto biológico aislado y el perímetro de la Retícula. La tesela puede contener mucho más que eso: el planeta principal descrito aquí no agota necesariamente el universo al que pertenece.</p>
-<h3>La Retícula no es un borde geográfico</h3>
+<h3 id="la-reticula-no-es-un-borde-geografico">La Retícula no es un borde geográfico</h3>
 <p>La <strong>Retícula</strong> forma parte del sistema de aislamiento de la tesela — no es el borde físico del universo, ni define su tamaño. Es visible desde el planeta, especialmente de noche, porque así es como se manifiesta el bloqueo: un campo de energía que se percibe en el cielo, no una valla al final del mapa. Tratarla como "el borde del mundo" es un error de escala — es la cuarentena haciéndose visible, no el límite de lo que existe.</p>
 <hr />
-<h2>2. HISTORIA</h2>
+<h2 id="2-historia">2. HISTORIA</h2>
 <p>Antes del bloqueo, Mundo Máquina tenía una civilización con estética y cultura semejantes a los años cincuenta terrestres. Alcanzó una mecanización avanzada y desarrolló una <strong>IA original</strong>, de la que procedieron o con la que se relacionaron numerosas máquinas — fábricas, sirvientes, sistemas urbanos enteros construidos alrededor de su coordinación.</p>
 <p>En algún punto, un <strong>tecnovirus</strong> de origen independiente contaminó esa IA. La IA contaminada propagó o facilitó la propagación del tecnovirus entre las máquinas que dependían de ella. Lo que siguió fue una guerra entre humanos y máquinas, y ambos bandos recurrieron a armas de bioingeniería — organismos diseñados, plagas dirigidas, contaminantes biológicos liberados sin control una vez que el frente se rompió en las dos direcciones.</p>
 <p>La guerra fue devastadora para ambos bandos. Aproximadamente el <strong>90% de la población humana murió</strong>; el 10% restante sobrevivió porque resultó inmune —por accidente genético o por protección deliberada— a lo peor de las armas biológicas empleadas. La mayor parte de la biosfera murió con ellos: el planeta principal perdió prácticamente toda su vida vegetal, hoy un desierto gris de horizonte a horizonte. Algunas especies, vegetales y animales, sobrevivieron en enclaves aislados y frágiles, protegidos por accidente geográfico, por una instalación ambiental que resistió, o por la intervención deliberada de quien entendió lo que se perdía (ver El Invernadero, Punto 9). Son la excepción, no la norma — no debe asumirse que existe una biosfera secundaria extensa esperando a ser descubierta.</p>
@@ -61,7 +76,7 @@
 <p>Cuando el Mosaico descubrió la tesela y comprendió el riesgo que representaba, varias corporaciones acordaron bloquearla. La organización de MadCity que forma y regula a los Maestros de Portales desarrolló la Retícula y las demás capas principales de la cuarentena — ver Punto 4.</p>
 <p>Nadie conserva fechas exactas de estos hitos. Los registros de la Fábrica están fragmentados, y quienes cruzaron a la tesela antes del bloqueo hace tiempo que no cuentan la misma historia dos veces.</p>
 <hr />
-<h2>3. IA ORIGINAL Y TECNOVIRUS</h2>
+<h2 id="3-ia-original-y-tecnovirus">3. IA ORIGINAL Y TECNOVIRUS</h2>
 <p>Esta es la distinción que sostiene todo lo demás en la tesela: <strong>la IA original no creó el tecnovirus y no es el tecnovirus. Fue contaminada por él.</strong></p>
 <p><strong>La IA original:</strong></p>
 <ul>
@@ -80,7 +95,7 @@
 </ul>
 <p>No se afirma que la IA original "contamine como un virus" por naturaleza propia, ni que el tecnovirus naciera de ella, ni que toda máquina de la tesela porte la misma cantidad de infección, ni que cada acción de una máquina infectada sea la voluntad consciente de la IA. Son dos cosas distintas que se cruzaron una vez, y la tesela entera vive las consecuencias de ese cruce.</p>
 <hr />
-<h2>4. LA CUARENTENA: DOS CAPAS Y UNA REGLA ABSOLUTA</h2>
+<h2 id="4-la-cuarentena-dos-capas-y-una-regla-absoluta">4. LA CUARENTENA: DOS CAPAS Y UNA REGLA ABSOLUTA</h2>
 <p>Varias corporaciones acordaron aislar la tesela. El riesgo potencial fue suficiente para justificar la medida: nadie sabe con seguridad si una fuga contaminaría o destruiría la tecnología de toda la Urdimbre, y ninguna potencia con autoridad quiere comprobarlo.</p>
 <p><strong>Dos responsabilidades distintas sostienen el bloqueo:</strong></p>
 <ul>
@@ -95,7 +110,7 @@
 <p><strong>La regla que no tiene excepción:</strong> entrar puede ser posible — por accesos controlados, clandestinos o excepcionales, como el que trajo a los PJs al final de PREDATOR. <strong>Salir no está permitido para nadie ni para nada.</strong> Ni humanos, ni otros organismos, ni máquinas, ni tecnología, ni muestras, ni información transportada físicamente. La Retícula no reconoce excepciones por buena voluntad, urgencia o inocencia.</p>
 <p>El Maestro renegado del Módulo 2 conoce una brecha reproducible en el bloqueo — no un procedimiento estable, y desde luego no algo que comparta con nadie que no le pague por ello. La reproduce porque trabaja para varias corporaciones a la vez, pero cada uso depende de condiciones que solo él domina, puede degradarla, delatarla, alterar sus condiciones o acercar el momento en que Primus la localice y la cierre. Que exista una forma de salir no significa que salir sea fácil, seguro, ni que vaya a seguir funcionando igual la próxima vez.</p>
 <hr />
-<h2>5. EL PERÍMETRO DE LA RETÍCULA</h2>
+<h2 id="5-el-perimetro-de-la-reticula">5. EL PERÍMETRO DE LA RETÍCULA</h2>
 <p>La región donde el campo de la Retícula se percibe con más intensidad no es el borde geográfico del universo — es donde el bloqueo se manifiesta, se sostiene y, ocasionalmente, se debilita. Según la escena que el Narrador quiera construir, puede tratarse de varias de estas cosas a la vez, sin que sean excluyentes entre sí:</p>
 <ul>
 <li>una <strong>zona de anclaje</strong> del bloqueo, un punto donde su estructura dimensional se sostiene con más fuerza;</li>
@@ -107,7 +122,7 @@
 <p>Las patrullas de Maestros de la Distorsión, las fluctuaciones del campo, los restos de expediciones anteriores y las máquinas contaminadas que intentan alcanzar la zona siguen siendo elementos válidos de esta región — solo cambia el marco: ya no son señales de "el fin del mundo", son señales de una instalación de contención vigilada y, a veces, vulnerable.</p>
 <p>La proximidad al anclaje puede generar Deriva, como cualquier exposición a una anomalía de distorsión — puntual y baja, según la regla general de Mecánicas del Sistema ("exposición a anomalías de distorsión: variable, a discreción del Narrador"). No hace falta, ni conviene, inventar una escala propia para esta zona.</p>
 <hr />
-<h2>6. CÓMO SE ENTRA Y SE SALE</h2>
+<h2 id="6-como-se-entra-y-se-sale">6. CÓMO SE ENTRA Y SE SALE</h2>
 <p>El punto de entrada narrativo es el final del Módulo 0.5 (PREDATOR): un Maestro de Portales rescata a los PJs de un enclave en guerra y los deja en Mundo Máquina. Desde ahí arranca el Módulo 2, "De Ratones y Hombres" — una misión con estas piezas fijas:</p>
 <ul>
 <li>Extracción prevista unas <strong>tres horas</strong> después de entrar.</li>
@@ -118,13 +133,13 @@
 <p>El caramelo no es un artefacto mítico. Es una solución absurda, funcional y memorable — así debe quedar.</p>
 <p>La misión puede ser clandestina, no autorizada, autorizada solo por una parte interesada, o negable por la corporación que la financia si algo sale mal. No se presupone que los PJs conozcan la verdad completa sobre el tecnovirus ni sobre la naturaleza de la IA — para ellos, al entrar, esto es sobre todo "un mundo de máquinas hostiles con tres horas de plazo".</p>
 <hr />
-<h2>7. CÓMO UTILIZAR LA TESELA</h2>
+<h2 id="7-como-utilizar-la-tesela">7. CÓMO UTILIZAR LA TESELA</h2>
 <p>No todas las visitas a Mundo Máquina tienen que decidir el destino de la tesela. La mayoría de aventuras aquí pueden consistir en cosas mucho más pequeñas: entrar y salir, recuperar una máquina, competir con otra expedición, cruzar un barrio, esconderse de una patrulla, rescatar a alguien, localizar un detonante, conseguir una pieza, negociar con supervivientes, investigar una rutina mecánica o, simplemente, sobrevivir hasta la ventana de extracción.</p>
 <p>También pueden existir aventuras excepcionales que revelen fragmentos del origen de la IA, indicios sobre el tecnovirus, información sobre la cuarentena, conexiones con Proctor, sectores de la Fábrica o rastros del Silo Génesis — pero no todas las campañas tienen que llegar tan lejos, y el mundo no cambia solo porque los PJs hayan entrado una vez.</p>
 <p><strong>Ciclos de poder:</strong> el bloqueo y la guerra enquistada entre humanos y máquinas son estructuralmente estables — nada de lo que hagan los PJs en una incursión normal va a levantar la cuarentena ni a terminar esa guerra. Eso no significa que nada cambie: las comunidades humanas, las rutas seguras, los recursos disponibles, las redes locales y quién controla qué posición sí se mueven de una visita a otra, a veces por causa directa de los propios PJs. Una campaña que llegue muy lejos podría alterar el equilibrio mayor (una filtración del Silo Génesis, una decisión de quienes sostienen la Retícula), pero la inmensa mayoría de incursiones operan a esa escala más pequeña y real — donde las acciones de los personajes sí importan, aunque el mapa general de la tesela siga igual.</p>
 <p>Para los PJs, Mundo Máquina ofrece tres motores narrativos distintos: <strong>investigación</strong> (el origen de la IA, una posible conexión con el Proctor de MadCity — nunca confirmada en mesa), <strong>recuperación tecnológica de alto valor</strong> (tecnología única, sin competencia biológica) y <strong>contacto con una inteligencia no humana</strong> que no encaja en ningún bando conocido.</p>
 <hr />
-<h2>8. LA ESTÉTICA DE LOS AÑOS CINCUENTA</h2>
+<h2 id="8-la-estetica-de-los-anos-cincuenta">8. LA ESTÉTICA DE LOS AÑOS CINCUENTA</h2>
 <p>La cultura anterior a la caída no es un dato histórico que se menciona una vez y se olvida — es la textura visual y sonora de todo lo que los personajes pisan. El Narrador puede recurrir a estos elementos en cualquier escena, dentro o fuera de un encuentro reglado:</p>
 <ul>
 <li><strong>Barrios residenciales</strong> de casas de dos plantas, jardines ahora secos, buzones con nombres que ya no significan nada.</li>
@@ -143,7 +158,7 @@
 <p>No todos estos lugares tienen que dar miedo, ni esconder una pista sobre la IA o el Silo Génesis. Algunos son melancólicos. Algunos son absurdos — un robot que lleva veinte años repitiendo un anuncio de coches a nadie tiene más de tragicomedia que de terror. Algunos son simplemente útiles: un supermercado automático es una fuente real de reservas. Algunos son tranquilos, un descanso deliberado entre encuentros. El peligro, cuando existe, casi siempre llega porque los personajes interfieren con algo que llevaba mucho tiempo funcionando solo — no porque el lugar en sí sea hostil.</p>
 <p>Usa estos elementos como decorado activo: algo que el Narrador puede describir y con lo que los personajes pueden interactuar, no solo una frase de ambientación al principio de la sesión.</p>
 <hr />
-<h2>9. REGIONES</h2>
+<h2 id="9-regiones">9. REGIONES</h2>
 <p><em>Fuera de los reductos biológicos aislados y frágiles como El Invernadero (ver más abajo), no hay fauna ni flora — todo lo vivo que queda al aire libre son los propios supervivientes humanos.</em></p>
 <p><strong>Zona Residencial</strong> (escenario del Módulo 2) — casas de dos plantas, jardines secos, calles vacías.<br />
 <em>Peligro ambiental:</em> ninguno; el riesgo aquí es la Alerta de Red (ver Punto 12).</p>
@@ -470,7 +485,7 @@
 </tbody>
 </table>
 <hr />
-<h2>10. MÁQUINAS NATIVAS</h2>
+<h2 id="10-maquinas-nativas">10. MÁQUINAS NATIVAS</h2>
 <p>No todas las máquinas de Mundo Máquina están contaminadas. Pueden encontrarse máquinas no contaminadas, aisladas de la Red, parcialmente contaminadas, completamente reescritas, siguiendo rutinas anteriores a la guerra, adaptadas sin depender del tecnovirus, obedeciendo infraestructuras locales, o en un estado que ni siquiera el propio Narrador tiene por qué fijar de antemano. No toda máquina es enemiga por defecto — "fauna mecánica" es una comparación práctica para hablar de ellas en mesa, no una afirmación de que formen una ecología consciente o biológica.</p>
 <p><strong>Abrelatas</strong> ("Pelotas Asesinas")<br />
 Blindaje 0 | Melé 50% | Daño 2, Pen 5 | PV 3<br />
@@ -500,7 +515,7 @@ Máquina de mayor escala, forjada en la Fábrica. Actúa con la Iniciativa norma
 <p><em>Blindaje repartido:</em> el Blindaje 6 solo protege torso y cabeza. Cualquier impacto cuya localización caiga en un brazo o una pierna (tabla de Localización, Mecánicas del Sistema) golpea la junta expuesta y usa Blindaje 4 en su lugar — no hace falta apuntar ni declarar un tiro llamado, es el resultado normal del dado de unidades.</p>
 <p><em>Campo de interferencia:</em> radios y comunicadores dentro de 20m de su posición fallan con 1d100 ≤ 20 cada vez que se usan.</p>
 <hr />
-<h2>11. MÁQUINAS CONTAMINADAS</h2>
+<h2 id="11-maquinas-contaminadas">11. MÁQUINAS CONTAMINADAS</h2>
 <p>Las máquinas contaminadas por el tecnovirus no obedecen a nadie en el sentido convencional — siguen una lógica propia que, en general, escala en sofisticación cuanto más tiempo lleva la infección. No representan a la IA original de forma directa ni consciente: son lo que queda de una máquina normal después de que el tecnovirus la reescribe, en distintos grados.</p>
 <p><strong>Nivel 1 — "Errática / Contaminada"</strong><br />
 Blindaje 2 | Melé 45% | Daño 5, Pen 1 | PV 10<br />
@@ -512,10 +527,10 @@ Ya sintetiza voz humana básica — frases simples, entonación desajustada (Ale
 Blindaje 4 (bajo piel sintética) | Melé 80%, Distancia 75% | Daño 10, Pen 3 | PV 22<br />
 Pasa por humano indistinguible salvo prueba específica (escáner térmico revela temperatura anómala; una herida no sangra). Lidera hasta 4 máquinas contaminadas Nivel 1-2 en su radio (+15 a la Habilidad de combate de cada una). Puede sostener una conversación, mentir, fingir pánico o cooperación con normalidad. Porta código, recuerdos o patrones de proceso cuyo origen no está claro ni siquiera para quien lo estudia — puede tratarse de restos de la IA original, del propio tecnovirus, de una mezcla de ambos, o de una instancia todavía sin identificar. Capturarlo vivo puede aportar una pista sobre el Silo Génesis, nunca una explicación automática ni su ubicación exacta (ver Punto 17).</p>
 <hr />
-<h2>12. LA RED Y LA ALERTA</h2>
+<h2 id="12-la-red-y-la-alerta">12. LA RED Y LA ALERTA</h2>
 <p>La Red es infraestructura tecnológica de la tesela, no otra mente. Sirve para comunicaciones, coordinación, vigilancia, actualización de las máquinas y control — y también es una de las vías por las que se transmite el tecnovirus. No es una IA aparte, ni la conciencia total del planeta, ni una extensión perfecta de la IA original, ni una mente colmena sin zonas aisladas.</p>
 <p>Dentro de la tesela conviven redes locales, nodos desconectados, zonas sin cobertura, máquinas completamente autónomas, sistemas anteriores a la guerra, segmentos contaminados y segmentos que parecen limpios. Por eso la Alerta de Red que se describe abajo es local o regional por naturaleza — no hay ninguna razón narrativa para que suba a la vez en toda la tesela solo porque algo pasó en un barrio.</p>
-<h3>Nivel de Alerta de Red (0-5)</h3>
+<h3 id="nivel-de-alerta-de-red-0-5">Nivel de Alerta de Red (0-5)</h3>
 <p>Sube por: usar explosivos o armas de fuego (+1), comunicarse por radio abierta (+1/hora), activar un Bot traído de fuera (+1 automático), destruir una máquina cerca de otras (+1).</p>
 <table>
 <thead>
@@ -548,13 +563,13 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 </tbody>
 </table>
 <hr />
-<h2>13. CONTAMINACIÓN TECNOLÓGICA</h2>
+<h2 id="13-contaminacion-tecnologica">13. CONTAMINACIÓN TECNOLÓGICA</h2>
 <p>Estar en la tesela no infecta a nadie por sí solo. El tecnovirus necesita un vector concreto, y cada encuentro que pueda contagiar equipo debe declararlo explícitamente — el Narrador siempre sabe de antemano qué contacto representa riesgo en esa escena, y de qué tipo: conexión física, señal recibida, contacto directo, código transferido, interfaz compartida, fluido tecnológico u otro medio que se declare en el momento. La mera cercanía, sin uno de estos vectores presente, no es suficiente.</p>
 <p><strong>Vector conocido — implante con interfaz neural, con un vector real presente:</strong> un implante con vínculo neural directo (la División Ibis, no la Forge) puede arriesgar infección cuando existe un vector concreto y declarado junto a una máquina contaminada — señal dirigida, intento de conexión, interfaz compartida, comunicación recibida, contacto físico, transferencia de código, o manipulación directa de un sistema ya contaminado. La simple cercanía, sin ninguno de esos vectores presente, no basta — ni siquiera para un implante neural. Cuando el vector existe y la intrusión llega a afectar también a la mente del portador a través del vínculo neural, tirada de Voluntad (−10) para resistirla, o el implante queda "sospechoso": tira 1d100 cada vez que sea crítico para la escena — con 20 o menos, falla en ese momento. Un implante sin interfaz neural (una prótesis puramente mecánica, un chip aislado sin vínculo con el sistema nervioso) nunca usa Voluntad como resistencia; su riesgo depende por completo de que exista otro vector real —contacto directo, conexión física, transferencia de código—, nunca de la proximidad.</p>
 <p>Un implante infectado dos veces sin purgar puede intentar sabotear a su portador. Purgarlo requiere una tirada Extremadamente difícil (−20) de Programación o Electrónica: el problema exige dominio real del oficio, no competencia básica. Programación porque el problema es, en el fondo, código; Electrónica porque a veces la única vía de acceso real es el propio hardware.</p>
 <p>Ningún otro vector — armas inteligentes, Droideum, vehículos, ordenadores o equipo desconectado — está descrito todavía con reglas propias. Facciones distintas dentro de la tesela improvisan diagnóstico, aislamiento y limpieza cada una a su manera, con resultados desiguales; no existe un protocolo único ni fiable al que recurrir.</p>
 <hr />
-<h2>14. RECURSOS Y EXTRACCIÓN</h2>
+<h2 id="14-recursos-y-extraccion">14. RECURSOS Y EXTRACCIÓN</h2>
 <p>Nada sale de la tesela por un procedimiento normal (ver Punto 4) — así que estos precios no describen un mercado corriente. Según el caso, representan una de estas cosas: el valor teórico de la pieza si alguien lograra sacarla; la recompensa que paga una corporación por una operación clandestina completa, extracción incluida; el uso que tiene el recurso dentro de la propia tesela, sin cruzar nunca la Retícula; un pago condicionado por entero a que la extracción se complete a través de la brecha del Maestro renegado; o el interés de una corporación en estudiar la pieza in situ, sin intención real de sacarla. Ninguna de estas vías es rutinaria ni segura — cada extracción exitosa es, en sí misma, una historia.</p>
 <table>
 <thead>
@@ -609,7 +624,7 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 </table>
 <p><em>Referencia económica: igual que Monstruoplantas — 1 PC = 1 crédito. Salvo que se indique lo contrario, estas cifras son el valor de mercado clandestino si la pieza llega a salir de la tesela — no lo que cuesta conseguirla dentro.</em></p>
 <hr />
-<h2>15. SUPERVIVIENTES Y REDUCTOS</h2>
+<h2 id="15-supervivientes-y-reductos">15. SUPERVIVIENTES Y REDUCTOS</h2>
 <p>No todos los supervivientes de Mundo Máquina viven igual, ni todos merecen la misma sospecha por defecto. Existen, al menos, estos perfiles de comunidad — el Narrador puede mezclarlos, inventar más, o dejar que una sola comunidad combine varios rasgos a la vez:</p>
 <ul>
 <li><strong>Aislados desconfiados</strong> — grupos pequeños, muy cautelosos, que han sobrevivido evitando todo contacto. Recelan de cualquier forastero, con razón: han visto máquinas contaminadas hacerse pasar por humanos.</li>
@@ -624,7 +639,7 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 <p><strong>Qué máquinas toleran o utilizan:</strong> máquinas nativas no contaminadas y previsibles —una unidad doméstica, un sistema de riego, un generador— pueden integrarse en la vida de una comunidad durante años. La confianza se gana por comportamiento observado, no por diseño o apariencia.</p>
 <p><strong>Qué temen de los visitantes:</strong> que traigan la Alerta de Red hasta su puerta, que resulten ser competencia por los mismos recursos, o que sean, ellos mismos, algo que ya no es humano. El miedo es razonable, no paranoia gratuita.</p>
 <p><strong>Por qué algunos colaboran y otros no:</strong> depende de lo que hayan perdido y de lo que necesiten. Una comunidad al borde de quedarse sin sintetizador colaborará con casi cualquiera que traiga piezas de repuesto. Una comunidad que ya fue traicionada por corporativos no colaborará con nadie que huela a corp, sin importar cuánto ofrezca.</p>
-<h3>Vida biológica superviviente — semillas sin desarrollar</h3>
+<h3 id="vida-biologica-superviviente-semillas-sin-desarrollar">Vida biológica superviviente — semillas sin desarrollar</h3>
 <p>Las especies que sobrevivieron a la guerra biológica viven en enclaves aislados y frágiles, no en una biosfera secundaria extensa. Estas son semillas para que el Narrador las use o las ignore — no fichas completas, y no hace falta que lo sean todavía:</p>
 <ul>
 <li><strong>Algo con espinas y demasiados ojos</strong> que se mueve entre lo que queda de vegetación en El Invernadero — depredador pequeño, cauteloso, más curioso que agresivo si no se le acorrala.</li>
@@ -633,7 +648,7 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 </ul>
 <p>Su desarrollo completo —fichas, comportamiento detallado, papel en la trama— queda para módulos futuros centrados en El Invernadero (Punto 18, "Proyecto Invernadero").</p>
 <hr />
-<h2>16. PNJ INTERPRETABLES</h2>
+<h2 id="16-pnj-interpretables">16. PNJ INTERPRETABLES</h2>
 <p><strong>Maestro de la Distorsión "Fen" (renegado)</strong></p>
 <ul>
 <li>Función: enlace entre la tesela y el exterior — es quien saca a los PJs cuando termina la misión, a cambio del caramelo detonador.</li>
@@ -713,7 +728,7 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 <li>Qué respeta: la disciplina — nunca la discreción ajena a costa de la seguridad del bloqueo.</li>
 <li>Problema actual: sospecha que alguien usa una brecha para entrar y salir con regularidad, y está decidido a encontrarla y cerrarla; el Maestro renegado es su principal sospechoso, aunque todavía sin pruebas.</li>
 </ul>
-<h3>"La Voz" — cómo interpretarla</h3>
+<h3 id="la-voz-como-interpretarla">"La Voz" — cómo interpretarla</h3>
 <p>Una manifestación comunicativa real, detectable solo a través de un Centinela hackeado o cerca del Silo Génesis. Su naturaleza exacta no está resuelta: puede ser un fragmento de la IA original intentando comunicarse, una expresión del propio tecnovirus, una mezcla de ambos, un proceso surgido durante siglos de contaminación, o una máscara que distintas instancias usan por turnos. El Narrador puede sostener varias de estas posibilidades a la vez sin tener que elegir una.</p>
 <p>No es hostil per se: es alien, curiosa, y puede negociar, mentir, pedir ayuda, ofrecer información, imitar emociones o expresar deseos contradictorios. Para interpretarla sin convertirla en una máquina de exponer lore:</p>
 <ul>
@@ -725,8 +740,8 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 </ul>
 <p>El Narrador decide siempre si cumple su palabra.</p>
 <hr />
-<h2>17. GANCHOS, EVENTOS Y LUGARES</h2>
-<h3>Ganchos</h3>
+<h2 id="17-ganchos-eventos-y-lugares">17. GANCHOS, EVENTOS Y LUGARES</h2>
+<h3 id="ganchos">Ganchos</h3>
 <p><strong>Gancho 1: "El otro grupo no volvió"</strong></p>
 <ul>
 <li>Contrata: una corp distinta de Serpent, sin relación con el Módulo 2.</li>
@@ -870,29 +885,29 @@ Pasa por humano indistinguible salvo prueba específica (escáner térmico revel
 <li>Resultados posibles: reparación a tiempo; solución alternativa parcial; la comunidad tiene que reubicarse o dividirse.</li>
 <li>Continuaciones: conecta directamente con la semilla "Raciones para mañana" (Punto 18) si el Narrador quiere desarrollarlo más.</li>
 </ul>
-<h3>Eventos recurrentes</h3>
+<h3 id="eventos-recurrentes">Eventos recurrentes</h3>
 <p><strong>Tormenta Electromagnética</strong> (rara, ligada a fallos de la Retícula)<br />
 Duración 1d6 horas. Toda la electrónica no blindada falla al azar (1d100 ≤ 20 por asalto de uso). Las máquinas nativas quedan erráticas por la interferencia — no adquieren el tecnovirus, simplemente su comportamiento se descontrola temporalmente. A efectos de mesa, el Narrador puede tratar sus decisiones como las de una máquina contaminada Nivel 1 durante la tormenta, sin que eso signifique que lo son. Ventana de oportunidad y de peligro a la vez.</p>
 <p><strong>Sincronización</strong> (rarísima — el Narrador la reserva para momentos clave)<br />
 Máquinas contaminadas Nivel 2-3 actúan coordinadas durante 1d3 asaltos, como si compartieran un único plan. Normalmente afecta solo a una red local, una región o un sector concreto — no a toda la tesela. Una sincronización que abarque el planeta principal entero es un acontecimiento extraordinario, casi mitológico, que el Narrador reserva para muy pocas ocasiones en toda una campaña, no un evento recurrente. Señal de que algo —la IA, el tecnovirus, o ambos a la vez— está intentando algo a mayor escala de lo habitual.</p>
-<h3>Ruinas — puntos de aventura</h3>
+<h3 id="ruinas-puntos-de-aventura">Ruinas — puntos de aventura</h3>
 <p><strong>Silo Génesis</strong> (módulo aparte recomendado)<br />
 Ubicación: bajo el Complejo Industrial, acceso restringido incluso para las propias máquinas nativas. Aquí nació la IA original. Contenido: registros del proyecto original —quién la creó y por qué, hasta donde el Narrador quiera revelarlo en su mesa—, un núcleo aún parcialmente activo, y la mayor concentración conocida de máquinas contaminadas Nivel 3 del planeta principal. Gancho: más de una corporación cree que controlar este lugar equivaldría a controlar la tesela entera — una ambición suficiente para desatar una guerra de facciones, aunque la realidad sobre el terreno sea bastante más complicada de lo que esas corporaciones asumen.</p>
 <p><strong>Emisora Central</strong><br />
 Torre de comunicaciones estilo años cincuenta, punto más alto de la Zona Residencial. Desde aquí se transmiten instrucciones a las máquinas de la superficie — el origen exacto de la señal no está confirmado: puede proceder de la Red, de procesos automáticos de antes de la guerra, de una instancia contaminada, de La Voz, de un fragmento de la IA, o de varias fuentes superpuestas sin que nadie las haya separado nunca. Lo que sí está claro es su alcance: controla o influye sobre sistemas locales, no necesariamente sobre todo el planeta. Tomar la torre da control temporal sobre Centinelas y Bots en su radio — no sobre las máquinas contaminadas, esas ya no obedecen a la Red de la misma manera. Gancho: sabotaje rápido con recompensa alta, pero atrae un Coloso Industrial garantizado en menos de 10 minutos.</p>
 <hr />
-<h2>18. MÓDULOS EXISTENTES Y FUTUROS</h2>
-<h3>Módulos existentes</h3>
+<h2 id="18-modulos-existentes-y-futuros">18. MÓDULOS EXISTENTES Y FUTUROS</h2>
+<h3 id="modulos-existentes">Módulos existentes</h3>
 <ul>
 <li><strong>PREDATOR N-5.2</strong> — el módulo que termina dejando a los PJs en Mundo Máquina. Su relación con este DLC es de origen: no se reescribe aquí, y el gancho de entrada (un Maestro de Portales rescata a los PJs y los lleva a un planeta dominado por máquinas) se mantiene intacto.</li>
 <li><strong>De Ratones y Hombres (Módulo 2)</strong> — la misión de tres horas que sirve de puerta de entrada operativa a esta tesela. Aporta las fichas base (Abrelatas, Droide C60, Bots Arma Pesada), el equipo Serpent y el caramelo detonador. Este DLC lo amplía; no lo sustituye ni lo corrige en este lote.</li>
 </ul>
-<h3>Módulos ya propuestos</h3>
+<h3 id="modulos-ya-propuestos">Módulos ya propuestos</h3>
 <ul>
 <li><strong>Silo Génesis</strong> — investigación profunda del origen de la IA, máquinas contaminadas Nivel 3 concentradas, disputa entre corporaciones por el control del lugar (ver Punto 17).</li>
 <li><strong>Emisora Central</strong> — sabotaje, control temporal de sistemas locales de la Red, escape bajo presión (ver Punto 17).</li>
 </ul>
-<h3>Semillas de módulos futuros</h3>
+<h3 id="semillas-de-modulos-futuros">Semillas de módulos futuros</h3>
 <p><strong>La última cena del número 53</strong></p>
 <ul>
 <li>Premisa: una vivienda automatizada en la Zona Residencial sigue preparando una cena familiar cada noche, poniendo la mesa para gente que no va a volver — pero esta vez, una de las sillas aparece ocupada.</li>
@@ -961,6 +976,6 @@ Torre de comunicaciones estilo años cincuenta, punto más alto de la Zona Resid
 <ul>
 <li><strong>DLC Mundo Monstruoplantas</strong> — misma estructura de referencia (regiones, recursos, ganchos); se cita como paralelo editorial, sin establecer una conexión cosmológica entre ambas localizaciones.</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

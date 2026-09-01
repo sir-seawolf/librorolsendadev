@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — MUNDO OASIS"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</a></li><li class="toc-h2"><a href="#1-que-es-oasis">1. QUÉ ES OASIS</a></li><li class="toc-h2"><a href="#2-cronologia">2. CRONOLOGÍA</a></li><li class="toc-h2"><a href="#3-sociedad-y-tecnologia">3. SOCIEDAD Y TECNOLOGÍA</a></li><li class="toc-h2"><a href="#4-gobierno">4. GOBIERNO</a></li><li class="toc-h2"><a href="#5-periodos-jugables">5. PERIODOS JUGABLES</a></li><li class="toc-h3"><a href="#antes-del-despertar">Antes del despertar</a></li><li class="toc-h3"><a href="#mientras-sucede-el-despertar">Mientras sucede el despertar</a></li><li class="toc-h3"><a href="#transicion-y-despues">Transición y después</a></li><li class="toc-h2"><a href="#6-dos-perspectivas-de-campana">6. DOS PERSPECTIVAS DE CAMPAÑA</a></li><li class="toc-h3"><a href="#personajes-nativos">Personajes nativos</a></li><li class="toc-h3"><a href="#agentes-externos">Agentes externos</a></li><li class="toc-h3"><a href="#grupos-mixtos">Grupos mixtos</a></li><li class="toc-h2"><a href="#7-federales">7. FEDERALES</a></li><li class="toc-h2"><a href="#8-corporaciones-infiltradas">8. CORPORACIONES INFILTRADAS</a></li><li class="toc-h2"><a href="#9-economia-por-periodos">9. ECONOMÍA POR PERIODOS</a></li><li class="toc-h2"><a href="#10-tron-runas-y-personas-despertadas">10. TRON, RUNAS Y PERSONAS DESPERTADAS</a></li><li class="toc-h2"><a href="#11-la-red-unica">11. LA RED ÚNICA</a></li><li class="toc-h2"><a href="#12-identidad-visual-y-cultural-de-oasis">12. IDENTIDAD VISUAL Y CULTURAL DE OASIS</a></li><li class="toc-h2"><a href="#13-regiones">13. REGIONES</a></li><li class="toc-h3"><a href="#oasis-niveles-comerciales">Oasis — Niveles Comerciales</a></li><li class="toc-h3"><a href="#oasis-niveles-bajos">Oasis — Niveles Bajos</a></li><li class="toc-h3"><a href="#selva-circundante">Selva Circundante</a></li><li class="toc-h3"><a href="#mansion">Mansión</a></li><li class="toc-h3"><a href="#ruinas-de-la-red-unica">Ruinas de la Red Única</a></li><li class="toc-h3"><a href="#instalaciones-federales-o-gubernamentales">Instalaciones Federales o gubernamentales</a></li><li class="toc-h3"><a href="#puerto-estelar">Puerto estelar</a></li><li class="toc-h3"><a href="#fichas-de-amenazas">Fichas de amenazas</a></li><li class="toc-h2"><a href="#14-pnj-interpretables">14. PNJ INTERPRETABLES</a></li><li class="toc-h3"><a href="#arquetipos-de-oasis">Arquetipos de Oasis</a></li><li class="toc-h3"><a href="#nadine-crix-y-totovia">Nadine, Crix y Totovía</a></li><li class="toc-h2"><a href="#15-el-que-desaparece-gente">15. EL QUE DESAPARECE GENTE</a></li><li class="toc-h2"><a href="#16-modulos-existentes-y-posibles">16. MÓDULOS EXISTENTES Y POSIBLES</a></li><li class="toc-h3"><a href="#material-existente">Material existente</a></li><li class="toc-h3"><a href="#modulos-ya-propuestos">Módulos ya propuestos</a></li><li class="toc-h3"><a href="#semillas-futuras">Semillas futuras</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>DLC — MUNDO OASIS</h1>
 <p><em>Origen de la ambientación: Oasis se basa en la ambientación de la campaña dirigida por Luis Clemente, recogida en el Arco II (Oasis y las Raíces) del blog de campaña El Pecio de Seawolf — La Senda del Errante.</em></p>
 <hr />
@@ -38,7 +53,7 @@
 </blockquote>
 <p><em>DLC completo pendiente de playtest, corrección y maquetación.</em></p>
 <hr />
-<h2>PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
+<h2 id="para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
 <p><strong>Qué es:</strong> una tesela con sistema planetario propio, cuya capital —Oasis— da nombre informal a todo lo demás. No es "un mundo atrasado": es una civilización que reconstruyó una Edad Dorada perdida y ya daba sus primeros pasos entre las estrellas cuando el resto del mosaico llamó a su puerta.</p>
 <p><strong>Qué perciben los personajes al llegar:</strong> torres apiladas en arquitectura vertical caótica, pasarelas entre edificios a distinta altura, neón difuminado por niebla y lluvia fina, el olor mezclado de mercados, aceite y demasiada gente en poco espacio. Cyberpunk de manual — pero es su propio cyberpunk, no un reflejo del de nadie más.</p>
 <p><strong>Qué saben los personajes:</strong> depende de quién juegue. Un nativo cree que Oasis es todo el marco humano que existe. Un agente externo sabe que hay mucho más y tiene que fingir que no.</p>
@@ -48,11 +63,11 @@
 <p><strong>Cinco imágenes recurrentes:</strong> un caramelo de neón reflejado en un charco entre dos niveles de la ciudad; una trampilla oculta bajo un puesto de implantes de segunda mano; un ave enorme de plumaje imposible trotando por un sendero de selva; una antena de comunicación vieja, silenciada, esperando a que alguien la repare; el cielo nocturno donde, de un día para otro, algo empieza a no cuadrar con la ciencia aceptada.</p>
 <p><strong>Tipos de aventura posibles:</strong> investigación urbana y desapariciones; supervivencia y ascenso social en una ciudad desigual; primer contacto y encubrimiento durante el despertar; exploración de ruinas de una civilización que cayó hace generaciones; infiltración, para quien ya sepa lo que Oasis está a punto de descubrir.</p>
 <hr />
-<h2>1. QUÉ ES OASIS</h2>
+<h2 id="1-que-es-oasis">1. QUÉ ES OASIS</h2>
 <p>Oasis es, ante todo, <strong>una ciudad</strong>: la capital de la región. La tesela a la que pertenece contiene un sistema planetario propio y desarrollado — el planeta principal tiene dos lunas, una de ellas habitada, y existen colonias en un segundo planeta del mismo sistema. La sociedad de Oasis ha empezado su propia expansión espacial: sabe construir naves, sostener colonias y cruzar su sistema. Lo que no tiene es experiencia en cruzar <strong>entre</strong> sistemas o teselas — eso no es atraso tecnológico general, es simplemente un tipo de viaje que todavía no conocía antes del despertar.</p>
 <p>Ni la ciudad, ni el planeta, ni la tesela tienen nombres propios distintos entre sí — todo se llama "Oasis". Este DLC hace lo mismo, y aclara por contexto a qué escala se refiere en cada momento: "Oasis" a secas es casi siempre la ciudad; "el planeta de Oasis" o "la tesela de Oasis" cuando hace falta ser explícito. No hace falta inventar nombres nuevos para el planeta o la tesela: la propia ambigüedad se resuelve mejor en mesa que forzando una nomenclatura que nadie en el mundo usa.</p>
 <hr />
-<h2>2. CRONOLOGÍA</h2>
+<h2 id="2-cronologia">2. CRONOLOGÍA</h2>
 <p>Nadie en Oasis cuenta ya los años exactos transcurridos desde la Edad Dorada. Esta es la secuencia conocida, sin fechas concretas:</p>
 <ol>
 <li><strong>Edad Dorada.</strong> Una civilización tecnológicamente avanzada alcanza su cénit. Población planetaria: aproximadamente <strong>12.000 millones</strong>.</li>
@@ -65,13 +80,13 @@
 </ol>
 <p>Las ruinas que hoy se exploran cerca de Oasis (Punto 11) no pertenecen a un único momento: mezclan restos de distintas fases de esta historia — algunos elementos podrían remontarse a la propia Edad Dorada, otros a la guerra, otros a fases ya avanzadas de la reconstrucción. Su núcleo más reconocible, la llamada <strong>Red Única</strong>, pertenece a una etapa avanzada de esa reconstrucción — no hay una fecha fija para su fragmentación o su caída, y su relación exacta con la Guerra Mundial no está clara ni para los propios habitantes de Oasis. Pudo ser una consecuencia tardía del conflicto, pudo tratarse de una crisis propia y posterior, o de un declive gradual sin un solo momento de colapso. Mantenlo como pregunta abierta: es más útil como semilla para futuros módulos que como respuesta cerrada.</p>
 <hr />
-<h2>3. SOCIEDAD Y TECNOLOGÍA</h2>
+<h2 id="3-sociedad-y-tecnologia">3. SOCIEDAD Y TECNOLOGÍA</h2>
 <p><strong>Nivel Tecnológico:</strong> NT6 general. Cibernética e implantes cercanos a NT7. Automatización avanzada — robótica aplicada a fábricas, sanidad, alimentación, educación, logística y administración. La robótica humanoide generalista, en cambio, está poco desarrollada: hay IA y androides notables, pero son la excepción cuidada, no un producto de catálogo (ver Kais, Punto 14, como ejemplo del propio material de origen). Tecnología espacial suficiente para colonizar una luna y un planeta — pero mucha menos experiencia que las civilizaciones acostumbradas a cruzar la Urdimbre.</p>
 <p><strong>Servicios universales:</strong> la reconstrucción automatizó especialmente alimentación, sanidad y educación. A nadie le faltan por defecto — no presentes Oasis como un lugar donde los pobres mueren rutinariamente de hambre o sin atención médica. Eso no es lo que hace desigual a Oasis.</p>
 <p><strong>Desigualdad real:</strong> la recuperación no benefició a todos por igual, y la diferencia se nota en todo lo demás — vivienda, nivel urbano en el que se vive, calidad de los implantes a los que se tiene acceso, influencia política, movilidad, privacidad, prestigio, protección legal, acceso a puestos de decisión, capacidad real de abandonar el planeta, mejoras corporales electivas, oportunidades profesionales, control de la información. La media social ha mejorado mucho desde la Guerra Mundial; la distancia de poder entre arriba y abajo sigue siendo enorme.</p>
 <p>En la propia ciudad esto se ve en la estratificación vertical: niveles altos con aire más limpio y mejor vigilancia; niveles comerciales bulliciosos; niveles bajos con niebla constante, humedad, generadores y menos presencia de autoridad — más peligrosos, pero también más libres. Un detalle real de la ciudad: un suburbio vertical crecido alrededor de antenas de comunicación abandonadas, gente viviendo al margen del control formal, hacinada, tan al margen que ni siquiera la autoridad entra ahí sin pensarlo dos veces.</p>
 <hr />
-<h2>4. GOBIERNO</h2>
+<h2 id="4-gobierno">4. GOBIERNO</h2>
 <p>Oasis tiene un <strong>gobierno planetario único</strong>, con una dirección política propia — no es una tapadera de ninguna corporación del mosaico, y no debe presentarse como tal ante los propios personajes nativos: para ellos, es sencillamente su gobierno. Esa unidad institucional no implica ausencia de conflicto: hay facciones internas, corrupción, rivalidades, y una desigualdad de poder que el propio gobierno no ha resuelto ni parece querer resolver del todo.</p>
 <p><strong>Imagen pública:</strong> orden, progreso continuado desde la Guerra Mundial, seguridad. El gobierno se presenta como garante de la reconstrucción, y en gran medida lo es — eso es lo que hace su censura más difícil de ver desde dentro.</p>
 <p><strong>Cómo justifica la censura o los encubrimientos:</strong> estabilidad social, seguridad pública, "no alarmar sin motivo". El control de la información se practica antes del despertar (limitando qué puede decirse y a quién sobre disturbios, delitos o fallos del sistema) y se intensifica de forma muy distinta durante él, cuando lo que hay que controlar ya no es un problema doméstico.</p>
@@ -80,23 +95,23 @@
 <p><strong>Relación gobierno–policía–Federales:</strong> la policía de barrio es visible, desbordada, y depende directamente del gobierno planetario. Los Federales son una fuerza distinta y más capaz, con jurisdicción propia — el gobierno confía en ellos para lo que la policía no puede manejar, sin saber que esa capacidad viene, en última instancia, de fuera (Punto 7). Por encima de ambos, el gobierno también dispone de fuerzas de élite propias, más cercanas a tropa de choque que a policía — algo esperable en un mundo que vivió una guerra mundial y sostiene colonias en otro planeta, no una señal de nada extraño por sí sola. Lo que sí puede resultar revelador, para quien preste atención, no es que existan, sino la precisión casi imposible con la que a veces se despliegan.</p>
 <p>No conviertas al gobierno en una tiranía plana. Es un gobierno real, con aciertos reales, que reacciona mal a lo que no entiende — como la mayoría.</p>
 <hr />
-<h2>5. PERIODOS JUGABLES</h2>
-<h3>Antes del despertar</h3>
+<h2 id="5-periodos-jugables">5. PERIODOS JUGABLES</h2>
+<h3 id="antes-del-despertar">Antes del despertar</h3>
 <p>El periodo central del DLC. La Urdimbre no es conocimiento público — para todos los personajes nativos, el universo conocido es su propio sistema planetario. Se puede jugar con habitantes normales, Federales, policías, investigadores, periodistas, trabajadores, habitantes de cualquier nivel social, personas Despertadas (Punto 10) que ya viven con su capacidad como una rareza personal — o con agentes externos infiltrados que ya conocen la verdad y tienen que ocultarla.</p>
-<h3>Mientras sucede el despertar</h3>
+<h3 id="mientras-sucede-el-despertar">Mientras sucede el despertar</h3>
 <p>No es un único acontecimiento público y espectacular — es una sucesión de incidentes que se acumulan: primeras apariciones inexplicables, portales, tecnología imposible encontrada donde no debería estar, órdenes de origen desconocido llegando a mandos que no saben de dónde vienen, dirigentes cuyo comportamiento cambia de forma sutil, filtraciones, operaciones de encubrimiento cada vez más difíciles de sostener, rumores, agentes que no encajan del todo con lo que dicen ser, pruebas que contradicen la ciencia aceptada. El Narrador puede repartir estos incidentes a lo largo de varias sesiones antes de que nadie use la palabra correcta para lo que está pasando.</p>
-<h3>Transición y después</h3>
+<h3 id="transicion-y-despues">Transición y después</h3>
 <p>Tratado aquí de forma breve, como continuación — no le dediques más espacio que a los dos periodos anteriores. Conocimiento público parcial; primeras relaciones formales; llegada visible de corporaciones (ahora sí, abiertamente); doble economía (Punto 9); movimientos sociales y políticos a favor y en contra de la integración en el mosaico; y las consecuencias directas de lo que se decidió —o se ocultó— durante el propio despertar.</p>
 <hr />
-<h2>6. DOS PERSPECTIVAS DE CAMPAÑA</h2>
-<h3>Personajes nativos</h3>
+<h2 id="6-dos-perspectivas-de-campana">6. DOS PERSPECTIVAS DE CAMPAÑA</h2>
+<h3 id="personajes-nativos">Personajes nativos</h3>
 <p>Creen que Oasis —su ciudad, su planeta, como mucho su sistema— es todo el marco humano conocido. Cuando algo no encaja, lo interpretan con las herramientas que tienen: ciencia, política, religión, teoría de la conspiración, experiencia personal. Pueden descubrir la verdad de forma gradual, escena a escena, sin que un solo PNJ tenga que explicárselo todo de golpe.</p>
-<h3>Agentes externos</h3>
+<h3 id="agentes-externos">Agentes externos</h3>
 <p>Ya conocen la Urdimbre. Su dificultad no es vencer a Oasis — es operar sin provocar un despertar prematuro o descontrolado. Deben ocultar especies, tecnología, moneda, implantes y conocimientos que no deberían existir en un mundo NT6 doméstico. Pueden trabajar para una corporación, para Primus, o por cuenta propia.</p>
-<h3>Grupos mixtos</h3>
+<h3 id="grupos-mixtos">Grupos mixtos</h3>
 <p>Perfectamente jugables: un nativo que empieza a sospechar y un agente externo que no puede permitirse que sospeche demasiado alto son, de hecho, la tensión más rica que ofrece este periodo. No fuerces que un grupo mixto se resuelva pronto en una sola dirección.</p>
 <hr />
-<h2>7. FEDERALES</h2>
+<h2 id="7-federales">7. FEDERALES</h2>
 <p>Los Federales de Oasis son humanos nativos del planeta. No son miembros conscientes de Primus — creen servir a las instituciones de su propio mundo, y en cierto sentido lo hacen: llevan la placa de su gobierno, cobran de su gobierno, responden ante mandos de su gobierno. Lo que no saben es que Primus los forma, orienta y dirige indirectamente. Uno o varios Siervos o Guardianes de Primus actúan como "asesores" ocultos junto a sus unidades — presentes, influyentes, y jamás identificados como lo que son. Los Federales utilizan únicamente tecnología fabricable en el propio Oasis: nada de su equipo, visto desde fuera, debería levantar sospechas de origen externo.</p>
 <p><strong>Dirección estética:</strong> uniformidad, disciplina y autoridad institucional a primera vista — siluetas limpias y reconocibles, presencia intimidante sin necesidad de exhibición. Operativamente son móviles, competentes y capaces de improvisar con recursos limitados; no son fanáticos ni tropa de ocupación, son profesionales que creen en la institución a la que sirven.</p>
 <p><strong>Función:</strong> orden público de nivel superior a la policía de barrio — persecución de fugitivos con cargos serios, investigación de casos que exceden a la policía local, seguridad de instalaciones sensibles.</p>
@@ -108,25 +123,25 @@
 <p><strong>Divisiones internas:</strong> no todos los Federales son iguales ante lo que descubren. Algunos siguen las órdenes de su asesor sin preguntar. Otros, al notar que ciertas investigaciones se cierran sin explicación, deciden proteger en secreto en vez de denunciar — falsifican informes, dejan pistas falsas para sus propios superiores, sin llegar a desertar del todo. No es una postura hipotética: ya ha ocurrido, con un mando Federal empatizando con un desertor por motivos personales y encubriéndolo en vez de entregarlo (ver Marcus, Punto 14).</p>
 <p><strong>Si un Federal descubre quién da realmente las instrucciones:</strong> la eliminación no es la respuesta por defecto — Primus prefiere, con mucho, resolverlo sin dejar un cadáver que explicar. Según el caso, la respuesta puede ir de la vigilancia discreta (dejarlo hablar, ver a quién más se lo cuenta) a la desinformación (ofrecerle una explicación distinta y plausible que cierre la pregunta), pasando por la reasignación silenciosa a un destino sin acceso a nada sensible, o incluso la captación — convertirlo en alguien que sabe un poco más de lo normal, a cambio de su silencio activo. El aislamiento profesional es otra vía: dejar que sus propios superiores dejen de confiar en él sin que Primus tenga que intervenir directamente. Solo en circunstancias extremas —cuando ya ha hablado, o está a punto de hacerlo, con alguien a quien Primus no puede alcanzar de otro modo— se plantea algo más definitivo. Es un gancho por derecho propio, no un detalle de trasfondo (ver semilla "El Federal que hizo demasiadas preguntas", Punto 16).</p>
 <hr />
-<h2>8. CORPORACIONES INFILTRADAS</h2>
+<h2 id="8-corporaciones-infiltradas">8. CORPORACIONES INFILTRADAS</h2>
 <p>Mantén pocas fuerzas externas activas durante el periodo principal — la fuerza del DLC está en que casi nadie en Oasis sabe todavía que existen.</p>
 <p><strong>Primus.</strong> Presencia completamente invisible, mediante asesores ocultos junto a los Federales (Punto 7). Busca controlar el ritmo del despertar más que impedirlo — para Primus, un despertar caótico es peor que uno tardío. No debe aparecer públicamente como corporación en ningún momento de este periodo.</p>
 <p><strong>TecnoStealer.</strong> Opera clandestinamente, intentando pasar desapercibida. Busca tecnología recuperable de las ruinas de la Red Única, implantes de interés, talento local con potencial, y oportunidades de negocio antes de que lleguen sus rivales. Usa empresas pantalla, investigadores encubiertos, compradores discretos y agentes que se hacen pasar por coleccionistas, académicos o simples curiosos. No llega como un ejército — llega como un puñado de personas que hacen demasiadas preguntas educadas.</p>
 <p><strong>Mort.</strong> Mantiene su enemistad histórica con TecnoStealer también aquí, aprovechando los mercados negros, el contrabando, los implantes robados, las armas y la información que ya circulan por los niveles bajos de Oasis. Puede sabotear una operación de TecnoStealer si se cruzan. No tiene por qué ser la responsable de todos los delitos de la ciudad — el mercado negro de Oasis existía antes de que Mort pusiera un pie aquí, y seguiría existiendo sin ella.</p>
 <p>Otras corporaciones pueden aparecer como semillas de la transición posterior (Punto 16), pero no sobrecargues el periodo anterior al despertar con más de estas tres.</p>
 <hr />
-<h2>9. ECONOMÍA POR PERIODOS</h2>
+<h2 id="9-economia-por-periodos">9. ECONOMÍA POR PERIODOS</h2>
 <p><strong>Antes del despertar:</strong> moneda local, sin nombre propio establecido — la gente de Oasis simplemente dice "créditos". No existe uso público de Plasticrédito: es un término del mosaico que Oasis todavía no conoce. No se fija aquí una tasa de conversión definitiva entre créditos locales y PC; si hace falta un precio concreto en mesa, exprésalo en créditos locales sin más.</p>
 <p><strong>Durante el despertar:</strong> empieza a circular PC de forma clandestina, traído por quien ya cruza la frontera entre ambos mundos. Cambio informal, falsificación, especulación con objetos externos que nadie en Oasis sabe valorar correctamente — un objeto puede venderse por una fortuna o por nada, según quién lo mire.</p>
 <p><strong>Después:</strong> doble economía, o una conversión ya reconocida oficialmente — y con ella, la desestabilización de precios y poder adquisitivo que cualquier apertura económica repentina trae consigo. No se desarrolla en detalle aquí; es material para la transición (Punto 5).</p>
 <hr />
-<h2>10. TRON, RUNAS Y PERSONAS DESPERTADAS</h2>
+<h2 id="10-tron-runas-y-personas-despertadas">10. TRON, RUNAS Y PERSONAS DESPERTADAS</h2>
 <p>Oasis no tiene industria rúnica ni conocimiento general del Tron: no hay mercado local normal de Tron crudo ni refinado, y nadie fabrica runas a escala. Eso no significa que la tesela esté libre de anomalías o de fenómenos de Distorsión — pueden darse, y de hecho se dan (Punto 13) —, solo que nadie los ha convertido todavía en una industria reconocible. El Tron-1 en bruto, cuando aparece, lo hace cerca de fuentes que mueven Distorsión —portales permanentes, anomalías persistentes— y una tesela recién despertada sencillamente no ha tenido ni el tiempo ni la estructura comercial para levantar una industria alrededor de eso. El Tron ya refinado, además, se distribuye normalmente a través de redes comerciales propias de mundos ya despertados — infraestructura que Oasis, antes del despertar, no tiene manera de alcanzar.</p>
 <p>Eso no significa que nadie en Oasis use runas. Las reglas generales ya contemplan que una tesela no despertada puede tener Iniciados locales sin saber nada de la Urdimbre — su propia cultura los llamará de otro modo. En Oasis, la gente que reconoce esta capacidad en alguien —o en sí misma— usa la palabra <strong>Despertado</strong>: no como término técnico, sino como la forma que tiene Oasis de nombrar lo que no sabe explicar. Para la sociedad, un Despertado es una anomalía, un fraude, un milagro o un fenómeno inexplicable, según a quién le preguntes — nunca una categoría social reconocida y estable.</p>
 <p>El material que estos Despertados necesitan (Tron ya refinado, tinta rúnica) no sale de ninguna explotación local: alguien lo introdujo, lo conservó de antes, o lo consiguió mediante una excepción muy concreta —un hallazgo, un objeto heredado, un contacto puntual con alguien de fuera—, nunca mediante una industria. El propio DLC ya cuenta con un ejemplo andante de esta excepción: un anfitrión de la mansión del bosque, versado en runas y guardián de una reserva propia de material, cuyo origen exacto no hace falta explicar del todo (ver Punto 14).</p>
 <p>La tinta rúnica, cuando no hay Tron a mano, también puede obtenerse pulverizando una perla de distorsión — otra vía de excepción individual, no de mercado.</p>
 <hr />
-<h2>11. LA RED ÚNICA</h2>
+<h2 id="11-la-red-unica">11. LA RED ÚNICA</h2>
 <p>En un momento avanzado de la Reconstrucción (Punto 2), la sociedad que precedió a la Oasis actual convergió, plataforma a plataforma, en una única red que terminó conectándolo todo y a todos. No fue una realidad virtual: la fusión fue física, tecnológica y social a la vez — la gente vivía a través de ella, no dentro de una simulación aparte. Es tecnología y pasado de la propia humanidad de Oasis, no el legado de una civilización ajena.</p>
 <p>Qué provocó su fragmentación o su caída, y qué relación tuvo exactamente con la Guerra Mundial de la cronología general, es algo que ni los propios habitantes actuales de Oasis comprenden del todo — y no hace falta que este DLC lo resuelva. Mantenlo abierto: es más útil como misterio de fondo que como respuesta cerrada.</p>
 <p><strong>Qué queda:</strong> arquitectura con pantallas rotas y cables expuestos, interfaces digitales incrustadas en las paredes, carteles publicitarios corroídos — y, entre los escombros, trampillas casi invisibles que bajan a búnkeres donde la tecnología se conservó mucho mejor que en superficie. Al menos dos accesos confirmados —uno en plena selva, otro bajo la propia Oasis— pertenecen a la misma red subterránea; hasta dónde se extiende más allá de esos dos puntos es, todavía, una pregunta sin respuesta. Un detalle curioso: parte de los restos en superficie imitan arquitectura clásica —columnas, una calzada de piedra artificial—, con una función que nadie ha confirmado. Corre el rumor de que fue una suerte de templo dedicado a la propia red; trátalo como eso, un rumor de mercado, no como un hecho establecido.</p>
@@ -134,7 +149,7 @@
 <p><strong>Qué creen los habitantes actuales:</strong> poco y disperso — historias de segunda o tercera mano, supersticiones urbanas, el nombre "Red Única" más como leyenda que como hecho documentado.</p>
 <p><strong>Qué buscan las facciones:</strong> TecnoStealer quiere tecnología recuperable y ventaja comercial; Mort quiere lo mismo que siempre quiere el mercado negro — piezas que valgan algo, sin preguntas; el gobierno quiere saber si hay algo ahí abajo que explique (o comprometa) su propia narrativa de reconstrucción exitosa.</p>
 <hr />
-<h2>12. IDENTIDAD VISUAL Y CULTURAL DE OASIS</h2>
+<h2 id="12-identidad-visual-y-cultural-de-oasis">12. IDENTIDAD VISUAL Y CULTURAL DE OASIS</h2>
 <p>Oasis tiene una identidad propia, reconocible sin necesidad de explicarla dos veces:</p>
 <ul>
 <li>Ciudad estratificada por niveles, con todo lo que eso implica de desigualdad visible.</li>
@@ -147,9 +162,9 @@
 <li>El descubrimiento gradual de que el universo conocido es mucho mayor de lo que se pensaba, vivido como proceso, no como una sola revelación.</li>
 </ul>
 <hr />
-<h2>13. REGIONES</h2>
+<h2 id="13-regiones">13. REGIONES</h2>
 <p>Las tablas 1d100 cubren sobre todo el periodo <strong>antes del despertar</strong>; donde el despertar cambia sensiblemente lo que puede aparecer, se indica aparte. Ninguna región obliga a resolver su riesgo mediante combate.</p>
-<h3>Oasis — Niveles Comerciales</h3>
+<h3 id="oasis-niveles-comerciales">Oasis — Niveles Comerciales</h3>
 <p>Mercado gris, vendedores de tecnología de segunda mano, la vida cotidiana de la ciudad en su versión más bulliciosa.<br />
 <em>Peligro ambiental:</em> ninguno propio; el riesgo aquí es social — pocos preguntan de dónde sale la mercancía, y menos aún quien te la vende a ti.</p>
 <table>
@@ -198,7 +213,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Oasis — Niveles Bajos</h3>
+<h3 id="oasis-niveles-bajos">Oasis — Niveles Bajos</h3>
 <p>Niebla constante, generadores, el suburbio vertical de las antenas, los que no pueden permitirse subir.<br />
 <em>Peligro ambiental:</em> niebla reduce Alerta −20; humedad constante agrava lesiones o dolencias crónicas.</p>
 <table>
@@ -243,7 +258,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Selva Circundante</h3>
+<h3 id="selva-circundante">Selva Circundante</h3>
 <p>Mansión, ruinas, fauna real —enorme, pero real, no alterada.<br />
 <em>Peligro ambiental:</em> tormentas violentas y terreno irregular; lluvia intensa reduce Maniobra −10 en cualquier vehículo.</p>
 <table>
@@ -284,7 +299,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Mansión</h3>
+<h3 id="mansion">Mansión</h3>
 <p>Un solo emplazamiento, con dueño propio (Punto 14) — no un territorio abierto. La tabla es orientativa para cuando los personajes pasan tiempo aquí, no para encuentros hostiles constantes.</p>
 <table>
 <thead>
@@ -320,7 +335,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Ruinas de la Red Única</h3>
+<h3 id="ruinas-de-la-red-unica">Ruinas de la Red Única</h3>
 <p>La civilización caída, bajo tierra y en superficie a la vez.<br />
 <em>Peligro ambiental:</em> estructuras inestables; trampillas ocultas pueden estar vigiladas por alguien con más recursos que un buscador ocasional.</p>
 <table>
@@ -361,7 +376,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Instalaciones Federales o gubernamentales</h3>
+<h3 id="instalaciones-federales-o-gubernamentales">Instalaciones Federales o gubernamentales</h3>
 <p>Menos un lugar de encuentro aleatorio que un escenario de misión — inclúyelo cuando la trama lleve a los personajes a una comisaría mayor, una base Federal o una oficina de gobierno. Elementos útiles para construir la escena:</p>
 <ul>
 <li>Un registro de acceso que no cuadra con los horarios oficiales de nadie.</li>
@@ -371,7 +386,7 @@
 <li>Un Federal de guardia dispuesto a mirar hacia otro lado, por un precio o por una razón personal.</li>
 <li>La posibilidad, siempre presente, de cruzarse con el asesor oculto de Primus sin reconocerlo como tal.</li>
 </ul>
-<h3>Puerto estelar</h3>
+<h3 id="puerto-estelar">Puerto estelar</h3>
 <p>Su existencia se desprende de la propia expansión del sistema (Punto 1). Trátalo como infraestructura real, aunque este DLC no la desarrolla en detalle: suficiente para sostener el tráfico con la luna habitada y las colonias, vigilada con más atención de la habitual durante el despertar. Algunas escenas y obstáculos útiles:</p>
 <ul>
 <li>Un cargamento con más papeleo del habitual, que alguien quiere mover sin que se revise a fondo.</li>
@@ -379,7 +394,7 @@
 <li>Controles reforzados sin explicación aparente durante el despertar.</li>
 <li>Un objeto o un pasajero que no figura en ningún manifiesto oficial.</li>
 </ul>
-<h3>Fichas de amenazas</h3>
+<h3 id="fichas-de-amenazas">Fichas de amenazas</h3>
 <p>Cubren solo los encuentros de las tablas anteriores que pueden derivar en combate directo. Ningún encuentro de este DLC obliga a resolverse así — están para cuando la mesa lo lleve ahí.</p>
 <p><strong>Matón de los niveles bajos</strong><br />
 Blindaje 2 | Melé 55% (arma blanca o improvisada) | Daño 6, Pen 2 | PV 12/12/12<br />
@@ -392,7 +407,7 @@ Blindaje 2 | Melé 65% (zarpazo o mordisco) | Daño 14, Pen 2 | PV 45/45/45</p>
 Blindaje 0 | Melé 30% (coz) | Daño 4 | PV 15/15/15<br />
 Domesticable con paciencia (tabla de Selva Circundante, más arriba) — no es agresivo salvo que se le acorrale.</p>
 <hr />
-<h2>14. PNJ INTERPRETABLES</h2>
+<h2 id="14-pnj-interpretables">14. PNJ INTERPRETABLES</h2>
 <p><strong>Administradora Yuen</strong> (autoridad gubernamental)</p>
 <ul>
 <li>Función: gestiona la política de información del gobierno hacia la población durante el periodo previo al despertar.</li>
@@ -463,7 +478,7 @@ Domesticable con paciencia (tabla de Selva Circundante, más arriba) — no es a
 <li>Qué respeta: la curiosidad honesta, incluso torpe.</li>
 <li>Problema actual: el gobierno le ha restringido el acceso a un sector concreto de las ruinas sin darle ninguna razón.</li>
 </ul>
-<h3>Arquetipos de Oasis</h3>
+<h3 id="arquetipos-de-oasis">Arquetipos de Oasis</h3>
 <p>Herramientas rápidas para el Narrador, no personajes con identidad propia — úsalas para poblar una escena sin tener que improvisar un PNJ completo.</p>
 <p><strong>Agente de Policía de Barrio</strong></p>
 <ul>
@@ -495,10 +510,10 @@ Domesticable con paciencia (tabla de Selva Circundante, más arriba) — no es a
 <li>Qué respeta: a quien ayuda sin esperar nada a cambio, o al menos sin fingir que no espera nada.</li>
 <li>Problema actual: dos vecinos más en la lista de desaparecidos esta semana, y nadie oficial ha venido a preguntar.</li>
 </ul>
-<h3>Nadine, Crix y Totovía</h3>
+<h3 id="nadine-crix-y-totovia">Nadine, Crix y Totovía</h3>
 <p>Ya existen como personajes propios de la campaña de origen — para esa mesa, aparecen directamente sin ficha nueva. Para otras mesas, sintetízalos así: <strong>Nadine</strong>, mensajera humana nacida en Oasis, ágil y de movimiento casi felino, bien conectada con el submundo de la ciudad; <strong>Crix</strong>, camarero veterano de los niveles medios, cicatrices y un ojo biónico, protector de su gente; <strong>Totovía</strong>, anfitrión de una mansión en la selva, versado en runas y Distorsión, guardián de una reserva de material rúnico y de una biblioteca con tecnología de la Red Única (Punto 10) — su naturaleza exacta no se explica ni hace falta explicarla.</p>
 <hr />
-<h2>15. EL QUE DESAPARECE GENTE</h2>
+<h2 id="15-el-que-desaparece-gente">15. EL QUE DESAPARECE GENTE</h2>
 <p>Cinco desapariciones en dos semanas, en el mismo barrio de los niveles bajos o comerciales. No es la primera vez que Oasis vive algo así: un caso anterior, ya cerrado, consistió en un vendedor de implantes de segunda mano que resultó ser él mismo el responsable, cazando gente para revender sus piezas cibernéticas — descubierto demasiado tarde, y silenciado por quien fuera que acabó con él antes de que hablara. Ese caso puede tratarse como precedente histórico conocido por algunos PNJ (sobre todo Crix), no como la explicación automática de esta nueva ola.</p>
 <p><strong>Señales:</strong> personas que no vuelven a casa tras un turno o un recado; ninguna nota, ninguna pelea previa conocida; en los pocos cuerpos que aparecen, faltan implantes u órganos cibernéticos de valor.</p>
 <p><strong>Víctimas:</strong> perfil variado a propósito — no todas del mismo nivel social, no todas del mismo oficio. Lo único que comparten es no tener a nadie con suficiente influencia como para forzar una investigación real.</p>
@@ -545,14 +560,14 @@ Domesticable con paciencia (tabla de Selva Circundante, más arriba) — no es a
 <p><strong>Consecuencias generales de no resolverlo:</strong> la cifra sigue subiendo, el miedo crece, y la policía sigue prefiriendo detener forasteros antes que investigar de verdad — lo que puede golpear directamente a los propios personajes, sobre todo si no encajan del todo en la ciudad.</p>
 <p><strong>Forma de resolver o continuar:</strong> no hace falta cerrar el caso en una sola sesión. Cada ruta admite su propio final, y cualquiera de ellas puede dejar preguntas abiertas para más adelante.</p>
 <hr />
-<h2>16. MÓDULOS EXISTENTES Y POSIBLES</h2>
-<h3>Material existente</h3>
+<h2 id="16-modulos-existentes-y-posibles">16. MÓDULOS EXISTENTES Y POSIBLES</h2>
+<h3 id="material-existente">Material existente</h3>
 <ul>
 <li><strong>Arco I (El Zippo, la Distorsión y el Despertar) y Arco II (Oasis y las Raíces)</strong> del blog de campaña — base narrativa de la mansión, la selva, las ruinas, Nadine, Crix, Totovía, los Federales y el caso del Taller del Carnicero. Las partidas del Arco II fueron dirigidas por Luis Clemente.</li>
 <li><strong>Capítulos 1-11 relacionados</strong>, en particular "La mansión del bosque", "Ruinas y Sombras", "El Rescate", "El Taller del Carnicero" y "Raíces en Oasis" (partes I y II).</li>
 <li>Ningún módulo formal de esta tesela está publicado todavía fuera de este DLC.</li>
 </ul>
-<h3>Módulos ya propuestos</h3>
+<h3 id="modulos-ya-propuestos">Módulos ya propuestos</h3>
 <ul>
 <li><strong>Las Desapariciones</strong> — desarrollo completo en módulo propio de "El Que Desaparece Gente" (Punto 15), con una de las cuatro rutas —o una combinación— como resolución de mesa.</li>
 <li><strong>La Trampilla Vigilada</strong> — exploración en profundidad de un acceso concreto a las Ruinas de la Red Única, con la facción que lo vigila como obstáculo central.</li>
@@ -560,7 +575,7 @@ Domesticable con paciencia (tabla de Selva Circundante, más arriba) — no es a
 <li><strong>La noche de los implantes</strong> — desarrollo completo de la semilla del mismo nombre: una redada mayor contra el mercado negro de implantes destapa dos tramas enredadas sin que nadie las planeara juntas. Gana riqueza opcional si se jugó <em>Las Desapariciones</em>, nunca la necesita.</li>
 <li><strong>La caída de la Red Única</strong> — desarrollo completo de la semilla del mismo nombre: una expedición respetuosa a un fragmento real pero incompleto de la caída de la Red Única, protegido por una comunidad local. Gana riqueza opcional si se jugó <em>La Trampilla Vigilada</em>, nunca la necesita.</li>
 </ul>
-<h3>Semillas futuras</h3>
+<h3 id="semillas-futuras">Semillas futuras</h3>
 <p><strong>El primer portal</strong> — despertar público</p>
 <ul>
 <li>Periodo: durante el despertar.</li>
@@ -649,6 +664,6 @@ Domesticable con paciencia (tabla de Selva Circundante, más arriba) — no es a
 <li>Dos desenlaces posibles: la luna termina gestionando su propio despertar de forma distinta a la capital, sembrando una futura divergencia política — o el gobierno logra una coordinación tardía pero efectiva, a costa de recursos que necesitaba en otra parte.</li>
 <li>Por qué puede recordarse: expande el DLC más allá de la ciudad sin necesidad de abandonar su tono.</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

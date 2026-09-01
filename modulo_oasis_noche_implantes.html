@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — La noche de los implantes"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#reparto">Reparto</a></li><li class="toc-h3"><a href="#capitana-bellik-al-mando-de-la-redada">Capitana Bellik — al mando de la redada</a></li><li class="toc-h3"><a href="#oficial-renner-evidencias-corrupto">Oficial Renner — evidencias, corrupto</a></li><li class="toc-h3"><a href="#mando-federal-marcus-presencia-opcional-pnj-ya-publicado-en-el-dlc">Mando Federal Marcus — presencia opcional (PNJ ya publicado en el DLC)</a></li><li class="toc-h3"><a href="#operador-de-mort-presencia-opcional-pnj-ya-publicado-en-el-dlc-y-en-las-desapariciones-si-se-jugo">Operador de Mort — presencia opcional (PNJ ya publicado en el DLC y en Las Desapariciones, si se jugó)</a></li><li class="toc-h3"><a href="#dos-matones-de-los-niveles-bajos-conflicto-fisico-opcional-escena-1">Dos matones de los niveles bajos — conflicto físico opcional (Escena 1)</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-la-redada">Escena 1 — La redada</a></li><li class="toc-h3"><a href="#escena-2-lo-que-no-deberia-estar-ahi">Escena 2 — Lo que no debería estar ahí</a></li><li class="toc-h3"><a href="#escena-3-dos-tramas-cuatro-frentes">Escena 3 — Dos tramas, cuatro frentes</a></li><li class="toc-h3"><a href="#escena-4-renner-se-mueve">Escena 4 — Renner se mueve</a></li><li class="toc-h3"><a href="#escena-5-lo-que-queda-en-el-informe-final">Escena 5 — Lo que queda en el informe final</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — La noche de los implantes</h1>
 <p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Puede ganar riqueza opcional si se jugó "Las Desapariciones", nunca la necesita. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -38,7 +53,7 @@
 <p><img alt="Almacén de pruebas policial de noche, con cajas de cadena de custodia apiladas y una caja entreabierta mostrando una pieza cibernética demasiado bien catalogada" src="img/oasis_noche_implantes_almacen.png" /><br />
 <em>Cada caja cuenta una historia distinta, si alguien se para a leerlas todas.</em></p>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> la policía y los Federales organizan una redada mayor contra el mercado negro de implantes de Oasis — la más grande en años, con varios puestos y almacenes caídos la misma noche. No es un escenario que se investiga con calma: son varios problemas ocurriendo a la vez, y el grupo no puede estar en todos los sitios. Lo que no atiendan no se congela — otra persona lo resuelve como puede, imperfectamente, y esa imperfección tiene consecuencias concretas.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas, en una sola noche de redada con procesado de pruebas al día siguiente. Periodo: antes del despertar. Perspectiva: nativos.</p>
 <p><strong>Qué saben los PJ:</strong> que hay una redada grande en marcha esta noche — como personal de apoyo, informantes pagados, civiles atrapados en el operativo, o investigadores independientes que aprovechan el caos, según cómo la mesa quiera entrar.</p>
@@ -46,7 +61,7 @@
 <p><strong>Objetivo inmediato:</strong> decidir, una y otra vez, qué frente atender primero — sin poder atenderlos todos — para que la evidencia importante no se pierda en el papeleo ni en manos de quien no debería tenerla.</p>
 <p><strong>Pregunta de fondo:</strong> en una ciudad donde el mercado negro de implantes existe porque la desigualdad real lo alimenta, ¿qué significa realmente "limpiar" una redada — y para quién?</p>
 <p><strong>Si nadie interviene:</strong> parte de la evidencia importante se pierde o se vende de nuevo por otro canal, Renner sigue operando sin que nadie lo note, y la redada se recuerda oficialmente como un éxito rotundo que en realidad resolvió menos de lo que parece.</p>
-<h3>Desarrollo en cinco escenas</h3>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
 <ol>
 <li>La redada — varios problemas activos a la vez; el grupo decide dónde intervenir.</li>
 <li>Lo que no debería estar ahí — una pieza irregular, mientras otros dos frentes reclaman atención.</li>
@@ -55,7 +70,7 @@
 <li>Lo que queda en el informe final — reconstruir una noche incompleta con lo que se logró preservar.</li>
 </ol>
 <hr />
-<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Sin cuenta atrás de horas — la redada avanza por problemas simultáneos, no por reloj.</strong> No hace falta cronometrar nada. La herramienta es más simple: presenta al grupo dos o tres asuntos a la vez y pregunta <em>"¿qué hacéis?"</em>. Lo que no atiendan no se congela — otro PNJ lo resuelve de forma imperfecta, Renner aprovecha la ausencia, o la situación cambia por sí sola. No hay contador que llevar ni ficha que rellenar: la simultaneidad se sostiene con acontecimientos concretos, no con un marcador abstracto.</p>
 <p><strong>Cuatro avisos recurrentes</strong> (no tienen que aparecer siempre ni en este orden — el Narrador los introduce cuando convenga a la escena):</p>
 <ul>
@@ -75,18 +90,18 @@
 - <strong>Los organizadores de la redada</strong> (policía y Federales) → cerrar la operación como un éxito, sin necesariamente entender del todo lo que han encontrado.</p>
 <p><strong>No hay villano de manual en la red de compradores</strong> — son las mismas personas turbias y pragmáticas ya descritas en el resto del DLC, no una organización nueva. <strong>Renner sí es corrupto de verdad</strong>, pero no es un monstruo: empezó desviando piezas pequeñas por necesidad y lleva años sin saber cómo parar sin exponerse.</p>
 <hr />
-<h2>Lo que ocurrió realmente</h2>
-<h3>Verdad completa</h3>
+<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
+<h3 id="verdad-completa">Verdad completa</h3>
 <p>La redada se organizó por razones completamente rutinarias — presión pública creciente sobre el mercado negro de implantes, alimentada en parte por el propio caso de las desapariciones si se jugó ese módulo. Nadie planeó que cayeran dos tramas distintas la misma noche.</p>
 <p>Renner, oficial de evidencias con años de servicio limpio en apariencia, ha desviado piezas cibernéticas valiosas de incautaciones anteriores durante mucho tiempo, revendiéndolas él mismo a través de contactos discretos. El volumen de esta redada es, para él, una oportunidad y un riesgo a la vez: puede perder piezas propias entre el caos sin que se note — o puede que, por primera vez, alguien preste la atención suficiente como para notar el patrón.</p>
 <p>Si <em>Las Desapariciones</em> se jugó y la red de compradores de Mort sobrevivió, esta redada la alcanza por fin: parte del material incautado tiene un origen que, bien investigado, conecta directamente con aquel caso. Si no se jugó, el material incautado pertenece a una red genérica de compradores de implantes turbios, igual de real, sin ninguna conexión necesaria.</p>
-<h3>Qué saben los PJ y qué no</h3>
+<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es que hay dos tramas separadas, no una — la sorpresa de la Escena 3 es precisamente descubrir que el material "raro" no tiene un solo origen.</p>
-<h3>Tono</h3>
+<h3 id="tono">Tono</h3>
 <p>Caos controlado con textura procedimental real — radios, formularios, cadenas de custodia, gente cansada haciendo un trabajo real. Renner debe sentirse como un compañero de trabajo antes que como un criminal, hasta que deja de serlo.</p>
 <hr />
-<h2>Reparto</h2>
-<h3>Capitana Bellik — al mando de la redada</h3>
+<h2 id="reparto">Reparto</h2>
+<h3 id="capitana-bellik-al-mando-de-la-redada">Capitana Bellik — al mando de la redada</h3>
 <p><em>Aspecto:</em> uniforme impecable a pesar de las horas, radio siempre en la mano, la clase de mando que dirige gritando lo mínimo posible porque no le hace falta más.</p>
 <p>PNJ interpretable (3-4 profesiones). F30/A30/P40/V40 | PV 15/15/15 | Bld 3 | Liderazgo/Mando 55% | Investigación 40%</p>
 <ul>
@@ -94,7 +109,7 @@
 <li>Respeta el trabajo bien hecho y a quien no le complica el papeleo sin motivo.</li>
 <li>Sin PJ: procesa la redada según el procedimiento estándar, sin detectar ni la red de compradores en profundidad ni a Renner.</li>
 </ul>
-<h3>Oficial Renner — evidencias, corrupto</h3>
+<h3 id="oficial-renner-evidencias-corrupto">Oficial Renner — evidencias, corrupto</h3>
 <p><em>Aspecto:</em> de los que nadie mira dos veces en una comisaría — mediana edad, gesto cansado permanente, manos rápidas ordenando cajas que nadie más se molesta en revisar dos veces.</p>
 <p>PNJ interpretable (2-3 profesiones), sin ficha de combate relevante más allá de lo estándar.</p>
 <p>F25/A30/P35/V35 | PV 13/13/13 | Bld 1 | Tecnología (catalogación) 50% | Sigilo 40%</p>
@@ -103,11 +118,11 @@
 <li>No es violento por naturaleza — su arma es el papeleo, no la fuerza.</li>
 <li>Sin PJ: consigue desviar y perder suficiente evidencia propia entre el caos, sin que nadie lo note esta vez tampoco.</li>
 </ul>
-<h3>Mando Federal Marcus — presencia opcional (PNJ ya publicado en el DLC)</h3>
+<h3 id="mando-federal-marcus-presencia-opcional-pnj-ya-publicado-en-el-dlc">Mando Federal Marcus — presencia opcional (PNJ ya publicado en el DLC)</h3>
 <p>Si la mesa quiere una cara familiar entre los Federales presentes, Marcus puede supervisar la parte Federal del operativo — mismo criterio y ficha ya publicados en el resto del DLC. No es necesario para este módulo.</p>
-<h3>Operador de Mort — presencia opcional (PNJ ya publicado en el DLC y en <em>Las Desapariciones</em>, si se jugó)</h3>
+<h3 id="operador-de-mort-presencia-opcional-pnj-ya-publicado-en-el-dlc-y-en-las-desapariciones-si-se-jugo">Operador de Mort — presencia opcional (PNJ ya publicado en el DLC y en <em>Las Desapariciones</em>, si se jugó)</h3>
 <p>Mismo criterio y ficha ya publicados. Si no se jugó ese módulo, sustitúyelo sin más por un operador genérico de mercado negro con el mismo perfil funcional.</p>
-<h3>Dos matones de los niveles bajos — conflicto físico opcional (Escena 1)</h3>
+<h3 id="dos-matones-de-los-niveles-bajos-conflicto-fisico-opcional-escena-1">Dos matones de los niveles bajos — conflicto físico opcional (Escena 1)</h3>
 <p>Ficha ya publicada en el propio DLC (bestiario de encuentros de Oasis), reutilizada tal cual: <strong>Blindaje 2 | Melé 55% (arma blanca o improvisada) | Daño 6, Pen 2 | PV 12/12/12.</strong></p>
 <ul>
 <li>Intentan abrir una ruta de escape y huir — no buscan matar a los PJ.</li>
@@ -116,16 +131,16 @@
 <li>La policía prioriza medios no letales por defecto.</li>
 </ul>
 <hr />
-<h2>Lugares necesarios</h2>
+<h2 id="lugares-necesarios">Lugares necesarios</h2>
 <p><strong>Los puestos y almacenes de la redada:</strong> varios puntos caídos la misma noche — mercado de implantes, un almacén discreto, una trastienda.</p>
 <p><strong>El almacén de pruebas:</strong> donde se procesa todo lo incautado — cajas, formularios, cadena de custodia.</p>
 <p><strong>Oficina de Renner:</strong> discreta, ordenada, nada que llame la atención a primera vista.</p>
 <p><strong>Almacén B:</strong> un segundo almacén de la redada, a punto de ser sellado por otra unidad si nadie de confianza se ocupa antes.</p>
 <p><strong>Salida de servicio y punto de detenidos:</strong> donde se juegan la fuga de la Escena 1 y la pelea entre detenidos que llega por radio en la Escena 3.</p>
 <hr />
-<h2>Las cinco escenas</h2>
+<h2 id="las-cinco-escenas">Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3>Escena 1 — La redada</h3>
+<h3 id="escena-1-la-redada">Escena 1 — La redada</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Luces, radios cruzándose, puertas forzadas en varios puntos a la vez. La Capitana Bellik coordina el caos con la calma de quien ya ha hecho esto cien veces — aunque nunca a esta escala.</p>
@@ -146,7 +161,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> la redada se completa igualmente, con el material mezclado sin distinción, y los dos matones escapan sin que nadie los persiga.</p>
 <p><strong>Cómo termina:</strong> el grupo tiene una primera pista de que no todo lo incautado es del mismo origen — con más o menos detalle según a qué frente atendieron.</p>
 <p><strong>Después:</strong> cuánta distinción lograron aquí facilita separar las dos tramas en la Escena 3; si dejaron escapar a los matones sin más, eso no vuelve a aparecer — es una consecuencia cerrada, no un cabo suelto que penalice después.</p>
-<h3>Escena 2 — Lo que no debería estar ahí</h3>
+<h3 id="escena-2-lo-que-no-deberia-estar-ahi">Escena 2 — Lo que no debería estar ahí</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Entre cajas de implantes de segunda mano cualquiera, una pieza demasiado bien catalogada, con un número de registro que no debería existir todavía. Y al mismo tiempo, dos cosas más reclaman atención: Renner sigue muy cerca de esa misma caja, Bellik pide ayuda urgente en el almacén B, y por radio un detenido dice que quiere hablar antes de que lo trasladen.</p>
@@ -166,7 +181,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> las irregularidades se pierden entre el volumen general de la redada, el almacén B se sella sin ellos, y el detenido es trasladado sin hablar.</p>
 <p><strong>Cómo termina:</strong> el grupo confirma que hay algo raro en parte del material incautado, con el detalle exacto dependiendo de a qué frente atendieron.</p>
 <p><strong>Después:</strong> esta pista concreta —la que hayan conseguido— es lo que permite entrar en la Escena 3 con algo de ventaja, nunca con el cuadro completo.</p>
-<h3>Escena 3 — Dos tramas, cuatro frentes</h3>
+<h3 id="escena-3-dos-tramas-cuatro-frentes">Escena 3 — Dos tramas, cuatro frentes</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Cajas y más cajas, cada una con su etiqueta, cada una contando una historia distinta si alguien se para a leerlas todas. Esta noche no da tiempo a pararse: al menos tres cosas reclaman atención a la vez, y ninguna va a esperar a que termine con la anterior.</p>
@@ -188,7 +203,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> los cuatro frentes se resuelven solos, de la forma menos favorable para el grupo — la pelea se corta sin testimonio, Bellik se las arregla sola y pierde tiempo, la caja desaparece del todo, y Renner limpia su rastro sin prisa.</p>
 <p><strong>Cómo termina:</strong> el grupo entiende que hay un problema interno (material desviado) además del externo (la red de compradores), con un cuadro más o menos completo según cuántos frentes lograron cubrir.</p>
 <p><strong>Después:</strong> lo que se haya conseguido preservar aquí —un testimonio, una caja, un rastro de Renner— es exactamente lo que hay disponible para confrontarlo en la Escena 4. No hay forma de recuperar en la Escena 4 lo que se perdió aquí.</p>
-<h3>Escena 4 — Renner se mueve</h3>
+<h3 id="escena-4-renner-se-mueve">Escena 4 — Renner se mueve</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Una oficina ordenada, demasiado ordenada para una noche como esta. Renner no levanta la vista cuando entran — hasta que se da cuenta de qué es exactamente lo que llevan en la mano. Y en algún otro punto de la redada, algo más sigue ocurriendo sin esperar a que esto termine.</p>
@@ -209,7 +224,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Renner consigue cubrir suficiente rastro como para que su implicación quede solo como sospecha, nunca como prueba, y el incidente paralelo se resuelve sin ellos, de la forma menos favorable.</p>
 <p><strong>Cómo termina:</strong> queda claro (o no, según cómo fue la escena, y según cuánto pudo preservarse antes) el grado real de implicación de Renner.</p>
 <p><strong>Después:</strong> este resultado —y todo lo que el grupo logró conservar en las escenas anteriores— determina qué puede incluirse honestamente en el informe final de la Escena 5.</p>
-<h3>Escena 5 — Lo que queda en el informe final</h3>
+<h3 id="escena-5-lo-que-queda-en-el-informe-final">Escena 5 — Lo que queda en el informe final</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La redada ya se anuncia oficialmente como un éxito. Lo que queda por decidir es qué parte de la verdad entra en ese informe — y esa verdad depende de lo que el grupo consiguió sostener durante una noche que nunca dio tiempo a atenderlo todo.</p>
@@ -223,7 +238,7 @@
 <p><strong>Cómo termina:</strong> queda decidido qué versión de esta noche pasa a la historia oficial de Oasis — construida, explícitamente, sobre lo que el grupo logró salvar y no sobre lo que habría sido ideal salvar.</p>
 <p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
 <hr />
-<h2>Pistas e información</h2>
+<h2 id="pistas-e-informacion">Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -266,24 +281,24 @@
 </tbody>
 </table>
 <hr />
-<h2>Recompensas y gastos</h2>
+<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
 <p><strong>Recompensa económica:</strong> entre 150 y 300 créditos locales por PJ, si participaron como personal de apoyo oficial pagado; menor o inexistente si entraron por otra vía (informantes, civiles atrapados) — ajusta según cómo entraron a la trama.</p>
 <p><strong>Beneficios alternativos:</strong> relación de confianza con la Capitana Bellik; si se jugó <em>Las Desapariciones</em> y esta redada cierra esa red de compradores, un cierre narrativo real para ese hilo; conocimiento directo de cómo se gestiona (o no) la corrupción interna en la policía de Oasis.</p>
 <hr />
-<h2>Desenlaces combinables</h2>
+<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
 <p><strong>Informe íntegro.</strong> Ambas tramas se documentan completas — golpe reputacional real para la institución, pero verdad completa a la vista de quien la busque después.</p>
 <p><strong>Informe parcial.</strong> Se documenta la red de compradores como un éxito claro; el caso de Renner se gestiona internamente, sin escándalo público.</p>
 <p><strong>Renner cae solo.</strong> Si consiguió desviar la culpa hacia el comprador detenido u otro compañero, alguien inocente carga con parte de las consecuencias — desenlace incómodo, no un fallo de partida.</p>
 <p><strong>La red de compradores sigue intacta.</strong> Si esa trama no se resolvió del todo en la Escena 3, sigue operando en otro punto de la ciudad — gancho abierto para el futuro.</p>
 <hr />
-<h2>Continuidad opcional</h2>
+<h2 id="continuidad-opcional">Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado <em>Las Desapariciones</em> — la red de compradores puede sustituirse por una genérica sin perder nada esencial.</li>
 <li><strong>Si se jugó <em>Las Desapariciones</em>:</strong> esta redada puede ser el cierre narrativo real de esa red de compradores, con el mismo PNJ reaparecido.</li>
 </ul>
 <p>Ejemplo de puerta abierta: si Renner queda libre de sospecha formal pero el grupo sabe la verdad, esa tensión puede reaparecer en cualquier módulo futuro que necesite un contacto policial poco fiable.</p>
 <hr />
-<h2>Límites de este módulo</h2>
+<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
 <ul>
 <li>Renner es corrupto, no un monstruo — su arma es el papeleo y la evasión, no la violencia.</li>
 <li>Bellik es una profesional competente, no alguien incompetente que necesite que los PJ le hagan el trabajo — la redada es caótica porque es grande y simultánea, no porque nadie sepa lo que hace.</li>
@@ -294,10 +309,10 @@
 <li>El conflicto físico (Escenas 1 y 4) es siempre opcional y no letal por defecto — los matones de los niveles bajos buscan huir, no matar, y se rinden o se retiran antes de forzar una batalla.</li>
 </ul>
 <hr />
-<h2>Resumen para dirigir</h2>
+<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
 <p>Redada policial sin reloj de horas — la presión viene de varios problemas ocurriendo a la vez, no de una cuenta atrás. Cinco escenas autosuficientes: el operativo → las primeras señales → dos tramas y cuatro frentes → confrontar a Renner → el informe final, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Los PJ no pueden atenderlo todo — lo que no cubren no se congela, cambia de forma imperfecta y concreta. Dos tramas enredadas sin que nadie las planeara juntas — ninguna se resuelve del todo limpia, y el informe final solo puede sostenerse sobre lo que el grupo logró preservar.</p>
 <hr />
 <p><em>Oasis — tesela recién despertada. Desarrolla la semilla "La noche de los implantes" (Punto 16 del DLC). Gana riqueza opcional si se jugó "Las Desapariciones" — nunca la necesita.</em></p>
-</div>
+</main>
 </body>
 </html>

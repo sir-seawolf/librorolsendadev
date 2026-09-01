@@ -15,37 +15,52 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — MADCITY"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</a></li><li class="toc-h2"><a href="#1-que-es-madcity">1. QUÉ ES MADCITY</a></li><li class="toc-h2"><a href="#2-la-ciudad-vertical">2. LA CIUDAD VERTICAL</a></li><li class="toc-h2"><a href="#3-los-doce-gajos">3. LOS DOCE GAJOS</a></li><li class="toc-h3"><a href="#escorpio-lo-que-no-se-pregunta">Escorpio — lo que no se pregunta</a></li><li class="toc-h3"><a href="#capricornio-lo-que-se-hace-con-las-manos">Capricornio — lo que se hace con las manos</a></li><li class="toc-h3"><a href="#libra-los-que-no-mandan-pero-deciden">Libra — los que no mandan pero deciden</a></li><li class="toc-h3"><a href="#la-direccion-completa">La dirección completa</a></li><li class="toc-h3"><a href="#los-extremos">Los extremos</a></li><li class="toc-h2"><a href="#4-la-niebla">4. LA NIEBLA</a></li><li class="toc-h2"><a href="#5-vientos-nanotecnologicos">5. VIENTOS NANOTECNOLÓGICOS</a></li><li class="toc-h2"><a href="#6-vida-interior-movilidad-y-riesgo">6. VIDA INTERIOR, MOVILIDAD Y RIESGO</a></li><li class="toc-h2"><a href="#7-dinero-altura-y-acceso">7. DINERO, ALTURA Y ACCESO</a></li><li class="toc-h2"><a href="#8-ocio-deporte-y-espectaculo">8. OCIO, DEPORTE Y ESPECTÁCULO</a></li><li class="toc-h2"><a href="#9-habitantes-de-las-zonas-bajas">9. HABITANTES DE LAS ZONAS BAJAS</a></li><li class="toc-h2"><a href="#10-bajos-fondos">10. BAJOS FONDOS</a></li><li class="toc-h2"><a href="#11-corporaciones-y-poder">11. CORPORACIONES Y PODER</a></li><li class="toc-h3"><a href="#chafry">Chafry</a></li><li class="toc-h3"><a href="#tecnostealer">TecnoStealer</a></li><li class="toc-h3"><a href="#ibis-forge">Ibis-Forge</a></li><li class="toc-h3"><a href="#novalife">NovaLife</a></li><li class="toc-h2"><a href="#12-reglas-de-entorno-propuestas">12. REGLAS DE ENTORNO PROPUESTAS</a></li><li class="toc-h3"><a href="#subir-o-bajar-importa">Subir o bajar importa</a></li><li class="toc-h3"><a href="#la-niebla-como-frontera">La niebla como frontera</a></li><li class="toc-h3"><a href="#cierres">Cierres</a></li><li class="toc-h2"><a href="#13-lugares-de-interes">13. LUGARES DE INTERÉS</a></li><li class="toc-h3"><a href="#arcologia-chafry">Arcología Chafry</a></li><li class="toc-h3"><a href="#distrito-corporativo-alto">Distrito corporativo alto</a></li><li class="toc-h3"><a href="#mercados-bajo-la-niebla">Mercados bajo la niebla</a></li><li class="toc-h3"><a href="#clinicas-sin-nombre">Clínicas sin nombre</a></li><li class="toc-h3"><a href="#ascensores-de-contrato">Ascensores de contrato</a></li><li class="toc-h3"><a href="#lago-de-aceite">Lago de Aceite</a></li><li class="toc-h3"><a href="#ciudad-flotante-de-los-maestros-de-portales">Ciudad flotante de los Maestros de Portales</a></li><li class="toc-h3"><a href="#estacion-victoriana-de-tecnostealer">Estación victoriana de TecnoStealer</a></li><li class="toc-h3"><a href="#locales-de-noche-y-salas-de-fiesta">Locales de noche y salas de fiesta</a></li><li class="toc-h3"><a href="#zonas-clausuradas-del-suelo">Zonas clausuradas del suelo</a></li><li class="toc-h2"><a href="#14-pnj-y-arquetipos">14. PNJ Y ARQUETIPOS</a></li><li class="toc-h3"><a href="#guia-de-niebla">Guía de niebla</a></li><li class="toc-h3"><a href="#broker-de-favores">Broker de favores</a></li><li class="toc-h3"><a href="#tecnico-de-ascensor">Técnico de ascensor</a></li><li class="toc-h3"><a href="#ejecutivo-de-arcologia">Ejecutivo de arcología</a></li><li class="toc-h3"><a href="#nakel-de-zona-baja">Nakel de zona baja</a></li><li class="toc-h3"><a href="#demonio-del-cruce">Demonio del Cruce</a></li><li class="toc-h2"><a href="#15-ganchos-de-aventura">15. GANCHOS DE AVENTURA</a></li><li class="toc-h2"><a href="#16-secretos-para-el-narrador">16. SECRETOS PARA EL NARRADOR</a></li><li class="toc-h3"><a href="#las-cordilleras-polares">Las cordilleras polares</a></li><li class="toc-h3"><a href="#como-insinuarlo-sin-revelarlo">Cómo insinuarlo sin revelarlo</a></li><li class="toc-h3"><a href="#que-evitar">Qué evitar</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>DLC — MADCITY</h1>
 <blockquote>
 <p>"Lo que no es aceptado arriba, encuentra hueco aquí."</p>
 </blockquote>
-<h2>PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
+<h2 id="para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
 <p><strong>Qué es:</strong> MadCity es una ciudad vertical de la Urdimbre, anterior a la fundación conocida del multiverso, construida sobre un satélite artificial cuyo núcleo nunca ha sido explorado de forma fiable.</p>
 <p><strong>Qué se ve desde fuera:</strong> una ciudad imposible, de torres interminables, niebla mutante, ascensores blindados, tráfico aéreo, anuncios vivos, luces imposibles, corporaciones que compran plantas enteras y gente que sobrevive en los huecos que deja el poder. Neón, lluvia técnica, color saturado, lujo ofensivo y miseria apilada en capas: MadCity no intenta parecer ordenada; intenta seguir funcionando.</p>
 <p><strong>Qué se juega aquí:</strong> favores, deuda, acceso, contrabando, información, movilidad vertical, supervivencia urbana, persecuciones, pactos corporativos y secretos antiguos.</p>
 <p><strong>Tono:</strong> ciudad cyberpunk de la Urdimbre, no postal futurista. MadCity debe sentirse viva, sucia, vertical, excesiva y desigual: riqueza obscena, miseria real, neones, color, humo, pantallas, mercados, vehículos cruzando entre edificios y ruinas enterradas bajo capas de ciudad nueva. Arriba se compra privacidad. Abajo se compra tiempo. En medio se compra silencio.</p>
 <p><strong>No revelar de entrada:</strong> el vínculo real entre MadCity, el nombre Proctor y los secretos de los Antiguos. Eso pertenece a campañas avanzadas o a escenas muy dirigidas.</p>
 <p><strong>Peligro principal:</strong> confundir MadCity con una aventura cerrada. MadCity funciona mejor como hub de campaña: se vuelve más interesante cuanto más regresan los personajes.</p>
-<h2>1. QUÉ ES MADCITY</h2>
+<h2 id="1-que-es-madcity">1. QUÉ ES MADCITY</h2>
 <p>MadCity es conocida como <strong>la Ciudad del Mosaico</strong>. Para muchas personas es la capital práctica de la Urdimbre: el lugar donde terminan los negocios que no encajan en ningún otro mundo, los refugiados que no pueden volver a casa y las corporaciones que necesitan operar lejos de la luz limpia de sus sedes oficiales.</p>
 <p>Su antiguo nombre es <strong>Proctor</strong>. La mayoría de habitantes no le da importancia. En MadCity todo tiene un nombre antiguo, un nombre comercial y otro que solo se dice en los ascensores cuando las cámaras no graban.</p>
 <p>La ciudad no pertenece del todo a nadie. Chafry posee la mayor arcología conocida, las corporaciones controlan alturas enteras y cada gran empresa mantiene sedes proporcionadas a su tamaño: torres, estaciones, barrios internos, hangares, templos de marca, laboratorios y zonas residenciales para sus élites. Hay zonas donde ni los contratos ni las armas garantizan obediencia. MadCity no se gobierna; se negocia continuamente.</p>
-<h2>2. LA CIUDAD VERTICAL</h2>
+<h2 id="2-la-ciudad-vertical">2. LA CIUDAD VERTICAL</h2>
 <p>MadCity se entiende por altura.</p>
 <p>La ciudad se ha construido sobre sí misma una y otra vez. El Proctor original pudo tener una escala lunar; la MadCity actual, tras capas de expansión, relleno, reconstrucción y crecimiento urbano, alcanza una escala planetaria comparable a la Tierra. Desde órbita no parece una ciudad sobre un mundo: parece un mundo convertido en ciudad.</p>
 <p>Cuanto más arriba, más aire, más seguridad, más vigilancia y más dinero. Cuanto más abajo, más niebla, más ruido, más cuerpos invisibles para la ley y más cosas antiguas que nadie ha logrado limpiar.</p>
@@ -108,7 +123,7 @@
 <p><strong>Las mareas de niebla.</strong> La Niebla no está quieta: sube y baja como una marea. Cuando sube, se come el muro vivo — y con ella llega alguna vez algo que no debería haber pasado del subsuelo. Vivir en el 250 significa que hay noches en que la frontera llama a tu puerta.</p>
 <p><strong>Las aduanas.</strong> Subir no es cuestión de ascensor, es cuestión de permiso. En cada tránsito importante hay control, y se pasa con una de tres llaves: <strong>dinero, contrato u oficio</strong>. Ninguna sustituye a las otras. Un técnico de mantenimiento sube donde un rico sin papeles se queda esperando, y a un ejecutivo sin credencial vigente no le sirve la cartera.</p>
 <p>La ciudad tiene rascacielos de una escala absurda, con edificios capaces de alcanzar cientos o miles de plantas. Todo el planeta está habitado de algún modo, aunque no todo es exterior ni todo es seguro: la mayoría de la población vive dentro de edificios, arcologías, túneles, estaciones interiores y barrios encapsulados. En mesa no hace falta cartografiarlo todo: basta con recordar que subir y bajar siempre cuesta algo.</p>
-<h2>3. LOS DOCE GAJOS</h2>
+<h2 id="3-los-doce-gajos">3. LOS DOCE GAJOS</h2>
 <p>La altura dice tu clase. El gajo dice tu sitio.</p>
 <p>MadCity está dividida en doce sectores que van de polo a polo, como los gajos de una naranja. Llevan los nombres del zodiaco porque son los que todo el mundo recuerda, y porque nadie sabe ya quién los puso. Juntos, gajo y nivel forman una dirección: <strong>Escorpio 40</strong> y <strong>Escorpio 900</strong> están en el mismo sector y no tienen nada que ver.</p>
 <p><strong>Todos los gajos tienen de todo.</strong> Hospitales, fundiciones, tribunales, mercados y puertos: con nueve mil millones de habitantes, ningún sector puede permitirse depender de otro. Lo que cambia no es qué hay, sino <strong>de qué presume cada uno</strong>. En todas partes te operan; en Virgo te operan mejor. En todas partes se funde metal; el de Capricornio no falla.</p>
@@ -172,16 +187,16 @@
 </tbody>
 </table>
 <p>Hacia los <strong>polos</strong> los gajos no convergen: mueren contra una cordillera que nadie cruza. Allí las divisiones dejan de significar nada y la geografía empieza a no obedecer.</p>
-<h3>Escorpio — lo que no se pregunta</h3>
+<h3 id="escorpio-lo-que-no-se-pregunta">Escorpio — lo que no se pregunta</h3>
 <p>Todo gajo tiene bajos fondos. Escorpio los tiene como industria. Lo que en otros sectores se hace a escondidas, aquí tiene proveedor, precio y plazo de entrega: farmacopea que no figura en ningún registro, trabajos que nadie firma, mercancía que cambió de dueño sin papeles.</p>
 <p>No es un sector sin ley — es un sector con <strong>otra</strong> ley, y bastante más estricta. Quien incumple aquí no acaba en un tribunal.</p>
-<h3>Capricornio — lo que se hace con las manos</h3>
+<h3 id="capricornio-lo-que-se-hace-con-las-manos">Capricornio — lo que se hace con las manos</h3>
 <p>Cuando alguien dice <em>"artesano"</em> pensando en un tenderete, no ha estado en Capricornio. Un gajo tiene la superficie de un país, y este está lleno de talleres de quinientos trabajadores donde todavía se firma la pieza.</p>
 <p>Aquí no se fabrica en serie: se fabrica <strong>bien</strong>. Se tarda más, cuesta más y aguanta. Media ciudad compra su equipo en otro sitio y lo repara aquí.</p>
-<h3>Libra — los que no mandan pero deciden</h3>
+<h3 id="libra-los-que-no-mandan-pero-deciden">Libra — los que no mandan pero deciden</h3>
 <p>Libra es próspero sin ser la cúspide. El poder de verdad está en Leo; aquí viven los jueces, los árbitros, los notarios y los tasadores que las corporaciones necesitan cuando no se ponen de acuerdo entre ellas.</p>
 <p>Su fuerza no es el músculo: es que <strong>todos los demás dependen de ellos</strong>. Un fallo de Libra puede costarle a una corporación más que una guerra. Por eso se les paga bien, se les vigila mejor, y ninguno duerme del todo tranquilo.</p>
-<h3>La dirección completa</h3>
+<h3 id="la-direccion-completa">La dirección completa</h3>
 <p>Un gajo va de polo a polo: cuarenta mil kilómetros. Decir "Escorpio" es decir "América". Por eso cada gajo se divide en bandas según lo cerca que estés del ecuador o de los polos.</p>
 <p><strong>C</strong> es el centro, ancho y poblado. <strong>N1, N2, N3…</strong> hacia el norte; <strong>S1, S2, S3…</strong> hacia el sur. Cuanto más alto el número, más lejos de lo normal y más dura la vida.</p>
 <p>Con eso, una dirección lleva tres piezas y cada una responde a algo distinto:</p>
@@ -208,13 +223,13 @@
 </tbody>
 </table>
 <p><strong>ESC-N2-450</strong> para un documento. <em>"El norte de Escorpio, sobre la niebla"</em> para hablar. Y esa diferencia es información: quien te da una dirección en código trabaja para alguien.</p>
-<h3>Los extremos</h3>
+<h3 id="los-extremos">Los extremos</h3>
 <p>No hay muros entre bandas — solo territorio que se vuelve más duro. Pasado cierto punto la ciudad sigue construida pero apenas habitada: infraestructura funcionando para nadie, plantas selladas, servicios que no dan servicio.</p>
 <p>Y en ambos extremos, donde deberían converger los doce gajos, hay una cordillera que nadie cruza.</p>
 <p>Es una tierra fría —lo son ambos polos— atravesada por descargas de <strong>plasma</strong> que llevan siglos sin apagarse. Hielo y fuego a la vez: cañones de escarcha con ríos de luz corriendo por debajo, vapor que se congela antes de llegar arriba, y un campo magnético tan bruto que allí los instrumentos mienten, las comunicaciones se cortan y la navegación deja de servir. Los geólogos que ha tenido MadCity dicen que es actividad volcánica. Nadie tiene una explicación mejor.</p>
 <p>Hacia el interior de la cordillera la Distorsión se vuelve insoportable. <strong>Nadie ha llegado al centro.</strong> Las expediciones no vuelven con malas noticias: no vuelven. Lo que entra desaparece o es destruido, y ninguna corporación ha conseguido nunca poner un sensor lo bastante adentro como para saber por qué.</p>
 <p>Para efectos de mesa: los polos son el borde del mapa. Se puede jugar en las bandas altas —N3, S3, contrabando, refugios, cosas que nadie mira— pero el centro de la cordillera no es un destino. Es un sitio del que se habla.</p>
-<h2>4. LA NIEBLA</h2>
+<h2 id="4-la-niebla">4. LA NIEBLA</h2>
 <p>Entre los niveles bajos y los medios existe una capa de niebla densa. No es solo clima. Es frontera, amenaza y excusa social.</p>
 <p>La niebla separa a quienes pueden permitirse vivir por encima de ella de quienes sobreviven debajo. Las rutas seguras están controladas, cobradas, vigiladas o directamente privatizadas.</p>
 <p>Usos en partida:</p>
@@ -226,7 +241,7 @@
 <li>introducir mutaciones, criaturas o consecuencias de Distorsión si la campaña lo permite;</li>
 <li>recordar que en MadCity la geografía también es clase social.</li>
 </ul>
-<h2>5. VIENTOS NANOTECNOLÓGICOS</h2>
+<h2 id="5-vientos-nanotecnologicos">5. VIENTOS NANOTECNOLÓGICOS</h2>
 <p>MadCity no solo crece hacia arriba. También se devora a sí misma.</p>
 <p>Una o dos veces al mes, según zona y estación técnica, ciertos sectores bajos son azotados por <strong>vientos nanotecnológicos</strong>: enjambres de partículas, restos de sistemas de mantenimiento, armas antiguas o metabolismo urbano que desmontan estructuras, cuerpos, vehículos y basura. Lo que arrasan queda convertido en sustrato: una capa más de ciudad triturada sobre la que, tarde o temprano, alguien volverá a construir.</p>
 <p>No son tormentas meteorológicas normales. A veces avanzan como niebla brillante. A veces como polvo negro. A veces no se ven hasta que las superficies empiezan a deshacerse.</p>
@@ -239,7 +254,7 @@
 <li>separar niveles habitados de zonas que solo los Nakel o equipos muy preparados pueden cruzar;</li>
 <li>recordar que MadCity es una ciudad viva en el peor sentido de la palabra.</li>
 </ul>
-<h2>6. VIDA INTERIOR, MOVILIDAD Y RIESGO</h2>
+<h2 id="6-vida-interior-movilidad-y-riesgo">6. VIDA INTERIOR, MOVILIDAD Y RIESGO</h2>
 <p>MadCity no se vive como una ciudad con calles bajo cielo abierto. Se vive por dentro: pasarelas, atrios, galerías comerciales, ascensores, túneles de servicio, estaciones, balcones, plataformas, jardines artificiales y avenidas suspendidas entre edificios.</p>
 <p>La temperatura varía según sector, altura, mantenimiento y clima técnico, pero para la mayoría de habitantes eso importa menos que la calidad del edificio en el que viven. Estar dentro es normal. Salir al exterior, dependiendo del nivel, puede ser lujo, deporte, trabajo o imprudencia.</p>
 <p>La mezcla cultural es brutal: gente de todos los mundos conocidos, épocas tecnológicas, especies y tradiciones convive en la misma estructura urbana. No significa que todos se entiendan. Significa que MadCity ha aprendido a cobrarles alquiler a todos.</p>
@@ -254,7 +269,7 @@
 <li>implantes o drones de frenado.</li>
 </ul>
 <p>No todo el mundo lleva equipo bueno. Los ricos llevan sistemas discretos, redundantes y con seguro. Los trabajadores llevan lo que exige su contrato. Los habitantes de abajo llevan lo que han reparado tres veces y aún no les ha matado.</p>
-<h2>7. DINERO, ALTURA Y ACCESO</h2>
+<h2 id="7-dinero-altura-y-acceso">7. DINERO, ALTURA Y ACCESO</h2>
 <p>La vivienda en MadCity no mide solo comodidad: mide estatus y supervivencia.</p>
 <table>
 <thead>
@@ -291,7 +306,7 @@
 <li>¿qué barrio los acepta?</li>
 <li>¿qué puerta ya no se abre para ellos?</li>
 </ul>
-<h2>8. OCIO, DEPORTE Y ESPECTÁCULO</h2>
+<h2 id="8-ocio-deporte-y-espectaculo">8. OCIO, DEPORTE Y ESPECTÁCULO</h2>
 <p>MadCity también es riqueza, exceso y entretenimiento. La clase alta vive dentro de edificios que son casi ciudades privadas: jardines cerrados, estadios interiores, miradores orbitales, restaurantes suspendidos, palcos de subasta y clínicas donde el cuerpo se mantiene como una propiedad más.</p>
 <p>Los deportes urbanos son violentos, veloces y televisables:</p>
 <ul>
@@ -303,12 +318,12 @@
 <li>ligas patrocinadas donde el accidente forma parte del espectáculo.</li>
 </ul>
 <p>Estos deportes no son detalle decorativo. Sirven para mostrar dinero, apuestas, rivalidad corporativa, propaganda, tecnología de movilidad y el desprecio de la ciudad por la gravedad.</p>
-<h2>9. HABITANTES DE LAS ZONAS BAJAS</h2>
+<h2 id="9-habitantes-de-las-zonas-bajas">9. HABITANTES DE LAS ZONAS BAJAS</h2>
 <p>Debajo de la niebla vive lo que la ciudad superior no quiere mirar. Hasta los pisos 100 o 200, según sector, no empieza una habitabilidad mínimamente estable; por debajo, la Deriva, los cierres, los vientos nanotecnológicos y la falta de mantenimiento convierten cada barrio en una negociación con el entorno.</p>
 <p>Allí se ocultan Maestros de la Distorsión renegados, fugitivos corporativos, técnicos sin licencia, familias que no existen en ningún censo y especies rechazadas por los niveles superiores.</p>
 <p>Los <strong>Nakel</strong> —llamados Hombres Rata por quienes no les conocen— son una presencia natural de MadCity. Su resistencia excepcional a la Deriva les permite sobrevivir donde otras especies no durarían mucho, especialmente durante cierres o periodos de contaminación fuerte. No deben tratarse como simple monstruo urbano: son habitantes, guías, vecinos, contrabandistas, víctimas, guardianes de rutas, técnicos imposibles y memoria viva de zonas que otros abandonaron.</p>
 <p>Los <strong>Inukel</strong> pueden aparecer en niveles corporativos o como asistentes técnicos de lujo. Son una derivación moderna y comercial de los Nakel, no la cultura natural de las zonas bajas.</p>
-<h2>10. BAJOS FONDOS</h2>
+<h2 id="10-bajos-fondos">10. BAJOS FONDOS</h2>
 <p>Los bajos fondos de MadCity no son solo criminalidad. Son infraestructura paralela.</p>
 <p>Cuando el sistema oficial no puede, no quiere o cobra demasiado, alguien de abajo lo resuelve con favores, rutas, llaves, sensores apagados, nombres falsos, clínicas sin preguntas y deuda que se hereda.</p>
 <p>En MadCity, las monedas más habituales son:</p>
@@ -328,20 +343,20 @@
 <li>¿Quién puede proporcionarlo?</li>
 <li>¿Qué precio no monetario queda colgando después?</li>
 </ol>
-<h2>11. CORPORACIONES Y PODER</h2>
+<h2 id="11-corporaciones-y-poder">11. CORPORACIONES Y PODER</h2>
 <p>Las corporaciones no controlan MadCity de forma completa, pero sí compran suficiente ciudad como para que muchas vidas dependan de ellas.</p>
-<h3>Chafry</h3>
+<h3 id="chafry">Chafry</h3>
 <p>Chafry posee la arcología más grande conocida de MadCity, cercana al cinco por ciento de la superficie. Su presencia debe sentirse como arquitectura, no solo como enemigos: accesos limpios, seguridad educada, contratos imposibles de leer, zonas donde todo parece funcionar demasiado bien.</p>
-<h3>TecnoStealer</h3>
+<h3 id="tecnostealer">TecnoStealer</h3>
 <p>TecnoStealer opera en MadCity como red de recuperación, contactos, tecnología robada, trabajos pequeños y rutas móviles. No necesita dominar una torre para influir en lo que pasa por los pasillos de servicio.</p>
 <p>Su sede o enclave principal en MadCity incluye una <strong>estación de tren victoriano</strong>: una pieza de identidad propia, anacrónica y funcional. No es solo decoración retro; es acceso, logística, refugio, símbolo y forma de moverse cuando otras rutas están vigiladas.</p>
-<h3>Ibis-Forge</h3>
+<h3 id="ibis-forge">Ibis-Forge</h3>
 <p>Ibis-Forge tiene vínculo fundacional con MadCity. Es útil para escenas de implantes, ingeniería, prótesis, laboratorios, propiedad intelectual y contratos donde el cuerpo de una persona se convierte en garantía.</p>
-<h3>NovaLife</h3>
+<h3 id="novalife">NovaLife</h3>
 <p>NovaLife funciona bien como presencia médica, biomédica o de necrochips. En MadCity puede aparecer como clínica cara en niveles medios-altos o como proveedor indirecto de piezas, seguros y tratamientos con letra pequeña.</p>
-<h2>12. REGLAS DE ENTORNO PROPUESTAS</h2>
+<h2 id="12-reglas-de-entorno-propuestas">12. REGLAS DE ENTORNO PROPUESTAS</h2>
 <div class="recuadro-regla"><p>Estas reglas de entorno están pensadas para dar textura jugable a MadCity sin convertirla en una aventura cerrada.</p></div>
-<h3>Subir o bajar importa</h3>
+<h3 id="subir-o-bajar-importa">Subir o bajar importa</h3>
 <p>Cuando una escena dependa de moverse entre zonas separadas por altura, el Narrador puede pedir una tirada adecuada:</p>
 <ul>
 <li>Pilotaje o Conducir si se usan vehículos;</li>
@@ -351,7 +366,7 @@
 <li>Persuasión, Soborno o Intimidación si el obstáculo es humano.</li>
 </ul>
 <p>Fallar no tiene por qué bloquear la escena. Puede significar coste, retraso, deuda, exposición o llegada por una ruta peor.</p>
-<h3>La niebla como frontera</h3>
+<h3 id="la-niebla-como-frontera">La niebla como frontera</h3>
 <p>Cruzar la niebla sin preparación no debería resolverse con una única tirada plana. Es mejor tratarla como secuencia:</p>
 <ol>
 <li>localizar una ruta;</li>
@@ -359,7 +374,7 @@
 <li>cruzar sin perderse;</li>
 <li>afrontar la consecuencia de lo que vive allí.</li>
 </ol>
-<h3>Cierres</h3>
+<h3 id="cierres">Cierres</h3>
 <p>Un cierre de MadCity convierte la ciudad en una trampa vertical. Las rutas oficiales se cortan, los niveles altos se sellan y las zonas bajas sobreviven con sus propias reglas.</p>
 <p>Durante un cierre:</p>
 <ul>
@@ -369,44 +384,44 @@
 <li>las corporaciones priorizan activos, no personas;</li>
 <li>las deudas antiguas se cobran rápido.</li>
 </ul>
-<h2>13. LUGARES DE INTERÉS</h2>
-<h3>Arcología Chafry</h3>
+<h2 id="13-lugares-de-interes">13. LUGARES DE INTERÉS</h2>
+<h3 id="arcologia-chafry">Arcología Chafry</h3>
 <p>Un territorio corporativo que no parece una fortaleza porque no necesita parecerlo. Quien entra ya ha aceptado sus condiciones.</p>
-<h3>Distrito corporativo alto</h3>
+<h3 id="distrito-corporativo-alto">Distrito corporativo alto</h3>
 <p>No es una única zona limpia, sino una superposición de sedes, embajadas empresariales, residencias de directivos, instalaciones de seguridad, clínicas privadas, hangares y espacios de ocio para élites. Cada corporación importante intenta que su edificio parezca inevitable.</p>
-<h3>Mercados bajo la niebla</h3>
+<h3 id="mercados-bajo-la-niebla">Mercados bajo la niebla</h3>
 <p>No son bazares pintorescos. Son arterias de supervivencia: piezas, medicamentos, comida, rutas, identidad falsa, rumores y armas que nadie registró.</p>
-<h3>Clínicas sin nombre</h3>
+<h3 id="clinicas-sin-nombre">Clínicas sin nombre</h3>
 <p>Lugares donde un personaje puede reparar lo que no quiere explicar. La factura rara vez termina en PC.</p>
-<h3>Ascensores de contrato</h3>
+<h3 id="ascensores-de-contrato">Ascensores de contrato</h3>
 <p>Sistemas de tránsito vertical que aceptan dinero, códigos, sangre, favores o identificación corporativa. Algunos recuerdan más de lo que deberían.</p>
-<h3>Lago de Aceite</h3>
+<h3 id="lago-de-aceite">Lago de Aceite</h3>
 <p>Una extensión negra, lisa y sin olas: lo más parecido a una playa, un mar o un horizonte tranquilo que pueden permitirse ciertos sectores bajos. No es agua. Es residuo metabolizado por la propia ciudad, aceite técnico y materiales degradados que se acumulan hasta formar una superficie oscura, pesada y casi perfecta.</p>
 <p>En algunos puntos supura en estado sorprendentemente puro. Eso lo convierte en recurso, peligro, santuario, mercado y frontera. La gente va allí a negociar, esconderse, mirar algo que no sean paredes o sacar materia prima que puede valer una fortuna si no te mata primero.</p>
-<h3>Ciudad flotante de los Maestros de Portales</h3>
+<h3 id="ciudad-flotante-de-los-maestros-de-portales">Ciudad flotante de los Maestros de Portales</h3>
 <p>Una mini ciudad suspendida, asociada a la formación, exámenes y sede de los Maestros de Portales. No debe sentirse como academia limpia: es una jurisdicción propia, móvil o semimóvil, con normas, pruebas, vigilancia y prestigio. Desde abajo puede verse como promesa; desde dentro, como institución que sabe demasiado sobre quién cruza, quién falla y quién no debería abrir puertas.</p>
 <p>Su arquitectura interior sigue la misma lógica que cualquier centro de Maestros: cámaras sucesivas, recorridos indirectos, cierres redundantes — nada de eso es tradición vacía, es seguridad dimensional hecha piedra y metal.</p>
-<h3>Estación victoriana de TecnoStealer</h3>
+<h3 id="estacion-victoriana-de-tecnostealer">Estación victoriana de TecnoStealer</h3>
 <p>Una estación imposible incrustada en MadCity: hierro, cristal, relojes, vapor estético, tecnología recuperada y trenes que no siempre deberían poder circular por donde circulan. Puede funcionar como sede, punto de extracción, refugio, mercado de piezas o frontera interna entre la ciudad pública y las rutas de TecnoStealer.</p>
-<h3>Locales de noche y salas de fiesta</h3>
+<h3 id="locales-de-noche-y-salas-de-fiesta">Locales de noche y salas de fiesta</h3>
 <p>MadCity necesita locales vivos: salas de música, bares imposibles, cafés irlandeses servidos con demasiada precisión, fiestas de subastadores, clubes de colores violentos y sitios donde un personaje pueda divertirse mientras alguien lo está siguiendo.</p>
 <p>Algunos de los mejores negocios de MadCity empiezan así: una noche de fiesta, un café servido con demasiada precisión, un edificio ceremonial que mezcla teatro decimonónico, templo clásico y tecnología visible, y la sensación de que todos en la sala saben algo que tú todavía no.</p>
-<h3>Zonas clausuradas del suelo</h3>
+<h3 id="zonas-clausuradas-del-suelo">Zonas clausuradas del suelo</h3>
 <p>Sectores que todavía arrastran consecuencias de cierres antiguos. No son solo ruinas: son memoria contaminada.</p>
-<h2>14. PNJ Y ARQUETIPOS</h2>
-<h3>Guía de niebla</h3>
+<h2 id="14-pnj-y-arquetipos">14. PNJ Y ARQUETIPOS</h2>
+<h3 id="guia-de-niebla">Guía de niebla</h3>
 <p>Conoce rutas que no figuran en mapas. No promete seguridad; promete mejores probabilidades.</p>
-<h3>Broker de favores</h3>
+<h3 id="broker-de-favores">Broker de favores</h3>
 <p>Nunca vende exactamente lo que el grupo pide. Vende la persona que puede conseguirlo.</p>
-<h3>Técnico de ascensor</h3>
+<h3 id="tecnico-de-ascensor">Técnico de ascensor</h3>
 <p>Parece un trabajador menor, pero sabe quién sube, quién baja y quién desaparece entre plantas.</p>
-<h3>Ejecutivo de arcología</h3>
+<h3 id="ejecutivo-de-arcologia">Ejecutivo de arcología</h3>
 <p>Amable, impecable y aterrador porque nunca amenaza directamente.</p>
-<h3>Nakel de zona baja</h3>
+<h3 id="nakel-de-zona-baja">Nakel de zona baja</h3>
 <p>Puede ser guía, testigo, contrabandista, líder comunitario, técnico o enemigo. Su valor narrativo está en que pertenece a la ciudad de una forma que otros no pueden comprar.</p>
-<h3>Demonio del Cruce</h3>
+<h3 id="demonio-del-cruce">Demonio del Cruce</h3>
 <p>No tiene por qué atacar. A veces basta con que sepa exactamente qué puerta necesita el grupo.</p>
-<h2>15. GANCHOS DE AVENTURA</h2>
+<h2 id="15-ganchos-de-aventura">15. GANCHOS DE AVENTURA</h2>
 <ol>
 <li>Un ascensor se detiene durante ocho minutos en una planta que oficialmente no existe.</li>
 <li>Una familia de la zona baja ofrece una ruta bajo la niebla a cambio de sacar a alguien de una arcología.</li>
@@ -423,17 +438,17 @@
 <li>Un jugador de rollerball corporativo cae desde un estadio suspendido; su cinturón anticaída no se abrió porque alguien lo saboteó.</li>
 <li>La estación victoriana de TecnoStealer aparece durante nueve minutos en una planta donde no hay vías.</li>
 </ol>
-<h2>16. SECRETOS PARA EL NARRADOR</h2>
+<h2 id="16-secretos-para-el-narrador">16. SECRETOS PARA EL NARRADOR</h2>
 <div class="nota-dj"><p>Solo para el Narrador.</p></div>
 <p>El antiguo nombre de MadCity, <strong>Proctor</strong>, no es una curiosidad histórica inocente.</p>
 <p>La verdad es que MadCity creció alrededor del Proctor: un arma o sistema de contención creado por los Antiguos contra los Insectos. El núcleo inexplorado de aleación de Tron sería el propio Proctor.</p>
 <p>Ninguna facción del universo lo sabe con certeza por defecto. Chafry, corporaciones, Maestros, demonios y habitantes antiguos pueden tener pistas, teorías o mitos incompatibles, pero confirmar el secreto cambia la escala de la campaña.</p>
-<h3>Las cordilleras polares</h3>
+<h3 id="las-cordilleras-polares">Las cordilleras polares</h3>
 <p>Lo que se cuenta arriba —tierra fría, plasma, campo magnético, actividad volcánica— es lo que creen los habitantes, y no tienen forma de saber otra cosa. <strong>MadCity parece un planeta y nadie tiene motivos para dudarlo.</strong></p>
 <p>Los polos no son geología. Son el punto donde el artefacto que hay dentro de MadCity toca la superficie: por ahí sale lo que tiene que salir. El plasma no viene de un magma que no existe, y el campo magnético no lo produce ningún núcleo de hierro. La Distorsión insoportable del interior no es un fenómeno del lugar — <strong>es el Proctor</strong>, y lo que desaparece o queda destruido al acercarse lo hace por la misma razón por la que nadie ha explorado nunca el núcleo.</p>
 <p>Que sea imposible llegar no es mala suerte: es el diseño funcionando.</p>
 <p><strong>Nunca lo confirmes de golpe.</strong> El día que una mesa entienda que los polos y el núcleo son la misma cosa, MadCity deja de ser una ciudad y pasa a ser un arma en la que han estado viviendo. Guárdalo para el momento en que eso importe.</p>
-<h3>Cómo insinuarlo sin revelarlo</h3>
+<h3 id="como-insinuarlo-sin-revelarlo">Cómo insinuarlo sin revelarlo</h3>
 <ul>
 <li>planos antiguos donde el nombre Proctor aparece como objeto, no como ciudad;</li>
 <li>sensores que describen el núcleo como sistema activo;</li>
@@ -441,13 +456,13 @@
 <li>zonas donde la aleación de Tron no parece estructura, sino músculo dormido;</li>
 <li>una puerta del Cruce que se niega a abrirse hacia el centro.</li>
 </ul>
-<h3>Qué evitar</h3>
+<h3 id="que-evitar">Qué evitar</h3>
 <ul>
 <li>explicar Proctor en una escena de exposición temprana;</li>
 <li>convertir a Chafry en dueña consciente del secreto salvo campaña específica;</li>
 <li>resolver el misterio del núcleo con una tirada;</li>
 <li>convertir MadCity en una mazmorra lineal hacia el centro.</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

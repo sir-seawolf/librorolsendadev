@@ -15,38 +15,53 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — La centésima alma"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#la-mision">La misión</a></li><li class="toc-h3"><a href="#lo-que-realmente-ocurre">Lo que realmente ocurre</a></li><li class="toc-h3"><a href="#desarrollo-en-seis-escenas">Desarrollo en seis escenas</a></li><li class="toc-h2"><a href="#para-el-narrador">Para el Narrador</a></li><li class="toc-h3"><a href="#lo-que-el-narrador-sabe-y-los-jugadores-no">Lo que el Narrador sabe y los jugadores no</a></li><li class="toc-h3"><a href="#lo-que-este-modulo-debe-provocar">Lo que este módulo debe provocar</a></li><li class="toc-h2"><a href="#formato-y-duracion">Formato y duración</a></li><li class="toc-h2"><a href="#abreviaturas-de-ficha">Abreviaturas de ficha</a></li><li class="toc-h2"><a href="#mercury">Mercury</a></li><li class="toc-h3"><a href="#la-estacion-de-asterion">La estación de Asterión</a></li><li class="toc-h3"><a href="#iria-sen">Iria Sen</a></li><li class="toc-h3"><a href="#la-firma">La firma</a></li><li class="toc-h2"><a href="#asterion">Asterión</a></li><li class="toc-h3"><a href="#como-se-accede-y-por-que-no-hay-portales">Cómo se accede y por qué no hay portales</a></li><li class="toc-h3"><a href="#el-cielo">El cielo</a></li><li class="toc-h3"><a href="#el-polvo-blanco">El polvo blanco</a></li><li class="toc-h3"><a href="#las-perlas-y-la-cultura-local">Las Perlas y la cultura local</a></li><li class="toc-h3"><a href="#el-paramo-sordo">El Páramo Sordo</a></li><li class="toc-h3"><a href="#esquema-de-ruta">Esquema de ruta</a></li><li class="toc-h3"><a href="#exposicion-ambiental-de-asterion">Exposición ambiental de Asterión</a></li><li class="toc-h2"><a href="#cliente-cargamento-y-contrato">Cliente, cargamento y contrato</a></li><li class="toc-h3"><a href="#contrato-de-escolta">Contrato de escolta</a></li><li class="toc-h2"><a href="#facciones-del-culto">Facciones del Culto</a></li><li class="toc-h3"><a href="#uso-opcional-de-los-observadores">Uso opcional de los Observadores</a></li><li class="toc-h3"><a href="#los-concluyentes">Los Concluyentes</a></li><li class="toc-h2"><a href="#escena-1-una-palabra-de-mercury">Escena 1 — Una palabra de Mercury</a></li><li class="toc-h3"><a href="#proposito">Propósito</a></li><li class="toc-h3"><a href="#situacion-inicial">Situación inicial</a></li><li class="toc-h3"><a href="#descripcion-breve-para-leer-o-parafrasear">Descripción breve para leer o parafrasear</a></li><li class="toc-h3"><a href="#que-sabe-el-narrador">Qué sabe el Narrador</a></li><li class="toc-h3"><a href="#que-pueden-descubrir-los-personajes">Qué pueden descubrir los personajes</a></li><li class="toc-h3"><a href="#decisiones-posibles">Decisiones posibles</a></li><li class="toc-h3"><a href="#tiradas-necesarias">Tiradas necesarias</a></li><li class="toc-h3"><a href="#consecuencias">Consecuencias</a></li><li class="toc-h3"><a href="#transicion">Transición</a></li><li class="toc-h2"><a href="#escena-2-donde-termina-la-carretera">Escena 2 — Donde termina la carretera</a></li><li class="toc-h3"><a href="#proposito-2">Propósito</a></li><li class="toc-h3"><a href="#situacion-inicial-2">Situación inicial</a></li><li class="toc-h3"><a href="#descripcion-breve-para-leer-o-parafrasear-2">Descripción breve para leer o parafrasear</a></li><li class="toc-h3"><a href="#que-sabe-el-narrador-2">Qué sabe el Narrador</a></li><li class="toc-h3"><a href="#que-pueden-descubrir-los-personajes-2">Qué pueden descubrir los personajes</a></li><li class="toc-h3"><a href="#decisiones-posibles-2">Decisiones posibles</a></li><li class="toc-h3"><a href="#tiradas-necesarias-2">Tiradas necesarias</a></li><li class="toc-h3"><a href="#consecuencias-2">Consecuencias</a></li><li class="toc-h3"><a href="#transicion-2">Transición</a></li><li class="toc-h2"><a href="#escena-3-el-refugio-de-las-tres-tazas">Escena 3 — El refugio de las tres tazas</a></li><li class="toc-h3"><a href="#proposito-3">Propósito</a></li><li class="toc-h3"><a href="#situacion-inicial-3">Situación inicial</a></li><li class="toc-h3"><a href="#descripcion-breve-para-leer-o-parafrasear-3">Descripción breve para leer o parafrasear</a></li><li class="toc-h3"><a href="#que-sabe-el-narrador-3">Qué sabe el Narrador</a></li><li class="toc-h3"><a href="#que-pueden-descubrir-los-personajes-3">Qué pueden descubrir los personajes</a></li><li class="toc-h3"><a href="#decisiones-posibles-3">Decisiones posibles</a></li><li class="toc-h3"><a href="#tiradas-necesarias-3">Tiradas necesarias</a></li><li class="toc-h3"><a href="#consecuencias-3">Consecuencias</a></li><li class="toc-h3"><a href="#transicion-3">Transición</a></li><li class="toc-h2"><a href="#escena-4-el-inquisidor">Escena 4 — El Inquisidor</a></li><li class="toc-h3"><a href="#proposito-4">Propósito</a></li><li class="toc-h3"><a href="#situacion-inicial-4">Situación inicial</a></li><li class="toc-h3"><a href="#descripcion-breve-para-leer-o-parafrasear-4">Descripción breve para leer o parafrasear</a></li><li class="toc-h3"><a href="#que-sabe-el-narrador-4">Qué sabe el Narrador</a></li><li class="toc-h3"><a href="#que-pueden-descubrir-los-personajes-4">Qué pueden descubrir los personajes</a></li><li class="toc-h3"><a href="#decisiones-posibles-4">Decisiones posibles</a></li><li class="toc-h3"><a href="#tiradas-y-mecanicas">Tiradas y mecánicas</a></li><li class="toc-h3"><a href="#consecuencias-4">Consecuencias</a></li><li class="toc-h3"><a href="#transicion-4">Transición</a></li><li class="toc-h2"><a href="#escena-5-la-ruptura-del-velo">Escena 5 — La ruptura del velo</a></li><li class="toc-h3"><a href="#proposito-5">Propósito</a></li><li class="toc-h3"><a href="#situacion-inicial-5">Situación inicial</a></li><li class="toc-h3"><a href="#descripcion-breve-para-leer-o-parafrasear-5">Descripción breve para leer o parafrasear</a></li><li class="toc-h3"><a href="#que-sabe-el-narrador-5">Qué sabe el Narrador</a></li><li class="toc-h3"><a href="#que-pueden-descubrir-los-personajes-5">Qué pueden descubrir los personajes</a></li><li class="toc-h3"><a href="#decisiones-posibles-5">Decisiones posibles</a></li><li class="toc-h3"><a href="#tiradas-y-mecanicas-2">Tiradas y mecánicas</a></li><li class="toc-h3"><a href="#consecuencias-5">Consecuencias</a></li><li class="toc-h3"><a href="#transicion-5">Transición</a></li><li class="toc-h2"><a href="#escena-6-el-hospicio-de-la-linde">Escena 6 — El Hospicio de la Linde</a></li><li class="toc-h3"><a href="#proposito-6">Propósito</a></li><li class="toc-h3"><a href="#situacion-inicial-6">Situación inicial</a></li><li class="toc-h3"><a href="#descripcion-breve-para-leer-o-parafrasear-6">Descripción breve para leer o parafrasear</a></li><li class="toc-h3"><a href="#que-sabe-el-narrador-6">Qué sabe el Narrador</a></li><li class="toc-h3"><a href="#que-pueden-descubrir-los-personajes-6">Qué pueden descubrir los personajes</a></li><li class="toc-h3"><a href="#decisiones-posibles-6">Decisiones posibles</a></li><li class="toc-h3"><a href="#tiradas-y-mecanicas-3">Tiradas y mecánicas</a></li><li class="toc-h3"><a href="#consecuencias-6">Consecuencias</a></li><li class="toc-h3"><a href="#transicion-6">Transición</a></li><li class="toc-h2"><a href="#epilogo">Epílogo</a></li><li class="toc-h3"><a href="#epilogo-si-alcanza-cien">Epílogo si alcanza cien</a></li><li class="toc-h2"><a href="#nara-venn">Nara Venn</a></li><li class="toc-h3"><a href="#rasgos-interpretativos">Rasgos interpretativos</a></li><li class="toc-h3"><a href="#ficha-funcional-de-nara">Ficha funcional de Nara</a></li><li class="toc-h3"><a href="#traje-de-transito-mercury-nt8">Traje de Tránsito Mercury NT8</a></li><li class="toc-h2"><a href="#los-suenos">Los sueños</a></li><li class="toc-h3"><a href="#primer-sueno">Primer sueño</a></li><li class="toc-h3"><a href="#segundo-sueno">Segundo sueño</a></li><li class="toc-h3"><a href="#tercer-sueno">Tercer sueño</a></li><li class="toc-h2"><a href="#ashal-la-custodia-de-los-ausentes">Ashal, la Custodia de los Ausentes</a></li><li class="toc-h3"><a href="#contrato-de-oren">Contrato de Oren</a></li><li class="toc-h3"><a href="#capacidades-de-ashal">Capacidades de Ashal</a></li><li class="toc-h2"><a href="#serekh-el-que-quedo-fuera">Serekh, el que quedó fuera</a></li><li class="toc-h3"><a href="#como-actua">Cómo actúa</a></li><li class="toc-h2"><a href="#criaturas-y-encuentros">Criaturas y encuentros</a></li><li class="toc-h3"><a href="#demonio-menor-lacerador-del-velo">Demonio Menor: Lacerador del Velo</a></li><li class="toc-h3"><a href="#demonio-menor-arrastrador-de-ecos">Demonio Menor: Arrastrador de Ecos</a></li><li class="toc-h3"><a href="#rastrero-del-paramo">Rastrero del Páramo</a></li><li class="toc-h2"><a href="#tres-rutas-abiertas">Tres rutas abiertas</a></li><li class="toc-h3"><a href="#1-proteger-a-nara">1. Proteger a Nara</a></li><li class="toc-h3"><a href="#2-colaborar-con-una-parte-del-culto">2. Colaborar con una parte del Culto</a></li><li class="toc-h3"><a href="#3-destruir-ocultar-robar-o-arrojar-la-daga-a-un-portal">3. Destruir, ocultar, robar o arrojar la Daga a un portal</a></li><li class="toc-h2"><a href="#si-alcanza-la-centesima-alma">Si alcanza la centésima alma</a></li><li class="toc-h2"><a href="#si-los-jugadores-lo-impiden">Si los jugadores lo impiden</a></li><li class="toc-h2"><a href="#revelaciones-permitidas">Revelaciones permitidas</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li><li class="toc-h2"><a href="#nota-de-desarrollo">Nota de desarrollo</a></li><li class="toc-h3"><a href="#mapas-pendientes">Mapas pendientes</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — La centésima alma</h1>
 <p><em>Segunda edición narrativa en desarrollo. Estructura y mecánicas cerradas; prosa y escenas en revisión editorial.</em></p>
 <blockquote>
 <p>Una Daga no necesita entender su camino. Para eso están quienes la llevan.</p>
 </blockquote>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
-<h3>La misión</h3>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<h3 id="la-mision">La misión</h3>
 <p>Los personajes deben escoltar a <strong>Nara Venn</strong>, mensajera de Mercury, y<br />
 una caja con <strong>seis Perlas Blancas descargadas</strong>, desde la estación de<br />
 acceso de Asterión hasta el <strong>Hospicio de la Linde</strong>.</p>
-<h3>Lo que realmente ocurre</h3>
+<h3 id="lo-que-realmente-ocurre">Lo que realmente ocurre</h3>
 <p>Nara lleva entre sus pertenencias una <strong>Daga con 99 Puntos de Alma</strong>.<br />
 La Daga atrae al Culto, altera el Velo y coincide con el ataque de<br />
 <strong>Serekh</strong> contra <strong>Ashal</strong>. Ashal conserva entre sus almas a <strong>Oren</strong>,<br />
 el padre fallecido de Nara.</p>
-<h3>Desarrollo en seis escenas</h3>
+<h3 id="desarrollo-en-seis-escenas">Desarrollo en seis escenas</h3>
 <ol>
 <li>Mercury contrata al grupo.</li>
 <li>Los Rastreros atacan y revelan que algo atrae a las criaturas hacia Nara.</li>
@@ -56,7 +71,7 @@ el padre fallecido de Nara.</p>
 <li>Llegada al Hospicio, pago y consecuencias.</li>
 </ol>
 <hr />
-<h2>Para el Narrador</h2>
+<h2 id="para-el-narrador">Para el Narrador</h2>
 <p>Este módulo funciona en dos niveles simultáneos.</p>
 <p>En la superficie es una escolta: un grupo de personajes contratados para<br />
 llevar a una mensajera y una caja a través de un páramo hostil. En el<br />
@@ -74,7 +89,7 @@ elegir su propio destino?</strong></p>
 <li>Nara está cansada de que todos sepan qué debe hacer con su existencia.</li>
 </ul>
 <p>No hay una respuesta correcta. El módulo no la da.</p>
-<h3>Lo que el Narrador sabe y los jugadores no</h3>
+<h3 id="lo-que-el-narrador-sabe-y-los-jugadores-no">Lo que el Narrador sabe y los jugadores no</h3>
 <ul>
 <li>La Daga contiene 99 Puntos de Alma.</li>
 <li>Oren Venn murió en Asterión años atrás. Ashal le ofreció continuar<br />
@@ -93,7 +108,7 @@ elegir su propio destino?</strong></p>
 <li>Matar a Ashal con la Daga solo aportaría 1 Punto de Alma, como<br />
   cualquier otra víctima: no hay atajo que complete la carga de golpe.</li>
 </ul>
-<h3>Lo que este módulo debe provocar</h3>
+<h3 id="lo-que-este-modulo-debe-provocar">Lo que este módulo debe provocar</h3>
 <p>Cada elemento funciona como escaparate del universo:</p>
 <table>
 <thead>
@@ -137,13 +152,13 @@ elegir su propio destino?</strong></p>
 universo no se detiene para admirarse a sí mismo. Por eso el lector<br />
 sí lo admira.</p>
 <hr />
-<h2>Formato y duración</h2>
+<h2 id="formato-y-duracion">Formato y duración</h2>
 <p>Aventura de una o dos sesiones, ampliable. Diseñada para grupos de<br />
 tres a cinco personajes sin requisitos de especialización.</p>
 <p>Su función es permitir que los jugadores atisben el lore de las Dagas del LORD, el Centenar y la Trama sin resolverlo. Ese lore ya existe desarrollado en otro documento del proyecto.</p>
 <p>Las Escenas 1-3 tienen el ritmo narrativo definitivo; en las Escenas 4-6 el DJ tiene más margen para ajustar diálogos y ritmo sobre la marcha.</p>
 <hr />
-<h2>Abreviaturas de ficha</h2>
+<h2 id="abreviaturas-de-ficha">Abreviaturas de ficha</h2>
 <p>Las fichas compactas de este módulo usan abreviaturas para ahorrar espacio en mesa:</p>
 <table>
 <thead>
@@ -181,7 +196,7 @@ tres a cinco personajes sin requisitos de especialización.</p>
 </table>
 <p>En prosa se prefiere escribir el término completo cuando pueda haber ambigüedad.</p>
 <hr />
-<h2>Mercury</h2>
+<h2 id="mercury">Mercury</h2>
 <p>Mercury no vende transporte. Vende certeza.</p>
 <p>En un universo de portales inestables, teselas impredecibles y rutas<br />
 que pueden dejar de existir, Mercury ha construido su prestigio sobre<br />
@@ -199,7 +214,7 @@ imposibles y desaparecen antes de que alguien pueda preguntar cómo<br />
 se entra.</p>
 <p>La gente no sueña con trabajar para Mercury por su salario. Sueña<br />
 con que alguien de Mercury considere que puede confiarse en ella.</p>
-<h3>La estación de Asterión</h3>
+<h3 id="la-estacion-de-asterion">La estación de Asterión</h3>
 <blockquote>
 <p>La estación Mercury no fue construida sobre Asterión. Fue<br />
 introducida en el planeta como una aguja atravesando una tela.</p>
@@ -243,7 +258,7 @@ de nuevo en el metal.</p>
 <p>Nadie comenta el error.</p>
 <p>O quizá no fuera un error.</p>
 </blockquote>
-<h3>Iria Sen</h3>
+<h3 id="iria-sen">Iria Sen</h3>
 <p>Iria entra cuando los personajes ya han tenido tiempo de mirar.</p>
 <blockquote>
 <p>La mujer que se aproxima lleva un uniforme gris sin costuras,<br />
@@ -304,7 +319,7 @@ nueve días.</p>
 </blockquote>
 <p>Iria no exagera. El Hospicio tendrá que apagar parte de sus sistemas<br />
 médicos cuando llegue la siguiente corriente de Distorsión ambiental.</p>
-<h3>La firma</h3>
+<h3 id="la-firma">La firma</h3>
 <p>Cuando el grupo acepta:</p>
 <blockquote>
 <p>La superficie de la mesa asciende alrededor de sus manos sin<br />
@@ -321,12 +336,12 @@ ustedes.</p>
 <p>—Intenten no dejarla caer.</p>
 </blockquote>
 <hr />
-<h2>Asterión</h2>
+<h2 id="asterion">Asterión</h2>
 <p>Asterión no es un desierto con Distorsión. Es un planeta que lleva<br />
 siglos sumergido en la Urdimbre y ha dejado de fingir que eso no<br />
 lo afecta: no es una pequeña región aislada, sino una <strong>tesela<br />
 planetaria completa</strong> situada dentro de la propia Urdimbre.</p>
-<h3>Cómo se accede y por qué no hay portales</h3>
+<h3 id="como-se-accede-y-por-que-no-hay-portales">Cómo se accede y por qué no hay portales</h3>
 <p>Se accede mediante un corredor estable que desemboca en la estación<br />
 de tránsito de Mercury. Mercury y otras organizaciones mantienen ese<br />
 acceso porque, dentro de Asterión, el problema no es llegar al<br />
@@ -344,7 +359,7 @@ planeta: es salir de él por cualquier sitio que no sea el corredor.</p>
 demasiado cerca para distinguir correctamente entrada, tránsito y<br />
 salida. Mantén esta explicación como hipótesis operativa, no como<br />
 verdad cosmológica absoluta.</p>
-<h3>El cielo</h3>
+<h3 id="el-cielo">El cielo</h3>
 <p>No existe una noche completamente oscura en Asterión. La Urdimbre<br />
 ilumina siempre una parte del firmamento. Las sombras cambian de<br />
 dirección aunque nada visible se mueva.</p>
@@ -359,7 +374,7 @@ dirección aunque nada visible se mueva.</p>
 </ul>
 <p>Los habitantes llevan generaciones sin mirar hacia arriba con<br />
 sorpresa. Los visitantes tardan un poco más.</p>
-<h3>El polvo blanco</h3>
+<h3 id="el-polvo-blanco">El polvo blanco</h3>
 <p>Lo que cubre el Páramo no es arena. Son escamas minerales tan<br />
 delgadas que flotan durante minutos después de una pisada.</p>
 <p>Se adhieren a los filtros, a la humedad de los labios, a las Perlas<br />
@@ -368,7 +383,7 @@ determinada luz, cada escama refleja un lugar diferente.</p>
 <p>Los habitantes llaman al fenómeno <strong>la caspa de los mundos</strong>. Los<br />
 científicos de Mercury utilizan un término de diecisiete sílabas.<br />
 Nadie fuera de Mercury lo recuerda.</p>
-<h3>Las Perlas y la cultura local</h3>
+<h3 id="las-perlas-y-la-cultura-local">Las Perlas y la cultura local</h3>
 <p>En Asterión es habitual llevar una Perla contra la piel.</p>
 <ul>
 <li>Algunas cuelgan del cuello.</li>
@@ -382,7 +397,7 @@ Nadie fuera de Mercury lo recuerda.</p>
 <p>Esto no es lore decorativo. Es una forma de mostrar que la Deriva<br />
 ambiental lleva aquí mucho tiempo y que la gente ha aprendido a<br />
 vivir con ella, no a ignorarla.</p>
-<h3>El Páramo Sordo</h3>
+<h3 id="el-paramo-sordo">El Páramo Sordo</h3>
 <p>El Páramo Sordo ocupa la mayor parte del trayecto entre la estación<br />
 de Mercury y el Hospicio de la Linde. Su nombre no viene del<br />
 silencio: viene de que no devuelve el eco.</p>
@@ -403,7 +418,7 @@ Orientación cuando el grupo tome decisiones reales: elegir ruta,<br />
 buscar abrigo, evitar una depresión, seguir huellas o interpretar<br />
 un eco visual. Un fallo produce retraso, consumo de recursos o<br />
 posición desfavorable. No bloquea la aventura.</p>
-<h3>Esquema de ruta</h3>
+<h3 id="esquema-de-ruta">Esquema de ruta</h3>
 <p>El trayecto completo mide aproximadamente 36 km divididos en dos<br />
 jornadas iguales. El refugio intermedio queda exactamente a mitad<br />
 de recorrido.</p>
@@ -453,7 +468,7 @@ esperando en una elevación.</p>
 </tbody>
 </table>
 <p><img alt="Mapa del Páramo Sordo" src="img/centesima_alma_paramo.png" /></p>
-<h3>Exposición ambiental de Asterión</h3>
+<h3 id="exposicion-ambiental-de-asterion">Exposición ambiental de Asterión</h3>
 <p>Esta es una regla local de Asterión y no una regla universal del Mosaico.</p>
 <blockquote>
 <p>Por cada 24 horas completas de exposición en Asterión, toda criatura susceptible recibe 1 punto de Deriva.</p>
@@ -472,7 +487,7 @@ esperando en una elevación.</p>
 <p>Nara lleva una Perla Blanca corporativa sintonizada e integrada en contacto con su traje. Comienza descargada y forma parte del equipo retornable de Mercury.</p>
 <p>Los personajes no reciben Perlas. Pueden emplear una propia o manipular el cargamento, pero abrir la caja o utilizar una de las seis Perlas viola el contrato y queda registrado por el sello Mercury.</p>
 <hr />
-<h2>Cliente, cargamento y contrato</h2>
+<h2 id="cliente-cargamento-y-contrato">Cliente, cargamento y contrato</h2>
 <p>El cliente es el <strong>Hospicio de la Linde</strong>, hospital y refugio situado al otro lado del Páramo.</p>
 <p>No adora formalmente a Ashal. Conoce a la protectora como «la Custodia» y mantiene una convivencia práctica con ella.</p>
 <p>El Hospicio necesita:</p>
@@ -491,7 +506,7 @@ esperando en una elevación.</p>
 <li>no contiene la Daga;</li>
 <li>la Daga viaja entre las pertenencias personales de Nara.</li>
 </ul>
-<h3>Contrato de escolta</h3>
+<h3 id="contrato-de-escolta">Contrato de escolta</h3>
 <ul>
 <li><strong>Encargo:</strong> escoltar a Nara y la caja hasta el Hospicio de la Linde.</li>
 <li><strong>Duración prevista:</strong> dos días.</li>
@@ -506,8 +521,8 @@ esperando en una elevación.</p>
 <p><strong>Equipo de supervivencia por personaje:</strong> respirador, gafas protectoras, agua y alimento para dos días, manta térmica, comunicador local, baliza, cuerda y anclajes, dos bengalas, filtro o kit médico básico.</p>
 <p>Este equipo no incluye el Traje de Tránsito Mercury NT8 de Nara ni concede acceso al equipo retornable corporativo.</p>
 <hr />
-<h2>Facciones del Culto</h2>
-<h3>Uso opcional de los Observadores</h3>
+<h2 id="facciones-del-culto">Facciones del Culto</h2>
+<h3 id="uso-opcional-de-los-observadores">Uso opcional de los Observadores</h3>
 <p>Los Observadores muestran que el Culto de las Dagas no es monolítico. Úsalos si quieres que la aventura enseñe más lore del Culto; omítelos si necesitas un ritmo más rápido y prefieres que el peso doctrinal recaiga solo en Ysra, Kedo y el Inquisidor.</p>
 <p><strong>Cuándo entran:</strong> durante la Escena 4, cuando el Inquisidor confronta al grupo, o justo después de que la grieta del Velo se vuelva visible. No llegan para combatir ni para sustituir las decisiones del grupo: llegan tarde, han observado demasiado y ahora tienen que decidir si hablar.</p>
 <p><strong>Lectura para el Narrador:</strong></p>
@@ -540,7 +555,7 @@ esperando en una elevación.</p>
 <li>Si estorban el ritmo, convierte su aportación en una única frase útil antes de que la acción vuelva al grupo.</li>
 </ul>
 <p><strong>Implicación temática:</strong> los Observadores hacen visible que el Culto puede estudiar, creer, dudar o manipular. Si aparecen, Nara no solo descubre que la seguían enemigos: descubre que incluso quienes no querían dañarla la trataron como fenómeno antes que como persona.</p>
-<h3>Los Concluyentes</h3>
+<h3 id="los-concluyentes">Los Concluyentes</h3>
 <p>Los Concluyentes son tres. Creen que una Daga con 99 puntos no llega a un lugar por accidente y que impedir el cierre de la Trama es una forma de cobardía cósmica.</p>
 <h4>Ysra Pell</h4>
 <p>Dirige la célula.</p>
@@ -571,18 +586,18 @@ corresponden a Rastreros. Se cuenta en la Escena 3.</p>
 <li>Reaparecerá durante la ruptura del velo.</li>
 </ul>
 <hr />
-<h2>Escena 1 — Una palabra de Mercury</h2>
-<h3>Propósito</h3>
+<h2 id="escena-1-una-palabra-de-mercury">Escena 1 — Una palabra de Mercury</h2>
+<h3 id="proposito">Propósito</h3>
 <p>Que el grupo sienta que ha entrado en contacto con algo que no estaba<br />
 disponible para ellos hasta hoy. Que el contrato sea serio sin ser una<br />
 amenaza. Que Nara se muestre competente y con motivos propios. Que<br />
 quieran aceptar antes de conocer el verdadero misterio.</p>
-<h3>Situación inicial</h3>
+<h3 id="situacion-inicial">Situación inicial</h3>
 <p>El grupo ha sido convocado a la estación Mercury de Asterión para un<br />
 contrato de escolta local. Nara y la caja ya están en la sala; Iria<br />
 Sen llegará en cuanto los personajes hayan tenido tiempo de mirar<br />
 alrededor.</p>
-<h3>Descripción breve para leer o parafrasear</h3>
+<h3 id="descripcion-breve-para-leer-o-parafrasear">Descripción breve para leer o parafrasear</h3>
 <blockquote>
 <p>La última puerta antes de la sala de contratación no se abre.<br />
 Se vuelve transparente y después deja de estar.</p>
@@ -612,20 +627,20 @@ sus cantimploras y la forma en que distribuyen el peso.</p>
 <p>—Eso no era lo que he preguntado.</p>
 </blockquote>
 <p>Con dos líneas queda definida.</p>
-<h3>Qué sabe el Narrador</h3>
+<h3 id="que-sabe-el-narrador">Qué sabe el Narrador</h3>
 <p>Iria representa a Mercury sin ambigüedad: el contrato es real y las<br />
 cifras (12.000 PC, nueve días antes de que el Hospicio empiece a<br />
 apagar sistemas médicos) no son un farol. Nara ya sabe que oculta<br />
 algo en su bolsa, pero todavía no sabe que es una Daga con 99 Puntos<br />
 de Alma. Ver sección <strong>Mercury — Iria Sen</strong> para el desarrollo<br />
 completo de la conversación, las preguntas previsibles y la firma.</p>
-<h3>Qué pueden descubrir los personajes</h3>
+<h3 id="que-pueden-descubrir-los-personajes">Qué pueden descubrir los personajes</h3>
 <p>Que Nara evalúa su preparación real (botas, filtros, reparto de peso)<br />
 en vez de su arsenal. Que el contrato es de escolta simple: una<br />
 agente, una caja, seis recipientes vacíos. Que Nara lleva algo<br />
 personal en su bolsa que Mercury no paga por transportar — sin<br />
 mentira ni misterio forzado, solo una frase seca.</p>
-<h3>Decisiones posibles</h3>
+<h3 id="decisiones-posibles">Decisiones posibles</h3>
 <p>Aceptar el contrato o no. Iria no presiona:</p>
 <blockquote>
 <p>—Beberán el agua y se marcharán. El contrato encontrará a otros.</p>
@@ -633,16 +648,16 @@ mentira ni misterio forzado, solo una frase seca.</p>
 <p>No es una amenaza. Es información. Si el grupo no hace preguntas,<br />
 Iria presenta el contrato en silencio y deja que el peso de las<br />
 cifras hable.</p>
-<h3>Tiradas necesarias</h3>
+<h3 id="tiradas-necesarias">Tiradas necesarias</h3>
 <p>Ninguna es obligatoria: es una escena social. Si alguien intenta algo<br />
 activo (sonsacar mejores condiciones a Iria, calar las intenciones de<br />
 Nara), resuélvelo con Persuasión o Alerta normales — un fallo no<br />
 bloquea el contrato, solo lo hace menos cómodo.</p>
-<h3>Consecuencias</h3>
+<h3 id="consecuencias">Consecuencias</h3>
 <p>Aceptar lleva directamente a la Escena 2. Rechazar termina el gancho<br />
 para este grupo concreto sin dramatismo — Mercury simplemente busca a<br />
 otros.</p>
-<h3>Transición</h3>
+<h3 id="transicion">Transición</h3>
 <p>Cuando firman, Iria termina con:</p>
 <blockquote>
 <p>—Desde este momento, la palabra de Mercury pesa también sobre<br />
@@ -653,16 +668,16 @@ ustedes.</p>
 <p>La puerta al exterior se vuelve transparente.</p>
 <p>El Páramo Sordo ocupa todo lo que hay al otro lado.</p>
 <hr />
-<h2>Escena 2 — Donde termina la carretera</h2>
-<h3>Propósito</h3>
+<h2 id="escena-2-donde-termina-la-carretera">Escena 2 — Donde termina la carretera</h2>
+<h3 id="proposito-2">Propósito</h3>
 <p>Que Asterión se sienta extraño y hermoso antes de ser peligroso. Que<br />
 Nara transmita que sabe cosas que no cuenta. Que el viaje ya prometa<br />
 algo antes del primer combate.</p>
-<h3>Situación inicial</h3>
+<h3 id="situacion-inicial-2">Situación inicial</h3>
 <p>El grupo sale de la estación Mercury con Nara y la caja. Delante,<br />
 treinta y seis kilómetros de Páramo hasta el refugio intermedio y,<br />
 más allá, el Hospicio.</p>
-<h3>Descripción breve para leer o parafrasear</h3>
+<h3 id="descripcion-breve-para-leer-o-parafrasear-2">Descripción breve para leer o parafrasear</h3>
 <blockquote>
 <p>La última puerta de Mercury no se abre. Se vuelve transparente<br />
 y después deja de estar.</p>
@@ -683,12 +698,12 @@ comprobar la fecha.</p>
 <p>Antes de alejarse de la estación, cada personaje siente una presión<br />
 leve en los dientes. Los Iniciados perciben algo más preciso: Asterión<br />
 no está rodeado por la Urdimbre. Está sumergido en ella.</p>
-<h3>Qué sabe el Narrador</h3>
+<h3 id="que-sabe-el-narrador-2">Qué sabe el Narrador</h3>
 <p>Los Rastreros de esta escena no persiguen la caja Mercury: persiguen a<br />
 Nara, o más exactamente lo que lleva en la bolsa. Nada de esto se dice<br />
 en voz alta todavía — se demuestra con su comportamiento en el<br />
 combate y se confirma después, en las pistas.</p>
-<h3>Qué pueden descubrir los personajes</h3>
+<h3 id="que-pueden-descubrir-los-personajes-2">Qué pueden descubrir los personajes</h3>
 <p><strong>La primera conversación con Nara</strong></p>
 <p>Durante los primeros kilómetros Nara mantiene ritmo constante. El<br />
 Narrador puede usar la conversación para establecer confianza antes<br />
@@ -737,7 +752,7 @@ allí. Una de las series se desvía de la ruta.</p>
 ataque posterior, pero añade una hora de recorrido. Si lo ignoran,<br />
 conservan tiempo y llegan a terreno abierto.</p>
 <p>No se explica quién dejó las huellas. Ambas decisiones son válidas.</p>
-<h3>Decisiones posibles</h3>
+<h3 id="decisiones-posibles-2">Decisiones posibles</h3>
 <p><strong>Una elección real de ruta.</strong> Cuando termina la carretera, Nara<br />
 muestra dos opciones:</p>
 <p><strong>La Cuenca de Vidrio</strong><br />
@@ -757,7 +772,7 @@ encuentro:</p>
 <li>En las Agujas intentan separar a Nara dentro de los corredores.</li>
 </ul>
 <p>La elección no evita el contenido. Transforma cómo se juega.</p>
-<h3>Tiradas necesarias</h3>
+<h3 id="tiradas-necesarias-2">Tiradas necesarias</h3>
 <p>El combate contra los Rastreros es la única tirada obligatoria de<br />
 esta escena; todo lo anterior (conversación, anomalías, elección de<br />
 ruta) se juega sin forzar dados.</p>
@@ -807,7 +822,7 @@ suelo. La costra blanca se rompe bajo sus pies.</p>
 </blockquote>
 <p><strong>Número recomendado:</strong> tres para tres personajes, cuatro para<br />
 cuatro, cinco para cinco o más.</p>
-<h3>Consecuencias</h3>
+<h3 id="consecuencias-2">Consecuencias</h3>
 <p><strong>Pistas después del combate</strong></p>
 <p><em>Automáticas:</em><br />
 - Los Rastreros ignoraron las Perlas.<br />
@@ -838,7 +853,7 @@ muriera mi padre.</p>
 mis mudanzas.</p>
 </blockquote>
 <p>No sabe que contiene 99 Puntos de Alma.</p>
-<h3>Transición</h3>
+<h3 id="transicion-2">Transición</h3>
 <p>El ataque y la elección de ruta determinan cuándo llegan al refugio:</p>
 <ul>
 <li>Con buen ritmo, alcanzan el refugio antes del anochecer.</li>
@@ -856,13 +871,13 @@ abrirse.</p>
 <p>Algo la está respirando desde el otro lado.</p>
 </blockquote>
 <hr />
-<h2>Escena 3 — El refugio de las tres tazas</h2>
-<h3>Propósito</h3>
+<h2 id="escena-3-el-refugio-de-las-tres-tazas">Escena 3 — El refugio de las tres tazas</h2>
+<h3 id="proposito-3">Propósito</h3>
 <p>Alivio inicial. Inquietud creciente. El descubrimiento de una<br />
 tragedia reciente. Duda sobre si los Concluyentes son fanáticos,<br />
 víctimas o ambas cosas. Y al final de la noche, la certeza de que<br />
 la misión es algo más que una escolta.</p>
-<h3>Situación inicial</h3>
+<h3 id="situacion-inicial-3">Situación inicial</h3>
 <p>Los refugios del Páramo fueron construidos antes de Mercury. Nadie<br />
 conoce a la organización original, pero sus edificios continúan<br />
 reparándose parcialmente solos.</p>
@@ -878,7 +893,7 @@ edificios.</p>
 </ol>
 <p>La distribución permite que los personajes se separen y hagan<br />
 descubrimientos simultáneos.</p>
-<h3>Descripción breve para leer o parafrasear</h3>
+<h3 id="descripcion-breve-para-leer-o-parafrasear-3">Descripción breve para leer o parafrasear</h3>
 <blockquote>
 <p>El refugio es un bloque bajo de hormigón blanco. No tiene ventanas<br />
 y su única puerta se abre hacia dentro, aunque el viento sopla en<br />
@@ -894,7 +909,7 @@ dirección contraria.</p>
 de un cadáver. Su cuerpo está apoyado al otro lado y el movimiento de<br />
 la puerta comprimía el aire de sus pulmones.</p>
 <p>No estaba respirando.</p>
-<h3>Qué sabe el Narrador</h3>
+<h3 id="que-sabe-el-narrador-3">Qué sabe el Narrador</h3>
 <p>Los tres Concluyentes llegaron antes que el grupo: Ysra, Kedo, y un<br />
 tercero que murió aquí protegiéndola. Kedo ya ha salido solo hacia el<br />
 núcleo. Ysra está genuinamente inconsciente — no finge, no ejecuta un<br />
@@ -903,7 +918,7 @@ plan — y sabe, por su cordón de cien nudos, que la Daga de Nara tiene<br />
 no una amenaza inminente: nadie ha visto nunca ocuparlo. Pase lo que<br />
 pase esta noche, la Deriva ambiental y el sueño de Nara ocurren de<br />
 todos modos.</p>
-<h3>Qué pueden descubrir los personajes</h3>
+<h3 id="que-pueden-descubrir-los-personajes-3">Qué pueden descubrir los personajes</h3>
 <p><strong>El cultista muerto</strong></p>
 <blockquote>
 <p>El hombre junto a la puerta lleva una armadura de viaje cubierta<br />
@@ -1088,18 +1103,18 @@ todos los nudos cerrados.</p>
 esperar. Los dos siguen creyendo que el destino pide permiso.</em></p>
 <p><em>Si el centro está ahí, alguien tendrá que abrirlo.</em></p>
 </blockquote>
-<h3>Decisiones posibles</h3>
+<h3 id="decisiones-posibles-3">Decisiones posibles</h3>
 <p>Cuánto presionan a Ysra para sacarle información (confianza,<br />
 confrontación o esperar a las pruebas de la sala técnica), si atienden<br />
 activamente su recuperación o solo la dejan descansar (ver<br />
 «Recuperación de Ysra», arriba) y qué hacen con el cuerpo del cultista<br />
 al amanecer.</p>
-<h3>Tiradas necesarias</h3>
+<h3 id="tiradas-necesarias-3">Tiradas necesarias</h3>
 <p>Medicina o Primeros Auxilios para estabilizar a Ysra (ver<br />
 «Recuperación de Ysra»). El resto de la investigación (sala común,<br />
 pertenencias, sala técnica) no exige tiradas obligatorias: la<br />
 información aparece con la exploración normal.</p>
-<h3>Consecuencias</h3>
+<h3 id="consecuencias-3">Consecuencias</h3>
 <p><strong>La Deriva ambiental</strong></p>
 <p>Al cumplirse las primeras 24 horas:</p>
 <blockquote>
@@ -1187,22 +1202,22 @@ de Mercury.</p>
 </blockquote>
 <p>El número cuenta al grupo, Nara y Ysra correctamente, más uno.</p>
 <p>No se explica quién es el octavo.</p>
-<h3>Transición</h3>
+<h3 id="transicion-3">Transición</h3>
 <p>La puerta se abre.</p>
 <p>El Inquisidor está esperando.</p>
 <hr />
-<h2>Escena 4 — El Inquisidor</h2>
-<h3>Propósito</h3>
+<h2 id="escena-4-el-inquisidor">Escena 4 — El Inquisidor</h2>
+<h3 id="proposito-4">Propósito</h3>
 <p>Mostrar a TecnoStealer mediante acciones y objetos concretos, no<br />
 mediante una exposición extensa. Que el Inquisidor pueda parecer<br />
 inicialmente un adversario y resulte razonable incorporarlo como<br />
 aliado temporal. Que el grupo entienda el peligro inmediato antes de<br />
 tocar el misterio de fondo.</p>
-<h3>Situación inicial</h3>
+<h3 id="situacion-inicial-4">Situación inicial</h3>
 <p>Al salir del refugio, el grupo ve al Inquisidor esperando en una<br />
 elevación cercana del Páramo, rodeado de instrumentos improvisados.<br />
 No se oculta ni se acerca: espera a que bajen hasta él.</p>
-<h3>Descripción breve para leer o parafrasear</h3>
+<h3 id="descripcion-breve-para-leer-o-parafrasear-4">Descripción breve para leer o parafrasear</h3>
 <blockquote>
 <p>La figura de la elevación no intenta ocultarse. Lleva un abrigo<br />
 oscuro sobre una armadura demasiado rígida para ser ropa y una<br />
@@ -1225,7 +1240,7 @@ lado está.</p>
 <p>—Y usted lleva veinticuatro años transportando algo que no figura<br />
 en el manifiesto.</p>
 </blockquote>
-<h3>Qué sabe el Narrador</h3>
+<h3 id="que-sabe-el-narrador-4">Qué sabe el Narrador</h3>
 <p><strong>Sabe:</strong></p>
 <ul>
 <li>La Daga contiene 99 Puntos de Alma.</li>
@@ -1250,7 +1265,7 @@ en el manifiesto.</p>
 </ul>
 <p>No inventes respuestas definitivas para lo que desconoce: si lo<br />
 presionan, admite que no lo sabe.</p>
-<h3>Qué pueden descubrir los personajes</h3>
+<h3 id="que-pueden-descubrir-los-personajes-4">Qué pueden descubrir los personajes</h3>
 <p>Que la lente revela corrientes de Distorsión invisibles a simple<br />
 vista; que el diapasón reacciona ante la Daga sin que nadie la haya<br />
 sacado todavía; que la cámara registra alteraciones del Velo antes de<br />
@@ -1269,7 +1284,7 @@ intenten matarlo.</p>
 muerto, lo que Ysra haya contado), identifica a Kedo como el<br />
 Concluyente que falta y advierte que intentará completar la carga<br />
 por su cuenta.</p>
-<h3>Decisiones posibles</h3>
+<h3 id="decisiones-posibles-4">Decisiones posibles</h3>
 <p>Los personajes pueden:</p>
 <ul>
 <li>aceptar su ayuda;</li>
@@ -1287,12 +1302,12 @@ narrativas añadidas solo para esta escena: Investigación 80%, Alerta<br />
 estadísticas de combate. Esta es su única ficha en el módulo; no la<br />
 repitas en la Escena 5.</p>
 <p>Este Inquisidor ocupa la plaza de Capricornio (ver el lore de TecnoStealer, sección Los Inquisidores) y es un personaje recurrente: la misma figura puede reaparecer en otras aventuras de la corporación.</p>
-<h3>Tiradas y mecánicas</h3>
+<h3 id="tiradas-y-mecanicas">Tiradas y mecánicas</h3>
 <p>Convencerlo, calarlo o despistarlo se resuelve con Persuasión,<br />
 Interrogación o Sociales enfrentadas a sus valores narrativos. Si lo<br />
 atacan, usa su ficha de combate normal. Ninguna tirada es obligatoria<br />
 si el grupo simplemente coopera.</p>
-<h3>Consecuencias</h3>
+<h3 id="consecuencias-4">Consecuencias</h3>
 <p>Si el grupo se niega a hablar, puede bloquear la navegación o la caja<br />
 Mercury temporalmente para forzar una conversación, pero no destruye<br />
 el cargamento. Se alía provisionalmente si le permiten examinar la<br />
@@ -1301,7 +1316,7 @@ demuestran que protegen a Nara, o identifican que Kedo se dirige<br />
 hacia Ashal — y entonces ofrece lo que sabe (arriba). La aventura<br />
 continúa en todos los casos: si no coopera con el grupo, sigue<br />
 investigando a distancia y no resuelve las fracturas por ellos.</p>
-<h3>Transición</h3>
+<h3 id="transicion-4">Transición</h3>
 <p>Si usas a los Observadores, introdúcelos aquí. Su aparición no debe desplazar al Inquisidor: Sava aporta lectura doctrinal, Elian aporta duda moral y Nara gana una razón más para enfadarse con todos los que han convertido su vida en objeto de estudio.</p>
 <blockquote>
 <p>A unos cien metros aparece una grieta vertical. Dentro no se ve el<br />
@@ -1314,17 +1329,17 @@ Inquisidor identifica el núcleo de Ashal, Nara reconoce algún<br />
 elemento de sus sueños y queda claro que Kedo está en dirección a la<br />
 grieta. Todavía no hace falta explicar la cosmología completa.</p>
 <hr />
-<h2>Escena 5 — La ruptura del velo</h2>
-<h3>Propósito</h3>
+<h2 id="escena-5-la-ruptura-del-velo">Escena 5 — La ruptura del velo</h2>
+<h3 id="proposito-5">Propósito</h3>
 <p>El clímax de la aventura. Que el grupo entienda contra qué actúa (una<br />
 entidad que no se derrota bajando PV) y qué puede hacer al respecto.<br />
 Que la entrada al lado espiritual sea una elección real, no un<br />
 arrastre automático. Que Ashal resulte extraordinaria y comprensible<br />
 a la vez, y que Serekh tiente en vez de solo amenazar.</p>
-<h3>Situación inicial</h3>
+<h3 id="situacion-inicial-5">Situación inicial</h3>
 <p>El grupo cruza la grieta que vio en la Escena 4. El núcleo de Ashal<br />
 está cerca; Kedo ha llegado antes con la Daga.</p>
-<h3>Descripción breve para leer o parafrasear</h3>
+<h3 id="descripcion-breve-para-leer-o-parafrasear-5">Descripción breve para leer o parafrasear</h3>
 <blockquote>
 <p>El Páramo termina sin cambiar de paisaje. Una pisada cae sobre<br />
 polvo blanco; la siguiente, sobre una superficie negra que refleja<br />
@@ -1337,7 +1352,7 @@ distancia diferente. Ashal lo contiene con filamentos de luz, pero<br />
 tres de ellos ya se han roto.</p>
 <p>Entonces veis a Kedo junto al núcleo. Lleva la Daga.</p>
 </blockquote>
-<h3>Qué sabe el Narrador</h3>
+<h3 id="que-sabe-el-narrador-5">Qué sabe el Narrador</h3>
 <p>Ashal no puede cerrar las tres fracturas mientras contiene<br />
 directamente a Serekh: por eso necesita a los personajes. Kedo cree<br />
 que matar a Ashal completaría correctamente la Trama; Serekh le ha<br />
@@ -1348,7 +1363,7 @@ cerrando las tres fracturas. Para su descripción completa, motivos y<br />
 ofertas concretas, ver <strong>Serekh, el que quedó fuera</strong>; para la<br />
 naturaleza de Ashal, ver <strong>Ashal, la Custodia de los Ausentes</strong> — no<br />
 se repiten aquí.</p>
-<h3>Qué pueden descubrir los personajes</h3>
+<h3 id="que-pueden-descubrir-los-personajes-5">Qué pueden descubrir los personajes</h3>
 <p><strong>Ashal, en una frase:</strong> un núcleo mineral oscuro con cientos de<br />
 luces dentro, cada una un alma acogida mediante un contrato<br />
 voluntario; en la superposición espiritual, esas almas habitan<br />
@@ -1369,12 +1384,12 @@ físico, enfrentándose a criaturas menores, usando tecnología o<br />
 Distorsión sobre las fracturas accesibles desde fuera, o impidiendo<br />
 que Kedo complete su acción. No castigues a quien rechace entrar —<br />
 debe haber acciones relevantes en los dos planos.</p>
-<h3>Decisiones posibles</h3>
+<h3 id="decisiones-posibles-5">Decisiones posibles</h3>
 <p>Entrar o no en el espacio de Ashal (por personaje). Cómo repartirse<br />
 entre las tres fracturas. Qué hacer con Kedo: convencerlo,<br />
 inmovilizarlo, engañarlo, herirlo, dejarlo actuar, o usar lo que sabe<br />
 para cerrar una fractura — no está obligado a morir.</p>
-<h3>Tiradas y mecánicas</h3>
+<h3 id="tiradas-y-mecanicas-2">Tiradas y mecánicas</h3>
 <p>Existen <strong>tres fracturas</strong>. Cada una requiere <strong>tres éxitos<br />
 acumulados</strong> mediante acciones apropiadas.</p>
 <ul>
@@ -1482,7 +1497,7 @@ deliberadamente a Nara hasta Asterión y que no quiere decidir su vida.</p>
 <p>Nara puede reaccionar de formas distintas — creerle, rechazarlo,<br />
 enfadarse, despedirse o aplazar la decisión. No fuerces una<br />
 reconciliación completa.</p>
-<h3>Consecuencias</h3>
+<h3 id="consecuencias-5">Consecuencias</h3>
 <p>El número de fracturas cerradas determina el resultado. Para cada<br />
 nivel se indica qué es visible de inmediato, qué solo sabe el<br />
 Narrador y qué queda como semilla para el futuro.</p>
@@ -1506,22 +1521,22 @@ Narrador y qué queda como semilla para el futuro.</p>
 nunca — no fuerces el resultado. Si ocurre, se combina con cualquiera<br />
 de los cuatro niveles anteriores; ver <strong>Si alcanza la centésima<br />
 alma</strong>, más adelante, para el detalle completo. No se repite aquí.</p>
-<h3>Transición</h3>
+<h3 id="transicion-5">Transición</h3>
 <p>Cerrado el enfrentamiento —con el resultado que sea—, el grupo puede<br />
 regresar al plano material con Nara, la caja y lo que quede de la<br />
 Daga, y retomar el camino hacia el Hospicio de la Linde.</p>
 <hr />
-<h2>Escena 6 — El Hospicio de la Linde</h2>
-<h3>Propósito</h3>
+<h2 id="escena-6-el-hospicio-de-la-linde">Escena 6 — El Hospicio de la Linde</h2>
+<h3 id="proposito-6">Propósito</h3>
 <p>Cerrar el contrato con concreción, no con ceremonia. Que el grupo<br />
 sienta el contraste entre la magnitud de lo que acaban de vivir y la<br />
 sequedad práctica de una entrega comercial.</p>
-<h3>Situación inicial</h3>
+<h3 id="situacion-inicial-6">Situación inicial</h3>
 <p>El grupo llega al Hospicio de la Linde con Nara, la caja y lo que<br />
 quede de la Daga y de la aventura. La doctora Maela Rinn —<br />
 administradora y médica, práctica, agotada y sin interés en discutir<br />
 teología antes de comprobar las Perlas— sale a recibirlos.</p>
-<h3>Descripción breve para leer o parafrasear</h3>
+<h3 id="descripcion-breve-para-leer-o-parafrasear-6">Descripción breve para leer o parafrasear</h3>
 <blockquote>
 <p>El Hospicio no parece un templo ni una fortaleza. Parece un<br />
 edificio que ha sido reparado demasiadas veces por personas que se<br />
@@ -1533,24 +1548,24 @@ energía.</p>
 <p>La doctora Maela Rinn apoya una mano sobre el sello.</p>
 <p>—Seis —dice—. Decidme que siguen siendo seis.</p>
 </blockquote>
-<h3>Qué sabe el Narrador</h3>
+<h3 id="que-sabe-el-narrador-6">Qué sabe el Narrador</h3>
 <p>Maela pregunta primero por las Perlas y por los heridos, no por lo<br />
 que hayan visto en el Páramo. No adora a Ashal ni le interesa<br />
 discutirlo ahora — su prioridad es que el Hospicio siga funcionando.</p>
-<h3>Qué pueden descubrir los personajes</h3>
+<h3 id="que-pueden-descubrir-los-personajes-6">Qué pueden descubrir los personajes</h3>
 <p>Maela comprueba, en este orden: identidad de Nara, el sello de la<br />
 caja, número e integridad de las Perlas, carga acumulada y registro<br />
 de manipulación. Solo después, si sobra tiempo, pregunta por lo<br />
 demás.</p>
-<h3>Decisiones posibles</h3>
+<h3 id="decisiones-posibles-6">Decisiones posibles</h3>
 <p>Cómo explican lo sucedido (con detalle, en resumen, o casi nada);<br />
 qué hacen si alguna Perla fue manipulada durante el viaje; qué decide<br />
 Nara sobre la Daga, si todavía existe.</p>
-<h3>Tiradas y mecánicas</h3>
+<h3 id="tiradas-y-mecanicas-3">Tiradas y mecánicas</h3>
 <p>Ninguna es obligatoria. Si alguien intenta ocultar una manipulación<br />
 de las Perlas, resuélvelo con Persuasión o Engaño frente a la<br />
 revisión práctica de Maela, no con una tirada enfrentada dramática.</p>
-<h3>Consecuencias</h3>
+<h3 id="consecuencias-6">Consecuencias</h3>
 <p>El saldo pendiente de 7.200 PC se divide: 3.600 PC por entregar a<br />
 Nara con vida, 3.600 PC por entregar las seis Perlas intactas — 600<br />
 PC por Perla. El adelanto de 4.800 PC no se reclama salvo fraude<br />
@@ -1563,11 +1578,11 @@ No impongas deudas adicionales automáticas por el valor comercial del<br />
 cargamento sin una decisión narrativa expresa.</p>
 <p>Al recuperar conexión, el equipo NT8 de Nara y su Perla corporativa<br />
 se repliegan en la cápsula de retorno Mercury. No quedan como botín.</p>
-<h3>Transición</h3>
+<h3 id="transicion-6">Transición</h3>
 <p>Con el pago cerrado, la aventura pasa al epílogo: qué queda de cada<br />
 hilo abierto, empezando por Nara y su Daga.</p>
 <hr />
-<h2>Epílogo</h2>
+<h2 id="epilogo">Epílogo</h2>
 <p>Incluye solo los destinos de quienes intervinieron realmente en la<br />
 partida — no fuerces un destino para un PNJ que el grupo apenas rozó.</p>
 <ul>
@@ -1584,7 +1599,7 @@ cien Dagas, quién puso esta en manos de Nara, el propósito final de<br />
 la Trama, y si todo conduce a un orden superior o a una broma<br />
 cósmica. Ver <strong>Revelaciones permitidas</strong>, más abajo, para el detalle<br />
 de qué sí y qué no debe cerrarse.</p>
-<h3>Epílogo si alcanza cien</h3>
+<h3 id="epilogo-si-alcanza-cien">Epílogo si alcanza cien</h3>
 <p>Texto opcional:</p>
 <blockquote>
 <p>En una tesela sin nombre, alguien abre una puerta que llevaba años cerrada.</p>
@@ -1595,10 +1610,10 @@ de qué sí y qué no debe cerrarse.</p>
 </blockquote>
 <p>No confirmes que sea el mismo objeto.</p>
 <hr />
-<h2>Nara Venn</h2>
+<h2 id="nara-venn">Nara Venn</h2>
 <p>Nara Venn tiene 24 años. Es una mensajera profesional de Mercury, no una combatiente.</p>
 <p>Su historia con la Daga —el orfanato, su padre Oren, cómo llegó a sus manos— se cuenta en escena (Escena 2, «La revelación parcial») y no se repite aquí. Mercury la tiene declarada como herramienta de corte de valor sentimental y desconoce su naturaleza.</p>
-<h3>Rasgos interpretativos</h3>
+<h3 id="rasgos-interpretativos">Rasgos interpretativos</h3>
 <ul>
 <li>Habla poco durante el trabajo.</li>
 <li>Cumple los horarios incluso cuando parecen imposibles.</li>
@@ -1609,7 +1624,7 @@ de qué sí y qué no debe cerrarse.</p>
 <li>Cree que los sueños sobre su padre son una consecuencia del duelo.</li>
 <li>Ante un ataque intenta escapar con la carga; solo combate si no existe salida.</li>
 </ul>
-<h3>Ficha funcional de Nara</h3>
+<h3 id="ficha-funcional-de-nara">Ficha funcional de Nara</h3>
 <p><code>F25/A55/P50 | PV 14/14/14 | Movimiento 20</code></p>
 <table>
 <thead>
@@ -1654,7 +1669,7 @@ de qué sí y qué no debe cerrarse.</p>
 </tbody>
 </table>
 <p><strong>Arma de emergencia:</strong> pistola compacta corporativa, daño 3, Pen 1, Cad 1. Usa su Combate 30%. Nara no recibe ningún bonificador adicional por llevarla.</p>
-<h3>Traje de Tránsito Mercury NT8</h3>
+<h3 id="traje-de-transito-mercury-nt8">Traje de Tránsito Mercury NT8</h3>
 <p>No es una armadura pesada ni convierte a Nara en tanque. Está diseñado para mantenerla en movimiento y conservarla con vida el tiempo suficiente para completar una entrega.</p>
 <ul>
 <li>Blindaje 2 en todo el cuerpo.</li>
@@ -1675,11 +1690,11 @@ de qué sí y qué no debe cerrarse.</p>
 <li>No concede bonificadores de combate, daño, iniciativa ni ataque.</li>
 </ul>
 <hr />
-<h2>Los sueños</h2>
+<h2 id="los-suenos">Los sueños</h2>
 <p>Estos sueños pueden aparecer al inicio de escenas, durante descansos o cuando la Daga se calienta. No confirman que Ashal controle la Trama ni que enviase la Daga.</p>
-<h3>Primer sueño</h3>
+<h3 id="primer-sueno">Primer sueño</h3>
 <p>Se narra completo en la Escena 3, «El sueño de Nara»: Oren, el orfanato y la pregunta «¿Es esta?». No se repite aquí.</p>
-<h3>Segundo sueño</h3>
+<h3 id="segundo-sueno">Segundo sueño</h3>
 <p>Oren camina entre centenares de personas. Algunas llevan ropas antiguas; otras no parecen humanas. Todas proyectan la misma sombra.</p>
 <p>Una voz femenina, demasiado grande para una garganta, pregunta:</p>
 <blockquote>
@@ -1689,14 +1704,14 @@ de qué sí y qué no debe cerrarse.</p>
 <blockquote>
 <p>—Todavía no. Dejad que llegue por sí misma.</p>
 </blockquote>
-<h3>Tercer sueño</h3>
+<h3 id="tercer-sueno">Tercer sueño</h3>
 <p>Ocurre dentro del Páramo. Oren está herido frente a una estructura facetada semejante a una gema gigantesca.</p>
 <p>Dice:</p>
 <blockquote>
 <p>—No te traje hasta aquí. Pero llevo años esperando que el camino lo haga.</p>
 </blockquote>
 <hr />
-<h2>Ashal, la Custodia de los Ausentes</h2>
+<h2 id="ashal-la-custodia-de-los-ausentes">Ashal, la Custodia de los Ausentes</h2>
 <p>Ashal es la entidad protectora.</p>
 <p>Su núcleo material es una estructura mineral enterrada bajo el Páramo, semejante a una gema oscura de varios metros. En su interior se observan luces que parecen personas vistas desde muy lejos.</p>
 <p>Cada luz corresponde a un alma acogida.</p>
@@ -1711,7 +1726,7 @@ de qué sí y qué no debe cerrarse.</p>
 <p>Algunas almas conservan su individualidad durante siglos. Otras se integran voluntariamente en Ashal. Algunas piden ser liberadas.</p>
 <p>Ashal alberga aproximadamente <strong>300 Puntos de Alma</strong>. No todos están despiertos simultáneamente.</p>
 <p>No tiene ficha convencional de PV y ataques. Puede ser amenazada por rituales, fracturas del velo, Cibus apropiado o decisiones narrativas, pero no debe resolverse como un combate normal de «bajar puntos de vida».</p>
-<h3>Contrato de Oren</h3>
+<h3 id="contrato-de-oren">Contrato de Oren</h3>
 <p>Oren atravesó el Páramo años atrás durante otra misión. Fue herido mortalmente cuando se abrió el velo.</p>
 <p>Ashal le ofreció morir y continuar hacia un destino desconocido o permanecer dentro de la Custodia.</p>
 <p>Oren eligió quedarse con una condición:</p>
@@ -1719,7 +1734,7 @@ de qué sí y qué no debe cerrarse.</p>
 <p>Si algún descendiente suyo cruzaba alguna vez el Páramo, Ashal debía ofrecerle protección y permitirle decidir por sí mismo si quería conocer la verdad.</p>
 </blockquote>
 <p>Oren no pidió que manipulasen la vida de Nara ni que la condujeran hasta Ashal.</p>
-<h3>Capacidades de Ashal</h3>
+<h3 id="capacidades-de-ashal">Capacidades de Ashal</h3>
 <p>Puede:</p>
 <ul>
 <li>comunicarse mediante sueños;</li>
@@ -1742,7 +1757,7 @@ de qué sí y qué no debe cerrarse.</p>
 </ul>
 <p>Ashal sabe que la Daga contiene 99 Puntos de Alma, que no forman una comunidad como las almas acogidas por ella y que algo cambiará al alcanzar 100. No sabe dónde reaparecerá ni qué es realmente el LORD.</p>
 <hr />
-<h2>Serekh, el que quedó fuera</h2>
+<h2 id="serekh-el-que-quedo-fuera">Serekh, el que quedó fuera</h2>
 <p>Serekh es un Demonio Mayor con algo más de un centenar de Puntos de Alma. Posee Nombre.</p>
 <p>Afirma que Ashal no protege las almas, sino que las encierra. Según él, absorberlas sería liberarlas. No confirmes si lo cree sinceramente o si racionaliza su hambre.</p>
 <p>Ataca porque:</p>
@@ -1758,7 +1773,7 @@ de qué sí y qué no debe cerrarse.</p>
 </blockquote>
 <p>Serekh no tiene ficha de jefe ordinario. Los personajes pueden distraerlo, frustrar sus acciones o dañarlo superficialmente, pero no derrotarlo reduciendo PV.</p>
 <p>La escena se resuelve mediante tres fracturas del velo. Cada fractura cerrada permite a Ashal recuperar capacidad. Con las tres cerradas, Ashal puede expulsar a Serekh.</p>
-<h3>Cómo actúa</h3>
+<h3 id="como-actua">Cómo actúa</h3>
 <p>Serekh no ruge ni se limita a atacar: tienta. Habla utilizando voces<br />
 de almas que ha absorbido, da información parcialmente verdadera y<br />
 ataca los deseos concretos de cada personaje, no una debilidad<br />
@@ -1776,8 +1791,8 @@ mesa; con dos o tres basta):</p>
 solo remite aquí.</p>
 <p>La escena completa se desarrolla en <strong>Escena 5 — La ruptura del velo</strong>.</p>
 <hr />
-<h2>Criaturas y encuentros</h2>
-<h3>Demonio Menor: Lacerador del Velo</h3>
+<h2 id="criaturas-y-encuentros">Criaturas y encuentros</h2>
+<h3 id="demonio-menor-lacerador-del-velo">Demonio Menor: Lacerador del Velo</h3>
 <blockquote>
 <p>Avanza sobre cuatro extremidades demasiado largas. No posee cabeza: en su lugar tiene una abertura vertical que se separa cuando percibe Distorsión. Sus garras no arañan la piedra; arañan el espacio que la piedra ocupa.</p>
 </blockquote>
@@ -1788,7 +1803,7 @@ solo remite aquí.</p>
 <li><strong>Cuerpo intermedio:</strong> vulnerable a Cibus según las reglas vigentes.</li>
 <li>Cuando una fractura se cierra, pierde 2 puntos de Blindaje hasta el final del encuentro.</li>
 </ul>
-<h3>Demonio Menor: Arrastrador de Ecos</h3>
+<h3 id="demonio-menor-arrastrador-de-ecos">Demonio Menor: Arrastrador de Ecos</h3>
 <blockquote>
 <p>Parece una figura envuelta en telas mojadas, aunque nada en ella es realmente tela. Bajo cada pliegue se mueve un rostro que intenta recordar su nombre. Sus manos terminan en dedos finos que atraviesan la carne sin dejar una herida visible.</p>
 </blockquote>
@@ -1798,7 +1813,7 @@ solo remite aquí.</p>
 <li><strong>Arrastrar:</strong> con dos éxitos netos o más puede sujetar al objetivo. En su siguiente actuación intenta desplazarlo hacia una fractura. El objetivo puede liberarse mediante tirada enfrentada de Fuerza o Esquivar, siguiendo el capítulo 03.</li>
 <li><strong>Olor del Alma:</strong> detecta la concentración de la Daga y prioriza a Nara cuando entra en escena. No comprende qué es el objeto.</li>
 </ul>
-<h3>Rastrero del Páramo</h3>
+<h3 id="rastrero-del-paramo">Rastrero del Páramo</h3>
 <p>Fauna natural, no demoníaca.</p>
 <blockquote>
 <p>Desde lejos parece un perro sin pelo. De cerca se aprecia que posee seis patas, placas blancas en lugar de ojos y una mandíbula que se abre hacia los lados. Se detiene constantemente para apoyar el pecho contra el suelo. No escucha sonidos: escucha las vibraciones de las cosas vivas.</p>
@@ -1812,9 +1827,9 @@ solo remite aquí.</p>
 <li>Encuentro recomendado: entre tres y cinco, ajustado al número de personajes.</li>
 </ul>
 <hr />
-<h2>Tres rutas abiertas</h2>
+<h2 id="tres-rutas-abiertas">Tres rutas abiertas</h2>
 <p>Estas rutas son esqueletos, no carriles cerrados. Pueden mezclarse, romperse o cambiar según las decisiones del grupo.</p>
-<h3>1. Proteger a Nara</h3>
+<h3 id="1-proteger-a-nara">1. Proteger a Nara</h3>
 <p>Los personajes intentan sacar a Nara y la Daga de la tesela.</p>
 <p>Preguntas abiertas:</p>
 <ul>
@@ -1824,7 +1839,7 @@ solo remite aquí.</p>
 <li>¿Qué facción interpreta la protección como secuestro?</li>
 <li>¿Nara acepta ser protegida si eso implica perder su capacidad de decidir?</li>
 </ul>
-<h3>2. Colaborar con una parte del Culto</h3>
+<h3 id="2-colaborar-con-una-parte-del-culto">2. Colaborar con una parte del Culto</h3>
 <p>Los personajes aceptan hablar con miembros del Culto o colaborar provisionalmente con ellos.</p>
 <p>Puede existir un sacrificio voluntario, una custodia ritual o una interpretación menos violenta de la Trama. La escena debe permitir dudas reales, no una respuesta moral prefabricada.</p>
 <p>Preguntas abiertas:</p>
@@ -1834,7 +1849,7 @@ solo remite aquí.</p>
 <li>¿Es fe, manipulación, miedo o lucidez?</li>
 <li>¿La Daga está siguiendo la Trama o alguien está usando la doctrina para justificar un crimen?</li>
 </ul>
-<h3>3. Destruir, ocultar, robar o arrojar la Daga a un portal</h3>
+<h3 id="3-destruir-ocultar-robar-o-arrojar-la-daga-a-un-portal">3. Destruir, ocultar, robar o arrojar la Daga a un portal</h3>
 <p>Los personajes intentan sacar la Daga del tablero inmediato.</p>
 <p>Opciones posibles:</p>
 <ul>
@@ -1845,7 +1860,7 @@ solo remite aquí.</p>
 </ul>
 <p>La aventura no debe invalidar esta ruta. Si la Daga desaparece sin alcanzar 100, eso también es historia.</p>
 <hr />
-<h2>Si alcanza la centésima alma</h2>
+<h2 id="si-alcanza-la-centesima-alma">Si alcanza la centésima alma</h2>
 <p>Si durante la partida la Daga mata a una víctima y alcanza 100 Puntos de Alma:</p>
 <ul>
 <li>la víctima pierde exactamente 1 Punto de Alma;</li>
@@ -1857,12 +1872,12 @@ solo remite aquí.</p>
 </ul>
 <p>Epílogo opcional: alguien encuentra una Daga idéntica y descargada en otra tesela. No confirmes que sea el mismo objeto.</p>
 <hr />
-<h2>Si los jugadores lo impiden</h2>
+<h2 id="si-los-jugadores-lo-impiden">Si los jugadores lo impiden</h2>
 <p>La aventura sigue siendo válida.</p>
 <p>La Daga permanece con 99 Puntos de Alma o cambia de manos. Las facciones reaccionan a las decisiones del grupo. No fuerces la muerte de un PNJ ni el cumplimiento del Centenar para preservar un destino prefijado.</p>
 <p>La Trama puede buscar otros caminos en el futuro, pero nunca debe anular la agencia del grupo.</p>
 <hr />
-<h2>Revelaciones permitidas</h2>
+<h2 id="revelaciones-permitidas">Revelaciones permitidas</h2>
 <p>Los jugadores pueden llegar a conocer:</p>
 <ul>
 <li>la absorción de un único Punto de Alma;</li>
@@ -1885,7 +1900,7 @@ solo remite aquí.</p>
 <li>si están presenciando orden, manipulación, reparación cósmica o una broma.</li>
 </ul>
 <hr />
-<h2>Resumen para dirigir</h2>
+<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
 <p><strong>Objetivo inicial:</strong> escoltar a Nara Venn y una caja Mercury con seis Perlas Blancas descargadas desde la estación de Asterión hasta el Hospicio de la Linde.</p>
 <p><strong>PNJ y motivaciones:</strong></p>
 <table>
@@ -1953,7 +1968,7 @@ solo remite aquí.</p>
 <p><strong>Resultados posibles:</strong> tres, dos, una o ninguna fractura cerrada determinan cuánto conserva Ashal, cuánto pierde el Hospicio y cuánto se manifiesta Oren.</p>
 <p><strong>Recordatorio:</strong> la verdad del LORD, la naturaleza última de la Daga y el sentido completo de la Trama no se resuelven en este módulo.</p>
 <hr />
-<h2>Nota de desarrollo</h2>
+<h2 id="nota-de-desarrollo">Nota de desarrollo</h2>
 <p>Pendiente para una versión futura:</p>
 <ul>
 <li>playtest de ritmo y dificultad;</li>
@@ -1962,7 +1977,7 @@ solo remite aquí.</p>
 <li>mapa gráfico regional;</li>
 <li>recompensas secundarias y pagos variables.</li>
 </ul>
-<h3>Mapas pendientes</h3>
+<h3 id="mapas-pendientes">Mapas pendientes</h3>
 <ol>
 <li>
 <p><strong>Mapa regional del módulo</strong><br />
@@ -1984,6 +1999,6 @@ solo remite aquí.</p>
 </li>
 </ol>
 <p>No crear todavía mapas gráficos ni un atlas nuevo en este lote.</p>
-</div>
+</main>
 </body>
 </html>

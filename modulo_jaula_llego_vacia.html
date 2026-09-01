@@ -15,32 +15,47 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — La jaula llegó vacía"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#el-encargo">El encargo</a></li><li class="toc-h3"><a href="#lo-que-realmente-ocurre">Lo que realmente ocurre</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#para-el-narrador">Para el Narrador</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h3"><a href="#escala">Escala</a></li><li class="toc-h2"><a href="#la-jaula">La jaula</a></li><li class="toc-h2"><a href="#ecologia-y-fuerzas-fijas">Ecología y fuerzas fijas</a></li><li class="toc-h2"><a href="#reparto-principal">Reparto principal</a></li><li class="toc-h3"><a href="#luma-vey">Luma Vey</a></li><li class="toc-h3"><a href="#rusk-darel">Rusk Darel</a></li><li class="toc-h3"><a href="#ena-sol">Ena Sol</a></li><li class="toc-h3"><a href="#treinta">«Treinta»</a></li><li class="toc-h3"><a href="#el-lomo-blanco">El Lomo Blanco</a></li><li class="toc-h2"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h2"><a href="#cronologia-autonoma">Cronología autónoma</a></li><li class="toc-h2"><a href="#estructura-de-cinco-escenas">Estructura de cinco escenas</a></li><li class="toc-h3"><a href="#1-la-jaula-llego-vacia">1. La jaula llegó vacía</a></li><li class="toc-h3"><a href="#2-una-ruta-que-vuelve-a-crecer">2. Una ruta que vuelve a crecer</a></li><li class="toc-h3"><a href="#3-dos-equipos-una-presa">3. Dos equipos, una presa</a></li><li class="toc-h3"><a href="#4-la-caza-cambia-de-dueno">4. La caza cambia de dueño</a></li><li class="toc-h3"><a href="#5-todo-pesa-mas-al-volver">5. Todo pesa más al volver</a></li><li class="toc-h2"><a href="#territorio-preparado">Territorio preparado</a></li><li class="toc-h3"><a href="#senales-utiles">Señales útiles</a></li><li class="toc-h2"><a href="#recursos">Recursos</a></li><li class="toc-h2"><a href="#metodos-de-captura">Métodos de captura</a></li><li class="toc-h3"><a href="#conducta-del-lomo-blanco">Conducta del Lomo Blanco</a></li><li class="toc-h3"><a href="#el-hibrido">El Híbrido</a></li><li class="toc-h2"><a href="#las-dos-voces">Las Dos Voces</a></li><li class="toc-h2"><a href="#contrato-y-economia">Contrato y economía</a></li><li class="toc-h2"><a href="#desenlaces">Desenlaces</a></li><li class="toc-h2"><a href="#recompensas-adicionales">Recompensas adicionales</a></li><li class="toc-h2"><a href="#semillas-posteriores">Semillas posteriores</a></li><li class="toc-h2"><a href="#ritmo">Ritmo</a></li><li class="toc-h2"><a href="#ayuda-rapida-para-el-narrador">Ayuda rápida para el Narrador</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — La jaula llegó vacía</h1>
 <blockquote>
 <p>«La naturaleza es libre hasta que alguien cobra por verla.»</p>
 </blockquote>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
-<h3>El encargo</h3>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<h3 id="el-encargo">El encargo</h3>
 <p>El <strong>Circo de las Siete Gravedades</strong>, compañía itinerante, necesita un Cazador Cuádrupedo vivo para un número de persecución controlada. Su jaula especializada ha llegado al Puesto Fronterizo — vacía. El transporte hacia el espaciopuerto sale en seis horas. Buscan un adulto concreto, visto en la Pared Calcárea, con una franja clara en el lomo: el circo lo llama <strong>Tiza</strong>; los cazadores locales, <strong>el Lomo Blanco</strong>.</p>
-<h3>Lo que realmente ocurre</h3>
+<h3 id="lo-que-realmente-ocurre">Lo que realmente ocurre</h3>
 <p>No es un encargo trampa ni una criatura predestinada: es un adulto sano, territorial y experimentado que lleva días estudiando las rutas humanas. Un equipo rival —Rusk, Ena y «Treinta»— trabaja al mismo tiempo para la Dra. Sonya Kess con un contrato legítimo y distinto: cualquier adulto viable les sirve. Un Depredador Híbrido de dos cabezas ha invadido la zona y explica por qué el grupo del Lomo Blanco se comporta de forma extraña. Nadie es el villano por defecto.</p>
-<h3>Desarrollo en cinco escenas</h3>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
 <ol>
 <li>La jaula llegó vacía — el encargo, el equipo, la demostración.</li>
 <li>Una ruta que vuelve a crecer — trayecto con tres elementos fijos.</li>
@@ -49,17 +64,17 @@
 <li>Todo pesa más al volver — regreso y desenlace.</li>
 </ol>
 <hr />
-<h2>Para el Narrador</h2>
-<h3>Tono</h3>
+<h2 id="para-el-narrador">Para el Narrador</h2>
+<h3 id="tono">Tono</h3>
 <p>Profesional y físico, con humor de expedición — nadie se toma esto como un funeral ni como un crimen. El circo es atractivo y discutible a la vez: espectacular, itinerante, con animales bien cuidados y un negocio real detrás. Los rivales tienen un contrato tan legítimo como el de los PJ. El Lomo Blanco no es un monstruo de sala: observa, aprende, defiende territorio y huye — nunca actúa por guion.</p>
-<h3>Escala</h3>
+<h3 id="escala">Escala</h3>
 <p>Esto es una expedición profesional de captura, no una decisión sobre el destino de Monstruoplantas. El mundo sigue moviéndose alrededor: los rivales, la manada y el transporte tienen horario propio, con o sin los PJ.</p>
 <hr />
-<h2>La jaula</h2>
+<h2 id="la-jaula">La jaula</h2>
 <p>Aportada por el circo. Blindaje 3, compartimento de agua y alimentación, puertos para sedantes, interior sin ángulos fáciles de morder, ruedas, anclajes y un panel de constantes vitales aproximadas.</p>
 <p>Pesa mucho: moverla por terreno difícil exige dos personas, un vehículo, drones, una plataforma o cualquier solución razonable que el grupo proponga. La jaula resuelve el transporte — no captura por sí sola al animal.</p>
 <hr />
-<h2>Ecología y fuerzas fijas</h2>
+<h2 id="ecologia-y-fuerzas-fijas">Ecología y fuerzas fijas</h2>
 <p>Existen en la zona, independientemente de lo que hagan los PJ — no escales estos números:</p>
 <ul>
 <li><strong>El Lomo Blanco</strong>, el objetivo.</li>
@@ -70,10 +85,10 @@
 </ul>
 <p>Los otros dos Cazadores no tienen por qué aparecer atacando a la vez: pueden observar, proteger, conducir al objetivo, huir, o simplemente permitir que ambos contratos se cumplan. El Híbrido no combate a muerte por guion — prioriza presas debilitadas y se retira si tiene salida.</p>
 <hr />
-<h2>Reparto principal</h2>
+<h2 id="reparto-principal">Reparto principal</h2>
 <p><img alt="Puesto fronterizo corporativo en una colina desmontada entre la jungla de Monstruoplantas, con muros provisionales y vehículos de apoyo" src="img/monstruoplantas_puesto_panorama.webp" /><br />
 <em>La Pared Calcárea, desde el Puesto — la jaula del circo ocupa media zona de carga.</em></p>
-<h3>Luma Vey</h3>
+<h3 id="luma-vey">Luma Vey</h3>
 <p>Cuidadora del Circo de las Siete Gravedades. Serena, precisa, acostumbrada a trabajar ante público sin convertirse ella misma en espectáculo.</p>
 <p>F20/A30/P45/V45 | PV 13/13/13 | Blindaje 0<br />
 Medicina 60% | Persuasión 55% | Supervivencia 45%</p>
@@ -86,7 +101,7 @@ Medicina 60% | Persuasión 55% | Supervivencia 45%</p>
 <li>Conoce a sus animales por nombre, aunque admite que llamar «Tiza» al objetivo antes de capturarlo es solo promoción.</li>
 <li>Conoce y discrepa profesionalmente de Kess, sin enemistad melodramática.</li>
 </ul>
-<h3>Rusk Darel</h3>
+<h3 id="rusk-darel">Rusk Darel</h3>
 <p>Rastreador rival, veterano local. Lacónico y prudente.</p>
 <p>F35/A40/P50/V45 | PV 18/18/18 | Blindaje 2<br />
 Distancia 65% (Daño 6, Pen 2) | Sigilo 60% | Supervivencia 70%</p>
@@ -97,7 +112,7 @@ Distancia 65% (Daño 6, Pen 2) | Sigilo 60% | Supervivencia 70%</p>
 <li>No dispara primero contra otro equipo ni abandona heridos por conservar la presa.</li>
 <li>Sin PJ: permite el plan de Treinta, pero prepara una retirada.</li>
 </ul>
-<h3>Ena Sol</h3>
+<h3 id="ena-sol">Ena Sol</h3>
 <p>Médica y especialista en fauna. Colabora con Kess porque su laboratorio cubre análisis que nadie más ofrece.</p>
 <p>F25/A30/P45/V40 | PV 14/14/14 | Blindaje 1<br />
 Medicina 70% | Supervivencia 50% | Persuasión 40%</p>
@@ -108,7 +123,7 @@ Medicina 70% | Supervivencia 50% | Persuasión 40%</p>
 <li>No deja morir a una criatura o a un rival si puede evitarlo sin condenar al grupo.</li>
 <li>Cree que el circo simplifica comercialmente una operación peligrosa, pero no lo acusa de maltrato sin pruebas.</li>
 </ul>
-<h3>«Treinta»</h3>
+<h3 id="treinta">«Treinta»</h3>
 <p>Trampero rival. Joven, fuerte, creativo, más competente de lo que aparenta.</p>
 <p>F40/A45/P40/V30 | PV 20/20/20 | Blindaje 1<br />
 Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
@@ -119,11 +134,11 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 <li>Sin PJ: activa su trampa antes de lo recomendable — puede lograr un éxito parcial, no fracasa por obligación.</li>
 <li>Apodo: prometió aguantar treinta segundos en lianas activas; resistió diecisiete y contó el trayecto entero hasta la enfermería.</li>
 </ul>
-<h3>El Lomo Blanco</h3>
+<h3 id="el-lomo-blanco">El Lomo Blanco</h3>
 <p>Ficha de Cazador Cuádrupedo — Estándar, ya vigente en el propio mundo de Monstruoplantas, con conducta propia añadida aquí: marca árboles y piedra, prueba trampas desde fuera, observa quién porta armas y sedantes, busca separar a los individuos del grupo, se retira si está superado y defiende su vaguada y a otros Cazadores. Puede entrar provisionalmente en la jaula si le parece refugio frente al Híbrido — pero el cierre debe ejecutarse con rapidez o vuelve a salir.</p>
 <p>Los otros dos Cazadores del grupo usan la misma ficha.</p>
 <hr />
-<h2>Relaciones para el Narrador</h2>
+<h2 id="relaciones-para-el-narrador">Relaciones para el Narrador</h2>
 <ul>
 <li>Rusk protege y corrige a Treinta.</li>
 <li>Treinta quiere impresionar a Rusk.</li>
@@ -133,7 +148,7 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 <li>La aparición de otro adulto sano permite que ambos contratos se cumplan a la vez.</li>
 </ul>
 <hr />
-<h2>Cronología autónoma</h2>
+<h2 id="cronologia-autonoma">Cronología autónoma</h2>
 <table>
 <thead>
 <tr>
@@ -182,11 +197,11 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 </table>
 <p>No conviertas el horario en cronómetro por asalto — es una herramienta para que el mundo se mueva, no una cuenta atrás estricta.</p>
 <hr />
-<h2>Estructura de cinco escenas</h2>
-<h3>1. La jaula llegó vacía</h3>
+<h2 id="estructura-de-cinco-escenas">Estructura de cinco escenas</h2>
+<h3 id="1-la-jaula-llego-vacia">1. La jaula llegó vacía</h3>
 <p>La jaula bloquea media zona de carga del Puesto. Luma presenta el contrato, el estado requerido, el equipo, el transporte y las señales del objetivo. Demuestra el cierre encerrando brevemente a un voluntario — funciona bien y tarda incómodamente en reabrirse. Humor breve, enseñanza práctica.</p>
 <p>Los PJ deciden cómo moverla. Sin ellos, Luma contrata un equipo peor preparado.</p>
-<h3>2. Una ruta que vuelve a crecer</h3>
+<h3 id="2-una-ruta-que-vuelve-a-crecer">2. Una ruta que vuelve a crecer</h3>
 <p>Tres elementos fijos y rápidos, sin tirar por cada kilómetro (30-40 minutos de mesa):</p>
 <ul>
 <li><strong>Lianas densas</strong> — rodear perdiendo tiempo, cortar con ruido o atravesar con cuidado.</li>
@@ -194,10 +209,10 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 <li><strong>Posición militar abandonada</strong> — descanso, observación, huellas y la única aparición de las Dos Voces.</li>
 </ul>
 <p>Sin PJ, los rivales ganan distancia haciendo más ruido.</p>
-<h3>3. Dos equipos, una presa</h3>
+<h3 id="3-dos-equipos-una-presa">3. Dos equipos, una presa</h3>
 <p>Los PJ encuentran a Rusk, Ena y Treinta preparando su propia trampa para Kess. Pueden competir, cooperar, repartirse el territorio, comprar información, sabotear, observar su intento o proponer ir a por otro ejemplar. El Lomo Blanco ya los observa a todos: mueve comida, activa una trampa desde fuera o hace ruido para probarlos.</p>
 <p>Sin PJ, Treinta precipita el intento.</p>
-<h3>4. La caza cambia de dueño</h3>
+<h3 id="4-la-caza-cambia-de-dueno">4. La caza cambia de dueño</h3>
 <p>Clímax con tres frentes simultáneos:</p>
 <ol>
 <li>El Lomo Blanco intenta sobrevivir y escapar.</li>
@@ -206,11 +221,11 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 </ol>
 <p>Todo vale: sedantes, redes, cebo, agotamiento, combate no letal, conducir al animal hacia la jaula, cooperar con los rivales o cualquier otro plan válido. El Híbrido puede atacar al Cazador, romper una trampa o perseguir a un cazador aislado — no tiene que cargar contra los PJ.</p>
 <p>Termina con captura, huida, retirada, liberación, sustitución por otro ejemplar, o una solución imprevista que funcione en mesa.</p>
-<h3>5. Todo pesa más al volver</h3>
+<h3 id="5-todo-pesa-mas-al-volver">5. Todo pesa más al volver</h3>
 <p>No añadas otro combate obligatorio. Elige una complicación breve y coherente: despertar temprano, un anclaje roto, una reclamación de los rivales, el Híbrido siguiéndolos, la documentación de la captura o la salida inminente del transporte.</p>
 <p>Luma evalúa el resultado: ejemplar sano, lesiones inevitables, negligencia, sobredosis, sustitución o jaula vacía. Cierra con el transporte partiendo lleno, vacío, o con algo que nadie esperaba.</p>
 <hr />
-<h2>Territorio preparado</h2>
+<h2 id="territorio-preparado">Territorio preparado</h2>
 <p>No hace falta un mapa táctico completo — cuatro espacios bastan.</p>
 <p><strong>Garganta calcárea.</strong> Paso estrecho, útil para conducir al animal; difícil para maniobrar la jaula.</p>
 <p><strong>Arco de raíces.</strong> Túnel natural que oculta bien redes, dardos o cazadores agazapados. Las lianas reaccionan al movimiento brusco.</p>
@@ -218,14 +233,14 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 <p><img alt="Combate corporativo bajo la lluvia en la jungla de Monstruoplantas, tropas avanzando entre vegetación densa" src="img/monstruoplantas_guerra_jungla.webp" /><br />
 <em>La jungla vuelve a crecer sobre lo que quedó de una posición mucho más ordenada.</em></p>
 <p><strong>Vaguada de las presas.</strong> Restos, marcas, filtración de agua. Fácil localizar al Cazador aquí; peligroso intentar acorralarlo.</p>
-<h3>Señales útiles</h3>
+<h3 id="senales-utiles">Señales útiles</h3>
 <p>Dos o tres bastan para un buen plan — no las conviertas en una investigación extensa: huellas rodeando una trampa (reconoce mecanismos de suelo); comida movida sin consumir (prueba cebos); arañazos en altura (usa paredes para impulsarse); pelo claro y sangre ajena (ya se enfrentó al Híbrido); marcas recientes (no quiere abandonar la zona); un sendero menor sin marcar (ruta de otros Cazadores).</p>
 <hr />
-<h2>Recursos</h2>
+<h2 id="recursos">Recursos</h2>
 <p>El circo aporta esto sin descontarlo del pago: la jaula, sedantes suficientes para un adulto, sistema de administración, red y anclajes, señuelo mecánico, transporte inicial de la jaula, 2 MKB y 1 MKG, alimento y cuidados posteriores. Se devuelve el equipo reutilizable; los consumibles usados legítimamente no.</p>
 <p>Los rivales tienen su propia reserva para un adulto: trampas de cable y red, camuflaje, un rastreador y herramientas propias. Cooperar con ellos aporta recursos reales, no solo un modificador abstracto.</p>
 <hr />
-<h2>Métodos de captura</h2>
+<h2 id="metodos-de-captura">Métodos de captura</h2>
 <p>Ninguno necesita un contador o subsistema nuevo — todos usan las reglas ya vigentes.</p>
 <p><strong>Sedación.</strong> Farmacopea y reglas actuales (Neblina, Beso Silente u otro sedante apropiado). Riesgos: fallo, impacto superficial, dosis administrada demasiado deprisa, huida antes de que haga efecto, o llegada del Híbrido mientras el animal está debilitado.</p>
 <p><strong>Atracción hacia la jaula.</strong> Comida, señuelo, marcas territoriales, movimiento o la promesa de refugio. El animal examina y prueba antes de entrar — no entra a la primera.</p>
@@ -233,12 +248,12 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 <p><strong>Agotamiento.</strong> Cerrar rutas y hacerle gastar energía. Consume parte del tiempo del transporte y puede atraer más fauna.</p>
 <p><strong>Combate no letal.</strong> Reglas vigentes de combate no letal. Las heridas reducen el pago final y complican el transporte. No declares un arma «no letal» sin respaldo mecánico real.</p>
 <p><strong>Modificar su conducta.</strong> Apartar al Híbrido, abrir una salida, eliminar una amenaza percibida, usar comida o permitirle refugio. No equivale a domesticarlo con una única tirada social.</p>
-<h3>Conducta del Lomo Blanco</h3>
+<h3 id="conducta-del-lomo-blanco">Conducta del Lomo Blanco</h3>
 <p>Cuatro momentos interpretativos, no un contador: observa; presiona y separa al grupo; se defiende si le bloquean rutas o amenazan a los suyos; escapa por la línea más débil disponible. Cada fracaso de los PJ cambia algo — el animal aprende, avanza la hora, o se acerca el Híbrido. No repitas indefinidamente la misma tirada.</p>
-<h3>El Híbrido</h3>
+<h3 id="el-hibrido">El Híbrido</h3>
 <p>Aparece en el primer disparador válido: combate ruidoso, el Cazador herido o sedado, una trampa aparatosa, un intento rival, o el momento marcado en la cronología. Prioriza presa debilitada, individuo aislado, obstáculo inmediato y, si recibe daño suficiente y tiene salida, la retirada. Reutiliza su ficha vigente de Depredador Híbrido sin inflar sus estadísticas por tratarse del clímax.</p>
 <hr />
-<h2>Las Dos Voces</h2>
+<h2 id="las-dos-voces">Las Dos Voces</h2>
 <p>Una única parada artística, en la posición militar abandonada. Las obras deben parecer hechas con lo que había allí — plantilla resistente, pintura de señalización, una placa rayada, un panel de suministro o metal grabado. Nada de aerosol impuesto ni de una técnica terrestre concreta.</p>
 <p><strong>Voz satírica:</strong> un domador mete la cabeza en la boca de una criatura mientras una corporación vende entradas.</p>
 <blockquote>
@@ -250,7 +265,7 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 </blockquote>
 <p>Ninguna obra decide si el circo, Kess, la libertad o la captura tienen razón. Los rivales pueden interpretarlas a su favor si les conviene. No las conviertas en pista ni repitas el movimiento artístico en ninguna otra escena del módulo.</p>
 <hr />
-<h2>Contrato y economía</h2>
+<h2 id="contrato-y-economia">Contrato y economía</h2>
 <p>El encargo profesional de captura no usa el antiguo pago de 900 PC — ese valor sigue existiendo, pero como compra oportunista de un ejemplar ya disponible, no como contratación de una expedición.</p>
 <p><strong>Pago:</strong> 2.000 PC de adelanto operativo, no reembolsable si el grupo actuó de buena fe; 8.000 PC al entregar al Lomo Blanco vivo y en estado aceptable; 2.000 PC adicionales si llega a tiempo, sin heridas importantes ni sobredosis. <strong>Total máximo: 12.000 PC para el grupo.</strong> El circo cubre aparte hasta 2.000 PC de gastos médicos o de reparación de equipo demostrablemente sufridos durante la captura.</p>
 <table>
@@ -301,7 +316,7 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 </table>
 <p>Un ejemplar corriente sigue teniendo un valor comercial ordinario de 600-1.200 PC si la economía vigente lo respalda — esa cifra no compite con el contrato del circo, describe algo distinto: comprar una criatura ya capturada no equivale a contratar su captura viva.</p>
 <hr />
-<h2>Desenlaces</h2>
+<h2 id="desenlaces">Desenlaces</h2>
 <p><strong>La jaula parte llena.</strong> Entrega correcta, pago completo, Luma queda como contacto. El animal puede reaparecer más adelante, sin obligación de que así sea.</p>
 <p><strong>Dos contratos cumplidos.</strong> La aparición de otro adulto permite satisfacer a circo y a Kess a la vez — falta decidir qué ejemplar va a cada destino.</p>
 <p><strong>Acuerdo con los rivales.</strong> Comparten captura, riesgos y pago. Rusk, Ena o Treinta pueden convertirse en contactos recurrentes.</p>
@@ -309,13 +324,13 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 <p><strong>La jaula vuelve vacía.</strong> Fracaso, liberación deliberada o retirada. Sobrevivir y salvar a otros sigue teniendo consecuencias; no hay catástrofe automática.</p>
 <p><strong>Algo golpea desde dentro.</strong> Entregan otra criatura, no la esperada. Luma evalúa si el circo puede contenerla — no acepta automáticamente al Híbrido.</p>
 <hr />
-<h2>Recompensas adicionales</h2>
+<h2 id="recompensas-adicionales">Recompensas adicionales</h2>
 <p>Contacto con el Circo de las Siete Gravedades; Ena como especialista médica y de fauna; Rusk como guía; una rivalidad amistosa con Treinta; información o un futuro encargo de Kess; reputación como cazadores competentes o compañeros fiables.</p>
 <hr />
-<h2>Semillas posteriores</h2>
+<h2 id="semillas-posteriores">Semillas posteriores</h2>
 <p>No desarrolladas dentro de este one-shot — quedan registradas para su propio lote: el circo pide ayuda con otra criatura, no necesariamente capturarla; el Lomo Blanco reconoce al grupo en un encuentro futuro; escapa durante una actuación en otra localización; Ena detecta algo anómalo en las heridas del Híbrido; Treinta propone una competición sin armas; Kess investiga por qué los Cazadores abandonan sus territorios; la patrulla neutral pide después un favor cotidiano.</p>
 <hr />
-<h2>Ritmo</h2>
+<h2 id="ritmo">Ritmo</h2>
 <table>
 <thead>
 <tr>
@@ -348,7 +363,7 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 </table>
 <p>Debe poder cerrarse en una sesión normal aunque el combate se extienda.</p>
 <hr />
-<h2>Ayuda rápida para el Narrador</h2>
+<h2 id="ayuda-rapida-para-el-narrador">Ayuda rápida para el Narrador</h2>
 <ul>
 <li><strong>Cronología:</strong> rivales localizan marcas a la 01:30, Lomo Blanco prueba a ambos grupos a la 02:30, Híbrido entra a la 03:30, rivales ejecutan su intento a la 04:30, transporte parte a las 06:00.</li>
 <li><strong>Tres frentes del clímax:</strong> el Lomo Blanco sobreviviendo · el Híbrido cazando · ambos equipos protegiendo lo suyo.</li>
@@ -357,6 +372,6 @@ Atletismo 60% | Sigilo 45% | Supervivencia 50%</p>
 </ul>
 <hr />
 <p><em>Monstruoplantas — módulo corto ambientado en la Pared Calcárea, junto al Puesto Fronterizo. Reutiliza fichas, generadores y reglas de captura ya vigentes; no introduce mecánicas nuevas.</em></p>
-</div>
+</main>
 </body>
 </html>
