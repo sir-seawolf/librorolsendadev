@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- ARCHIVO MAESTRO. Ficha estática (sin autocálculo), letra grande, para imprimir/rellenar a mano.
+     Pensada para lectura cómoda (presbicia): 2 páginas A4 vertical, sin apretar el contenido de la
+     Ficha Simplificada horizontal — es una opción aparte, no la sustituye.
+     Densidad: sin tarjetas con recuadro por campo, filas con raya inferior y etiqueta pegada al
+     valor (nada de justify-content:space-between estirando el hueco). Las tablas de habilidad usan
+     Bas/Apr/Mod/Tot como el resto de fichas del kit, en vez de una sola columna "Valor" con un
+     hueco enorme sin usar. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Senda de los Errantes — Ficha Simplificada (letra grande)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&family=Kaushan+Script&display=swap');
+  :root{ --bg-dark:#0f1115; --accent:#ff3b3b; --accent2:#1d6fa3; --muted:#5b6472; --input-bg:#fffef5; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Rajdhani',sans-serif;background:#e9edf2;color:#1e293b;padding:14px;font-size:17px;}
+  .page{max-width:900px;margin:0 auto 18px;background:#fff;border:3px solid #000;padding:14px 20px;}
+  h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:24px;color:#000;letter-spacing:1px;}
+  h1 .logo-script{font-family:'Kaushan Script',cursive;text-transform:none;letter-spacing:0;font-size:1.4em;color:var(--accent2);vertical-align:-4px;}
+  .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:14px;text-transform:uppercase;margin-top:2px;}
+  h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:4px 12px;font-size:16px;text-transform:uppercase;letter-spacing:.5px;margin:10px 0 6px;}
+  h2:first-of-type{margin-top:8px;}
+  .h2-combate{font-size:16px;padding:4px 12px;letter-spacing:.5px;}
+  .ident{display:grid;grid-template-columns:repeat(3,1fr);gap:0 16px;margin:8px 0 2px;}
+  .ident label{display:flex;align-items:baseline;gap:6px;font-size:13px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;border-bottom:1px solid #cbd5e1;padding:3px 0;}
+  .ident input{border:none;background:transparent;flex:1;font-size:16px;padding:0;color:#000;}
+  input,select,textarea{font-family:'Rajdhani',sans-serif;font-size:17px;padding:2px 5px;border:1px solid #94a3b8;background:var(--input-bg);width:100%;}
+  /* Etiqueta pegada al valor, sin estirar el hueco entre ambos. */
+  .row-u{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #cbd5e1;padding:4px 2px;line-height:1;}
+  .row-u span{font-weight:600;font-size:15px;}
+  .row-u input{border:none;border-bottom:1.5px solid #000;background:transparent;width:56px;text-align:center;font-size:22px;font-weight:700;padding:0 2px;flex:none;}
+  /* Página 1 a 3 columnas: Atributos+Combate(1) | PV+Dinero | Métricas+Combate(2)+Localizaciones.
+     Grid2 (PV) un 20% más ancho que antes (0.7fr -> 0.84fr). */
+  .p1-2col{display:grid;grid-template-columns:1.5fr 0.84fr 1fr;gap:0 16px;align-items:stretch;}
+  .metrics-1{grid-template-columns:1fr;gap:0;}
+  .loc-grid-1{grid-template-columns:1fr;gap:0;}
+  /* La columna del medio estira Dinero para llenar el hueco hasta donde llega la más alta,
+     en vez de dejar espacio en blanco por debajo. */
+  .p1-left,.p1-mid{display:flex;flex-direction:column;}
+  .p1-mid .dinero-box{flex:1;}
+  .p1-mid .dinero-box input{height:100%;}
+  .attrs{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+  .attrgrp h3{font-family:'Share Tech Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--muted);letter-spacing:1px;padding-bottom:2px;border-bottom:2px solid #000;}
+  .lifegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px;}
+  .lifegrid-v{grid-template-columns:1fr;gap:5px;}
+  .lifebox{border:2px solid #000;padding:5px 4px;text-align:center;}
+  .lifebox b{display:block;font-family:'Share Tech Mono',monospace;font-size:10.5px;text-transform:uppercase;color:var(--muted);}
+  .dinero-box{margin-top:4px;padding:4px 6px;}
+  .dinero-box input{font-size:20px;}
+  .lifebox input{border:none;background:transparent;text-align:center;font-size:26px;font-weight:700;margin-top:1px;padding:0;}
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0 10px;margin-top:4px;}
+  .metrics-2{grid-template-columns:repeat(2,1fr);gap:0 12px;}
+  table{width:100%;border-collapse:collapse;}
+  th{font-family:'Share Tech Mono',monospace;font-size:11px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:3px 6px;text-align:left;}
+  th.c-num{text-align:center;}
+  td{padding:3px 6px;border-bottom:1px solid #e2e8f0;font-size:16px;line-height:1;}
+  th{line-height:1;}
+  td.skill{font-weight:600;}
+  /* Tablas de habilidad: Habilidad + Bas/Apr/Mod/Tot, como el resto de fichas del kit.
+     width:auto (no 100%) para que la columna Habilidad no se estire de más — el ancho lo
+     marca el contenido, no el contenedor, así Bas/Apr/Mod/Tot quedan pegados al nombre. */
+  .c4{width:46px;}
+  .skilltbl,.combtbl{width:auto;}
+  .skilltbl td.v input,.combtbl td.v input{text-align:center;font-size:17px;font-weight:700;border:none;border-bottom:1.5px solid #000;background:transparent;padding:0;}
+  .combo2{display:flex;column-gap:20px;row-gap:4px;flex-wrap:wrap;}
+  .weapons td input,.meritos td input{font-size:14px;}
+  .boxrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
+  .boxrow input[type=checkbox]{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1.5px solid #000;margin:0;}
+  .mun-row2{display:flex;gap:20px;}
+  .mun-row{display:flex;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap;flex:1;min-width:0;}
+  .mun-row span{font-family:'Share Tech Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--muted);}
+  .mun-row input[type=text]{width:80px;}
+  .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 16px;margin-top:4px;}
+  .loc-grid .row-u span{font-size:14px;}
+  .loc-grid .row-u input{width:48px;}
+  .skills2col{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;}
+  .subcat{font-family:'Share Tech Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+  .subcat-mt{margin:8px 0 2px;}
+  .footnote{font-size:11px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:8px;padding-top:4px;}
+  .btns{margin:10px auto;max-width:900px;display:flex;gap:8px;}
+  button{font-family:'Orbitron',sans-serif;font-size:13px;text-transform:uppercase;padding:8px 16px;border:none;cursor:pointer;background:var(--bg-dark);color:#fff;}
+  @media print{
+    @page{size:A4 portrait;margin:8mm;}
+    body{background:#fff;padding:0;font-size:17px;}
+    .page{border:3px solid #000;max-width:100%;margin:0;padding:2.5mm 6mm;}
+    .page + .page{break-before:page;}
+    .btns{display:none;}
+    h1{font-size:22px;}
+    .subtitle{font-size:11.5px;margin-top:1px;}
+    h2{font-size:14px;padding:3px 9px;margin:5px 0 3px;break-after:avoid;}
+    h2:first-of-type{margin-top:3px;}
+    .h2-combate{font-size:14.5px;padding:3px 9px;}
+    .ident{margin:5px 0 1px;}
+    .ident label{font-size:11.5px;padding:1px 0;}
+    .ident input{font-size:16px;}
+    .attrgrp h3{font-size:13px;}
+    .row-u{padding:1px 1px;gap:10px;}
+    .row-u span{font-size:17px;}
+    .row-u input{width:50px;font-size:24px;}
+    .lifegrid{gap:6px;margin-top:3px;}
+    .lifebox{padding:4px 4px;}
+    .lifebox b{font-size:10.5px;}
+    .lifebox input{font-size:28px;}
+    .dinero-box{padding:3px 6px;margin-top:3px;}
+    .dinero-box input{font-size:19px;}
+    .metrics{margin-top:3px;}
+    th{font-size:11px;padding:1px 5px;}
+    td{padding:1px 5px;font-size:17px;}
+    .c4{width:40px;}
+    .skilltbl td{font-size:15px;}
+    .skilltbl .c4{width:34px;}
+    .skilltbl td.v input,.combtbl td.v input{font-size:17px;}
+    .skilltbl td.v input{font-size:15px;}
+    .weapons td input,.meritos td input{font-size:15px;}
+    .boxrow{gap:5px;margin-top:3px;}
+    .boxrow input[type=checkbox]{width:13px;height:13px;}
+    .mun-row{gap:7px;margin-top:2px;}
+    .mun-row span{font-size:10.5px;}
+    .loc-grid .row-u span{font-size:13.5px;}
+    .loc-grid .row-u input{width:38px;font-size:15px;}
+    .loc-grid{margin-top:2px;}
+    .skills2col{gap:0 16px;}
+    .subcat{font-size:11.5px;}
+    .subcat-mt{margin:4px 0 2px;}
+    .footnote{font-size:9px;margin-top:4px;padding-top:2px;}
+    table{break-inside:auto;}
+    .metrics,.lifegrid,.attrs{break-inside:avoid;}
+    tr,.row-u{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h1>La Senda de <span class="logo-script">los Errantes</span></h1>
+  <div class="subtitle">Ficha simplificada · letra grande (para lectura cómoda en mesa)</div>
+
+  <div class="ident">
+    <label>Jugador<input type="text"></label>
+    <label>Personaje<input type="text"></label>
+    <label>Corporación<input type="text"></label>
+    <label>Naturaleza / Tipo<input type="text"></label>
+    <label>Nivel Tecnológico<input type="text"></label>
+    <label>Puntos Épicos<input type="text"></label>
+  </div>
+
+  <div class="p1-2col">
+    <div class="p1-left">
+      <h2>Atributos</h2>
+      <div class="attrs">
+        <div class="attrgrp">
+          <h3>Físicos</h3>
+          <div class="row-u"><span>Agilidad</span><input type="text"></div>
+          <div class="row-u"><span>Constitución</span><input type="text"></div>
+          <div class="row-u"><span>Fuerza</span><input type="text"></div>
+          <div class="row-u"><span>Habilidad</span><input type="text"></div>
+        </div>
+        <div class="attrgrp">
+          <h3>Mentales</h3>
+          <div class="row-u"><span>Carisma</span><input type="text"></div>
+          <div class="row-u"><span>Percepción</span><input type="text"></div>
+          <div class="row-u"><span>Inteligencia</span><input type="text"></div>
+          <div class="row-u"><span>Voluntad</span><input type="text"></div>
+        </div>
+      </div>
+
+      <h2 class="h2-combate">Combate</h2>
+      <table class="combtbl"><colgroup><col><col class="c4"><col class="c4"><col class="c4"><col class="c4"></colgroup>
+        <tr><th>Habilidad</th><th class="c-num">Bas</th><th class="c-num">Apr</th><th class="c-num">Mod</th><th class="c-num">Tot</th></tr>
+        <tr><td class="skill">Iniciativa</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Alerta</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Esquivar</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+      </table>
+    </div>
+
+    <div class="p1-mid">
+      <h2>PV</h2>
+      <div class="lifegrid lifegrid-v">
+        <div class="lifebox"><b>Sano</b><input type="text"></div>
+        <div class="lifebox"><b>Herido (−10)</b><input type="text"></div>
+        <div class="lifebox"><b>Tullido (−20)</b><input type="text"></div>
+      </div>
+
+      <h2>Dinero / Plasticréditos</h2>
+      <div class="lifebox dinero-box"><input type="text"></div>
+    </div>
+
+    <div>
+      <h2 class="h2-combate">Combate</h2>
+      <table class="combtbl"><colgroup><col><col class="c4"><col class="c4"><col class="c4"><col class="c4"></colgroup>
+        <tr><th>Habilidad</th><th class="c-num">Bas</th><th class="c-num">Apr</th><th class="c-num">Mod</th><th class="c-num">Tot</th></tr>
+        <tr><td class="skill">Distancia</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Sin Armas</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Arma CC</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+      </table>
+
+      <h2>Métricas</h2>
+      <div class="metrics metrics-1">
+        <div class="row-u"><span>Aturdimiento</span><input type="text"></div>
+        <div class="row-u"><span>Taras</span><input type="text"></div>
+        <div class="row-u"><span>Humanidad</span><input type="text"></div>
+        <div class="row-u"><span>Distorsión</span><input type="text"></div>
+        <div class="row-u"><span>Salud Mental</span><input type="text"></div>
+        <div class="row-u"><span>Alma</span><input type="text"></div>
+      </div>
+
+      <h2>Localizaciones / Armadura</h2>
+      <div class="loc-grid loc-grid-1">
+        <div class="row-u"><span>Cabeza</span><input type="text"></div>
+        <div class="row-u"><span>Torso</span><input type="text"></div>
+        <div class="row-u"><span>Brazo Izq.</span><input type="text"></div>
+        <div class="row-u"><span>Brazo Der.</span><input type="text"></div>
+        <div class="row-u"><span>Pierna Izq.</span><input type="text"></div>
+        <div class="row-u"><span>Pierna Der.</span><input type="text"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Armas</h2>
+  <table class="weapons"><colgroup><col style="width:32%;"><col style="width:36px;"><col style="width:36px;"><col style="width:36px;"><col></colgroup>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+  </table>
+  <div class="mun-row2">
+    <div class="mun-row"><span>Tipo</span><input type="text"><div class="boxrow">
+      <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+    </div></div>
+    <div class="mun-row"><span>Tipo</span><input type="text"><div class="boxrow">
+      <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+    </div></div>
+  </div>
+
+  <div class="skills2col">
+    <div>
+      <h3 class="subcat">Académicas</h3>
+      <table class="skilltbl"><colgroup><col><col class="c4"><col class="c4"><col class="c4"><col class="c4"></colgroup>
+        <tr><th>Habilidad</th><th class="c-num">Bas</th><th class="c-num">Apr</th><th class="c-num">Mod</th><th class="c-num">Tot</th></tr>
+        <tr><td class="skill">Ciencias</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Biotecnología</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Navegación</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Burocracia</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Buscar información</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Programación</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Diagnóstico</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Esconderse/Evadirse</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Investigación</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Juego</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Diseño Hardware</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Sentido del Negocio</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Supervivencia</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Vigilar/Rastrear</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+      </table>
+
+      <h3 class="subcat subcat-mt">Atlética</h3>
+      <table class="skilltbl"><colgroup><col><col class="c4"><col class="c4"><col class="c4"><col class="c4"></colgroup>
+        <tr><th>Habilidad</th><th class="c-num">Bas</th><th class="c-num">Apr</th><th class="c-num">Mod</th><th class="c-num">Tot</th></tr>
+        <tr><td class="skill">Acrobacias</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Conducir</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Resistir</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Proezas</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Pilotar</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Trajes Servoasistidos</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Sigilo</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3 class="subcat">Tecnológica</h3>
+      <table class="skilltbl"><colgroup><col><col class="c4"><col class="c4"><col class="c4"><col class="c4"></colgroup>
+        <tr><th>Habilidad</th><th class="c-num">Bas</th><th class="c-num">Apr</th><th class="c-num">Mod</th><th class="c-num">Tot</th></tr>
+        <tr><td class="skill">Armería</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Artesanía</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Ciber-tecnología</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Demoliciones</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Disfraz</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Electrónica</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Falsificación</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Química</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Manualidades</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Mecánica</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Manos ágiles</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Seguridad</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Primeros Auxilios</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+      </table>
+
+      <h3 class="subcat subcat-mt">Social</h3>
+      <table class="skilltbl"><colgroup><col><col class="c4"><col class="c4"><col class="c4"><col class="c4"></colgroup>
+        <tr><th>Habilidad</th><th class="c-num">Bas</th><th class="c-num">Apr</th><th class="c-num">Mod</th><th class="c-num">Tot</th></tr>
+        <tr><td class="skill">Absorción</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Autocontrol</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Bajos Fondos</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Empatía</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Interrogatorio</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Liderazgo</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Manejo de Animales</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Persuasión</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Seducción</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+        <tr><td class="skill">Estilo</td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td><td class="v"><input type="text"></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Méritos y Defectos</h2>
+  <table class="meritos" style="margin-bottom:6px"><colgroup><col><col style="width:60px;"><col></colgroup>
+    <tr><th>Nombre</th><th>Tipo</th><th>Efecto</th></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+  </table>
+
+  <div class="btns"><button onclick="window.print()">Imprimir / PDF</button></div>
+</div>
+
+</body>
+</html>

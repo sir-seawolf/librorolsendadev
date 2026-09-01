@@ -37,6 +37,7 @@
        sus barras de cabecera. */
     --color-combate-soft: #ffb3b3;
     --color-combate-mid:  #ff7d7d;
+    --color-combate-deep: #8f0f0f;   /* rojo intensificado: cabeceras de fichas rápidas */
     --color-tech-soft:    #a9cbe0;
     --color-tech-mid:     #4f8fbe;
     --color-lore-soft:    #dab8f7;
@@ -133,7 +134,12 @@ h1 {
     font-weight: bold;
 }
 h2 {
+    position: relative;
+    overflow: hidden;
     font-family: 'Orbitron', sans-serif;
+    /* Mismo estampado diagonal que las fichas rápidas (31/08/2026), en vez
+       del degradado liso anterior — tono oscuro sin cambios, solo textura.
+       El tejido vive en ::before, con blur, para no afectar al texto. */
     background: linear-gradient(to right, var(--bg-dark) 0%, #262c39 100%);
     color: #ffffff;
     padding: 9px 16px;
@@ -144,6 +150,20 @@ h2 {
     letter-spacing: 1px;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+}
+h2::before {
+    /* estampado de fibra de carbono: tejido cruzado, no una sola raya.
+       Trama grande y marcada -tono oscuro, aguanta mas contraste que la
+       version sobre rojo de las fichas rapidas-, con un ligero desenfoque
+       para que no lea como lineas duras. */
+    content: "";
+    position: absolute; inset: -6px;
+    z-index: -1;
+    background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,.17) 0px, rgba(255,255,255,.17) 2.5px, transparent 2.5px, transparent 13px),
+        repeating-linear-gradient(-45deg, rgba(0,0,0,.45) 0px, rgba(0,0,0,.45) 2.5px, transparent 2.5px, transparent 13px);
+    filter: blur(1.5px);
+    pointer-events: none;
 }
 h3 {
     font-family: 'Orbitron', sans-serif;
@@ -374,6 +394,124 @@ img { max-width: 100%; height: auto; }
 }
 .tabla-dados::before { content: "Tabla de dados"; background: linear-gradient(to right, var(--accent-subtle), var(--color-dados-mid)); }
 
+/* ============================================================
+   FICHAS RÁPIDAS DE CONSULTA (31/08/2026)
+   Página final de módulo: una tarjeta por PNJ/Defensa, solo números y
+   equipo -sin descripción, eso vive en Reparto-. Dos por línea. Cabecera
+   con el NOMBRE (no un rótulo de tipo genérico como los recuadros de
+   arriba) sobre un rojo que se intensifica hacia la derecha con un
+   estampado sutil, en vez de aclararse como el degradado de --before.
+   Uso:
+     <div class="fichas-grid">
+       <div class="ficha-rapida">
+         <div class="ficha-rapida-cab">
+           <div class="ficha-rapida-nombre">Nombre</div>
+           <div class="ficha-rapida-rol">Rol o función</div>
+         </div>
+         <div class="ficha-rapida-cuerpo">
+           <div class="ficha-rapida-attrs">F<b>30</b> A<b>40</b> ... · PV <b>16/16/16</b> · Bld <b>1</b></div>
+           <div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Mecánica 50%</span>...</div>
+           <div class="ficha-rapida-equipo"><b>Equipo:</b> ...</div>
+         </div>
+       </div>
+     </div>
+   ============================================================ */
+.fichas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0 28px;
+}
+.ficha-rapida {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 20px -14px rgba(0,0,0,.25);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+.ficha-rapida-cab {
+    position: relative;
+    padding: 11px 16px 10px;
+    background: linear-gradient(to right, var(--color-combate) 0%, var(--color-combate) 45%, var(--color-combate-deep) 100%);
+    overflow: hidden;
+}
+.ficha-rapida-cab::before {
+    /* mismo tejido que los h2, mas sutil y con trama mas grande -el rojo
+       ya aporta suficiente contraste por si solo, no hace falta tanto- y con
+       el mismo desenfoque ligero. */
+    content: "";
+    position: absolute; inset: -6px;
+    z-index: -1;
+    background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 2.5px, transparent 2.5px, transparent 13px),
+        repeating-linear-gradient(-45deg, rgba(0,0,0,.14) 0px, rgba(0,0,0,.14) 2.5px, transparent 2.5px, transparent 13px);
+    filter: blur(1.5px);
+    pointer-events: none;
+}
+.ficha-rapida-cab::after {
+    /* el estampado se apaga hacia la izquierda para no comerse el nombre */
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--color-combate) 0%, var(--color-combate) 30%, transparent 75%);
+    pointer-events: none;
+}
+.ficha-rapida-nombre {
+    position: relative; z-index: 1;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #fff;
+    letter-spacing: .3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+.ficha-rapida-rol {
+    position: relative; z-index: 1;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.78);
+    margin-top: 1px;
+}
+.ficha-rapida-cuerpo { padding: 13px 16px 15px; }
+.ficha-rapida-attrs {
+    /* Texto corrido, no flex: es una sola cadena con <b> inline, no
+       elementos separados -flex+wrap la cortaba en un punto feo,
+       dejando "· Bld 0" huerfano en su propia linea. */
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-body, #1e293b);
+    letter-spacing: .2px;
+    line-height: 1.5;
+    margin-bottom: 9px;
+}
+.ficha-rapida-attrs b { color: var(--color-combate-deep); font-weight: 700; }
+.ficha-rapida-skills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.ficha-rapida-pill {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-combate-deep);
+    border-radius: 20px;
+    padding: 3px 9px 2px;
+    white-space: nowrap;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+.ficha-rapida-equipo {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: #5b6472;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 8px;
+}
+.ficha-rapida-equipo b { color: #1e293b; font-weight: 600; }
+
 /* ============================================================ */
 
 /* ===== RESPONSIVE MOVIL ===== */
@@ -393,6 +531,7 @@ img { max-width: 100%; height: auto; }
     blockquote, .read-aloud, .master-note { padding: 12px 14px; font-size: 14px; }
     .recuadro-combate, .recuadro-tech, .recuadro-lore, .recuadro-regla,
     .ejemplo, .nota-dj, .pifia, .tabla-dados { padding: 34px 14px 14px; }
+    .fichas-grid { grid-template-columns: 1fr; }
 }
 
 @media print {
@@ -405,7 +544,8 @@ img { max-width: 100%; height: auto; }
     .pg-page { break-inside: avoid; }
     blockquote, .read-aloud, .master-note,
     .recuadro-combate, .recuadro-tech, .recuadro-lore, .recuadro-regla,
-    .ejemplo, .nota-dj, .pifia, .tabla-dados {
+    .ejemplo, .nota-dj, .pifia, .tabla-dados,
+    .ficha-rapida {
         break-inside: avoid; page-break-inside: avoid;
     }
 }

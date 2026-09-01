@@ -13,16 +13,19 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
 </style>
 
@@ -90,29 +93,29 @@ body{ margin:0; }
 </head><body>
 <button class="toggle-idx" onclick="document.querySelector('.libro-idx').classList.toggle('open')">Indice</button>
 <nav class="libro-idx"><h2>La Senda de <em>Los Errantes</em></h2>
-<a href="#cap1" class="">PRÓLOGO — El origen</a>
-<a href="#cap2" class="">INTRODUCCIÓN</a>
-<a href="#cap3" class="">MIÉRCOLES POR LA TARDE</a>
-<a href="#cap4" class=""><span class="idx-num">01</span>EL UNIVERSO</a>
-<a href="#cap5" class=""><span class="idx-num">02</span>CREACIÓN DE PERSONAJES</a>
-<a href="#cap6" class=""><span class="idx-num">03</span>MECÁNICAS DEL SISTEMA</a>
-<a href="#cap7" class=""><span class="idx-num">04</span>SEGURIDAD: PRIMERA COMPRA (Blindajes y armaduras)</a>
-<a href="#cap8" class=""><span class="idx-num">05</span>LA MATERIA TAMBIÉN SUEÑA (Tecnología y Distorsión)</a>
-<a href="#cap9" class=""><span class="idx-num">06</span>DISTORSIÓN: ESCUELAS Y PODERES</a>
-<a href="#cap10" class=""><span class="idx-num">07</span>EL TALLER DEL ERRANTE</a>
-<a href="#cap11" class=""><span class="idx-num">08</span>LA CARNE Y EL METAL (IMPLANTES, NECROCHIPS Y HUMANIDAD)</a>
-<a href="#cap12" class=""><span class="idx-num">09</span>EXPLORACIÓN Y VIAJE</a>
-<a href="#cap13" class=""><span class="idx-num">10</span>VEHÍCULOS</a>
-<a href="#cap14" class=""><span class="idx-num">11</span>EL NARRADOR</a>
-<a href="#cap15" class=""><span class="idx-num">12</span>BESTIARIO Y RAZAS</a>
-<a href="#cap16" class=""><span class="idx-num">13</span>AVENTURAS EN EL MOSAICO</a>
-<a href="#cap17" class=""><span class="idx-num">14</span>TU PRIMERA SENDA</a>
-<a href="#cap18" class=""><span class="idx-num">15</span>CORPORACIONES DEL MOSAICO</a>
-<a href="#cap19" class=""><span class="idx-num">A0</span>REFERENCIA RÁPIDA DEL SISTEMA</a>
-<a href="#cap20" class=""><span class="idx-num">A2</span>HABILIDADES, MÉRITOS Y DEFECTOS</a>
-<a href="#cap21" class=""><span class="idx-num">A6</span>BATERÍA DE RUNAS POR ESCUELAS</a>
-<a href="#cap22" class=""><span class="idx-num">A7</span>FARMACOPEA DEL MOSAICO</a>
-<a href="#cap23" class=""><span class="idx-num">A11</span>GENERADOR DE ASENTAMIENTOS Y ESTACIONES</a>
+<a href="#cap-prologo-el-origen-revisado" class="">PRÓLOGO — El origen</a>
+<a href="#cap-cap00-introduccion-definitivo" class="">INTRODUCCIÓN</a>
+<a href="#cap-cap09-miercoles-por-la-tarde" class="">MIÉRCOLES POR LA TARDE</a>
+<a href="#cap01" class=""><span class="idx-num">01</span>EL UNIVERSO</a>
+<a href="#cap02" class=""><span class="idx-num">02</span>CREACIÓN DE PERSONAJES</a>
+<a href="#cap03" class=""><span class="idx-num">03</span>MECÁNICAS DEL SISTEMA</a>
+<a href="#cap04" class=""><span class="idx-num">04</span>SEGURIDAD: PRIMERA COMPRA (Blindajes y armaduras)</a>
+<a href="#cap05" class=""><span class="idx-num">05</span>LA MATERIA TAMBIÉN SUEÑA (Tecnología y Distorsión)</a>
+<a href="#cap06" class=""><span class="idx-num">06</span>DISTORSIÓN: ESCUELAS Y PODERES</a>
+<a href="#cap07" class=""><span class="idx-num">07</span>EL TALLER DEL ERRANTE</a>
+<a href="#cap08" class=""><span class="idx-num">08</span>LA CARNE Y EL METAL (IMPLANTES, NECROCHIPS Y HUMANIDAD)</a>
+<a href="#cap09" class=""><span class="idx-num">09</span>EXPLORACIÓN Y VIAJE</a>
+<a href="#cap10" class=""><span class="idx-num">10</span>VEHÍCULOS</a>
+<a href="#cap11" class=""><span class="idx-num">11</span>EL NARRADOR</a>
+<a href="#cap12" class=""><span class="idx-num">12</span>BESTIARIO Y RAZAS</a>
+<a href="#cap13" class=""><span class="idx-num">13</span>AVENTURAS EN EL MOSAICO</a>
+<a href="#cap14" class=""><span class="idx-num">14</span>TU PRIMERA SENDA</a>
+<a href="#cap15" class=""><span class="idx-num">15</span>CORPORACIONES DEL MOSAICO</a>
+<a href="#capa0" class=""><span class="idx-num">A0</span>REFERENCIA RÁPIDA DEL SISTEMA</a>
+<a href="#capa2" class=""><span class="idx-num">A2</span>HABILIDADES, MÉRITOS Y DEFECTOS</a>
+<a href="#capa6" class=""><span class="idx-num">A6</span>BATERÍA DE RUNAS POR ESCUELAS</a>
+<a href="#capa7" class=""><span class="idx-num">A7</span>FARMACOPEA DEL MOSAICO</a>
+<a href="#capa11" class=""><span class="idx-num">A11</span>GENERADOR DE ASENTAMIENTOS Y ESTACIONES</a>
 </nav>
 <div class="libro-portada"><div class="pt-la">La Senda de</div>
 <div class="pt-main">Los <em>Errantes</em></div>
@@ -164,7 +167,7 @@ body{ margin:0; }
 </div>
 
 <main class="libro-main">
-<section class="libro-cap cap-anchor" id="cap1"><div class="document-container"><div class="extra-img"><picture><source srcset="img/Seawolf_frente_al_portal.webp" type="image/webp"><img src="img/Seawolf_frente_al_portal.jpg" alt=""></picture></div>
+<section class="libro-cap cap-anchor" id="cap-prologo-el-origen-revisado"><div class="document-container"><div class="extra-img"><picture><source srcset="img/Seawolf_frente_al_portal.webp" type="image/webp"><img src="img/Seawolf_frente_al_portal.jpg" alt=""></picture></div>
 <h1>PRÓLOGO — El origen</h1>
 <h2>Para el manual de La Senda de los Errantes</h2>
 <blockquote>
@@ -218,7 +221,7 @@ body{ margin:0; }
 <p><em>Bienvenido al mosaico.</em></p>
 <p>— <em>Miguel Pascual, A. Seawolf</em></p></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol.webp" type="image/webp"><img src="img/ComicJuegoRol.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap2"><div class="document-container"><h1>CAPÍTULO 0 — INTRODUCCIÓN</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap-cap00-introduccion-definitivo"><div class="document-container"><h1>CAPÍTULO 0 — INTRODUCCIÓN</h1>
 <blockquote>
 <p><em>"Sin el juego nunca había pensado qué posibilidades de sobrevivir tendría una chica como yo de 16 años en un universo como aquel."</em><br />
 — Anapana, Cuenca, junio de 1994</p>
@@ -473,7 +476,7 @@ Un d6 para ciertos daños secundarios. Un d4 para algunas tiradas de mejora de h
 El glosario completo está al final del manual. Para el resto: "No lo sé ahora mismo, lo decidimos y lo apuntamos." Los juegos de rol sobreviven perfectamente a las reglas improvisadas.</p>
 </blockquote>
 <p><em>"El multiverso no espera a que lo entiendas todo. Solo espera a que des el primer paso."</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap3"><div class="document-container"><h1>MIÉRCOLES POR LA TARDE</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap-cap09-miercoles-por-la-tarde"><div class="document-container"><h1>MIÉRCOLES POR LA TARDE</h1>
 <blockquote>
 <p><em>"Todo universo empieza en algún sitio. El nuestro empezó un miércoles por la tarde, con restos de chatarra y malas decisiones."</em><br />
 <em>"Hace cinco años. Isthar tenía quince. Miguel, trece."</em></p>
@@ -504,7 +507,7 @@ El glosario completo está al final del manual. Para el resto: "No lo sé ahora 
 <p>Bienvenido. Vas a necesitar los dados.</p>
 <p>— <em>Miguel Pascual, A. Seawolf</em></p></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol2.webp" type="image/webp"><img src="img/ComicJuegoRol2.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap4"><div class="document-container"><h1>CAPÍTULO 1 — EL UNIVERSO</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap01"><div class="document-container"><h1>CAPÍTULO 1 — EL UNIVERSO</h1>
 <h2>El Mosaico, los Ciclos y sus habitantes</h2>
 <blockquote>
 <p><em>"El mundo tal como lo conocemos es solo un reflejo de nuestra limitada percepción. Otros seres han encontrado la forma de pasar de un mundo a otro. Comprendiendo lo inminente de su final, ocultaron en la naturaleza humana la llave que permitiría su apertura."</em></p>
@@ -619,7 +622,7 @@ El glosario completo está al final del manual. Para el resto: "No lo sé ahora 
 <p><em>Piezas de lore concretas (TecnoStealer y sus facciones internas, Oasis y la Mansión de Totovia, y otros lugares emblemáticos) → ver <code>02_ANEXOS/</code> y los DLCs. Este capítulo se queda con el cuadro general.</em></p>
 </blockquote></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol3.webp" type="image/webp"><img src="img/ComicJuegoRol3.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap5"><div class="document-container"><h1>CAPÍTULO 2 — CREACIÓN DE PERSONAJES</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap02"><div class="document-container"><h1>CAPÍTULO 2 — CREACIÓN DE PERSONAJES</h1>
 <blockquote>
 <p><em>"Los personajes somos nosotros mismos. Incluso hicimos pruebas para evaluar nuestras capacidades."</em><br />
 — Anapana, Cuenca, junio de 1996</p>
@@ -3243,7 +3246,7 @@ Atrib. primarios: 30 / secundarios: 25 / Pts. Gratuitos: 30 / PE: 9.</p>
 <p><strong>Si el jugador quiere pertenecer a más de una corp</strong> (una en el pasado, otra en el presente), habla con el Director. Un personaje que ha pasado por dos corps tiene historia — y probablemente enemigos que no ha resuelto.</p>
 </blockquote></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol4.webp" type="image/webp"><img src="img/ComicJuegoRol4.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap6"><div class="document-container"><h1>CAPÍTULO 3 — MECÁNICAS DEL SISTEMA</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap03"><div class="document-container"><h1>CAPÍTULO 3 — MECÁNICAS DEL SISTEMA</h1>
 <blockquote>
 <p><em>"En algún momento los años de amistad y trabajo en equipo dieron su fruto."</em><br />
 — Crónica 2014</p>
@@ -5185,7 +5188,7 @@ Posiciones: Abrazado 125 y 25; Reyes 93; Kova 82. Orden: Abrazado 125 → Reyes 
 <div class="recuadro-lore"><p><strong>SI ALGO NO ESTÁ AQUÍ</strong><br />
 El glosario completo está en Recursos Adicionales. Y si no está ahí tampoco: improvisa, apúntalo y decidid en grupo cómo funciona. Las mejores reglas nacen así.</p></div>
 <p><em>"El multiverso no espera a que lo entiendas todo. Solo espera a que des el primer paso."</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap7"><div class="document-container"><h1>SEGURIDAD: PRIMERA COMPRA (Blindajes y armaduras)</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap04"><div class="document-container"><h1>SEGURIDAD: PRIMERA COMPRA (Blindajes y armaduras)</h1>
 <blockquote>
 <p><em>"Ver a una persona con blindajes ligeros es la cosa más normal del mundo."</em></p>
 </blockquote>
@@ -5519,7 +5522,7 @@ Con 2 éxitos: daño = 4 × 2 = <strong>8 puntos</strong>. La armadura no ayuda 
 <hr />
 <div class="recuadro-combate"><p><strong>Lo que muestra este ejemplo:</strong> la diferencia entre penetración 1 y penetración 3 contra armadura 3 es la diferencia entre "sin daño" y "8 puntos". La elección de arma importa más que la habilidad cuando el enemigo va bien armado.</p></div></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol5.webp" type="image/webp"><img src="img/ComicJuegoRol5.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap8"><div class="document-container"><h1>LA MATERIA TAMBIÉN SUEÑA (Tecnología y Distorsión)</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap05"><div class="document-container"><h1>LA MATERIA TAMBIÉN SUEÑA (Tecnología y Distorsión)</h1>
 <blockquote>
 <p><em>La tecnología intenta domesticar la materia. La Distorsión recuerda que la materia también sueña.</em></p>
 </blockquote>
@@ -5533,7 +5536,7 @@ Con 2 éxitos: daño = 4 × 2 = <strong>8 puntos</strong>. La armadura no ayuda 
 <div class="recuadro-tech"><p>El Tron es Distorsión condensada y estabilizada como materia. No es una batería, no almacena PD y no alimenta poderes ni portales. Su papel es estructural: refuerza, canaliza y sirve de sustrato para runas, anclas y tecnología de frontera.</p></div>
 <h3>Tecnología de teselas</h3>
 <p>El Nivel Tecnológico determina qué se puede fabricar, reparar o conseguir de forma ordinaria. La tecnología arcanita, los legados de cristalización extrema y los materiales superiores quedan fuera de la producción común incluso para talleres avanzados.</p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap9"><div class="document-container"><div class="extra-img"><picture><source srcset="img/Sistema_runico_lengua_errantes.webp" type="image/webp"><img src="img/Sistema_runico_lengua_errantes.png" alt=""></picture></div>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap06"><div class="document-container"><div class="extra-img"><picture><source srcset="img/Sistema_runico_lengua_errantes.webp" type="image/webp"><img src="img/Sistema_runico_lengua_errantes.png" alt=""></picture></div>
 <h1>CAPÍTULO 6 — DISTORSIÓN: ESCUELAS Y PODERES</h1>
 <blockquote>
 <p><em>"Toda la magia en todas sus formas deriva de la distorsión. La diferencia está en cómo cada civilización aprendió a hablar con ella."</em></p>
@@ -7627,7 +7630,7 @@ Festividad popular en MadCity y ciudades despertadas. Se celebra el día en que,
 <li>Perla blanca: 100 PD; perla negra: 1.000 PD.</li>
 <li>Purga: 1 Deriva → 1 PD manchado.</li>
 </ul></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap10"><div class="document-container"><h1>CAPÍTULO 4d — EL TALLER DEL ERRANTE</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap07"><div class="document-container"><h1>CAPÍTULO 4d — EL TALLER DEL ERRANTE</h1>
 <h2>(Taller, Chatarra y Fabricación)</h2>
 <h2>1. La cultura del reciclaje</h2>
 <p><em>"La mitad del precio del vehículo es el motor. La otra mitad, estructura y ruedas — o equivalente."</em> — Norton, señor del comercio en el mosaico</p>
@@ -9573,7 +9576,7 @@ Recursos: taller de campaña</code></p>
 </ul>
 <p><em>Para implantes, Necrochips, Rack de Chips y Sistema Humanidad-Alma, ver el capítulo 08 (La Carne y el Metal).</em></p>
 <p><em>Para implantes, Necrochips, Rack de Chips y Sistema Humanidad-Alma, ver el capítulo 08 (La Carne y el Metal).</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap11"><div class="document-container"><h1>CAPÍTULO 8 — LA CARNE Y EL METAL (IMPLANTES, NECROCHIPS Y HUMANIDAD)</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap08"><div class="document-container"><h1>CAPÍTULO 8 — LA CARNE Y EL METAL (IMPLANTES, NECROCHIPS Y HUMANIDAD)</h1>
 <blockquote>
 <p><em>"La primera mejora es gratis. La segunda cuesta dinero. La tercera cuesta algo de ti."</em></p>
 </blockquote>
@@ -10692,7 +10695,7 @@ Recursos: taller de campaña</code></p>
 <p>Ambos caminos son lentos, visibles y reversibles en sus primeras etapas. En las etapas avanzadas, la reversión requiere intervención extraordinaria — la Cristalización en el caso de la Humanidad, un Maestro de Portales en el caso de la Deriva.</p>
 <hr /></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol6.webp" type="image/webp"><img src="img/ComicJuegoRol6.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap12"><div class="document-container"><h1>CAPÍTULO 9 — EXPLORACIÓN Y VIAJE</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap09"><div class="document-container"><h1>CAPÍTULO 9 — EXPLORACIÓN Y VIAJE</h1>
 <blockquote>
 <p><em>"Una junta del Mosaico. Donde dos realidades se conectan. Normalmente están estabilizadas por portales o tecnología arcanita, pero esta... está salvaje."</em><br />
 — Luis, Capítulo 16</p>
@@ -11414,7 +11417,7 @@ La corporativa tiene Sensores avanzados: actúa primero.</p>
 <p>El Teseo está en desventaja — sus Motores han recibido daño y la corporativa tiene mejor blindaje y artillería. Seawolf tiene dos opciones: intentar huir (tirada de Pilotaje enfrentada) o negociar. Si los Motores bajan de 17 PDE (mitad), la velocidad se reduce a la mitad y la fuga se complica mucho.</p>
 </blockquote></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol7.webp" type="image/webp"><img src="img/ComicJuegoRol7.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap13"><div class="document-container"><div class="extra-img"><picture><source srcset="img/Volando_en_moto.webp" type="image/webp"><img src="img/Volando_en_moto.png" alt=""></picture></div>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap10"><div class="document-container"><div class="extra-img"><picture><source srcset="img/Volando_en_moto.webp" type="image/webp"><img src="img/Volando_en_moto.png" alt=""></picture></div>
 <h1>CAPÍTULO 10 — VEHÍCULOS</h1>
 <blockquote>
 <p><em>"La mitad del precio del vehículo es el motor. La otra mitad, estructura y ruedas — o equivalente."</em></p>
@@ -12702,7 +12705,7 @@ La corporativa tiene Sensores avanzados: actúa primero.</p>
 <p>El mercado negro suele tener NT5 de segunda mano a 3.000–4.000 PC. Los NT6 rara vez aparecen fuera de canales corporativos.</p>
 </blockquote></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol8.webp" type="image/webp"><img src="img/ComicJuegoRol8.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap14"><div class="document-container"><h1>CAPÍTULO 11 — EL NARRADOR</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap11"><div class="document-container"><h1>CAPÍTULO 11 — EL NARRADOR</h1>
 <blockquote>
 <p><em>"No hay un solo camino en La Senda de los Errantes."</em></p>
 </blockquote>
@@ -13258,7 +13261,7 @@ REC Académico: bolsa de 60 (Científico 4×15) + 45 (Civil 3×15) = 105. REC So
 <strong>Trayectoria:</strong> 14 profesiones — mezcla de Combatiente, Técnico, Científico y Civil, acumuladas a lo largo de décadas cruzando teselas.<br />
 Justificación biográfica: no es un veterano cualquiera — es alguien cuya vida excede con mucho la duración y amplitud normales de una carrera en el mosaico, y esa longevidad activa está documentada en su historia, no solo declarada en la ficha. Advertencia: superar diez profesiones no es la escala normal de un PNJ ni un objetivo a alcanzar por el resto del reparto — es la excepción que confirma que esta herramienta sigue siendo orientativa, no una escalera que todo PNJ deba subir.</p></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol9.webp" type="image/webp"><img src="img/ComicJuegoRol9.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap15"><div class="document-container"><h1>CAPÍTULO 12 — BESTIARIO Y RAZAS</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap12"><div class="document-container"><h1>CAPÍTULO 12 — BESTIARIO Y RAZAS</h1>
 <blockquote>
 <p><em>"Ángeles, demonios, alienígenas, fantasmas y robots podrían ser tus compañeros de viaje."</em></p>
 </blockquote>
@@ -13541,8 +13544,8 @@ Si el grupo la encuentra, lo más probable es que esté durmiendo o cazando lejo
 <p><strong>Mercenario estándar</strong> Com45/demás35 | PV16/16/16 | Bld2 torso+cabeza | Subfusil(5)+Machete(4) | Cyber-ópticos antideslumbrantes y amplificador de imagen</p>
 <p><strong>Soldado corporativo</strong> Com45/demás35 | PV12/12/12 | Bld2 | Subfusil(5)+Machete(4)<br />
 <em>Ajustar equipo por corporación: TecnoStealer negro/plateado — Serpent dorado/verde — Mort negro/calavera</em></p>
-<p><strong>Inquisidor TecnoStealer</strong> FM45/HB55 | PV16/16/16 | Bld3/6 | Melé70%(5,Pen2) Dist80%(3,Cad3)</p>
-<p><strong>Guardia de élite</strong> FM60/HB45 | PV20/20/20 | Bld6/10 | Melé80%(7,Pen3) Dist70%(5,Cad3)</p>
+<p><strong>Inquisidor TecnoStealer</strong> FM45/HB55 | PV16/16/16 | Bld3/6 | Arma CC Media 70%(5,Pen2) Distancia Media 80%(3,Cad3)</p>
+<p><strong>Guardia de élite</strong> FM60/HB45 | PV20/20/20 | Bld6/10 | Arma CC Media 80%(7,Pen3) Distancia Media 70%(5,Cad3)</p>
 <p><strong>Maestro de Portales avanzado (ref. Azrael)</strong> Portales85%/Proyección80%/Protección75%/Marcas70% | F30/A40/C45 | Ini+25 | PV base 120</p>
 <p><strong>Niebla (PNJ especial — Módulo 1)</strong> Bld4 | Melé30% / 2×30% distancia Daño3 / Lanzagranadas 3 cañones Crack | Daño 5 eléctrico Pen 2 | PV10/10/10 | Marca de teleportación: tatuaje N3, activación 12 PV (daño real), no se destruye al usarla, recarga básica 24h (ver capítulo 06, Recarga de marcas y tatuajes, y Módulo 1 para el efecto sobre sus PV)</p>
 <p><strong>Hombres Rata (ref. Módulo 1)</strong> Bld5 | Dist60%(3,Pen2) / Melé80%(3,Pen1,Veneno CON−10 t50) | PV8/8/8</p>
@@ -14082,7 +14085,7 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 </blockquote>
 <p><em>La línea Droideum completa (DB-2, DB-3, versiones militares y corporativas) queda para el Suplemento del Narrador.</em></p></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol10.webp" type="image/webp"><img src="img/ComicJuegoRol10.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap16"><div class="document-container"><h1>CAPÍTULO 13 — AVENTURAS EN EL MOSAICO</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap13"><div class="document-container"><h1>CAPÍTULO 13 — AVENTURAS EN EL MOSAICO</h1>
 <blockquote>
 <p><em>"No diseñes lo que va a pasar. Diseña el lugar donde algo puede pasar."</em></p>
 </blockquote>
@@ -14236,7 +14239,7 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 <p>1 Todo es lo que parece / 2 Encuentro aleatorio / 3 Los PJs son usados como distracción / 4 El patrón es asesinado / 5 Descubren algo que cambia su alineamiento / 6 Los PJs están siendo engañados / 7 El patrón intentará matarlos al terminar / 8 El objetivo entra en conflicto con la personalidad de un PJ / 9 El enemigo manipula a los PJs contra su patrón / 10 El patrón muere antes de revelar la misión; los enemigos persiguen a los PJs</p>
 <hr /></div></section>
 <div class="comic-page"><picture><source srcset="img/ComicJuegoRol11.webp" type="image/webp"><img src="img/ComicJuegoRol11.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap17"><div class="document-container"><h1>CAPÍTULO 14 — TU PRIMERA SENDA</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap14"><div class="document-container"><h1>CAPÍTULO 14 — TU PRIMERA SENDA</h1>
 <h2>Módulo introductorio para nuevos jugadores</h2>
 <blockquote>
 <p><em>"Es miércoles por la tarde."</em></p>
@@ -14340,7 +14343,7 @@ El resultado 20 es una señal de que algo pasó aquí. Puede ser el gancho de un
 Su Pen 5 se suma a la munición elegida y a modificaciones compatibles. Las balas cambian grosor a lo largo del cargador. La última refrigera — sustituible por normal para +1 daño.</p>
 <div class="recuadro-lore"><p><strong>Una versión concreta de la línea.</strong> La N-5.2 es el prototipo Chafry de este módulo. No es la PREDATOR Original de Seawolf, el Fogonazo del Pecio ni una réplica Norton. El chip contiene sus especificaciones, por eso MORT paga 15.000 PC y CHAFRY mata por recuperarlo.</p></div></div></section>
 <div class="comic-page"><picture><source srcset="img/Corporaciones.webp" type="image/webp"><img src="img/Corporaciones.png" alt="Cómic"></picture></div>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap18"><div class="document-container"><h1>CAPÍTULO 10 — CORPORACIONES DEL MOSAICO</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap15"><div class="document-container"><h1>CAPÍTULO 10 — CORPORACIONES DEL MOSAICO</h1>
 <blockquote>
 <p><em>"En el mosaico no hay estados. Hay corporaciones. Y las corporaciones son más antiguas que la memoria de cualquier ser vivo que aún camine bajo un sol."</em><br />
 — Ladino, Triunvirato de TecnoStealer</p>
@@ -14824,7 +14827,7 @@ Implantes: Rack de Chips implantado avanzado (capacidad 30%), Ibis Neural-Rack (
 <p><strong>Para el jugador:</strong> si tu personaje quiere pertenecer a más de una corporación (histórica y actual), habla con el Director de Juego. Este capítulo cubre las condiciones de entrada, pertenencia y salida. Un personaje que ha pasado por dos corps tiene historia — y probablemente enemigos.</p>
 <p><strong>Para el Director:</strong> las relaciones entre corporaciones no son estáticas. La tabla de "Relación con otras corporaciones" de cada ficha refleja el estado actual del canon. Una campaña puede alterarlo — de hecho, muchas campañas famosas del Mosaico giran precisamente en torno a ese cambio.</p>
 </blockquote></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap19"><div class="document-container"><h1>ANEXO A0 — REFERENCIA RÁPIDA DEL SISTEMA</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="capa0"><div class="document-container"><h1>ANEXO A0 — REFERENCIA RÁPIDA DEL SISTEMA</h1>
 <p><em>Interfaz de mesa. Todo lo que se consulta jugando, sin prosa. Cuatro páginas: las tres primeras son el núcleo del sistema y sirven a cualquier mesa; la cuarta cubre las capas — Distorsión, implantes, taller, viaje y vehículos — y solo hace falta si tu mesa las usa.</em></p>
 <hr />
 <h2>PÁGINA 1 — LA TIRADA</h2>
@@ -15544,7 +15547,7 @@ elige el tramo, no una fórmula distinta.</p>
 </table>
 <hr />
 <p><em>Las reglas completas están en sus capítulos. Esto es solo la mesa.</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap20"><div class="document-container"><h1>ANEXO A2 — HABILIDADES, MÉRITOS Y DEFECTOS</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="capa2"><div class="document-container"><h1>ANEXO A2 — HABILIDADES, MÉRITOS Y DEFECTOS</h1>
 <blockquote>
 <p><em>Este anexo es una guía de consulta, no de creación. Las reglas de creación de personaje están en el capítulo 02, Creación de Personajes. Aquí encontrarás qué significa exactamente cada habilidad, cada mérito y cada defecto cuando tengas dudas en mesa.</em></p>
 </blockquote>
@@ -16035,6 +16038,11 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <td>Alguien te debe: favor menor / serio / se jugó la vida por ti.</td>
 </tr>
 <tr>
+<td>Manos de Chatarra</td>
+<td>1</td>
+<td>Elimina el penalizador por falta de equipo médico en tiradas de Primeros Auxilios — usas lo que haya en la habitación como si fuera material adecuado. No sustituye a la Medicina real ni mejora el resultado, solo quita la penalización por improvisar.</td>
+</tr>
+<tr>
 <td>Objeto especial</td>
 <td>1</td>
 <td>Un objeto con historia que llegó a tus manos antes de que entendieras lo que eras. Tira 1d10+1d8 en la tabla del capítulo 02.</td>
@@ -16365,7 +16373,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 <p><em>Manipulación de Distorsión: ver el capítulo 06.</em></p>
 <hr />
 <p><em>Maestrías → capítulo 02 (desbloqueo y progresión general). Reglas completas de cada habilidad → capítulo 03 (Combate), capítulo 06 (Distorsión) y este anexo, sección 1.</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap21"><div class="document-container"><h1>ANEXO A6 — BATERÍA DE RUNAS POR ESCUELAS</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="capa6"><div class="document-container"><h1>ANEXO A6 — BATERÍA DE RUNAS POR ESCUELAS</h1>
 <p><em>Anexo del capítulo 06 — Distorsión: Escuelas y Poderes. Allí viven las reglas de Marcas Arcanas: activación y resonancia, tatuajes temporales, uso y recarga, runas favoritas y naturales, Sobrecarga. Aquí está el catálogo.</em></p>
 <blockquote>
 <p><em>"Una runa no es un objeto. Es una conversación con la distorsión inscrita en materia."</em></p>
@@ -17201,7 +17209,7 @@ Desventaja: cuando algo despierta tu curiosidad, Voluntad para no seguir investi
 - Taumaturgia completa con geografía de urdimbre y Cruce de Caminos → capítulo 06, sección Taumaturgia.</p>
 <hr />
 <p><em>Las reglas de Marcas Arcanas — activación, resonancia, runas favoritas y naturales, Sobrecarga — están en el capítulo 06, §5.</em></p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap22"><div class="document-container"><h1>ANEXO A7 — FARMACOPEA DEL MOSAICO</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="capa7"><div class="document-container"><h1>ANEXO A7 — FARMACOPEA DEL MOSAICO</h1>
 <h2>Drogas, venenos y químicos de las teselas</h2>
 <blockquote>
 <p><em>"El mosaico funciona a base de químicos. Los que te mantienen despierto, los que te tumban, los que te hacen ver a través de la urdimbre. Lo único legal es aceptar que sin ellos no aguantarías una semana."</em><br />
@@ -17469,7 +17477,7 @@ Las runas de veneno operan mecánicamente similar a los venenos físicos de este
 Los personajes con implantes de filtrado hepático o sistema neural mejorado pueden tener resistencia parcial a drogas específicas. Consultar ese capítulo o negociar con el DJ.</p>
 <p><strong>Adicto (este anexo):</strong><br />
 Sustituye y expande el mérito antiguo. Ver sección Adicción.</p></div></section>
-<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="cap23"><div class="document-container"><h1>ANEXO A11 — GENERADOR DE ASENTAMIENTOS Y ESTACIONES</h1>
+<hr class="libro-cap-sep"><section class="libro-cap cap-anchor" id="capa11"><div class="document-container"><h1>ANEXO A11 — GENERADOR DE ASENTAMIENTOS Y ESTACIONES</h1>
 <blockquote>
 <p>Para estaciones y asentamientos no emblemáticos. EP-9 y similares tienen sus propios archivos. Este generador produce lugares funcionales, con carácter propio, en menos de dos minutos.</p>
 </blockquote>

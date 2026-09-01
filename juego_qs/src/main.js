@@ -1,4 +1,4 @@
-import { state, suscribirEscena, suscribirFicha, migrarGuardadoAntiguoSiExiste, cambiarEscena } from "./gameState.js";
+import { state, suscribirEscena, suscribirFicha, migrarGuardadoAntiguoSiExiste, cambiarEscena, iniciarPartida } from "./gameState.js";
 import { renderFicha } from "./ui/sheet.js";
 import { montarMenu } from "./scenes/menu.js";
 import { montarSelectorModulos } from "./scenes/moduleMenu.js";
@@ -7,8 +7,8 @@ import { cargarEscena } from "./engine/sceneEngine.js";
 import { aplicarAccesibilidad, config } from "./config.js";
 import { audioManager } from "./engine/audioManager.js";
 import { montarAjustesAudio } from "./ui/audioSettings.js";
-import { cargarListaModulos, cargarModulo, moduloIdActivo, manifiestoActivo } from "./engine/moduleLoader.js";
-import { resolverModuloRevision } from "./engine/moduleReview.js";
+import { cargarListaModulos, cargarModulo, moduloIdActivo, manifiestoActivo, rutaDeManifiesto } from "./engine/moduleLoader.js";
+import { resolverModuloRevision, resolverEscenaRevision } from "./engine/moduleReview.js";
 
 const appEl = document.getElementById("app");
 const scenario = document.getElementById("scenario");
@@ -192,6 +192,16 @@ async function iniciarAplicacion() {
     const moduleIdRevision = resolverModuloRevision(window.location.search, registro);
     if (moduleIdRevision) {
       await cargarModulo(moduleIdRevision);
+      const escenaDirecta = resolverEscenaRevision(window.location.search, manifiestoActivo());
+      if (escenaDirecta) {
+        const response = await fetch(rutaDeManifiesto("characters"));
+        if (!response.ok) throw new Error(`No se pudieron cargar los personajes (${response.status}).`);
+        const personajes = (await response.json()).pregenerados;
+        if (!personajes?.length) throw new Error("El módulo no declara personajes para la revisión directa.");
+        iniciarPartida(personajes, personajes[0].id);
+        cambiarEscena(escenaDirecta);
+        return;
+      }
       cambiarEscena("menu");
       return;
     }

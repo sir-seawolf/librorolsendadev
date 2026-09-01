@@ -70,6 +70,6 @@ export function construirSnapshotUI(session, adapter, actorIdParaFicha = session
     modoMoverActivo: !!extra.modoMoverActivo,
     resumen: resumenCompacto(session, actorActivo, activation),
     ficha: fichaCompleta(actorFicha),
-    catalogo: session.currentActorId ? construirCatalogoAcciones({ session, adapter, actorId: session.currentActorId }) : { familias: { ofensivas: [], tacticas: [], defensivas: [] }, contextuales: [] }
+    catalogo: session.currentActorId ? construirCatalogoAcciones({ session, adapter, actorId: session.currentActorId, cadenciaData: extra.cadenciaData }) : { familias: { ofensivas: [], tacticas: [], defensivas: [] }, contextuales: [] }
   };
 }

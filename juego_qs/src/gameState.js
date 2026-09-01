@@ -73,6 +73,8 @@ function municionInicialDesdeArma(arma) {
 
 function crearRuntimeDesdeBase(base) {
   const inventario = [...base.equipo];
+  const inventarioRefs = inventario.map((_, indice) => base.equipoIds?.[indice] ?? null);
+  const inventarioInstancias = inventario.map((_, indice) => `${base.id}:${indice}:${inventarioRefs[indice] ?? "item"}`);
   return {
     baseId: base.id,
     base,                                       // referencia de solo lectura a characters.json
@@ -80,6 +82,12 @@ function crearRuntimeDesdeBase(base) {
     vidaActual: { ...base.niveles },
     puntosEpicosActuales: base.puntosEpicos,
     inventario,
+    // Identificador de definición alineado por instancia con `inventario`.
+    // El texto sigue siendo presentación; las reglas solo podrán enlazar un
+    // objeto cuando el módulo declare este id estable de forma explícita.
+    inventarioRefs,
+    inventarioInstancias,
+    recursosEquipo: {},
     equipoEstados: inventario.map(item => estadoInicialDeEquipo(base, item)),
     estadoDisponibilidad: "disponible",          // disponible | separado | herido | inconsciente | ocupado | ausente
     municion: municionInicialDesdeArma(base.arma),
@@ -108,6 +116,17 @@ function asegurarEquipoEstado(miembro) {
     miembro.equipoEstados.push(estadoInicialDeEquipo(miembro.base, inventario[indice]));
   }
   miembro.equipoEstados.length = inventario.length;
+
+  if (!Array.isArray(miembro.inventarioRefs)) miembro.inventarioRefs = [];
+  while (miembro.inventarioRefs.length < inventario.length) miembro.inventarioRefs.push(null);
+  miembro.inventarioRefs.length = inventario.length;
+  if (!Array.isArray(miembro.inventarioInstancias)) miembro.inventarioInstancias = [];
+  while (miembro.inventarioInstancias.length < inventario.length) {
+    const indice = miembro.inventarioInstancias.length;
+    miembro.inventarioInstancias.push(`legacy:${miembro.baseId}:${indice}:${miembro.inventarioRefs[indice] ?? "item"}`);
+  }
+  miembro.inventarioInstancias.length = inventario.length;
+  miembro.recursosEquipo ||= {};
 }
 
 // Migración de saves anteriores a esta iteración (punto 26 del encargo):
@@ -169,11 +188,58 @@ export function estadoEquipoDe(miembroId, item, indice = -1) {
   return miembro.equipoEstados[posicion] ?? null;
 }
 
+export function referenciaEquipoDe(miembroId, item, indice = -1) {
+  const miembro = obtenerMiembro(miembroId);
+  if (!miembro || !miembro.inventario.includes(item)) return null;
+  asegurarEquipoEstado(miembro);
+  const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
+  return miembro.inventarioRefs[posicion] ?? null;
+}
+
+export function equipamientoActivoDe(miembroId, prefijo) {
+  const miembro = obtenerMiembro(miembroId);
+  if (!miembro) return [];
+  asegurarEquipoEstado(miembro);
+  return miembro.inventario.flatMap((item, indice) => {
+    const referencia = miembro.inventarioRefs[indice];
+    const estado = miembro.equipoEstados[indice];
+    if (!referencia?.startsWith(`${prefijo}:`) || !["equipado", "en_uso"].includes(estado)) return [];
+    const instanciaId = miembro.inventarioInstancias[indice];
+    return [{ item, indice, referencia, estado, instanciaId, recursos: miembro.recursosEquipo[instanciaId] ?? null }];
+  });
+}
+
+export function actualizarRecursosEquipo(miembroId, instanciaId, recursos) {
+  const miembro = obtenerMiembro(miembroId);
+  if (!miembro || !instanciaId || !miembro.inventarioInstancias?.includes(instanciaId) || !recursos || typeof recursos !== "object") return false;
+  asegurarEquipoEstado(miembro);
+  miembro.recursosEquipo[instanciaId] = structuredClone(recursos);
+  const referencia = miembro.inventarioRefs[miembro.inventarioInstancias.indexOf(instanciaId)];
+  const mismaDefinicionBase = referencia?.split(":")[1] === miembro.base?.arma?.equipoId?.split(":")[1];
+  if (mismaDefinicionBase && recursos.municion) {
+    miembro.municion = { ...recursos.municion };
+  }
+  notificarFicha();
+  guardar();
+  return true;
+}
+
 export function establecerEstadoEquipo(miembroId, item, estado, indice = -1) {
   const miembro = obtenerMiembro(miembroId);
   if (!miembro || !miembro.inventario.includes(item) || !ESTADOS_EQUIPO.has(estado)) return false;
   asegurarEquipoEstado(miembro);
   const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
+  const referencia = miembro.inventarioRefs[posicion];
+  if (["equipado", "en_uso"].includes(estado) && referencia) {
+    const categoria = referencia.split(":", 1)[0];
+    if (["ranged", "melee", "armor"].includes(categoria)) {
+      miembro.inventarioRefs.forEach((otraReferencia, otraPosicion) => {
+        if (otraPosicion !== posicion && otraReferencia?.startsWith(`${categoria}:`) && ["equipado", "en_uso"].includes(miembro.equipoEstados[otraPosicion])) {
+          miembro.equipoEstados[otraPosicion] = "guardado";
+        }
+      });
+    }
+  }
   miembro.equipoEstados[posicion] = estado;
   notificarFicha();
   guardar();
@@ -189,8 +255,15 @@ export function transferirEquipo(origenId, destinoId, item, indiceOrigen = -1) {
   asegurarEquipoEstado(destino);
   origen.inventario.splice(indice, 1);
   origen.equipoEstados.splice(indice, 1);
+  const referencia = origen.inventarioRefs.splice(indice, 1)[0] ?? null;
+  const instanciaId = origen.inventarioInstancias.splice(indice, 1)[0];
+  const recursos = instanciaId ? origen.recursosEquipo[instanciaId] : null;
+  if (instanciaId) delete origen.recursosEquipo[instanciaId];
   destino.inventario.push(item);
   destino.equipoEstados.push("guardado");
+  destino.inventarioRefs.push(referencia);
+  destino.inventarioInstancias.push(instanciaId ?? `transfer:${destino.baseId}:${destino.inventario.length - 1}:${referencia ?? "item"}`);
+  if (recursos) destino.recursosEquipo[destino.inventarioInstancias.at(-1)] = recursos;
   notificarFicha();
   guardar();
   return true;

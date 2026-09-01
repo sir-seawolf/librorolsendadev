@@ -60,6 +60,9 @@ export const predatorTacticalEncounter = {
   // naves/vehículos/unidades (no desarrollados todavía). Ningún otro
   // encuentro ni módulo activa este valor.
   renderer: "phaser-tactical-isometric",
+  ui: {
+    locationLabel: "Callejón de servicio · Sector N-5.2"
+  },
 
   // Battlefield: sin coordenadas en la fuente legacy (la cobertura real
   // es un nivel entero por combatiente, no un objeto en el mundo) --
@@ -83,7 +86,44 @@ export const predatorTacticalEncounter = {
       // DIGITAL_SPATIAL_ADAPTATION -- ver audit §7. No aparece en
       // coberturaDisponible de encuentro_perseguidores_01.json.
       { id: "muro_callejon", type: "total", nombre: "Esquina del callejón", x: 15.5, y: 0, width: 1, height: 4.5 }
-    ]
+    ],
+    terrainConfig: { costeAscensoPorMetro: 0.75 },
+    terrainZones: [
+      // Las manchas blandas se pegan a los márgenes de circulación; no
+      // compiten con los combatientes ni se leen como props arrojados.
+      { id: "charco_carga", type: "puddle", label: "Charco aceitoso", asset: "puddle", x: 4.7, y: 7.65, width: 2.7, height: 1.15, widthMeters: 2.75, movementMultiplier: 1.5, elevationMeters: 0, depth: 1, originY: 0.5, alpha: 0.78 },
+      { id: "escombro_humedo", type: "debris", label: "Escombros y maleza", asset: "debris", x: 5.4, y: 2.4, width: 2.2, height: 1.05, widthMeters: 2.15, movementMultiplier: 1.35, elevationMeters: 0, depth: 2, originY: 0.55, alpha: 0.7 },
+      // La plataforma pertenece al muelle del perímetro. El ejecutor 4
+      // ocupa su superficie: altura, cobertura y figura cuentan la misma
+      // historia espacial en vez de ser capas independientes.
+      { id: "plataforma_carga", structureId: "perimetro_servicio", attachedToExitId: "salida_seguridad", occupantIds: ["ejecutor_4"], type: "platform", label: "Muelle elevado", asset: "platform", x: 10.7, y: 2.55, width: 4.1, height: 2.55, widthMeters: 4.05, movementMultiplier: 1.1, elevationMeters: 0.6, depthOffset: -3, originY: 0.82 }
+    ],
+    visuals: {
+      walls: [
+        // Toda la escenografía vive en metros del tablero. Así conserva
+        // su relación con actores y cobertura en cualquier viewport.
+        { structureId: "perimetro_servicio", asset: "straight", x: 5.8, y: 2.7, widthMeters: 5.4, originY: 0.88 },
+        { structureId: "perimetro_servicio", asset: "corner", x: 10.4, y: 1.2, widthMeters: 5.1, originY: 0.88 }
+      ],
+      props: [
+        { asset: "crates", obstacleId: "cajas", widthMeters: 1.55 },
+        { asset: "barrier", obstacleId: "contenedor", widthMeters: 1.6 }
+      ],
+      exits: [
+        { id: "salida_seguridad", structureId: "perimetro_servicio", asset: "security", state: "closed", x: 15.4, y: 0.6, widthMeters: 4.35, originY: 0.9 }
+      ]
+    },
+    atmosphere: {
+      ambientTint: 0x071116,
+      ambientAlpha: 0.2,
+      reducedGridAlpha: 0.13,
+      lights: [
+        { x: 15.2, y: 1.1, color: 0x8adcf0, radiusMeters: 3.8, intensity: 0.13, pulse: 0.018 },
+        { x: 6.2, y: 3.2, color: 0xe5ad5a, radiusMeters: 2.6, intensity: 0.09, pulse: 0.014 },
+        { x: 12.2, y: 8.4, color: 0xe5ad5a, radiusMeters: 2.2, intensity: 0.075, pulse: 0.012 }
+      ],
+      particles: { type: "dust", count: 18, color: 0xaec4c9, alpha: 0.16, driftPx: 22, durationMs: 5200 }
+    }
   },
 
   actors: {
@@ -95,7 +135,7 @@ export const predatorTacticalEncounter = {
         // ligera real (2).
         id: "kova", nombre: "Kova", x: 3, y: 9, esPJ: false,
         habilidadDisparo: 48, habilidadCC: 57, habilidadEsquivar: 43, blindaje: 2,
-        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana" },
+        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana", cadenciaMax: "fuegoSostenido" },
         armaCC: { nombre: "Machete", danioBase: 4, fuerzaMinima: 40, tamano: "pequena" },
         municion: { primaria: MUNICION(30, 60) },
         ...VIDA_PARTY(20)
@@ -108,7 +148,7 @@ export const predatorTacticalEncounter = {
         // especialista, sin zonas).
         id: "bishop", nombre: "Bishop", x: 3, y: 6, esPJ: false,
         habilidadDisparo: 45, habilidadCC: 37, habilidadEsquivar: 40, blindaje: 0,
-        armaPrimaria: { nombre: "Pistola pequeña", danioBase: 3, penetracion: 0, tamano: "pequena" },
+        armaPrimaria: { nombre: "Pistola pequeña", danioBase: 3, penetracion: 0, tamano: "pequena", cadenciaMax: "tiroATiro" },
         armaCC: { nombre: "Sin arma CC", danioBase: 0, fuerzaMinima: 0, tamano: "pequena" },
         municion: { primaria: MUNICION(12, 24) },
         ...VIDA_PARTY(15)
@@ -119,7 +159,7 @@ export const predatorTacticalEncounter = {
         // especialista).
         id: "salim", nombre: "Salim", x: 3, y: 3, esPJ: false,
         habilidadDisparo: 38, habilidadCC: 32, habilidadEsquivar: 33, blindaje: 0,
-        armaPrimaria: { nombre: "Pistola pequeña", danioBase: 3, penetracion: 0, tamano: "pequena" },
+        armaPrimaria: { nombre: "Pistola pequeña", danioBase: 3, penetracion: 0, tamano: "pequena", cadenciaMax: "tiroATiro" },
         armaCC: { nombre: "Sin arma CC", danioBase: 0, fuerzaMinima: 0, tamano: "pequena" },
         municion: { primaria: MUNICION(12, 24) },
         ...VIDA_PARTY(16)
@@ -145,7 +185,7 @@ export const predatorTacticalEncounter = {
         // tacticalAI.js respeta la ausencia genéricamente: estos
         // ejecutores nunca reciben la opción EVASIVE_MOVEMENT.
         habilidadDisparo: 35, habilidadCC: 35, blindaje: 2,
-        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana" },
+        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana", cadenciaMax: "fuegoSostenido" },
         armaCC: { nombre: "Machete", danioBase: 4, fuerzaMinima: 40, tamano: "pequena" },
         municion: { primaria: MUNICION(40, 60) },
         ...VIDA_ENEMIGO_POOL_UNICO(18) },
@@ -160,7 +200,7 @@ export const predatorTacticalEncounter = {
         // tacticalAI.js respeta la ausencia genéricamente: estos
         // ejecutores nunca reciben la opción EVASIVE_MOVEMENT.
         habilidadDisparo: 35, habilidadCC: 35, blindaje: 2,
-        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana" },
+        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana", cadenciaMax: "fuegoSostenido" },
         armaCC: { nombre: "Machete", danioBase: 4, fuerzaMinima: 40, tamano: "pequena" },
         municion: { primaria: MUNICION(40, 60) },
         ...VIDA_ENEMIGO_POOL_UNICO(18) },
@@ -175,11 +215,11 @@ export const predatorTacticalEncounter = {
         // tacticalAI.js respeta la ausencia genéricamente: estos
         // ejecutores nunca reciben la opción EVASIVE_MOVEMENT.
         habilidadDisparo: 35, habilidadCC: 35, blindaje: 2,
-        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana" },
+        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana", cadenciaMax: "fuegoSostenido" },
         armaCC: { nombre: "Machete", danioBase: 4, fuerzaMinima: 40, tamano: "pequena" },
         municion: { primaria: MUNICION(40, 60) },
         ...VIDA_ENEMIGO_POOL_UNICO(18) },
-      { id: "ejecutor_4", nombre: "Ejecutor corporativo 4", x: 11, y: 3, esPJ: false,
+      { id: "ejecutor_4", nombre: "Ejecutor corporativo 4", x: 12.75, y: 3.8, esPJ: false,
         // habilidadEsquivar OMITIDA por DISEÑO (decisión de autor
         // cerrada en Phase 4, ver docs/TACTICAL_PRODUCTION_PHASE4.md):
         // los Ejecutores MORT de este encuentro no tienen esquiva --
@@ -190,7 +230,7 @@ export const predatorTacticalEncounter = {
         // tacticalAI.js respeta la ausencia genéricamente: estos
         // ejecutores nunca reciben la opción EVASIVE_MOVEMENT.
         habilidadDisparo: 35, habilidadCC: 35, blindaje: 2,
-        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana" },
+        armaPrimaria: { nombre: "Subfusil", danioBase: 5, penetracion: 0, tamano: "mediana", cadenciaMax: "fuegoSostenido" },
         armaCC: { nombre: "Machete", danioBase: 4, fuerzaMinima: 40, tamano: "pequena" },
         municion: { primaria: MUNICION(40, 60) },
         ...VIDA_ENEMIGO_POOL_UNICO(18) }
@@ -215,15 +255,52 @@ export const predatorTacticalEncounter = {
 
   assets: {
     moduleRoot: "modules/predator_n52",
-    battlefield: null, // sin arte de fondo táctico todavía
+    battlefield: "assets/generated/tactical_battlefield_warehouse_v1.png",
+    scene: {
+      floor: "assets/generated/tactical/floor_concrete_cc0_v1.jpg",
+      walls: {
+        straight: "assets/generated/tactical/wall_straight_v1.png",
+        corner: "assets/generated/tactical/wall_corner_v1.png"
+      },
+      props: {
+        crates: "assets/generated/tactical/prop_crates_v1.png",
+        barrier: "assets/generated/tactical/prop_barrier_v1.png"
+      },
+      terrain: {
+        puddle: "assets/generated/tactical/terrain_puddle_v1.png",
+        debris: "assets/generated/tactical/terrain_debris_weeds_v1.png",
+        platform: "assets/generated/tactical/terrain_platform_v1.png"
+      },
+      exits: {
+        security: {
+          closed: "assets/generated/tactical/door_closed_v1.png",
+          open: "assets/generated/tactical/door_open_v2.png"
+        }
+      }
+    },
     actors: {
+      kova: { idle: "assets/generated/sprites/kova_tactical.png" },
+      bishop: { idle: "assets/generated/sprites/bishop_tactical.png" },
+      salim: { idle: "assets/generated/sprites/salim_tactical.png" },
+      // La presentación conserva la premisa: son perseguidores humanos y
+      // anónimos. La afiliación real no se codifica en el arte ni se revela
+      // antes de que el módulo active su flag narrativo.
+      ejecutor_1: { idle: "assets/generated/sprites/executor_human_idle_v1.png", hurt: "assets/generated/sprites/executor_human_hurt_v2.png", down: "assets/generated/sprites/executor_human_down_v2.png" },
+      ejecutor_2: { idle: "assets/generated/sprites/executor_human_idle_v1.png", hurt: "assets/generated/sprites/executor_human_hurt_v2.png", down: "assets/generated/sprites/executor_human_down_v2.png" },
+      ejecutor_3: { idle: "assets/generated/sprites/executor_human_idle_v1.png", hurt: "assets/generated/sprites/executor_human_hurt_v2.png", down: "assets/generated/sprites/executor_human_down_v2.png" },
+      ejecutor_4: { idle: "assets/generated/sprites/executor_human_idle_v1.png", hurt: "assets/generated/sprites/executor_human_hurt_v2.png", down: "assets/generated/sprites/executor_human_down_v2.png" }
+    },
+    portraits: {
       kova: "assets/characters/kova.png",
       bishop: "assets/characters/bishop.png",
-      salim: "assets/characters/salim.png",
-      ejecutor_1: "assets/generated/sprites/executor_front.png",
-      ejecutor_2: "assets/generated/sprites/executor_front.png",
-      ejecutor_3: "assets/generated/sprites/executor_front.png",
-      ejecutor_4: "assets/generated/sprites/executor_front.png"
+      salim: "assets/characters/salim.png"
+    },
+    ui: {
+      actionFamilies: {
+        ofensivas: "assets/generated/weapons/weapon_smg_side.png",
+        tacticas: "assets/generated/ui/ui_alert.png",
+        defensivas: "assets/generated/ui/ui_armor.png"
+      }
     },
     fxProfile: "industrial"
   },

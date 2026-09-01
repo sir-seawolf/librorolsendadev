@@ -39,8 +39,8 @@
   "devEntryPoints": [
     {
       "id": "combate_inicial",
-      "label": "Prueba de interfaz táctica",
-      "nota": "Entrada directa de revisión para validar el tablero, la asignación de control, la ficha compacta y las familias de acciones sin recorrer antes el flujo narrativo. El motor sigue cargando encuentro y recursos desde el JSON normal del módulo."
+      "label": "Encuentro: callejón de servicio",
+      "nota": "Entrada directa al encuentro jugable del callejón. Carga el mismo escenario, reglas y recursos del recorrido narrativo."
     },
     {
       "id": "callejon_panoramico_piloto",

@@ -16,3 +16,14 @@ export function resolverModuloRevision(search, registro = []) {
   if (!entrada?.enabled || !ESTADOS_REVISABLES.has(entrada.status)) return null;
   return moduleId;
 }
+
+// Entrada directa a una experiencia revisable. Solo admite escenas que el
+// propio manifiesto haya publicado como devEntryPoints: la URL no puede
+// inventar rutas ni saltar a contenido interno arbitrario.
+export function resolverEscenaRevision(search, manifest = {}) {
+  const params = new URLSearchParams(search || "");
+  if (params.get("review") !== "1") return null;
+  const sceneId = params.get("scene") || "";
+  if (!ID_SEGURO.test(sceneId)) return null;
+  return (manifest.devEntryPoints || []).some(entry => entry?.id === sceneId) ? sceneId : null;
+}

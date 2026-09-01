@@ -35,7 +35,7 @@ export function toQsActor(actorConfig) {
 // nunca se calcula aquí (punto 23: no restar cobertura manualmente en
 // Phaser). exitosDefensa se inyecta aparte por el caller (defensa activa
 // CC del objetivo, si la declaró en su actuación anterior).
-export function toQsAttackIntent(attackerConfig, targetConfig, { cc = false } = {}) {
+export function toQsAttackIntent(attackerConfig, targetConfig, { cc = false, modoFuego = "tiroATiro", cadenciaBonus = 0 } = {}) {
   if (cc) {
     return {
       type: "ATTACK", cc: true,
@@ -47,8 +47,9 @@ export function toQsAttackIntent(attackerConfig, targetConfig, { cc = false } = 
   }
   const arma = armaActivaDe(attackerConfig);
   return {
-    type: "ATTACK",
+    type: modoFuego === "rafaga" ? "BURST" : "ATTACK",
     habilidadBase: attackerConfig.habilidadDisparo,
+    cadenciaBonus,
     penetracion: arma.penetracion ?? 0,
     blindajeObjetivo: targetConfig.blindaje,
     danioBase: arma.danioBase

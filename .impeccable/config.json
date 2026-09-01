@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "senda_estilo.css"
+        ],
+        "createdAt": "2026-09-01T18:38:16.409Z",
+        "reason": "pg-grid es una cuadricula tactica en blanco para que los jugadores dibujen posiciones a mano en la ficha de personaje pregenerado -- superficie de dibujo real, no decoracion (excepcion que la propia regla contempla)."
+      }
+    ]
+  }
+}

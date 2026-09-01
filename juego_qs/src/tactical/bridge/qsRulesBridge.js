@@ -33,7 +33,7 @@ import {
 import { valorCobertura } from "../../rules/cover.js";
 import { penalizadorPorNivel } from "../../rules/woundPenalty.js";
 import { nivelHeridaDe } from "../../gameState.js";
-import { tirarIniciativa, ordenDeActuacion } from "../../combat/combat.js";
+import { tirarIniciativa, ordenDeActuacion, modificadorCadencia } from "../../combat/combat.js";
 import { claveQsDeNivelSpatial } from "./coverTranslation.js";
 
 // Ampliación de superficie para el Vertical Slice (punto "combate jugable
@@ -55,7 +55,7 @@ export {
   COSTO_MUNICION, TAMANO_ACCIONES, costeAccionesPorTamano, avanzarProgreso, cambiarArma,
   validarDivisionDefensiva, resolverDefensaDividida, resolverEsquivaTotal, resolverMovimientoEvasivo,
   penalizadorPorNivel, nivelHeridaDe,
-  tirarIniciativa, ordenDeActuacion
+  tirarIniciativa, ordenDeActuacion, modificadorCadencia
 };
 
 /**
@@ -75,7 +75,7 @@ export {
  * @param {{level:string, canAttack:boolean, source:string|null}|null} [spatialContext] - resultado de SpatialCoverAdapter.getCover()
  */
 export function validateIntent(actor, intent, activation, spatialContext = null) {
-  if (intent.type === "ATTACK" && spatialContext && spatialContext.canAttack === false) {
+  if ((intent.type === "ATTACK" || intent.type === "BURST") && spatialContext && spatialContext.canAttack === false) {
     return { valid: false, reasons: ["TARGET_FULLY_COVERED"] };
   }
   return qsValidateIntent(actor, intent, activation);
