@@ -15,36 +15,21 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El ascensor de los trece minutos"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#reparto-y-relaciones">Reparto y relaciones</a></li><li class="toc-h3"><a href="#sira-venn-coordinadora-de-incidencias-urbanas">Sira Venn — coordinadora de incidencias urbanas</a></li><li class="toc-h3"><a href="#maestra-erea-sal-examinadora-de-portales">Maestra Erea Sal — examinadora de portales</a></li><li class="toc-h3"><a href="#vess-kalar-y-otho-bray-tecnicos-de-transito">Vess Kalar y Otho Bray — técnicos de tránsito</a></li><li class="toc-h3"><a href="#iker-solans-pasajero-desaparecido">Iker Solans — pasajero desaparecido</a></li><li class="toc-h3"><a href="#mira-tenn-la-persona-adicional">Mira Tenn — la persona adicional</a></li><li class="toc-h3"><a href="#dos-maquinas-de-mantenimiento-antiguas">Dos máquinas de mantenimiento antiguas</a></li><li class="toc-h3"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-trece-minutos-tarde">Escena 1 — Trece minutos tarde</a></li><li class="toc-h3"><a href="#escena-2-ocho-relatos-del-mismo-trayecto">Escena 2 — Ocho relatos del mismo trayecto</a></li><li class="toc-h3"><a href="#escena-3-billete-al-nivel-que-no-existe">Escena 3 — Billete al nivel que no existe</a></li><li class="toc-h3"><a href="#escena-4-la-plataforma-olvidada">Escena 4 — La plataforma olvidada</a></li><li class="toc-h3"><a href="#escena-5-mantener-abierta-la-ciudad">Escena 5 — Mantener abierta la ciudad</a></li><li class="toc-h3"><a href="#textos-para-leer">Textos para leer</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#las-dos-voces">Las Dos Voces</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO — El ascensor de los trece minutos</h1>
 <p><em>Colección de one-shots de MadCity — episodio 3 de 6. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -53,7 +38,7 @@
 <p><img alt="La cabina de la Línea Vertical 25 detenida entre niveles, ocho pasajeros visibles, la ciudad cayendo en vertical a ambos lados" src="img/madcity_ascensor_linea25_cabina.png" /><br />
 <em>Nivel 734. Detenida entre niveles. Para los de dentro, ya han pasado horas.</em></p>
 <hr />
-<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<h2>Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> una cabina de la Línea Vertical 25 desaparece de los registros durante trece minutos y reaparece con ocho pasajeros — uno de ellos no es de los que subieron. Para los que estaban dentro, no pasaron trece minutos: pasaron varias horas. La cabina fue desviada, por una reparación barata e incompatible, a un antiguo bucle de servicio conectado a infraestructura de tránsito que ya no figura en ningún plano público. Un pasajero bajó a buscar ayuda y sigue allí. La cabina volverá a entrar en el bucle cuando complete su siguiente ciclo — y esta vez, quien esté dentro puede no salir en trece minutos.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas. Todo el módulo ocurre en un radio muy pequeño: una cabina, una estación, y una plataforma aislada al otro lado del bucle. Deliberadamente cerrado — nada de plazas ni persecuciones abiertas.</p>
 <p><strong>Qué saben los PJ:</strong> que una cabina de la Línea 25 ha reaparecido tarde, que los pasajeros cuentan historias que no encajan entre sí, y que hay una persona de más a bordo que nadie recuerda haber visto subir.</p>
@@ -61,7 +46,7 @@
 <p><strong>Objetivo inmediato:</strong> encontrar al pasajero desaparecido y decidir qué hacer con la Línea 25 antes de que la cabina complete su siguiente ciclo y vuelva a entrar en el bucle.</p>
 <p><strong>Pregunta de fondo:</strong> ¿cuánto vale mantener abierta una ruta que ya ha demostrado que puede tragarse a alguien?</p>
 <p><strong>Si nadie interviene:</strong> la cabina completa su ciclo y vuelve a entrar en el bucle con quien esté dentro en ese momento. Sira cierra la línea por precaución en cuanto lo confirma — la ciudad pierde acceso a varios niveles durante horas, y el pasajero desaparecido sigue sin ser encontrado.</p>
-<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<h3>Desarrollo en cinco escenas</h3>
 <ol>
 <li>Trece minutos tarde — reaparición, pasajeros, contradicciones y urgencia pública.</li>
 <li>Ocho relatos del mismo trayecto — reconstruir lo ocurrido y detectar la reparación incompatible.</li>
@@ -70,7 +55,7 @@
 <li>Mantener abierta la ciudad — decidir el futuro de la Línea 25.</li>
 </ol>
 <hr />
-<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Reloj — noventa minutos hasta el siguiente ciclo completo:</strong></p>
 <table>
 <thead>
@@ -151,19 +136,19 @@
 </tbody>
 </table>
 <hr />
-<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
-<h3 id="verdad-completa">Verdad completa</h3>
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
 <p>Una reparación barata e incompatible en el sistema de tránsito de la cabina reactivó, sin que nadie lo supiera, un antiguo bucle de servicio: una geometría de tránsito construida en una fase anterior de MadCity, conectada a infraestructura de tránsito obsoleta que ya no figura en los planos públicos actuales. No es magia, no es un portal del Magisterio, no es viaje en el tiempo en sentido estricto — es una ruta que existía y que la ciudad olvidó cerrar del todo.</p>
 <p>Para los ocho pasajeros originales, el trayecto duró varias horas subjetivas dentro del bucle, aunque en el registro oficial de la Línea 25 solo pasaron trece minutos. Uno de ellos, Iker Solans, bajó de la cabina durante ese tiempo para buscar ayuda o una salida, y quedó atrás cuando el bucle se cerró de nuevo.</p>
 <p>Mira Tenn vive y trabaja en una plataforma de mantenimiento aislada dentro de ese mismo bucle — un resto de infraestructura de tránsito que quedó atrapado ahí hace tiempo, con su propia rutina y sus propios recursos. Cuando la cabina llegó, aprovechó la oportunidad para subir. No engañó a nadie ni ocultó su intención más allá de no explicarse en el pánico del momento.</p>
 <p>La cabina completará otro ciclo mientras la reparación incompatible siga activa, y volverá a entrar en el bucle. Cada vez que lo haga, corre el riesgo de repetir lo mismo — o de no volver a salir del todo.</p>
-<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
+<h3>Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si el bucle es peligroso de verdad o simplemente extraño — eso se juega en las Escenas 3 y 4, no antes.</p>
-<h3 id="tono">Tono</h3>
+<h3>Tono</h3>
 <p>Cerrado, tenso, ligeramente inquietante — más silencio que acción. Nadie levanta la voz salvo por miedo genuino. El peligro es la desorientación y el tiempo, no un enemigo con rostro.</p>
 <hr />
-<h2 id="reparto-y-relaciones">Reparto y relaciones</h2>
-<h3 id="sira-venn-coordinadora-de-incidencias-urbanas">Sira Venn — coordinadora de incidencias urbanas</h3>
+<h2>Reparto y relaciones</h2>
+<h3>Sira Venn — coordinadora de incidencias urbanas</h3>
 <p><em>Aspecto:</em> habla mientras revisa tres pantallas a la vez, letra apretada en una tablilla de notas, ojeras de quien ha dormido mal toda la semana antes de que esto pasara.</p>
 <p>PNJ interpretable (3-4 profesiones), compartida con el resto de la colección. Deriva problemas a equipos externos cuando los servicios de MadCity están saturados o una jurisdicción se solapa con otra.</p>
 <p>F20/A30/P50/V40 | PV 11/11/11 | Bld 0 | Gestión/Coordinación 60% | Social 45%</p>
@@ -173,7 +158,7 @@
 <li>Falla previsible: confunde cerrar un expediente con resolver el problema humano.</li>
 <li>Sin PJ: cierra la línea por precaución en cuanto confirma el patrón, sin encontrar a Iker.</li>
 </ul>
-<h3 id="maestra-erea-sal-examinadora-de-portales">Maestra Erea Sal — examinadora de portales</h3>
+<h3>Maestra Erea Sal — examinadora de portales</h3>
 <p><em>Aspecto:</em> formal, precisa, uniforme del Magisterio sin una arruga; una llave física le cuelga del cuello aunque su trabajo real abra cerraduras tecnológicas; protección reforzada en el brazo derecho, el que cruza primero. Menos severa de lo que sugiere a primera vista, aunque tarda en mostrarlo.</p>
 <p>PNJ interpretable (6-7 profesiones), compartida con el resto de la colección. Autoridad técnica de la Galería de Puertas — no hace falta excepcional sin necesidad.</p>
 <p>F20/A30/P55/V60 | PV 11/11/11 | Bld 0 | Camino de Portales 70% | Investigación 55% | Voluntad alta (V60, resistente a fenómenos de Distorsión leve)</p>
@@ -183,21 +168,21 @@
 <li>Falla previsible: confía demasiado en el procedimiento cuando alguien conoce el procedimiento y lo manipula.</li>
 <li>Sin PJ: acaba confirmando que no es competencia directa del Magisterio y deja el caso a Sira, con cierto alivio.</li>
 </ul>
-<h3 id="vess-kalar-y-otho-bray-tecnicos-de-transito">Vess Kalar y Otho Bray — técnicos de tránsito</h3>
+<h3>Vess Kalar y Otho Bray — técnicos de tránsito</h3>
 <p>PNJ funcionales (2 profesiones cada uno). Vess hizo la reparación incompatible hace semanas, por presupuesto, sin saber lo que activaba; Otho no tuvo nada que ver y lo sabe, lo que tensa su relación en plena crisis.</p>
 <p>Tecnología/Mecánica 55% cada uno | sin ficha de combate relevante.</p>
 <ul>
 <li>Vess quiere arreglarlo sin que nadie sepa que fue su reparación la que lo causó.</li>
 <li>Otho quiere que la verdad salga, aunque eso hunda a su compañero.</li>
 </ul>
-<h3 id="iker-solans-pasajero-desaparecido">Iker Solans — pasajero desaparecido</h3>
+<h3>Iker Solans — pasajero desaparecido</h3>
 <p><em>Aspecto (solo se ve en la Escena 4):</em> ropa de oficina arrugada tras horas subjetivas perdido, más tranquilo de lo esperable — ha tenido tiempo de asustarse, agotarse, y finalmente calmarse.</p>
 <p>PNJ funcional (1 profesión), sin ficha de combate.</p>
 <ul>
 <li>Quiere volver a casa y que alguien le explique qué le ha pasado realmente.</li>
 <li>No entiende del todo el bucle, pero ha aprendido a moverse por la plataforma sin peligro real.</li>
 </ul>
-<h3 id="mira-tenn-la-persona-adicional">Mira Tenn — la persona adicional</h3>
+<h3>Mira Tenn — la persona adicional</h3>
 <p><em>Aspecto:</em> ropa de trabajo remendada con materiales que no deberían combinar entre sí, mirada de quien lleva mucho tiempo sin ver caras nuevas y no sabe bien cómo reaccionar a ellas.</p>
 <p>PNJ interpretable (3 profesiones). Vive y trabaja en la plataforma de mantenimiento aislada dentro del bucle.</p>
 <p>F25/A35/P45/V40 | PV 13/13/13 | Bld 0 | Mecánica/Supervivencia 55% | Alerta 45%</p>
@@ -206,9 +191,9 @@
 <li>No es una impostora ni una amenaza — aprovechó una oportunidad, no engañó a nadie.</li>
 <li>Falla previsible: desconfía de las explicaciones fáciles sobre por qué de repente alguien viene a "rescatarla".</li>
 </ul>
-<h3 id="dos-maquinas-de-mantenimiento-antiguas">Dos máquinas de mantenimiento antiguas</h3>
+<h3>Dos máquinas de mantenimiento antiguas</h3>
 <p>Sistemas automatizados de la plataforma olvidada, no necesariamente hostiles: mantienen el bucle funcionando de forma rudimentaria. Detección 40%, pueden bloquear accesos o repararse solas frente a los PJ; solo se vuelven un problema si se las daña o se interfiere con su rutina sin cuidado.</p>
-<h3 id="relaciones-para-el-narrador">Relaciones para el Narrador</h3>
+<h3>Relaciones para el Narrador</h3>
 <ul>
 <li>Sira y Erea representan jurisdicciones que se solapan: Sira cree que el Magisterio responde con demasiada lentitud; Erea sabe que una intervención apresurada puede crear un problema mayor.</li>
 <li>Vess teme más perder su licencia técnica que cualquier otra consecuencia.</li>
@@ -216,15 +201,15 @@
 <li>Mira confía en Iker, el único con quien ha hablado de verdad en mucho tiempo dentro del bucle.</li>
 </ul>
 <hr />
-<h2 id="lugares-necesarios">Lugares necesarios</h2>
+<h2>Lugares necesarios</h2>
 <p><strong>El andén de la Línea Vertical 25:</strong> donde reaparece la cabina. Espacio público, pero contenido — pasillos estrechos, pantallas de información, poca gente en comparación con la Plaza del Primer Vuelo.</p>
 <p><strong>La cabina misma:</strong> pequeña, cerrada, con capacidad para ocho pasajeros y poco más. Escenario central de la Escena 1 y del regreso al bucle en la Escena 3.</p>
 <p><strong>Sala de control técnico:</strong> donde Vess y Otho trabajan, con acceso a los registros de mantenimiento.</p>
 <p><strong>La plataforma olvidada:</strong> dentro del bucle. Resto de infraestructura de tránsito antigua, aislada, con la rutina improvisada de Mira y las dos máquinas de mantenimiento.</p>
 <hr />
-<h2 id="las-cinco-escenas">Las cinco escenas</h2>
+<h2>Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3 id="escena-1-trece-minutos-tarde">Escena 1 — Trece minutos tarde</h3>
+<h3>Escena 1 — Trece minutos tarde</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La cabina se abre con un siseo normal, casi decepcionante. Dentro, ocho personas parpadean bajo la luz del andén como si llevaran mucho más que trece minutos sin verla. Una de ellas no debería estar ahí.</p>
@@ -245,7 +230,7 @@
 <blockquote>
 <p>«Han sido trece minutos. Lo dice el panel. ¿Por qué iba a mentir un panel?»</p>
 </blockquote>
-<h3 id="escena-2-ocho-relatos-del-mismo-trayecto">Escena 2 — Ocho relatos del mismo trayecto</h3>
+<h3>Escena 2 — Ocho relatos del mismo trayecto</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Ocho versiones del mismo trayecto, y ninguna coincide del todo. En algún punto entre ellas, la verdad se parece a una geometría rota más que a una historia.</p>
@@ -264,7 +249,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Otho acaba confesando por su cuenta ante Sira, con más lentitud y sin el detalle técnico que un PJ podría aportar.</p>
 <p><strong>Cómo termina:</strong> el grupo sabe qué causó el desvío y cuánto tiempo queda antes del siguiente ciclo.</p>
 <p><strong>Después:</strong> el nivel de detalle conseguido aquí determina si la Escena 3 empieza con un plan claro o con improvisación bajo presión de tiempo.</p>
-<h3 id="escena-3-billete-al-nivel-que-no-existe">Escena 3 — Billete al nivel que no existe</h3>
+<h3>Escena 3 — Billete al nivel que no existe</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La cabina, otra vez cerrada, con solo el grupo dentro. Un siseo distinto al habitual, un instante de más antes de que las puertas terminen de sellarse del todo. El aire se vuelve denso, ligeramente metálico.</p>
@@ -280,8 +265,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> si el grupo no entra deliberadamente, la cabina completa su ciclo igualmente a la hora fijada en el Reloj — con quien esté dentro en ese momento.</p>
 <p><strong>Cómo termina:</strong> el grupo llega a la plataforma olvidada.</p>
 <p><strong>Después:</strong> cómo gestionaron la desorientación aquí (con calma o con pánico) condiciona el tono del primer contacto con Mira en la Escena 4.</p>
-<h3 id="escena-4-la-plataforma-olvidada">Escena 4 — La plataforma olvidada</h3>
-<p><img alt="Mira Tenn trabajando junto a dos máquinas de mantenimiento en una plataforma olvidada de la Línea Vertical 25, suspendida entre vías y pasarelas imposibles" src="img/madcity_ascensor_plataforma_olvidada.png" /></p>
+<h3>Escena 4 — La plataforma olvidada</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Una plataforma de mantenimiento suspendida en una geometría que no debería sostenerse a sí misma. Luces de trabajo improvisadas, una rutina montada con lo que había a mano, y dos personas que llevan más tiempo aquí del que deberían — una de ellas, mucho más tiempo que la otra.</p>
@@ -299,7 +283,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> si el grupo no llega antes del cierre del ciclo (ver Reloj), Iker y Mira quedan atrás otra vez, hasta el siguiente intento.</p>
 <p><strong>Cómo termina:</strong> Iker y Mira están listos para volver con el grupo, o la ventana se cierra y hay que esperar otro ciclo.</p>
 <p><strong>Después:</strong> cómo trataron a Mira aquí (con sospecha o con respeto) condiciona su actitud en la Escena 5.</p>
-<h3 id="escena-5-mantener-abierta-la-ciudad">Escena 5 — Mantener abierta la ciudad</h3>
+<h3>Escena 5 — Mantener abierta la ciudad</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>De vuelta en el andén, con o sin los dos rescatados. Sira, Erea y los técnicos esperan una decisión que en realidad no es solo técnica: es sobre qué tipo de ciudad puede permitirse MadCity ser.</p>
@@ -311,7 +295,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Sira cierra la línea por precaución, afectando a varios niveles durante horas, sin resolver la causa técnica de fondo.</p>
 <p><strong>Cómo termina:</strong> queda decidido el estado final de la Línea 25 y qué le pasa a Vess, a Mira y a la relación de los PJ con las tres jurisdicciones implicadas.</p>
 <p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
-<h3 id="textos-para-leer">Textos para leer</h3>
+<h3>Textos para leer</h3>
 <p><strong>La reaparición</strong></p>
 <blockquote>
 <p>La cabina se abre con un siseo normal, casi decepcionante. Dentro, ocho personas parpadean bajo la luz del andén como si llevaran mucho más que trece minutos sin verla.</p>
@@ -325,7 +309,7 @@
 <p>Luces de trabajo improvisadas suspendidas en una geometría que no debería sostenerse a sí misma. Dos personas que llevan más tiempo aquí del que deberían.</p>
 </blockquote>
 <hr />
-<h2 id="pistas-e-informacion">Pistas e información</h2>
+<h2>Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -363,25 +347,25 @@
 </tbody>
 </table>
 <hr />
-<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
+<h2>Recompensas y gastos</h2>
 <p>La misión no debe dejar a los PJ con pérdidas netas por gastos médicos o equipo dañado — cúbrelo antes de repartir nada más.</p>
 <p><strong>Recompensa económica:</strong> entre 200 y 400 PC por PJ, pagados por la administración de tránsito de MadCity como gestión de incidencia resuelta — no un contrato formal, sino un pago administrativo gestionado por Sira.</p>
 <p><strong>Beneficios alternativos:</strong> contacto directo con Sira para futuras incidencias urbanas; relación con Erea Sal si el Magisterio quedó satisfecho con la gestión; conocimiento de una ruta de mantenimiento poco conocida de la Línea 25; gratitud de Iker, gestionable como favor pequeño más adelante.</p>
 <hr />
-<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
+<h2>Desenlaces combinables</h2>
 <p><strong>Línea reparada.</strong> Vess corrige su error (con o sin consecuencias personales) y la Línea 25 vuelve a funcionar con normalidad. El bucle queda sellado, no destruido — sigue ahí, para quien vuelva a buscarlo.</p>
 <p><strong>Línea cerrada.</strong> Sira cierra la línea por precaución. Varios niveles pierden acceso directo durante días. Solución segura, coste social real.</p>
 <p><strong>Solución temporal.</strong> Se regula el uso de la cabina (menos pasajeros, revisiones frecuentes) mientras se decide una solución definitiva. Ni limpio ni cerrado del todo.</p>
 <p><strong>Mira se queda o se va.</strong> Combinable con cualquiera de los anteriores: Mira puede decidir integrarse en MadCity de nuevo, o pedir quedarse en la plataforma con mejores condiciones si el grupo respeta su elección en vez de "rescatarla" a la fuerza.</p>
 <hr />
-<h2 id="continuidad-opcional">Continuidad opcional</h2>
+<h2>Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de la colección.</li>
 <li><strong>Si se han jugado otros episodios:</strong> reparar la Línea 25 concede rutas y contactos de mantenimiento útiles en otros one-shots de MadCity.</li>
 </ul>
 <p>Ejemplo de puerta abierta: Erea necesita verificar una ruta de portal relacionada, sin que eso implique conquistar su destino — enlace natural hacia cualquier otro DLC con presencia del Magisterio, sin obligar a aceptarlo.</p>
 <hr />
-<h2 id="las-dos-voces">Las Dos Voces</h2>
+<h2>Las Dos Voces</h2>
 <p>Voz satírica en un plano de transporte:</p>
 <blockquote>
 <p>«Todas las líneas llegan a destino. La tarifa por regresar se calcula aparte.»</p>
@@ -392,7 +376,7 @@
 </blockquote>
 <p>Una intervención, no más — ni oráculo ni pista indispensable.</p>
 <hr />
-<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
+<h2>Límites de este módulo</h2>
 <ul>
 <li>No afirmar viaje temporal en sentido estricto salvo decisión posterior del autor.</li>
 <li>No convertir el bucle en acceso secreto a Proctor ni insinuarlo.</li>
@@ -401,10 +385,10 @@
 <li>No revelar ni insinuar el secreto de Proctor.</li>
 </ul>
 <hr />
-<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
+<h2>Resumen para dirigir</h2>
 <p>Reloj de noventa minutos hasta el siguiente ciclo, con tiempos de desplazamiento fijados en el Panel del Narrador. Cinco escenas autosuficientes, deliberadamente cerradas: reaparición → reconstrucción → tránsito desorientador → plataforma aislada → decisión sobre la línea. Sin persecuciones abiertas ni multitudes: el peligro es el espacio pequeño, el tiempo poco fiable, y una decisión sobre qué ciudad puede permitirse ser MadCity.</p>
 <hr />
 <p><em>MadCity — colección de one-shots. Comparte lugares, PNJ y dirección visual con el resto de la colección, sin formar una campaña obligatoria.</em></p>
-</main>
+</div>
 </body>
 </html>

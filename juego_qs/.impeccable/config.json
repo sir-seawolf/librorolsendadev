@@ -1,0 +1,62 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": ".final-expediente",
+        "files": [
+          "src/ui/style.css"
+        ],
+        "createdAt": "2026-08-22T16:14:36.523Z",
+        "reason": "Pre-existing intentional design (Iteración 7.2, documented in the adjacent CSS comment): border-left is the 'franja de cierre' motif for the case-file ending screen, not an accidental AI-tell. Not touched in this session's diff."
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/engine/renderers/panoramic.js"
+        ],
+        "createdAt": "2026-08-22T19:35:02.419Z",
+        "reason": "img#fondo-master y los <img> de objetos/luces se crean vacíos a propósito y reciben su src por JS en la misma función de montaje (mismo patrón que el resto de renderers data-driven del motor, p.ej. narrative.js con background-image); no son placeholders sin completar"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/ui/style.css"
+        ],
+        "createdAt": "2026-08-22T19:44:01.094Z",
+        "reason": ".final-expediente ya documenta en el propio CSS (Iteracion 7.2) que la franja izquierda es una decision deliberada: emula un documento de expediente cerrado, explicitamente en contraste con una card generica con glow. Preexistente, no tocado en este encargo (piloto de Localizacion C)."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/ui/style.css"
+        ],
+        "createdAt": "2026-08-22T19:44:01.237Z",
+        "reason": ".barra-vida-fill (barra de vida de la ficha) es codigo preexistente ajeno al piloto de Localizacion C de este encargo; no se ha tocado ni revisado su rendimiento en esta sesion, fuera de alcance del commit acotado."
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/ui/style.css"
+        ],
+        "createdAt": "2026-08-22T20:27:22.959Z",
+        "reason": "Mismo caso ya reconocido en panoramic.js: el <img id=avatar> se crea vacio a proposito en la plantilla y recibe su src por JS en la misma funcion de montaje (montarPanoramica). No es un placeholder sin completar."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "#app.ficha-superpuesta #sheet-panel",
+        "files": [
+          "src/ui/style.css"
+        ],
+        "createdAt": "2026-08-25T21:09:22.806Z",
+        "reason": "Transicion de ancho del cajon de ficha (150px colapsado / min(320px,86vw) expandido), disparada solo al abrir/cerrar (no en scroll ni en bucle de render); redimensiona un panel de texto real (necesita reflow de contenido, no vale transform:scale sin distorsionar la ficha). Frecuencia e impacto bajos, aceptado como excepcion deliberada."
+      }
+    ]
+  }
+}

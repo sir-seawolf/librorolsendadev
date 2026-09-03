@@ -15,36 +15,21 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El Voto del Equilibrio"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#1-estado">1. Estado</a></li><li class="toc-h2"><a href="#2-nota-inicial-para-el-narrador">2. Nota inicial para el Narrador</a></li><li class="toc-h2"><a href="#3-resumen-operativo-leelo-antes-de-dirigir">3. Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#el-encargo">El encargo</a></li><li class="toc-h3"><a href="#lo-que-realmente-ocurre">Lo que realmente ocurre</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-actos">Desarrollo en cinco actos</a></li><li class="toc-h2"><a href="#4-verdad-completa">4. Verdad completa</a></li><li class="toc-h2"><a href="#5-cronologia-privada">5. Cronología privada</a></li><li class="toc-h2"><a href="#6-el-voto-y-el-monasterio">6. El Voto y el Monasterio</a></li><li class="toc-h3"><a href="#que-significa-el-voto">Qué significa el Voto</a></li><li class="toc-h3"><a href="#el-monasterio-de-los-libros">El Monasterio de los Libros</a></li><li class="toc-h2"><a href="#7-reparto-y-relaciones">7. Reparto y relaciones</a></li><li class="toc-h3"><a href="#hermano-kaito">Hermano Kaito</a></li><li class="toc-h3"><a href="#ren">Ren</a></li><li class="toc-h3"><a href="#axaron">Axarón</a></li><li class="toc-h3"><a href="#hana">Hana</a></li><li class="toc-h3"><a href="#relaciones-claras-para-el-narrador">Relaciones claras para el Narrador</a></li><li class="toc-h2"><a href="#8-matriz-de-pistas">8. Matriz de pistas</a></li><li class="toc-h2"><a href="#9-acto-i-el-mensajero">9. Acto I — El mensajero</a></li><li class="toc-h2"><a href="#10-acto-ii-un-dia-entre-los-libros">10. Acto II — Un día entre los libros</a></li><li class="toc-h2"><a href="#11-acto-iii-el-camino-hacia-el-norte">11. Acto III — El camino hacia el norte</a></li><li class="toc-h3"><a href="#las-terrazas-habitadas">Las terrazas habitadas</a></li><li class="toc-h3"><a href="#la-chatarra-erosionada">La chatarra erosionada</a></li><li class="toc-h3"><a href="#el-paramo-de-la-desesperacion">El Páramo de la Desesperación</a></li><li class="toc-h2"><a href="#12-acto-iv-el-ojo-del-coloso">12. Acto IV — El Ojo del Coloso</a></li><li class="toc-h2"><a href="#13-acto-v-el-regreso-o-la-partida">13. Acto V — El regreso o la partida</a></li><li class="toc-h2"><a href="#14-fichas-funcionales">14. Fichas funcionales</a></li><li class="toc-h2"><a href="#15-recompensas-y-consecuencias">15. Recompensas y consecuencias</a></li><li class="toc-h2"><a href="#16-la-espada-del-cielo-abierto">16. La Espada del Cielo Abierto</a></li><li class="toc-h2"><a href="#17-modulos-existentes-y-posibles">17. Módulos existentes y posibles</a></li><li class="toc-h2"><a href="#18-resumen-final-para-dirigir">18. Resumen final para dirigir</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO — El Voto del Equilibrio</h1>
 <blockquote>
 <p>Aventura para 2-3 sesiones en Mundo Chatarra (El Vertedero) — ver<br />
@@ -54,20 +39,20 @@ como raza jugable).</p>
 </blockquote>
 <p><img alt="Comunidad Bestia junto a canales geotérmicos, terrazas cultivadas e invernaderos de vapor, con maquinaria e industria recuperada tallada en la ladera de la montaña" src="img/mundo_chatarra_monasterio_libros_panorama.png" /><br />
 <em>El Monasterio de los Libros, visto desde sus propias terrazas.</em></p>
-<h2 id="1-estado">1. Estado</h2>
+<h2>1. Estado editorial</h2>
 <p>Segunda edición completa. Reconstrucción íntegra sobre la historia original —conservada como autoridad narrativa—, desarrollada al nivel operativo de los módulos recientes del proyecto y con sus mecánicas alineadas al canon vigente. Pendiente de playtest.</p>
 <p><strong>Duración:</strong> 2-3 sesiones, ampliable | <strong>Nivel:</strong> Inicial/Medio | <strong>Tono:</strong> Misterio filosófico con acción</p>
 <hr />
-<h2 id="2-nota-inicial-para-el-narrador">2. Nota inicial para el Narrador</h2>
+<h2>2. Nota inicial para el Narrador</h2>
 <p>Esto no es una campaña ni una revelación sobre los Precursores: es la historia de un joven monje que interpretó una promesa más grande de la que le hicieron, y del grupo que lo encuentra a tiempo de que la elección todavía sea suya. La Espada del Cielo Abierto no aparece. Hana no tiene asesino que desenmascarar — murió eligiendo salvar a Ren, y esa elección es precisamente lo que él no ha aceptado. Axarón no es un demonio malvado disfrazado de amigo ni una víctima inocente: dijo una verdad literal y dejó que Ren la oyera como una promesa mayor.</p>
 <p>La aventura no dicta una respuesta moral. Puede terminar con Ren de vuelta en el Monasterio, con Ren y Axarón partiendo juntos hacia el norte, con el pacto roto, con el pacto vigilado, o con algo que ni este documento ni los PJ vieron venir.</p>
 <hr />
-<h2 id="3-resumen-operativo-leelo-antes-de-dirigir">3. Resumen operativo — léelo antes de dirigir</h2>
-<h3 id="el-encargo">El encargo</h3>
+<h2>3. Resumen operativo — léelo antes de dirigir</h2>
+<h3>El encargo</h3>
 <p>El Hermano Kaito busca Iniciados capaces de Invocación o Camino de los Portales —disciplinas que los monjes del Monasterio de los Libros no dominan— para encontrar a Ren, un joven monje desaparecido hace 23 días. No es una misión de captura: el Voto del Equilibrio impide al Monasterio declarar enemigo a Ren mientras no exista prueba de que daña a otros. El encargo real es localizarlo, comprobar si actúa libremente, y ofrecerle volver.</p>
-<h3 id="lo-que-realmente-ocurre">Lo que realmente ocurre</h3>
+<h3>Lo que realmente ocurre</h3>
 <p>Ren fue a buscar una huella de la Espada del Cielo Abierto para dar sentido a la muerte de su hermana Hana. En el Ojo del Coloso —una zona dañada que emite Distorsión, no un portal— algo respondió a su intento improvisado de invocación: Axarón, un demonio menor que lleva Ciclos buscando algo que ya no existe. Axarón dijo una verdad literal —«puedo conducirte hasta aquello que buscas»— y dejó que Ren la entendiera como una promesa de recuperar la espada, resucitar a Hana o reparar el pasado. Ninguna de las tres cosas está prometida ni es posible.</p>
-<h3 id="desarrollo-en-cinco-actos">Desarrollo en cinco actos</h3>
+<h3>Desarrollo en cinco actos</h3>
 <ol>
 <li>El mensajero — Kaito localiza a los PJ y explica la desaparición.</li>
 <li>Un día entre los libros — el Monasterio, su gente, la investigación.</li>
@@ -76,14 +61,14 @@ como raza jugable).</p>
 <li>El regreso o la partida — resolución, separada por cada hilo abierto.</li>
 </ol>
 <hr />
-<h2 id="4-verdad-completa">4. Verdad completa</h2>
+<h2>4. Verdad completa</h2>
 <p>Hana, hermana mayor de Ren, murió en el Páramo de la Desesperación durante un accidente real: empujó a Ren fuera de una grieta que se derrumbaba y no logró salir ella misma. No hubo criatura, emboscada ni culpable — eligió salvarlo, y esa elección es el hecho que Ren no ha logrado aceptar. Convertir la pérdida en una búsqueda le resulta más soportable que aceptar que Hana decidió morir por él.</p>
 <p>Ren dejó el Monasterio hace 23 días buscando una huella de <strong>la Espada del Cielo Abierto</strong>, una espada única capaz de cortar barreras, vínculos y caminos imposibles —nunca de resucitar a nadie ni de alterar el pasado. Llegó al Ojo del Coloso e intentó, sin formación real de Invocador, un ritual improvisado: usó su Tatuaje Rúnico y una inscripción copiada de un canal de portal antiguo —gastando un Punto Épico para lograr la copia, no inventándola— como sustituto de un Camino de los Portales que nunca llegó a entrenar. El ritual no invocó nada formalmente. Algo respondió de todos modos.</p>
 <p><strong>Axarón</strong> es «el que busca sin encontrar»: un demonio menor que fue, según su propio origen registrado, Maestro de Portales de nivel 7 hasta que un canal que abrió hacia una tesela colapsada no volvió a cerrarse. Lleva Ciclos siguiendo rastros, objetos y ausencias sin culminar nunca una búsqueda verdadera. A Ren le dijo una verdad literal: <em>«Puedo conducirte hasta aquello que buscas»</em>. Eso no prometía conocer la ubicación exacta de la espada, recuperarla, resucitar a Hana ni reparar el pasado — pero Ren escuchó una promesa mayor de la que Axarón pronunció, y Axarón, que sabía que Ren esperaba más, no lo corrigió porque necesitaba el vínculo para seguir buscando. No es inocente. Tampoco es cruel: puede sentir afecto, orgullo, miedo y curiosidad genuinos por Ren.</p>
 <p>Para sostener su presencia física fuera de la Distorsión, Ren vinculó <strong>1 Punto de Alma</strong>. Ese punto sigue dentro de su Alma total, pero queda inaccesible mientras el vínculo se mantenga — no perdido, bloqueado, exactamente como cualquier Alma vinculada según las reglas vigentes. Si el pacto se deshace correctamente, el punto vuelve a quedar disponible. Si Axarón lo consume o el vínculo se rompe de forma traumática, el Alma total de Ren baja en 1: sus PA máximos pasan de 8 a 7, y si su Humanidad actual supera 7×10=70, desciende hasta 70 — no puede recuperarse por encima de ese techo mientras ese punto separado siga sin recuperarse. Es el mismo procedimiento ya fijado para el drenaje de Alma en otras fuentes del canon; aquí se aplica igual, sin inventar una regla nueva.</p>
 <p>Ren permanece en el Ojo del Coloso porque Axarón ha detectado allí una huella de la espada y puede manifestarse con menor gasto que en cualquier otro punto — no porque el lugar sea un portal que deba cerrarse. Su Deriva subió a 23 durante el intento: cruzó el umbral 10 —primer cambio físico menor, una extrañeza pasajera al volver a un lugar conocido— y después el umbral 20, que le dio <strong>El Ojo que No Cierra</strong> —un tercer ojo cerrado en la frente, rasgo de Deriva ligado a herencia Precursora, no un rasgo racial de las Bestias—: no ve el espectro visible, ve Distorsión, intenciones y mentiras; se abre solo cuando Ren decide, y cuando está abierto todos lo ven.</p>
 <hr />
-<h2 id="5-cronologia-privada">5. Cronología privada</h2>
+<h2>5. Cronología privada</h2>
 <table>
 <thead>
 <tr>
@@ -132,8 +117,8 @@ como raza jugable).</p>
 </table>
 <p>El viaje normal hasta el Ojo del Coloso ronda los catorce días — existen atajos, transporte y ayuda que el grupo puede ganarse en la propia partida, sin que la geografía canónica obligue a otra cifra. Estos hitos ocurren con independencia de que los PJ intervengan; sirven para que el Narrador sepa dónde está el mundo en cada momento, no como cuenta atrás de asalto.</p>
 <hr />
-<h2 id="6-el-voto-y-el-monasterio">6. El Voto y el Monasterio</h2>
-<h3 id="que-significa-el-voto">Qué significa el Voto</h3>
+<h2>6. El Voto y el Monasterio</h2>
+<h3>Qué significa el Voto</h3>
 <p>El Voto del Equilibrio no es neutralidad ni pasividad. Descansa en tres principios:</p>
 <ol>
 <li>Ningún conocimiento debe conservarse sin permitir que algún día sea utilizado.</li>
@@ -142,21 +127,21 @@ como raza jugable).</p>
 </ol>
 <p>El voto concreto que un Bestia hace al abandonar el Norte —no acumular riqueza, no buscar venganza, proteger a los débiles; +5 a Salud Mental mientras se cumple, −10 si se rompe— es la forma práctica de esos tres principios, no una regla distinta. Ren ha quebrado el tercero: está dispuesto a pagar personalmente por su búsqueda, pero también espera que Axarón, la espada o el mundo conviertan la elección de Hana en otra cosa — un sacrificio que le exige al pasado sin haber preguntado si el pasado estaba dispuesto a darlo.</p>
 <p>La aventura no dicta una respuesta moral única. Los PJ pueden ayudar a Ren a aceptar la pérdida, a continuar la búsqueda con prudencia, a mantener el pacto conscientemente, a separarlo del vínculo, o a aceptar un sacrificio definitivo.</p>
-<h3 id="el-monasterio-de-los-libros">El Monasterio de los Libros</h3>
+<h3>El Monasterio de los Libros</h3>
 <p>Una localización viva, no una sala donde se recoge la misión. Se integra en terrazas geotérmicas habitadas por comunidades Bestia: piedra, madera cultivada y metal recuperado; invernaderos calentados por vapor; bibliotecas excavadas en antiguos depósitos industriales, con libros impresos, placas de memoria, relatos orales y máquinas lectoras reparadas; canales calientes, pasarelas, pequeños talleres y huertos. No todos son monjes — hay familias, copistas, agricultores, reparadores, peregrinos, niños y comerciantes. El Voto es su tradición principal, no una religión obligatoria.</p>
 <p>En una pared, una figura burlona roba páginas a una estatua solemne que sostiene el techo que protege a ambas — la expresión local de las Dos Voces. Ninguna de las dos tiene razón fijada.</p>
 <p><strong>El Monasterio sí ha buscado a Ren.</strong> Dos rastreadores siguieron su ruta y regresaron heridos por las primeras emanaciones del Ojo. Kaito investigó y reunió información. El Voto impide declarar enemigo a Ren o arrastrarlo por la fuerza mientras no exista prueba de que daña a otros — por eso el Monasterio busca a alguien de fuera: los PJ aportan independencia, habilidades distintas, y la posibilidad de hablar con Ren sin representar directamente la autoridad que él dejó atrás. Localizarlo, comprobar si actúa libremente y ofrecerle volver es el encargo inicial. Capturarlo no lo es.</p>
 <hr />
-<h2 id="7-reparto-y-relaciones">7. Reparto y relaciones</h2>
-<h3 id="hermano-kaito">Hermano Kaito</h3>
+<h2>7. Reparto y relaciones</h2>
+<h3>Hermano Kaito</h3>
 <p>Sobrio, paciente, humor seco; ordena objetos cuando está nervioso. Quiere encontrar a Ren vivo y evitar un juicio simplista. Le enseñó a copiar y estudiar inscripciones, no a invocar demonios. Teme que el Monasterio deje de tratar a Ren como persona. Respeta la precisión, la prudencia y admitir ignorancia. Puede acompañar como apoyo o quedarse y entregar una carta — nunca resuelve las escenas por los PJ.</p>
-<h3 id="ren">Ren</h3>
+<h3>Ren</h3>
 <p>Agotado, pero lúcido y responsable de sus decisiones. Quiere que la muerte de Hana conduzca a algo valioso. Sospecha que interpretó mal la promesa de Axarón, pero admitirlo lo obligaría a aceptar el duelo. Respeta a quien reconoce el precio de sus propias decisiones. Rechaza la compasión condescendiente y que llamen insensata a Hana. Si lo engañan puede fingir cooperación y escapar; si lo escuchan de verdad, admite dudas; si lo atacan, pide ayuda a Axarón procurando evitar muertes.</p>
-<h3 id="axaron">Axarón</h3>
+<h3>Axarón</h3>
 <p>Delgado; bajo su piel parecen moverse caminos y horizontes. Quiere completar, por primera vez, una búsqueda verdadera. Respeta promesas literales y preguntas precisas. Detesta que se cambie después el significado de las palabras. Puede negociar una nueva formulación de su promesa, mientras siga siendo posible cumplirla. No busca matar a Ren ni devorar su Alma por defecto, pero defenderá su propia existencia — y el Punto de Alma vinculado puede destruirse o consumirse si el vínculo se rompe de forma traumática. Si lo liberan, puede reaparecer en futuras aventuras.</p>
-<h3 id="hana">Hana</h3>
+<h3>Hana</h3>
 <p>No aparece como fantasma ni ofrece instrucciones desde el más allá — no tiene ficha ni escena propia. Existe solo mediante recuerdos, testimonios, registros y emanaciones de Distorsión: Kaito recuerda su paciencia; Ren, su muerte; una viajera de las terrazas, su humor y su imprudencia ocasional; el registro del Monasterio, su competencia y una desobediencia consciente. Capaz, divertida, imprudente a veces, responsable de su propia decisión — nunca una mártir perfecta.</p>
-<h3 id="relaciones-claras-para-el-narrador">Relaciones claras para el Narrador</h3>
+<h3>Relaciones claras para el Narrador</h3>
 <ul>
 <li>Kaito quiere a Ren, pero duda de poder defenderlo ante el Monasterio.</li>
 <li>Ren quiere a Kaito, pero lo asocia con la vida a la que teme regresar.</li>
@@ -167,7 +152,7 @@ como raza jugable).</p>
 </ul>
 <p>Ninguno debe quedar reducido a «sensato», «víctima» o «monstruo».</p>
 <hr />
-<h2 id="8-matriz-de-pistas">8. Matriz de pistas</h2>
+<h2>8. Matriz de pistas</h2>
 <p>Ninguna conclusión importante depende de una sola tirada — cada dato tiene al menos dos accesos.</p>
 <table>
 <thead>
@@ -243,7 +228,7 @@ como raza jugable).</p>
 </table>
 <p>Tres o cuatro pistas bastan para encontrar a Ren; seis permiten comprender el pacto; ocho o más ofrecen casi toda la información — nunca la ubicación de la espada, que este módulo no revela.</p>
 <hr />
-<h2 id="9-acto-i-el-mensajero">9. Acto I — El mensajero</h2>
+<h2>9. Acto I — El mensajero</h2>
 <p><strong>Situación y propósito.</strong> Kaito localiza a los PJ en cualquier mundo donde estén y les ofrece el encargo.</p>
 <p><strong>Lugar.</strong> Cualquier lugar de calma razonable — una posada, un mercado, un momento sin urgencia previa.</p>
 <p><strong>PNJ presentes.</strong> Kaito.</p>
@@ -259,7 +244,7 @@ como raza jugable).</p>
 <p><strong>Si los PJ no intervienen.</strong> Kaito sigue buscando ayuda por otras vías; el Monasterio no manda una expedición armada — el Voto se lo impide sin pruebas de daño.</p>
 <p><strong>Cuándo tirar.</strong> Solo si los PJ activamente vigilan o interrogan a Kaito con desconfianza; la conversación en sí no exige tiradas.</p>
 <hr />
-<h2 id="10-acto-ii-un-dia-entre-los-libros">10. Acto II — Un día entre los libros</h2>
+<h2>10. Acto II — Un día entre los libros</h2>
 <p><strong>Situación y propósito.</strong> Los PJ llegan al Monasterio, investigan la celda de Ren y conocen su gente antes de partir. Da tiempo y textura al mundo antes del viaje.</p>
 <p><strong>Lugar.</strong> El Monasterio de los Libros, con su gramática solarpunk geotérmica: terrazas, invernaderos de vapor, bibliotecas de piedra y metal recuperado.</p>
 <blockquote>
@@ -281,10 +266,10 @@ como raza jugable).</p>
 <p><strong>Formas de participar.</strong> Preguntar, ayudar, observar, o simplemente escuchar — cualquiera de las escenas anteriores basta para dar contexto sin forzar una tirada.</p>
 <p><strong>Cuándo tirar.</strong> Solo si buscan algo oculto en la celda de Ren (Investigar o Alerta, dificultad Normal) — la vida cotidiana no necesita tiradas.</p>
 <hr />
-<h2 id="11-acto-iii-el-camino-hacia-el-norte">11. Acto III — El camino hacia el norte</h2>
+<h2>11. Acto III — El camino hacia el norte</h2>
 <p>Tres tramos concretos, no una tabla de encuentros al azar que sustituya al viaje.</p>
 <p><strong>Sobre las emanaciones.</strong> Los episodios de Distorsión que aparecen en este acto —el recuerdo de Hana, la sombra que no acompaña— son texturas narrativas: aparecen y desaparecen sin subir la Deriva de nadie. Solo una exposición peligrosa expresamente indicada por una regla —permanecer deliberadamente en contacto con el origen de una emanación, o algo igual de concreto que decidas en mesa— puede producir +1 Deriva. Presenciarlas u observarlas no cuenta.</p>
-<h3 id="las-terrazas-habitadas">Las terrazas habitadas</h3>
+<h3>Las terrazas habitadas</h3>
 <p><strong>Situación.</strong> Una emanación de Distorsión reproduce un recuerdo de Hana en los canales geotérmicos de una comunidad del Norte.</p>
 <blockquote>
 <p>El agua de los canales deja de correr.</p>
@@ -295,7 +280,7 @@ como raza jugable).</p>
 <p><strong>Qué ocurre.</strong> El agua deja de correr un instante; una mujer empuja a alguien fuera de una grieta, con el peso de la decisión sentido como propio. Una niña oye después: <em>«No fue culpa suya elegir volver»</em>.</p>
 <p><strong>Qué sucede si los PJ no ayudan.</strong> Los propios habitantes controlan la avería sin ellos — cambia el rumor sobre los PJ y su relación con la comunidad, no la avería en sí.</p>
 <p><strong>Pistas disponibles.</strong> Confirma la muerte de Hana como elección, no como asesinato (matriz, Punto 8).</p>
-<h3 id="la-chatarra-erosionada">La chatarra erosionada</h3>
+<h3>La chatarra erosionada</h3>
 <p><strong>Situación.</strong> Un refugio térmico ocupado por una caravana de viajeros. El intercambiador solo puede calentar a parte del grupo.</p>
 <blockquote>
 <p>El refugio es una caja de metal clavada entre dos paredes de roca. Dentro huele a ropa húmeda, aceite y sopa demasiado aguada.</p>
@@ -305,7 +290,7 @@ como raza jugable).</p>
 <p><strong>Qué quiere cada parte.</strong> Los viajeros quieren sobrevivir la noche sin que nadie quede fuera; nadie propone abandonar a otro automáticamente.</p>
 <p><strong>Formas de participar, sin agotarlas.</strong> Reparar el intercambiador, compartir recursos, buscar otra protección, negociar turnos, o marcharse a otro refugio.</p>
 <p><strong>PNJ presente.</strong> Una anciana que conoció a Hana — otra vía hacia la misma pista de la muerte de Hana y hacia el humor e imprudencia que la definían.</p>
-<h3 id="el-paramo-de-la-desesperacion">El Páramo de la Desesperación</h3>
+<h3>El Páramo de la Desesperación</h3>
 <p><strong>Situación.</strong> Una criatura local no puede separarse de una sombra que ha quedado atrás — efecto de una emanación de Distorsión, no una amenaza por defecto.</p>
 <blockquote>
 <p>La criatura permanece inmóvil en mitad del camino. Tiene seis patas, piel gruesa y el tamaño aproximado de un perro grande. Cuando avanza, su sombra no la acompaña.</p>
@@ -316,7 +301,7 @@ como raza jugable).</p>
 <p><strong>Una noche tranquila.</strong> En algún punto de este acto, una noche sin ataque ni revelación: Kaito cocina mal, alguien cuenta una historia absurda, y los PJ pueden hablar de pérdidas propias o asuntos personales. No es opcional — el módulo la exige explícitamente para que el viaje no sea solo tensión.</p>
 <p><strong>Cuándo tirar.</strong> Supervivencia para seguir el rastro de Ren cuando haga falta reencontrar el camino; el resto de cada tramo se resuelve por descripción y decisión, no por tirada automática.</p>
 <hr />
-<h2 id="12-acto-iv-el-ojo-del-coloso">12. Acto IV — El Ojo del Coloso</h2>
+<h2>12. Acto IV — El Ojo del Coloso</h2>
 <p><strong>Lugar.</strong> Una depresión circular abierta en el costado de una estructura enterrada — pudo ser una antena, una puerta o parte de una máquina imposible de imaginar completa. No es un portal permanente que cerrar: es una zona dañada que emite Distorsión, con episodios de recuerdos compartidos, sombras desacopladas y geometrías dobles mientras se permanece cerca. La Deriva real solo sube si una exposición o efecto expreso de las reglas lo indica, no por estar simplemente presente.</p>
 <p><img alt="Ren sentado frente a la depresión circular del Ojo del Coloso, con mapas y pertrechos alrededor, junto a la silueta alta y luminosa de Axarón" src="img/mundo_chatarra_ojo_coloso_ren_axaron_v2.png" /><br />
 <em>Ren y Axarón, junto al Ojo del Coloso.</em></p>
@@ -345,7 +330,7 @@ como raza jugable).</p>
 </ol>
 <p><strong>Si hay combate</strong>, usa las reglas vigentes de combate y máquinas normales, sin sistema alternativo de enjambres — Axarón no es un enjambre. No exijas que exista una brecha o portal que cerrar, y no trates Camino de los Portales como si fuera la habilidad de Invocación: la tirada correcta, si alguien intenta redefinir o forzar el vínculo formalmente, es <strong>Invocación de Demonios</strong> (media entre Camino de los Portales y la Marca Arcana más alta del personaje).</p>
 <hr />
-<h2 id="13-acto-v-el-regreso-o-la-partida">13. Acto V — El regreso o la partida</h2>
+<h2>13. Acto V — El regreso o la partida</h2>
 <blockquote>
 <p>Las campanas no anuncian vuestra llegada. Lo hacen los niños, que os descubren desde las terrazas y comienzan a gritar nombres antes de estar seguros de quién regresa.</p>
 <p>Kaito espera junto al primer canal. No pregunta por la espada. Cuenta a quienes llegan, observa sus heridas y mira durante unos segundos el lugar que ocupa —o debería ocupar— Ren.</p>
@@ -364,7 +349,7 @@ como raza jugable).</p>
 </ul>
 <p>La misión puede considerarse cumplida aunque Ren no regrese, si los PJ descubrieron la verdad y evitaron una catástrofe mayor.</p>
 <hr />
-<h2 id="14-fichas-funcionales">14. Fichas funcionales</h2>
+<h2>14. Fichas funcionales</h2>
 <p><strong>Hermano Kaito</strong> (Monje Bestia, Felino, TARA «Más Humano») — Mensajero del Monasterio. Casi indetectable como no humano.<br />
 F35/A40/P50/V60 | PV 18/18/18 | Blindaje 1<br />
 Detección de Distorsión 65% | Camino de los Portales 30% | Persuasión 55% | Supervivencia 40%<br />
@@ -380,7 +365,7 @@ Especial: +20 a localizar objetos o personas perdidas; puede rastrear a través 
 <p><strong>Hana</strong> no tiene ficha — no aparece físicamente en ningún punto del módulo.</p>
 <p><em>PNJ menores del Monasterio (ancianos, copistas, agricultores, la anciana del refugio): trátalos como PNJ funcionales de una o dos profesiones, sin ficha completa, según la escala vigente de profesiones de PNJ.</em></p>
 <hr />
-<h2 id="15-recompensas-y-consecuencias">15. Recompensas y consecuencias</h2>
+<h2>15. Recompensas y consecuencias</h2>
 <p><strong>Pago:</strong> 4.000 PC de adelanto, 8.000 PC al completar — 12.000 PC totales para el grupo, calibrados contra la economía vigente de una misión de 2-3 sesiones con viaje y riesgo real.</p>
 <p><strong>Recompensas no monetarias:</strong></p>
 <ul>
@@ -391,9 +376,8 @@ Especial: +20 a localizar objetos o personas perdidas; puede rastrear a través 
 </ul>
 <p><strong>Consecuencias sociales</strong> se expresan mediante Reconocimiento/Reputación y, si algún PNJ concreto queda en deuda, mediante el lenguaje ya establecido de favores («alguien te debe un favor menor/serio») — nunca como una cifra suelta de «+10 reputación».</p>
 <hr />
-<h2 id="16-la-espada-del-cielo-abierto">16. La Espada del Cielo Abierto</h2>
+<h2>16. La Espada del Cielo Abierto</h2>
 <p>Objeto único. No se encuentra ni se entrega en este módulo — la aventura solo descubre una huella relacionada con ella: puede proceder de un antiguo portador, una copia incompleta de sus runas, una herida espacial, o un objeto que estuvo en contacto con ella. Esta redacción no cierra cuál es la respuesta correcta.</p>
-<p>Las reglas de combate de más abajo no se usan en esta aventura — se documentan aquí como referencia lista para la primera vez que la espada aparezca de verdad, en una continuación (ver Punto 17, «Ren y Axarón parten hacia el norte» o «Una copia de las runas llega a manos de una corporación»), en vez de dejar que ese trabajo de diseño se pierda o haya que rehacerlo entonces.</p>
 <p>La espada corta barreras, vínculos o caminos imposibles. Nada en este módulo afirma que resucita muertos o altera el pasado — es exactamente el tipo de objeto que convierte una pérdida personal en la promesa de una solución imposible, y por eso Ren la buscaba.</p>
 <p>La inscripción que Ren llevaba copiada en su tatuaje incompleto no es una runa que él inventara: reprodujo, mediante un Punto Épico, una inscripción ya existente que encontró documentada. Ren no es el creador de esas runas — solo quien encontró la manera de copiarlas.</p>
 <p>Se empuña mediante katas — formas marciales que el portador ejecuta antes de liberar su poder. Cada kata consume una acción completa; mientras la ejecuta, el portador puede esquivar o bloquear con normalidad, pero si recibe daño durante la secuencia debe superar una tirada de <strong>Resistir</strong> o pierde de golpe todas las katas acumuladas hasta ese momento.</p>
@@ -444,7 +428,7 @@ Especial: +20 a localizar objetos o personas perdidas; puede rastrear a través 
 <p>El ataque se libera en línea recta: 2 metros de base más 2 metros por cada kata acumulada (máximo 12 metros con 5 katas), y afecta a todo lo que se cruce en su camino.</p>
 <p><strong>Efecto visual:</strong> la primera kata abre un claro entre las nubes sobre la espada; de la segunda a la cuarta, el filo traza en el cielo un kanji de rayo cada vez más nítido; con la quinta, el rayo cae y el cielo se despeja por completo.</p></div>
 <hr />
-<h2 id="17-modulos-existentes-y-posibles">17. Módulos existentes y posibles</h2>
+<h2>17. Módulos existentes y posibles</h2>
 <ul>
 <li><strong>Axarón reaparece</strong> siguiendo otra ausencia. Premisa: alguien más ha perdido algo irrecuperable y Axarón lo ha detectado. Situación inicial: se manifiesta cerca de los PJ sin que nadie lo haya invocado. Fuerzas implicadas: solo Axarón y quien busca. Complicación: la nueva búsqueda plantea el mismo riesgo de promesa malinterpretada. Conexión: reutiliza directamente su ficha y su naturaleza ya fijadas aquí.</li>
 <li><strong>Ren y Axarón parten hacia el norte</strong> juntos. Premisa: el Acto IV terminó en el marco 3. Situación inicial: los PJ reciben noticias fragmentarias del viaje. Fuerzas implicadas: Ren, Axarón, lo que sea que encuentren. Complicación: el vínculo sigue activo y sigue siendo frágil. Conexión: continuación directa de este módulo.</li>
@@ -454,7 +438,7 @@ Especial: +20 a localizar objetos o personas perdidas; puede rastrear a través 
 </ul>
 <p>Estas semillas no son promesas editoriales — quedan abiertas para quien decida desarrollarlas.</p>
 <hr />
-<h2 id="18-resumen-final-para-dirigir">18. Resumen final para dirigir</h2>
+<h2>18. Resumen final para dirigir</h2>
 <ul>
 <li><strong>Verdad que no cambia:</strong> Hana eligió salvar a Ren; no hay asesino. Axarón dijo una verdad literal que Ren malinterpretó como promesa mayor. El Ojo del Coloso es una zona dañada, no un portal.</li>
 <li><strong>Cronología clave:</strong> Kaito contrata a los PJ el Día 0; el vínculo se vuelve inestable el Día 15; Ren y Axarón parten al norte el Día 18 si nadie llega antes.</li>
@@ -466,6 +450,6 @@ Especial: +20 a localizar objetos o personas perdidas; puede rastrear a través 
 <hr />
 <p><em>"El equilibrio no es quietud. Es saber cuándo ceder y cuándo resistir."</em><br />
 — <em>Hermano Kaito, Monasterio de los Libros</em></p>
-</main>
+</div>
 </body>
 </html>

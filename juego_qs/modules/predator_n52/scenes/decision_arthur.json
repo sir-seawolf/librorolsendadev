@@ -1,117 +1,38 @@
 {
   "id": "decision_arthur",
   "type": "decision",
-  "renderer": "location_selector",
   "musicState": "exploration",
-  "title": "Red de investigación",
-  "background": "assets/backgrounds/mapa_investigacion.svg",
+  "title": "¿Y ahora qué?",
+  "background": null,
   "sheetContext": "callejon",
-  "sheetLayout": "overlay",
-  "availableParty": [
-    "player",
-    "bishop",
-    "salim"
-  ],
-  "introText": "Las pistas siguen abiertas. Podéis visitar contactos, volver sobre líneas conocidas o buscar una salida del sector. Lo resuelto queda registrado y el resto permanece accesible.",
+  "availableParty": ["player", "bishop", "salim"],
+  "introText": "De vuelta en la calle, con lo que habéis encontrado en el apartamento de Arthur Dicking. Un chip que vale más de lo que parece, una cita el sábado en Drake Street, y un nombre — Cinthia Mollis — que quizá sepa algo más. ¿Qué hacéis?",
   "choices": [
-    {
-      "id": "pitagoras",
-      "label": "CONSULTAR A PITÁGORAS",
-      "unavailableLabel": "PITÁGORAS — INFORMACIÓN OBTENIDA"
-    },
-    {
-      "id": "cinthia",
-      "label": "VISITAR A CINTHIA MOLLIS",
-      "unavailableLabel": "CINTHIA MOLLIS — CONVERSACIÓN RESUELTA"
-    },
-    {
-      "id": "chafry",
-      "label": "CONTACTAR CON CHAFRY CORP",
-      "unavailableLabel": "CHAFRY CORP — CONTACTO RESUELTO"
-    },
-    {
-      "id": "drake",
-      "label": "ACUDIR A DRAKE STREET",
-      "unavailableLabel": "DRAKE STREET — RUTA AGOTADA"
-    },
-    {
-      "id": "almacenes",
-      "label": "IR A LOS ALMACENES",
-      "hideWhenUnavailable": true
-    }
+    { "id": "drake_street", "label": "ESPERAR AL SÁBADO E IR A DRAKE STREET" },
+    { "id": "contacto_corporativo", "label": "PEDIR AYUDA A UN CONTACTO CORPORATIVO" },
+    { "id": "chafry", "label": "CONTACTAR CON CHAFRY CORP" },
+    { "id": "cinthia", "label": "BUSCAR A CINTHIA MOLLIS" }
   ],
   "interactions": [
     {
-      "id": "ir_pitagoras",
-      "trigger": {
-        "choice": "pitagoras"
-      },
-      "blockedByFlags": [
-        "pitagoras_resuelto"
-      ],
-      "onAlways": {
-        "transition": "pitagoras"
-      }
+      "id": "elegir_drake_street",
+      "trigger": { "choice": "drake_street" },
+      "onAlways": { "registerDecision": "Decidido: esperar y acudir a Drake Street.", "transition": "drake_street" }
     },
     {
-      "id": "ir_cinthia",
-      "trigger": {
-        "choice": "cinthia"
-      },
-      "blockedByFlags": [
-        "cinthia_resuelta"
-      ],
-      "onAlways": {
-        "transition": "dialogo_cinthia"
-      }
+      "id": "elegir_contacto_corporativo",
+      "trigger": { "choice": "contacto_corporativo" },
+      "onAlways": { "setFinalTipo": "checkpoint_contacto_corporativo", "registerDecision": "Decidido: pedir ayuda a un contacto corporativo.", "transition": "finales" }
     },
     {
-      "id": "ir_chafry",
-      "trigger": {
-        "choice": "chafry"
-      },
-      "blockedByFlags": [
-        "chafry_resuelto"
-      ],
-      "onAlways": {
-        "transition": "contacto_chafry"
-      }
+      "id": "elegir_chafry",
+      "trigger": { "choice": "chafry" },
+      "onAlways": { "setFinalTipo": "checkpoint_chafry", "registerDecision": "Decidido: contactar con CHAFRY CORP.", "discoverClues": ["CHAFRY confirmó el contrato de Arthur sin dudar -- una respuesta demasiado rápida y demasiado limpia."], "transition": "finales" }
     },
     {
-      "id": "ir_drake",
-      "trigger": {
-        "choice": "drake"
-      },
-      "blockedByFlags": [
-        "drake_street_agotado"
-      ],
-      "onAlways": {
-        "transition": "drake_street"
-      }
-    },
-    {
-      "id": "ir_almacenes_pasaje",
-      "trigger": {
-        "choice": "almacenes"
-      },
-      "requiresFlags": [
-        "pasaje_almacenes"
-      ],
-      "onAlways": {
-        "transition": "almacenes"
-      }
-    },
-    {
-      "id": "ir_almacenes_ruta",
-      "trigger": {
-        "choice": "almacenes"
-      },
-      "requiresFlags": [
-        "ruta_almacenes"
-      ],
-      "onAlways": {
-        "transition": "almacenes"
-      }
+      "id": "elegir_cinthia",
+      "trigger": { "choice": "cinthia" },
+      "onAlways": { "registerDecision": "Decidido: buscar a Cinthia Mollis.", "transition": "dialogo_cinthia" }
     }
   ]
 }

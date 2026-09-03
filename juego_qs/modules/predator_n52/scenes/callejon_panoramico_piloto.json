@@ -15,9 +15,9 @@
     "limits": { "minX": 0 }
   },
   "player": {
-    "sprite": "agente_campo.png",
-    "walkFrames": ["agente_campo.png"],
-    "spriteNota": "Agente de campo definitivo con fondo transparente. El renderer admite player.variants por id de personaje para que otros módulos sustituyan el aspecto desde JSON.",
+    "sprite": "actor_silueta_provisional.svg",
+    "walkFrames": ["actor_silueta_provisional.svg", "actor_silueta_paso.svg"],
+    "spriteNota": "Silueta neutra provisional, autoría propia (no reutiliza ningún sprite de enemigo). Dos fotogramas y espejo horizontal bastan para verificar marcha, anclaje y profundidad antes de generar Kova/PNJ/agente MORT definitivos sobre la misma plantilla.",
     "spriteWidth": 180,
     "spriteHeight": 240,
     "walkSpeed": 820,

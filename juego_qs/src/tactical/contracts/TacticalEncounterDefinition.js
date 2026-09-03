@@ -70,39 +70,6 @@ function validarObstaculo(obstaculo, ruta, errores) {
   if (!esNumero(obstaculo.width) || !esNumero(obstaculo.height)) errores.push(`${ruta}.size: falta o no es numérico (width/height)`);
 }
 
-function validarZonaTerreno(zona, ruta, errores) {
-  if (!zona || typeof zona !== "object") { errores.push(`${ruta}: falta o no es un objeto`); return; }
-  if (typeof zona.id !== "string" || !zona.id) errores.push(`${ruta}.id: falta`);
-  if (!esNumero(zona.x) || !esNumero(zona.y)) errores.push(`${ruta}.position: falta o no es numérica (x/y)`);
-  if (!esNumero(zona.width) || zona.width <= 0 || !esNumero(zona.height) || zona.height <= 0) errores.push(`${ruta}.size: width/height deben ser positivos`);
-  if (zona.movementMultiplier !== undefined && (!esNumero(zona.movementMultiplier) || zona.movementMultiplier < 1)) errores.push(`${ruta}.movementMultiplier: debe ser un número >= 1`);
-  if (zona.elevationMeters !== undefined && (!esNumero(zona.elevationMeters) || zona.elevationMeters < 0)) errores.push(`${ruta}.elevationMeters: debe ser un número >= 0`);
-  if (zona.asset !== undefined && (typeof zona.asset !== "string" || !zona.asset)) errores.push(`${ruta}.asset: debe ser un identificador no vacío`);
-  if (zona.structureId !== undefined && (typeof zona.structureId !== "string" || !zona.structureId)) errores.push(`${ruta}.structureId: debe ser un identificador no vacío`);
-  if (zona.attachedToExitId !== undefined && (typeof zona.attachedToExitId !== "string" || !zona.attachedToExitId)) errores.push(`${ruta}.attachedToExitId: debe ser un identificador no vacío`);
-  if (zona.occupantIds !== undefined && (!Array.isArray(zona.occupantIds) || zona.occupantIds.some(id => typeof id !== "string" || !id))) errores.push(`${ruta}.occupantIds: debe ser un array de identificadores no vacíos`);
-}
-
-function validarComposicionEscena(def, p, errores) {
-  const visuals = def.battlefield?.visuals;
-  if (!visuals) return;
-  const walls = Array.isArray(visuals.walls) ? visuals.walls : [];
-  const exits = Array.isArray(visuals.exits) ? visuals.exits : [];
-  const terrain = Array.isArray(def.battlefield.terrainZones) ? def.battlefield.terrainZones : [];
-  const actorIds = new Set([...(def.actors?.party ?? []), ...(def.actors?.enemies ?? [])].map(actor => actor.id));
-  const exitIds = new Set(exits.map(exit => exit.id));
-  const structureIds = new Set([...walls, ...exits].map(entry => entry.structureId).filter(Boolean));
-
-  for (const [i, zona] of terrain.entries()) {
-    const ruta = p(`battlefield.terrainZones[${i}]`);
-    if (zona.structureId && !structureIds.has(zona.structureId)) errores.push(`${ruta}.structureId: no referencia ninguna pared o salida`);
-    if (zona.attachedToExitId && !exitIds.has(zona.attachedToExitId)) errores.push(`${ruta}.attachedToExitId: salida inexistente "${zona.attachedToExitId}"`);
-    for (const actorId of zona.occupantIds ?? []) {
-      if (!actorIds.has(actorId)) errores.push(`${ruta}.occupantIds: actor inexistente "${actorId}"`);
-    }
-  }
-}
-
 const TIPOS_OBJETIVO_SOPORTADOS = new Set(["eliminateEnemies", "allPartyDown"]);
 
 function validarObjetivo(objetivo, ruta, errores) {
@@ -138,10 +105,6 @@ export function validateEncounterDefinition(def) {
     } else {
       def.battlefield.obstacles.forEach((o, i) => validarObstaculo(o, p(`battlefield.obstacles[${i}]`), errores));
     }
-    if (def.battlefield.terrainZones !== undefined) {
-      if (!Array.isArray(def.battlefield.terrainZones)) errores.push(`${p("battlefield.terrainZones")}: debe ser un array`);
-      else def.battlefield.terrainZones.forEach((zona, i) => validarZonaTerreno(zona, p(`battlefield.terrainZones[${i}]`), errores));
-    }
   }
 
   if (!def.actors || typeof def.actors !== "object") {
@@ -165,8 +128,6 @@ export function validateEncounterDefinition(def) {
     validarObjetivo(def.objectives.victory, p("objectives.victory"), errores);
     validarObjetivo(def.objectives.defeat, p("objectives.defeat"), errores);
   }
-
-  validarComposicionEscena(def, p, errores);
 
   if (def.transitions !== undefined) {
     if (typeof def.transitions !== "object" || def.transitions === null) {
@@ -210,9 +171,7 @@ export function conDefaults(def) {
       metersToPx: 40,
       background: null,
       ...def.battlefield,
-      obstacles: def.battlefield?.obstacles ?? [],
-      terrainZones: def.battlefield?.terrainZones ?? [],
-      terrainConfig: { costeAscensoPorMetro: 0.5, ...def.battlefield?.terrainConfig }
+      obstacles: def.battlefield?.obstacles ?? []
     },
     // Merge profundo (no reemplazo total) para que fixtures antiguas que
     // solo declaran {victory, defeat} (P2, antes de que "flee" existiera)

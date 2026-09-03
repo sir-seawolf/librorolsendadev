@@ -15,46 +15,31 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "PUESTO FRONTERIZO — Resumen del Narrador"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#a-premisa">A. Premisa</a></li><li class="toc-h2"><a href="#b-verdad-completa">B. Verdad completa</a></li><li class="toc-h2"><a href="#c-cinco-actos">C. Cinco actos</a></li><li class="toc-h2"><a href="#d-cronologia-causal">D. Cronología causal</a></li><li class="toc-h2"><a href="#e-recordatorios-esenciales">E. Recordatorios esenciales</a></li><li class="toc-h2"><a href="#f-fuerzas-fijas">F. Fuerzas fijas</a></li><li class="toc-h3"><a href="#campamento-acto-i">Campamento (Acto I)</a></li><li class="toc-h3"><a href="#punta-b-acto-iv">Punta B (Acto IV)</a></li><li class="toc-h2"><a href="#g-desenlace">G. Desenlace</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>PUESTO FRONTERIZO — Resumen del Narrador</h1>
 <p><a href="modulo_puesto_fronterizo.html">← Volver al módulo</a></p>
 <blockquote>
 <p><strong>Material exclusivo para el Narrador: contiene la verdad completa y todos los secretos del módulo.</strong></p>
 </blockquote>
 <hr />
-<h2 id="a-premisa">A. Premisa</h2>
+<h2>A. Premisa</h2>
 <p>Los personajes llegan a un campamento avanzado que ha dejado de comunicarse y lo encuentran atacado. Tras recuperar lo que puedan, se instalan dos o tres meses en el Puesto Fronterizo, conviviendo con su guarnición mientras una acusación se cierra lentamente sobre el teniente Pitt. Cuando el caso se da por resuelto —del modo que sea—, la teniente Corliss asciende y se traslada a reabrir Punta de Lanza B, y los personajes con ella. Allí, Serpent lanza un asedio en toda regla para deslegitimar y capturar a Pitt.</p>
 <hr />
-<h2 id="b-verdad-completa">B. Verdad completa</h2>
+<h2>B. Verdad completa</h2>
 <blockquote>
 <ul>
 <li><strong>Corliss es la agente doble de Serpent.</strong></li>
@@ -72,7 +57,7 @@
 </ul>
 </blockquote>
 <hr />
-<h2 id="c-cinco-actos">C. Cinco actos</h2>
+<h2>C. Cinco actos</h2>
 <table>
 <thead>
 <tr>
@@ -116,7 +101,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="d-cronologia-causal">D. Cronología causal</h2>
+<h2>D. Cronología causal</h2>
 <table>
 <thead>
 <tr>
@@ -189,7 +174,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="e-recordatorios-esenciales">E. Recordatorios esenciales</h2>
+<h2>E. Recordatorios esenciales</h2>
 <ul>
 <li>Fuerzas fijas — no las escales por número de PJ.</li>
 <li>El mundo no espera: la conspiración y el ataque avanzan sin los personajes.</li>
@@ -203,15 +188,15 @@
 <li>La verdad que conocen los jugadores no equivale a verdad demostrable dentro del mundo.</li>
 </ul>
 <hr />
-<h2 id="f-fuerzas-fijas">F. Fuerzas fijas</h2>
-<h3 id="campamento-acto-i">Campamento (Acto I)</h3>
+<h2>F. Fuerzas fijas</h2>
+<h3>Campamento (Acto I)</h3>
 <ul>
 <li>1 Sierpe</li>
 <li>2 bots de artillería ligera</li>
 <li>4 C30</li>
 <li><strong>Total: 7</strong></li>
 </ul>
-<h3 id="punta-b-acto-iv">Punta B (Acto IV)</h3>
+<h3>Punta B (Acto IV)</h3>
 <ul>
 <li>5 Sierpes</li>
 <li>10 bots de artillería ligera</li>
@@ -221,7 +206,7 @@
 <li>2 Speedsters</li>
 </ul>
 <hr />
-<h2 id="g-desenlace">G. Desenlace</h2>
+<h2>G. Desenlace</h2>
 <p>Evalúa por separado, sin combinarlos en una única victoria o derrota:</p>
 <ol>
 <li><strong>Puesto</strong> — conservado / inutilizado pero evacuado / destruido.</li>
@@ -231,6 +216,6 @@
 <li><strong>Pruebas</strong> — completas / parciales / solo testimonios / perdidas.</li>
 </ol>
 <p>La combinación real de los cinco ejes es el desenlace de la campaña. El módulo desarrolla ocho combinaciones de ejemplo — no obligatorias, solo puntos de referencia.</p>
-</main>
+</div>
 </body>
 </html>

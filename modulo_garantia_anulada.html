@@ -15,36 +15,21 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — Garantía anulada"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#reparto-y-relaciones">Reparto y relaciones</a></li><li class="toc-h3"><a href="#doctora-lian-orbe-responsable-clinica">Doctora Lian Orbe — responsable clínica</a></li><li class="toc-h3"><a href="#dorio-vance-representante-de-la-subcontrata">Dorio Vance — representante de la subcontrata</a></li><li class="toc-h3"><a href="#ness-ilium-tecnica-de-mantenimiento-atrapada">Ness Ilium — técnica de mantenimiento atrapada</a></li><li class="toc-h3"><a href="#enfermero-tavo-reiss-y-enfermera-prisca-doune-personal-sanitario">Enfermero Tavo Reiss y enfermera Prisca Doune — personal sanitario</a></li><li class="toc-h3"><a href="#los-seis-pacientes">Los seis pacientes</a></li><li class="toc-h3"><a href="#dos-drones-clinicos">Dos drones clínicos</a></li><li class="toc-h3"><a href="#juno-arca-seguridad-exterior">Juno Arca — seguridad exterior</a></li><li class="toc-h3"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-la-revision">Escena 1 — La revisión</a></li><li class="toc-h3"><a href="#escena-2-cierre-sanitario">Escena 2 — Cierre sanitario</a></li><li class="toc-h3"><a href="#escena-3-diecinueve-segundos">Escena 3 — Diecinueve segundos</a></li><li class="toc-h3"><a href="#escena-4-el-espacio-detras-de-la-pared">Escena 4 — El espacio detrás de la pared</a></li><li class="toc-h3"><a href="#escena-5-la-garantia">Escena 5 — La garantía</a></li><li class="toc-h3"><a href="#textos-para-leer">Textos para leer</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#las-dos-voces">Las Dos Voces</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO — Garantía anulada</h1>
 <p><em>Colección de one-shots de MadCity — episodio 2 de 6. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -53,7 +38,7 @@
 <p><img alt="La sala de revisión de la Clínica Ibis-Forge Capricornio, seis camillas conectadas a equipo de diagnóstico" src="img/madcity_garantia_anulada_clinica_ibisforge.png" /><br />
 <em>La sala de revisión, justo antes de que los seis pacientes empiecen a repetir lo mismo a la vez.</em></p>
 <hr />
-<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<h2>Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> seis pacientes convocados para una revisión rutinaria de implantes en la Clínica Ibis-Forge Capricornio empiezan, de forma sincronizada, a reproducir fragmentos del mismo recuerdo sensorial ajeno — diecinueve segundos de pánico, oscuridad y metal cerrándose. No comparten alma ni forman una colmena: un búfer diagnóstico mal borrado está filtrando el recuerdo real de una técnica de mantenimiento, Ness Ilium, atrapada desde hace horas en un conducto detrás de la propia sala de revisión. El protocolo automático de la clínica va a purgar esos búferes y sellar el sector para proteger a los pacientes — borrando también la mejor pista para encontrarla con vida.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas. Cinco escenas, escala local: una clínica, seis pacientes, una técnica atrapada y una subcontrata que prefiere que esto no se sepa.</p>
 <p><strong>Qué saben los PJ:</strong> que hay una revisión de implantes en marcha en Ibis-Forge Capricornio y que algo ha ido mal — pacientes gritando lo mismo a la vez, personal nervioso, la clínica bloqueando salidas "por protocolo".</p>
@@ -61,7 +46,7 @@
 <p><strong>Objetivo inmediato:</strong> encontrar y rescatar a Ness antes de que el protocolo automático purgue los búferes y selle el conducto — a la vez que se calma a seis pacientes asustados y se decide qué hacer con la responsabilidad de la subcontrata.</p>
 <p><strong>Pregunta de fondo:</strong> ¿qué le debe una clínica de garantía real a un paciente cuando el fallo no es del implante, sino de quien debía protegerlo?</p>
 <p><strong>Si nadie interviene:</strong> el protocolo purga los búferes y sella el sector a su hora. Los pacientes quedan estabilizados pero sin respuesta. Ness sigue atrapada, sin nadie que la busque, hasta que una inspección rutinaria posterior la encuentre — demasiado tarde para que importe como rescate.</p>
-<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<h3>Desarrollo en cinco escenas</h3>
 <ol>
 <li>La revisión — vida cotidiana de clínica y primera reproducción sincronizada.</li>
 <li>Cierre sanitario — puertas bloqueadas, versiones enfrentadas, pacientes asustados.</li>
@@ -70,7 +55,7 @@
 <li>La garantía — salvar pacientes, decidir responsabilidades, acordar qué se hace público.</li>
 </ol>
 <hr />
-<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Reloj — tres horas hasta la purga de emergencia:</strong></p>
 <table>
 <thead>
@@ -157,18 +142,18 @@
 </table>
 <p>Textura opcional adicional, sin tirada: dos sanitarios comentan, entre turno y turno, "la locura del Glass-Dog en la Plaza del Primer Vuelo" de hace unos días — nadie aquí sabe más que el rumor.</p>
 <hr />
-<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
-<h3 id="verdad-completa">Verdad completa</h3>
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
 <p>Dorio Vance dirige una pequeña subcontrata que suministra a Ibis-Forge Capricornio componentes de diagnóstico reacondicionados. Para ahorrar costes tras recibir un lote defectuoso, ordenó reutilizar búferes diagnósticos sin borrarlos correctamente en vez de sustituirlos como marca el procedimiento — un atajo que llevaba meses funcionando sin que nadie lo notara.</p>
 <p>Ness Ilium, técnica de mantenimiento del edificio, sufrió un accidente hace unas horas en un conducto detrás de la sala de revisión: un panel se desprendió y la dejó atrapada, consciente pero sin poder salir ni comunicarse por los canales normales. Su terror y su memoria sensorial de esos primeros diecinueve segundos —oscuridad, metal cerrándose, el propio nombre gritado sin respuesta— quedaron grabados sin querer en uno de los búferes reutilizados, y desde ahí se han filtrado, sincronizados, a los seis pacientes conectados hoy para su revisión.</p>
 <p>La dirección local de Ibis-Forge (Lian) no ordenó nada de esto y no lo sabía. El protocolo automático de la clínica, diseñado para proteger a los pacientes de cualquier filtración de datos sensibles, va a purgar los búferes contaminados y sellar el sector — un procedimiento correcto en su lógica, que en este caso concreto borra también la pista y el acceso a Ness.</p>
-<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
+<h3>Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si el recuerdo compartido es un fenómeno de Deriva, un alma atrapada o algo más raro — eso se aclara en la Escena 3, no antes.</p>
-<h3 id="tono">Tono</h3>
+<h3>Tono</h3>
 <p>Tensión médica real, sin villano que castigar. Dorio debe dar miedo por lo que puede perder (su empresa, su reputación, quizás su libertad) sin ser cruel. Lian debe resultar competente y humana, no una burócrata fría. El rescate de Ness tiene peso emocional concreto: es una persona con nombre y voz, no un objetivo de misión.</p>
 <hr />
-<h2 id="reparto-y-relaciones">Reparto y relaciones</h2>
-<h3 id="doctora-lian-orbe-responsable-clinica">Doctora Lian Orbe — responsable clínica</h3>
+<h2>Reparto y relaciones</h2>
+<h3>Doctora Lian Orbe — responsable clínica</h3>
 <p><em>Aspecto:</em> bata impecable incluso en mitad del caos, manos firmes, habla con el lenguaje corporativo perfecto justo hasta que algo la sorprende de verdad — entonces se le nota el acento de origen.</p>
 <p>PNJ interpretable (5-6 profesiones), compartida con el resto de la colección. Excelente médica que domina demasiado bien el lenguaje corporativo.</p>
 <p>F20/A35/P55/V50 | PV 12/12/12 | Bld 0 | Medicina 75% | Liderazgo/Gestión clínica 55% | Social 50%</p>
@@ -178,7 +163,7 @@
 <li>Falla previsible: intenta ganar tiempo antes de reconocer públicamente un error institucional — puede ocultar información a los PJ por instinto corporativo, no por mala fe.</li>
 <li>Sin PJ: sigue el protocolo automático a rajatabla, prioriza a los pacientes visibles sobre la búsqueda de Ness.</li>
 </ul>
-<h3 id="dorio-vance-representante-de-la-subcontrata">Dorio Vance — representante de la subcontrata</h3>
+<h3>Dorio Vance — representante de la subcontrata</h3>
 <p><em>Aspecto:</em> traje de reunión un poco arrugado por las horas, carpeta que no suelta, sonrisa profesional que tarda cada vez más en volver a su sitio.</p>
 <p>PNJ interpretable (3-4 profesiones). Reutilizó los búferes para ahorrar costes de un lote defectuoso — un atajo, no un plan criminal.</p>
 <p>F20/A25/P40/V35 | PV 11/11/11 | Bld 0 | Social/Negociación 50% | Tecnología (diagnóstico) 45%</p>
@@ -187,17 +172,17 @@
 <li>No pondrá en peligro deliberado a nadie — está aterrado por las consecuencias, no dispuesto a agravarlas.</li>
 <li>Sin PJ: intenta convencer a Lian de que el fallo es "un problema de calibración", ganando tiempo para el protocolo automático.</li>
 </ul>
-<h3 id="ness-ilium-tecnica-de-mantenimiento-atrapada">Ness Ilium — técnica de mantenimiento atrapada</h3>
+<h3>Ness Ilium — técnica de mantenimiento atrapada</h3>
 <p><em>Aspecto (solo se ve al llegar a la Escena 4):</em> mono de trabajo sucio de grasa, una pierna inmovilizada bajo un panel desprendido, voz ronca de llevar horas gritando y ya sin fuerzas para ello — pero todavía con ganas de hacer un chiste malo sobre su suerte.</p>
 <p>PNJ funcional (2 profesiones), sin ficha de combate relevante. Mecánica/Mantenimiento 60%.</p>
 <ul>
 <li>Quiere salir con vida y que alguien revise de una vez los paneles del conducto, porque "esto iba a pasar tarde o temprano".</li>
 <li>No culpa a Ibis-Forge directamente — culpa al procedimiento barato que nadie quiso pagar.</li>
 </ul>
-<h3 id="enfermero-tavo-reiss-y-enfermera-prisca-doune-personal-sanitario">Enfermero Tavo Reiss y enfermera Prisca Doune — personal sanitario</h3>
+<h3>Enfermero Tavo Reiss y enfermera Prisca Doune — personal sanitario</h3>
 <p>PNJ funcionales (1-2 profesiones cada uno). Asustados pero profesionales; siguen a Lian sin cuestionarla en público, aunque en privado dudan de si el protocolo automático es lo correcto aquí.</p>
 <p>Medicina 40% cada uno | sin ficha de combate.</p>
-<h3 id="los-seis-pacientes">Los seis pacientes</h3>
+<h3>Los seis pacientes</h3>
 <p>Tres con nombre y necesidad concreta, tres como grupo funcional — para que ningún paciente sea solo un contador de daño:</p>
 <ul>
 <li><strong>Sorel Kade</strong>, el más frágil: implante cardíaco de mantenimiento atrasado. Necesita atención real antes de H+1:00 o su estado empeora (ver Reloj). Tranquilo hasta que algo lo asusta de verdad.</li>
@@ -205,16 +190,16 @@
 <li><strong>Doña Elka Sorm</strong>, la más veterana: ya ha pasado por revisiones raras antes y no se altera fácil — puede calmar al resto si alguien se lo pide.</li>
 <li><strong>Otros tres pacientes</strong>: grupo funcional, reaccionan como cabría esperar (miedo, indignación, curiosidad), sin necesidad de ficha propia.</li>
 </ul>
-<h3 id="dos-drones-clinicos">Dos drones clínicos</h3>
+<h3>Dos drones clínicos</h3>
 <p>Sistemas automáticos que aplican el protocolo sin malicia: Detección 50%, pueden bloquear puertas, aplicar sedación leve no letal a quien consideren un riesgo médico, y advertir antes de actuar. No combaten salvo que se les ataque directamente.</p>
-<h3 id="juno-arca-seguridad-exterior">Juno Arca — seguridad exterior</h3>
+<h3>Juno Arca — seguridad exterior</h3>
 <p><em>Aspecto:</em> ya descrita en la colección — correcta, cansada, uniforme impecable. Aquí cubre el perímetro exterior de la clínica, no entra salvo que se lo pidan o la situación se salga de control.</p>
 <p>Ficha compartida (ver <em>El Glass-Dog que nadie vio</em> o cualquier módulo de la colección): F35/A35/P45/V45 | PV 17/17/17 | Bld 2 | Armas cortas 50% (no letal) | Daño 5 | Liderazgo/Mando 45%.</p>
 <ul>
 <li>Quiere que el incidente no se convierta en un problema de orden público en Capricornio.</li>
 <li>Respeta a Lian profesionalmente; duda de Dorio en cuanto lo interroga dos minutos.</li>
 </ul>
-<h3 id="relaciones-para-el-narrador">Relaciones para el Narrador</h3>
+<h3>Relaciones para el Narrador</h3>
 <ul>
 <li>Lian y Dorio se conocen de trabajar juntos antes; ella confía en él más de lo que debería, al principio.</li>
 <li>Dorio teme más perder el contrato y su empresa que ir a la cárcel — no ha entendido del todo la gravedad de lo que hizo.</li>
@@ -223,15 +208,15 @@
 <li>Yannis (el paciente asustado) puede convertirse, sin quererlo, en la mejor fuente de información sobre el recuerdo si alguien lo calma en vez de callarlo.</li>
 </ul>
 <hr />
-<h2 id="lugares-necesarios">Lugares necesarios</h2>
+<h2>Lugares necesarios</h2>
 <p><strong>Sala de espera y recepción:</strong> primera zona, donde empieza el cierre sanitario. Pantallas publicitarias, sillones, el ambiente corporativo habitual de Ibis-Forge.</p>
 <p><strong>Sala de revisión:</strong> donde ocurrió la primera reproducción sincronizada. Equipo de diagnóstico, los seis pacientes, camillas.</p>
 <p><strong>Despacho de Lian:</strong> zona de gestión, con acceso a los registros de la subcontrata si alguien consigue entrar.</p>
 <p><strong>Conducto de mantenimiento tras la sala de revisión:</strong> donde está atrapada Ness. Estrecho, mal iluminado, con el panel desprendido bloqueando parcialmente el paso.</p>
 <hr />
-<h2 id="las-cinco-escenas">Las cinco escenas</h2>
+<h2>Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3 id="escena-1-la-revision">Escena 1 — La revisión</h3>
+<h3>Escena 1 — La revisión</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Luz clínica, blanca y uniforme. Seis camillas, seis pacientes conectados a equipo de diagnóstico que zumba bajo. Y de golpe, los seis a la vez, la misma frase entrecortada saliendo de sus bocas: «el metal se está cerrando».</p>
@@ -253,7 +238,7 @@
 <blockquote>
 <p>«El metal se está cerrando. El metal se está cerrando.»</p>
 </blockquote>
-<h3 id="escena-2-cierre-sanitario">Escena 2 — Cierre sanitario</h3>
+<h3>Escena 2 — Cierre sanitario</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Las puertas de la clínica se sellan con un chasquido suave, casi educado. En la sala de espera, alguien pregunta en voz alta si esto entra dentro de la garantía. Nadie le contesta.</p>
@@ -272,7 +257,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> el cierre se completa sin incidentes graves; el reloj sigue corriendo hacia la purga sin que nadie sepa todavía de Ness.</p>
 <p><strong>Cómo termina:</strong> el grupo tiene, con más o menos detalle, la pista de la subcontrata y sabe que hay un plazo real antes de que algo se pierda para siempre.</p>
 <p><strong>Después:</strong> lo que se sepa aquí sobre Dorio y los búferes condiciona cuánto material dispone el grupo para la Escena 3.</p>
-<h3 id="escena-3-diecinueve-segundos">Escena 3 — Diecinueve segundos</h3>
+<h3>Escena 3 — Diecinueve segundos</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Los mismos diecinueve segundos, una y otra vez, en la voz de seis personas distintas. Oscuridad. Metal cerrándose. Un nombre gritado sin respuesta. En algún punto de ese bucle hay una persona real, y todavía está esperando.</p>
@@ -290,7 +275,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Lian ordena analizar los búferes por su cuenta, con más lentitud — el grupo llega a la Escena 4 con menos tiempo de margen.</p>
 <p><strong>Cómo termina:</strong> el grupo sabe dónde está el origen del recuerdo y decide ir a comprobarlo.</p>
 <p><strong>Después:</strong> el nivel de detalle conseguido aquí determina si la Escena 4 empieza con ubicación exacta o con búsqueda a ciegas dentro del conducto.</p>
-<h3 id="escena-4-el-espacio-detras-de-la-pared">Escena 4 — El espacio detrás de la pared</h3>
+<h3>Escena 4 — El espacio detrás de la pared</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Un panel de acceso, medio oculto tras equipo de almacenaje. Al otro lado, oscuridad, el olor a metal caliente y, muy débil, una voz que todavía tiene fuerzas para hacer un chiste malo sobre su suerte.</p>
@@ -308,7 +293,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> el protocolo sella el conducto a su hora (ver Reloj); Ness queda atrapada hasta una inspección posterior — demasiado tarde para contar como rescate real.</p>
 <p><strong>Cómo termina:</strong> Ness queda liberada (con o sin complicaciones) o el sellado se completa antes de tiempo — cualquiera de los dos resultados es válido y pasa a la Escena 5.</p>
 <p><strong>Después:</strong> el estado de Ness y de la relación con Lian y Dorio condicionan qué desenlaces están disponibles en la Escena 5.</p>
-<h3 id="escena-5-la-garantia">Escena 5 — La garantía</h3>
+<h3>Escena 5 — La garantía</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>El cierre sanitario se levanta. Los pacientes, todavía algo aturdidos, empiezan a recibir explicaciones oficiales — o no. En algún despacho, alguien va a tener que decidir qué se hace público y qué se queda dentro de un informe interno.</p>
@@ -320,7 +305,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Lian decide por su cuenta contener el escándalo internamente, sin consecuencias claras para Dorio ni reconocimiento claro para Ness.</p>
 <p><strong>Cómo termina:</strong> queda decidido qué le pasa a Dorio, qué saben los pacientes, y cómo queda la relación de los PJ con Ibis-Forge Capricornio.</p>
 <p><strong>Después:</strong> ver Desenlaces combinables para las consecuencias a medio plazo.</p>
-<h3 id="textos-para-leer">Textos para leer</h3>
+<h3>Textos para leer</h3>
 <p><strong>Primera reproducción sincronizada</strong></p>
 <blockquote>
 <p>Seis camillas, seis pacientes conectados a equipo de diagnóstico que zumba bajo. Y de golpe, los seis a la vez, la misma frase entrecortada: «el metal se está cerrando».</p>
@@ -334,7 +319,7 @@
 <p>Un panel de acceso, medio oculto tras equipo de almacenaje. Al otro lado, oscuridad, el olor a metal caliente y, muy débil, una voz que todavía tiene fuerzas para hacer un chiste malo sobre su suerte.</p>
 </blockquote>
 <hr />
-<h2 id="pistas-e-informacion">Pistas e información</h2>
+<h2>Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -372,26 +357,26 @@
 </tbody>
 </table>
 <hr />
-<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
+<h2>Recompensas y gastos</h2>
 <p>La misión no debe dejar a los PJ con pérdidas netas por gastos médicos o equipo dañado — cúbrelo antes de repartir nada más.</p>
 <p><strong>Recompensa económica:</strong> entre 200 y 400 PC por PJ, pagados por Ibis-Forge Capricornio como gesto de buena fe y contención de daños — no una recompensa oficial anunciada, sino un pago discreto gestionado por Lian.</p>
 <p><strong>Beneficios alternativos:</strong> acceso médico o credibilidad técnica con Ibis-Forge (no obediencia automática); contacto directo con Ness para futuros favores de mantenimiento; reputación local en Capricornio si el desenlace se hace público de forma favorable.</p>
 <p>Textura opcional: si se pregunta por qué la clínica va con retraso en otros suministros, Lian menciona de pasada "un problema con una entrega de Norton la semana pasada que todavía no se ha aclarado del todo" — sin más detalle; no afecta a la resolución de este módulo.</p>
 <hr />
-<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
+<h2>Desenlaces combinables</h2>
 <p><strong>Contención total.</strong> Lian gestiona todo internamente; Dorio recibe una sanción discreta; los pacientes reciben una explicación incompleta. Ibis-Forge protege su reputación, a costa de la confianza de quienes sospechan que no es toda la verdad.</p>
 <p><strong>Responsabilidad pública.</strong> Dorio enfrenta consecuencias reales (legales o contractuales); los pacientes reciben la verdad completa. Golpe reputacional para Ibis-Forge local, pero relación de confianza más sólida con quien lo vivió.</p>
 <p><strong>Acuerdo negociado.</strong> Dorio corrige el problema y compensa a los afectados sin escándalo público — ni impune ni destruido.</p>
 <p><strong>Ness sin rescatar.</strong> Si el sellado se completó antes del rescate, este desenlace se combina con cualquiera de los anteriores como nota agridulce: se la encuentra después, con vida pero con la sensación de que nadie llegó a tiempo de verdad.</p>
 <hr />
-<h2 id="continuidad-opcional">Continuidad opcional</h2>
+<h2>Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de la colección.</li>
 <li><strong>Si se han jugado otros episodios:</strong> ayudar a Ibis-Forge aquí proporciona acceso médico o credibilidad técnica en otros one-shots de MadCity, no obediencia automática.</li>
 </ul>
 <p>Ejemplo de puerta abierta: Lian busca una muestra o tratamiento disponible en otro mundo para un caso similar — enlace natural hacia cualquier otro DLC, sin obligar a aceptarlo.</p>
 <hr />
-<h2 id="las-dos-voces">Las Dos Voces</h2>
+<h2>Las Dos Voces</h2>
 <p>Voz satírica sobre una publicidad clínica:</p>
 <blockquote>
 <p>«Tu cuerpo es único. Por eso la garantía excluye sus particularidades.»</p>
@@ -402,7 +387,7 @@
 </blockquote>
 <p>Una intervención, no más — ni oráculo ni pista indispensable.</p>
 <hr />
-<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
+<h2>Límites de este módulo</h2>
 <ul>
 <li>No convertir el recuerdo compartido en alma, IA o fenómeno de Deriva.</li>
 <li>Ibis-Forge debe conservar competencia real y posibilidad de corregir el problema — no es una corporación negligente por naturaleza.</li>
@@ -411,10 +396,10 @@
 <li>No revelar ni insinuar el secreto de Proctor.</li>
 </ul>
 <hr />
-<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
+<h2>Resumen para dirigir</h2>
 <p>Reloj de tres horas hasta la purga de emergencia, con tiempos de desplazamiento fijados en el Panel del Narrador. Cinco escenas autosuficientes: revisión → cierre → reconstrucción del recuerdo → rescate → responsabilidad, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Un fallo humano comprensible, una técnica atrapada con nombre y voz propios, y una clínica que debe demostrar si su garantía es real cuando más cuesta cumplirla.</p>
 <hr />
 <p><em>MadCity — colección de one-shots. Comparte lugares, PNJ y dirección visual con el resto de la colección, sin formar una campaña obligatoria.</em></p>
-</main>
+</div>
 </body>
 </html>

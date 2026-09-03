@@ -15,168 +15,74 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El derecho a reparar"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#indice">Índice</a></li><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h3"><a href="#cronologia-publica">Cronología pública</a></li><li class="toc-h3"><a href="#cronologia-privada">Cronología privada</a></li><li class="toc-h3"><a href="#como-entran-los-pj">Cómo entran los PJ</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-la-costura">Escena 1 — La Costura</a></li><li class="toc-h3"><a href="#escena-2-tres-formas-de-tener-razon">Escena 2 — Tres formas de tener razón</a></li><li class="toc-h3"><a href="#escena-3-una-fabrica-para-gente-muerta">Escena 3 — Una fábrica para gente muerta</a></li><li class="toc-h3"><a href="#escena-4-la-primera-pieza">Escena 4 — La primera pieza</a></li><li class="toc-h3"><a href="#escena-5-el-derecho-a-reparar">Escena 5 — El derecho a reparar</a></li><li class="toc-h3"><a href="#textos-para-leer-adicionales">Textos para leer adicionales</a></li><li class="toc-h2"><a href="#la-instalacion-la-matriz">La instalación — La Matriz</a></li><li class="toc-h3"><a href="#el-climax-tablero-de-fabricacion">El clímax — tablero de fabricación</a></li><li class="toc-h3"><a href="#defensas">Defensas</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#mara-tresvueltas">Mara «Tresvueltas»</a></li><li class="toc-h3"><a href="#cera-vant">Cera Vant</a></li><li class="toc-h3"><a href="#iria-sorn">Iria Sorn</a></li><li class="toc-h3"><a href="#nilo-vant">Nilo Vant</a></li><li class="toc-h3"><a href="#remache">Remache</a></li><li class="toc-h3"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h3"><a href="#como-se-resuelve-cada-postura">Cómo se resuelve cada postura</a></li><li class="toc-h3"><a href="#soluciones-imprevistas">Soluciones imprevistas</a></li><li class="toc-h2"><a href="#las-dos-voces">Las Dos Voces</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#ritmo-objetivo">Ritmo objetivo</a></li><li class="toc-h2"><a href="#anexo-la-costura-como-caja-de-herramientas">Anexo — La Costura como caja de herramientas</a></li><li class="toc-h3"><a href="#la-costura">La Costura</a></li><li class="toc-h3"><a href="#la-cantera">La Cantera</a></li><li class="toc-h3"><a href="#el-coloso-a-distancia">El Coloso, a distancia</a></li><li class="toc-h3"><a href="#ayuda-rapida-adicional">Ayuda rápida adicional</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO — El derecho a reparar</h1>
 <blockquote>
 <p>«Si está roto, nadie lo quiere. Cuando funciona, siempre tuvo dueño.»</p>
 </blockquote>
 <hr />
-<h2 id="indice">Índice</h2>
-<ul>
-<li><strong>Resumen operativo</strong> — léelo antes de dirigir (premisa, duración, verdad del Narrador)</li>
-<li><strong>Panel del Narrador</strong> — léelo antes de sentarte a la mesa (cronología, reloj, las tres partes)</li>
-<li><strong>Lo que ocurrió realmente</strong> — verdad completa, tono, cronología pública y privada, cómo entran los PJ</li>
-<li><strong>La aventura</strong> — las cinco escenas, en orden de mesa:</li>
-<li>Escena 1 — La Costura</li>
-<li>Escena 2 — Tres formas de tener razón</li>
-<li>Escena 3 — Una fábrica para gente muerta</li>
-<li>Escena 4 — La primera pieza</li>
-<li>Escena 5 — El derecho a reparar</li>
-<li>Textos para leer adicionales</li>
-<li><strong>La instalación — La Matriz</strong> — las seis zonas, el tablero de fabricación, las Defensas</li>
-<li><strong>Reparto — resumen de personajes</strong> — fichas completas de Mara, Cera, Iria, Nilo y Remache</li>
-<li><strong>Las Dos Voces</strong> — los dos murales de La Costura</li>
-<li><strong>Decisión final</strong> — recompensa y ritmo objetivo</li>
-<li><strong>Anexo — La Costura como caja de herramientas</strong> — mapa social, la Cantera, el Coloso, ayuda rápida (sandbox opcional)</li>
-<li><strong>Fichas rápidas — consulta en mesa</strong> — cajas con solo números y equipo de cada PNJ y Defensa, para imprimir o tener a la vista</li>
-</ul>
-<hr />
-<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
-<p><strong>Premisa:</strong> un hundimiento destapa una fábrica automática olvidada bajo La Costura — la gente ya la llama <strong>La Matriz</strong>. Puede fabricar ahora mismo lo que el barrio necesita: un repuesto para el reciclador de agua. Pero puede fabricar mucho más que eso, y tres partes la quieren: la comunidad, quien la encontró, y una corporación.</p>
-<p><strong>Duración:</strong> el hilo principal (las cinco escenas de "La aventura") se dirige en unas cuatro horas y admite hasta seis con conversación o combate adicional. Todo el Anexo — La Costura, la Cantera, los espacios sociales, las zonas de restos — es material de apoyo: úsalo tanto como la mesa quiera, no hace falta agotarlo en una sola sesión. También sirve como localización recurrente si el grupo vuelve a Edivan más adelante.</p>
-<p><strong>Número recomendado de PJ:</strong> de tres a cinco. Con grupos más grandes, reparte las cuatro tareas del clímax (Escena 4) entre subgrupos en vez de encadenarlas una a una.</p>
-<p><strong>Información pública:</strong> en La Costura todo el mundo sabe que Cera encontró algo grande bajo la grieta, que Nilo volvió herido y que el reciclador está fallando. Nadie oculta activamente nada — lo que no se sabe es qué hacer con el hallazgo, no que exista.</p>
-<p><strong>Verdad del Narrador:</strong> el incidente de Edivan fue un accidente defensivo, no un ataque; La Matriz es infraestructura civil colonial con límites reales, no una superarma ni un misterio cósmico; las tres reclamaciones (Mara, Cera, Iria) son legítimas y ninguna es una trampa (ver "Lo que ocurrió realmente", más abajo).</p>
-<p><strong>Si nadie interviene:</strong> el reciclador se detiene a la hora 05:00 y empieza una crisis local con reservas limitadas — no una catástrofe instantánea, pero sí un problema serio y creciente. La Matriz, sin nadie que la estabilice, completa su cierre y sella la cámara a la hora 04:00. Mara moviliza una cuadrilla de todos modos: el barrio no se queda de brazos cruzados esperando a los PJ.</p>
-<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h3>El encargo</h3>
+<p>Un hundimiento reciente durante la reconstrucción de Edivan (Mundo Chatarra) ha dejado al descubierto una instalación civil olvidada bajo el barrio de La Costura. La gente ya la llama <strong>La Matriz</strong>. Puede fabricar el repuesto que el reciclador de agua del barrio necesita con urgencia — pero también puede fabricar mucho más, y tres partes distintas tienen motivos legítimos para reclamarla.</p>
+<h3>Lo que realmente ocurre</h3>
+<p>Nadie mintió y nadie robó nada. Cera Vant encontró la brecha por su cuenta y volvió a pedir ayuda pudiendo haberla ocultado. Mara «Tresvueltas» necesita el repuesto para su barrio antes de que acabe el día. Iria Sorn, de TecnoStealer, ofrece justo lo que hace falta para que todo funcione mejor y antes — a cambio de una prioridad técnica que ninguna de las otras partes quiere ceder del todo. Las tres reclamaciones son reales. Ninguna es una trampa.</p>
+<h3>Desarrollo en cinco escenas</h3>
 <ol>
-<li>La Costura — llegada y vida cotidiana del barrio; Nilo vuelve herido; se confirma la avería del reciclador.</li>
+<li>La Costura — Nilo vuelve herido; se confirma la avería del reciclador.</li>
 <li>Tres formas de tener razón — Mara, Cera e Iria exponen sus posiciones junto a la grieta.</li>
 <li>Una fábrica para gente muerta — recorrido condensado por la instalación.</li>
 <li>La primera pieza — clímax: fabricar el regulador mientras actúan las defensas.</li>
 <li>El derecho a reparar — negociación final entre las tres partes.</li>
 </ol>
 <hr />
-<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
-<p><strong>Cronología clave:</strong> 01:00 Nilo herido → 01:30 avería confirmada → 02:00 Mara reclama acceso → 02:30 llega Iria → 03:00 cierre de La Matriz → 04:00 sellado → 05:00 crisis local.</p>
-<p><strong>Cómo avanza el tiempo de ficción:</strong> no lo simules minuto a minuto. Avanza el reloj cuando los PJ cambien de lugar, afronten un obstáculo, hagan una actividad prolongada o decidan conscientemente perder tiempo — no por cada línea de diálogo.</p>
-<ul>
-<li>Conversación breve, primeros auxilios, inspección rápida: 5-10 min.</li>
-<li>Desplazamiento dentro de La Costura: 5 min.</li>
-<li>La Costura → borde de la Cantera: 10 min.</li>
-<li>Descenso hasta C-F (la Grieta): 15 min por la ruta rápida (C-B) / 25 min por la ruta segura (C-C).</li>
-<li>Obstáculo de La Matriz (cada zona de la Escena 3): 10-15 min.</li>
-<li>Descanso, exploración lateral o negociación larga: 15-30 min.</li>
-<li>Cada ciclo incompleto de fabricación (Escena 4): 10 min.</li>
-</ul>
-<p><strong>Progresión orientativa</strong> (no obligatoria — ajusta si los PJ van más rápido o más lento):</p>
-<table>
-<thead>
-<tr>
-<th>Hora</th>
-<th>Qué ocurre</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01:00</td>
-<td>Empieza la Escena 1.</td>
-</tr>
-<tr>
-<td>01:20-01:30</td>
-<td>Parten hacia la Cantera.</td>
-</tr>
-<tr>
-<td>01:45-02:00</td>
-<td>Llegan al fondo; empieza la Escena 2.</td>
-</tr>
-<tr>
-<td>02:30</td>
-<td>Iria llega, sí o sí.</td>
-</tr>
-<tr>
-<td>02:45-03:00</td>
-<td>Entran en La Matriz (Escena 3).</td>
-</tr>
-<tr>
-<td>03:00</td>
-<td>Empieza el cierre mientras exploran.</td>
-</tr>
-<tr>
-<td>03:30 aprox.</td>
-<td>Llegan al Núcleo (Escena 4).</td>
-</tr>
-<tr>
-<td>04:00</td>
-<td>Punto crítico.</td>
-</tr>
-<tr>
-<td>05:00</td>
-<td>El reciclador se para.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Si los PJ llegan a la Cantera antes de las 02:30:</strong> Mara y Cera ya están discutiendo cuando llegan; Iria aparece durante la conversación, no antes — dale a su entrada un momento propio en vez de tenerla esperando desde el principio.</p>
-<p><strong>A las 03:00 / 03:30 / 04:00 / 05:00, si hay PJ dentro de La Matriz:</strong><br />
-- <strong>03:00 — Cierre iniciado.</strong> Aparecen advertencias; algunas rutas secundarias se cierran.<br />
-- <strong>03:30 — Cierre avanzado.</strong> Sube un escalón en Defensas, o una vía queda bloqueada.<br />
-- <strong>04:00 — Sellado.</strong> La Matriz deja de aceptar entradas e inicia una evacuación activa: si hay PJ dentro, intenta expulsarlos antes de sellar — coherente con su carácter civil, no los atrapa arbitrariamente.<br />
-- <strong>05:00 — Reciclador parado.</strong> No cierra la aventura: empiezan las reservas. Mara pierde margen político (todo el mundo quiere la pieza ya), la negociación posterior se vuelve más tensa, se reparten raciones — pero el regulador sigue pudiendo fabricarse.</p>
-<p><strong>Las tres partes, en una frase:</strong><br />
-- <strong>Mara → comunidad.</strong> Quiere el regulador y que La Costura no pierda acceso.<br />
-- <strong>Cera → reconocimiento.</strong> Quiere que se sepa que ella lo encontró, y no perder lo que arriesgó.<br />
-- <strong>Iria → TecnoStealer.</strong> Quiere prioridad técnica y presencia corporativa a cambio de ayuda real.</p>
-<p><strong>Objetivo inmediato:</strong> fabricar el regulador antes de que el reciclador falle.</p>
-<p><strong>Pregunta de fondo:</strong> ¿quién tiene derecho sobre una infraestructura necesaria para todos, cuando descubrimiento, necesidad y capacidad técnica pertenecen a personas distintas?</p>
-<p><strong>Estado de partida:</strong><br />
-- Reciclador: inestable, fallará a la 05:00 sin intervención.<br />
-- La Matriz: abierta, cerrándose progresivamente.<br />
-- Cera: descubridora reconocida informalmente, sin garantías todavía.<br />
-- TecnoStealer: ya opera comercialmente en Edivan; Iria está en la ciudad y llegará a La Costura a las 02:30. Coherente con el Vertedero: los comunicadores de largo alcance no funcionan aquí (interferencia ambiental, ver el capítulo de Mundo Chatarra), así que Iria no está en contacto en tiempo real con su corporación — opera con la autonomía y los recursos que ya lleva encima, e informa por el mismo canal que cualquiera, viajando cuando toca.<br />
-- Comunidad: movilizándose.</p>
-<p><strong>No hay villano.</strong> Nadie mintió, nadie robó. La violencia social solo aparece si alguien humilla, engaña, amenaza o excluye por completo a otra parte. No hace falta más trama que esta — nada de segundo giro, traición oculta ni supertecnología.</p>
-<hr />
-<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
-<h3 id="verdad-completa">Verdad completa</h3>
+<h2>Para el Narrador</h2>
+<h3>Verdad completa</h3>
 <p>Durante la huida de la fragata de Thanos cerca de Edivan, sus explosiones no pretendían atacar nada: solo despejaban una vía de salida. Los sistemas defensivos automáticos de Edivan las interpretaron como una agresión y respondieron. El intercambio colapsó buena parte de la estructura de entonces. Edivan fue reconstruida sobre el mismo emplazamiento o muy cerca, conservando su función y su reputación — sigue siendo uno de los muchos lugares del Vertedero, no su capital.</p>
-<p>Durante esa reconstrucción, uno de los nuevos hundimientos deja al descubierto una instalación civil, con nombre técnico parcialmente legible: <strong>Centro Auxiliar de Continuidad Colonial 7-C</strong>. La gente la llama <strong>La Matriz</strong>. El «7-C» no es decorativo — implica que hubo, como mínimo, otras seis unidades gemelas en la misma red de continuidad colonial. Ninguna se ha localizado todavía en el resto del Vertedero: no es imposible que aparezca otra en una vuelta futura a Edivan o en otro punto del mundo, pero eso queda fuera de este módulo.</p>
-<p>La Matriz mantenía viva una colonia aislada. Analizaba averías y fabricaba componentes intermedios: juntas y conectores, reguladores de presión, componentes para recicladores de agua, piezas básicas de prótesis, adaptadores entre tecnologías incompatibles, herramientas para anatomías o especies distintas. Necesita materia prima, energía, calibración y mantenimiento — no produce objetos terminados ilimitados ni tecnología arbitraria. Su energía es propia: un núcleo de baja radiación sellado hace generaciones, no la red eléctrica de La Costura — por eso sigue funcionando bajo tierra pese a que el barrio de arriba viva cortes constantes. No es un misterio cósmico ni una revelación sobre los Antiguos: es infraestructura civil colonial, con sus propios protocolos de continuidad.</p>
+<p>Durante esa reconstrucción, uno de los nuevos hundimientos deja al descubierto una instalación civil, con nombre técnico parcialmente legible: <strong>Centro Auxiliar de Continuidad Colonial 7-C</strong>. La gente la llama <strong>La Matriz</strong>.</p>
+<p>La Matriz mantenía viva una colonia aislada. Analizaba averías y fabricaba componentes intermedios: juntas y conectores, reguladores de presión, componentes para recicladores de agua, piezas básicas de prótesis, adaptadores entre tecnologías incompatibles, herramientas para anatomías o especies distintas. Necesita materia prima, energía, calibración y mantenimiento — no produce objetos terminados ilimitados ni tecnología arbitraria. No es un misterio cósmico ni una revelación sobre los Antiguos: es infraestructura civil colonial, con sus propios protocolos de continuidad.</p>
 <p>La urgencia local es concreta y limitada: el reciclador de agua del barrio inferior está fallando y necesita una pieza que nadie en La Costura sabe fabricar. Hay reservas — no va a morir una ciudad al anochecer — pero empieza una crisis local si nadie la resuelve.</p>
-<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
+<h3>Qué saben los PJ y qué no</h3>
 <p>Los PJ pueden llegar a saber todo lo anterior a lo largo de la partida. Lo que <strong>no</strong> deben poder resolver desde el principio es quién tiene razón: eso se decide en la mesa, no en este documento.</p>
-<h3 id="tono">Tono</h3>
-<p>Local, urgente sin ser catastrófico, con tres partes que se caen bien casi todo el tiempo aunque quieran cosas distintas. TecnoStealer, aquí, debe resultar atractiva: competente, seductora como opción profesional, capaz de combinar beneficio propio con una ayuda real. No es el villano por defecto, igual que tampoco lo son la comunidad ni los descubridores.</p>
-<h3 id="cronologia-publica">Cronología pública</h3>
-<p>El mundo sigue moviéndose aunque los PJ no intervengan. La partida empieza hacia la hora 01:00, con cada PJ ya en La Costura cuando Nilo vuelve herido.</p>
+<h3>Tono</h3>
+<p>Local, urgente sin ser catastrófico, con tres partes que se caen bien casi todo el tiempo aunque quieran cosas distintas. Nadie empieza odiando a nadie — la violencia social solo aparece si alguien humilla, engaña, amenaza o excluye por completo a otra parte. TecnoStealer, aquí, debe resultar atractiva: competente, seductora como opción profesional, capaz de combinar beneficio propio con una ayuda real. No es el villano por defecto, igual que tampoco lo son la comunidad ni los descubridores.</p>
+<hr />
+<h2>La Costura</h2>
+<p><img alt="Caravana, mecha de carga y varios asentamientos entre enormes montañas de metal recuperado" src="img/mundo_chatarra_panorama_general.png" /><br />
+<em>El Vertedero a escala — La Costura es uno de estos muchos rincones, no un lugar aparte.</em></p>
+<p>La Costura no es una capital rival ni un asentamiento aparte que compita con Edivan — es uno de sus barrios inferiores, crecido alrededor de antiguos túneles de mantenimiento y talleres durante la reconstrucción. Usa el generador de asentamientos de Mundo Chatarra; estos resultados quedan fijados para la partida, no hace falta tirarlos en mesa:</p>
+<ul>
+<li><strong>Origen:</strong> túneles de mantenimiento antiguos, ampliados con el tiempo.</li>
+<li><strong>Sustento:</strong> talleres y maestros de oficio.</li>
+<li><strong>Energía:</strong> una pequeña red local entre módulos reconstruidos.</li>
+<li><strong>Agua y alimento:</strong> reciclaje cerrado.</li>
+<li><strong>Oficio dominante:</strong> reparación mecánica.</li>
+<li><strong>Decisiones:</strong> dirige quien tenga más experiencia en el problema concreto, no una autoridad fija.</li>
+<li><strong>Forasteros:</strong> se exige un intercambio claro antes de confiar.</li>
+<li><strong>Problema de mantenimiento:</strong> una pieza comunitaria irremplazable está fallando — el reciclador.</li>
+<li><strong>Peligro habitual:</strong> ninguno inmediato.</li>
+<li><strong>Particularidad cultural:</strong> humor técnico sobre reparaciones imposibles.</li>
+<li><strong>Interés corporativo:</strong> TecnoStealer, compradora puntual y discreta — hasta hoy.</li>
+<li><strong>Obra callejera:</strong> dos obras de las Dos Voces se responden entre sí, sin resolverse.</li>
+<li><strong>Acontecimiento actual:</strong> algo importante está roto y todavía no se ha reparado.</li>
+</ul>
+<p>Un generador que solo arranca con un golpe periódico en el sitio exacto, una reparación provisional con doce años de antigüedad que nadie se atreve a tocar, y murales enfrentados en dos paredes que se miran — así es un día cualquiera en La Costura antes de que Nilo vuelva herido.</p>
+<hr />
+<h2>Cronología autónoma</h2>
+<p>El mundo sigue moviéndose aunque los PJ no intervengan.</p>
 <table>
 <thead>
 <tr>
@@ -207,7 +113,7 @@
 </tr>
 <tr>
 <td>02:30</td>
-<td>Iria, que ya estaba en Edivan por una visita de reconstrucción prevista, llega a La Costura.</td>
+<td>Iria llega a Edivan por una visita de reconstrucción ya prevista.</td>
 </tr>
 <tr>
 <td>03:00</td>
@@ -223,453 +129,94 @@
 </tr>
 </tbody>
 </table>
-<p>No es una cuenta atrás para destruir Edivan — es presión local.</p>
-<p><strong>Síntomas del reciclador</strong> (para que el tiempo se vea, no solo se anuncie):</p>
-<table>
-<thead>
-<tr>
-<th>Hora</th>
-<th>Qué se nota</th>
-<th>Agua embasada en el mercado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01:00</td>
-<td>Vibración irregular, presión baja.</td>
-<td>precio normal</td>
-</tr>
-<tr>
-<td>02:00</td>
-<td>Algunos grifos escupen aire; el agua tarda en salir.</td>
-<td>empieza a subir</td>
-</tr>
-<tr>
-<td>03:00</td>
-<td>Mara ordena llenar depósitos auxiliares; el agua empieza a salir con un sabor metálico perceptible.</td>
-<td>el doble de lo normal</td>
-</tr>
-<tr>
-<td>04:00</td>
-<td>Presión mínima; algunas zonas dejan de recibir agua; quien bebió del grifo a la hora anterior nota molestias digestivas — nada grave, pero incómodo (diarrea leve, un día o dos).</td>
-<td>el triple, y escasea</td>
-</tr>
-<tr>
-<td>05:00</td>
-<td>Parada completa.</td>
-<td>agotada — no queda ni para comprar</td>
-</tr>
-</tbody>
-</table>
-<p>Volver a La Costura en cualquier momento debería dejar ver el síntoma correspondiente a esa hora, no solo un recordatorio verbal de "queda menos tiempo". El malestar digestivo de la hora 04:00 es textura, no una regla de daño — no exige tirada ni penaliza mecánicamente salvo que la mesa quiera jugar con la incomodidad. La subida del agua embasada es la misma lógica de oferta y demanda que ya afecta a las piezas de reciclador en el Mercado de piezas (Anexo) — no hace falta tirada, solo dejar que el precio hable.</p>
-<h3 id="cronologia-privada">Cronología privada</h3>
-<p><strong>Antecedentes (antes de la hora 0):</strong> Cera lleva semanas explorando los túneles de mantenimiento ampliados cerca de La Costura, buscando algo que vender — no sabía que había una instalación entera debajo. Mara lleva días luchando por mantener el reciclador funcionando con parches provisionales; sabía que fallaría pronto, no cuándo exactamente. Iria estaba ya en Edivan por una visita de reconstrucción rutinaria, sin relación previa con La Costura ni con el hallazgo.</p>
-<p><strong>Agravamiento, si nadie interviene (02:30-04:00):</strong> Mara moviliza más gente de la que la instalación puede procesar con calma, lo que aumenta el riesgo de que las Defensas escalen. Iria, al ver que nadie avanza, ofrece su ayuda de forma más insistente, sin llegar a imponerse. Cera empieza a sospechar que la comunidad la va a dejar fuera del reparto si no se mueve rápido.</p>
-<p><strong>Sucesos independientes</strong> (pueden ocurrir se metan o no los PJ): un comerciante empieza a vender «información privilegiada» sobre La Matriz que en realidad es rumor; dos cuadrillas de la Cantera discuten por un turno, sin relación con la trama principal, solo textura; si pasa mucho tiempo, Remache intenta colarse solo en la grieta por admiración a los recuperadores — alguien debería detenerlo antes de que se haga daño.</p>
-<p><strong>Oportunidades de resolver o desviar cada postura:</strong> hablar con Mara antes de la hora 02:00 evita que movilice una cuadrilla completa; ayudar a Cera a registrar el hallazgo formalmente antes de que Iria llegue cambia el tono de la negociación a su favor; aceptar hablar con Iria en privado (Lugar privado para hablar, en el Anexo) antes de la Escena 2 permite conocer los términos exactos del contrato sin la presión de las otras dos partes delante.</p>
-<p><strong>Qué cambia si los PJ llegan pronto o tarde:</strong> llegar antes de la hora 01:30 permite intervenir antes de que Nilo salga herido, o incluso acompañarlo. Llegar hacia la hora 03:00 significa que La Matriz ya ha empezado su cierre y la Escena 3 arranca con más presión de tiempo. Llegar después de la hora 04:00 significa que la cámara está sellada y hay que abrirla de nuevo antes de nada — una complicación añadida, no un fracaso automático.</p>
-<p>No es un ferrocarril: estas oportunidades no tienen que aprovecharse en orden ni todas a la vez — son opciones que la mesa puede tomar o ignorar.</p>
-<h3 id="como-entran-los-pj">Cómo entran los PJ</h3>
+<p>No es una cuenta atrás para destruir Edivan — es presión local. La partida empieza hacia la hora 01:00, con cada PJ ya en La Costura cuando Nilo vuelve herido.</p>
+<hr />
+<h2>Reparto principal</h2>
+<h3>Mara «Tresvueltas»</h3>
+<p>Maestra reparadora y portavoz circunstancial de La Costura. Directa, agotada, respetada, con humor seco. Jura que todo tornillo necesita «dos vueltas para cerrar y otra para convencerlo».</p>
+<p>F35/A25/P45/V50 | PV 17/17/17 | Blindaje 0<br />
+Mecánica 75% | Electrónica 45% | Liderazgo 50% | Social 40%</p>
+<ul>
+<li>Quiere que La Matriz fabrique el regulador y siga sirviendo a Edivan.</li>
+<li>Ofrece alojamiento, trabajo futuro, acceso comunitario y una compensación posible para Cera y Nilo.</li>
+<li>Teme que la urgencia acabe regalando un recurso generacional a quien no lo necesita.</li>
+<li>No atacará a Cera ni a Nilo, ni reclamará la instalación para sí misma.</li>
+<li>Sin PJ: reúne una cuadrilla y ocupa la entrada sin iniciar violencia.</li>
+</ul>
+<h3>Cera Vant</h3>
+<p>Recuperadora independiente, descubridora real del acceso, hermana mayor de Nilo. Llegó primero, dejó marcas verificables y no saqueó la instalación.</p>
+<p>F30/A45/P50/V40 | PV 18/18/18 | Blindaje 1<br />
+Sigilo 55% | Mecánica 50% | Alerta 60% | Social 35%</p>
+<ul>
+<li>Quiere reconocimiento público de su derecho inicial sobre el hallazgo.</li>
+<li>Ofrece acceso y participación a quien la ayude a conservarlo.</li>
+<li>Teme que la comunidad llame «solidaridad» a quedarse con el riesgo y el trabajo que fueron suyos.</li>
+<li>No destruirá La Matriz ni impedirá deliberadamente fabricar el regulador.</li>
+<li>Sin PJ: intenta registrarse como responsable de continuidad.</li>
+</ul>
+<h3>Iria Sorn</h3>
+<p>Ingeniera de recuperación y negociadora de TecnoStealer. Educada, competente, sin escolta visible. Su equipo debe dejar claro por qué alguien desearía trabajar para TecnoStealer, no solo temerla.</p>
+<p>F20/A30/P40/V45 | PV 13/13/13 | Blindaje 1<br />
+Electrónica 70% | Mecánica 55% | Social 60% | Programación 50%</p>
+<ul>
+<li>Quiere acceso técnico preferente para su corporación.</li>
+<li>Ofrece pagar a Cera, reparar el reciclador, estabilizar La Matriz, formar a dos técnicos locales y reservar producción para la comunidad.</li>
+<li>Exige control técnico inicial, prioridad de estudio y derecho a reclamar componentes que pueda demostrar como propiedad corporativa previa.</li>
+<li>No ordenará un asalto, no falsificará el contrato ni dejará deliberadamente sin agua a La Costura.</li>
+<li>El contrato es real y sus cláusulas incómodas no están escondidas, aunque Iria tampoco las destaca.</li>
+<li>Sin PJ: ayuda a fabricar el regulador y usa esa demostración para hacer atractivo su contrato.</li>
+</ul>
+<p>Si la gramática estética de TecnoStealer ya está fijada, el equipo de Iria puede reflejarla en materiales, silueta y acabado — mientras conserva el negro, el gris, la plata y el mimeta ya aprobados. Son rasgos observables, nunca un nombre que ellos mismos usen.</p>
+<h3>Nilo Vant</h3>
+<p>Hermano menor de Cera, recuperador herido. Hablador, valiente, menos interesado que su hermana en poseer una fábrica.</p>
+<p>PNJ funcional. F25/A40/P40/V35 | PV 16/16/16 | Blindaje 1 | Sigilo 40%</p>
+<ul>
+<li>Confirma que Cera llegó primero y volvió a pedir ayuda pudiendo haber ocultado el hallazgo.</li>
+<li>Quiere que se reconozca a su hermana y que nadie muera por ello.</li>
+<li>Admite en privado que aceptaría el dinero de TecnoStealer para dejar durante un tiempo la vida de recuperador.</li>
+</ul>
+<h3>Remache</h3>
+<p>Ayudante joven de taller. Conoce los túneles, admira a los recuperadores, trabaja para Mara. Su familia depende del reciclador. Es vínculo humano y apoyo — nunca salvador ni trama independiente.</p>
+<p>PNJ funcional. Mecánica 30% | conoce cada atajo de los túneles de mantenimiento.</p>
+<h2>Relaciones para el Narrador</h2>
+<ul>
+<li>Mara aprecia a Cera, pero rechaza que encontrar algo equivalga a decidir el futuro colectivo.</li>
+<li>Cera protege a Nilo.</li>
+<li>Nilo admira a Mara.</li>
+<li>Iria respeta profesionalmente a Mara y podría ofrecerle trabajo sin condescendencia.</li>
+<li>Iria considera legítimo el derecho inicial de Cera, no necesariamente la propiedad de toda la estructura.</li>
+<li>Cera necesita y a la vez teme la oferta de Iria.</li>
+<li>La Costura necesita la pieza de inmediato, no dentro de una semana.</li>
+</ul>
+<h2>Cómo entran los PJ</h2>
 <p>Sin exigir un patrón común: trabajan en la reconstrucción; conocen a Cera o a Nilo; han sido llamados por Mara; colaboran o viajan con Iria; son recuperadores interesados; pagan su estancia con jornadas de trabajo; o son forasteros aceptados como testigos neutrales. La partida arranca con cada PJ ya en La Costura cuando Nilo vuelve herido — sin necesidad de una contratación previa larga.</p>
 <hr />
-<h2 id="la-aventura">La aventura</h2>
-<p>Cada escena de aquí abajo está pensada para dirigirse sola, sin tener que buscar en otra parte del documento durante el juego — hasta las estadísticas de combate y las posturas de cada parte están repetidas dentro. El resto del documento (Reparto completo, La instalación, el Anexo) es material de referencia para preparar antes o ampliar después — resumen de personajes y localización, no algo que consultar a media escena.</p>
-<h3 id="escena-1-la-costura">Escena 1 — La Costura</h3>
-<p><strong>Llegada — antes de la crisis</strong> (cinco-diez minutos; sáltatelo si el grupo ya conoce el barrio o prefieres ir directo a Nilo): en La Costura no hace falta dinero, pero tampoco se regala nada — se paga con trabajo, con herramientas, con lo que se trae del Vertedero. Los forasteros ganan confianza rápido si llegan con algo que ofrecer; los que llegan con las manos vacías, esperan más. Deja que el grupo regatee en el mercado de piezas, se presente a alguien en el salón comunal, o simplemente se siente a comer — un par de interacciones pequeñas (ver el Anexo, Espacios sociales) bastan para que el barrio deje de ser un decorado. En el aire hay un optimismo concreto, no ingenuo: el chirrido constante de las grúas hacia la Cantera es la prueba de que la chatarra de ayer paga la cena de hoy, para quien sepa buscarla.</p>
-<p><strong>Atmósfera:</strong></p>
-<blockquote>
-<p>Montañas de metal recortan el cielo antes que cualquier edificio. Entre ellas, La Costura se apoya en los restos como una costra sobre una herida vieja — módulos remachados, cables tendidos entre techos, humo de soldadura subiendo recto en el aire quieto.</p>
-</blockquote>
-<p>Huele a aceite de cocina y metal caliente. Se oye el runrún constante del salón comunal y el chirrido de una grúa a lo lejos — hasta que llegan gritos: Nilo vuelve cojeando desde los túneles, cubierto de espuma endurecida y sangre seca, apoyado en quien lo encuentre primero.</p>
-<p><strong>Qué está ocurriendo:</strong> Nilo ha salido malherido de la grieta que Cera descubrió media hora antes. El reciclador, además, lleva días fallando y hoy da señales claras de que no aguantará mucho más.</p>
-<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
-- <strong>Mara «Tresvueltas»</strong> — cincuentena quizá, brazos fuertes, manos castigadas, mono de trabajo remendado veinte veces, varias herramientas colgando sin orden aparente salvo para ella. Maestra reparadora y portavoz circunstancial del barrio. Al saber de Nilo, deja lo que hacía y organiza gente; quiere una respuesta antes de que cunda el pánico. Directa, agotada, humor seco (puede soltar una réplica de Humor de Mara, en Reparto).<br />
-- <strong>Nilo Vant</strong> — hermano menor de Cera, recuperador; quiere que lo atiendan y que alguien vaya a ayudar a su hermana; habla más de la cuenta por el shock.<br />
-- <strong>Remache</strong> — chaval flaco, manos ya callosas para su edad, una herramienta prestada siempre asomando del bolsillo trasero. Ayudante de Mara, quiere sentirse útil; conoce cada atajo de los túneles.<br />
-- Cera no está presente al principio de la escena — sigue dentro. <strong>Mientras el grupo desciende hacia la grieta</strong>, Cera sale hasta la boca: ligera, ropa de recuperación con demasiados bolsillos, raspaduras recientes y polvo de la grieta encima, mirada que comprueba las salidas antes que las personas. Ha comprendido que el lugar es demasiado grande para explorarlo sola y prefiere proteger su reclamación desde fuera antes que arriesgarse a quedar encerrada. Si los PJ llegan muy rápido, pueden encontrarla todavía saliendo.</p>
-<p><strong>Interpretar a Nilo</strong> (tres frases, para no improvisar en caliente):</p>
-<blockquote>
-<p>«Primero me pidió identificación. Luego me desinfectó. Después intentó quitarme las botas. En ese orden.»<br />
-«Está bien. Creo. Cuando salí estaba discutiendo con una puerta. Iba ganando Cera.»<br />
-«Estoy tranquilo. Lo que no estoy es voluntariamente espumado.»</p>
-</blockquote>
-<p><strong>Qué saben / qué dicen:</strong> existe una grieta nueva con algo grande dentro; el reciclador está fallando y hoy es el día; Cera entró primero, dejó marcas y no ha vuelto a salir del todo. Nadie oculta nada — nadie sabe todavía qué hacer con el hallazgo.</p>
-<p><strong>Obstáculos y acontecimientos:</strong> Remache puede intentar colarse con el grupo hacia la grieta si nadie se lo impide. Usa, si hace falta, un acontecimiento de fondo menor sin relación con la trama: una disputa por raciones, alguien pidiendo indicaciones sobre un turno, una caja entregada al taller equivocado.</p>
-<p><strong>Tiradas posibles (ninguna obligatoria):</strong><br />
-- <strong>Medicina</strong> (estabilizar a Nilo): éxito → puede acompañar al grupo después si quiere; fallo → sigue estable, pero no acompañará — no bloquea la aventura; éxito excepcional → además explica con precisión qué defensa lo alcanzó.<br />
-- <strong>Social o Alerta</strong> (captar el ambiente): éxito → notas que Mara está agotada, que Cera despierta simpatías en el barrio, y que ya existe miedo a que TecnoStealer se apropie del hallazgo; fallo → recibes impresiones contradictorias, sin más consecuencia.</p>
-<p><strong>Si los PJ no hacen nada:</strong> Mara organiza una cuadrilla y se dirige a la grieta por su cuenta.</p>
-<p><strong>Cómo termina:</strong> el grupo sabe que hay una grieta con algo grande dentro, que el reciclador falla, y decide moverse hacia ella — con o sin la cuadrilla de Mara.</p>
-<p><strong>Después:</strong> cómo trataron a Nilo y a Mara aquí condiciona el tono de la Escena 2. <em>(Para ampliar el barrio — mercado, alojamientos, registro de derechos y el resto de espacios sociales — ver el Anexo.)</em></p>
+<h2>Estructura de cinco escenas</h2>
+<h3>1. La Costura</h3>
+<p>Presenta brevemente la rutina del barrio: el generador que solo responde a un golpe periódico, la reparación provisional con doce años de antigüedad, el humor de taller, los murales enfrentados. Nilo llega herido y cubierto de espuma endurecida. Poco después se confirma la avería del reciclador.</p>
 <blockquote>
 <p>«Cera ha encontrado algo. Algo grande. Y la puerta no quiere que salgamos con ello.»</p>
 </blockquote>
-<h3 id="escena-2-tres-formas-de-tener-razon">Escena 2 — Tres formas de tener razón</h3>
-<p><strong>Atmósfera:</strong></p>
-<blockquote>
-<p>El suelo desaparece de golpe en un corte limpio de kilómetro y medio, escalonado en niveles como una herida abierta a propósito. Grúas se recortan contra el cielo en el borde superior. Muy abajo, figuras diminutas se mueven entre maquinaria que nunca deja de sonar.</p>
-</blockquote>
-<p>Al fondo de ese corte, junto a una grieta reciente con luces improvisadas parpadeando alrededor, Mara, Cera e Iria esperan — cada una con su gente, ninguna con las armas fuera. Esto asume que llegan a las 02:30 o después, con Iria ya presente.</p>
-<p><strong>Si los PJ llegan antes de las 02:30:</strong> Iria todavía no está. Mara y Cera ya discuten junto a la grieta cuando el grupo llega, y la escena puede empezar solo con ellas dos. Dale a Iria una entrada propia cuando corresponda: una plataforma baja por la Cantera, o llega una pequeña unidad corporativa, e Iria desciende sola con una caja de herramientas que evidentemente cuesta más que medio taller de Mara. Mara la mira: «Bonita» — y a partir de ahí, la réplica de Humor de Mara que corresponda (ver Reparto).</p>
-<p><strong>Qué está ocurriendo:</strong> las tres partes se reúnen para decidir quién entra en La Matriz, con qué equipo y en representación de quién — todavía no la propiedad final.</p>
-<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
-- <strong>Mara «Tresvueltas»:</strong> salvar el reciclador + acceso comunitario a La Matriz. Si apoyan a otra parte, insiste pero no ataca ni reclama la instalación para sí.<br />
-  F35/A25/P45/V50 | PV 17/17/17 | Blindaje 0 — Mecánica 75% | Electrónica 45% | Liderazgo 50% | Social 40% | Alerta 40%</p>
-<blockquote>
-<p>Ante una solución excesivamente complicada: «Eso funcionaría. También podríamos construir otro barrio.»<br />
-Si Iria saca una herramienta corporativa impecable: «Bonita.» / «Gracias.» / «No era un cumplido. Ahora quiero una.»<br />
-- <strong>Cera Vant:</strong> reconocimiento de su hallazgo + participación en lo que se decida. Si la ignoran, se siente presionada a ceder de más; no sabotea nada.<br />
-  F30/A45/P50/V40 | PV 18/18/18 | Blindaje 1 — Sigilo 55% | Mecánica 50% | Alerta 60% | Social 35%<br />
-- <strong>Iria Sorn:</strong> equipo impecablemente mantenido pero usado, no ceremonial; herramientas corporativas compactas y caras; habla tranquila incluso cuando discrepa. Ingeniera de recuperación y negociadora de TecnoStealer, sin escolta visible. Quiere prioridad técnica a cambio de estabilización, dinero y formación para La Costura. Si la rechazan, no se impone — ayuda igual a fabricar el regulador y deja su oferta sobre la mesa.<br />
-  F20/A30/P40/V45 | PV 13/13/13 | Blindaje 1 — Electrónica 70% | Mecánica 55% | Social 60% | Programación 50% | Alerta 45%<br />
-- Nilo, si se recuperó a tiempo, apoya a Cera desde un lado.</p>
-</blockquote>
-<p><strong>Quiere / ofrece / no aceptará (posiciones de partida):</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Quiere</th>
-<th>Ofrece</th>
-<th>No aceptará</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mara</strong></td>
-<td>acceso comunitario al regulador y a La Matriz</td>
-<td>alojamiento, trabajo futuro, compensación para Cera y Nilo</td>
-<td>entregar el recurso sin garantías para el barrio</td>
-</tr>
-<tr>
-<td><strong>Cera</strong></td>
-<td>reconocimiento público de su hallazgo</td>
-<td>acceso y participación a quien la ayude a conservarlo</td>
-<td>que llamen «solidaridad» a borrar su riesgo y su trabajo</td>
-</tr>
-<tr>
-<td><strong>Iria</strong></td>
-<td>prioridad técnica y presencia corporativa</td>
-<td>dinero, estabilización, formación, producción reservada</td>
-<td>trabajar sin obtener nada a cambio</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Qué saben / qué dicen:</strong> los términos exactos de la oferta de Iria (estabilizar, pagar a Cera, formar a dos técnicos, reservar producción — a cambio de prioridad de estudio y derecho sobre componentes de propiedad corporativa previa); el estado real de las marcas de Cera, que confirman que no saqueó nada; la urgencia real de Mara.</p>
-<p><strong>Obstáculos y acontecimientos:</strong> alguien de fuera del grupo intenta forzar una decisión rápida; una complicación de cantera puede interrumpir la escena — tira 1d6: (1) desprendimiento menor, (2) una cuadrilla reclama el paso, (3) maquinaria vieja se enciende sola, (4-6) sin efecto, sigue la escena.</p>
-<p><strong>Tiradas posibles:</strong> <strong>Social o Liderazgo</strong> para calmar una discusión que sube de tono — ninguna es obligatoria para avanzar. Éxito → una parte acepta una concesión pequeña o baja la tensión un grado; fallo → nadie se vuelve enemigo, pero alguien exige una garantía adicional antes de seguir.</p>
-<p><strong>Si los PJ no hacen nada:</strong> Mara y Cera entran juntas; Iria acompaña como técnica.</p>
-<p><strong>Cómo termina:</strong> el grupo sabe qué quiere cada parte y se decide quién entra en La Matriz, con qué equipo y en representación de quién. No hace falta resolver aún la propiedad.</p>
-<p><strong>Después:</strong> las promesas hechas aquí se recuerdan en la Escena 5 — anota qué le prometió el grupo a cada parte, porque en la Escena 5 puede pasarle factura.</p>
-<blockquote>
-<p>El cable tensa, el suelo se aleja, y de golpe la cantera entera se despliega como un mapa: niveles activos con cuadrillas moviéndose en fila, niveles vacíos donde la maquinaria descansa oxidada, y al fondo, una sombra más oscura que el resto — la grieta, con luces improvisadas parpadeando alrededor.</p>
-</blockquote>
-<h3 id="escena-3-una-fabrica-para-gente-muerta">Escena 3 — Una fábrica para gente muerta</h3>
-<p><strong>Atmósfera:</strong></p>
-<blockquote>
-<p>La grieta traga la luz de las lámparas improvisadas nada más cruzarla. Un paso, y el ruido de la Cantera desaparece de golpe — sustituido por un silencio distinto, el crujido ocasional de metal asentándose, un zumbido bajo de sistemas que todavía funcionan.</p>
-</blockquote>
-<p>Formas reconocibles emergen entre la chatarra. Nadie ha tocado nada en mucho tiempo. O eso parece.</p>
-<p><strong>Primera impresión de La Matriz:</strong> tras la grieta desaparece la chatarra. Las paredes son paneles lisos de material claro, sin remaches, diseñados para desmontarse por secciones. Los corredores son demasiado anchos y las puertas demasiado altas para una instalación humana: algunas tienen accesos secundarios a distintas alturas. Parte de las luces siguen funcionando, encendiéndose delante del grupo y apagándose detrás. No parece abandonada; parece un taller que lleva demasiado tiempo esperando clientes.</p>
-<p><strong>Qué está ocurriendo:</strong> recorrido condensado por la instalación. Elige solo dos de las cuatro zonas siguientes antes de llegar al Núcleo — no hace falta agotarlas todas. Cada zona es, además de un obstáculo, un botón de tono — elige según lo que quieras subrayar en esta partida: Grieta = peligro físico; Descontaminación = ambientación y humor; Almacén = el dilema de Cera; Taller = tecnología y humor.</p>
-<p><strong>Ruta recomendada para primera partida:</strong> Descontaminación → Taller → Núcleo. Si quieres más peligro físico, sustituye Descontaminación por Grieta; si quieres subrayar la reclamación de Cera, sustituye Taller por Almacén.</p>
-<ul>
-<li><strong>Grieta de acceso.</strong> Estructura inestable tras el hundimiento; capas de reconstrucción, sangre de Nilo, marcas de Cera, espuma endurecida. Asegúrala con cualquier método razonable antes de forzar el paso — si no, riesgo de derrumbe parcial y una herida.</li>
-<li><strong>Descontaminación.</strong> Pide identidad y motivo de continuidad — armarios pensados para anatomías distintas, no es hostil por defecto. Si falla la identificación: cierra puertas, aplica niebla desinfectante inocua, intenta retirar el equipo y expulsa (no letal). Puede engañarse, forzarse, justificarse como emergencia o rodearse.</li>
-</ul>
-<p><strong>Mensajes de La Matriz</strong> (frases cortas del sistema, no una IA-personaje — úsalas dos o tres veces, no todas seguidas):</p>
-<blockquote>
-<p>«Indique especie.» — si responden «Humano»: «Humano no constituye una especie suficientemente precisa para protocolo médico.»<br />
-«Motivo de acceso.» — ante una respuesta vaga: «Defina emergencia.»<br />
-Tras justificarla: «Emergencia aceptada. Quejas sobre tiempos de procesamiento pueden presentarse después de la emergencia.»<br />
-«Su equipo no figura en catálogo. Proceda con precaución o con paciencia.»<br />
-«Contacto biológico detectado. Continúe respirando con normalidad.»<br />
-«Protocolo de continuidad activo desde hace 300 ciclos. Gracias por su paciencia histórica.»</p>
-</blockquote>
-<ul>
-<li><strong>Almacén de materia prima.</strong> Material suficiente para un único regulador, más objetos más valiosos (abrazaderas de memoria estructural, un cortador colonial de rescate). Las marcas del lugar demuestran que Cera los vio y no los tocó. Llevarse de más sin autorización puede dañar el material o tensar la relación con ella.</li>
-<li><strong>Taller de adaptación.</strong> Brazos industriales y moldes que pueden confundir armas, prótesis o equipo con objetos que reparar — tensión o humor según el grupo. Aquí se analiza el regulador roto; dejar claro qué es cada objeto evita que un brazo industrial se active por error.</li>
-</ul>
-<p><strong>El regulador:</strong> un cuerpo cilíndrico del tamaño de un antebrazo, conexiones desiguales adaptadas durante décadas, la carcasa abierta y dos piezas internas literalmente rehechas a mano. Si La Matriz lo analiza, puede señalar en voz alta (uno de los mensajes de arriba sirve) capas de su propia historia — diseño original, una reparación de hace 43 años, una adaptación posterior, una pieza de otra máquina, una soldadura que Mara reconoce como suya, y otro arreglo del que ni ella recuerda el origen. No hace falta explicar nada más: la propia pieza cuenta de qué trata este módulo.</p>
-<p><strong>Errores razonables de mantenimiento (1d6):</strong><br />
-  1. Intenta afilar un arma que no debería afilarse.<br />
-  2. Identifica una prótesis como «mantenimiento atrasado: 14.372 días».<br />
-  3. Limpia compulsivamente una armadura.<br />
-  4. Intenta retirar una modificación artesanal porque «pieza no homologada».<br />
-  5. Ofrece sustituir una pieza querida del equipo por otra objetivamente mejor y estéticamente espantosa.<br />
-  6. Escanea a un PJ y declara: «El equipo presenta signos de mantenimiento biológico insuficiente.»</p>
-<p><strong>PNJ presentes:</strong> quien haya entrado, más Iria si acompaña — ayuda activamente si se le permite.</p>
-<p><strong>Qué saben / qué dicen:</strong> la función civil de La Matriz se entiende por objetos, etiquetas y rutinas — no hace falta una exposición histórica.</p>
-<p><strong>Tiradas posibles:</strong> Mecánica o Electrónica para la mayoría de obstáculos; Sigilo o Social como alternativa según el enfoque del grupo.</p>
-<p><strong>Enemigos:</strong> ninguno fijo en estas cuatro zonas. Las Defensas (Custodios, Brazo industrial, Cargador) están detalladas en la Escena 4 y solo aparecen aquí si el grupo provoca una respuesta clara.</p>
-<p><strong>Si los PJ no hacen nada:</strong> Iria abre el acceso, pero la instalación clasifica al grupo como intruso e inicia el cierre.</p>
-<p><strong>Cómo termina:</strong> el grupo llega al Núcleo de fabricación con más o menos recursos, según cómo resolvió el recorrido — no hace falta agotar las cuatro zonas.</p>
-<p><strong>Después:</strong> cualquier daño causado aquí escala la respuesta de las Defensas en la Escena 4. <em>(Tabla completa de las seis zonas de La Matriz, incluida Descontaminación y Custodia, con más detalle: ver La instalación, más abajo.)</em></p>
-<blockquote>
-<p>Un último corredor, más ancho que los anteriores, desemboca en una puerta circular ya entreabierta. Al otro lado, algo zumba — grave, constante, expectante.</p>
-</blockquote>
-<h3 id="escena-4-la-primera-pieza">Escena 4 — La primera pieza</h3>
-<p><strong>Atmósfera:</strong></p>
-<blockquote>
-<p>El Núcleo se abre ante vosotros: un espacio circular, más alto que ancho, con cuatro estaciones dispuestas alrededor de un pilar central que todavía respira luz. Zumba, listo, como si llevara trescientos ciclos esperando exactamente esta visita.</p>
-</blockquote>
-<p>En algún momento de la partida, quizá coincidiendo con esta escena, algo enorme puede pasar muy lejos (El Coloso, a distancia, en el Anexo) — sin relación con lo que ocurre aquí; si coincide, úsalo como telón de fondo, no como amenaza.</p>
-<p><strong>Qué está ocurriendo — el tablero de fabricación:</strong> cuatro tareas simultáneas, repartibles entre el grupo o subgrupos:</p>
-<p><img alt="Tablero de fabricación con las cuatro tareas (Energía, Materia prima, Calibración, Ciclo) y la barra de escalada de Defensas del 1 al 5, con las complicaciones de cada fallo" src="img/mundo_chatarra_tablero_nucleo.svg" /><br />
-<em>Ayuda de mesa para esta escena — imprímela o téngola a la vista mientras diriges el clímax.</em></p>
-<p><strong>ENERGÍA</strong> ☐ — estabilizar el suministro. Electrónica es lo natural aquí; con Mecánica, sube la dificultad un escalón.<br />
-<strong>MATERIA PRIMA</strong> ☐ — aportar material suficiente para el regulador. Mecánica o Alerta para seleccionar el material correcto; si hay que manipular piezas pesadas, Fuerza o Habilidad ayudan.<br />
-<strong>CALIBRACIÓN</strong> ☐ — ajustar la fabricación a partir de la pieza rota. Electrónica o Mecánica indistintamente; es la tarea donde Iria, si está presente, puede ayudar de forma más directa.<br />
-<strong>CICLO</strong> ☐ — mantener el proceso mientras dura. Mecánica; si falta una pieza o herramienta, es la tarea donde más rinde la Ingeniería de Oportunidad.</p>
-<p>No hace falta repartir las cuatro por técnico — busca que cada PJ tenga algo útil que hacer, no solo quien lleve Mecánica o Electrónica alta.</p>
-<p>Cada tarea se resuelve con la habilidad indicada arriba (Ingeniería de Oportunidad si falta algo, con riesgo de Manía en vez de un fallo limpio):</p>
-<ul>
-<li><strong>Éxito:</strong> tarea asegurada — marca la casilla.</li>
-<li><strong>Éxito excepcional:</strong> además, ayuda a otra tarea sin resolver.</li>
-<li><strong>Fallo:</strong> la tarea sigue abierta y añade una complicación (ver abajo, una por tarea).</li>
-<li><strong>Nadie la atiende:</strong> escala automáticamente — sube un escalón en Defensas.</li>
-</ul>
-<p><strong>Complicación si falla cada tarea</strong> (concreta, no genérica):<br />
-- <strong>ENERGÍA:</strong> se apagan las luces y arranca iluminación de emergencia pensada para otra especie.<br />
-- <strong>MATERIA PRIMA:</strong> el sistema rechaza parte del material como «contaminante» y lo devuelve cuidadosamente… por el conducto equivocado.<br />
-- <strong>CALIBRACIÓN:</strong> produce una pieza perfecta... a escala 1:4.<br />
-- <strong>CICLO:</strong> un brazo decide que quien está trabajando necesita ser apartado «por seguridad».</p>
-<p><strong>PNJ presentes:</strong> todo el grupo; Iria si sigue presente y no fue excluida.</p>
-<p><strong>Enemigos posibles — Defensas</strong> (fuerza fija, no crece con el número de PJ):</p>
-<p><strong>Custodio pequeño</strong> (×6, coordinados) — Blindaje 2 | Inmovilizar 40% (garra o descarga, Pen 1, no letal) | Daño 4 | PV 8/8/8. Prioriza advertir, seguir, separar e inmovilizar. Usa Ataque en grupo si actúan varios juntos.</p>
-<p><strong>Brazo industrial</strong> (×2, móviles) — Blindaje 3 | Sujetar o golpear 50% (Pen 2, no letal salvo mal uso) | Daño 8 | PV 15/15/15. Pensados para manipular piezas pesadas, no para matar; pueden aplastar por accidente si los provocan.</p>
-<p><strong>Cargador pesado</strong> (×1) — Blindaje 5 | Embestida o empuje 35% (Pen 3) | Daño 12 | PV 25/25/25. Lento y predecible; fácil de evitar en espacio abierto, peligroso en pasillos estrechos.</p>
-<p><strong>DEFENSAS:</strong> 1 → 2 → 3 → 4 → 5. Cada fallo o tarea desatendida sube un escalón: (1) advertencias y puertas; (2) retirada de herramientas y separación del grupo; (3) espuma, redes y brazos industriales; (4) custodios coordinados y cargador pesado; (5) sellado de emergencia y apagado del sector. Reparar daños causados, obedecer parcialmente o justificar la emergencia puede bajarlo. Solo se usa fuerza potencialmente letal si alguien destruye el núcleo o provoca una sobrecarga grave.</p>
-<p><strong>Si hay combate:</strong> aplica las reglas vigentes de máquinas y Ataque en grupo — no un sistema alternativo de enjambres. Vencer puede significar resistir, desactivar, encerrar, convencer o desviar; destruirlo todo es posible, pero daña el hallazgo y debilita la reclamación de quien lo intente.</p>
-<p><strong>Si los PJ no hacen nada:</strong> Mara intenta sacar adelante las cuatro tareas sin ayuda — tarda más y arriesga más frente a las Defensas.</p>
-<p><strong>Cómo termina:</strong> el regulador está fabricado (las cuatro casillas marcadas), o La Matriz queda apagada, dañada o abandonada — cualquier resultado cierra la escena, incluida una solución imprevista (ver Soluciones imprevistas, en Reparto).</p>
-<p><strong>Si fabrican el regulador — Control de custodia:</strong> antes de liberar el componente, el sistema pide registrar un responsable de continuidad: «Responsable de continuidad.» No decide quién es el propietario, solo pregunta — y de repente todos se miran entre sí. Puede registrarse Mara, Cera, Iria, varias firmas a la vez, o nadie (ver Control de custodia, en La instalación, para el detalle completo). Esta pregunta es, en la práctica, el primer momento de la Escena 5, aunque ocurra aquí.</p>
-<p><strong>Regreso con la pieza:</strong> el regulador terminado pesa unos 4 kg y puede transportarlo una sola persona, aunque resulta incómodo. Salir de La Matriz no exige nuevas tiradas salvo que las Defensas sigan activas. El ascenso hasta La Costura consume unos 20-25 minutos (ver Cómo avanza el tiempo de ficción, en el Panel). Mara puede instalarlo sin tirada si llega intacto; un PJ puede hacerlo con Mecánica si quiere asumir ese momento. Si fabricaron la pieza tarde (por ejemplo, pasadas las 04:45), el reloj vuelve a importar: correr hacia el reciclador antes de las 05:00 puede convertirse en la última decisión con presión real de la aventura.</p>
-<p><strong>Si La Matriz queda dañada, sellada o abandonada sin regulador:</strong> tres reacciones inmediatas, antes de pasar a la Escena 5 — Mara se derrumba un momento y luego empieza a organizar reservas de agua; Cera pregunta, muy seria, si alguien vio lo que había dentro antes de perderlo; Iria no reprocha nada en el momento, pero anota algo en su equipo sin decir el qué.</p>
-<p><strong>Después:</strong> el estado final de La Matriz (intacta, dañada, sellada) condiciona los desenlaces disponibles en la Escena 5.</p>
-<blockquote>
-<p>La pieza pesa poco para lo que significa. En algún punto del ascenso, alguien empieza a caminar más rápido de lo necesario — como si el agua pudiera esperar, pero nadie quisiera hacerla esperar más.</p>
-</blockquote>
-<h3 id="escena-5-el-derecho-a-reparar">Escena 5 — El derecho a reparar</h3>
-<p><strong>Antes de negociar — el primer vaso de agua</strong> (unos cinco minutos, solo si consiguieron la pieza; sáltatelo si no): alguien instala el regulador. Silencio. El reciclador arranca. Una mujer abre un grifo. Sale agua. Mira a Mara.</p>
-<blockquote>
-<p>—¿Ya puedo quejarme de cómo sabe?</p>
-</blockquote>
-<p>Mara:</p>
-<blockquote>
-<p>—Eso significará que funciona.</p>
-</blockquote>
-<p>Deja que alguien traiga bebida o comida, que Nilo reaparezca, que la gente respire, antes de pasar a la negociación. No es relleno: convierte el salto directo de «clímax» a «debate sobre propiedad» en dos momentos distintos — <em>hemos resuelto lo urgente</em> y solo después <em>ahora viene lo difícil</em>.</p>
-<p><strong>Atmósfera:</strong></p>
-<blockquote>
-<p>Alguien que ayer no te miraba, hoy te saluda por tu nombre. Alguien que ayer confiaba, hoy pregunta dos veces antes de darte la espalda. La Costura ha decidido algo sobre ti, y ya no hace falta que lo digas en voz alta.</p>
-</blockquote>
-<p><strong>Qué está ocurriendo:</strong> negociación final entre las tres partes, con la emergencia inmediata ya atendida (si consiguieron la pieza). Cada una formula su oferta final:</p>
-<ul>
-<li><strong>Comunidad (Mara)</strong> → acceso colectivo. La Costura administra La Matriz; Cera necesita reconocimiento y compensación creíbles o queda una injusticia pendiente.</li>
-<li><strong>Cera</strong> → titularidad inicial. Conserva control y alquila servicios; Edivan juzga el precio y el acceso, no automáticamente su derecho a tenerlo.</li>
-<li><strong>TecnoStealer (Iria)</strong> → soporte + prioridad técnica. Estabiliza, forma técnicos, paga — a cambio de presencia e información duraderas. Atractivo, con coste real.</li>
-<li><strong>Consejo de varias firmas</strong> → responsabilidad compartida entre las tres, con reglas concretas de acceso y mantenimiento. El más equilibrado, no el más sencillo de dirigir.</li>
-<li><strong>Matriz perdida</strong> → si quedó dañada, sellada o abandonada en la Escena 4, nadie controla nada todavía; el lugar queda como semilla para una vuelta posterior.</li>
-</ul>
-<p><strong>PNJ presentes, con su intención inmediata:</strong><br />
-- <strong>Mara «Tresvueltas»:</strong> F35/A25/P45/V50 | PV 17/17/17 | Blindaje 0 — Mecánica 75% | Electrónica 45% | Liderazgo 50% | Social 40% | Alerta 40%. Ante una solución excesivamente complicada: «Eso funcionaría. También podríamos construir otro barrio.»<br />
-- <strong>Cera Vant:</strong> F30/A45/P50/V40 | PV 18/18/18 | Blindaje 1 — Sigilo 55% | Mecánica 50% | Alerta 60% | Social 35%<br />
-- <strong>Iria Sorn:</strong> F20/A30/P40/V45 | PV 13/13/13 | Blindaje 1 — Electrónica 70% | Mecánica 55% | Social 60% | Programación 50% | Alerta 45%<br />
-- Cualquier otro PNJ relevante según lo ocurrido antes.</p>
-<p><strong>Qué quiere cada una, para negociar sin volver atrás:</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Quiere</th>
-<th>Ofrece</th>
-<th>No aceptará</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mara</strong></td>
-<td>acceso comunitario al regulador y a La Matriz</td>
-<td>alojamiento, trabajo futuro, compensación para Cera y Nilo</td>
-<td>entregar el recurso sin garantías para el barrio</td>
-</tr>
-<tr>
-<td><strong>Cera</strong></td>
-<td>reconocimiento público de su hallazgo</td>
-<td>acceso y participación a quien la ayude a conservarlo</td>
-<td>que llamen «solidaridad» a borrar su riesgo y su trabajo</td>
-</tr>
-<tr>
-<td><strong>Iria</strong></td>
-<td>prioridad técnica y presencia corporativa</td>
-<td>dinero, estabilización, formación, producción reservada</td>
-<td>trabajar sin obtener nada a cambio</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Cómo se resuelve cada postura</strong> (qué la cambia, qué pasa si nadie media, y hacia dónde sigue después):</p>
-<table>
-<thead>
-<tr>
-<th>Postura</th>
-<th>Cambia si…</th>
-<th>Sin intervención de los PJ</th>
-<th>Continuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mara / La Costura</strong></td>
-<td>acepta una firma compartida con Cera o Iria</td>
-<td>ocupa la entrada sin violencia, pero tarda y arriesga más</td>
-<td>mantenimiento futuro de La Matriz, u otra corporación interesada</td>
-</tr>
-<tr>
-<td><strong>Cera</strong></td>
-<td>acepta el contrato de Iria con garantías, o cede el control a Mara si confía en no ser borrada</td>
-<td>intenta registrarse como responsable por su cuenta, con resultado incierto</td>
-<td>contacto recurrente, o relación que reparar si la ninguneraron</td>
-</tr>
-<tr>
-<td><strong>Iria / TecnoStealer</strong></td>
-<td>acepta un papel menor, o se retira sin sabotear nada</td>
-<td>ayuda a fabricar el regulador de todos modos, y usa la demostración para vender su contrato</td>
-<td>trabajo futuro para los PJ o Remache; nuevo interés si La Matriz revela algo más</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Obstáculos y acontecimientos:</strong> una de las partes se siente traicionada por una promesa incumplida en la Escena 2.</p>
-<p><strong>Tiradas posibles:</strong> Social o Liderazgo para inclinar la negociación; ninguna sustituye la decisión de la mesa.</p>
-<p><strong>Si los PJ no hacen nada:</strong> las tres partes llegan a un acuerdo mínimo por su cuenta, más frágil y menos favorable para todas que si los PJ median.</p>
-<p><strong>Los cinco desenlaces posibles</strong> (combinables — no hace falta que la mesa elija uno puro):</p>
-<ul>
-<li><strong>Gestión comunitaria.</strong> La Costura administra La Matriz. Edivan gana capacidad de reparación; Cera debe recibir reconocimiento y una compensación creíble o queda una injusticia reputacional pendiente.</li>
-<li><strong>Derecho del descubridor.</strong> Cera conserva titularidad o control inicial y alquila servicios. Puede prosperar, asociarse o descubrir que poseer exige mantener. Edivan juzga el precio y el acceso, no automáticamente su derecho a tenerlo.</li>
-<li><strong>Acuerdo TecnoStealer.</strong> Iria estabiliza, forma técnicos y paga. La instalación funciona mejor y antes, pero TecnoStealer obtiene prioridad, información y presencia duradera. Es una opción atractiva con coste real, no una trampa secreta.</li>
-<li><strong>Consejo de varias firmas.</strong> Comunidad, descubridores y soporte técnico comparten responsabilidad con reglas concretas de acceso, producción y mantenimiento. Puede ser el acuerdo más equilibrado, no necesariamente el más sencillo de dirigir.</li>
-<li><strong>Matriz dañada, sellada o abandonada.</strong> El regulador quizá se salva, pero el recurso futuro se pierde o se aplaza. Nadie obtiene una victoria completa. El lugar puede quedar como semilla para una vuelta posterior, sin obligar a retomarla.</li>
-</ul>
-<p><strong>Cómo termina:</strong> las tres partes tienen una respuesta (acuerdo, ruptura o aplazamiento) y la tabla de abajo está rellenada:</p>
-<table>
-<thead>
-<tr>
-<th>Eje</th>
-<th>Resultado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Reciclador / La Costura</td>
-<td>___</td>
-</tr>
-<tr>
-<td>Cera y Nilo</td>
-<td>___</td>
-</tr>
-<tr>
-<td>TecnoStealer</td>
-<td>___</td>
-</tr>
-<tr>
-<td>La Matriz (estado y responsable registrado)</td>
-<td>___</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Después:</strong> esta misma tabla es el epílogo de la sesión — no hace falta rellenarla dos veces. Para recompensa y ritmo objetivo, ver Decisión final, más abajo (material de cierre de sesión, no de mesa activa).</p>
-<blockquote>
-<p>El reciclador zumba de nuevo, bajo y constante, un sonido que nadie había apreciado hasta que estuvo a punto de faltar. En el salón comunal, alguien brinda con algo fermentado local. En la cantera, las cuadrillas vuelven a su turno como si nada. La grieta sigue ahí, abierta, esperando a que alguien decida qué es exactamente lo que hay debajo.</p>
-<p>La Costura amanece distinta — no irreconocible, pero distinta. Lo que se decidió junto a la grieta ya circula de boca en boca, con más versiones de las que deberían caber en una sola noche.</p>
-</blockquote>
-<h3 id="textos-para-leer-adicionales">Textos para leer adicionales</h3>
-<p>Lecturas breves opcionales, para reforzar una entrada o un desplazamiento que no tiene su propia atmósfera fijada — no describen emociones ni decisiones de los PJ. Todas las demás lecturas ya viven dentro de la escena donde se usan.</p>
-<p><strong>Entrada al comedor</strong></p>
-<blockquote>
-<p>El calor llega antes que el olor a aceite de cocina. Mesas largas, bancos desiguales, un runrún de voces que no se detiene ni cuando la puerta se abre. En una esquina, alguien afina un instrumento hecho de tubería y cable. En otra, dos mesas discuten sin levantar la voz sobre quién tiene razón, la sátira o la piedra sostenida entre varios brazos.</p>
-</blockquote>
+<p>Sin PJ, Mara organiza una cuadrilla.</p>
+<h3>2. Tres formas de tener razón</h3>
+<p>Mara, Cera e Iria exponen sus posiciones junto a la grieta. Todavía no se decide la propiedad final: se decide quién entra, con qué equipo, en representación de quién y qué promesas hace. Los PJ pueden apoyar partes distintas sin que eso cierre el desenlace. Sin PJ, Mara y Cera entran juntas e Iria acompaña como técnica.</p>
+<h3>3. Una fábrica para gente muerta</h3>
+<p>Recorrido condensado por acceso, descontaminación, almacén y taller (ver zonas de apoyo, abajo). Elige solo dos obstáculos reales antes del clímax, los que mejor encajen con el grupo. La función civil de la instalación se entiende mediante objetos, etiquetas y rutinas — no mediante una exposición histórica. Sin PJ, Iria abre el acceso, pero la instalación clasifica al grupo como intruso e inicia el cierre.</p>
+<h3>4. La primera pieza</h3>
+<p>Clímax: restablecer energía, aportar materia prima, calibrar el regulador desde la pieza rota y mantener el ciclo mientras actúan las defensas (ver Defensas, abajo). No hace falta destruirlas. La escena termina al fabricar, apagar, dañar o abandonar La Matriz, o mediante cualquier solución imprevista que resulte válida en mesa.</p>
+<h3>5. El derecho a reparar</h3>
+<p>Si consiguieron la pieza, la emergencia inmediata queda atendida. Las tres partes formulan su oferta final (ver Desenlaces, abajo) y los PJ deciden, median, engañan, aplazan o inventan otro acuerdo.</p>
 <hr />
-<h2 id="la-instalacion-la-matriz">La instalación — La Matriz</h2>
+<h2>La instalación — seis zonas de apoyo</h2>
 <p>No son seis escenas obligatorias: son espacios que el grupo puede visitar, combinar o saltarse según lo que la mesa necesite.</p>
-<table>
-<thead>
-<tr>
-<th>Zona</th>
-<th>Problema</th>
-<th>Qué descubre</th>
-<th>Solución evidente</th>
-<th>Alternativas</th>
-<th>Fallar provoca</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1. Grieta de acceso</strong></td>
-<td>estructura inestable tras el hundimiento</td>
-<td>sangre de Nilo, marcas de Cera, espuma endurecida, cableado improvisado</td>
-<td>asegurar la estructura antes de forzar el paso</td>
-<td>apuntalar, rodear, reforzar con cualquier método razonable</td>
-<td>derrumbe parcial, posible herida</td>
-</tr>
-<tr>
-<td><strong>2. Descontaminación</strong></td>
-<td>el sistema pide identidad, motivo de continuidad y evaluación biológica</td>
-<td>armarios pensados para anatomías distintas — no es hostil por defecto</td>
-<td>identificarse y justificar el motivo</td>
-<td>engañar, forzar, alegar emergencia, rodear</td>
-<td>cierra puertas, niebla desinfectante inocua, intenta retirar el equipo y expulsa — no letal</td>
-</tr>
-<tr>
-<td><strong>3. Almacén de materia prima</strong></td>
-<td>acceso a material suficiente para un único regulador, y objetos más valiosos (abrazaderas de memoria estructural, un cortador colonial de rescate)</td>
-<td>las marcas del lugar demuestran que Cera vio estos objetos y no tocó nada</td>
-<td>tomar solo lo necesario con autorización o acuerdo</td>
-<td>negociar, colarse, usar el material igualmente</td>
-<td>material perdido o dañado, tensión con Cera</td>
-</tr>
-<tr>
-<td><strong>4. Taller de adaptación</strong></td>
-<td>brazos industriales y moldes que pueden confundir equipo con objetos que reparar</td>
-<td>cómo se analiza el regulador roto — tensión o humor según el grupo</td>
-<td>dejar claro qué es cada objeto antes de que el sistema decida por su cuenta</td>
-<td>técnica, social, física o furtiva, todas válidas</td>
-<td>activa un brazo industrial por error</td>
-</tr>
-<tr>
-<td><strong>5. Núcleo de fabricación</strong></td>
-<td>cuatro tareas simultáneas (ver El clímax — tablero)</td>
-<td>capacidad real y límites de La Matriz</td>
-<td>repartir las tareas entre el grupo</td>
-<td>Ingeniería de Oportunidad si falta algo, con riesgo de Manía</td>
-<td>retraso, escalada de Defensas</td>
-</tr>
-<tr>
-<td><strong>6. Control de custodia</strong></td>
-<td>registros civiles y protocolos, no una inteligencia todopoderosa</td>
-<td>quién puede quedar como <strong>responsable de continuidad</strong>: identidad, comunidad, residentes, autoridad de mantenimiento y destino previsto del primer componente</td>
-<td>registrar identidad y comunidad — da responsabilidad y evidencia política, no propiedad mágica</td>
-<td>firma compartida, identidad falsa, o no registrar a nadie</td>
-<td>ninguna firma válida disponible para el desenlace</td>
-</tr>
-</tbody>
-</table>
-<h3 id="el-climax-tablero-de-fabricacion">El clímax — tablero de fabricación</h3>
-<p><em>(Ayuda de mesa imprimible con este mismo contenido: ver la imagen en Escena 4.)</em></p>
-<p>Cuatro tareas simultáneas, repartibles entre el grupo o subgrupos:</p>
-<p><strong>ENERGÍA</strong> ☐ — estabilizar el suministro. Electrónica es lo natural; con Mecánica, un escalón más difícil.<br />
-<strong>MATERIA PRIMA</strong> ☐ — aportar material suficiente para el regulador. Mecánica o Alerta para seleccionar el material; Fuerza o Habilidad si hay que manipular piezas pesadas.<br />
-<strong>CALIBRACIÓN</strong> ☐ — ajustar la fabricación a partir de la pieza rota. Electrónica o Mecánica; Iria, si está presente, ayuda especialmente aquí.<br />
-<strong>CICLO</strong> ☐ — mantener el proceso mientras dura. Mecánica; la tarea donde más rinde la Ingeniería de Oportunidad si falta algo.</p>
-<p>Cada tarea se resuelve con la habilidad indicada (Ingeniería de Oportunidad si falta algo, con el riesgo de Manía habitual en vez de un fallo limpio — no hace falta ninguna regla nueva):</p>
-<ul>
-<li><strong>Éxito:</strong> la tarea queda asegurada — marca la casilla.</li>
-<li><strong>Éxito excepcional:</strong> además, ayuda a otra tarea sin resolver — márcala también, o dale ventaja.</li>
-<li><strong>Fallo:</strong> la tarea sigue abierta y añade una complicación.</li>
-<li><strong>Nadie la atiende:</strong> la tarea escala automáticamente — sube un escalón en Defensas.</li>
-</ul>
-<p><strong>DEFENSAS:</strong> 1 → 2 → 3 → 4 → 5 (ver escalada abajo). Cada fallo o tarea desatendida sube un escalón; reparar daños causados, obedecer parcialmente o justificar la emergencia ante el sistema puede bajarlo.</p>
-<p>La escena termina al fabricar el regulador (las cuatro casillas marcadas), al apagar, dañar o abandonar La Matriz, o mediante cualquier solución imprevista válida (ver Soluciones imprevistas, en Reparto).</p>
-<h3 id="defensas">Defensas</h3>
+<p><strong>1. Grieta de acceso.</strong> Capas de reconstrucción, sangre de Nilo, marcas de Cera, espuma endurecida, cableado improvisado. La estructura debe asegurarse con cualquier método razonable antes de forzar el paso.</p>
+<p><strong>2. Descontaminación.</strong> Armarios pensados para anatomías distintas. El sistema pide identidad, motivo de continuidad y una evaluación biológica básica. Si falla: cierra puertas, aplica una niebla desinfectante inocua, intenta retirar el equipo y expulsa. Puede repararse, engañarse, justificarse como emergencia, rodearse o forzarse — con consecuencias.</p>
+<p><strong>3. Almacén de materia prima.</strong> Contiene material suficiente para un único regulador inmediato, abrazaderas de memoria estructural que serían útiles para la propia Edivan, y un cortador colonial de rescate — potente como herramienta, voluminoso y de gran consumo; atractivo, pero no desequilibrante. Las marcas del lugar demuestran que Cera vio estos objetos y los dejó intactos.</p>
+<p><strong>4. Taller de adaptación.</strong> Brazos industriales, moldes y superficies variables. Aquí se analiza el regulador roto. El sistema puede confundir armas, prótesis o equipo con objetos que reparar, generando tensión o humor. Admite soluciones técnicas, sociales, físicas o furtivas por igual.</p>
+<p><strong>5. Núcleo de fabricación.</strong> Cuatro necesidades repartibles entre el grupo: energía estable, materia prima, calibración a partir del regulador roto y mantenimiento del ciclo mientras dura. No fijes una única habilidad para cada una — Mecánica y Electrónica cubren la mayoría, con Ingeniería de Oportunidad como recurso si falta algo.</p>
+<p><strong>6. Control de custodia.</strong> Registros civiles y protocolos, no una inteligencia todopoderosa. Permite registrar un <strong>responsable de continuidad</strong>: identidad, comunidad, residentes, autoridad de mantenimiento y destino previsto del primer componente. La firma da responsabilidad y evidencia política — no propiedad mágica sobre la instalación. Puede registrarse Cera, La Costura, TecnoStealer, varias firmas a la vez, una identidad falsa o nadie en absoluto.</p>
+<hr />
+<h2>Defensas</h2>
 <p>Fuerza fija — no crece con el número de PJ. Ajusta conducta, activación o recursos narrativos si hace falta, nunca el número de unidades.</p>
 <p><strong>Custodio pequeño</strong> (×6, coordinados)<br />
 Blindaje 2 | Inmovilizar 40% (garra o descarga, Pen 1, no letal) | Daño 4 | PV 8/8/8<br />
@@ -688,123 +235,13 @@ Lento y predecible. Fácil de evitar en espacio abierto, peligroso en pasillos e
 <li>Custodios coordinados y cargador pesado.</li>
 <li>Sellado de emergencia y apagado del sector.</li>
 </ol>
-<p>Solo se usa fuerza potencialmente letal si alguien destruye el núcleo o provoca una sobrecarga grave. Si hay combate, aplica las reglas vigentes de máquinas y Ataque en grupo — no un sistema alternativo de enjambres. Vencer puede significar resistir, desactivar, encerrar, convencer o desviar; destruirlo todo es posible, pero daña el hallazgo y debilita la reclamación de quien lo intente.</p>
+<p>La respuesta puede reducirse reparando daños causados, obedeciendo parcialmente, justificando la emergencia ante el sistema o demostrando un uso legítimo para los residentes de La Costura. Solo se usa fuerza potencialmente letal si alguien destruye el núcleo o provoca una sobrecarga grave.</p>
+<p>Si hay combate, aplica las reglas vigentes de máquinas y Ataque en grupo — no un sistema alternativo de enjambres. El clímax tiene tres frentes simultáneos: los custodios, el cargador y el propio ciclo de fabricación. Vencer puede significar resistir, desactivar, encerrar, convencer o desviar; destruirlo todo es posible, pero daña el hallazgo y debilita la reclamación de quien lo intente.</p>
 <hr />
-<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
-<p>Ficha completa de cada parte para preparar antes de la sesión. Durante el juego no hace falta venir aquí: lo esencial de cada PNJ ya está repetido dentro de la escena donde aparece.</p>
-<h3 id="mara-tresvueltas">Mara «Tresvueltas»</h3>
-<p>Maestra reparadora y portavoz circunstancial de La Costura. Directa, agotada, respetada, con humor seco. Jura que todo tornillo necesita «dos vueltas para cerrar y otra para convencerlo».</p>
-<p><em>Aspecto:</em> cincuentena quizá, brazos fuertes, manos castigadas, mono de trabajo remendado veinte veces, varias herramientas colgando sin orden aparente salvo para ella.</p>
-<p>F35/A25/P45/V50 | PV 17/17/17 | Blindaje 0<br />
-Mecánica 75% | Electrónica 45% | Liderazgo 50% | Social 40% | Alerta 40%</p>
-<ul>
-<li>Teme que la urgencia acabe regalando un recurso generacional a quien no lo necesita.</li>
-<li>No atacará a Cera ni a Nilo, ni reclamará la instalación para sí misma.</li>
-<li>Sin PJ: reúne una cuadrilla y ocupa la entrada sin iniciar violencia.</li>
-</ul>
-<p><strong>Humor de Mara</strong> (reutilizable en cualquier escena donde aparezca — Escenas 1, 2, 4 y 5):</p>
-<blockquote>
-<p>Ante una solución excesivamente complicada: «Eso funcionaría. También podríamos construir otro barrio.»<br />
-Si Iria saca una herramienta corporativa impecable: «Bonita.» / «Gracias.» / «No era un cumplido. Ahora quiero una.»<br />
-Si preguntan cuánto durará una reparación provisional: «Depende.» / «¿De qué?» / «De si preguntas antes o después de hacerla.»</p>
-</blockquote>
-<h3 id="cera-vant">Cera Vant</h3>
-<p>Recuperadora independiente, descubridora real del acceso, hermana mayor de Nilo. Llegó primero, dejó marcas verificables y no saqueó la instalación.</p>
-<p><em>Aspecto:</em> ligera, ropa de recuperación con demasiados bolsillos, raspaduras recientes y polvo de la grieta encima, mirada que comprueba las salidas antes que las personas.</p>
-<p>F30/A45/P50/V40 | PV 18/18/18 | Blindaje 1<br />
-Sigilo 55% | Mecánica 50% | Alerta 60% | Social 35%</p>
-<ul>
-<li>Teme que la comunidad llame «solidaridad» a quedarse con el riesgo y el trabajo que fueron suyos.</li>
-<li>No destruirá La Matriz ni impedirá deliberadamente fabricar el regulador.</li>
-<li>Sin PJ: intenta registrarse como responsable de continuidad.</li>
-</ul>
-<h3 id="iria-sorn">Iria Sorn</h3>
-<p>Ingeniera de recuperación y negociadora de TecnoStealer. Educada, competente, sin escolta visible. Su equipo debe dejar claro por qué alguien desearía trabajar para TecnoStealer, no solo temerla.</p>
-<p><em>Aspecto:</em> equipo impecablemente mantenido pero usado, no ceremonial; herramientas corporativas compactas y caras; habla tranquila incluso cuando discrepa.</p>
-<p>F20/A30/P40/V45 | PV 13/13/13 | Blindaje 1<br />
-Electrónica 70% | Mecánica 55% | Social 60% | Programación 50% | Alerta 45%</p>
-<ul>
-<li>Exige control técnico inicial, prioridad de estudio y derecho a reclamar componentes que pueda demostrar como propiedad corporativa previa.</li>
-<li>No ordenará un asalto, no falsificará el contrato ni dejará deliberadamente sin agua a La Costura.</li>
-<li>El contrato es real y sus cláusulas incómodas no están escondidas, aunque Iria tampoco las destaca.</li>
-<li>Sin PJ: ayuda a fabricar el regulador y usa esa demostración para hacer atractivo su contrato.</li>
-</ul>
-<p>Si la gramática estética de TecnoStealer ya está fijada, el equipo de Iria puede reflejarla en materiales, silueta y acabado — mientras conserva el negro, el gris, la plata y el mimeta ya aprobados. Son rasgos observables, nunca un nombre que ellos mismos usen.</p>
-<h3 id="nilo-vant">Nilo Vant</h3>
-<p>Hermano menor de Cera, recuperador herido. Hablador, valiente, menos interesado que su hermana en poseer una fábrica.</p>
-<p>PNJ funcional. F25/A40/P40/V35 | PV 16/16/16 | Blindaje 1 | Sigilo 40% | Alerta 35%</p>
-<ul>
-<li>Confirma que Cera llegó primero y volvió a pedir ayuda pudiendo haber ocultado el hallazgo.</li>
-<li>Admite en privado que aceptaría el dinero de TecnoStealer para dejar durante un tiempo la vida de recuperador.</li>
-</ul>
-<h3 id="remache">Remache</h3>
-<p>Ayudante joven de taller. Conoce los túneles, admira a los recuperadores, trabaja para Mara. Su familia depende del reciclador. Es vínculo humano y apoyo — nunca salvador ni trama independiente.</p>
-<p>PNJ funcional. Mecánica 30% | Alerta 35% | conoce cada atajo de los túneles de mantenimiento.</p>
-<p><strong>Qué hace en la aventura:</strong> si nadie lo invita expresamente a acompañar, Mara lo obliga a quedarse ayudando con las reservas de agua. Si acompaña, sirve de guía y ayudante — nunca sustituye una tirada importante de los PJ.</p>
-<h3 id="relaciones-para-el-narrador">Relaciones para el Narrador</h3>
-<ul>
-<li>Mara aprecia a Cera, pero rechaza que encontrar algo equivalga a decidir el futuro colectivo.</li>
-<li>Cera protege a Nilo.</li>
-<li>Nilo admira a Mara.</li>
-<li>Iria respeta profesionalmente a Mara y podría ofrecerle trabajo sin condescendencia.</li>
-<li>Iria considera legítimo el derecho inicial de Cera, no necesariamente la propiedad de toda la estructura.</li>
-<li>Cera necesita y a la vez teme la oferta de Iria.</li>
-<li>La Costura necesita la pieza de inmediato, no dentro de una semana.</li>
-</ul>
-<h3 id="como-se-resuelve-cada-postura">Cómo se resuelve cada postura</h3>
-<p>Tres alternativas legítimas, sin que ninguna sea la correcta. Los PJ pueden apoyar una, combinarlas, abandonarlas, rechazarlas, o crear una cuarta solución razonable (ver Soluciones imprevistas, abajo). Esta misma tabla, con el mismo contenido, está también en la Escena 5, que es donde se usa en mesa.</p>
-<table>
-<thead>
-<tr>
-<th>Postura</th>
-<th>Se desarrolla en</th>
-<th>Cambia si…</th>
-<th>Sin intervención de los PJ</th>
-<th>Continuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mara / La Costura</strong></td>
-<td>Escenas 1, 2, 4, 5</td>
-<td>acepta una firma compartida con Cera o Iria</td>
-<td>ocupa la entrada sin violencia, pero tarda y arriesga más</td>
-<td>mantenimiento futuro de La Matriz, u otra corporación interesada</td>
-</tr>
-<tr>
-<td><strong>Cera</strong></td>
-<td>Escenas 2, 3 (si guía), 5</td>
-<td>acepta el contrato de Iria con garantías, o cede el control a Mara si confía en no ser borrada</td>
-<td>intenta registrarse como responsable por su cuenta, con resultado incierto</td>
-<td>contacto recurrente, o relación que reparar si la ninguneraron</td>
-</tr>
-<tr>
-<td><strong>Iria / TecnoStealer</strong></td>
-<td>Escenas 2, 4, 5</td>
-<td>acepta un papel menor, o se retira sin sabotear nada</td>
-<td>ayuda a fabricar el regulador de todos modos, y usa la demostración para vender su contrato</td>
-<td>trabajo futuro para los PJ o Remache; nuevo interés si La Matriz revela algo más</td>
-</tr>
-</tbody>
-</table>
-<p>Sus resoluciones concretas están en «Los cinco desenlaces posibles», dentro de la Escena 5; cada postura puede acabar en «Gestión comunitaria», «Derecho del descubridor», «Acuerdo TecnoStealer» o combinarse en «Consejo de varias firmas».</p>
-<h3 id="soluciones-imprevistas">Soluciones imprevistas</h3>
-<p>Si el grupo propone algo que no está escrito aquí, evalúalo con estos siete ejes en vez de rechazarlo por no encajar en una postura:</p>
-<ul>
-<li><strong>Objetivo:</strong> ¿qué intentan conseguir realmente?</li>
-<li><strong>Recursos:</strong> ¿tienen con qué hacerlo (habilidad, equipo, tiempo, apoyo)?</li>
-<li><strong>Información:</strong> ¿saben lo suficiente para que el plan tenga sentido?</li>
-<li><strong>Tiempo:</strong> ¿la cronología permite que funcione antes de que algo cambie?</li>
-<li><strong>Oposición:</strong> ¿alguien tiene motivos reales para impedirlo, y hasta dónde llegaría?</li>
-<li><strong>Coste:</strong> ¿qué pierden o arriesgan al intentarlo?</li>
-<li><strong>Consecuencias:</strong> ¿cómo afecta esto a los cuatro ejes del desenlace (ver el epílogo, en la Escena 5)?</li>
-</ul>
-<p>No penalices la creatividad por apartarse de las tres posturas escritas — una cuarta solución razonable (fusionar dos ofertas, proponer un reparto por fases, involucrar a una cuarta parte) es tan válida como cualquiera de las tres, siempre que respete el canon: nadie mintió, nadie robó, y La Matriz sigue siendo infraestructura limitada, no una fuente mágica de soluciones.</p>
-<hr />
-<h2 id="las-dos-voces">Las Dos Voces</h2>
+<h2>Las Dos Voces</h2>
 <p><img alt="Dos murales contrapuestos sobre un casco industrial: sátira colorida y figuras sobrias que reparan una estructura común" src="img/mundo_chatarra_dos_voces.png" /><br />
 <em>Las mismas dos corrientes, con material propio de La Costura — no hace falta que la pared se parezca a esta imagen punto por punto.</em></p>
-<p>Dos obras preexistentes en paredes enfrentadas de La Costura, hechas con recursos locales — pintura industrial, plantillas, placas reparadas, fragmentos de carcasas.</p>
+<p>Dos obras preexistentes en paredes enfrentadas de La Costura, hechas con recursos locales — pintura industrial, plantillas, placas reparadas, fragmentos de carcasas. No hace falta que parezcan grafiti terrestre ni que compartan soporte.</p>
 <p><strong>Voz satírica:</strong> un operario repara una máquina mientras varias manos con sellos esperan para cobrar.</p>
 <blockquote>
 <p>«Si está roto, nadie lo quiere. Cuando funciona, siempre tuvo dueño.»</p>
@@ -824,16 +261,20 @@ Electrónica 70% | Mecánica 55% | Social 60% | Programación 50% | Alerta 45%</
 </blockquote>
 <p>No confirmes la autoría.</p>
 <hr />
-<h2 id="decision-final">Decisión final</h2>
-<blockquote>
-<p>Los cinco desenlaces posibles y la tabla de epílogo ya están en la Escena 5, donde se usan — esta sección es solo cierre de sesión: recompensa y ritmo.</p>
-</blockquote>
-<h3 id="recompensa">Recompensa</h3>
-<p>La misión no debe dejar al grupo con pérdidas netas después de curación, medikits, munición, daños al equipo, transporte y preparación — cúbrelo antes de repartir nada más.</p>
-<p><strong>Recompensa económica local</strong> (coherente con la economía de trueque de Mundo Chatarra: no hay moneda universal aceptada de forma general en Edivan, así que trátalo como una cifra de referencia, no un pago automático en efectivo): entre 200 y 500 Plasticrédito por PJ si el reciclador queda reparado, entregados sobre todo en piezas, trabajo garantizado o crédito de trueque. Si Iria participa activamente en el desenlace, TecnoStealer puede añadir un pago adicional de 300-600 PC por su cuenta — no acumules varias recompensas completas por una sola resolución.</p>
-<p><strong>Beneficios alternativos</strong> (combínalos libremente, no hace falta entregarlos todos): reparaciones y mantenimiento garantizado para el equipo de los PJ; piezas concretas (Almacén de materia prima, Zonas de restos); acceso futuro limitado a La Matriz, si queda alguien registrado como responsable; alojamiento y comida en La Costura por un tiempo razonable; un favor comunitario concreto, cobrable más adelante; contacto directo con Iria y TecnoStealer; información sobre la Cantera, el incidente de Edivan, o el propio Coloso si lo observaron de cerca; reputación local, en Edivan o entre recuperadores del Vertedero.</p>
-<p><strong>REC y POT:</strong> REC mide historial y acceso — cuánto confía la gente de Edivan o de TecnoStealer en el grupo tras esto, y qué puertas se abren. POT mide capacidad aparente — lo que la gente cree que el grupo es capaz de hacer, útil para negociar encargos futuros más exigentes. Ninguno de los dos es una moneda ni determina automáticamente el pago: son contexto para futuros contratos, no una cifra que sumar al final de la sesión.</p>
-<h3 id="ritmo-objetivo">Ritmo objetivo</h3>
+<h2>Desenlaces compactos</h2>
+<p>Cinco marcos combinables — no hace falta escribir veinte finales distintos.</p>
+<p><strong>Gestión comunitaria.</strong> La Costura administra La Matriz. Edivan gana capacidad de reparación; Cera debe recibir reconocimiento y una compensación creíble o queda una injusticia reputacional pendiente.</p>
+<p><strong>Derecho del descubridor.</strong> Cera conserva titularidad o control inicial y alquila servicios. Puede prosperar, asociarse o descubrir que poseer exige mantener. Edivan juzga el precio y el acceso, no automáticamente su derecho a tenerlo.</p>
+<p><strong>Acuerdo TecnoStealer.</strong> Iria estabiliza, forma técnicos y paga. La instalación funciona mejor y antes, pero TecnoStealer obtiene prioridad, información y presencia duradera. Es una opción atractiva con coste real, no una trampa secreta.</p>
+<p><strong>Consejo de varias firmas.</strong> Comunidad, descubridores y soporte técnico comparten responsabilidad con reglas concretas de acceso, producción y mantenimiento. Puede ser el acuerdo más equilibrado, no necesariamente el más sencillo de dirigir.</p>
+<p><strong>Matriz dañada, sellada o abandonada.</strong> El regulador quizá se salva, pero el recurso futuro se pierde o se aplaza. Nadie obtiene una victoria completa. El lugar puede quedar como semilla para una vuelta posterior, sin obligar a retomarla.</p>
+<p>Registra la consecuencia en cuatro ejes: estado del reciclador y de La Costura; situación de Cera y Nilo; presencia y opinión de TecnoStealer; estado, responsable registrado y acceso futuro a La Matriz.</p>
+<hr />
+<h2>Recompensas</h2>
+<p>Prioriza reputación y campaña por encima del dinero: reputación en Edivan o entre recuperadores; contacto directo con Iria y TecnoStealer; acceso futuro limitado a La Matriz; trabajo, alojamiento o mantenimiento garantizado en La Costura; derecho sobre el cortador de rescate o alguna otra herramienta civil, si el acuerdo final lo permite.</p>
+<p>Si añades Plasticrédito, mantén cifras propias de una misión local — no pagues tres recompensas completas por una sola resolución, y no conviertas La Matriz en una fuente automática de dinero.</p>
+<hr />
+<h2>Ritmo objetivo</h2>
 <table>
 <thead>
 <tr>
@@ -842,10 +283,6 @@ Electrónica 70% | Mecánica 55% | Social 60% | Programación 50% | Alerta 45%</
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Llegada y vida cotidiana (opcional)</td>
-<td style="text-align: right;">5–10 min</td>
-</tr>
 <tr>
 <td>La Costura y llegada de Nilo</td>
 <td style="text-align: right;">20–30 min</td>
@@ -872,424 +309,17 @@ Electrónica 70% | Mecánica 55% | Social 60% | Programación 50% | Alerta 45%</
 </tr>
 </tbody>
 </table>
-<p>Dirigible en unas cuatro horas por el hilo principal; admite conversación o combate adicional hasta seis. Todo el Anexo es material de apoyo opcional, no parte del ritmo obligatorio.</p>
+<p>Dirigible en unas cuatro horas; admite conversación o combate adicional hasta seis.</p>
 <hr />
-<h2 id="anexo-la-costura-como-caja-de-herramientas">Anexo — La Costura como caja de herramientas</h2>
-<p>Todo lo que sigue es sandbox: localización recurrente, textura y encuentros opcionales. No hace falta prepararlo entero para dirigir la aventura — úsalo tanto como la mesa quiera, antes, durante o después de las cinco escenas.</p>
-<h3 id="la-costura">La Costura</h3>
-<p><img alt="Caravana, mecha de carga y varios asentamientos entre enormes montañas de metal recuperado" src="img/mundo_chatarra_panorama_general.png" /><br />
-<em>El Vertedero a escala — La Costura es uno de estos muchos rincones, no un lugar aparte.</em></p>
-<p>La Costura no es una capital rival ni un asentamiento aparte que compita con Edivan — es uno de sus barrios inferiores, crecido alrededor de antiguos túneles de mantenimiento y talleres durante la reconstrucción. Usa el generador de asentamientos de Mundo Chatarra; estos resultados quedan fijados para la partida, no hace falta tirarlos en mesa:</p>
+<h2>Ayuda rápida para el Narrador</h2>
 <ul>
-<li><strong>Origen:</strong> túneles de mantenimiento antiguos, ampliados con el tiempo.</li>
-<li><strong>Sustento:</strong> talleres y maestros de oficio.</li>
-<li><strong>Energía:</strong> una pequeña red local entre módulos reconstruidos.</li>
-<li><strong>Agua y alimento:</strong> reciclaje cerrado.</li>
-<li><strong>Oficio dominante:</strong> reparación mecánica.</li>
-<li><strong>Decisiones:</strong> dirige quien tenga más experiencia en el problema concreto, no una autoridad fija.</li>
-<li><strong>Forasteros:</strong> se exige un intercambio claro antes de confiar.</li>
-<li><strong>Problema de mantenimiento:</strong> una pieza comunitaria irremplazable está fallando — el reciclador.</li>
-<li><strong>Peligro habitual:</strong> ninguno inmediato.</li>
-<li><strong>Particularidad cultural:</strong> humor técnico sobre reparaciones imposibles.</li>
-<li><strong>Interés corporativo:</strong> TecnoStealer, compradora puntual y discreta — hasta hoy.</li>
-<li><strong>Obra callejera:</strong> dos obras de las Dos Voces se responden entre sí, sin resolverse.</li>
-<li><strong>Acontecimiento actual:</strong> algo importante está roto y todavía no se ha reparado.</li>
+<li><strong>Cronología:</strong> avería confirmada a la 01:30, cierre a las 03:00, sellado a las 04:00, crisis local a las 05:00.</li>
+<li><strong>Tres reclamaciones:</strong> comunidad (Mara), descubridora (Cera), corporación (Iria/TecnoStealer). Ninguna es el villano.</li>
+<li><strong>Escalada de defensas:</strong> avisar → separar → espuma y brazos → custodios y cargador → sellado.</li>
+<li><strong>Cuatro ejes del desenlace:</strong> reciclador y La Costura · Cera y Nilo · TecnoStealer · estado y responsable de La Matriz.</li>
 </ul>
-<p>Un generador que solo arranca con un golpe periódico en el sitio exacto, una reparación provisional con doce años de antigüedad que nadie se atreve a tocar, y murales enfrentados en dos paredes que se miran — así es un día cualquiera en La Costura antes de que Nilo vuelva herido.</p>
-<h4>Mapa textual de La Costura</h4>
-<p><img alt="Mapa de La Costura con los quince puntos numerados: perímetro de llegadas, salón comunal, talleres, mercado de piezas, alojamientos, registro de contratos, enfermería, grúas y plataformas, zona de apuestas y descanso, depósitos, lugar privado, murales de las Dos Voces, generador local, acceso a la Cantera y el reciclador averiado" src="img/mundo_chatarra_mapa_la_costura.png" /><br />
-<em>Mapa de La Costura — la numeración sigue exactamente la lista de abajo.</em></p>
-<p>Numeración de referencia para dirigir, con o sin el mapa a la vista:</p>
-<ol>
-<li><strong>Perímetro de llegadas</strong> — portón reforzado, primer contacto con forasteros.</li>
-<li><strong>Salón comunal</strong> — comedor, vida social, rumores.</li>
-<li><strong>Talleres</strong> — reparación diaria, Mara cuando no está en crisis.</li>
-<li><strong>Mercado de piezas</strong> — compra, venta, turnos de cantera.</li>
-<li><strong>Alojamientos</strong> — módulos prefabricados, descanso.</li>
-<li><strong>Registro de contratos y derechos</strong> — oficina de acuerdos formales.</li>
-<li><strong>Enfermería</strong> — donde llega Nilo herido.</li>
-<li><strong>Grúas y plataformas</strong> — borde de la Cantera, transporte rápido.</li>
-<li><strong>Apuestas, música y descanso</strong> — rincón informal, buena vista del horizonte.</li>
-<li><strong>Depósitos</strong> — almacenaje de material recuperado.</li>
-<li><strong>Lugar privado para hablar</strong> — sin gente, por diseño.</li>
-<li><strong>Murales de las Dos Voces</strong> — dos paredes enfrentadas.</li>
-<li><strong>Generador local</strong> — el que solo arranca a golpes.</li>
-<li><strong>Acceso a la Cantera</strong> — rampas hacia los niveles C-A a C-J.</li>
-<li><strong>Reciclador de agua averiado</strong> — el origen de la urgencia.</li>
-</ol>
-<p>Los números 1-13 y 15 están dentro del propio barrio; el 14 conecta directamente con la Cantera, descrita a continuación. El mapa gráfico de arriba sigue esta numeración; si se actualiza más adelante, debe seguir haciéndolo, no sustituirla.</p>
-<h4>Espacios sociales</h4>
-<p>Cada espacio incluye primera impresión, gente habitual, actividad normal, recursos, conflicto cotidiano propio (sin relación necesaria con la trama) y cómo evoluciona durante la sesión.</p>
-<p><strong>1. Perímetro de llegadas</strong><br />
-Primera impresión: portón reforzado hecho de placas de casco, con un cartel pintado a mano: «Aquí se paga con algo, no con promesas.»<br />
-Gente habitual: un par de vigilantes rotativos, viajeros de paso regateando la entrada.<br />
-Actividad normal: registro informal de quién entra, intercambio inicial (herramienta, información, turno de trabajo) antes de que confíen en un forastero.<br />
-Recursos: primer contacto con rumores frescos, tablón de anuncios con encargos sueltos.<br />
-Conflicto cotidiano: un viajero exige entrar sin pagar el peaje habitual.<br />
-Evolución en la sesión: tras el hundimiento hay más gente entrando y saliendo de lo normal — curiosos, compradores, y quien venga de parte de TecnoStealer.</p>
-<p><strong>2. Salón comunal</strong><br />
-Primera impresión: mesas largas hechas de planchas soldadas, humo de aceite de cocina, ruido de conversación constante.<br />
-Gente habitual: trabajadores fuera de turno, Remache sirviendo mesas, un par de veteranos jugando a las cartas.<br />
-Actividad normal: comer, beber algo fermentado local, discutir reparaciones, apostar sobre casi cualquier cosa.<br />
-Recursos: comida, bebida, información de segunda mano, contactos.<br />
-Conflicto cotidiano: dos mesas discuten sobre si la Voz satírica o la Voz estoica tiene razón — sin llegar a las manos, casi nunca.<br />
-Evolución en la sesión: el hallazgo de Cera se convierte en el tema de todas las conversaciones; según avance la partida, el ambiente pasa de curiosidad a tensión o a celebración según lo que hagan los PJ.<br />
-Interacciones pequeñas (usa dos o tres, no todas a la vez): una mirada de reconocimiento por el equipo o la reputación de un PJ; una conversación interrumpida al acercarse; un rumor equivocado sobre lo que hay bajo la grieta; una invitación a sentarse; un rechazo educado; alguien vendiendo información que el grupo ya sabe; una broma sin relación con la trama sobre el generador que solo arranca a golpes.</p>
-<p><strong>3. Talleres</strong><br />
-Primera impresión: chispas, olor a metal caliente, herramientas colgadas por tamaño en la pared.<br />
-Gente habitual: aprendices, un par de maestros de oficio, Mara cuando no está gestionando la crisis.<br />
-Actividad normal: reparación de encargos diarios, formación de aprendices, discusión técnica.<br />
-Recursos: herramientas prestables, piezas de repuesto comunes, consejo técnico (Mecánica/Electrónica).<br />
-Conflicto cotidiano: dos maestros discuten sobre el método correcto para una reparación imposible.<br />
-Evolución en la sesión: Mara se desplaza a la grieta en cuanto llega Nilo; los talleres quedan medio vacíos mientras dura la crisis.</p>
-<p><strong>4. Mercado de piezas</strong><br />
-Primera impresión: puestos improvisados, piezas clasificadas por tamaño y estado, regateo constante.<br />
-Gente habitual: comerciantes locales, cazadores de gangas, algún viajero de paso.<br />
-Actividad normal: compra y venta de piezas, mapas parciales, rumores, turnos de trabajo y derechos de explotación en la Cantera.<br />
-Recursos: piezas comunes, información sobre la Cantera, precios variables según suministros recientes.<br />
-Conflicto cotidiano: un comerciante acusa a otro de vender una pieza defectuosa como buena.<br />
-Evolución en la sesión: los precios de piezas relacionadas con recicladores suben en cuanto se sabe de la avería — oferta y demanda, no malicia.</p>
-<p>Almacén de expedición: un rincón fijo del mercado, montado como una nave de descarga en miniatura — nadie le da nombre propio, pero funciona igual que un almacén corporativo. Surte lo que hace falta para bajar a la Cantera en serio: cuerda, carros de carga, herramientas grandes (palancas, gatos, picos), cascos y linternas radiales.<br />
-- <strong>De primera mano</strong> (poco frecuente, hay que encargarlo de fuera): hasta un 50% más caro que el precio de catálogo.<br />
-- <strong>Recuperado y revisado</strong> (lo habitual en el Vertedero): solo un 10% más caro que el precio base — pero recuperado es recuperado. Cualquier pieza tiene una posibilidad real de fallar en el peor momento posible; no hace falta tirada para esto, es una herramienta narrativa del Narrador, no una penalización sistemática por comprar de segunda mano.</p>
-<p>Agua embasada: sube de precio a medida que el reciclador empeora, hasta agotarse del todo si nadie lo repara a tiempo — la progresión exacta está en Síntomas del reciclador, en el Panel del Narrador.</p>
-<p><strong>5. Alojamientos</strong><br />
-Primera impresión: módulos prefabricados apilados, ropa tendida entre ellos, más gente de la que caben oficialmente.<br />
-Gente habitual: familias, trabajadores de turno, viajeros que pagan su estancia en jornadas.<br />
-Actividad normal: descanso, vida doméstica, negociación de espacio.<br />
-Recursos: un lugar donde dormir, tiempo de descanso entre escenas.<br />
-Conflicto cotidiano: dos familias discuten por el mismo módulo libre.<br />
-Evolución en la sesión: si los PJ necesitan refugio o tiempo muerto, aquí lo consiguen — a cambio de un favor pequeño si son forasteros.</p>
-<p><strong>6. Registro de contratos y derechos</strong><br />
-Primera impresión: una oficina modesta con un archivador físico y un terminal viejo pero funcional.<br />
-Gente habitual: un escribano comunitario, quien venga a registrar un acuerdo.<br />
-Actividad normal: anotar quién tiene derecho a qué — turnos de cantera, reparaciones pendientes, deudas de trabajo.<br />
-Recursos: información sobre acuerdos previos, capacidad de registrar un nuevo derecho (incluida la firma de responsable de continuidad de La Matriz).<br />
-Conflicto cotidiano: un desacuerdo sobre un turno de cantera mal anotado.<br />
-Evolución en la sesión: se convierte en el lugar donde se formaliza el desenlace final si alguna de las partes quiere dejarlo por escrito.</p>
-<p><strong>7. Enfermería</strong><br />
-Primera impresión: espacio pequeño pero limpio, más ordenado que el resto del barrio.<br />
-Gente habitual: la sanadora local, Nilo tras volver herido.<br />
-Actividad normal: tratar heridas de trabajo, enfermedades menores.<br />
-Recursos: Medicina, un lugar para curar heridas entre escenas.<br />
-Conflicto cotidiano: escasez de vendajes o medicamento tras una mala semana.<br />
-Evolución en la sesión: aquí es donde el grupo ve a Nilo por primera vez, herido y cubierto de espuma endurecida.</p>
-<p><strong>8. Grúas y plataformas</strong><br />
-Primera impresión: estructuras de metal que suben hacia el borde de la Cantera, cables tensados, el chirrido constante de poleas.<br />
-Gente habitual: operarios de grúa, cuadrillas subiendo o bajando turnos.<br />
-Actividad normal: transporte de material entre La Costura y la Cantera.<br />
-Recursos: acceso rápido (aunque ruidoso) a la Cantera, punto de observación elevado.<br />
-Conflicto cotidiano: una grúa lleva días fallando y nadie quiere ser el siguiente en usarla.<br />
-Evolución en la sesión: es la ruta más rápida hacia la Cantera si el grupo la necesita, y el mejor punto para ver pasar al Coloso en la distancia.<br />
-Peaje de las grúas: son de La Costura, no gratuitas — cobran un 10% de lo que se suba desde la Cantera, tasado por lo bajo (el operario nunca tasa a favor del cliente) y pagadero en lo mismo que se acaba de subir, no hace falta crédito de trueque aparte. No es abuso: es cómo se financia el mantenimiento de las propias grúas, y todo el barrio lo sabe y lo acepta.</p>
-<p><strong>9. Apuestas, música y descanso</strong><br />
-Primera impresión: un rincón del salón comunal, o un espacio aparte según el tamaño del barrio — alguien siempre está tocando algo con piezas recicladas como instrumento.<br />
-Gente habitual: los mismos veteranos de las cartas, alguien afinando un instrumento imposible.<br />
-Actividad normal: apuestas sobre casi cualquier cosa, música improvisada, descanso genuino.<br />
-Recursos: ambiente, rumores sueltos, una pausa real para los PJ.<br />
-Conflicto cotidiano: una apuesta que nadie quiere pagar.<br />
-Evolución en la sesión: si el Coloso pasa durante la partida, este es el lugar donde la gente se reúne a verlo y apostar sobre su trayectoria (ver El Coloso, a distancia).</p>
-<p><strong>10. Depósitos</strong><br />
-Primera impresión: contenedores reconvertidos, algunos con carteles de propiedad disputada.<br />
-Gente habitual: quien guarda algo que no quiere en casa.<br />
-Actividad normal: almacenaje de material recuperado, a la espera de venta o uso.<br />
-Recursos: material bruto, algún hallazgo olvidado si alguien busca.<br />
-Conflicto cotidiano: un depósito con propiedad poco clara.<br />
-Evolución en la sesión: puede servir para guardar algo que los PJ traigan de la Cantera o de La Matriz sin llamar la atención.</p>
-<p><strong>11. Lugar privado para hablar</strong><br />
-Primera impresión: un rincón tranquilo — la parte trasera de un taller cerrado, o el borde menos transitado de la Cantera.<br />
-Gente habitual: nadie, por diseño.<br />
-Actividad normal: conversaciones que la gente no quiere tener en público.<br />
-Recursos: privacidad.<br />
-Conflicto cotidiano: ninguno — es precisamente el sitio donde no lo hay.<br />
-Evolución en la sesión: Mara, Cera o Iria pueden pedir hablar aquí con los PJ en algún momento de la Escena 2, lejos de las otras dos partes.</p>
-<h3 id="la-cantera">La Cantera</h3>
-<p>Una explotación abierta de aproximadamente 1,5 km de longitud por 800 m de anchura, escalonada en niveles, en cuyo fondo se abrió la Grieta que lleva a La Matriz. No es una cadena de tiradas: la mayor parte de su actividad ocurre igual si los PJ no hacen nada.</p>
-<p><img alt="Corte esquemático de la Cantera: C-A en el borde superior, la ruta rápida C-B y la ruta segura C-C bajando hacia los niveles C-D y C-E, C-F al fondo con la Grieta, y las zonas laterales C-G a C-J" src="img/mundo_chatarra_mapa_cantera.svg" /><br />
-<em>Diagrama esquemático, no ilustración — para ver de un vistazo la relación espacial entre rutas y niveles.</em></p>
-<p><strong>C-A. Borde superior.</strong> Grúas y plataformas de descarga, visible desde La Costura, el punto más ruidoso de toda la explotación.</p>
-<p><strong>C-B. Rampa norte.</strong> Parcial, transitable con cuidado — ruta rápida pero peligrosa: desprendimientos ocasionales (ver Complicaciones de cantera).</p>
-<p><strong>C-C. Rampa sur.</strong> Más larga, vigilada, usada por cuadrillas con carga — la ruta segura.</p>
-<p><strong>C-D. Nivel intermedio activo.</strong> Trabajadores actuales, maquinaria en uso, montacargas funcionando sin parar.</p>
-<p><strong>C-E. Nivel intermedio abandonado.</strong> Maquinaria parada, más peligroso, zona de restos variados (ver más abajo).</p>
-<p><strong>C-F. Fondo de la cantera.</strong> Profundidad máxima. Aquí está la Grieta de acceso a La Matriz, con luces improvisadas alrededor y las marcas de Cera todavía visibles.</p>
-<p><strong>C-G. Depósitos de material.</strong> Organizados por tipo; una sección permanece cerrada por disputa de propiedad antigua, sin relación con La Matriz.</p>
-<p><strong>C-H. Refugios de cuadrilla.</strong> Cabañas improvisadas donde descansan los trabajadores de turno largo.</p>
-<p><strong>C-I. Punto de observación.</strong> Un saliente natural, buena vista de toda la Cantera y, en días despejados, del horizonte por donde puede pasar el Coloso.</p>
-<p><strong>C-J. Área cerrada.</strong> Sellada tras un derrumbe antiguo. Rumores de algo interesante dentro, sin relación necesaria con La Matriz.</p>
-<p><strong>Actividad normal, con o sin PJ:</strong> cuadrillas trabajando por turnos, grúas moviendo carga, apuestas sobre quién saca más material, alguna disputa por derechos de explotación mal anotados — todo esto sigue ocurriendo se metan o no los personajes.</p>
-<h4>Minar en la Cantera — buscar algo que valga la pena</h4>
-<p>Actividad de sandbox, no una escena con tiradas encadenadas: el grupo puede bajar a remover chatarra cuando quiera, tantas veces como la sesión aguante.</p>
-<p>Cada bajada admite <strong>una o dos tiradas</strong>, nunca más por mucha paciencia que le echen — la Cantera ya la peinan a diario las cuadrillas de La Costura, así que lo fácil ya se lo llevó otro hace tiempo. Tirada de <strong>Alerta o Mecánica/Electrónica</strong> (según se busque por ojo o por conocimiento técnico); el resultado se lee en la <strong>Tabla de calidad de la chatarra (1d10)</strong> ya publicada en el capítulo del Taller — no hace falta inventar una tabla nueva, esta cubre exactamente este caso.</p>
-<p><strong>Profundidad, duración y riesgo</strong> (cuanto más abajo, más se tarda y más peligro — en días, no en horas: esto es trabajo de expedición, no un recado):</p>
-<table>
-<thead>
-<tr>
-<th>Zona</th>
-<th>Duración de la expedición</th>
-<th>Riesgo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C-D (nivel activo)</td>
-<td>medio día — se baja y se vuelve antes de que anochezca</td>
-<td>bajo — como mucho, una cuadrilla reclama que pisas su turno</td>
-</tr>
-<tr>
-<td>C-E (nivel abandonado)</td>
-<td>un día entero, a veces dos — hay que acampar cerca</td>
-<td>desprendimientos más probables (ver Complicaciones de cantera, d6 1); si toca pasar la noche, ver Peligro nocturno, abajo</td>
-</tr>
-<tr>
-<td>Bolsas sin abrir, cerca de C-F</td>
-<td>dos o tres días — abrir acceso, remover, asegurar y salir</td>
-<td>derrumbe real si nadie asegura antes, o si hace falta un explosivo para abrirla; el riesgo nocturno se acumula con cada noche que dura la expedición</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Peligro nocturno:</strong> de día, la Cantera es solo trabajo duro — las sabandijas de la chatarra prefieren no salir. De noche, sobre todo en C-E y más abajo, algo como un Palpador de Óxido (bestiario de Mundo Chatarra: solo activo de noche, deslumbrado por la luz diurna) puede estar cazando entre los mismos restos que el grupo remueve — no busca pelea con quien no parece presa, pero una linterna potente de noche delata a quien la lleva. Cualquier expedición de un día o más implica al menos una noche en la Cantera: dale a esa noche su propio momento de tensión (una señal de presencia, una decisión sobre las luces) en vez de resolverla con una frase de trámite.</p>
-<p><strong>Los explosivos de Cera:</strong> de vez en cuando, para abrir una bolsa de chatarra que a mano no cede, Cera usa una carga pequeña — sabe lo que hace, pero no es una experta certificada en demoliciones. Si el grupo está presente es, sobre todo, un momento de tensión visual: avisa, cuenta atrás, todos se cubren. Solo se vuelve peligroso de verdad si alguien la manipula sin que ella lo sepa, o si alguien insiste en usarla mal.</p>
-<p>Minar no cambia ningún desenlace de la trama principal — es textura y recompensa alternativa, del mismo tipo que las Zonas de restos, más abajo. Al ser una actividad de varios días, encaja mejor entre sesiones o como visita posterior a Edivan que dentro de la ventana de cinco horas de la crisis del reciclador.</p>
-<h4>Complicaciones de cantera (1d6, para textura, no un peligro por escena obligatorio)</h4>
-<table>
-<thead>
-<tr>
-<th>d6</th>
-<th>Complicación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Desprendimiento menor en una rampa — Atletismo o Acrobacias para no perder el equilibrio; un fallo grave pasa a la víctima de Sano a Herido, o de Herido a Tullido si ya lo estaba (misma regla que un colapso de terreno).</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Una cuadrilla reclama que el grupo está pisando su turno de explotación.</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Maquinaria vieja se pone en marcha sola, o casi.</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Alguien encuentra algo que no debería tocar sin permiso — de otra cuadrilla, de Mara, o de TecnoStealer.</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Empieza a caer polvo metálico con el viento — visibilidad reducida un rato, nada grave.</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Señal de proximidad del Coloso (ver El Coloso, a distancia) — normalmente sin consecuencias, corta el trabajo un momento.</td>
-</tr>
-</tbody>
-</table>
-<h4>Zonas de restos</h4>
-<p><strong>Restos 1 — El Casco Partido</strong> (C-E)<br />
-Apariencia: la mitad de un casco de transporte, hundido en ángulo, óxido y musgo metálico.<br />
-Historia previa: un transporte de suministros que se estrelló durante la reconstrucción de Edivan, nunca reclamado del todo.<br />
-Quién la conoce: los veteranos de la Cantera, aunque pocos han entrado del todo.<br />
-Hallazgos: componentes industriales reutilizables, y un compartimento con objetos personales de la tripulación — sentimentales, sin valor de mercado.<br />
-Riesgo: estructura inestable, puede colapsar con vibración o peso mal repartido.<br />
-Información: una placa identifica el transporte — puede conectar con algún PNJ si el Narrador quiere tirar ese hilo.<br />
-Si no se explora: sigue ahí, sin cambios, para una vuelta posterior.<br />
-Cambios posteriores: si se explora mal, puede colapsar del todo y sellarse.<br />
-Relación con las posturas: ninguna directa — textura y recompensa alternativa (los objetos sentimentales, si alguien en La Costura los reconoce).</p>
-<p><strong>Restos 2 — La Fila de Maquinaria Muerta</strong> (C-E)<br />
-Apariencia: media docena de máquinas de extracción, paradas en fila como si esperaran una orden que nunca llegó.<br />
-Historia previa: la cuadrilla que las abandonó no volvió — nadie sabe bien por qué.<br />
-Quién la conoce: los operarios actuales las evitan, dicen que «no gustan».<br />
-Hallazgos: piezas reparables abundantes; una de las máquinas guarda en su memoria interna el registro de la última orden que recibió.<br />
-Riesgo: bajo, salvo alguna trampa de seguridad residual todavía activa.<br />
-Información: el registro puede confirmar, o complicar, quién tenía derechos previos sobre esta sección.<br />
-Si no se explora: la maquinaria sigue oxidándose, sin urgencia.<br />
-Cambios posteriores: puede repararse y volver a producir si alguien invierte el tiempo — gancho para otra sesión.<br />
-Relación con las posturas: útil para Mara (piezas) o para quien busque evidencia sobre derechos de explotación previos.</p>
-<p><strong>Restos 3 — El Depósito Saqueado</strong> (C-G, sección cerrada)<br />
-Apariencia: estanterías vacías, cerraduras forzadas hace tiempo, polvo asentado sobre lo que queda.<br />
-Historia previa: alguien lo vació hace años, mucho antes del hallazgo de Cera — sin relación con La Matriz.<br />
-Quién la conoce: es de dominio público que está vacío; casi nadie pierde tiempo aquí.<br />
-Hallazgos: casi nada de valor — pero un objeto abandonado por descuido, aparentemente inútil, puede resultar clave para una Ingeniería de Oportunidad concreta más adelante.<br />
-Riesgo: ninguno real.<br />
-Información: ninguna relevante a la trama principal, deliberadamente.<br />
-Si no se explora: no cambia nada.<br />
-Cambios posteriores: ninguno.<br />
-Relación con las posturas: ninguna — sirve para que no todo lo que brilla sea importante.</p>
-<p><strong>Restos 4 — El Nido de Cables</strong> (C-F, cerca de la Grieta)<br />
-Apariencia: un amasijo de cableado industrial entrelazado con chatarra más reciente, parte de él todavía con corriente residual.<br />
-Historia previa: restos de la propia estructura colapsada durante el incidente de Edivan original — anterior a La Matriz misma.<br />
-Quién la conoce: Cera pasó cerca al explorar, pero no entró — no era su objetivo.<br />
-Hallazgos: tecnología mal comprendida — un componente que nadie en La Costura sabe identificar del todo.<br />
-Riesgo: descarga eléctrica residual si se manipula sin cuidado.<br />
-Información: confirma, si alguien lo estudia, que la estructura colapsada es más antigua que La Matriz — una capa más del incidente original.<br />
-Si no se explora: queda como curiosidad sin resolver.<br />
-Cambios posteriores: puede volverse peligroso si nadie lo desactiva y algo lo activa por accidente.<br />
-Relación con las posturas: puede interesar a Iria como dato técnico adicional, sin ser necesario para ninguna.</p>
-<p><strong>Restos 5 — El Altar de Chatarra</strong> (junto a C-A)<br />
-Apariencia: una pequeña estructura hecha de piezas colocadas con intención — no es basura, es un monumento improvisado.<br />
-Historia previa: alguien de La Costura lo construyó en memoria de un accidente de cantera anterior.<br />
-Quién la conoce: todo el barrio, aunque pocos hablan de ello con forasteros.<br />
-Hallazgos: ninguno material — es puramente social y de ambiente.<br />
-Riesgo: ninguno, salvo el social de tratarlo con poco respeto.<br />
-Información: puede revelar, si alguien pregunta, algo sobre la cultura de La Costura y su relación con el riesgo del trabajo.<br />
-Si no se explora: sigue ahí, sin cambios.<br />
-Cambios posteriores: puede ganar una pieza nueva si los PJ arriesgan algo real por el barrio.<br />
-Relación con las posturas: ninguna directa — refuerza el tono de frontera industrial con memoria propia.</p>
-<h3 id="el-coloso-a-distancia">El Coloso, a distancia</h3>
-<p>Durante la aventura, un Coloso —casi con certeza el del Arco VI, el único bien documentado: 78-82 metros, miles de toneladas, algo más de 2 km/h— pasa a más de 20 km del asentamiento, sin desviarse hacia La Costura. <strong>No viene a por los PJ. No es un jefe.</strong></p>
-<p><strong>Atmósfera, si decides que pase durante la partida:</strong></p>
-<blockquote>
-<p>Primero es el sonido: no un rugido, sino su ausencia — el ruido de fondo de la cantera se apaga un instante, como si algo absorbiera el aire. Luego la vibración, suave al principio, después innegable. En el horizonte, algo enorme se mueve sin prisa, indiferente a todo lo que no esté directamente en su camino. La chatarra a su paso desaparece, tragada sin ruido de más.</p>
-</blockquote>
-<p><strong>Señales</strong> (usa dos o tres, no todas a la vez): vibración leve en el suelo que hace temblar las herramientas colgadas; un cambio en el sonido ambiente, como si algo absorbiera el ruido de fondo; una nube de polvo lejana en el horizonte; la maquinaria de la Cantera se detiene un momento por instinto colectivo antes de retomar el trabajo.</p>
-<p><strong>Reacciones de la gente:</strong> los veteranos de La Costura siguen comiendo o trabajando sin inmutarse — lo han visto antes. Los recién llegados se alarman. En Apuestas, música y descanso empiezan las apuestas sobre su ruta exacta. Si el Coloso gira aunque sea ligeramente, el miedo es real durante un momento, hasta que queda claro que sigue de largo.</p>
-<p><strong>Qué pueden hacer los PJ:</strong> observar desde un punto de observación (C-I, o las Grúas y plataformas); asegurar maquinaria o proteger a alguien que entra en pánico; investigar por curiosidad; acercarse deliberadamente; aprovechar la interrupción para colarse donde no deberían o simplemente respirar; o ignorarlo del todo y seguir con lo suyo.</p>
-<p><strong>No inventes otra mecánica.</strong> Si alguien decide acercarse de verdad más allá de esta escena, usa el Contador de Vibración y las reglas de proximidad ya publicadas en Mundo Chatarra (El Vertedero), Punto 8 — esta escena no está pensada para terminar en combate ni en persecución. A más de 20 km, que el Coloso llegue a «notar» al grupo exige acumular mucho: trátalo como una posibilidad remota, no un peligro inminente.</p>
-<h3 id="ayuda-rapida-adicional">Ayuda rápida adicional</h3>
-<p><strong>Rumores en circulación</strong> (usa dos o tres, no todos): «Dicen que hay más de un regulador ahí abajo.» (falso, o no confirmado) · «TecnoStealer ya sabía lo que había antes que Cera.» (falso) · «El sistema de la instalación reconoce a quien entra.» (cierto, es el registro de continuidad) · «Alguien vio algo enorme moverse cerca de la cantera esta mañana.» (cierto, es el Coloso).</p>
-<p><strong>Acontecimientos cotidianos</strong> (para textura entre escenas, no misiones completas): una patrulla o cuadrilla pide indicaciones sobre un turno de cantera; alguien busca a un familiar que trabaja en un nivel abandonado; una caja de suministros entregada al taller equivocado; restos de una celebración pequeña de la noche anterior; una disputa menor por un derecho de explotación mal anotado; dos trabajadores discutiendo por raciones o por el turno de guardia.</p>
-<p><strong>Matriz de pistas:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Fuente</th>
-<th>Revela</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mara / talleres</td>
-<td>urgencia del reciclador, estado técnico de La Costura</td>
-</tr>
-<tr>
-<td>Cera / Nilo</td>
-<td>cómo se descubrió la Grieta, qué vieron dentro, qué no tocaron</td>
-</tr>
-<tr>
-<td>Iria / mercado de piezas</td>
-<td>interés previo de TecnoStealer, términos reales del contrato</td>
-</tr>
-<tr>
-<td>Registro de contratos y derechos</td>
-<td>acuerdos previos, cómo formalizar un desenlace</td>
-</tr>
-<tr>
-<td>Zonas de restos</td>
-<td>textura, recursos alternativos, alguna pista suelta sin forzarla</td>
-</tr>
-<tr>
-<td>La Matriz (Control de custodia)</td>
-<td>registros civiles, protocolos, quién puede registrarse como responsable</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Estados del asentamiento:</strong> normal (antes del hundimiento) → en alerta (tras la avería confirmada) → movilizado (si Mara organiza una cuadrilla) → resuelto o en crisis (según el desenlace).</p>
 <hr />
-<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
-<p>Solo números y equipo — la descripción, el aspecto y la personalidad de cada uno están en Reparto. Pensada para tenerla a la vista o imprimirla aparte durante la partida.</p>
-<div class="fichas-grid">
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Mara «Tresvueltas»</div>
-<div class="ficha-rapida-rol">Maestra reparadora</div>
+<p><em>Mundo Chatarra (El Vertedero) — módulo corto ambientado en Edivan. Reutiliza el generador de asentamientos, la economía y las reglas de combate ya vigentes en el mundo de la Urdimbre; no introduce mecánicas nuevas.</em></p>
 </div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">F<b>35</b> A<b>25</b> P<b>45</b> V<b>50</b> · PV <b>17/17/17</b> · Bld <b>0</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Mecánica 75%</span><span class="ficha-rapida-pill">Electrónica 45%</span><span class="ficha-rapida-pill">Liderazgo 50%</span><span class="ficha-rapida-pill">Social 40%</span><span class="ficha-rapida-pill">Alerta 40%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> herramientas de taller variadas, ninguna con perfil de arma.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Cera Vant</div>
-<div class="ficha-rapida-rol">Recuperadora independiente</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">F<b>30</b> A<b>45</b> P<b>50</b> V<b>40</b> · PV <b>18/18/18</b> · Bld <b>1</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 55%</span><span class="ficha-rapida-pill">Mecánica 50%</span><span class="ficha-rapida-pill">Alerta 60%</span><span class="ficha-rapida-pill">Social 35%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> equipo de recuperación personal, sin arma dedicada.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Iria Sorn</div>
-<div class="ficha-rapida-rol">Ingeniera TecnoStealer</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">F<b>20</b> A<b>30</b> P<b>40</b> V<b>45</b> · PV <b>13/13/13</b> · Bld <b>1</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Electrónica 70%</span><span class="ficha-rapida-pill">Mecánica 55%</span><span class="ficha-rapida-pill">Social 60%</span><span class="ficha-rapida-pill">Programación 50%</span><span class="ficha-rapida-pill">Alerta 45%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> caja de herramientas corporativas TecnoStealer, gama alta; sin arma visible.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Nilo Vant</div>
-<div class="ficha-rapida-rol">Recuperador herido</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">F<b>25</b> A<b>40</b> P<b>40</b> V<b>35</b> · PV <b>16/16/16</b> · Bld <b>1</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 40%</span><span class="ficha-rapida-pill">Alerta 35%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> ninguno relevante — herido al empezar la aventura.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Remache</div>
-<div class="ficha-rapida-rol">PNJ funcional</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Mecánica 30%</span><span class="ficha-rapida-pill">Alerta 35%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> una herramienta prestada, sin más.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Custodio pequeño</div>
-<div class="ficha-rapida-rol">×6, coordinados</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">Bld <b>2</b> · Daño <b>4</b> · PV <b>8/8/8</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Inmovilizar 40%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> garra o descarga, Pen 1, no letal.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Brazo industrial</div>
-<div class="ficha-rapida-rol">×2, móviles, del taller</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">Bld <b>3</b> · Daño <b>8</b> · PV <b>15/15/15</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sujetar/golpear 50%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> Pen 2, no letal salvo mal uso deliberado; pensado para manipular piezas pesadas.</div>
-</div>
-</div>
-
-<div class="ficha-rapida">
-<div class="ficha-rapida-cab">
-<div class="ficha-rapida-nombre">Cargador pesado</div>
-<div class="ficha-rapida-rol">×1, lento, resistente</div>
-</div>
-<div class="ficha-rapida-cuerpo">
-<div class="ficha-rapida-attrs">Bld <b>5</b> · Daño <b>12</b> · PV <b>25/25/25</b></div>
-<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Embestida/empuje 35%</span></div>
-<div class="ficha-rapida-equipo"><b>Equipo:</b> Pen 3, masa propia como arma.</div>
-</div>
-</div>
-
-</div>
-
-<hr />
-<p><em>Mundo Chatarra (El Vertedero) — módulo ambientado en Edivan. Reutiliza el generador de asentamientos, la economía, el Contador de Vibración y las reglas de combate ya vigentes en el mundo de la Urdimbre; no introduce mecánicas nuevas.</em></p>
-</main>
 </body>
 </html>

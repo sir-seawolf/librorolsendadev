@@ -1,107 +1,36 @@
 /* Tokens de color: ver theme.css (cargado antes que este archivo) — aquí
    solo queda lo que no es un token de color. */
 :root {
-  font-family: "Barlow Condensed", sans-serif;
-}
-
-@font-face {
-  font-family: "Barlow Condensed";
-  src: url("../../assets/shared/fonts/barlow-condensed/BarlowCondensed-Medium.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Barlow Condensed";
-  src: url("../../assets/shared/fonts/barlow-condensed/BarlowCondensed-SemiBold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 600 900;
-  font-display: swap;
+  font-family: "Courier New", monospace;
 }
 
 * { box-sizing: border-box; }
 
-html, body { height: 100%; margin: 0; background: var(--shell-fondo); color: var(--ink); }
-body { overflow: hidden; }
-button, input, select, textarea { font: inherit; }
-::selection { background: var(--color-informacion); color: var(--shell-fondo); }
-:focus-visible { outline: 2px solid var(--color-informacion); outline-offset: 3px; }
-* { scrollbar-color: var(--shell-linea-activa) var(--shell-metal); scrollbar-width: thin; }
-
-#game-shell { position: relative; height: 100dvh; display: grid; grid-template-rows: 54px minmax(0, 1fr); padding: 0 12px 12px; background: var(--shell-fondo); box-shadow: inset 2px 0 0 rgba(114,199,220,.32), inset -2px 0 0 rgba(114,199,220,.32); }
-#game-header {
-  position: relative;
-  display: grid; grid-template-columns: minmax(280px, auto) 1fr; align-items: center; gap: 22px;
-  border-bottom: 1px solid var(--shell-linea); min-width: 0;
-}
-#game-header::after { content: ""; position: absolute; left: 0; bottom: -1px; width: clamp(72px, 12vw, 180px); height: 2px; background: var(--color-informacion); box-shadow: 0 0 16px rgba(114,199,220,.32); }
-.game-brand { font-size: clamp(1rem, 2vw, 1.45rem); font-weight: 800; letter-spacing: .055em; color: var(--color-texto); white-space: nowrap; }
-.game-contexto { min-width: 0; border-left: 1px solid var(--shell-linea); padding-left: 16px; display: flex; flex-direction: column; line-height: 1.05; text-transform: uppercase; }
-.game-contexto span { color: var(--color-informacion); font-size: .72rem; letter-spacing: .14em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.game-contexto strong { color: var(--color-texto-tenue); font-size: .8rem; letter-spacing: .08em; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); }
 
 #app {
-  position: relative;
   display: grid;
   grid-template-columns: 76% 24%;
-  height: 100%;
-  width: 100%;
-  min-height: 0;
-  border: 1px solid var(--shell-linea);
-  border-top: 0;
-  background: var(--shell-metal);
-  box-shadow: var(--shell-sombra), inset 0 0 0 1px rgba(111, 167, 181, .035);
-  outline: 1px solid rgba(114,199,220,.18);
-  outline-offset: -5px;
+  height: 100vh;
+  width: 100vw;
 }
-
-/* Marco común de aplicación. Vive fuera de cualquier renderer para que
-   menú, relato, panorámicas y combate hereden el mismo lenguaje visual. */
-#app::before,
-#app::after {
-  content: "";
-  position: absolute;
-  z-index: 240;
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
-  opacity: .7;
-}
-#app::before {
-  top: 5px;
-  left: 5px;
-  border-top: 2px solid var(--color-informacion);
-  border-left: 2px solid var(--color-informacion);
-}
-#app::after {
-  right: 5px;
-  bottom: 5px;
-  border-right: 2px solid var(--color-informacion);
-  border-bottom: 2px solid var(--color-informacion);
-}
-
-/* Menús, selector de módulos y finales no montan ficha. En esos estados el
-   escenario recupera todo el marco, como en una consola real sin panel vacío. */
-#app:not(:has(#sheet-panel > *)) { grid-template-columns: minmax(0, 1fr) 0; }
-#app:not(:has(#sheet-panel > *)) #sheet-panel { padding: 0; border: 0; overflow: hidden; }
 
 @media (max-width: 900px) {
   #app { grid-template-columns: 1fr; grid-template-rows: 65vh 35vh; }
-  #app:not(:has(#sheet-panel > *)) { grid-template-rows: minmax(0, 1fr) 0; }
 }
 
 #scenario {
   position: relative;
   overflow: hidden;
-  background: #050809;
+  background: #000;
   display: flex;
   flex-direction: column;
 }
 
 #sheet-panel {
-  background: var(--shell-metal);
-  border-left: 1px solid var(--shell-linea);
-  padding: 14px;
+  background: var(--panel);
+  border-left: 2px solid #000;
+  padding: 12px;
   overflow-y: auto;
 }
 
@@ -110,13 +39,12 @@ button, input, select, textarea { font: inherit; }
    la anomalía del gateway): nunca tapa HUD/joystick/INTERACTUAR, que viven
    dentro de #scenario con sus propios z-index más altos cuando hace falta. */
 #config-toggle {
-  position: fixed; right: 22px; bottom: 22px; z-index: 250;
-  width: 44px; height: 44px; border-radius: var(--shell-radio);
-  background: var(--shell-metal-alto); border: 1px solid var(--shell-linea);
+  position: fixed; right: 12px; bottom: 12px; z-index: 250;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(10,10,12,.75); border: 1px solid var(--color-borde, #333);
   color: var(--color-texto-tenue, #8a94a3); font-size: 16px; line-height: 1;
   cursor: pointer; transition: color .2s, border-color .2s;
 }
-#config-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
 #config-toggle:hover, #config-toggle:focus-visible { color: var(--color-informacion, #6cb6e0); border-color: var(--color-informacion, #6cb6e0); outline: none; }
 #config-panel {
   position: fixed; inset: 0; z-index: 300;
@@ -128,7 +56,7 @@ button, input, select, textarea { font: inherit; }
   width: min(260px, 80vw); max-height: calc(100vh - 66px); overflow-y: auto;
   padding: 16px; background: #0c0e14;
   border: 1px solid var(--color-borde, #333); box-shadow: 0 4px 24px rgba(0,0,0,.5);
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Share Tech Mono", monospace;
 }
 .ajustes-fila { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
 .ajustes-fila-bus { display: grid; grid-template-columns: 1fr auto; }
@@ -155,32 +83,20 @@ button, input, select, textarea { font: inherit; }
   align-items: center;
   justify-content: center;
   gap: 18px;
-  background:
-    linear-gradient(135deg, rgba(101,183,199,.045), transparent 38%),
-    var(--shell-fondo);
+  background: radial-gradient(circle at 50% 20%, #241417 0%, #0d0f12 70%);
   text-align: center;
   padding: 24px;
 }
-.menu-titulo { font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: .035em; color: var(--color-texto); max-width: 14ch; line-height: .95; }
-.menu-subtitulo { font-size: .78rem; color: var(--color-informacion); letter-spacing: .16em; text-transform: uppercase; }
+.menu-titulo { font-size: 2.4em; letter-spacing: 4px; color: var(--accent); text-shadow: 0 0 12px rgba(179,50,60,.6); }
+.menu-subtitulo { font-size: 1.1em; color: var(--accent-2); letter-spacing: 2px; }
 .menu-botones { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; width: 320px; }
 .btn-menu {
-  background: var(--shell-metal-alto); color: var(--ink); border: 1px solid var(--shell-linea);
-  border-radius: var(--shell-radio); padding: 12px 18px; min-height: 46px; cursor: pointer; font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  transition: background .18s ease-out, border-color .18s ease-out, color .18s ease-out, transform .18s ease-out;
+  background: var(--panel-2); color: var(--ink); border: 1px solid #333;
+  padding: 12px 18px; cursor: pointer; font-family: inherit; font-size: 1em; letter-spacing: 1px;
+  transition: background .15s, border-color .15s;
 }
-.btn-menu:hover { background: #203039; border-color: var(--color-informacion); color: #eefcff; transform: translateY(-1px); }
+.btn-menu:hover { background: var(--accent); border-color: var(--accent); }
 .btn-menu:disabled { opacity: .4; cursor: not-allowed; }
-
-@media (max-width: 700px) {
-  #game-shell { grid-template-rows: 48px minmax(0, 1fr); padding: 0 6px 6px; }
-  #game-header { grid-template-columns: 1fr auto; gap: 10px; }
-  .game-brand { font-size: .82rem; letter-spacing: .035em; }
-  .game-contexto { max-width: 42vw; padding-left: 10px; }
-  .game-contexto span { font-size: .66rem; }
-  .game-contexto strong { font-size: .72rem; }
-  #config-toggle { right: 14px; bottom: 14px; }
-}
 
 /* Entradas de desarrollo (module.json: devEntryPoints) -- claramente
    diferenciadas del menú real: etiqueta propia, borde distinto, nunca se
@@ -214,7 +130,7 @@ button, input, select, textarea { font: inherit; }
 .exp-subtitulo { font-weight: normal; color: var(--color-informacion); font-size: .88em; }
 .exp-desc { color: var(--color-texto-tenue); font-size: .8em; margin-top: 5px; line-height: 1.4; }
 .exp-estado {
-  font-size: .78rem; letter-spacing: 1.5px; color: var(--color-peligro-texto); flex-shrink: 0;
+  font-size: .68em; letter-spacing: 1.5px; color: var(--color-peligro); flex-shrink: 0;
   text-transform: uppercase; padding-top: 3px; white-space: nowrap;
 }
 .expediente.bloqueado .exp-estado { color: var(--color-texto-tenue); }
@@ -233,10 +149,10 @@ button, input, select, textarea { font: inherit; }
 
 /* ---------- Escena narrativa ---------- */
 .narrativa {
-  flex: 1; display: block; position: relative; overflow: hidden;
+  flex: 1; display: flex; flex-direction: column;
   min-height: 0; background-size: cover; background-position: center;
 }
-.narrativa-fondo { position: absolute; inset: 0; min-height: 0; background-size: cover; background-position: center; overflow: hidden; }
+.narrativa-fondo { flex: 1; min-height: 0; background-size: cover; background-position: center; position: relative; overflow: hidden; }
 .narrativa-presentacion {
   position: absolute; left: 50%; top: 50%; transform-origin: center;
   pointer-events: none;
@@ -247,18 +163,20 @@ button, input, select, textarea { font: inherit; }
   max-height: 40%; overflow-y: auto; font-size: .95em; line-height: 1.5;
 }
 .narrativa-texto em { color: var(--accent-2); }
-.narrativa-hud {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 320;
-  background: linear-gradient(to top, rgba(6,8,10,.98) 0%, rgba(8,10,12,.92) 68%, rgba(8,10,12,0) 100%);
-  padding-top: clamp(34px, 7vh, 76px);
-}
 
 /* En una composición por capas el escenario no debe cambiar de tamaño
    cuando el texto pasa de una a varias líneas. Texto y acciones forman un
    HUD inferior superpuesto; cada uno gestiona su propio desbordamiento. */
 .narrativa-con-presentacion { position: relative; overflow: hidden; }
 .narrativa-con-presentacion .narrativa-fondo { position: absolute; inset: 0; }
-.narrativa-con-presentacion .narrativa-texto { height: clamp(96px, 18vh, 150px); box-sizing: border-box; overflow-y: auto; }
+.narrativa-con-presentacion .narrativa-texto {
+  position: absolute; left: 0; right: 0; bottom: 62px; z-index: 320;
+  height: clamp(96px, 18vh, 150px); box-sizing: border-box; overflow-y: auto;
+  background: linear-gradient(to top, rgba(8,9,11,.97), rgba(8,9,11,.86));
+}
+.narrativa-con-presentacion #controles {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 321;
+}
 .narrativa-con-presentacion .acciones-bar { min-height: 62px; align-items: center; }
 
 /* ---------- Diálogo (type: "dialogue") ---------- */
@@ -266,7 +184,7 @@ button, input, select, textarea { font: inherit; }
   background: rgba(10,10,12,.94); padding: 16px 20px; border-top: 2px solid var(--accent);
   max-height: 55%; overflow-y: auto;
 }
-.dialogo-hablante { font-family: "Barlow Condensed", sans-serif; font-weight: 600; letter-spacing: 1px; color: var(--color-informacion); font-size: .9em; margin-bottom: 6px; }
+.dialogo-hablante { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; color: var(--color-informacion); font-size: .85em; margin-bottom: 6px; }
 .dialogo-texto { line-height: 1.6; font-size: .95em; }
 /* Respuestas como líneas narrativas, no botones de formulario (§9): sin
    caja/borde propio, una marca `>` que se ilumina en selección/foco en
@@ -278,7 +196,7 @@ button, input, select, textarea { font: inherit; }
   font-family: inherit; font-size: .95em; letter-spacing: .3px;
   padding: 12px 4px 12px 20px; min-height: 44px; cursor: pointer; position: relative;
 }
-.dialogo-opcion::before { content: ""; position: absolute; left: 3px; top: 50%; width: 5px; height: 5px; border-top: 1px solid var(--color-texto-tenue); border-right: 1px solid var(--color-texto-tenue); transform: translateY(-50%) rotate(45deg); }
+.dialogo-opcion::before { content: "›"; position: absolute; left: 2px; color: var(--color-texto-tenue); font-weight: 700; }
 .dialogo-opcion:hover, .dialogo-opcion:focus-visible { color: var(--color-seleccion); outline: none; }
 .dialogo-opcion:hover::before, .dialogo-opcion:focus-visible::before { color: var(--color-seleccion); }
 .acciones-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 18px; background: #08090b; border-top: 1px solid #222; }
@@ -544,97 +462,12 @@ button, input, select, textarea { font: inherit; }
 .ficha-bloque { border-top: 1px solid #262a31; padding-top: 9px; }
 .ficha-titulo { color: var(--accent-2); font-size: .82em; letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase; }
 .barra-vida { background: #2a1216; height: 11px; border: 1px solid #333; }
-.barra-vida-fill { background: var(--success); height: 100%; }
+.barra-vida-fill { background: var(--success); height: 100%; transition: width .2s; }
 .vida-detalle { font-size: .78em; color: var(--muted); margin-top: 3px; }
-.ep-dots { display: flex; gap: 8px; }
-.ep-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #56606b; }
-.ep-dot.activo { border-color: var(--critico); background: var(--critico); }
+.ep-dots { font-size: 1.2em; letter-spacing: 4px; }
+.ep-dot { color: #333; }
+.ep-dot.activo { color: var(--critico); }
 .ficha-inventario { margin: 0; padding-left: 16px; font-size: .85em; color: var(--muted); line-height: 1.5; }
-.ficha-inventario-vacio { list-style: none; margin-left: -16px; font-style: italic; color: var(--color-texto-tenue); }
-.ficha-inventario-gestionar, .ficha-inventario-acceso { border: 1px solid var(--color-borde); background: rgba(10,14,17,.88); color: var(--color-informacion); min-height: 40px; padding: 7px 10px; cursor: pointer; text-transform: uppercase; letter-spacing: .08em; font-size: .72em; }
-.ficha-inventario-acceso { margin: 2px 34px 2px 4px; }
-.ficha-inventario-gestionar:hover, .ficha-inventario-acceso:hover { border-color: var(--color-seleccion); color: var(--color-texto); }
-.inventario-overlay { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 18px; background: rgba(1,4,6,.86); }
-.inventario-panel { width: min(1180px, 98vw); height: min(820px, 94dvh); overflow: hidden; display: grid; grid-template-rows: auto auto minmax(0,1fr) auto; color: var(--color-texto); background: var(--shell-fondo); background-image: var(--panel-decorado, none); border: 1px solid var(--shell-linea); box-shadow: 0 24px 80px rgba(0,0,0,.68); }
-.inventario-cabecera { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 15px 18px; border-bottom: 1px solid var(--shell-linea); background: rgba(8,13,16,.94); }
-.inventario-cabecera h2 { margin: 0 0 3px; font-size: 1.4rem; letter-spacing: .06em; text-transform: uppercase; }
-.inventario-cabecera p { margin: 0; color: var(--color-texto-tenue); font-size: .8rem; }
-.inventario-cerrar { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 1px solid var(--shell-linea); background: var(--shell-metal); color: var(--color-texto-tenue); cursor: pointer; }
-.inventario-cerrar:hover, .inventario-cerrar:focus-visible { color: var(--color-texto); border-color: var(--color-seleccion); }
-.inventario-cerrar svg { width: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
-.inventario-miembros { display: flex; overflow-x: auto; padding: 0 12px; border-bottom: 1px solid var(--shell-linea); background: rgba(10,16,19,.92); scrollbar-color: var(--shell-linea-activa) var(--shell-fondo); }
-.inventario-miembros button { min-width: 132px; min-height: 54px; padding: 7px 12px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--color-texto-tenue); cursor: pointer; text-align: left; text-transform: uppercase; letter-spacing: .05em; }
-.inventario-miembros button span, .inventario-miembros button small { display: block; }
-.inventario-miembros button small { max-width: 18ch; margin-top: 2px; overflow: hidden; color: inherit; font-size: .62rem; text-overflow: ellipsis; white-space: nowrap; }
-.inventario-miembros button.activo { color: var(--color-texto); border-bottom-color: var(--color-informacion); background: rgba(101,183,199,.06); }
-.inventario-estacion { min-height: 0; display: grid; grid-template-columns: minmax(0,1.45fr) minmax(280px,.75fr); }
-.inventario-personaje { position: relative; min-height: 0; overflow: hidden; border-right: 1px solid var(--shell-linea); background: linear-gradient(110deg, rgba(8,13,16,.96), rgba(17,25,30,.76)); }
-.inventario-identidad { position: absolute; z-index: 3; top: 18px; left: 20px; max-width: 34%; }
-.inventario-identidad strong, .inventario-identidad span { display: block; }
-.inventario-identidad strong { font-size: 1.55rem; letter-spacing: .08em; }
-.inventario-identidad span { color: var(--color-informacion); font-size: .78rem; }
-.inventario-figura { position: absolute; inset: 12% 29% 0; background-image: linear-gradient(to top, var(--shell-fondo) 0, transparent 32%), var(--retrato-personaje); background-repeat: no-repeat; background-position: center top; background-size: cover; filter: saturate(.68) contrast(1.08); opacity: .9; }
-.inventario-figura::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(101,183,199,.18); pointer-events: none; }
-.inventario-ranuras { position: absolute; inset: 0; pointer-events: none; }
-.inventario-ranura { position: absolute; z-index: 4; width: min(31%,220px); min-height: 84px; padding: 8px; border: 1px solid var(--shell-linea); background: rgba(8,13,16,.9); pointer-events: auto; }
-.inventario-ranura::after { content: ""; position: absolute; top: 50%; width: 36px; border-top: 1px solid var(--color-informacion); opacity: .55; }
-.inventario-ranura-armor { top: 23%; left: 18px; }
-.inventario-ranura-ranged { top: 18%; right: 18px; }
-.inventario-ranura-melee { bottom: 19%; left: 18px; }
-.inventario-ranura-uso { bottom: 14%; right: 18px; }
-.inventario-ranura-armor::after, .inventario-ranura-melee::after { left: 100%; }
-.inventario-ranura-ranged::after, .inventario-ranura-uso::after { right: 100%; }
-.inventario-ranura-label { display: block; margin-bottom: 6px; color: var(--color-informacion); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; }
-.inventario-ranura-vacia { display: block; color: var(--color-texto-tenue); font-size: .76rem; }
-.inventario-objeto { width: 100%; min-height: 48px; padding: 8px 10px; border: 1px solid var(--shell-linea); background: var(--shell-metal); color: var(--color-texto); cursor: pointer; text-align: left; }
-.inventario-objeto + .inventario-objeto { margin-top: 5px; }
-.inventario-objeto:hover, .inventario-objeto:focus-visible { border-color: var(--color-informacion); background: var(--shell-metal-alto); }
-.inventario-objeto.seleccionado { border-color: var(--color-seleccion); color: var(--color-seleccion); }
-.inventario-objeto-nombre, .inventario-objeto-estado { display: block; overflow-wrap: anywhere; }
-.inventario-objeto-nombre { font-weight: 600; }
-.inventario-objeto-estado { margin-top: 2px; color: var(--color-texto-tenue); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; }
-.inventario-objeto.en-ranura { border: 0; padding: 2px 0; min-height: 40px; background: transparent; }
-.inventario-mochila { min-height: 0; display: grid; grid-template-rows: auto 1fr; background: rgba(8,13,16,.92); }
-.inventario-mochila-titulo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 16px 18px 10px; border-bottom: 1px solid var(--shell-linea); }
-.inventario-mochila-titulo h3 { margin: 0; font-size: 1.1rem; letter-spacing: .08em; text-transform: uppercase; }
-.inventario-mochila-titulo span { color: var(--color-texto-tenue); font-size: .72rem; }
-.inventario-mochila-lista { min-height: 0; overflow-y: auto; padding: 10px 12px 18px; scrollbar-color: var(--shell-linea-activa) var(--shell-fondo); }
-.inventario-vacio { max-width: 32ch; margin: 24px auto; color: var(--color-texto-tenue); font-size: .82rem; line-height: 1.5; text-align: center; }
-.inventario-operaciones { display: grid; grid-template-columns: minmax(190px,1fr) auto minmax(320px,1.25fr); align-items: center; gap: 14px; padding: 11px 16px; border-top: 1px solid var(--shell-linea); background: rgba(8,13,16,.98); }
-.inventario-seleccion { min-width: 0; }
-.inventario-seleccion strong, .inventario-seleccion span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.inventario-seleccion span { margin-top: 3px; color: var(--color-informacion); font-size: .7rem; }
-.inventario-seleccion span.no-vinculado { color: var(--color-peligro-texto); }
-.inventario-seleccion span.instruccion { color: var(--color-texto-tenue); }
-.inventario-anuncio { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.inventario-acciones, .inventario-transferencia { display: flex; align-items: center; gap: 5px; }
-.inventario-acciones button, .inventario-transferencia button { min-height: 40px; padding: 7px 11px; border: 1px solid var(--shell-linea); background: var(--shell-metal); color: var(--color-texto); cursor: pointer; text-transform: uppercase; letter-spacing: .05em; }
-.inventario-acciones button:hover:not([disabled]), .inventario-transferencia button:hover:not([disabled]), .inventario-acciones button:focus-visible, .inventario-transferencia button:focus-visible { border-color: var(--color-seleccion); color: var(--color-seleccion); }
-.inventario-acciones button[disabled], .inventario-transferencia button[disabled] { opacity: .36; cursor: not-allowed; }
-.inventario-transferencia { justify-content: flex-end; overflow-x: auto; }
-.inventario-transferencia > span { flex: none; color: var(--color-texto-tenue); font-size: .68rem; text-transform: uppercase; }
-@media (max-width: 820px) {
-  .inventario-overlay { padding: 0; }
-  .inventario-panel { width: 100vw; height: 100dvh; }
-  .inventario-estacion { grid-template-columns: 1fr; overflow-y: auto; }
-  .inventario-personaje { min-height: 480px; border-right: 0; border-bottom: 1px solid var(--shell-linea); }
-  .inventario-figura { inset-inline: 26%; }
-  .inventario-mochila { min-height: 300px; }
-  .inventario-operaciones { grid-template-columns: 1fr; align-items: stretch; }
-  .inventario-transferencia { justify-content: flex-start; }
-}
-@media (max-width: 520px) {
-  .inventario-cabecera p { display: none; }
-  .inventario-miembros button { min-width: 105px; }
-  .inventario-personaje { min-height: 540px; }
-  .inventario-figura { inset: 18% 18% 5%; opacity: .48; }
-  .inventario-identidad { max-width: 65%; }
-  .inventario-ranura { width: calc(50% - 24px); }
-  .inventario-ranura-armor, .inventario-ranura-melee { left: 10px; }
-  .inventario-ranura-ranged, .inventario-ranura-uso { right: 10px; }
-  .inventario-ranura::after { display: none; }
-  .inventario-acciones button { flex: 1; }
-}
 .btn-historial { margin-top: 4px; background: transparent; border: 1px solid #333; color: var(--muted); padding: 6px; cursor: pointer; font-family: inherit; font-size: .72em; letter-spacing: .5px; }
 .btn-historial:hover { border-color: var(--color-seleccion); color: var(--ink); }
 .ficha-municion { font-size: .82em; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
@@ -657,12 +490,11 @@ button, input, select, textarea { font: inherit; }
 #sheet-panel { position: relative; }
 .ficha-toggle {
   position: absolute; top: 8px; right: 8px;
-  width: 44px; height: 44px; min-height: 44px;
+  width: 30px; height: 44px; min-height: 44px; /* objetivo táctil suficiente (punto 9) */
   background: var(--panel-2); border: 1px solid #333;
   color: var(--muted); cursor: pointer; font-family: inherit; font-size: 1em;
   display: flex; align-items: center; justify-content: center;
 }
-.ficha-toggle svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; }
 .ficha-toggle:hover { color: var(--ink); border-color: var(--color-seleccion); }
 
 .ficha-compacta {
@@ -677,8 +509,7 @@ button, input, select, textarea { font: inherit; }
 .fc-vida-segmento.herido i { background: var(--color-seleccion); }
 .fc-vida-segmento.tullido i { background: var(--color-peligro); }
 .fc-pe { display: flex; gap: 4px; color: #56606b; font-size: .72em; line-height: 1; }
-.fc-pe-punto { width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg); }
-.fc-pe-punto.activo { color: var(--color-seleccion); background: currentColor; box-shadow: 2px 2px 6px rgba(0,0,0,.35); }
+.fc-pe-punto.activo { color: var(--color-seleccion); text-shadow: 0 0 7px rgba(201,162,39,.45); }
 
 #sheet-panel.colapsada { padding: 10px 8px; }
 
@@ -713,6 +544,7 @@ button, input, select, textarea { font: inherit; }
   position: fixed; top: 0; right: 0; height: 100vh; z-index: 220;
   width: min(320px, 86vw);
   box-shadow: -10px 0 26px rgba(0,0,0,.55);
+  transition: width .2s ease;
 }
 /* Colapsada: SOLO una pestaña (alto ajustado al contenido, no 100vh) -- si
    ocupara toda la altura se solapaba con la barra de controles de
@@ -836,8 +668,8 @@ button, input, select, textarea { font: inherit; }
 @keyframes fx-fade { from { opacity: 1; } to { opacity: 0; } }
 
 /* ---------- Fundido entre escenas ---------- */
-#scenario.fundiendo { animation: escena-fade .22s cubic-bezier(.19,1,.22,1); }
-@keyframes escena-fade { from { opacity: .72; filter: brightness(.78); } to { opacity: 1; filter: brightness(1); } }
+#scenario.fundiendo { animation: escena-fade .18s ease-in; }
+@keyframes escena-fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------- Carga y error recuperable entre escenas (Hallazgo 7) ---------- */
 .escena-cargando {
@@ -912,7 +744,7 @@ button, input, select, textarea { font: inherit; }
    Épicos, pistas, decisiones) como líneas de expediente — nunca una
    card centrada con glow. Genérico: no conoce el módulo activo. ---------- */
 .final-screen { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
-.final-expediente { width: 100%; max-width: 560px; border-top: 1px solid var(--color-peligro); padding: 22px 0 4px; }
+.final-expediente { width: 100%; max-width: 560px; border-left: 3px solid var(--color-peligro); padding: 4px 0 4px 22px; }
 .final-eyebrow { font-size: .68em; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-texto-tenue); margin-bottom: 10px; }
 .final-titulo { font-size: 1.55em; letter-spacing: 1px; color: var(--color-texto); line-height: 1.3; }
 .final-texto { margin-top: 12px; line-height: 1.6; font-size: .92em; color: var(--color-texto); }

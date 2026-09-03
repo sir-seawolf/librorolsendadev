@@ -51,10 +51,8 @@ export const state = {
   objetosDescubiertos: [],
   pistasDescubiertas: [],
   decisiones: [],
-  resources: {},            // contadores narrativos declarativos (PC, tiempo, favores...)
   historialTiradas: [],     // log de tiradas — ver registrarTirada()
   mapaDescubierto: {},      // fog-of-war del minimapa: { "x,y": true }
-  progresoEscenas: {},      // estado reanudable propio de renderers: { escenaId: datos JSON-safe }
   estadoPersecucion: null,
   estadoCombate: null,
   finalTipo: null
@@ -72,61 +70,17 @@ function municionInicialDesdeArma(arma) {
 }
 
 function crearRuntimeDesdeBase(base) {
-  const inventario = [...base.equipo];
-  const inventarioRefs = inventario.map((_, indice) => base.equipoIds?.[indice] ?? null);
-  const inventarioInstancias = inventario.map((_, indice) => `${base.id}:${indice}:${inventarioRefs[indice] ?? "item"}`);
   return {
     baseId: base.id,
     base,                                       // referencia de solo lectura a characters.json
     habilidades: { ...base.habilidades },        // copia mutable: aquí escribe la progresión
     vidaActual: { ...base.niveles },
     puntosEpicosActuales: base.puntosEpicos,
-    inventario,
-    // Identificador de definición alineado por instancia con `inventario`.
-    // El texto sigue siendo presentación; las reglas solo podrán enlazar un
-    // objeto cuando el módulo declare este id estable de forma explícita.
-    inventarioRefs,
-    inventarioInstancias,
-    recursosEquipo: {},
-    equipoEstados: inventario.map(item => estadoInicialDeEquipo(base, item)),
+    inventario: [...base.equipo],
     estadoDisponibilidad: "disponible",          // disponible | separado | herido | inconsciente | ocupado | ausente
     municion: municionInicialDesdeArma(base.arma),
     cobertura: 0                                 // nivel de cobertura activo (src/rules/cover.js) — por combatiente, no un booleano global de la escena (ver docs/COMBAT_UX.md)
   };
-}
-
-const ESTADOS_EQUIPO = new Set(["equipado", "guardado", "en_uso"]);
-
-function estadoInicialDeEquipo(base, item) {
-  const nombre = String(item).toLocaleLowerCase("es");
-  const referencias = [base?.arma?.nombre, base?.armaCC?.nombre, base?.armadura?.nombre]
-    .filter(Boolean).map(valor => String(valor).toLocaleLowerCase("es"));
-  return referencias.some(ref => ref !== "sin arma" && nombre.includes(ref)) ? "equipado" : "guardado";
-}
-
-function asegurarEquipoEstado(miembro) {
-  const inventario = miembro.inventario || [];
-  if (!Array.isArray(miembro.equipoEstados)) {
-    const legado = miembro.equipoEstado || {};
-    miembro.equipoEstados = inventario.map(item => ESTADOS_EQUIPO.has(legado[item]) ? legado[item] : estadoInicialDeEquipo(miembro.base, item));
-    delete miembro.equipoEstado;
-  }
-  while (miembro.equipoEstados.length < inventario.length) {
-    const indice = miembro.equipoEstados.length;
-    miembro.equipoEstados.push(estadoInicialDeEquipo(miembro.base, inventario[indice]));
-  }
-  miembro.equipoEstados.length = inventario.length;
-
-  if (!Array.isArray(miembro.inventarioRefs)) miembro.inventarioRefs = [];
-  while (miembro.inventarioRefs.length < inventario.length) miembro.inventarioRefs.push(null);
-  miembro.inventarioRefs.length = inventario.length;
-  if (!Array.isArray(miembro.inventarioInstancias)) miembro.inventarioInstancias = [];
-  while (miembro.inventarioInstancias.length < inventario.length) {
-    const indice = miembro.inventarioInstancias.length;
-    miembro.inventarioInstancias.push(`legacy:${miembro.baseId}:${indice}:${miembro.inventarioRefs[indice] ?? "item"}`);
-  }
-  miembro.inventarioInstancias.length = inventario.length;
-  miembro.recursosEquipo ||= {};
 }
 
 // Migración de saves anteriores a esta iteración (punto 26 del encargo):
@@ -141,7 +95,6 @@ function migrarRecursosCombateSiFalta() {
   Object.values(state.partyMembers).forEach(m => {
     if (m.municion === undefined) m.municion = municionInicialDesdeArma(m.base?.arma);
     if (m.cobertura === undefined) m.cobertura = 0;
-    asegurarEquipoEstado(m);
   });
 }
 
@@ -162,10 +115,8 @@ export function iniciarPartida(pregenerados, playerBaseId) {
   state.objetosDescubiertos = [];
   state.pistasDescubiertas = [];
   state.decisiones = [];
-  state.resources = {};
   state.historialTiradas = [];
   state.mapaDescubierto = {};
-  state.progresoEscenas = {};
   state.entrySpawnId = null;
   state.finalTipo = null;
   notificarEscena();
@@ -178,95 +129,6 @@ export function obtenerJugador() {
 export function obtenerMiembro(id) {
   if (id === "player") return obtenerJugador();
   return state.partyMembers[id] || null;
-}
-
-export function estadoEquipoDe(miembroId, item, indice = -1) {
-  const miembro = obtenerMiembro(miembroId);
-  if (!miembro || !miembro.inventario.includes(item)) return null;
-  asegurarEquipoEstado(miembro);
-  const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
-  return miembro.equipoEstados[posicion] ?? null;
-}
-
-export function referenciaEquipoDe(miembroId, item, indice = -1) {
-  const miembro = obtenerMiembro(miembroId);
-  if (!miembro || !miembro.inventario.includes(item)) return null;
-  asegurarEquipoEstado(miembro);
-  const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
-  return miembro.inventarioRefs[posicion] ?? null;
-}
-
-export function equipamientoActivoDe(miembroId, prefijo) {
-  const miembro = obtenerMiembro(miembroId);
-  if (!miembro) return [];
-  asegurarEquipoEstado(miembro);
-  return miembro.inventario.flatMap((item, indice) => {
-    const referencia = miembro.inventarioRefs[indice];
-    const estado = miembro.equipoEstados[indice];
-    if (!referencia?.startsWith(`${prefijo}:`) || !["equipado", "en_uso"].includes(estado)) return [];
-    const instanciaId = miembro.inventarioInstancias[indice];
-    return [{ item, indice, referencia, estado, instanciaId, recursos: miembro.recursosEquipo[instanciaId] ?? null }];
-  });
-}
-
-export function actualizarRecursosEquipo(miembroId, instanciaId, recursos) {
-  const miembro = obtenerMiembro(miembroId);
-  if (!miembro || !instanciaId || !miembro.inventarioInstancias?.includes(instanciaId) || !recursos || typeof recursos !== "object") return false;
-  asegurarEquipoEstado(miembro);
-  miembro.recursosEquipo[instanciaId] = structuredClone(recursos);
-  const referencia = miembro.inventarioRefs[miembro.inventarioInstancias.indexOf(instanciaId)];
-  const mismaDefinicionBase = referencia?.split(":")[1] === miembro.base?.arma?.equipoId?.split(":")[1];
-  if (mismaDefinicionBase && recursos.municion) {
-    miembro.municion = { ...recursos.municion };
-  }
-  notificarFicha();
-  guardar();
-  return true;
-}
-
-export function establecerEstadoEquipo(miembroId, item, estado, indice = -1) {
-  const miembro = obtenerMiembro(miembroId);
-  if (!miembro || !miembro.inventario.includes(item) || !ESTADOS_EQUIPO.has(estado)) return false;
-  asegurarEquipoEstado(miembro);
-  const posicion = indice >= 0 && miembro.inventario[indice] === item ? indice : miembro.inventario.indexOf(item);
-  const referencia = miembro.inventarioRefs[posicion];
-  if (["equipado", "en_uso"].includes(estado) && referencia) {
-    const categoria = referencia.split(":", 1)[0];
-    if (["ranged", "melee", "armor"].includes(categoria)) {
-      miembro.inventarioRefs.forEach((otraReferencia, otraPosicion) => {
-        if (otraPosicion !== posicion && otraReferencia?.startsWith(`${categoria}:`) && ["equipado", "en_uso"].includes(miembro.equipoEstados[otraPosicion])) {
-          miembro.equipoEstados[otraPosicion] = "guardado";
-        }
-      });
-    }
-  }
-  miembro.equipoEstados[posicion] = estado;
-  notificarFicha();
-  guardar();
-  return true;
-}
-
-export function transferirEquipo(origenId, destinoId, item, indiceOrigen = -1) {
-  const origen = obtenerMiembro(origenId);
-  const destino = obtenerMiembro(destinoId);
-  const indice = indiceOrigen >= 0 && origen?.inventario[indiceOrigen] === item ? indiceOrigen : (origen?.inventario.indexOf(item) ?? -1);
-  if (!origen || !destino || origen === destino || indice < 0) return false;
-  asegurarEquipoEstado(origen);
-  asegurarEquipoEstado(destino);
-  origen.inventario.splice(indice, 1);
-  origen.equipoEstados.splice(indice, 1);
-  const referencia = origen.inventarioRefs.splice(indice, 1)[0] ?? null;
-  const instanciaId = origen.inventarioInstancias.splice(indice, 1)[0];
-  const recursos = instanciaId ? origen.recursosEquipo[instanciaId] : null;
-  if (instanciaId) delete origen.recursosEquipo[instanciaId];
-  destino.inventario.push(item);
-  destino.equipoEstados.push("guardado");
-  destino.inventarioRefs.push(referencia);
-  destino.inventarioInstancias.push(instanciaId ?? `transfer:${destino.baseId}:${destino.inventario.length - 1}:${referencia ?? "item"}`);
-  if (recursos) destino.recursosEquipo[destino.inventarioInstancias.at(-1)] = recursos;
-  notificarFicha();
-  guardar();
-  return true;
 }
 
 // Estados que impiden delegar una acción en ese miembro. "herido" queda FUERA
@@ -323,22 +185,6 @@ export function establecerFlag(nombre, valor = true) {
 
 export function tieneFlag(nombre) {
   return !!state.flags[nombre];
-}
-
-export function obtenerProgresoEscena(escenaId) {
-  return state.progresoEscenas?.[escenaId] ?? null;
-}
-
-export function guardarProgresoEscena(escenaId, progreso) {
-  state.progresoEscenas ||= {};
-  state.progresoEscenas[escenaId] = structuredClone(progreso);
-  guardar();
-}
-
-export function limpiarProgresoEscena(escenaId) {
-  if (!state.progresoEscenas?.[escenaId]) return;
-  delete state.progresoEscenas[escenaId];
-  guardar();
 }
 
 // Munición (Combat UX & Resources 0.2) — mutaciones centralizadas aquí,
@@ -400,7 +246,7 @@ export function registrarTirada(entrada) {
 
 export function aplicarDanio(miembroId, localizacion, danioFinal) {
   const m = obtenerMiembro(miembroId);
-  if (!m || !Number.isFinite(danioFinal) || danioFinal <= 0) return false;
+  if (!m) return false;
   let restante = danioFinal;
   for (const nivel of ["sano", "herido", "tullido"]) {
     if (restante <= 0) break;
@@ -412,8 +258,7 @@ export function aplicarDanio(miembroId, localizacion, danioFinal) {
   if (nivelHeridaDe(m) !== "sano") m.estadoDisponibilidad = m.estadoDisponibilidad === "disponible" ? "herido" : m.estadoDisponibilidad;
   notificarFicha();
   guardar();
-  const vidaRestante = m.vidaActual.sano + m.vidaActual.herido + m.vidaActual.tullido;
-  return restante > 0 || vidaRestante <= 0; // true = golpe mortal (Tullido a 0 o daño sobrante)
+  return restante > 0; // true = ha muerto (desbordó Tullido)
 }
 
 export function nivelHeridaDe(miembroRuntime) {
@@ -499,7 +344,6 @@ export function cargar() {
     if (!raw) return false;
     const datos = JSON.parse(raw);
     Object.assign(state, datos);
-    state.progresoEscenas ||= {};
     migrarRecursosCombateSiFalta();
     notificarEscena();
     return true;
@@ -512,25 +356,6 @@ export function borrarGuardado() {
   const moduleId = moduloIdActivo();
   if (!moduleId) return;
   try { localStorage.removeItem(claveGuardado(moduleId)); } catch (e) {}
-}
-
-// Cierre atómico de una partida terminada: borra primero el guardado y
-// navega sin pasar por cambiarEscena(), porque esa función guarda después de
-// notificar. Usarla aquí recrearía inmediatamente un save vacío y haría que
-// el menú ofreciese una falsa opción "Continuar partida".
-export function cerrarPartidaDefinitiva(destino = "menu") {
-  const moduleId = moduloIdActivo() || state.moduloId;
-  if (moduleId) {
-    try { localStorage.removeItem(claveGuardado(moduleId)); } catch (e) {}
-  }
-  state.partyMembers = {};
-  state.playerCharacterId = null;
-  state.finalTipo = null;
-  state.escena = destino;
-  state.entrySpawnId = null;
-  state.moduloId = null;
-  state.moduloVersion = null;
-  notificarEscena();
 }
 
 // Migración del guardado de la iteración 4 (anterior al concepto de módulo,

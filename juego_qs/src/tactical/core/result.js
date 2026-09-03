@@ -29,7 +29,7 @@ const OUTCOME_INTERNO_A_EXTERNO = { victoria: "victory", derrota: "defeat", huid
  * @param {object} [transitionsDef] - definition.transitions ya con
  *   defaults aplicados (conDefaults()) -- {victory, defeat, flee}, cada
  *   uno string|null|{resolver:string}
- * @returns {{encounterId:string, outcome:string|null, transition:string|null, context:object, rounds:number, survivingActors:string[], defeatedActors:string[], actorResources:Array}}
+ * @returns {{encounterId:string, outcome:string|null, transition:string|null, context:object, rounds:number, survivingActors:string[], defeatedActors:string[]}}
  */
 export function construirTacticalResult(session, transitionsDef = {}) {
   const outcome = OUTCOME_INTERNO_A_EXTERNO[session.resultado] ?? null;
@@ -46,11 +46,6 @@ export function construirTacticalResult(session, transitionsDef = {}) {
   const todosLosActores = [...session.party, ...session.enemies];
   const survivingActors = todosLosActores.filter(a => a.estadoDisponibilidad === "disponible").map(a => a.id);
   const defeatedActors = todosLosActores.filter(a => a.estadoDisponibilidad !== "disponible").map(a => a.id);
-  const actorResources = session.party.map(actor => ({
-    actorId: actor.id,
-    primaryInstanceId: actor.equipoInstancias?.primaria ?? null,
-    municionPrimaria: actor.equipoInstancias?.primaria ? { ...actor.municion.primaria } : null
-  }));
 
   return {
     encounterId: session.encounterId,
@@ -59,7 +54,6 @@ export function construirTacticalResult(session, transitionsDef = {}) {
     context,
     rounds: session.round,
     survivingActors,
-    defeatedActors,
-    actorResources
+    defeatedActors
   };
 }

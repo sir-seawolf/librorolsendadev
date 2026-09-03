@@ -2,8 +2,7 @@
 // Las tres comparten el mismo motor de interacciones (sceneEngine.js); solo
 // cambia qué controles se dibujan. Ninguna escena concreta se nombra aquí.
 import { cargarEscena, buscarInteraccion, ejecutarInteraccion } from "../sceneEngine.js";
-import { moduloIdActivo, rutaAsset } from "../moduleLoader.js";
-import { audioManager } from "../audioManager.js";
+import { rutaAsset } from "../moduleLoader.js";
 import { state } from "../../gameState.js";
 import { config } from "../../config.js";
 import { normalizeSceneLayers } from "../sceneLayers.js";
@@ -19,10 +18,8 @@ export async function montarNarrativa(container, escenaId) {
     <div class="narrativa-fondo" id="fondo" style="${fondoStyle}">
       <div class="hotspots" id="hotspots"></div>
     </div>
-    <div class="narrativa-hud">
-      <div class="narrativa-texto" id="texto"><em>${escena.introText || ""}</em></div>
-      <div id="controles"></div>
-    </div>
+    <div class="narrativa-texto" id="texto"><em>${escena.introText || ""}</em></div>
+    <div id="controles"></div>
   `;
   container.appendChild(wrap);
 
@@ -97,17 +94,9 @@ export async function montarNarrativa(container, escenaId) {
       onTexto(escena.defaultText || "No parece que puedas hacer eso ahí.");
       return;
     }
-    function reproducirEvento(evento) {
-      const sonido = escena.audio?.events?.[evento];
-      if (sonido) audioManager?.reproducirPuntual("sfx", moduloIdActivo(), sonido);
-    }
-    reproducirEvento(interaccion.audioEvent);
     ejecutarInteraccion({
       escenaId, escena, interaccion, onTexto,
-      onCustom: consecuencia => {
-        updateLayerPresentation();
-        reproducirEvento(consecuencia?.audioEvent);
-      }
+      onCustom: () => updateLayerPresentation()
     });
   }
 
@@ -218,15 +207,7 @@ export async function montarNarrativa(container, escenaId) {
       const btn = document.createElement("button");
       btn.className = "btn-decision";
       btn.textContent = c.label;
-      const interaccion = buscarInteraccion(escena, { choice: c.id });
-      if (!interaccion) {
-        if (c.hideWhenUnavailable) return;
-        btn.setAttribute("disabled", "");
-        btn.classList.add("agotado");
-        if (c.unavailableLabel) btn.textContent = c.unavailableLabel;
-      } else {
-        btn.addEventListener("click", () => disparar({ choice: c.id }));
-      }
+      btn.addEventListener("click", () => disparar({ choice: c.id }));
       controlesEl.appendChild(btn);
     });
   } else if (escena.type === "single_roll") {

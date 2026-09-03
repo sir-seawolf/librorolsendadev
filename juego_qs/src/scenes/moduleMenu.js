@@ -23,10 +23,10 @@ export async function montarSelectorModulos(container) {
   // Título neutro de la zona de juego: en este punto todavía no hay ningún
   // módulo concreto cargado (ni debe nombrarse ninguno).
   if (typeof document !== "undefined") document.title = "La Senda de los Errantes — Zona de juego";
-  // La publicación es explícita y `visible:false` permite retirar temporalmente
-  // una entrada sin borrar sus datos. Ambas condiciones deben cumplirse.
-  const modulos = (await cargarListaModulos())
-    .filter(m => m.publishable === true && m.visible !== false);
+  // `visible` es opcional (por defecto true): permite retirar un módulo del
+  // listado sin tocar sus datos/escenas -- a diferencia de "estado", que solo
+  // afecta a la etiqueta y bloquea el clic pero sigue mostrando la fila.
+  const modulos = (await cargarListaModulos()).filter(m => m.visible !== false);
   const wrap = document.createElement("div");
   wrap.className = "menu-screen";
   wrap.innerHTML = `

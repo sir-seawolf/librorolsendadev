@@ -19,10 +19,9 @@
 // tres familias a propósito (§5: "acción contextual" como acceso
 // rápido, no forma parte del selector de familias).
 import {
-  movementRemaining, cambiarArma as accionCambiarArmaLegal, validateIntent, modificadorCadencia
+  movementRemaining, cambiarArma as accionCambiarArmaLegal, validateIntent
 } from "../bridge/qsRulesBridge.js";
-import { toQsActor, toQsAttackIntent, armaActivaDe, municionArmaActivaDe } from "../bridge/qsDataAdapter.js";
-import { calcularVistaPreviaDisparo } from "./tacticalAimPreview.js";
+import { toQsActor, toQsAttackIntent } from "../bridge/qsDataAdapter.js";
 
 export const FAMILIA = Object.freeze({
   OFENSIVAS: "ofensivas",
@@ -31,35 +30,25 @@ export const FAMILIA = Object.freeze({
   CONTEXTUAL: "contextual" // fuera de las tres familias -- ver nota arriba
 });
 
-function evaluarObjetivoAtaque(atacanteConfig, objetivoConfig, activation, adapter, actorId, targetId, cc, bonusRafaga) {
+function evaluarObjetivoAtaque(atacanteConfig, objetivoConfig, activation, adapter, actorId, targetId, cc) {
   const qsActor = toQsActor(atacanteConfig);
   const spatialContext = cc ? null : adapter.getCover(actorId, targetId);
   const intentBase = toQsAttackIntent(atacanteConfig, objetivoConfig, { cc });
   if (cc && objetivoConfig.exitosDefensaPendiente) intentBase.exitosDefensa = objetivoConfig.exitosDefensaPendiente;
   const validacion = validateIntent(qsActor, intentBase, activation, spatialContext);
-  return {
-    targetId,
-    nombre: objetivoConfig.nombre,
-    valid: validacion.valid,
-    reasons: validacion.reasons,
-    cover: spatialContext?.level ?? null,
-    canAttack: spatialContext?.canAttack ?? true,
-    distance: Number(adapter.getDistance(actorId, targetId).toFixed(1)),
-    hitChance: cc ? null : calcularVistaPreviaDisparo({ atacante: atacanteConfig, objetivo: objetivoConfig, spatialContext }),
-    burstHitChance: cc ? null : calcularVistaPreviaDisparo({ atacante: atacanteConfig, objetivo: objetivoConfig, spatialContext, cadenciaBonus: bonusRafaga })
-  };
+  return { targetId, valid: validacion.valid, reasons: validacion.reasons, cover: spatialContext?.level ?? null };
 }
 
 // Agrega la legalidad de un ataque sobre TODOS los objetivos vivos
 // disponibles: legal si existe al menos un objetivo válido; si
 // ninguno lo es, el motivo mostrado es el del primer objetivo
 // evaluado (consistente, no arbitrario -- mismo orden que session.enemies/party).
-function evaluarAtaque(session, adapter, actorId, actorConfig, activation, objetivosPosibles, cc, bonusRafaga) {
-  const evaluaciones = objetivosPosibles.map(t => evaluarObjetivoAtaque(actorConfig, session.configDe(t.id), activation, adapter, actorId, t.id, cc, bonusRafaga));
+function evaluarAtaque(session, adapter, actorId, actorConfig, activation, objetivosPosibles, cc) {
+  const evaluaciones = objetivosPosibles.map(t => evaluarObjetivoAtaque(actorConfig, session.configDe(t.id), activation, adapter, actorId, t.id, cc));
   const objetivoValido = evaluaciones.find(e => e.valid);
-  if (objetivoValido) return { legal: true, reasons: [], objetivosValidos: evaluaciones.filter(e => e.valid).map(e => e.targetId), objetivos: evaluaciones };
+  if (objetivoValido) return { legal: true, reasons: [], objetivosValidos: evaluaciones.filter(e => e.valid).map(e => e.targetId) };
   const motivo = evaluaciones[0]?.reasons ?? ["NO_TARGETS"];
-  return { legal: false, reasons: evaluaciones.length ? motivo : ["NO_TARGETS_AVAILABLE"], objetivosValidos: [], objetivos: evaluaciones };
+  return { legal: false, reasons: evaluaciones.length ? motivo : ["NO_TARGETS_AVAILABLE"], objetivosValidos: [] };
 }
 
 /**
@@ -71,7 +60,7 @@ function evaluarAtaque(session, adapter, actorId, actorConfig, activation, objet
  * @returns {{familias: object, contextuales: Array}} estructura plana
  *   serializable: cada acción es {id, label, familia, legal, reasons}.
  */
-export function construirCatalogoAcciones({ session, adapter, actorId = session.currentActorId, cadenciaData = {} }) {
+export function construirCatalogoAcciones({ session, adapter, actorId = session.currentActorId }) {
   if (!actorId) return { familias: { [FAMILIA.OFENSIVAS]: [], [FAMILIA.TACTICAS]: [], [FAMILIA.DEFENSIVAS]: [] }, contextuales: [] };
 
   const actor = session.configDe(actorId);
@@ -83,26 +72,11 @@ export function construirCatalogoAcciones({ session, adapter, actorId = session.
   const acciones = [];
 
   // Ofensivas
-  const bonusRafaga = modificadorCadencia("rafaga", cadenciaData);
-  const armaActiva = armaActivaDe(actor);
-  const municionActiva = municionArmaActivaDe(actor);
-  const disparar = armaActiva.noDisponible
-    ? { legal: false, reasons: ["NO_RANGED_WEAPON"], objetivosValidos: [], objetivos: [] }
-    : evaluarAtaque(session, adapter, actorId, actor, activation, objetivosVivos, false, bonusRafaga);
-  const permiteRafaga = ["rafaga", "fuegoSostenido"].includes(armaActiva.cadenciaMax);
-  acciones.push({
-    id: "disparar", label: "Disparar", familia: FAMILIA.OFENSIVAS, legal: disparar.legal,
-    reasons: disparar.reasons, objetivosValidos: disparar.objetivosValidos, objetivos: disparar.objetivos,
-    modosFuego: [
-      { id: "tiroATiro", label: "Tiro", municion: 1, legal: municionActiva.cargador >= 1 },
-      { id: "rafaga", label: "Ráfaga", municion: 3, legal: permiteRafaga && municionActiva.cargador >= 3, bonusExitos: bonusRafaga }
-    ]
-  });
+  const disparar = evaluarAtaque(session, adapter, actorId, actor, activation, objetivosVivos, false);
+  acciones.push({ id: "disparar", label: "Disparar", familia: FAMILIA.OFENSIVAS, legal: disparar.legal, reasons: disparar.reasons, objetivosValidos: disparar.objetivosValidos });
 
-  const cc = actor.armaCC?.noDisponible
-    ? { legal: false, reasons: ["NO_MELEE_WEAPON"], objetivosValidos: [], objetivos: [] }
-    : evaluarAtaque(session, adapter, actorId, actor, activation, objetivosVivos, true, 0);
-  acciones.push({ id: "cc", label: "Cuerpo a cuerpo", familia: FAMILIA.OFENSIVAS, legal: cc.legal, reasons: cc.reasons, objetivosValidos: cc.objetivosValidos, objetivos: cc.objetivos });
+  const cc = evaluarAtaque(session, adapter, actorId, actor, activation, objetivosVivos, true);
+  acciones.push({ id: "cc", label: "Cuerpo a cuerpo", familia: FAMILIA.OFENSIVAS, legal: cc.legal, reasons: cc.reasons, objetivosValidos: cc.objetivosValidos });
 
   // Tácticas
   const mover = validateIntent(qsActor, { type: "MOVE" }, activation);

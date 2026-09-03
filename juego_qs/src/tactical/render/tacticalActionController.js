@@ -16,11 +16,9 @@
 import {
   createActivation, movementRemaining, applyResourceCost,
   validateIntent, resolveIntent, avanzarProgreso, costeAccionesPorTamano, cambiarArma,
-  resolverEsquivaTotal, resolverMovimientoEvasivo, penalizadorPorNivel, nivelHeridaDe,
-  COSTO_MUNICION, modificadorCadencia
+  resolverEsquivaTotal, resolverMovimientoEvasivo, penalizadorPorNivel, nivelHeridaDe
 } from "../bridge/qsRulesBridge.js";
 import { toQsActor, toQsAttackIntent, armaActivaDe, municionArmaActivaDe } from "../bridge/qsDataAdapter.js";
-import { puntoAlcanzable } from "../spatial/terrainZones.js";
 
 /**
  * @param {object} opts
@@ -69,7 +67,7 @@ function distanciaClampeadaPorOcupacion(origenX, origenY, dx, dy, distanciaMax, 
   return limite;
 }
 
-export function crearControladorAcciones({ session, adapter, rng = Math.random, callbacks = {}, cadenciaData = {}, terrainZones = [], terrainConfig = {} }) {
+export function crearControladorAcciones({ session, adapter, rng = Math.random, callbacks = {} }) {
   const s = session;
   const log = callbacks.log ?? (() => {});
   const onAtaqueResuelto = callbacks.onAtaqueResuelto ?? (() => {});
@@ -85,8 +83,7 @@ export function crearControladorAcciones({ session, adapter, rng = Math.random, 
     const pos = adapter.posicionDe(actorId);
     const distanciaSolicitada = Math.hypot(xMetros - pos.x, yMetros - pos.y);
     const restante = movementRemaining(activation);
-    const alcance = puntoAlcanzable(pos, { x: xMetros, y: yMetros }, restante, terrainZones, terrainConfig);
-    let distanciaReal = Math.hypot(alcance.x - pos.x, alcance.y - pos.y);
+    let distanciaReal = Math.min(distanciaSolicitada, restante);
 
     if (distanciaReal > 0 && distanciaSolicitada > 0) {
       const dx = (xMetros - pos.x) / distanciaSolicitada, dy = (yMetros - pos.y) / distanciaSolicitada;
@@ -102,31 +99,23 @@ export function crearControladorAcciones({ session, adapter, rng = Math.random, 
 
     const t = distanciaSolicitada > 0 ? distanciaReal / distanciaSolicitada : 0;
     const nuevoX = pos.x + (xMetros - pos.x) * t, nuevoY = pos.y + (yMetros - pos.y) * t;
-    const costeMovimiento = puntoAlcanzable(pos, { x: nuevoX, y: nuevoY }, Number.POSITIVE_INFINITY, terrainZones, terrainConfig).coste;
 
-    ({ activation } = applyResourceCost(activation, { type: "MOVE", distance: costeMovimiento }));
+    ({ activation } = applyResourceCost(activation, { type: "MOVE", distance: distanciaReal }));
     s.activations.set(actorId, activation);
     adapter.moverActor(actorId, nuevoX, nuevoY);
     s.moverActor(actorId, nuevoX, nuevoY);
-    log(`${actorId}: MOVE ${distanciaReal.toFixed(1)}m (coste ${costeMovimiento.toFixed(1)}m) -> movementRemaining=${movementRemaining(activation).toFixed(1)}m.`);
+    log(`${actorId}: MOVE ${distanciaReal.toFixed(1)}m -> movementRemaining=${movementRemaining(activation).toFixed(1)}m.`);
     onEstadoCambiado();
-    return { ok: true, x: nuevoX, y: nuevoY, distance: distanciaReal, movementCost: costeMovimiento };
+    return { ok: true, x: nuevoX, y: nuevoY };
   }
 
-  function atacar(targetId, { cc = false, modoFuego = "tiroATiro" } = {}) {
+  function atacar(targetId, { cc = false } = {}) {
     const actorId = s.currentActorId;
     const atacanteConfig = s.configDe(actorId), objetivoConfig = s.configDe(targetId);
-    if ((!cc && armaActivaDe(atacanteConfig).noDisponible) || (cc && atacanteConfig.armaCC?.noDisponible)) {
-      const reasons = [cc ? "NO_MELEE_WEAPON" : "NO_RANGED_WEAPON"];
-      onRechazo({ attacker: actorId, target: targetId, reasons });
-      return { ok: false, reasons };
-    }
     let activation = s.activations.get(actorId);
     const qsActor = toQsActor(atacanteConfig);
     const spatialContext = cc ? null : adapter.getCover(actorId, targetId);
-    const modoReal = cc ? "tiroATiro" : modoFuego;
-    const cadenciaBonus = cc ? 0 : modificadorCadencia(modoReal, cadenciaData);
-    const intentBase = toQsAttackIntent(atacanteConfig, objetivoConfig, { cc, modoFuego: modoReal, cadenciaBonus });
+    const intentBase = toQsAttackIntent(atacanteConfig, objetivoConfig, { cc });
     if (cc && objetivoConfig.exitosDefensaPendiente) intentBase.exitosDefensa = objetivoConfig.exitosDefensaPendiente;
 
     const validacion = validateIntent(qsActor, intentBase, activation, spatialContext);
@@ -136,9 +125,9 @@ export function crearControladorAcciones({ session, adapter, rng = Math.random, 
       return { ok: false, reasons: validacion.reasons };
     }
 
-    ({ activation } = applyResourceCost(activation, { type: intentBase.type }));
+    ({ activation } = applyResourceCost(activation, { type: "ATTACK" }));
     s.activations.set(actorId, activation);
-    if (!cc) municionArmaActivaDe(atacanteConfig).cargador -= COSTO_MUNICION[intentBase.type];
+    if (!cc) municionArmaActivaDe(atacanteConfig).cargador -= 1;
 
     const { result, events } = resolveIntent(qsActor, { id: targetId }, intentBase, { rng }, spatialContext);
 
@@ -156,8 +145,7 @@ export function crearControladorAcciones({ session, adapter, rng = Math.random, 
     const detalle = {
       attacker: actorId, target: targetId, rechazado: false,
       tirada: result.tiradaTexto, exito: result.exito, esCritico: result.esCritico, esPifia: result.esPifia,
-      impacto, danioFinal, localizacion: result.localizacion, downOcurrido, cobertura: spatialContext?.level ?? null,
-      modoFuego: modoReal, municionConsumida: cc ? 0 : COSTO_MUNICION[intentBase.type]
+      impacto, danioFinal, localizacion: result.localizacion, downOcurrido, cobertura: spatialContext?.level ?? null
     };
     log(`ATTACK${cc ? " CC" : ""} (${actorId} -> ${targetId}${spatialContext ? `, cobertura=${spatialContext.level}` : ""}): tirada=${result.tiradaTexto} ${result.exito ? "éxito" : "fallo"}${result.esCritico ? " CRIT" : ""}${result.esPifia ? " PIFIA" : ""} · ${impacto ? `impacto en ${result.localizacion}, daño=${danioFinal}${downOcurrido ? " -- ¡ABAJO!" : ""}` : "sin impacto"}. Eventos: ${events.map(e => e.type).join(", ")}.`);
     onAtaqueResuelto(detalle);

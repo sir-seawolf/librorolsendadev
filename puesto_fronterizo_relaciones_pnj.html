@@ -15,44 +15,29 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "PUESTO FRONTERIZO — Relaciones y conducta de PNJ"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#a-tabla-principal">A. Tabla principal</a></li><li class="toc-h3"><a href="#a-1-motivaciones">A.1 — Motivaciones</a></li><li class="toc-h3"><a href="#a-2-conducta">A.2 — Conducta</a></li><li class="toc-h2"><a href="#b-relaciones-directas">B. Relaciones directas</a></li><li class="toc-h2"><a href="#c-movimiento-autonomo">C. Movimiento autónomo</a></li><li class="toc-h2"><a href="#d-seguimiento-de-relaciones-rellenable">D. Seguimiento de relaciones (rellenable)</a></li><li class="toc-h2"><a href="#e-vinculo-de-corliss-rellenable">E. Vínculo de Corliss (rellenable)</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>PUESTO FRONTERIZO — Relaciones y conducta de PNJ</h1>
 <p><a href="modulo_puesto_fronterizo.html">← Volver al módulo</a></p>
 <blockquote>
 <p><strong>Material exclusivo para el Narrador: contiene la verdad completa y todos los secretos del módulo.</strong></p>
 </blockquote>
 <hr />
-<h2 id="a-tabla-principal">A. Tabla principal</h2>
-<h3 id="a-1-motivaciones">A.1 — Motivaciones</h3>
+<h2>A. Tabla principal</h2>
+<h3>A.1 — Motivaciones</h3>
 <table>
 <thead>
 <tr>
@@ -143,7 +128,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="a-2-conducta">A.2 — Conducta</h3>
+<h3>A.2 — Conducta</h3>
 <table>
 <thead>
 <tr>
@@ -223,7 +208,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="b-relaciones-directas">B. Relaciones directas</h2>
+<h2>B. Relaciones directas</h2>
 <ul>
 <li>Broile <code>⚠</code> Varice: fricción funcional — personal y posiciones frente a cuotas y recursos.</li>
 <li>Pitt <code>?</code> Corliss: objetivo y agente; él recela sin conocer inicialmente la verdad.</li>
@@ -244,7 +229,7 @@
 </ul>
 <p><strong>Símbolos:</strong> <code>→</code> protege, utiliza o persigue · <code>↔</code> relación mutua · <code>⚠</code> desconfianza o conflicto · <code>?</code> sospecha incompleta.</p>
 <hr />
-<h2 id="c-movimiento-autonomo">C. Movimiento autónomo</h2>
+<h2>C. Movimiento autónomo</h2>
 <blockquote>
 <p>Cuando los PJ no actúan…</p>
 </blockquote>
@@ -260,7 +245,7 @@
 <li><strong>Valiente y Snacker deciden</strong> mantener a Niebla oculta y protegida, priorizándola siempre por encima de cualquier posición o acuerdo.</li>
 </ul>
 <hr />
-<h2 id="d-seguimiento-de-relaciones-rellenable">D. Seguimiento de relaciones (rellenable)</h2>
+<h2>D. Seguimiento de relaciones (rellenable)</h2>
 <p>No hay una escala numérica universal — usa las columnas como anotación libre.</p>
 <table>
 <thead>
@@ -365,7 +350,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="e-vinculo-de-corliss-rellenable">E. Vínculo de Corliss (rellenable)</h2>
+<h2>E. Vínculo de Corliss (rellenable)</h2>
 <ul>
 <li><strong>PJ vinculado:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
 <li><strong>Elemento compartido:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
@@ -376,6 +361,6 @@
 <li><strong>¿Le ofreció la cápsula?:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
 <li><strong>Estado final del vínculo:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</li>
 </ul>
-</main>
+</div>
 </body>
 </html>

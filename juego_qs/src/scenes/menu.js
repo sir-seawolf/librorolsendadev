@@ -1,6 +1,5 @@
 import { state, iniciarPartida, cambiarEscena, cargar, hayPartidaGuardada, borrarGuardado } from "../gameState.js";
 import { manifiestoActivo, rutaDeManifiesto, rutaAsset } from "../engine/moduleLoader.js";
-import { normalizeCharacter, desdeExportFichaAutocalculada } from "../data/adapters/characterImport.js";
 
 const personajesCachePorModulo = new Map();
 async function cargarPersonajes() {
@@ -73,7 +72,6 @@ export function montarMenu(container) {
 
 async function montarSeleccion(container) {
   const personajes = await cargarPersonajes();
-  const permiteImportar = manifiestoActivo().allowImportedCharacters === true;
   const wrap = document.createElement("div");
   wrap.className = "menu-screen";
   wrap.innerHTML = `
@@ -87,12 +85,6 @@ async function montarSeleccion(container) {
           ${p.fortaleza ? `<div class="cp-fortaleza">${p.fortaleza}</div>` : ""}
         </div>`).join("")}
     </div>
-    ${permiteImportar ? `
-    <div class="importar-personaje">
-      <label class="btn-menu" for="input-importar-personaje">Importar personaje (.json)</label>
-      <input id="input-importar-personaje" type="file" accept="application/json,.json" hidden>
-      <p id="estado-importacion" role="status" aria-live="polite"></p>
-    </div>` : ""}
     <button class="btn-menu" id="btn-volver" style="width:320px;margin-top:10px">Volver</button>
   `;
   container.innerHTML = "";
@@ -104,31 +96,7 @@ async function montarSeleccion(container) {
       cambiarEscena(manifiestoActivo().startScene);
     });
   });
-  wrap.querySelector("#input-importar-personaje")?.addEventListener("change", async (event) => {
-    const archivo = event.target.files?.[0];
-    if (!archivo) return;
-    const estado = wrap.querySelector("#estado-importacion");
-    try {
-      const importado = normalizarArchivoPersonaje(JSON.parse(await archivo.text()));
-      if (personajes.some(personaje => personaje.id === importado.id)) {
-        throw new Error(`Ya existe un personaje con el id "${importado.id}".`);
-      }
-      iniciarPartida([...personajes, importado], importado.id);
-      cambiarEscena(manifiestoActivo().startScene);
-    } catch (error) {
-      const detalles = error.detalles?.length ? ` ${error.detalles.join(" ")}` : "";
-      estado.textContent = `No se pudo importar el personaje: ${error.message}${detalles}`;
-      event.target.value = "";
-    }
-  });
   wrap.querySelector("#btn-volver").addEventListener("click", () => montarMenu(replace(container)));
-}
-
-export function normalizarArchivoPersonaje(datos) {
-  if (datos?.form && datos?.state && datos?.version !== undefined) {
-    return normalizeCharacter(desdeExportFichaAutocalculada(datos));
-  }
-  return normalizeCharacter(datos);
 }
 
 function montarComoJugar(container) {

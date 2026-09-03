@@ -21,9 +21,6 @@
 // compartida.
 import { TacticalScene } from "./TacticalScene.js";
 import { crearEscalaIsometrica } from "./scaleIsometric.js";
-import { movementRemaining } from "../bridge/qsRulesBridge.js";
-import { resolverAnclajeVisual, resolverTamanoVisual, profundidadVisual } from "./visualPlacement.js";
-import { elevacionEn } from "../spatial/terrainZones.js";
 
 const NIVEL_COLOR = { none: 0x5c6b5c, partial: 0xffe27a, solid: 0xff9d4d, total: 0xff4d4d };
 const COLOR_POR_TIPO = { partial: 0xb08b3a, solid: 0x8a6d3a, total: 0x555b66 };
@@ -58,79 +55,23 @@ export class TacticalSceneOblicua extends TacticalScene {
   // no toca `_inicializarSistemaCoordenadas()` ni ningún cálculo de
   // proyección/hit-testing.
   preload() {
-    super.preload();
     this.load.image("tactical_floor_texture", "assets/shared/tactical/textures/concrete_floor_1k.jpg");
   }
 
   create() {
     super.create();
     this.game.registry.set("sceneName", "TacticalSceneOblicua");
-    this._movimientoReducido = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    this._crearAtmosfera();
     this._crearControlVistaClara();
-  }
-
-  _crearAtmosfera() {
-    const atmosfera = this.definition.battlefield.atmosphere;
-    if (!atmosfera) return;
-    const haloKey = "tactical-soft-light";
-    if (!this.textures.exists(haloKey)) {
-      const texture = this.textures.createCanvas(haloKey, 256, 128);
-      const ctx = texture.getContext();
-      ctx.save();
-      ctx.scale(1, .5);
-      const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
-      gradient.addColorStop(0, "rgba(255,255,255,.9)");
-      gradient.addColorStop(.35, "rgba(255,255,255,.42)");
-      gradient.addColorStop(1, "rgba(255,255,255,0)");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 256, 256);
-      ctx.restore();
-      texture.refresh();
-    }
-    this.add.rectangle(0, 0, this.mundoPx.width, this.mundoPx.height, atmosfera.ambientTint ?? 0x071116, atmosfera.ambientAlpha ?? .18)
-      .setOrigin(0).setDepth(5).setBlendMode("MULTIPLY");
-    for (const luz of atmosfera.lights ?? []) {
-      const p = this.escalaIso.proyectar(luz.x, luz.y);
-      const radio = luz.radiusMeters * this.escalaIso.escalaBase.metersToPx;
-      const halo = this.add.image(p.x, p.y, haloKey).setDisplaySize(radio * 2, radio)
-        .setTint(luz.color).setAlpha(luz.intensity ?? .12).setDepth(6).setBlendMode("ADD");
-      if (!this._movimientoReducido && luz.pulse) {
-        this.tweens.add({ targets: halo, alpha: Math.max(.02, (luz.intensity ?? .12) - luz.pulse), scaleX: 1.035, scaleY: 1.035, duration: 1800, yoyo: true, repeat: -1, ease: "Sine.inOut" });
-      }
-    }
-    const particulas = atmosfera.particles;
-    if (!particulas || this._movimientoReducido) return;
-    this._particulasAmbiente = [];
-    for (let i = 0; i < (particulas.count ?? 12); i++) {
-      const punto = this.add.circle(Math.random() * this.mundoPx.width, Math.random() * this.mundoPx.height, 1 + Math.random(), particulas.color ?? 0xaec4c9, particulas.alpha ?? .12).setDepth(7);
-      const duracion = (particulas.durationMs ?? 5000) * (.75 + Math.random() * .5);
-      this.tweens.add({ targets: punto, x: punto.x + (particulas.driftPx ?? 20), y: punto.y - (particulas.driftPx ?? 20) * .55, alpha: 0, duration: duracion, repeat: -1, delay: Math.random() * duracion, onRepeat: () => { punto.setPosition(Math.random() * this.mundoPx.width, Math.random() * this.mundoPx.height).setAlpha(particulas.alpha ?? .12); } });
-      this._particulasAmbiente.push(punto);
-    }
   }
 
   // ===== Punto de extensión único para el sistema de coordenadas
   // (ver TacticalScene.js `_inicializarSistemaCoordenadas`) =====
 
   _inicializarSistemaCoordenadas(definition, session) {
-    const base = crearEscalaIsometrica(definition.battlefield.metersToPx, {
+    this.escalaIso = crearEscalaIsometrica(definition.battlefield.metersToPx, {
       anchoMundoMetros: session.battlefieldMeters.width,
       altoMundoMetros: session.battlefieldMeters.height
     });
-    // El arte táctico usa el mismo encuadre 16:10 que la referencia. La
-    // simulación conserva exactamente sus metros; solo añadimos margen
-    // vertical simétrico a la proyección para evitar la franja negra que
-    // producía el rombo 2:1 puro en pantallas de escritorio.
-    const usaComposicionVisual = definition.assets?.scene?.floor || definition.assets?.battlefield;
-    const altoPresentacion = usaComposicionVisual ? base.mundoPx.width / 1.6 : base.mundoPx.height;
-    const margenY = Math.max(0, (altoPresentacion - base.mundoPx.height) / 2);
-    this.escalaIso = {
-      ...base,
-      proyectar: (x, y) => { const p = base.proyectar(x, y); return { x: p.x, y: p.y + margenY }; },
-      invertir: (x, y) => base.invertir(x, y - margenY),
-      mundoPx: { width: base.mundoPx.width, height: base.mundoPx.height + margenY * 2 }
-    };
     this.mundoPx = this.escalaIso.mundoPx;
   }
 
@@ -151,13 +92,12 @@ export class TacticalSceneOblicua extends TacticalScene {
     // scrollFactor(0) -- coordenadas de viewport, no de mundo (mismo
     // criterio que la corrección en TacticalScene.js _crearHud()/
     // _crearPanelAcciones()/_crearSelectorModo()).
-    const boton = this.add.text(this.cameras.main.width - 10, 10, "VISIÓN · AUTO", {
-      fontFamily: "Barlow Condensed", fontSize: "12px", color: "#8fc8d2", backgroundColor: "#0b1114", padding: { x: 10, y: 6 }
+    const boton = this.add.text(this.cameras.main.width - 10, 10, "[ Vista táctica clara ]", {
+      fontFamily: "monospace", fontSize: "12px", color: "#9fffb0", backgroundColor: "#111318", padding: { x: 8, y: 4 }
     }).setOrigin(1, 0).setScrollFactor(0).setDepth(32).setInteractive({ useHandCursor: true });
     boton.on("pointerdown", () => {
       this._vistaClaraActiva = !this._vistaClaraActiva;
-      boton.setColor(this._vistaClaraActiva ? "#d7b35c" : "#8fc8d2");
-      boton.setText(this._vistaClaraActiva ? "VISIÓN · ABIERTA" : "VISIÓN · AUTO");
+      boton.setColor(this._vistaClaraActiva ? "#ffe27a" : "#9fffb0");
       this._actualizarOcultamientoParedes();
     });
     this._botonVistaClara = boton;
@@ -167,13 +107,7 @@ export class TacticalSceneOblicua extends TacticalScene {
 
   _grid() {
     const { width: wM, height: hM } = this.session.battlefieldMeters;
-    if (this.textures.exists("tactical-scene-floor")) {
-      this.add.tileSprite(0, 0, this.mundoPx.width, this.mundoPx.height, "tactical-scene-floor")
-        .setOrigin(0).setDepth(-3).setTint(0x667276).setTileScale(.72, .72);
-    } else if (this.textures.exists("tactical-battlefield")) {
-      this.add.image(this.mundoPx.width / 2, this.mundoPx.height / 2, "tactical-battlefield")
-        .setDisplaySize(this.mundoPx.width, this.mundoPx.height).setDepth(-2);
-    } else if (this.textures.exists("tactical_floor_texture")) {
+    if (this.textures.exists("tactical_floor_texture")) {
       // Sin recorte al rombo exacto del campo de batalla a propósito:
       // `GameObject.setMask()` con una máscara de geometría no está
       // soportado en el renderer WebGL de esta versión de Phaser
@@ -187,12 +121,8 @@ export class TacticalSceneOblicua extends TacticalScene {
       this.add.image(this.mundoPx.width / 2, this.mundoPx.height / 2, "tactical_floor_texture")
         .setDisplaySize(this.mundoPx.width, this.mundoPx.height).setAlpha(0.4).setDepth(-1);
     }
-    const g = this.add.graphics().setDepth(0).setAlpha(0);
-    this.gridGraphics = g;
-    const tieneCapas = this.textures.exists("tactical-scene-floor");
-    const tieneArte = tieneCapas || this.textures.exists("tactical-battlefield");
-    const alphaRejilla = this.definition.battlefield.atmosphere?.reducedGridAlpha ?? .2;
-    g.lineStyle(1, tieneArte ? 0x6ca8b8 : 0x22252b, tieneArte ? alphaRejilla : 1);
+    const g = this.add.graphics().setDepth(0);
+    g.lineStyle(1, 0x22252b, 1);
     for (let x = 0; x <= wM; x += 1) {
       const p0 = this.escalaIso.proyectar(x, 0), p1 = this.escalaIso.proyectar(x, hM);
       g.lineBetween(p0.x, p0.y, p1.x, p1.y);
@@ -201,68 +131,6 @@ export class TacticalSceneOblicua extends TacticalScene {
       const p0 = this.escalaIso.proyectar(0, y), p1 = this.escalaIso.proyectar(wM, y);
       g.lineBetween(p0.x, p0.y, p1.x, p1.y);
     }
-    if (tieneCapas) this._pintarCapasEscenario();
-  }
-
-  _actualizarRejillaMovimiento() {
-    this.gridGraphics?.setAlpha(this._modoMover ? 1 : 0);
-  }
-
-  _proyectarActor(xMetros, yMetros) {
-    const p = this.escalaIso.proyectar(xMetros, yMetros);
-    const elevacion = elevacionEn(this.definition.battlefield.terrainZones, xMetros, yMetros);
-    return { x: p.x, y: p.y - elevacion * this.escalaIso.escalaBase.metersToPx };
-  }
-
-  _pintarCapasEscenario() {
-    const visuals = this.definition.battlefield.visuals ?? {};
-    this.sceneLayerSprites = [];
-    this.exitLayerSprites = new Map();
-    const addPlaced = (entry, textureKey, kind) => {
-      if (!this.textures.exists(textureKey)) return;
-      const p = resolverAnclajeVisual(entry, {
-        world: this.mundoPx,
-        project: (x, y) => this.escalaIso.proyectar(x, y),
-        obstacles: this.session.obstacles
-      });
-      // Una referencia rota en el JSON no debe mandar la pieza al origen
-      // (0,0), donde parecería un elemento suelto. Fallamos de forma
-      // contenida y dejamos el resto de la composición intacto.
-      if (!p) return;
-      const size = resolverTamanoVisual(entry, {
-        naturalWidth: this.textures.get(textureKey).getSourceImage().width,
-        naturalHeight: this.textures.get(textureKey).getSourceImage().height,
-        world: this.mundoPx,
-        metersToPx: this.escalaIso.escalaBase.metersToPx
-      });
-      const depth = profundidadVisual(entry, p.y);
-      const sprite = this.add.image(p.x, p.y, textureKey)
-        .setOrigin(entry.originX ?? .5, entry.originY ?? .88)
-        .setDepth(depth)
-        .setFlipX(!!entry.flipX)
-        .setAlpha(entry.alpha ?? 1)
-        .setDisplaySize(size.width, size.height);
-      const record = { sprite, kind, alphaBase: entry.alpha ?? 1, entry };
-      this.sceneLayerSprites.push(record);
-      if (kind === "exit" && entry.id) this.exitLayerSprites.set(entry.id, record);
-    };
-    for (const entry of visuals.walls ?? []) addPlaced(entry, `tactical-scene-walls-${entry.asset}`, "wall");
-    for (const entry of visuals.props ?? []) addPlaced(entry, `tactical-scene-props-${entry.asset}`, "prop");
-    for (const zona of this.definition.battlefield.terrainZones ?? []) {
-      const entry = { ...zona, x: zona.x + zona.width / 2, y: zona.y + zona.height / 2 };
-      addPlaced(entry, `tactical-scene-terrain-${zona.asset}`, "terrain");
-    }
-    for (const entry of visuals.exits ?? []) addPlaced(entry, `tactical-scene-exit-${entry.asset}-${entry.state ?? "closed"}`, "exit");
-  }
-
-  establecerEstadoSalida(exitId, state) {
-    const record = this.exitLayerSprites?.get(exitId);
-    if (!record) return false;
-    const key = `tactical-scene-exit-${record.entry.asset}-${state}`;
-    if (!this.textures.exists(key)) return false;
-    record.sprite.setTexture(key);
-    record.entry.state = state;
-    return true;
   }
 
   // Cada obstáculo es su propio GameObject (no un único Graphics
@@ -272,7 +140,6 @@ export class TacticalSceneOblicua extends TacticalScene {
   // 6C) sin tocar el orden de dibujo del resto de la escena.
   _pintarObstaculos() {
     this.obstacleGraphics = new Map();
-    const tieneArteEscenario = this.textures.exists("tactical-scene-floor") || this.textures.exists("tactical-battlefield");
     for (const o of this.session.obstacles) {
       const esquinas = [
         this.escalaIso.proyectar(o.x, o.y),
@@ -281,13 +148,13 @@ export class TacticalSceneOblicua extends TacticalScene {
         this.escalaIso.proyectar(o.x, o.y + o.height)
       ];
       const g = this.add.graphics().setDepth(this._profundidadEnPantalla(o.x + o.width, o.y + o.height) - 1);
-      g.fillStyle(COLOR_POR_TIPO[o.type], tieneArteEscenario ? 0.04 : (ALPHA_POR_TIPO[o.type] ?? 0.75));
+      g.fillStyle(COLOR_POR_TIPO[o.type], ALPHA_POR_TIPO[o.type] ?? 0.75);
       g.beginPath();
       g.moveTo(esquinas[0].x, esquinas[0].y);
       for (const p of esquinas.slice(1)) g.lineTo(p.x, p.y);
       g.closePath();
       g.fillPath();
-      g.lineStyle(tieneArteEscenario ? 1 : 2, tieneArteEscenario ? 0x6ca8b8 : 0x000000, tieneArteEscenario ? 0.28 : 0.6);
+      g.lineStyle(2, 0x000000, 0.6);
       g.strokePath();
 
       // Extrusión puramente visual (encargo 6C: "una diferencia de
@@ -295,7 +162,7 @@ export class TacticalSceneOblicua extends TacticalScene {
       // "total" con altura perceptible): se dibuja una cara frontal
       // levantando en pantalla las dos esquinas más cercanas a cámara.
       // NUNCA lee ni escribe nada de la simulación -- solo decoración.
-      const alturaMetros = tieneArteEscenario ? 0 : (o.alturaVisualMetros ?? (o.type === "total" ? 1.2 : 0));
+      const alturaMetros = o.alturaVisualMetros ?? (o.type === "total" ? 1.2 : 0);
       if (alturaMetros > 0) {
         const alturaPx = alturaMetros * this.escalaIso.escalaBase.metersToPx * 0.5;
         const base = [esquinas[2], esquinas[3]]; // las dos esquinas "sur" (más cerca de cámara)
@@ -312,7 +179,7 @@ export class TacticalSceneOblicua extends TacticalScene {
       }
 
       const centro = this.escalaIso.proyectar(o.x + o.width / 2, o.y + o.height / 2);
-      const etiqueta = this.add.text(centro.x, centro.y, tieneArteEscenario ? "" : `${o.nombre ?? o.id}\n[${o.type}]`, {
+      const etiqueta = this.add.text(centro.x, centro.y, `${o.nombre ?? o.id}\n[${o.type}]`, {
         fontFamily: "monospace", fontSize: "10px", color: "#e8e8e8", align: "center"
       }).setOrigin(0.5).setDepth(g.depth + 1);
 
@@ -330,20 +197,6 @@ export class TacticalSceneOblicua extends TacticalScene {
   // isométrica) se vuelve casi transparente. Puramente visual, no
   // afecta a getCover()/canAttack() reales (SpatialCoverAdapter).
   _actualizarOcultamientoParedes() {
-    const idsInteres = [this.session.currentActorId, this.session.targetActorId].filter(Boolean);
-    for (const record of this.sceneLayerSprites ?? []) {
-      if (record.kind !== "wall") continue;
-      const ocultaInteres = idsInteres.some(actorId => {
-        const pos = this.session.positions[actorId];
-        if (!pos) return false;
-        const p = this.escalaIso.proyectar(pos.x, pos.y);
-        const bounds = record.sprite.getBounds();
-        return record.sprite.depth >= this._profundidadEnPantalla(pos.x, pos.y) - 2
-          && p.x >= bounds.left - 8 && p.x <= bounds.right + 8
-          && p.y >= bounds.top - 20 && p.y <= bounds.bottom + 12;
-      });
-      record.sprite.setAlpha(this._vistaClaraActiva ? ALPHA_VISTA_CLARA : (ocultaInteres ? ALPHA_OCLUSION : record.alphaBase));
-    }
     if (!this.obstacleGraphics) return;
     const actoresVivos = [...this.session.party, ...this.session.enemies].filter(a => a.estadoDisponibilidad === "disponible");
     for (const [, entry] of this.obstacleGraphics) {
@@ -370,45 +223,31 @@ export class TacticalSceneOblicua extends TacticalScene {
     for (const a of [...this.session.party, ...this.session.enemies]) {
       const esEnemigo = !this.session.esParty(a.id);
       const pos = this.session.positions[a.id];
-      const p = this._proyectarActor(pos.x, pos.y);
+      const p = this.escalaIso.proyectar(pos.x, pos.y);
       const depth = this._profundidadEnPantalla(pos.x, pos.y);
       // Base/sombra (encargo 6C: "bases/sombras/contornos/marcadores
       // suficientes") -- puramente decorativa, ancla visualmente el
       // actor a su casilla en la rejilla isométrica.
-      const sombra = this.add.ellipse(p.x + 8, p.y + 8, esEnemigo ? 42 : 48, esEnemigo ? 14 : 17, 0x000000, .52).setDepth(depth - 2);
-      const base = this.add.ellipse(p.x, p.y + 5, 34, 14, esEnemigo ? 0x9e2730 : 0x62b8d0, 0.12).setDepth(depth - 1);
-      const circle = this.add.circle(p.x, p.y, 15, a.color ?? (esEnemigo ? 0xcf3945 : 0x78d8ef), 0.1).setDepth(depth).setInteractive({ useHandCursor: true });
-      circle.setStrokeStyle(2, esEnemigo ? 0xcf3945 : 0x78d8ef, 0.9);
-      const estadosTextura = { idle: `tactical-actor-${a.id}-idle`, hurt: `tactical-actor-${a.id}-hurt`, down: `tactical-actor-${a.id}-down` };
-      const claveTextura = Object.values(estadosTextura).find(key => this.textures.exists(key));
-      const token = claveTextura ? this.add.image(p.x, p.y + 6, claveTextura).setDisplaySize(esEnemigo ? 62 : 72, esEnemigo ? 84 : 102).setOrigin(.5, .91).setDepth(depth) : null;
-      if (token) circle.setFillStyle(a.color ?? (esEnemigo ? 0xff6b6b : 0x9fffb0), .16).setDepth(depth - 1);
-      const nombreCorto = a.nombre.replace(/ejecutor corporativo\s*/i, "Ejecutor ").toUpperCase();
-      const label = this.add.text(p.x, p.y - 52, nombreCorto, { fontFamily: "Barlow Condensed", fontSize: "10px", color: esEnemigo ? "#ff8e96" : "#a9e9f6", backgroundColor: "#071015dd", padding: { x: 4, y: 2 } }).setOrigin(0.5).setDepth(depth + 1);
-      const vida = this.add.text(p.x, p.y + 16, "", { fontFamily: "Barlow Condensed", fontSize: "9px", color: "#d7e2e5", backgroundColor: "#071015cc", padding: { x: 3, y: 1 } }).setOrigin(0.5).setDepth(depth + 1);
+      const base = this.add.ellipse(p.x, p.y + 4, 22, 10, 0x000000, 0.35).setDepth(depth - 1);
+      const circle = this.add.circle(p.x, p.y, 11, a.color ?? (esEnemigo ? 0xff6b6b : 0x9fffb0)).setDepth(depth).setInteractive({ useHandCursor: true });
+      circle.setStrokeStyle(2, esEnemigo ? 0x3a0d0d : 0x0d3a1a);
+      const label = this.add.text(p.x, p.y - 22, a.nombre, { fontFamily: "monospace", fontSize: "11px", color: esEnemigo ? "#ff9d9d" : "#dfffe4" }).setOrigin(0.5).setDepth(depth + 1);
+      const vida = this.add.text(p.x, p.y + 14, "", { fontFamily: "monospace", fontSize: "9px", color: "#cccccc" }).setOrigin(0.5).setDepth(depth + 1);
       circle.on("pointerdown", () => this._onActorClicked(a.id));
-      this.actorSprites.set(a.id, { circle, token, label, vida, base, sombra, esEnemigo, estadosTextura });
+      this.actorSprites.set(a.id, { circle, label, vida, base, esEnemigo });
     }
     this._actualizarSpritesVida();
   }
 
   _reposicionarSprite(actorId) {
     const pos = this.session.positions[actorId];
-    const p = this._proyectarActor(pos.x, pos.y);
+    const p = this.escalaIso.proyectar(pos.x, pos.y);
     const depth = this._profundidadEnPantalla(pos.x, pos.y);
-    const { circle, token, label, vida, base, sombra } = this.actorSprites.get(actorId);
-    const yaEsta = Math.abs(circle.x - p.x) < .5 && Math.abs(circle.y - p.y) < .5;
-    const mover = (target, x, y, targetDepth) => {
-      target.setDepth(targetDepth);
-      if (this._movimientoReducido || yaEsta) target.setPosition(x, y);
-      else this.tweens.add({ targets: target, x, y, duration: 220, ease: "Expo.out" });
-    };
-    mover(circle, p.x, p.y, depth);
-    if (token) mover(token, p.x, p.y + 6, depth);
-    mover(label, p.x, p.y - 52, depth + 1);
-    mover(vida, p.x, p.y + 16, depth + 1);
-    mover(base, p.x, p.y + 5, depth - 1);
-    mover(sombra, p.x + 8, p.y + 8, depth - 2);
+    const { circle, label, vida, base } = this.actorSprites.get(actorId);
+    circle.setPosition(p.x, p.y).setDepth(depth);
+    label.setPosition(p.x, p.y - 22).setDepth(depth + 1);
+    vida.setPosition(p.x, p.y + 14).setDepth(depth + 1);
+    base.setPosition(p.x, p.y + 4).setDepth(depth - 1);
     this._actualizarOcultamientoParedes();
   }
 
@@ -428,27 +267,19 @@ export class TacticalSceneOblicua extends TacticalScene {
 
   // ===== FX (posiciones proyectadas) =====
 
-  _fxDisparo(attackerId, targetId, impacto, detalle = {}) {
+  _fxDisparo(attackerId, targetId, impacto) {
     const a = this.adapter.posicionDe(attackerId), t = this.adapter.posicionDe(targetId);
-    const pa = this._proyectarActor(a.x, a.y), pt = this._proyectarActor(t.x, t.y);
+    const pa = this.escalaIso.proyectar(a.x, a.y), pt = this.escalaIso.proyectar(t.x, t.y);
     const depth = Math.max(this._profundidadEnPantalla(a.x, a.y), this._profundidadEnPantalla(t.x, t.y)) + 5;
-    const lineas = [];
-    const trazadoras = detalle.modoFuego === "rafaga" ? 3 : 1;
-    for (let i = 0; i < trazadoras; i++) {
-      const desvio = (i - (trazadoras - 1) / 2) * 3;
-      lineas.push(this.add.line(0, 0, pa.x, pa.y + desvio, pt.x, pt.y + desvio, 0xffd27a, .82).setOrigin(0, 0).setLineWidth(i === 1 ? 2 : 1).setDepth(depth));
-    }
+    const linea = this.add.line(0, 0, pa.x, pa.y, pt.x, pt.y, 0xffe27a, 0.9).setOrigin(0, 0).setLineWidth(2).setDepth(depth);
     const flash = this.add.circle(pa.x, pa.y, 6, 0xffffff, 0.9).setDepth(depth);
     const marca = this.add.circle(pt.x, pt.y, 8, impacto ? 0xff4d4d : 0x8a8a8a, 0.85).setDepth(depth);
-    const chispas = Array.from({ length: impacto ? 5 : 2 }, (_, i) => this.add.circle(pt.x, pt.y, 1.5, impacto ? 0xffc56b : 0x9ba8ac, .9).setDepth(depth + 1));
-    chispas.forEach((chispa, i) => this.tweens.add({ targets: chispa, x: pt.x + Math.cos(i * 1.7) * (12 + i * 2), y: pt.y + Math.sin(i * 1.7) * (8 + i), alpha: 0, duration: 320, ease: "Quad.out", onComplete: () => chispa.destroy() }));
-    if (!this._movimientoReducido) this.cameras.main.shake(detalle.modoFuego === "rafaga" ? 110 : 65, detalle.modoFuego === "rafaga" ? .0018 : .0009);
-    this.tweens.add({ targets: [...lineas, flash, marca], alpha: 0, duration: 260, onComplete: () => { lineas.forEach(linea => linea.destroy()); flash.destroy(); marca.destroy(); } });
+    this.tweens.add({ targets: [linea, flash, marca], alpha: 0, duration: 260, onComplete: () => { linea.destroy(); flash.destroy(); marca.destroy(); } });
   }
 
   _fxRechazo(targetId) {
     const t = this.adapter.posicionDe(targetId);
-    const p = this._proyectarActor(t.x, t.y);
+    const p = this.escalaIso.proyectar(t.x, t.y);
     const depth = this._profundidadEnPantalla(t.x, t.y) + 5;
     const x = this.add.text(p.x, p.y - 40, "BLOQUEADO", { fontFamily: "monospace", fontSize: "12px", color: "#ff4d4d" }).setOrigin(0.5).setDepth(depth);
     this.tweens.add({ targets: x, y: x.y - 16, alpha: 0, duration: 700, onComplete: () => x.destroy() });
@@ -460,39 +291,6 @@ export class TacticalSceneOblicua extends TacticalScene {
     this.debugGraphics.clear();
     this.debugText.setText("");
     const s = this.session;
-    for (const [actorId, visual] of this.actorSprites ?? []) {
-      const seleccionado = actorId === s.targetActorId;
-      const activo = actorId === s.currentActorId;
-      visual.circle.setStrokeStyle(seleccionado ? 3 : 2, seleccionado ? 0xf0bd58 : (visual.esEnemigo ? 0xcf3945 : 0x78d8ef), seleccionado || activo ? 1 : .72);
-      visual.base.setAlpha(seleccionado ? .32 : activo ? .22 : .12);
-    }
-    this._actualizarOcultamientoParedes();
-    if (this._modoMover && s.currentActorId && s.esControladoPorJugador(s.currentActorId)) {
-      const activacion = s.activations.get(s.currentActorId);
-      const pos = s.positions[s.currentActorId];
-      if (activacion && pos) {
-        const alcanceVisual = Math.min(2, Math.floor(movementRemaining(activacion)));
-        this.debugGraphics.lineStyle(1, 0x66cce6, 0.55);
-        this.debugGraphics.fillStyle(0x3cabc8, 0.08);
-        for (let dx = -alcanceVisual; dx <= alcanceVisual; dx++) {
-          for (let dy = -alcanceVisual; dy <= alcanceVisual; dy++) {
-            if (Math.abs(dx) + Math.abs(dy) > alcanceVisual) continue;
-            const x = pos.x + dx, y = pos.y + dy;
-            if (x < 0 || y < 0 || x >= s.battlefieldMeters.width || y >= s.battlefieldMeters.height) continue;
-            const puntos = [
-              this.escalaIso.proyectar(x - .5, y - .5), this.escalaIso.proyectar(x + .5, y - .5),
-              this.escalaIso.proyectar(x + .5, y + .5), this.escalaIso.proyectar(x - .5, y + .5)
-            ];
-            this.debugGraphics.beginPath();
-            this.debugGraphics.moveTo(puntos[0].x, puntos[0].y);
-            for (const punto of puntos.slice(1)) this.debugGraphics.lineTo(punto.x, punto.y);
-            this.debugGraphics.closePath();
-            this.debugGraphics.fillPath();
-            this.debugGraphics.strokePath();
-          }
-        }
-      }
-    }
     if (!this._debugSpatial || !s.currentActorId || !s.targetActorId) return;
     const cover = this.adapter.getCover(s.currentActorId, s.targetActorId);
     const distancia = this.adapter.getDistance(s.currentActorId, s.targetActorId);

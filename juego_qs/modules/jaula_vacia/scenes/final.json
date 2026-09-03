@@ -7,23 +7,19 @@
   "endings": {
     "captura_limpia": {
       "titulo": "TODO PESA MÁS AL VOLVER",
-      "texto": "El Híbrido se retira hacia la espesura, herido y sin ganas de insistir. Volvéis al Puesto cargando algo más que cansancio. Si la jaula lleva al Lomo Blanco dentro, esta noche parte llena — Luma pagará el resto del contrato y os recordará como gente competente. Si volvió vacía, Luma no organiza ninguna persecución absurda por ello: apunta el fracaso, os paga solo el adelanto, y os deja la puerta abierta para la próxima vez que un animal se les escape a otros.",
-      "definitivo": false
+      "texto": "El Híbrido se retira hacia la espesura, herido y sin ganas de insistir. Volvéis al Puesto cargando algo más que cansancio. Si la jaula lleva al Lomo Blanco dentro, esta noche parte llena — Luma pagará el resto del contrato y os recordará como gente competente. Si volvió vacía, Luma no organiza ninguna persecución absurda por ello: apunta el fracaso, os paga solo el adelanto, y os deja la puerta abierta para la próxima vez que un animal se les escape a otros."
     },
     "jaula_vacia": {
       "titulo": "LA JAULA VUELVE VACÍA",
-      "texto": "Rompéis el contacto con el Híbrido y os retiráis mientras aún podéis. Sobrevivir tiene su propio valor, aunque el transporte salga sin lo que vino a buscar. Luma acepta la devolución del material sin reproches — no es la primera vez que la jungla se queda con lo que el circo quería, y no será la última.",
-      "definitivo": false
+      "texto": "Rompéis el contacto con el Híbrido y os retiráis mientras aún podéis. Sobrevivir tiene su propio valor, aunque el transporte salga sin lo que vino a buscar. Luma acepta la devolución del material sin reproches — no es la primera vez que la jungla se queda con lo que el circo quería, y no será la última."
     },
     "casi_muerto": {
       "titulo": "PARECÍA QUE HABÍAS MUERTO",
-      "texto": "El mordisco debería haber sido el final. En vez de eso, el mundo se apaga y vuelve — herido, en el suelo de la Pared Calcárea, pero vivo. Los demás os sacan de allí como pueden. La jaula, llena o vacía, deja de importar por esta noche.",
-      "definitivo": false
+      "texto": "El mordisco debería haber sido el final. En vez de eso, el mundo se apaga y vuelve — herido, en el suelo de la Pared Calcárea, pero vivo. Los demás os sacan de allí como pueden. La jaula, llena o vacía, deja de importar por esta noche."
     },
     "muerte": {
       "titulo": "LA PARED CALCÁREA SE QUEDA CON ALGO",
-      "texto": "El Depredador Híbrido no suelta la presa a medias. Vuestra historia con este contrato — y con La Senda de los Errantes — termina en la Pared Calcárea, lejos del Puesto, con una jaula que de todos modos iba a volver vacía.",
-      "definitivo": true
+      "texto": "El Depredador Híbrido no suelta la presa a medias. Vuestra historia con este contrato — y con La Senda de los Errantes — termina en la Pared Calcárea, lejos del Puesto, con una jaula que de todos modos iba a volver vacía."
     }
   }
 }

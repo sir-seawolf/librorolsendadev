@@ -9,20 +9,6 @@ import { fichaColapsada, establecerFichaColapsada } from "./uiSettings.js";
 // cada flag) nunca acumula listeners fantasma en document.
 let limpiarCierreSuperpuesto = null;
 
-function escaparHtml(texto) {
-  return String(texto)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
-export function renderInventario(items = []) {
-  if (!items.length) return '<li class="ficha-inventario-vacio">Sin objetos</li>';
-  return items.map(item => `<li>${escaparHtml(item)}</li>`).join("");
-}
-
 // Ficha lateral: solo la información necesaria en cada momento. `contexto` decide
 // qué bloques adicionales se muestran (exploración / persecución / combate) — ver
 // docs/PARTY_SYSTEM.md, sección HUD dinámico.
@@ -47,9 +33,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
   const colapsada = fichaColapsada(layout);
   container.classList.toggle("colapsada", colapsada);
 
-  const iconoToggle = colapsada
-    ? '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5 2 6 6-6 6"/></svg>'
-    : '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m11 2-6 6 6 6"/></svg>';
+  const iconoToggle = colapsada ? "‹" : "›";
   const tituloToggle = colapsada ? "Mostrar ficha" : "Ocultar ficha";
   const botonToggle = `<button type="button" class="ficha-toggle" id="btn-ficha-toggle" aria-label="${tituloToggle}" aria-expanded="${!colapsada}" title="${tituloToggle}">${iconoToggle}</button>`;
 
@@ -60,7 +44,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
       return `<span class="fc-vida-segmento ${tramo}" aria-hidden="true"><i style="width:${relleno}%"></i></span>`;
     }).join("");
     const epicosMini = Array.from({ length: base.puntosEpicos }, (_, i) =>
-      `<span class="fc-pe-punto ${i < m.puntosEpicosActuales ? "activo" : ""}" aria-hidden="true"></span>`
+      `<span class="fc-pe-punto ${i < m.puntosEpicosActuales ? "activo" : ""}" aria-hidden="true">${i < m.puntosEpicosActuales ? "◆" : "◇"}</span>`
     ).join("");
     container.innerHTML = `
       ${botonToggle}
@@ -71,19 +55,17 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
           <div class="fc-pe" role="img" aria-label="${m.puntosEpicosActuales} de ${base.puntosEpicos} Puntos Épicos" title="PE ${m.puntosEpicosActuales}/${base.puntosEpicos}">${epicosMini}</div>
         </div>
       </div>
-      <button type="button" class="ficha-inventario-acceso" id="btn-inventario" aria-label="Abrir inventario">Inventario</button>
     `;
     const expandir = () => { establecerFichaColapsada(false, layout); renderFicha(container, contexto, layout); };
     container.querySelector("#btn-ficha-toggle")?.addEventListener("click", expandir);
     const compacta = container.querySelector("#btn-ficha-expandir");
     compacta?.addEventListener("click", expandir);
     compacta?.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); expandir(); } });
-    container.querySelector("#btn-inventario")?.addEventListener("click", () => import("./inventoryManager.js").then(({ mostrarGestorInventario }) => mostrarGestorInventario()));
     return;
   }
 
   const epicos = Array.from({ length: base.puntosEpicos }, (_, i) =>
-    `<span class="ep-dot ${i < m.puntosEpicosActuales ? "activo" : ""}" aria-hidden="true"></span>`).join("");
+    `<span class="ep-dot ${i < m.puntosEpicosActuales ? "activo" : ""}">●</span>`).join("");
 
   let bloqueContextual = "";
   if (contexto === "combate") {
@@ -136,8 +118,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
 
       <div class="ficha-bloque">
         <div class="ficha-titulo">Inventario</div>
-        <ul class="ficha-inventario">${renderInventario(m.inventario)}</ul>
-        <button type="button" class="ficha-inventario-gestionar" id="btn-inventario">Gestionar equipo y transferencias</button>
+        <ul class="ficha-inventario">${m.inventario.map(i => `<li>${i}</li>`).join("")}</ul>
       </div>
 
       <button class="btn-historial" id="btn-abrir-historial">Historial de tiradas</button>
@@ -152,7 +133,6 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
   container.querySelector("#btn-abrir-historial")?.addEventListener("click", () => {
     import("./rollLog.js").then(m => m.mostrarHistorial());
   });
-  container.querySelector("#btn-inventario")?.addEventListener("click", () => import("./inventoryManager.js").then(({ mostrarGestorInventario }) => mostrarGestorInventario()));
 
   // Cajón superpuesto expandido: cerrar al pulsar fuera o con Escape (punto 2
   // del encargo de calibración). En layout "docked" la ficha siempre ocupó

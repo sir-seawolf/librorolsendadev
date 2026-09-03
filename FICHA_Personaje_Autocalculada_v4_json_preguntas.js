@@ -1,7 +1,7 @@
 const STEP_TITLES = [
   "1) Tipo de personaje","2) Atributos y Puntos Gratuitos","3) Stats derivados","4) Profesiones",
   "5) Habilidades","6) MéritoDefecto especial","7) Méritos y Defectos","8) Equipo y dinero",
-  "9) Resumen","10) Ficha final"
+  "9) Resumen","10) Ficha final v3"
 ];
 
 const PROFESIONES = ["Combatiente","Civil","Científico","Especialista Técnico","Iniciado","Ninguna"];
@@ -1017,7 +1017,6 @@ function goStep(s){
   state.step = Math.max(1,Math.min(10,s));
   qsa('.step').forEach(el=>el.classList.toggle('active', parseInt(el.dataset.step,10)===state.step));
   paintStepMenu();
-  if(state.step===10) renderFichaFinal();
 }
 function nextStep(){ goStep(state.step+1); }
 function prevStep(){ goStep(state.step-1); }
@@ -1339,143 +1338,6 @@ function rebuildEconomy(){
 }
 window.rebuildEconomy = rebuildEconomy;
 
-// ===================== FICHA FINAL — 4 páginas =====================
-const SKILL_CAT_NAMES = {academicas:"Académicas", tecnologicas:"Tecnológicas", atleticas:"Atléticas", sociales:"Sociales", combate:"Combate", distorsion:"Distorsión"};
-
-function skillRowsHtml(rk){
-  return SKILLS[rk].map((h,i)=>{
-    const tot = qs(`.sk-tot[data-r="${rk}"][data-i="${i}"]`)?.value || 0;
-    return `<div class="ficha-skill-row"><span>${h}</span><span class="esp"></span><span class="tot">${tot}</span></div>`;
-  }).join('');
-}
-
-function renderFichaFinal(){
-  const box = qs('#fichaFinal');
-  if(!box) return;
-
-  try{
-  const nombre = qs('#personaje').value || '—';
-  const jugador = qs('#jugador').value || '—';
-  const corp = qs('#corporacion').value || '—';
-  const naturaleza = qs('#naturaleza').value || '—';
-  const nt = qs('#nt').value || '—';
-  const raza = qs('#raza').value || '—';
-  const tipo = qs('#tipoPersonaje').value || '—';
-
-  const attrsHtml = ATTRS.map(a=>`<div><b>${a}</b><span>${qs(`#at-${a}`).value||0}</span></div>`).join('');
-
-  const A=attr('A'), C=attr('C'), F=attr('F');
-  const vida = Math.ceil((A+C+F)/6);
-  const iniciado = initiatedTakes() >= 1;
-  const alma = iniciado ? 10 : 8;
-  const humCompras = state.compras.reduce((s,c)=>s+c.hum,0);
-  const humanidad = Math.max(0, 100 - humCompras);
-  const almaAccesible = Math.min(alma, Math.floor(humanidad/10));
-
-  // ---- Página 1: Principal ----
-  const p1skills = Object.keys(SKILLS).filter(r=>r!=='combate').map(rk=>`
-    <div class="ficha-skills-cat">
-      <h4>${SKILL_CAT_NAMES[rk]}</h4>
-      ${skillRowsHtml(rk)}
-    </div>`).join('');
-
-  const pagina1 = `
-    <section class="ficha-pagina">
-      <h2>1 · Principal — ${nombre}</h2>
-      <div class="ficha-cab">
-        <div><b>Jugador</b>${jugador}</div>
-        <div><b>Corporación</b>${corp}</div>
-        <div><b>Naturaleza</b>${naturaleza}</div>
-        <div><b>NT</b>${nt}</div>
-        <div><b>Raza</b>${raza}</div>
-        <div><b>Tipo</b>${tipo}</div>
-        <div><b>Profesiones</b>${effectiveProfs().join(', ')||'—'}</div>
-        <div><b>Deriva</b>___</div>
-      </div>
-      <div class="ficha-attrs">${attrsHtml}</div>
-      <div class="ficha-stats">
-        <span><b>PV</b> ${vida}/${vida}/${vida} (Sano/Herido/Tullido)</span>
-        <span><b>Humanidad</b> ${humanidad}</span>
-        <span><b>Alma</b> ${alma} (accesible ${almaAccesible})</span>
-        <span><b>Salud Mental</b> 100</span>
-      </div>
-      <div class="ficha-skills">${p1skills}</div>
-      <div class="ficha-skills-cat" style="margin-top:6px">
-        <h4>Combate</h4>
-        <div class="ficha-combate">${skillRowsHtml('combate')}</div>
-      </div>
-    </section>`;
-
-  // ---- Página 2: Equipamiento ----
-  const equipo = (qs('#equipoInicial').value||'').split('\n').filter(Boolean);
-  const armaduraTxt = state.armadura ? `${state.armadura.n} (${state.armadura.precio} PC)` : 'Sin armadura';
-  const implantes = state.compras.map(c=>`${c.n}${c.attr?` (+${c.bonus} ${c.attr})`:(c.zona?` (${c.zona})`:'')} — −${c.hum} Humanidad`).join('<br>') || 'Ninguno';
-  const pvBoxes = n => Array(Math.max(0,n)).fill('<span></span>').join('');
-
-  const pagina2 = `
-    <section class="ficha-pagina">
-      <h2>2 · Equipamiento — ${nombre}</h2>
-      <div class="ficha-stats"><span><b>Dinero</b> ${qs('#dineroFinal').value||'—'}</span><span><b>Armadura</b> ${armaduraTxt}</span></div>
-      <h3 style="font-size:12px;margin:10px 0 2px">Implantes</h3>
-      <div style="font-size:12px">${implantes}</div>
-      <h3 style="font-size:12px;margin:10px 0 2px">Equipo inicial</h3>
-      <div style="font-size:12px">${equipo.length ? equipo.map(l=>`<div>${l}</div>`).join('') : 'Ninguno'}</div>
-      <h3 style="font-size:12px;margin:10px 0 2px">Vida en juego</h3>
-      <div class="ficha-pv-box">
-        ${['Sano','Herido','Tullido'].map(n=>`<div class="ficha-pv-nivel"><b>${n}</b>${vida}<div class="ficha-pv-boxes">${pvBoxes(vida)}</div></div>`).join('')}
-      </div>
-      <h3 style="font-size:12px;margin:10px 0 2px">Armas</h3>
-      <table class="ficha-blank-table"><thead><tr><th>Arma</th><th>Daño</th><th>Pen</th><th>Alcance</th><th>Notas</th></tr></thead>
-      <tbody>${Array(5).fill('<tr><td></td><td></td><td></td><td></td><td></td></tr>').join('')}</tbody></table>
-    </section>`;
-
-  // ---- Página 3: Iniciados ----
-  let pagina3;
-  if(!iniciado){
-    pagina3 = `<section class="ficha-pagina"><h2>3 · Iniciados — ${nombre}</h2><div class="muted">Este personaje no tiene ninguna toma de Iniciado — esta página no aplica.</div></section>`;
-  } else {
-    const runasTxt = (state.runes||[]).map(r=>`${r.tipo} · ${r.name} N${r.level} (${r.origen})`).join('<br>') || 'Ninguna inscrita todavía.';
-    pagina3 = `
-      <section class="ficha-pagina">
-        <h2>3 · Iniciados — ${nombre}</h2>
-        <div class="ficha-stats"><span><b>Alma total</b> ${alma}</span><span><b>Alma accesible</b> ${almaAccesible}</span></div>
-        <h3 style="font-size:12px;margin:10px 0 2px">Habilidades de Distorsión</h3>
-        <div class="ficha-skills-cat">${skillRowsHtml('distorsion')}</div>
-        <h3 style="font-size:12px;margin:10px 0 2px">Runas y tatuajes inscritos</h3>
-        <div style="font-size:12px">${runasTxt}</div>
-        <h3 style="font-size:12px;margin:10px 0 2px">Focos de Distorsión</h3>
-        <table class="ficha-blank-table"><thead><tr><th>Foco</th><th>Efecto</th></tr></thead>
-        <tbody>${Array(3).fill('<tr><td></td><td></td></tr>').join('')}</tbody></table>
-        <h3 style="font-size:12px;margin:10px 0 2px">Tintas rúnicas y Perlas</h3>
-        <table class="ficha-blank-table"><thead><tr><th>Tinta rúnica</th><th>Perla blanca (100 PD)</th><th>Perla negra (1.000 PD)</th></tr></thead>
-        <tbody><tr><td></td><td></td><td></td></tr></tbody></table>
-      </section>`;
-  }
-
-  // ---- Página 4: Instrucciones ----
-  const pagina4 = `
-    <section class="ficha-pagina ficha-instr">
-      <h2>4 · Instrucciones</h2>
-      <h3>Cómo leer esta ficha</h3>
-      <p>Cada habilidad muestra su <b>Total</b> ya calculado. La línea entre el nombre y el número es para anotar una <b>especialidad</b>, si la tienes.</p>
-      <h3>Tiradas y dificultad</h3>
-      <p>Tira d100 e intenta sacar igual o menos que tu habilidad. El Narrador aplica un modificador entre <b>−20 y +20</b> (múltiplos de 5) según la dificultad: muy fácil +20, fácil +10, normal 0, difícil −10, extremadamente difícil −20.</p>
-      <h3>Tiradas enfrentadas</h3>
-      <p>Cuando dos personajes se oponen directamente, ambos tiran contra su propia habilidad y gana quien saque más éxitos.</p>
-      <h3>Heridas</h3>
-      <p>Tres niveles — Sano, Herido (−10) y Tullido (−20) — cada uno con capacidad igual a tus PV base. Agotar Tullido es muerte.</p>
-      <h3>Redondeo</h3>
-      <p>Si un cálculo deja decimales, siempre se redondea hacia arriba (excepción: el Alma accesible, que redondea hacia abajo).</p>
-    </section>`;
-
-  box.innerHTML = pagina1 + pagina2 + pagina3 + pagina4;
-  }catch(e){
-    console.error('renderFichaFinal:', e);
-    box.innerHTML = '<p class="muted">No se pudo generar la ficha final (la página aún está cargando datos). Espera un momento y pulsa «Actualizar ficha final».</p>';
-  }
-}
-window.renderFichaFinal = renderFichaFinal;
-
 function renderFinalSheetV3(){
   const attrs = ATTRS.map(a=>`${a}: ${attr(a)}`).join(' · ');
   const runTxt = state.runes.length ? state.runes.map(r=>`${r.name} N${r.level} (${r.tipo||'Runa'}${r.origen&&r.origen!=='Básica'?`, ${r.origen}`:''})`).join(', ') : '—';
@@ -1487,9 +1349,10 @@ const V3_ACAD = ["Ciencias","Biotecnología","Navegación","Burocracia","Buscar 
 const V3_TEC = ["Armería","Artesanía","Ciber-tecnología","Demoliciones","Disfraz","Electrónica","Falsificación","Química","Mecánica","Manos ágiles","Seguridad","Primeros Auxilios","Conducir","Pilotar","Trajes Servoasistidos","Sigilo"];
 const V3_ATL = ["Acrobacias","Resistir","Proezas"];
 const V3_SOC = ["Absorción","Autocontrol","Bajos Fondos","Empatía","Interrogatorio","Liderazgo","Manejo de Animales","Persuasión","Seducción","Estilo"];
-// v3 ya tiene sus 3 tramos (Corta/Media/Larga) desde la reestructuracion en 4 paginas —
-// mismo orden que SKILLS.combate en este archivo (sin Iniciativa/Alerta/Esquivar, que van a V3_INIC).
-const V3_COMBAT = ["Distancia Corta","Distancia Media","Distancia Larga","Sin Armas","Arma CC Corta","Arma CC Media","Arma CC Larga"];
+// La v3 solo tiene 3 huecos de ataque (.capr data-i 0-2): no hay sitio para los tramos
+// Corta/Larga. Se dejan fuera a propósito — indexOf() no los encuentra y fillV3Skill
+// no escribe nada para ellos (sin errores); la v3 solo refleja el tramo Media de cada rama.
+const V3_COMBAT = ["Distancia Media","Sin Armas","Arma CC Media"];
 const V3_INIC = ["Iniciativa","Alerta","Esquivar"];
 const V3_DISC = ["Proyección de Energía","Protección de Energía","Invocación de Energía","Detección de Distorsión","Manipulación de Distorsión","Camino de los Portales","Herrero Rúnico","Tatuador Rúnico"];
 

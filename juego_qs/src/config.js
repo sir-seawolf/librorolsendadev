@@ -67,9 +67,6 @@ export const config = {
     // Nota técnica del piloto ("no sustituye a la escena real..."). Nunca en
     // una escena jugable real -- ver panoramic.js.
     showPanoramicDevNote: false,
-    // Líneas, fórmulas y detalle del último ataque sobre el tablero táctico.
-    // Se activa manualmente con C durante QA; nunca nace visible en producción.
-    showTacticalSpatial: false,
     // Cuadrícula del mundo, banda caminable, línea de pies, cajas de
     // objetos/anclajes/hotspots (docs/CALIBRACION_GEOMETRICA_CALLEJON_
     // PREDATOR.md, punto 1). Genérica -- sirve para cualquier escena

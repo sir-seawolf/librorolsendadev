@@ -5,22 +5,15 @@
   "title": "Esconderse",
   "background": "assets/backgrounds/callejon.jpg",
   "sheetContext": "callejon",
-  "availableParty": [
-    "player"
-  ],
+  "availableParty": ["player"],
   "introText": "Te lanzas tras los contenedores, conteniendo la respiración. Los pasos metálicos se acercan, lentos, metódicos. Están registrando el callejón centímetro a centímetro.",
   "actions": [
-    {
-      "id": "contener",
-      "label": "Contener la respiración (Sigilo)"
-    }
+    { "id": "contener", "label": "Contener la respiración (Sigilo)" }
   ],
   "interactions": [
     {
       "id": "intentar_esconderse",
-      "trigger": {
-        "action": "contener"
-      },
+      "trigger": { "action": "contener" },
       "roll": {
         "skill": "Sigilo",
         "difficulty": -10,
@@ -30,7 +23,7 @@
       "onSuccess": {
         "registerDecision": "Esconderse: éxito — perseguidores despistados.",
         "text": "Uno de ellos se detiene a menos de un metro. El reflejo de sus ojos barre la cobertura sin encontrarte. Tras un instante que dura una eternidad, ambos se alejan hacia la calle principal. Cuando el silencio vuelve, te permites respirar y notas algo duro en el bolsillo: la tarjeta-llave del muerto.",
-        "transition": "aparcamiento_panoramico_piloto",
+        "transition": "rastrear_tarjeta",
         "transitionDelay": 1400
       },
       "onFailure": {

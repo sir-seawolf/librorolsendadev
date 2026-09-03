@@ -15,36 +15,21 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — TESELA: MAZMORRAS DE LOS ANTIGUOS (LAS TESELAS ANIDADAS)"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#1-que-son">1. QUÉ SON</a></li><li class="toc-h2"><a href="#2-estructura">2. ESTRUCTURA</a></li><li class="toc-h2"><a href="#3-mecanicas">3. MECÁNICAS</a></li><li class="toc-h3"><a href="#entrada">Entrada</a></li><li class="toc-h3"><a href="#progresion">Progresión</a></li><li class="toc-h3"><a href="#necrochip">Necrochip</a></li><li class="toc-h3"><a href="#recompensas-por-tipo">Recompensas por tipo</a></li><li class="toc-h3"><a href="#deriva">Deriva</a></li><li class="toc-h3"><a href="#regeneracion-y-evolucion">Regeneración y Evolución</a></li><li class="toc-h2"><a href="#4-el-infierno-la-mazmorra-televisada">4. EL INFIERNO — LA MAZMORRA TELEVISADA</a></li><li class="toc-h3"><a href="#formato-televisivo">Formato televisivo</a></li><li class="toc-h3"><a href="#estructura-y-recompensas">Estructura y recompensas</a></li><li class="toc-h3"><a href="#patrocinadores">Patrocinadores</a></li><li class="toc-h3"><a href="#mecanicas-globales-de-la-mazmorra">Mecánicas globales de la mazmorra</a></li><li class="toc-h3"><a href="#leyenda-de-fichas-compactas">Leyenda de fichas compactas</a></li><li class="toc-h3"><a href="#criaturas-base">Criaturas base</a></li><li class="toc-h3"><a href="#bosses-y-niveles">Bosses y niveles</a></li><li class="toc-h2"><a href="#5-seis-mazmorras-conocidas">5. SEIS MAZMORRAS CONOCIDAS</a></li><li class="toc-h3"><a href="#1-el-pozo-de-los-espejos">1. El Pozo de los Espejos</a></li><li class="toc-h3"><a href="#2-la-forja-olvidada">2. La Forja Olvidada</a></li><li class="toc-h3"><a href="#3-el-jardin-de-los-huesos">3. El Jardín de los Huesos</a></li><li class="toc-h3"><a href="#4-la-biblioteca-de-babel">4. La Biblioteca de Babel</a></li><li class="toc-h3"><a href="#5-el-laberinto-de-los-mil-nombres">5. El Laberinto de los Mil Nombres</a></li><li class="toc-h3"><a href="#6-la-ciudad-que-no-existe">6. La Ciudad que No Existe</a></li><li class="toc-h2"><a href="#6-corporaciones-y-mazmorras">6. CORPORACIONES Y MAZMORRAS</a></li><li class="toc-h2"><a href="#7-ganchos-de-aventura">7. GANCHOS DE AVENTURA</a></li><li class="toc-h2"><a href="#8-sistema-de-generacion-de-mazmorras">8. SISTEMA DE GENERACIÓN DE MAZMORRAS</a></li><li class="toc-h3"><a href="#paso-1-proposito-original-1d10">Paso 1 — Propósito Original (1d10)</a></li><li class="toc-h3"><a href="#paso-2-numero-de-niveles-1d6-2">Paso 2 — Número de Niveles (1d6+2)</a></li><li class="toc-h3"><a href="#paso-3-fisica-del-primer-nivel-1d10">Paso 3 — Física del Primer Nivel (1d10)</a></li><li class="toc-h3"><a href="#paso-4-deriva-acumulada-1d6">Paso 4 — Deriva Acumulada (1d6)</a></li><li class="toc-h2"><a href="#9-criaturas-de-mazmorra">9. CRIATURAS DE MAZMORRA</a></li><li class="toc-h3"><a href="#tabla-de-encuentros-por-nivel-1d10">Tabla de Encuentros por Nivel (1d10)</a></li><li class="toc-h3"><a href="#constructos-menores-niveles-1-3">Constructos Menores (Niveles 1-3)</a></li><li class="toc-h3"><a href="#fauna-distorsionada-niveles-2-5">Fauna Distorsionada (Niveles 2-5)</a></li><li class="toc-h3"><a href="#entidades-de-distorsion-niveles-4-7">Entidades de Distorsión (Niveles 4-7)</a></li><li class="toc-h3"><a href="#errantes-caidos-niveles-5-9">Errantes Caídos (Niveles 5-9)</a></li><li class="toc-h3"><a href="#guardianes-menores-mini-boss-niveles-3-6">Guardianes Menores — Mini-boss (Niveles 3-6)</a></li><li class="toc-h2"><a href="#10-trampas">10. TRAMPAS</a></li><li class="toc-h3"><a href="#tabla-de-trampas-por-nivel-1d10">Tabla de Trampas por Nivel (1d10)</a></li><li class="toc-h2"><a href="#11-bosses-sistema-completo">11. BOSSES — SISTEMA COMPLETO</a></li><li class="toc-h3"><a href="#tabla-de-bosses-por-nivel-1d10">Tabla de Bosses por Nivel (1d10)</a></li><li class="toc-h3"><a href="#demonios-de-la-distorsion">Demonios de la Distorsión</a></li><li class="toc-h3"><a href="#tecnologia-ancestral">Tecnología Ancestral</a></li><li class="toc-h3"><a href="#errantes-antiguos">Errantes Antiguos</a></li><li class="toc-h3"><a href="#entidades-de-distorsion-pura">Entidades de Distorsión Pura</a></li><li class="toc-h3"><a href="#guardianes-rituales">Guardianes Rituales</a></li><li class="toc-h3"><a href="#anomalias">Anomalías</a></li><li class="toc-h2"><a href="#12-recompensas-de-mazmorra">12. RECOMPENSAS DE MAZMORRA</a></li><li class="toc-h3"><a href="#tabla-por-boss-derrotado-1d10">Tabla por Boss Derrotado (1d10)</a></li><li class="toc-h2"><a href="#13-el-infierno-reglas-especiales">13. EL INFIERNO — REGLAS ESPECIALES</a></li><li class="toc-h3"><a href="#intervencion-del-publico-cada-1d6-horas-de-transmision-tira-1d6">Intervención del Público (cada 1d6 horas de transmisión, tira 1d6)</a></li><li class="toc-h3"><a href="#patrocinadores-2">Patrocinadores</a></li><li class="toc-h3"><a href="#recompensas-del-infierno">Recompensas del Infierno</a></li><li class="toc-h2"><a href="#14-recompensas-por-tipo-de-mazmorra-referencia-general">14. RECOMPENSAS POR TIPO DE MAZMORRA (referencia general)</a></li><li class="toc-h2"><a href="#conexion-con-el-suplemento">CONEXIÓN CON EL SUPLEMENTO</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>DLC — TESELA: MAZMORRAS DE LOS ANTIGUOS (LAS TESELAS ANIDADAS)</h1>
 <blockquote>
 <p><em>"No son ruinas. Son pruebas. Y nosotros somos los sujetos."</em><br />
@@ -52,11 +37,11 @@
 </blockquote>
 <div class="recuadro-lore"><p>Parte del suplemento "Mundos y teselas expandidos". Autocontenida: sistema de generación, bestiario, bosses y 6 mazmorras conocidas incluidas.</p></div>
 <hr />
-<h2 id="1-que-son">1. QUÉ SON</h2>
+<h2>1. QUÉ SON</h2>
 <p>Las Mazmorras de los Antiguos son <strong>teselas anidadas</strong> — micro-universos artificiales creados por los Precursores y anclados permanentemente a la urdimbre. No son ruinas explorables: son <strong>sistemas cerrados con reglas propias</strong>.</p>
 <p>Cada mazmorra es un laboratorio, prisión o experimento de una civilización que ya no existe. Algunas fueron diseñadas para contener algo. Otras para probar algo. Las más inquietantes — para <strong>observar</strong> algo.</p>
 <hr />
-<h2 id="2-estructura">2. ESTRUCTURA</h2>
+<h2>2. ESTRUCTURA</h2>
 <ul>
 <li><strong>Física variable</strong>: gravedad invertida, tiempo más lento, colores inexistentes. Cada nivel es distinto.</li>
 <li><strong>Bosses guardianes</strong>: no se puede bajar sin derrotarlo o resolverlo.</li>
@@ -65,16 +50,16 @@
 <li><strong>Evolución</strong>: cuanto más se usa, más reacciona. Los bosses aprenden. La mazmorra reconoce a quienes la visitan.</li>
 </ul>
 <hr />
-<h2 id="3-mecanicas">3. MECÁNICAS</h2>
-<h3 id="entrada">Entrada</h3>
+<h2>3. MECÁNICAS</h2>
+<h3>Entrada</h3>
 <p>Portales estabilizados, estructuras de los Antiguos activas, o anomalías permanentes.<br />
 - Saber que existe · Tener acceso al punto de entrada · Estar dispuesto a morir</p>
-<h3 id="progresion">Progresión</h3>
+<h3>Progresión</h3>
 <ul>
 <li>Para acceder al nivel siguiente hay que superar la prueba o al Guardián del nivel. Según el nivel, puede significar derrotarlo, convencerlo, satisfacer su exigencia, engañarlo o resolver la prueba que plantea. Un Guardián concreto puede exigir combate si su naturaleza así lo determina — no todos los niveles son negociables por defecto.</li>
 <li>Morir → <strong>muerte permanente</strong>. Con Necrochip: ver el procedimiento en el epígrafe siguiente.</li>
 </ul>
-<h3 id="necrochip">Necrochip</h3>
+<h3>Necrochip</h3>
 <p>El Necrochip no transfiere la conciencia a distancia ni de forma automática. El procedimiento es físico:</p>
 <ol>
 <li>El personaje muere.</li>
@@ -85,7 +70,7 @@
 <li>El Necrochip se destruye durante el proceso.</li>
 </ol>
 <p>En El Infierno, recuperar el cadáver y el chip puede convertirse en parte de la aventura.</p>
-<h3 id="recompensas-por-tipo">Recompensas por tipo</h3>
+<h3>Recompensas por tipo</h3>
 <table>
 <thead>
 <tr>
@@ -120,7 +105,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="deriva">Deriva</h3>
+<h3>Deriva</h3>
 <p><strong>Extensión</strong> de la regla general (el manual acumula Deriva por cruces entre teselas): dentro de una mazmorra, la exposición prolongada a distorsión concentrada también acumula Deriva, según la intensidad del lugar. No sustituye la regla de cruces — se suma a ella mientras el grupo permanece dentro.</p>
 <table>
 <thead>
@@ -150,13 +135,13 @@
 </table>
 <p>El DJ decide al diseñar la mazmorra qué intensidad le corresponde, y si hay zonas seguras dentro de ella donde no se acumula.</p>
 <p><strong>Método único por zona:</strong> cada mazmorra o nivel utiliza el método de exposición indicado para esa zona en concreto — por hora, por día, al completar el nivel, o mediante un acontecimiento específico (así se expresa, por ejemplo, en el Paso 4 del generador, §8, y en la ficha de cada una de las seis mazmorras conocidas, §5). La acumulación temporal de esta tabla y la acumulación por nivel no se suman automáticamente entre sí. Solo se combinan cuando la descripción de una zona concreta lo ordene expresamente.</p>
-<h3 id="regeneracion-y-evolucion">Regeneración y Evolución</h3>
+<h3>Regeneración y Evolución</h3>
 <p>Después de 1d6 semanas/meses: los bosses resucitan y <strong>aprenden</strong> de los intentos previos. Evolución avanzada (decenas de incursiones): nuevos niveles aparecen, la física cambia.</p>
 <hr />
-<h2 id="4-el-infierno-la-mazmorra-televisada">4. EL INFIERNO — LA MAZMORRA TELEVISADA</h2>
+<h2>4. EL INFIERNO — LA MAZMORRA TELEVISADA</h2>
 <p><em>"Bienvenidos al Infierno. Las cámaras están encendidas. No hay reglas. Solo hay una: sobrevive."</em></p>
 <p>La única mazmorra "domesticada" para <strong>entretenimiento interdimensional</strong>. 7 niveles fijos. Los participantes entran voluntariamente (o casi) para competir por premios, fama, o supervivencia.</p>
-<h3 id="formato-televisivo">Formato televisivo</h3>
+<h3>Formato televisivo</h3>
 <ul>
 <li><strong>Apostar</strong> por los participantes</li>
 <li><strong>Enviar suministros</strong> (ver «Patrocinadores» más abajo — se paga en PC, no en PD)</li>
@@ -168,7 +153,7 @@
 <blockquote>
 <p><strong>Para el Narrador:</strong> El Infierno puede ser un arco de campaña completo, un gancho de aventura, o una crítica social. La muerte en directo como espectáculo. La vida como mercancía.</p>
 </blockquote>
-<h3 id="estructura-y-recompensas">Estructura y recompensas</h3>
+<h3>Estructura y recompensas</h3>
 <p><strong>Estructura:</strong> 7 niveles, estilo Dante — se desciende. Es fija: no se adapta al tamaño ni al nivel del grupo que entra.</p>
 <p><strong>Dificultad:</strong> las criaturas normales de un nivel N tienen la fuerza de un boss de nivel N−2. El boss de un nivel N tiene la fuerza de criaturas normales de nivel N+2.</p>
 <p><strong>Nivel 1:</strong> aproximadamente 100 demonios básicos, todos voladores (usar la regla Ataque en grupo del capítulo de Mecánicas del Sistema).</p>
@@ -212,7 +197,7 @@
 </tbody>
 </table>
 <p><strong>Recompensa mensual:</strong> 1.000.000 PC × nivel alcanzado, solo para quien llegue más lejos ese mes. El nivel 1 completado siempre cobra, aunque no sea el más lejos.</p>
-<h3 id="patrocinadores">Patrocinadores</h3>
+<h3>Patrocinadores</h3>
 <p>Cualquier entidad con recursos puede patrocinar a un participante: corporaciones, particulares ricos, consorcios. El patrocinador paga <strong>el doble del valor</strong> del objeto que envía como recompensa (un objeto de 10.000 PC le cuesta 20.000 PC desembolsados) — el sobrecoste es el precio de la publicidad en directo.</p>
 <p>Las recompensas de patrocinador son graciosas pero útiles, y cualquier entrada de la tabla es canjeable al instante por su equivalente en Medikits o munición si el participante lo prefiere. La tabla cambia según lo que el PJ haga en pantalla — un patrocinador premia lo que le beneficia a él, no necesariamente lo más heroico.</p>
 <div class="tabla-dados"><p><strong>Recompensas de patrocinador (1d12)</strong></p>
@@ -274,7 +259,7 @@
 </tr>
 </tbody>
 </table></div>
-<h3 id="mecanicas-globales-de-la-mazmorra">Mecánicas globales de la mazmorra</h3>
+<h3>Mecánicas globales de la mazmorra</h3>
 <div class="recuadro-lore"><p><strong>El Infierno no se puede grabar</strong></p>
 <p>Solo existe en directo. Todo lo que no es emisión en vivo se corrompe — vídeo, audio, datos biométricos, logs de implantes, memorias de droides. Los archivos históricos son reconstrucciones de IA a partir de testimonios, y a veces también se corrompen.</p>
 <p>Personajes robóticos o con implantes de memoria: al salir, tirada de Voluntad o los recuerdos se corrompen — quedan fragmentos, sensaciones, datos incompletos. Los orgánicos recuerdan con normalidad.</p>
@@ -292,9 +277,9 @@
 <div class="recuadro-combate"><p><strong>Recesos publicitarios</strong> (mecánica global, no por nivel)</p>
 <p>Cada 1d6 horas todo queda paralizado excepto los participantes. Los patrocinadores envían objetos (ver tabla 1d12 arriba). Los participantes pueden pedir suministros. Solo afectan a los niveles 1-6 — <strong>el nivel 7 no acepta interrupciones, el tiempo no se paraliza.</strong></p></div>
 <hr />
-<h3 id="leyenda-de-fichas-compactas">Leyenda de fichas compactas</h3>
+<h3>Leyenda de fichas compactas</h3>
 <p>En este DLC, las fichas compactas usan estas abreviaturas: <code>F/A/P</code> = Físico / Agilidad / Potencia; <code>PV</code> = Puntos de Vida; <code>PA</code> = Puntos de Alma; <code>PD</code> = Puntos de Distorsión; <code>Bld</code> = Blindaje; <code>Pen</code> = Penetración. Cuando <code>PV</code> aparece en tres valores, se lee como Sano / Herido / Tullido.</p>
-<h3 id="criaturas-base">Criaturas base</h3>
+<h3>Criaturas base</h3>
 <p><em>Menor, Desgarro y Tragador son especies o categorías locales de esta mazmorra televisada — apodos que usan los comentaristas, no clases universales de Demonios reconocidas en el resto del manual.</em></p>
 <h4>Demonios Menores — clase estándar (Nivel 1)</h4>
 <div class="recuadro-combate"><p><strong>F25/A40/P20</strong> | PV 4/4/4 | Bld 0 | Ataque 35% (Pen 0) | Daño 3 | Esquiva 45%</p>
@@ -308,7 +293,7 @@
 <p><strong>Especial:</strong> el primer impacto que reciben cada asalto no les hace daño — lo absorben.</p></div>
 <p>Lentos, casi contemplativos. Cuando reciben un golpe lo absorben sin reacción visible. No gritan. No retroceden. Simplemente continúan. Los comentaristas los llaman "los pacientes" en los archivos internos. Nunca en antena.</p>
 <hr />
-<h3 id="bosses-y-niveles">Bosses y niveles</h3>
+<h3>Bosses y niveles</h3>
 <h4>Nivel 1 — El Primer Círculo</h4>
 <div class="recuadro-lore"><p>Una cueva que no es una cueva. Las paredes se pierden en la distancia, el techo es oscuridad que no termina, el suelo es roca irregular iluminada por un resplandor rojizo intermitente que viene de grietas — como estar dentro de algo vivo y enfermo. El aire huele a metal caliente y a algo más antiguo que el metal. Las cámaras están en todas partes. No se ven — se intuyen. Hay una presencia constante de ser observado que no viene de los demonios. Los comentaristas dan la bienvenida con la alegría de quien lleva décadas haciendo esto y todavía le gusta.</p></div>
 <p><strong>Boss — El Guardián del Primer Círculo</strong></p>
@@ -665,43 +650,43 @@
 <div class="recuadro-lore"><p><strong>Nota de lore — Los dos que ganaron</strong></p>
 <p>En los archivos hay dos registros con protocolo de máxima confidencialidad. Uno es un individuo. Otro es un grupo reducido —cuántos exactamente, los archivos no lo dicen. Ambos tienen el mismo campo en blanco: "Declaración del superviviente." Ninguno declaró. Sus nombres, cuando se crean, serán leyenda en el universo. No héroes — algo más incómodo que eso.</p></div>
 <hr />
-<h2 id="5-seis-mazmorras-conocidas">5. SEIS MAZMORRAS CONOCIDAS</h2>
-<h3 id="1-el-pozo-de-los-espejos">1. El Pozo de los Espejos</h3>
+<h2>5. SEIS MAZMORRAS CONOCIDAS</h2>
+<h3>1. El Pozo de los Espejos</h3>
 <p><strong>Sector 24 de EP-9</strong> | 5 niveles | Horror psicológico | Deriva +1/nivel</p>
 <p>Cada nivel es un reflejo distorsionado del anterior. Los espejos muestran lo que podría haber sido. Los participantes ven versiones alternativas de sí mismos: el que no cruzó el portal, el que mató a su hermano, el que se convirtió en Demonio.</p>
 <p><strong>Bosses:</strong> Un "yo alternativo" por nivel con ventaja específica sobre el original (conocen sus miedos, recuerdos, secretos).<br />
 <strong>Recompensas:</strong> Fragmentos de espejo que permiten ver teselas alternativas.<br />
 <strong>Leyenda:</strong> En el nivel 5 hay un espejo que muestra la verdad sobre los Antiguos. Nadie ha llegado vivo para confirmarlo.</p>
 <hr />
-<h3 id="2-la-forja-olvidada">2. La Forja Olvidada</h3>
+<h3>2. La Forja Olvidada</h3>
 <p><strong>Nexar Prime, bajo las dunas del sur</strong> | 7 niveles | Tecnología ancestral, calor extremo | Deriva +2/nivel</p>
 <p>Una fábrica de los Antiguos que sigue operando. Cada nivel es una sección: fundición, ensamblaje, pruebas, archivo. El calor es insoportable sin protección.</p>
 <p><strong>Bosses:</strong> "Supervisores" — constructos con inteligencia y personalidad. Pueden negociar.<br />
 <strong>Recompensas:</strong> Tecnología de los Antiguos funcional. El nivel 7 tiene un prototipo de Genocaballero incompleto.<br />
 <strong>Leyenda:</strong> La Forja fue <strong>sellada</strong>, no abandonada. Algo en el nivel 7 sigue funcionando, y los Antiguos no quisieron que nadie lo encontrara.</p>
 <hr />
-<h3 id="3-el-jardin-de-los-huesos">3. El Jardín de los Huesos</h3>
+<h3>3. El Jardín de los Huesos</h3>
 <p><strong>Oasis, jungla bajo la capital</strong> | 4 niveles | Biológico, orgánico, simbiosis | Deriva +1/nivel</p>
 <p>Una mazmorra viva. Las paredes son tejido orgánico, el suelo respira, los pasillos se contraen y expanden.</p>
 <p><strong>Bosses:</strong> "Jardineros" — entidades biológicas no hostiles por defecto. Pueden negociarse.<br />
 <strong>Recompensas:</strong> Materiales orgánicos raros. El nivel 4 tiene una semilla que puede crecer en cualquier tesela.<br />
 <strong>Leyenda:</strong> Totovia sabe más sobre el Jardín de lo que dice. Su mansión está <strong>vigilando</strong> la entrada.</p>
 <hr />
-<h3 id="4-la-biblioteca-de-babel">4. La Biblioteca de Babel</h3>
+<h3>4. La Biblioteca de Babel</h3>
 <p><strong>Ubicación desconocida — aparece y desaparece</strong> | 3-12 niveles | Conocimiento, paradojas, tiempo no lineal | Deriva +1/nivel</p>
 <p>Una biblioteca infinita. Los libros contienen información real — pero también trampas cognitivas. Leer el libro equivocado puede matarte, volverte loco, o transportarte a otra tesela.</p>
 <p><strong>Bosses:</strong> "Bibliotecarios" — protegen la información. Si intentas robar sin pagar, te lo quitan (memorias, habilidades, o años de vida).<br />
 <strong>Recompensas:</strong> Información pura: mapas de teselas perdidas, nombres de Demonios del Grimorio, coordenadas de portales estables.<br />
 <strong>Leyenda:</strong> No fue creada por los Antiguos. Fue creada por <strong>algo que los Antiguos intentaron contener</strong>. Y sigue conteniéndolo.</p>
 <hr />
-<h3 id="5-el-laberinto-de-los-mil-nombres">5. El Laberinto de los Mil Nombres</h3>
+<h3>5. El Laberinto de los Mil Nombres</h3>
 <p><strong>MadCity, pisos 150-200</strong> | 9 niveles | Demonios, invocación, pactos | Deriva +3/nivel</p>
 <p>Una prisión de Demonios. Cada nivel es una celda — un universo en miniatura con un Demonio contenido. Las runas de contención se debilitan con el tiempo.</p>
 <p><strong>Bosses:</strong> Cada nivel es un Demonio. No todos son hostiles — algunos quieren ser liberados, otros destruidos, otros quieren pactar.<br />
 <strong>Recompensas:</strong> Nombres de Demonios del Grimorio, artefactos de contención, conocimiento de invocación. El nivel 9 tiene algo que <strong>no es un Demonio</strong> — es algo que los Antiguos temían más.<br />
 <strong>Leyenda:</strong> Primus lo vigila. No lo sella porque si lo sellan, lo que hay dentro <strong>saldrá</strong>.</p>
 <hr />
-<h3 id="6-la-ciudad-que-no-existe">6. La Ciudad que No Existe</h3>
+<h3>6. La Ciudad que No Existe</h3>
 <p><strong>Mundo Chatarra, norte del Vertedero</strong> | 6 niveles | Civilización perdida, paradoja temporal | Deriva +1/nivel</p>
 <p>Una ciudad completa en bucle: calles, edificios, vehículos, personas. Pero las personas son <strong>ecos temporales</strong> de una civilización destruida. El mismo día, las mismas conversaciones, las mismas muertes, repitiéndose sin fin.</p>
 <p><strong>Bosses:</strong> "Guardianes del Tiempo" — no hostiles si no interrumpes el bucle. Si intentas "salvar" a alguien, te conviertes en parte de él.<br />
@@ -711,7 +696,7 @@
 <p><em>Nota de conexión:</em> Está en el norte del Vertedero — territorio de las Bestias (ver el DLC Mundo Chatarra). El Monasterio de los Libros tiene referencias a ella en textos del periodo Edo, aunque no saben qué es realmente.</p>
 </blockquote>
 <hr />
-<h2 id="6-corporaciones-y-mazmorras">6. CORPORACIONES Y MAZMORRAS</h2>
+<h2>6. CORPORACIONES Y MAZMORRAS</h2>
 <ul>
 <li><strong>TecnoStealer:</strong> Mapas de varias mazmorras. Las usa como bases secretas o trampas.</li>
 <li><strong>Chafry:</strong> Busca tecnología de los Antiguos. Ha enviado expediciones a La Forja Olvidada.</li>
@@ -720,7 +705,7 @@
 <li><strong>Serpent:</strong> Tiene agentes dentro. No se sabe cuántos, ni cuáles, ni qué buscan.</li>
 </ul>
 <hr />
-<h2 id="7-ganchos-de-aventura">7. GANCHOS DE AVENTURA</h2>
+<h2>7. GANCHOS DE AVENTURA</h2>
 <ol>
 <li>Un participante del Infierno es alguien que los PJs conocen. ¿Intentan salvarlo? ¿Participan ellos?</li>
 <li>Una mazmorra ha "evolucionado" de formas impredecibles. Algo se ha despertado.</li>
@@ -732,8 +717,8 @@
 <hr />
 <p><em>"Las mazmorras no son ruinas. Son pruebas. Y nosotros somos los sujetos."</em></p>
 <hr />
-<h2 id="8-sistema-de-generacion-de-mazmorras">8. SISTEMA DE GENERACIÓN DE MAZMORRAS</h2>
-<h3 id="paso-1-proposito-original-1d10">Paso 1 — Propósito Original (1d10)</h3>
+<h2>8. SISTEMA DE GENERACIÓN DE MAZMORRAS</h2>
+<h3>Paso 1 — Propósito Original (1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -806,7 +791,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="paso-2-numero-de-niveles-1d6-2">Paso 2 — Número de Niveles (1d6+2)</h3>
+<h3>Paso 2 — Número de Niveles (1d6+2)</h3>
 <table>
 <thead>
 <tr>
@@ -833,7 +818,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="paso-3-fisica-del-primer-nivel-1d10">Paso 3 — Física del Primer Nivel (1d10)</h3>
+<h3>Paso 3 — Física del Primer Nivel (1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -895,7 +880,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="paso-4-deriva-acumulada-1d6">Paso 4 — Deriva Acumulada (1d6)</h3>
+<h3>Paso 4 — Deriva Acumulada (1d6)</h3>
 <table>
 <thead>
 <tr>
@@ -923,9 +908,9 @@
 </tbody>
 </table>
 <hr />
-<h2 id="9-criaturas-de-mazmorra">9. CRIATURAS DE MAZMORRA</h2>
+<h2>9. CRIATURAS DE MAZMORRA</h2>
 <p>Fichas: <code>F / A / P | PV | Bld | Ataque% | Daño | Especial</code>. Usa la leyenda de fichas compactas indicada en El Infierno.</p>
-<h3 id="tabla-de-encuentros-por-nivel-1d10">Tabla de Encuentros por Nivel (1d10)</h3>
+<h3>Tabla de Encuentros por Nivel (1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -972,29 +957,29 @@
 </tr>
 </tbody>
 </table>
-<h3 id="constructos-menores-niveles-1-3">Constructos Menores (Niveles 1-3)</h3>
+<h3>Constructos Menores (Niveles 1-3)</h3>
 <p><strong>Guardián de Pasillo</strong> F30/A30/P20 | PV 15 | Bld 3 | 50% (golpe) | Daño 3 | Inmune mental. Se activa al detectar movimiento.</p>
 <p><strong>Enjambre de Drones</strong> F10/A40/P30 | PV 5×5 unidades | Bld 1 | 40% (corte) | Daño 2 | −10 a ataque por cada unidad destruida.</p>
 <p><strong>Centinela Arcano</strong> F25/A25/P40 | PV 20 | Bld 4 | 55% (rayo, alcance 30m) | Daño 4 energético | Inmune a armas CC sin penetración.</p>
-<h3 id="fauna-distorsionada-niveles-2-5">Fauna Distorsionada (Niveles 2-5)</h3>
+<h3>Fauna Distorsionada (Niveles 2-5)</h3>
 <p><strong>Bestia de Corredor</strong> F50/A40/P30 | PV 30 | Bld 2 | 65% (mordisco, Pen 2) | Daño 3 | Esquiva 60% | Ciega, caza por vibración. +20 Sigilo en oscuridad.</p>
 <p><strong>Simbionte Parasitario</strong> F20/A50/P40 | PV 10 | Bld 0 | 70% (tentáculos) | Daño 2 + parálisis (CON −20 o inmovilizado 1d3 asaltos) | Si causa herida, intenta infectar: Medicina −20 o pierde 1 PV/hora.</p>
 <p><strong>Horror Fusionado</strong> Stats variables — adquiere características de víctimas previas. DJ decide.</p>
-<h3 id="entidades-de-distorsion-niveles-4-7">Entidades de Distorsión (Niveles 4-7)</h3>
+<h3>Entidades de Distorsión (Niveles 4-7)</h3>
 <p><strong>Fragmento de Demonio</strong> F40/A40/P50 | PV 25 | Bld 5 | 60% (garra) | Daño 3 (ignora blindaje físico) | Inmune mental. Cibus daña directamente sus PA según el nivel del efecto y las reglas de Cibus.</p>
 <p><strong>Eco Temporal</strong> F30/A60/P60 | PV 15 | Bld 3 | 70% (toque) | Daño 2 | Puede repetir su último movimiento una vez por escena. Disponible en cualquier mazmorra del generador general — no exclusivo de El Infierno.</p>
 <p><em>Alteración temporal:</em> cuando su toque produce efecto, modifica además la Deriva del objetivo en 1 punto al azar (1d100: 01–50 → −1 Deriva · 51–100 → +1 Deriva). Nunca reduce la Deriva por debajo de 0, y la reducción afecta solo al contador actual — no elimina umbrales ya alcanzados, mutaciones ni consecuencias registradas. El aumento sí puede alcanzar o superar un umbral nuevo y activarlo con normalidad. Es la propia inestabilidad temporal de la criatura: puede perjudicar o beneficiar por igual.</p>
 <p><strong>Guardián del Umbral</strong> F50/A30/P40 | PV 35 | Bld 6 | 65% (espada ancestral, Pen 3) | Daño 5 | No puede ser dañado por armas sin Pen 3+.</p>
-<h3 id="errantes-caidos-niveles-5-9">Errantes Caídos (Niveles 5-9)</h3>
+<h3>Errantes Caídos (Niveles 5-9)</h3>
 <p><strong>Eco de Errante</strong> F35/A35/P35 | PV 20 | Bld 2 | 60% (arma del Errante original) | Daño según arma | Conserva fragmentos de memoria. Puede negociar si lo reconoces (−20 a Sociales — no está completamente vivo).</p>
 <p><strong>Errante Corrompido</strong> F45/A45/P45 | PV 30 | Bld 4 | 70% (arma distorsionada) | Daño 4 | Inmune mental. Cibus daña directamente sus PA según el nivel del efecto y las reglas de Cibus. Entre Errante y Demonio.</p>
-<h3 id="guardianes-menores-mini-boss-niveles-3-6">Guardianes Menores — Mini-boss (Niveles 3-6)</h3>
+<h3>Guardianes Menores — Mini-boss (Niveles 3-6)</h3>
 <p><strong>Supervisor de Fábrica</strong> F60/A40/P50 | PV 50 | Bld 6 | 75% (martillo, Pen 2) | Daño 7 | Puede invocar 1d4 constructos menores una vez por escena.</p>
 <p><strong>Archivista Loco</strong> F30/A50/P70 | PV 35 | Bld 3 | 80% (rayo cognitivo) | Daño 3 (a Salud Mental, no PV) | Inmune a armas físicas.</p>
 <p><strong>Bestia Alfa</strong> F70/A50/P40 | PV 60 | Bld 5 | 80% (garras, Pen 3) | Daño 5 | Rugido: todos en 10m tiran Voluntad −20 o huyen 1d3 asaltos.</p>
 <hr />
-<h2 id="10-trampas">10. TRAMPAS</h2>
-<h3 id="tabla-de-trampas-por-nivel-1d10">Tabla de Trampas por Nivel (1d10)</h3>
+<h2>10. TRAMPAS</h2>
+<h3>Tabla de Trampas por Nivel (1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -1042,8 +1027,8 @@
 <strong>Celda de distorsión</strong> — Alerta −20. Queda aislado en micro-tesela personal. Camino de Portales −20 para salir.<br />
 <strong>Portal aleatorio</strong> — Alerta −20. Teletransporta a nivel aleatorio: 1-2 superior / 3-4 mismo / 5-6 inferior.</p>
 <hr />
-<h2 id="11-bosses-sistema-completo">11. BOSSES — SISTEMA COMPLETO</h2>
-<h3 id="tabla-de-bosses-por-nivel-1d10">Tabla de Bosses por Nivel (1d10)</h3>
+<h2>11. BOSSES — SISTEMA COMPLETO</h2>
+<h3>Tabla de Bosses por Nivel (1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -1079,7 +1064,7 @@
 </tbody>
 </table>
 <p>Todo boss tiene <strong>fases</strong> (cambian al bajar de PV), <strong>debilidad</strong> y <strong>recompensa</strong>.</p>
-<h3 id="demonios-de-la-distorsion">Demonios de la Distorsión</h3>
+<h3>Demonios de la Distorsión</h3>
 <p><strong>Demonio Menor</strong> (Niveles 1-3) F45/A45/P50 | PV 40 | Bld 5 | 65% (garra) | Daño 3<br />
 F1 (100-50%): Ataque normal. F2 (50-0%): +10 ataque, invoca 1d3 Fragmentos de Demonio.<br />
 Debilidad: Cibus daña directamente sus PA según el nivel del efecto y las reglas de Cibus. Recompensa: 1 nombre del Grimorio (fragmento).</p>
@@ -1089,35 +1074,35 @@ Debilidad: Runas de contención (Herrero Rúnico −20 para debilitarlo). Recomp
 <p><strong>Demonio Caído</strong> (Niveles 7-9) F80/A70/P80 | PV 120 | Bld 10 | 85% (×2 ataques) | Daño 7<br />
 F1 (100-70%): 2 ataques/asalto. Inmune a armas sin Pen 4+. F2 (70-40%): Cambia de forma (elige estrategia). F3 (40-0%): Absorbe distorsión ambiental (+5 PV/asalto en zona cargada).<br />
 Debilidad: Solo dañado por armas rúnicas o Cibus. Recompensa: Artefacto legendario + conocimiento prohibido.</p>
-<h3 id="tecnologia-ancestral">Tecnología Ancestral</h3>
+<h3>Tecnología Ancestral</h3>
 <p><strong>Centinela Automático</strong> (Niveles 2-7) F50/A40/P60 | PV 60 | Bld 8 | 70% (cañón, alcance 50m) | Daño 6 energético<br />
 F1 (100-50%): Dispara y se mueve. F2 (50-0%): Modo estático (+20 ataque, −20 defensa).<br />
 Debilidad: EMP (−30 PV si falla CON −20). Recompensa: Componente NT9 (50.000 PC).</p>
 <p><strong>Gólem de Tron</strong> (Niveles 3-8) F70/A30/P40 | PV 100 | Bld 12 | 80% (puño) | Daño 8<br />
 F1 (100-60%): Lento pero devastador. F2 (60-30%): Se fragmenta en 3 golems menores (F40/A40/P40, PV 30, Bld 6). F3 (30-0%): Se recompone con +20 PV temporales.<br />
 Debilidad: Armas de distorsión (+2 daño). Recompensa: 1 volumen de Tron-25.</p>
-<h3 id="errantes-antiguos">Errantes Antiguos</h3>
+<h3>Errantes Antiguos</h3>
 <p><strong>Errante Atrapado</strong> (Niveles 4-9) F50/A50/P50 | PV 50 | Bld 5 | 75% (arma ancestral) | Daño 5<br />
 F1 (100-50%): Lucha con habilidad. Puede negociar (Social −20). F2 (50-0%): Enloquece (+20 ataque, −20 defensa). Ya no negocia.<br />
 Recompensa: Conocimiento de la mazmorra + objeto personal de valor.</p>
 <p><strong>Maestro de Portales Caído</strong> (Niveles 5-9) F40/A60/P70 | PV 45 | Bld 4 | 80% (rayo distorsión) | Daño 4 (ignora blindaje)<br />
 F1 (100-60%): Micro-portales (teletransporte 10m). F2 (60-30%): Invoca 1d3 Fragmentos de Demonio. F3 (30-0%): Intenta Excomunión (Voluntad −20 o es absorbido).<br />
 Debilidad: Runas de anclaje. Recompensa: +10% a Camino de los Portales si se estudia su técnica.</p>
-<h3 id="entidades-de-distorsion-pura">Entidades de Distorsión Pura</h3>
+<h3>Entidades de Distorsión Pura</h3>
 <p><strong>Vórtice de Distorsión</strong> (Niveles 5-9) F30/A70/P80 | PV 80 | Bld 6 (solo físico) | 85% (toque) | Daño 3 · Efecto fijo: −1 Deriva al objetivo (no aleatorio, a diferencia del Eco Temporal)<br />
 F1 (100-50%): Flota, inmune a CC. F2 (50-0%): Se expande (15m radio, −20 a todas dentro).<br />
 Debilidad: Perlas de Distorsión cargadas (1 perla = 10d10 daño). Recompensa: Perla negra (1.000 PD).</p>
-<h3 id="guardianes-rituales">Guardianes Rituales</h3>
+<h3>Guardianes Rituales</h3>
 <p><strong>Sacerdote de los Antiguos</strong> (Niveles 3-8) F40/A50/P60 | PV 55 | Bld 5 | 75% (báculo) | Daño 4 energético<br />
 F1 (100-60%): Runas de protección (+2 Blindaje temporal). F2 (60-30%): Invoca 1d4 constructos menores. F3 (30-0%): Sacrifica forma física (+30 PV temporales, −20 defensa).<br />
 Debilidad: Runas de sellado (Herrero Rúnico −20). Recompensa: Artefacto ritual + conocimiento prohibido.</p>
-<h3 id="anomalias">Anomalías</h3>
+<h3>Anomalías</h3>
 <p><strong>Paradoja Viviente</strong> (Niveles 6-9) Stats variables — cambia cada asalto (tira 1d6 para cada atributo).<br />
 F1 (100-50%): Impredecible. DJ decide cada asalto. F2 (50-0%): Se estabiliza en la forma más peligrosa.<br />
 Sin debilidad. Solo derrota con estrategia creativa. Recompensa: Objeto que no debería existir (DJ decide).</p>
 <hr />
-<h2 id="12-recompensas-de-mazmorra">12. RECOMPENSAS DE MAZMORRA</h2>
-<h3 id="tabla-por-boss-derrotado-1d10">Tabla por Boss Derrotado (1d10)</h3>
+<h2>12. RECOMPENSAS DE MAZMORRA</h2>
+<h3>Tabla por Boss Derrotado (1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -1158,8 +1143,8 @@ Sin debilidad. Solo derrota con estrategia creativa. Recompensa: Objeto que no d
 <strong>Volumen de Tron-50</strong> — 1 volumen de Tron-50 puro. Valor: 10.000.000 PC.<br />
 <strong>Marca de la Mazmorra</strong> — +10 a una habilidad de distorsión, pero +1 Deriva por cruce permanente.</p>
 <hr />
-<h2 id="13-el-infierno-reglas-especiales">13. EL INFIERNO — REGLAS ESPECIALES</h2>
-<h3 id="intervencion-del-publico-cada-1d6-horas-de-transmision-tira-1d6">Intervención del Público (cada 1d6 horas de transmisión, tira 1d6)</h3>
+<h2>13. EL INFIERNO — REGLAS ESPECIALES</h2>
+<h3>Intervención del Público (cada 1d6 horas de transmisión, tira 1d6)</h3>
 <table>
 <thead>
 <tr>
@@ -1194,20 +1179,20 @@ Sin debilidad. Solo derrota con estrategia creativa. Recompensa: Objeto que no d
 </tr>
 </tbody>
 </table>
-<h3 id="patrocinadores-2">Patrocinadores</h3>
+<h3>Patrocinadores</h3>
 <ul>
 <li><strong>TecnoStealer:</strong> Equipo de alta calidad. Exigen recuperar tecnología de la mazmorra.</li>
 <li><strong>Chafry:</strong> Información privilegiada. Exigen datos sobre los Antiguos.</li>
 <li><strong>Mort:</strong> Dinero en efectivo. Exigen que el participante traicione a su grupo en algún momento.</li>
 </ul>
-<h3 id="recompensas-del-infierno">Recompensas del Infierno</h3>
+<h3>Recompensas del Infierno</h3>
 <ul>
 <li><strong>Superviviente:</strong> 100.000-1.000.000 PC según temporada.</li>
 <li><strong>Ganador (último en pie):</strong> Premio completo + fama interdimensional.</li>
 <li><strong>Muerto:</strong> Tu equipo se lo queda quien te mate. El Necrochip permanece en el cadáver — si se recupera y se transporta a un receptáculo compatible, sigue el procedimiento de la sección "Necrochip" (§3).</li>
 </ul>
 <hr />
-<h2 id="14-recompensas-por-tipo-de-mazmorra-referencia-general">14. RECOMPENSAS POR TIPO DE MAZMORRA (referencia general)</h2>
+<h2>14. RECOMPENSAS POR TIPO DE MAZMORRA (referencia general)</h2>
 <p>Escala de referencia: los 7 niveles de El Infierno (100.000 a 6.400.000 PC, acumulativos — ver §4). El resto de mazmorras se sitúan en esta escala según su profundidad y letalidad reales, no según su nombre.</p>
 <table>
 <thead>
@@ -1242,12 +1227,12 @@ Sin debilidad. Solo derrota con estrategia creativa. Recompensa: Objeto que no d
 </table>
 <p>El DJ ajusta la recompensa final según el desempeño real del grupo, no solo la tabla — esta escala es punto de partida, no sentencia.</p>
 <hr />
-<h2 id="conexion-con-el-suplemento">CONEXIÓN CON EL SUPLEMENTO</h2>
+<h2>CONEXIÓN CON EL SUPLEMENTO</h2>
 <ul>
 <li><strong>Mundo Chatarra (El Vertedero)</strong> — "La Ciudad que No Existe" está en su territorio norte.</li>
 <li><strong>Cuenca Gótica (DLC)</strong> — el Dominio del Abrazado se cita en la tabla de recompensas por tipo de mazmorra.</li>
 <li>Mismo suplemento "Mundos y teselas expandidos": Mundo Chatarra es un mundo de la Urdimbre; Cuenca Gótica, una tesela distinta.</li>
 </ul>
-</main>
+</div>
 </body>
 </html>

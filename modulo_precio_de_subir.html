@@ -15,47 +15,32 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El precio de subir"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#el-encargo">El encargo</a></li><li class="toc-h3"><a href="#lo-que-realmente-ocurre">Lo que realmente ocurre</a></li><li class="toc-h3"><a href="#desarrollo-en-seis-escenas">Desarrollo en seis escenas</a></li><li class="toc-h2"><a href="#para-el-narrador">Para el Narrador</a></li><li class="toc-h3"><a href="#lo-que-el-narrador-sabe-y-los-jugadores-no">Lo que el Narrador sabe y los jugadores no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#pagina-de-operacion">Página de operación</a></li><li class="toc-h2"><a href="#abreviaturas-de-ficha">Abreviaturas de ficha</a></li><li class="toc-h2"><a href="#pnj">PNJ</a></li><li class="toc-h3"><a href="#dessa-vasco-madre">Dessa Vasco (madre)</a></li><li class="toc-h3"><a href="#mikas-vasco-hermano-pequeno-14-anos">Mikas Vasco (hermano pequeño, 14 años)</a></li><li class="toc-h3"><a href="#enna-vasco">Enna Vasco</a></li><li class="toc-h3"><a href="#ordell-fenn-contacto-de-aduana">Ordell Fenn (contacto de aduana)</a></li><li class="toc-h3"><a href="#deren-kalt-mando-de-seguridad-chafry">Deren Kalt (mando de seguridad, Chafry)</a></li><li class="toc-h2"><a href="#escena-1-abajo">Escena 1 — Abajo</a></li><li class="toc-h3"><a href="#proposito">Propósito</a></li><li class="toc-h3"><a href="#entrada">Entrada</a></li><li class="toc-h3"><a href="#informacion-evidente">Información evidente</a></li><li class="toc-h3"><a href="#pistas">Pistas</a></li><li class="toc-h3"><a href="#presion">Presión</a></li><li class="toc-h3"><a href="#decisiones-posibles">Decisiones posibles</a></li><li class="toc-h3"><a href="#salidas">Salidas</a></li><li class="toc-h2"><a href="#escena-2-la-subida">Escena 2 — La subida</a></li><li class="toc-h3"><a href="#proposito-2">Propósito</a></li><li class="toc-h3"><a href="#entrada-2">Entrada</a></li><li class="toc-h3"><a href="#informacion-evidente-2">Información evidente</a></li><li class="toc-h3"><a href="#pistas-2">Pistas</a></li><li class="toc-h3"><a href="#presion-2">Presión</a></li><li class="toc-h3"><a href="#decisiones-posibles-2">Decisiones posibles</a></li><li class="toc-h3"><a href="#salidas-2">Salidas</a></li><li class="toc-h2"><a href="#escena-3-dentro">Escena 3 — Dentro</a></li><li class="toc-h3"><a href="#proposito-3">Propósito</a></li><li class="toc-h3"><a href="#entrada-3">Entrada</a></li><li class="toc-h3"><a href="#informacion-evidente-3">Información evidente</a></li><li class="toc-h3"><a href="#pistas-3">Pistas</a></li><li class="toc-h3"><a href="#presion-3">Presión</a></li><li class="toc-h3"><a href="#decisiones-posibles-3">Decisiones posibles</a></li><li class="toc-h3"><a href="#salidas-3">Salidas</a></li><li class="toc-h2"><a href="#escena-4-enna">Escena 4 — Enna</a></li><li class="toc-h3"><a href="#proposito-4">Propósito</a></li><li class="toc-h3"><a href="#entrada-4">Entrada</a></li><li class="toc-h3"><a href="#informacion-evidente-4">Información evidente</a></li><li class="toc-h3"><a href="#pistas-4">Pistas</a></li><li class="toc-h3"><a href="#presion-4">Presión</a></li><li class="toc-h3"><a href="#decisiones-posibles-4">Decisiones posibles</a></li><li class="toc-h3"><a href="#salidas-4">Salidas</a></li><li class="toc-h2"><a href="#escena-5-la-clausula">Escena 5 — La cláusula</a></li><li class="toc-h3"><a href="#proposito-5">Propósito</a></li><li class="toc-h3"><a href="#entrada-5">Entrada</a></li><li class="toc-h3"><a href="#informacion-evidente-5">Información evidente</a></li><li class="toc-h3"><a href="#pistas-5">Pistas</a></li><li class="toc-h3"><a href="#presion-5">Presión</a></li><li class="toc-h3"><a href="#decisiones-posibles-5">Decisiones posibles</a></li><li class="toc-h3"><a href="#salidas-5">Salidas</a></li><li class="toc-h2"><a href="#escena-6-la-bajada">Escena 6 — La bajada</a></li><li class="toc-h3"><a href="#proposito-6">Propósito</a></li><li class="toc-h3"><a href="#entrada-6">Entrada</a></li><li class="toc-h3"><a href="#informacion-evidente-6">Información evidente</a></li><li class="toc-h3"><a href="#pistas-6">Pistas</a></li><li class="toc-h3"><a href="#presion-6">Presión</a></li><li class="toc-h3"><a href="#decisiones-posibles-6">Decisiones posibles</a></li><li class="toc-h3"><a href="#salidas-6">Salidas</a></li><li class="toc-h2"><a href="#los-cuatro-finales">Los cuatro finales</a></li><li class="toc-h2"><a href="#reloj-de-marea">Reloj de marea</a></li><li class="toc-h2"><a href="#la-planta-512">La planta 512</a></li><li class="toc-h2"><a href="#ganchos-de-continuacion">Ganchos de continuación</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO — El precio de subir</h1>
 <blockquote>
 <p>"Nadie te pregunta si quieres subir. Te preguntan qué llevas encima para pagarlo."</p>
 </blockquote>
 <hr />
-<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
-<h3 id="el-encargo">El encargo</h3>
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h3>El encargo</h3>
 <p>Los personajes deben sacar a <strong>Enna Vasco</strong> de la arcología Chafry en <strong>ESC-C-680</strong>. Se lo pide su familia, que vive bajo la niebla en <strong>ESC-C-140</strong> y no tiene dinero para pagarlo: paga con lo único que posee, su ruta de contrabando bajo la niebla.</p>
-<h3 id="lo-que-realmente-ocurre">Lo que realmente ocurre</h3>
+<h3>Lo que realmente ocurre</h3>
 <p>Enna subió hace doce años usando la llave de oficio: firmó un contrato de Chafry porque era la única forma de cruzar la niebla. Ese contrato la dejó subir y es lo que ahora no la deja bajar — y doce años arriba han hecho que ya no esté segura de querer hacerlo. El contrato, además, tiene una cláusula de sustitución: se puede rescindir si otra persona ocupa el puesto que se deja libre. Abajo, un hermano pequeño ya ha preguntado cómo se firma.</p>
-<h3 id="desarrollo-en-seis-escenas">Desarrollo en seis escenas</h3>
+<h3>Desarrollo en seis escenas</h3>
 <ol>
 <li>Abajo — la familia, la ruta, lo que no cuentan.</li>
 <li>La subida — tres aduanas, y ninguna de las tres llaves.</li>
@@ -65,7 +50,7 @@
 <li>La bajada — sube la marea.</li>
 </ol>
 <hr />
-<h2 id="para-el-narrador">Para el Narrador</h2>
+<h2>Para el Narrador</h2>
 <p>Este módulo funciona en dos niveles simultáneos.</p>
 <p>En la superficie es un encargo de rescate: sacar a una mujer de una arcología corporativa antes de que se cierre una ruta. En el fondo es una pregunta que la familia no se atreve a hacer en voz alta, y que Enna lleva doce años sin responderse:</p>
 <p><strong>¿Rescatar a alguien es devolverle su sitio, o es exigirle que vuelva a ocuparlo?</strong></p>
@@ -78,7 +63,7 @@
 <li>Los personajes cobran con la única moneda que tiene esta familia: la ruta que los mete y los saca de todos los sitios donde ya no deberían estar. Usarla la gasta.</li>
 </ul>
 <p>No hay una respuesta correcta. El módulo no la da.</p>
-<h3 id="lo-que-el-narrador-sabe-y-los-jugadores-no">Lo que el Narrador sabe y los jugadores no</h3>
+<h3>Lo que el Narrador sabe y los jugadores no</h3>
 <ul>
 <li>El contrato de Enna incluye cláusula de sustitución: puede rescindirse si otra persona firma para ocupar su puesto en la arcología.</li>
 <li>Mikas conoce esa cláusula desde hace meses — se la explicó, sin mala intención, un contacto de la ruta que no sabía a quién se lo estaba contando.</li>
@@ -86,7 +71,7 @@
 <li>Chafry no está manipulando esta situación. La cláusula de sustitución es una condición estándar de cientos de contratos de oficio — nadie en la arcología la diseñó pensando en los Vasco.</li>
 <li>La ruta de los Vasco, si se usa con cuidado, tarda dos semanas en poder reconstruirse. Si se delata durante el camino, tarda más.</li>
 </ul>
-<h3 id="tono">Tono</h3>
+<h3>Tono</h3>
 <p>Vertical, corporativo y educado por fuera; desesperado y cariñoso por dentro. Chafry no amenaza — informa. La familia no suplica — ofrece lo único que tiene sin decir en voz alta cuánto les va a doler perderlo. Enna no es un premio que rescatar ni un obstáculo que sortear: es una persona a la que nadie le ha preguntado qué quiere desde hace doce años, y esta es la primera vez que alguien lo hace.</p>
 <p><strong>Y tiene que hacer gracia.</strong> No a costa de los Vasco — a costa del sistema. Lo cómico aquí es administrativo: formularios que existen para resolver problemas que ellos mismos crearon, funcionarios que aplican una norma absurda con una dignidad conmovedora, carteles corporativos alegres colgados en sitios donde nadie tiene motivos para estar alegre. Cuanto más en serio se lo tome todo el mundo, más gracia tiene.</p>
 <p>La regla es sencilla: <strong>el humor va en la maquinaria, nunca en la gente.</strong> Una aduana puede ser desternillante. La cara de Dessa Vasco cuando entrega los códigos, no.</p>
@@ -96,7 +81,7 @@
 — <em>"Gracias por no correr. Correr genera informes."</em><br />
 — <em>"Personal de mantenimiento: la planta 512 sigue sin existir. Consulte con su supervisor antes de repararla."</em></p></div>
 <hr />
-<h2 id="pagina-de-operacion">Página de operación</h2>
+<h2>Página de operación</h2>
 <table>
 <thead>
 <tr>
@@ -136,7 +121,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="abreviaturas-de-ficha">Abreviaturas de ficha</h2>
+<h2>Abreviaturas de ficha</h2>
 <table>
 <thead>
 <tr>
@@ -161,35 +146,35 @@
 </table>
 <p>En prosa se usa el término completo cuando pueda haber ambigüedad.</p>
 <hr />
-<h2 id="pnj">PNJ</h2>
-<h3 id="dessa-vasco-madre">Dessa Vasco (madre)</h3>
+<h2>PNJ</h2>
+<h3>Dessa Vasco (madre)</h3>
 <p><code>F20/A20/P35 | PV 8/8/8 | Bld 0 | Ataque: Arma CC Corta 20% (cuchillo de cocina) | Daño 4 | Especial: guía la ruta de memoria — bajo su instrucción directa, Sigilo u Orientación en ESC-C-140 y alrededores +10</code></p>
 <p>No pelea si puede evitarlo. Ha sostenido tres generaciones de rutas bajo la niebla y sabe exactamente cuánto vale lo que está a punto de entregar.</p>
-<h3 id="mikas-vasco-hermano-pequeno-14-anos">Mikas Vasco (hermano pequeño, 14 años)</h3>
+<h3>Mikas Vasco (hermano pequeño, 14 años)</h3>
 <p><code>F15/A25/P30 | PV 6/6/6 | Bld 0 | Ataque: Sin Armas 15% | Daño 1 | Especial: ya sabe dónde y cómo se firma una sustitución — si nadie lo vigila en la Escena 5, actúa por su cuenta</code></p>
 <p>No es un combatiente ni debería serlo nunca en esta historia. Es rápido, orgulloso de poder ayudar y demasiado joven para medir lo que ofrece.</p>
-<h3 id="enna-vasco">Enna Vasco</h3>
+<h3>Enna Vasco</h3>
 <p><code>F25/A25/P40 | PV 8/8/8 | Bld 0 | Ataque: Sin Armas 15% | Daño 1 | Especial: ninguno relevante — esta escena se juega con conversación, no con tiradas de combate</code></p>
 <p>Doce años de arcología no la han vuelto fría. La han vuelto alguien que ya no reconoce el nombre "hermana mayor" como una orden.</p>
-<h3 id="ordell-fenn-contacto-de-aduana">Ordell Fenn (contacto de aduana)</h3>
+<h3>Ordell Fenn (contacto de aduana)</h3>
 <p><code>F30/A35/P45 | PV 8/8/8 | Bld 1 | Ataque: Distancia Corta 40% (pistola pequeña) | Daño 3 | Especial: conoce el precio real de las tres llaves — nunca dice que no, solo dice cuánto</code></p>
 <p>Trabaja las aduanas de Escorpio desde hace años, donde las preguntas cuestan más que las respuestas. No es amigo de los Vasco ni enemigo de los personajes: es un proveedor, y factura como tal.</p>
 <p>Lo que lo hace insoportable es que <strong>es honrado</strong>. Cumple lo que promete, cobra lo pactado y no infla el precio aunque tengas prisa. También cumple con el reglamento — hasta la última coma, y ahí está la broma: se sabe la normativa mucho mejor que quienes la escribieron, y por eso encuentra huecos que nadie sabía que existían. Nunca falsifica nada. Simplemente rellena el formulario correcto.</p>
 <blockquote>
 <p><em>"No, no puedo pasarles por aquí. Lo que sí puedo es tramitarles una incidencia de mantenimiento en el 206, que obliga a abrir el conducto de servicio, que técnicamente no es una aduana. Serían ochocientos. La incidencia es real, ojo. Va a haber una gotera."</em></p>
 </blockquote>
-<h3 id="deren-kalt-mando-de-seguridad-chafry">Deren Kalt (mando de seguridad, Chafry)</h3>
+<h3>Deren Kalt (mando de seguridad, Chafry)</h3>
 <p><code>F40/A35/P45 | PV 10/10/10 | Bld 3 | Ataque: Distancia Media 55% (arma corporativa reglamentaria) | Daño 5 | Especial: no amenaza, informa — "su presencia infringe los términos del edificio" moviliza refuerzos en 2 asaltos</code></p>
 <p>Impecable, tranquilo y nunca el primero en levantar la voz. No necesita intimidar: el edificio entero está de su parte.</p>
 <hr />
-<h2 id="escena-1-abajo">Escena 1 — Abajo</h2>
-<h3 id="proposito">Propósito</h3>
+<h2>Escena 1 — Abajo</h2>
+<h3>Propósito</h3>
 <p>Que el grupo entienda lo que la familia está a punto de perder antes de aceptar el encargo. Que la ruta se sienta valiosa, no como una simple llave de trama.</p>
-<h3 id="entrada">Entrada</h3>
+<h3>Entrada</h3>
 <p>Los personajes llegan a ESC-C-140, bajo la niebla, siguiendo un contacto o un rumor sobre una familia que paga con algo mejor que dinero.</p>
-<h3 id="informacion-evidente">Información evidente</h3>
+<h3>Información evidente</h3>
 <p>Dessa Vasco explica el encargo: sacar a Enna, doce años arriba, de la arcología Chafry. La familia no tiene PC que ofrecer más allá de gastos menores — paga con la ruta: códigos de acceso, contactos en cada aduana, huecos de vigilancia conocidos. Mikas escucha desde una puerta entreabierta; nadie lo presenta formalmente en esta escena.</p>
-<h3 id="pistas">Pistas</h3>
+<h3>Pistas</h3>
 <table>
 <thead>
 <tr>
@@ -216,15 +201,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="presion">Presión</h3>
+<h3>Presión</h3>
 <p>Nada obliga a decidir rápido en esta escena, pero cada hora que se quedan es una hora menos de las noventa y seis del plazo. Dessa no lo dice en voz alta: lo deja ver en cómo mira el reloj de la cocina.</p>
-<h3 id="decisiones-posibles">Decisiones posibles</h3>
+<h3>Decisiones posibles</h3>
 <p>Aceptar el encargo, negociarlo, pedir ver la ruta antes de comprometerse, o hablar con Mikas antes de irse. Si lo hacen, el chico no miente si le preguntan directamente, pero tampoco cuenta más de lo que le preguntan.</p>
-<h3 id="salidas">Salidas</h3>
+<h3>Salidas</h3>
 <p>Aceptar lleva a la Escena 2 con la ruta en mano. El plazo de cuatro días empieza a contar desde que salen de ESC-C-140.</p>
 <hr />
-<h2 id="escena-2-la-subida">Escena 2 — La subida</h2>
-<h3 id="proposito-2">Propósito</h3>
+<h2>Escena 2 — La subida</h2>
+<h3>Propósito</h3>
 <p>Que subir cueste algo concreto y jugable, no un párrafo de viaje. Que el grupo elija cómo consigue una llave, no que se la encuentre.</p>
 <div class="nota-dj"><p><strong>EL ASCENSOR — técnica de mesa</strong></p>
 <p>Entre aduana y aduana hay tránsitos largos en cabinas compartidas, y <strong>todas tienen cámara</strong>. Aprovéchalo:</p>
@@ -232,11 +217,11 @@
 <p>Lo que pasa a continuación es la escena: <strong>la gente descubre sola que no puede decir en voz alta lo que ha venido a hacer.</strong> Miradas, medias frases, un tipo hablando del tiempo con demasiado entusiasmo. No hay tirada. Es incomodidad pura, y es lo que mejor explica MadCity sin explicar nada.</p>
 <p>Aguanta el minuto. Se hace larguísimo, y ese es el chiste.</p>
 <p>Si alguien suelta algo comprometedor, <strong>no lo castigues de inmediato.</strong> El pasajero del fondo se baja dos plantas después sin mirar a nadie. Lo que hace con eso, se verá.</p></div>
-<h3 id="entrada-2">Entrada</h3>
+<h3>Entrada</h3>
 <p>La ruta de los Vasco lleva a los personajes hasta el borde de la niebla, ESC-C-205, donde empieza la primera de tres aduanas. Ninguna de las tres llaves —dinero, contrato u oficio— está en su poder todavía.</p>
-<h3 id="informacion-evidente-2">Información evidente</h3>
+<h3>Información evidente</h3>
 <p>Tres aduanas: ESC-C-205 (borde de la niebla), ESC-C-300 (salida del muro vivo) y ESC-C-650 (perímetro de la arcología Chafry). Cada una acepta cualquiera de las tres llaves, pero solo una — enseñar dos a la vez levanta sospechas. Ordell Fenn, contacto de la ruta, puede proporcionar una llave temporal a cambio de un favor, un trabajo o un precio en PC.</p>
-<h3 id="pistas-2">Pistas</h3>
+<h3>Pistas</h3>
 <table>
 <thead>
 <tr>
@@ -263,21 +248,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="presion-2">Presión</h3>
+<h3>Presión</h3>
 <p>Cada aduana es una tirada de la habilidad que corresponda a la llave elegida (Persuasión para dinero o contrato, la habilidad de oficio pertinente para la llave de oficio): normal (0) si siguen el consejo de Ordell sobre qué turno cruzar, difícil (−10) si lo ignoran. Fallar no bloquea el paso — cuesta tiempo, dinero o expone la ruta un poco más de lo previsto. Tres fallos acumulados en esta escena queman la ruta antes de tiempo; la familia se entera al final, no durante la partida.</p>
-<h3 id="decisiones-posibles-2">Decisiones posibles</h3>
+<h3>Decisiones posibles</h3>
 <p>Qué llave persiguen y cómo (comprarla, forjarla, ganársela con Ordell), si cruzan las tres aduanas con la misma llave o varían el método, y si arriesgan tiempo por seguridad o seguridad por tiempo.</p>
-<h3 id="salidas-2">Salidas</h3>
+<h3>Salidas</h3>
 <p>Cruzar las tres aduanas lleva a ESC-C-680 y a la Escena 3. El segundo día del plazo termina aquí.</p>
 <hr />
-<h2 id="escena-3-dentro">Escena 3 — Dentro</h2>
-<h3 id="proposito-3">Propósito</h3>
+<h2>Escena 3 — Dentro</h2>
+<h3>Propósito</h3>
 <p>Que la arcología incomode precisamente porque no da miedo. Que el grupo entienda, antes de ver a Enna, por qué alguien podría no querer bajar.</p>
-<h3 id="entrada-3">Entrada</h3>
+<h3>Entrada</h3>
 <p>Los personajes entran en ESC-C-680 con la llave conseguida en la Escena 2, ya como visitantes, técnicos o solicitantes según el método elegido.</p>
-<h3 id="informacion-evidente-3">Información evidente</h3>
+<h3>Información evidente</h3>
 <p>La arcología es limpia, ordenada, silenciosa. Nadie grita, nadie corre, nadie parece infeliz. Enna trabaja como supervisora de mantenimiento de sistemas ambientales — un puesto de confianza, no de castigo. Deren Kalt, mando de seguridad, aparece si algo en el comportamiento del grupo activa una revisión de rutina; no busca problemas, los descarta.</p>
-<h3 id="pistas-3">Pistas</h3>
+<h3>Pistas</h3>
 <table>
 <thead>
 <tr>
@@ -304,21 +289,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="presion-3">Presión</h3>
+<h3>Presión</h3>
 <p>Deren Kalt o su equipo pueden interceptar al grupo si su tapadera falla una tirada, o si se demoran más de lo razonable. No busca pelea: pide que se identifiquen y, si algo no encaja, que se marchen. Una segunda infracción sí moviliza refuerzos.</p>
-<h3 id="decisiones-posibles-3">Decisiones posibles</h3>
+<h3>Decisiones posibles</h3>
 <p>Cómo abordan a Enna —directamente, esperándola, a través de un compañero de trabajo— y cuánto tiempo dedican a observar antes de hablar con ella.</p>
-<h3 id="salidas-3">Salidas</h3>
+<h3>Salidas</h3>
 <p>Encontrar y abordar a Enna lleva a la Escena 4. Si Deren Kalt los expulsa dos veces, deben esperar al tercer día para volver a intentarlo, acortando el plazo restante.</p>
 <hr />
-<h2 id="escena-4-enna">Escena 4 — Enna</h2>
-<h3 id="proposito-4">Propósito</h3>
+<h2>Escena 4 — Enna</h2>
+<h3>Propósito</h3>
 <p>Que quede claro que esto no es un rescate: es una conversación entre alguien que se fue y una familia que nunca terminó de dejarla ir.</p>
-<h3 id="entrada-4">Entrada</h3>
+<h3>Entrada</h3>
 <p>Enna acepta hablar, en su turno de descanso o en su apartamento, cuando el grupo consigue plantearle quién los envía.</p>
-<h3 id="informacion-evidente-4">Información evidente</h3>
+<h3>Información evidente</h3>
 <p>Enna reconoce el nombre de su familia sin sorpresa: sabía que algún día alguien vendría. No niega querer a los suyos. Tampoco finge que echa de menos ESC-C-140. No sabe, todavía, que su familia está pagando con la ruta.</p>
-<h3 id="pistas-4">Pistas</h3>
+<h3>Pistas</h3>
 <table>
 <thead>
 <tr>
@@ -345,21 +330,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="presion-4">Presión</h3>
+<h3>Presión</h3>
 <p>Nada en esta escena debería resolverse con una tirada de combate. La presión es narrativa: el reloj sigue corriendo fuera de esta conversación, y cuanto más tarden en dejarla decidir, menos margen quedará para la bajada.</p>
-<h3 id="decisiones-posibles-4">Decisiones posibles</h3>
+<h3>Decisiones posibles</h3>
 <p>Si le cuentan el precio antes o después de escuchar su respuesta, si la presionan o la dejan decidir a su ritmo, y si aceptan un "no lo sé" como respuesta válida o insisten en una decisión inmediata.</p>
-<h3 id="salidas-4">Salidas</h3>
+<h3>Salidas</h3>
 <p>Si Enna decide bajar —aunque sea un "voy a intentarlo"— la partida avanza a la Escena 5. Si decide quedarse con firmeza, la Escena 5 sigue disponible si el grupo insiste en plantear la cláusula de todos modos; si no, se salta directamente a la bajada del Final B.</p>
 <hr />
-<h2 id="escena-5-la-clausula">Escena 5 — La cláusula</h2>
-<h3 id="proposito-5">Propósito</h3>
+<h2>Escena 5 — La cláusula</h2>
+<h3>Propósito</h3>
 <p>Que el giro final no llegue como una trampa de guion, sino como algo que ya estaba ahí desde la Escena 1 y que el grupo pudo no haber visto venir.</p>
-<h3 id="entrada-5">Entrada</h3>
+<h3>Entrada</h3>
 <p>En algún punto del regreso —o si alguien menciona en voz alta cómo funciona el contrato de Enna—, Mikas aparece. Ha seguido al grupo, o ha llegado por su cuenta a ESC-C-680 usando lo poco que sabe de la ruta.</p>
-<h3 id="informacion-evidente-5">Información evidente</h3>
+<h3>Información evidente</h3>
 <p>Mikas conoce la cláusula de sustitución: el contrato de Enna puede rescindirse si otra persona firma para ocupar su puesto. Ya ha preguntado, en algún despacho de la arcología, cómo se firma; nadie le ha dicho que no todavía, solo que necesita un adulto responsable o autorización familiar. No lo hace por rebeldía: en su cabeza es la única forma de que todos ganen — Enna baja, alguien sube, la familia no pierde a nadie más.</p>
-<h3 id="pistas-5">Pistas</h3>
+<h3>Pistas</h3>
 <table>
 <thead>
 <tr>
@@ -386,21 +371,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="presion-5">Presión</h3>
+<h3>Presión</h3>
 <p>Esta es la escena de mayor tensión moral del módulo. Si el grupo no interviene rápido, Mikas puede iniciar el trámite por su cuenta — no completarlo de un plumazo, pero sí ponerlo en marcha lo suficiente para que detenerlo cueste una escena entera de persuasión, tanto con él como con la propia Chafry.</p>
-<h3 id="decisiones-posibles-5">Decisiones posibles</h3>
+<h3>Decisiones posibles</h3>
 <p>Impedir que Mikas firme nada, dejar que la familia decida entre ellos, informar a Enna de inmediato o después, y qué hacen los personajes si Enna, al ver la opción sobre la mesa, no la descarta de inmediato.</p>
-<h3 id="salidas-5">Salidas</h3>
+<h3>Salidas</h3>
 <p>Cualquier resolución de esta escena lleva a la Escena 6. Lo que se decida aquí determina cuál de los cuatro finales se juega.</p>
 <hr />
-<h2 id="escena-6-la-bajada">Escena 6 — La bajada</h2>
-<h3 id="proposito-6">Propósito</h3>
+<h2>Escena 6 — La bajada</h2>
+<h3>Propósito</h3>
 <p>Cerrar con la misma dureza con la que empezó: bajar cuesta tanto como subió, y la marea no espera a que la historia termine bien.</p>
-<h3 id="entrada-6">Entrada</h3>
+<h3>Entrada</h3>
 <p>Con o sin Enna, con o sin Mikas en su lugar, el grupo debe volver a ESC-C-140 antes de que suba la marea del quinto día.</p>
-<h3 id="informacion-evidente-6">Información evidente</h3>
+<h3>Información evidente</h3>
 <p>La ruta, si se ha usado con cuidado, aguanta un último cruce. Si se quemó antes de tiempo, la bajada debe improvisarse sin ella. La niebla empieza a subir visiblemente en las últimas horas del cuarto día — un aviso físico, no solo narrativo. Dessa espera en ESC-C-140; lo que vea llegar decide cómo termina esta historia para la familia, no solo para Enna.</p>
-<h3 id="pistas-6">Pistas</h3>
+<h3>Pistas</h3>
 <table>
 <thead>
 <tr>
@@ -427,14 +412,14 @@
 </tr>
 </tbody>
 </table>
-<h3 id="presion-6">Presión</h3>
+<h3>Presión</h3>
 <p>La bajada final es una tirada de Orientación o Supervivencia urbana: normal (0) si la ruta se conservó intacta, difícil (−10) si se quemó antes de tiempo en la Escena 2. El plazo se cierra literalmente durante esta escena — cada retraso, cada tirada fallida, acerca al grupo al quinto día.</p>
-<h3 id="decisiones-posibles-6">Decisiones posibles</h3>
+<h3>Decisiones posibles</h3>
 <p>Ninguna decisión mecánica nueva: esta escena resuelve las que ya se tomaron en las Escenas 4 y 5. El grupo puede todavía intentar minimizar el daño —proteger la ruta, proteger a Mikas, dar tiempo a Enna— incluso sin poder cambiar ya la decisión de fondo.</p>
-<h3 id="salidas-6">Salidas</h3>
+<h3>Salidas</h3>
 <p>Lleva directamente a uno de los cuatro finales.</p>
 <hr />
-<h2 id="los-cuatro-finales">Los cuatro finales</h2>
+<h2>Los cuatro finales</h2>
 <p>Ninguno de los cuatro es el final correcto. Cada uno cierra la historia de un modo distinto y dice algo distinto sobre lo que los personajes priorizaron.</p>
 <p><strong>A. Enna baja. La familia pierde la ruta.</strong><br />
 Enna vuelve a ESC-C-140, pero doce años no se deshacen en una bajada. La familia tiene de vuelta a alguien que ya no es del todo quien recordaban, y ya no tiene la ruta que les daba margen para lo próximo que necesiten. Ganaron a Enna y perdieron su red de seguridad.</p>
@@ -445,7 +430,7 @@ Mikas firma. Enna baja. La familia recupera a una hija y pierde a un hijo de la 
 <p><strong>D. Nadie baja. Los personajes se quedan con una ruta que ya no vale nada.</strong><br />
 Entre la indecisión de Enna, la cláusula sobre la mesa y el reloj corriendo, la marea sube antes de que nadie tome una decisión firme. Nadie baja. La ruta, usada a medias y expuesta sin resultado, no sirve ya para nada. La familia se queda sin Enna y sin la única ventaja que tenía para la próxima vez que la necesitaran.</p>
 <hr />
-<h2 id="reloj-de-marea">Reloj de marea</h2>
+<h2>Reloj de marea</h2>
 <table>
 <thead>
 <tr>
@@ -478,7 +463,7 @@ Entre la indecisión de Enna, la cláusula sobre la mesa y el reloj corriendo, l
 </table>
 <p>Si el grupo se retrasa —una aduana mal jugada, una noche perdida negociando con Enna, una tirada fallida en la bajada— el Narrador puede adelantar la marea medio día en vez de recortar escenas enteras. El reloj presiona; no debería sustituir nunca a las decisiones del grupo por un cronómetro seco.</p>
 <hr />
-<h2 id="la-planta-512">La planta 512</h2>
+<h2>La planta 512</h2>
 <p>El cartel de la Escena 3 no exagera tanto como parece: la 512 sigue sin existir en ningún registro. Un error de hace décadas la dejó fuera del sistema — sin registro no hay mantenimiento, sin mantenimiento no hay inspecciones, y nadie la abre porque el primero en hacerlo tendría que explicar cuarenta años de nada.</p>
 <p><strong>Cómo se entra.</strong> Dos vías, ninguna oficial: un hueco de servicio detrás de un panel mal atornillado en ESC-C-511, o un fallo de ascensor que, una vez cada muchos meses, se detiene en ESC-C-512 y abre puertas a un pasillo que no figura en ningún directorio. Encontrar cualquiera de las dos exige Alerta o Tecnología: normal (0) si ya han merodeado antes por esa zona de la arcología, difícil (−10) si llegan sin ningún contexto previo.</p>
 <p><strong>Qué se ve.</strong> Tuberías y conductos reconvertidos en estanterías, luces de emergencia regraduadas para parecer domésticas, y un silencio distinto al del resto de la arcología: no el de un sitio vigilado, sino el de un sitio que nadie ha vuelto a mirar en años.</p>
@@ -490,7 +475,7 @@ Entre la indecisión de Enna, la cláusula sobre la mesa y el reloj corriendo, l
 <p><strong>Si los PJ denuncian, saquean o dejan estar.</strong> Denunciarlo obliga a la arcología a abrir el expediente que nadie quería abrir: la 512 se vacía en días, sus habitantes desaparecen de verdad esta vez, y Deren Kalt empieza a preguntar quién más sabía. Saquearlo da botín inmediato, pero rompe la única moneda que la 512 tenía que ofrecer —confianza— y al menos dos de sus habitantes no vuelven a hablar con nadie de fuera. Dejarlo estar no da nada material, pero la 512 recuerda un favor, y ese favor puede volver en cualquier otra visita a la arcología.</p>
 <p><strong>Sobre los finales:</strong> no sustituye a ninguno de los cuatro, pero le da a Enna —o a cualquiera atrapado en su misma cláusula— una salida que ni Chafry ni la familia habían contemplado nunca: desaparecer sin bajar ni quedarse.</p>
 <hr />
-<h2 id="ganchos-de-continuacion">Ganchos de continuación</h2>
+<h2>Ganchos de continuación</h2>
 <ul>
 <li>Ordell Fenn recuerda el favor. Vuelve a aparecer la próxima vez que el grupo necesite cruzar una aduana sin las tres llaves.</li>
 <li>Si la ruta sobrevivió, la familia Vasco la ofrece de nuevo — por un precio distinto la segunda vez.</li>
@@ -498,6 +483,6 @@ Entre la indecisión de Enna, la cláusula sobre la mesa y el reloj corriendo, l
 <li>Deren Kalt no olvida una cara. Un encuentro posterior con Chafry en otra parte de MadCity puede empezar con que él ya sabe quiénes son.</li>
 <li>La cláusula de sustitución no es exclusiva del contrato de Enna. Cuántas familias de zonas bajas conocen esa salida —y cuántas la han usado ya sin que nadie lo cuente— queda abierto para la mesa.</li>
 </ul>
-</main>
+</div>
 </body>
 </html>

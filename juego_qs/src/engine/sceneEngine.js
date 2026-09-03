@@ -97,16 +97,6 @@ export function aplicarConsecuencias(consecuencia, actorId, { onTexto, onCustom 
   (consecuencia.discoverClues || []).forEach(descubrirPista);
   (consecuencia.discoverObjects || []).forEach(descubrirObjeto);
   if (consecuencia.inventoryAdd && actor) actor.inventario.push(...consecuencia.inventoryAdd);
-  if (consecuencia.inventoryRemove && actor) {
-    const retirados = new Set(consecuencia.inventoryRemove);
-    actor.inventario = actor.inventario.filter(item => !retirados.has(item));
-  }
-  if (consecuencia.adjustResources) {
-    state.resources ||= {};
-    for (const [id, delta] of Object.entries(consecuencia.adjustResources)) {
-      state.resources[id] = (Number(state.resources[id]) || 0) + Number(delta || 0);
-    }
-  }
   if (consecuencia.registerDecision) registrarDecision(consecuencia.registerDecision);
   if (consecuencia.setFinalTipo) state.finalTipo = consecuencia.setFinalTipo;
 

@@ -8,7 +8,7 @@
   "tiledMap": "tiled/callejon_tramo_b_piloto.tmj",
   "assetBase": "assets/panoramic/callejon/",
   "availableParty": ["player", "bishop", "salim"],
-  "devNote": "Fixture técnico deliberado para validar Exit/Spawn, ida, vuelta y persistencia de estado. Reutiliza provisionalmente el maestro del primer tramo, no forma parte del grafo narrativo publicado y solo es accesible mediante devEntryPoint. Se conserva como escena QA no publicable porque tests/panoramicScene.test.mjs y tests/tiledPanoramicAdapter.test.mjs verifican con ella el contrato de retorno entre tramos.",
+  "devNote": "Segundo tramo técnico para validar Exit/Spawn, ida, vuelta y persistencia de estado. Reutiliza provisionalmente el maestro del primer tramo y no forma parte del grafo narrativo publicado. ESTADO (auditoría de traductor, ver historial): desde que el Exit del tramo A se redirigió al aparcamiento, esta escena quedó sin ningún punto de entrada real en el juego -- solo alcanzable ahora vía el devEntryPoint añadido en module.json. Pendiente de decisión narrativa: reconectarla como bifurcación real, reutilizarla para otro propósito, o retirarla junto con callejon_tramo_b_piloto.tmj. No se resuelve en este lote (es una decisión de contenido, no una tarea técnica).",
   "introText": "El callejón continúa y se bifurca entre fachadas húmedas. Todavía puedes regresar por donde has venido.",
   "defaultText": "No parece que puedas hacer eso ahí.",
   "camera": {
@@ -16,8 +16,8 @@
     "limits": { "minX": 0, "maxX": 1500 }
   },
   "player": {
-    "sprite": "agente_campo.png",
-    "walkFrames": ["agente_campo.png"],
+    "sprite": "actor_silueta_provisional.svg",
+    "walkFrames": ["actor_silueta_provisional.svg", "actor_silueta_paso.svg"],
     "walkFrameMs": 130,
     "spriteWidth": 90,
     "spriteHeight": 140,

@@ -14,7 +14,6 @@ import { crearControladorAcciones } from "./tacticalActionController.js";
 import { construirSnapshotUI } from "./tacticalUIState.js";
 import { montarInterfazResponsive } from "./tacticalResponsiveUI.js";
 import { config } from "../../config.js";
-import { rutaAsset } from "../../engine/moduleLoader.js";
 
 const LIMITE_RONDAS = 30; // salvaguarda -- evita bucle infinito si nadie puede ya herir a nadie (unresolved)
 const SALVAGUARDA_DECISIONES_IA = 8; // igual límite que ejecutarActuacionParty() en tools/predatorBalanceSimPost5c.mjs (JUEGO_QS)
@@ -46,30 +45,6 @@ export class TacticalScene extends Phaser.Scene {
   // Phaser scene.init(data) -- recibido de scene.start("TacticalScene", { definition })
   init(data) {
     this._definitionEntrante = data?.definition;
-    this._cadenciaDataEntrante = data?.cadenciaData ?? {};
-  }
-
-  preload() {
-    const battlefield = this._definitionEntrante?.assets?.battlefield;
-    if (battlefield) this.load.image("tactical-battlefield", rutaAsset(battlefield));
-    const sceneAssets = this._definitionEntrante?.assets?.scene ?? {};
-    if (sceneAssets.floor) this.load.image("tactical-scene-floor", rutaAsset(sceneAssets.floor));
-    for (const category of ["walls", "props", "terrain"]) {
-      for (const [assetId, archivo] of Object.entries(sceneAssets[category] ?? {})) {
-        this.load.image(`tactical-scene-${category}-${assetId}`, rutaAsset(archivo));
-      }
-    }
-    for (const [exitId, states] of Object.entries(sceneAssets.exits ?? {})) {
-      for (const [stateId, archivo] of Object.entries(states ?? {})) {
-        this.load.image(`tactical-scene-exit-${exitId}-${stateId}`, rutaAsset(archivo));
-      }
-    }
-    for (const [actorId, recurso] of Object.entries(this._definitionEntrante?.assets?.actors ?? {})) {
-      const states = typeof recurso === "string" ? { idle: recurso } : recurso;
-      for (const [stateId, archivo] of Object.entries(states ?? {})) {
-        this.load.image(`tactical-actor-${actorId}-${stateId}`, rutaAsset(archivo));
-      }
-    }
   }
 
   create() {
@@ -85,7 +60,7 @@ export class TacticalScene extends Phaser.Scene {
     this.cameras.main.centerOn(this.mundoPx.width / 2, this.mundoPx.height / 2);
 
     this.rng = Math.random; // RNG inyectable real (docs/SHARED_RULES_BRIDGE.md, "RNG") -- tests/Playwright lo sobrescriben
-    this._debugSpatial = config.debug.showTacticalSpatial;
+    this._debugSpatial = true;
     this.touch = detectaTouch();
     this._modoMover = false;
     this._debugUltimoAtaque = null;
@@ -106,14 +81,11 @@ export class TacticalScene extends Phaser.Scene {
     // (this.rng = fn) sigan surtiendo efecto.
     this.controlador = crearControladorAcciones({
       session: this.session, adapter: this.adapter, rng: (...args) => this.rng(...args),
-      cadenciaData: this._cadenciaDataEntrante,
-      terrainZones: definition.battlefield.terrainZones,
-      terrainConfig: definition.battlefield.terrainConfig,
       callbacks: {
         log: (msg) => this._log(msg),
         onAtaqueResuelto: (detalle) => {
           this._debugUltimoAtaque = detalle;
-          this._fxDisparo(detalle.attacker, detalle.target, detalle.impacto, detalle);
+          this._fxDisparo(detalle.attacker, detalle.target, detalle.impacto);
         },
         onRechazo: (detalle) => {
           this._debugUltimoAtaque = { ...detalle, rechazado: true };
@@ -204,7 +176,6 @@ export class TacticalScene extends Phaser.Scene {
   // mismo flag que ya usaba el botón [Mover] de Phaser).
   alternarModoMover() {
     this._modoMover = !this._modoMover;
-    this._actualizarRejillaMovimiento?.();
     this._log(this._modoMover ? "Modo mover activo -- toca una casilla del tablero." : "Modo mover desactivado.");
     this._actualizarPanelAcciones();
     this._emitirEstadoUI();
@@ -227,7 +198,6 @@ export class TacticalScene extends Phaser.Scene {
   // ===== Selector de modo (genérico -- nombres de actores leídos de session, no hardcoded) =====
 
   _crearSelectorModo() {
-    if (config.tactical.responsiveUI) return;
     // CORRECCIÓN (verificación E2E de playtest, 2026-08-21): este grupo
     // es scrollFactor(0) -- pantalla fija, sus coordenadas son las del
     // VIEWPORT de la cámara, no las del mundo. Usar `mundoPx` (tamaño
@@ -288,7 +258,7 @@ export class TacticalScene extends Phaser.Scene {
 
   _iniciarCombate(modo) {
     this.session.controlMode = modo;
-    this._selectorGroup?.destroy();
+    this._selectorGroup.destroy();
     this._log(`Modo: ${modo}. Comienza el combate.`);
     this._generarOrden();
     this._avanzarTurno();
@@ -324,23 +294,18 @@ export class TacticalScene extends Phaser.Scene {
       const pos = this.session.positions[a.id];
       const circle = this.add.circle(this.escala.px(pos.x), this.escala.px(pos.y), 12, a.color ?? (esEnemigo ? 0xff6b6b : 0x9fffb0)).setDepth(10).setInteractive({ useHandCursor: true });
       circle.setStrokeStyle(2, esEnemigo ? 0x3a0d0d : 0x0d3a1a);
-      const estadosTextura = { idle: `tactical-actor-${a.id}-idle`, hurt: `tactical-actor-${a.id}-hurt`, down: `tactical-actor-${a.id}-down` };
-      const claveTextura = Object.values(estadosTextura).find(key => this.textures.exists(key));
-      const token = claveTextura ? this.add.image(this.escala.px(pos.x), this.escala.px(pos.y) + 5, claveTextura).setDisplaySize(38, 48).setOrigin(.5, .85).setDepth(10) : null;
-      if (token) circle.setFillStyle(a.color ?? (esEnemigo ? 0xff6b6b : 0x9fffb0), .18).setDepth(9);
       const label = this.add.text(this.escala.px(pos.x), this.escala.px(pos.y) - 22, a.nombre, { fontFamily: "monospace", fontSize: "11px", color: esEnemigo ? "#ff9d9d" : "#dfffe4" }).setOrigin(0.5).setDepth(11);
       const vida = this.add.text(this.escala.px(pos.x), this.escala.px(pos.y) + 16, "", { fontFamily: "monospace", fontSize: "9px", color: "#cccccc" }).setOrigin(0.5).setDepth(11);
       circle.on("pointerdown", () => this._onActorClicked(a.id));
-      this.actorSprites.set(a.id, { circle, token, label, vida, esEnemigo, estadosTextura });
+      this.actorSprites.set(a.id, { circle, label, vida, esEnemigo });
     }
     this._actualizarSpritesVida();
   }
 
   _reposicionarSprite(actorId) {
     const pos = this.session.positions[actorId];
-    const { circle, token, label, vida } = this.actorSprites.get(actorId);
+    const { circle, label, vida } = this.actorSprites.get(actorId);
     circle.setPosition(this.escala.px(pos.x), this.escala.px(pos.y));
-    token?.setPosition(this.escala.px(pos.x), this.escala.px(pos.y) + 5);
     label.setPosition(this.escala.px(pos.x), this.escala.px(pos.y) - 22);
     vida.setPosition(this.escala.px(pos.x), this.escala.px(pos.y) + 16);
   }
@@ -350,16 +315,9 @@ export class TacticalScene extends Phaser.Scene {
       const sprite = this.actorSprites.get(a.id);
       const abajo = a.estadoDisponibilidad !== "disponible";
       sprite.circle.setAlpha(abajo ? 0.3 : 1);
-      if (sprite.token && sprite.estadosTextura) {
-        const estadoVisual = abajo ? "down" : nivelHeridaDe(a) === "sano" ? "idle" : "hurt";
-        const key = sprite.estadosTextura[estadoVisual];
-        if (key && this.textures.exists(key)) sprite.token.setTexture(key);
-      }
-      sprite.token?.setAlpha(abajo ? 0.28 : 1);
       sprite.label.setAlpha(abajo ? 0.4 : 1);
       const nivel = nivelHeridaDe(a);
-      const vidaVisible = sprite.esEnemigo ? a.vidaActual.sano : a.vidaActual[nivel];
-      sprite.vida.setText(abajo ? "ABAJO" : `${vidaVisible} PV · ${nivel.toUpperCase()}`);
+      sprite.vida.setText(abajo ? "ABAJO" : `${a.vidaActual.sano}/${a.vidaActual.herido}/${a.vidaActual.tullido} (${nivel})`);
       sprite.vida.setColor(nivel === "tullido" ? "#ff4d4d" : nivel === "herido" ? "#ffe27a" : "#cccccc");
     }
   }
@@ -376,16 +334,6 @@ export class TacticalScene extends Phaser.Scene {
   }
 
   _onActorClicked(actorId) {
-    if (actorId === this.session.currentActorId && this.session.esParty(actorId) && this.session.esControladoPorJugador(actorId)) {
-      // El canvas cierra menús al terminar cualquier pointerdown. Abrir en
-      // microtarea hace que el clic contextual gane después de ese cierre.
-      queueMicrotask(() => this._interfazResponsiveHandle?.openActions());
-      return;
-    }
-    this.seleccionarObjetivo(actorId);
-  }
-
-  seleccionarObjetivo(actorId) {
     if (this._pausado || !this.session.currentActorId || !this.session.esControladoPorJugador(this.session.currentActorId)) return;
     const actor = this.session.configDe(actorId);
     if (actor.estadoDisponibilidad !== "disponible") return;
@@ -436,7 +384,6 @@ export class TacticalScene extends Phaser.Scene {
     s.currentActorId = actor.id;
     s.targetActorId = null;
     this._modoMover = false;
-    this._actualizarRejillaMovimiento?.();
     actor.efectoEvasivo = null; // expira al empezar la siguiente actuación del propio actor
     s.activations.set(actor.id, createActivation({ actorId: actor.id, round: s.round, activationIndex: s.round }));
 
@@ -444,7 +391,6 @@ export class TacticalScene extends Phaser.Scene {
       this._log(`Turno de ${actor.nombre} (manual). Elige una acción.`);
       this._actualizarPanelAcciones();
       this._actualizarHud();
-      this._redibujarOverlay();
       this._emitirEstadoUI();
     } else {
       this._log(`Turno de ${actor.nombre} (IA)...`);
@@ -571,15 +517,15 @@ export class TacticalScene extends Phaser.Scene {
 
   _emitirEstadoUI() {
     if (!this.session) return;
-    this.events.emit("tactical-ui-state", construirSnapshotUI(this.session, this.adapter, this.session.currentActorId, { modoMoverActivo: this._modoMover, cadenciaData: this._cadenciaDataEntrante }));
+    this.events.emit("tactical-ui-state", construirSnapshotUI(this.session, this.adapter, this.session.currentActorId, { modoMoverActivo: this._modoMover }));
   }
 
   _accionMoverA(xMetros, yMetros) {
     this.controlador.moverA(xMetros, yMetros);
   }
 
-  _accionAtacar(targetId, { cc = false, modoFuego = "tiroATiro" } = {}) {
-    const resultado = this.controlador.atacar(targetId, { cc, modoFuego });
+  _accionAtacar(targetId, { cc = false } = {}) {
+    const resultado = this.controlador.atacar(targetId, { cc });
     if (resultado.ok && resultado.terminado) this._mostrarResultado();
   }
 

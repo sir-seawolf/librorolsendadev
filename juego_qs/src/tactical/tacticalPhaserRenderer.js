@@ -26,9 +26,7 @@ import { moduloIdActivo } from "../engine/moduleLoader.js";
 import { validateEncounterDefinition } from "./contracts/TacticalEncounterDefinition.js";
 import { resolverTacticalDefinition, TacticalDefinitionNotFoundError } from "./tacticalDefinitionResolver.js";
 import { resolverOutcomeTactico } from "./tacticalOutcomeResolver.js";
-import { actualizarRecursosEquipo, cambiarEscena, cargar as cargarUltimoPuntoGuardado, hayPartidaGuardada, esJugador } from "../gameState.js";
-import { cargarCadencia } from "../combat/combat.js";
-import { cargarCatalogoEquipoActivo, hidratarPartyDesdeEquipo } from "./bridge/equipmentLoadoutAdapter.js";
+import { cambiarEscena, cargar as cargarUltimoPuntoGuardado, hayPartidaGuardada, esJugador } from "../gameState.js";
 
 const TACTICAL_DEBUG = false; // punto 20 -- discreto, nunca ruidoso en producción normal
 function log(evento, ...datos) {
@@ -121,7 +119,6 @@ export function crearTacticalRuntime() {
       // TacticalScene (cenital), comportamiento idéntico al de antes de
       // esta fase. Solo "phaser-tactical-isometric" activa el spike.
       const usarOblicua = ctx.definition.renderer === "phaser-tactical-isometric";
-      const cadenciaData = await cargarCadencia();
       const [{ default: Phaser }, sceneModule] = await Promise.all([
         import("../vendor/phaser/phaser.esm.min.js"),
         usarOblicua ? import("./render/TacticalSceneOblicua.js") : import("./render/TacticalScene.js")
@@ -193,7 +190,7 @@ export function crearTacticalRuntime() {
         disparar();
       });
 
-      let resultado = await esperarResultado(() => game.scene.start(sceneKey, { definition: ctx.definition, cadenciaData }));
+      let resultado = await esperarResultado(() => game.scene.start(sceneKey, { definition: ctx.definition }));
       while (!resultado.outcome) {
         const decision = await mostrarPausaCombateSinResolver(container);
         if (decision === "checkpoint") return { ...resultado, __volverCheckpoint: true };
@@ -278,17 +275,7 @@ async function resolverPayloadTactico(escenaId, opts) {
     actors: { ...definition.actors, party: definition.actors.party.map(a => ({ ...a, esPJ: esJugador(a.id) })) }
   };
 
-  let definicionConEquipo = definicionConPJ;
-  try {
-    const candidata = hidratarPartyDesdeEquipo(definicionConPJ, await cargarCatalogoEquipoActivo());
-    const validacionEquipo = validateEncounterDefinition(candidata);
-    if (!validacionEquipo.valid) throw new Error(`loadout táctico inválido: ${validacionEquipo.errors.join("; ")}`);
-    definicionConEquipo = candidata;
-  } catch (error) {
-    log("TACTICAL_EQUIPMENT_FALLBACK", error);
-  }
-
-  return { moduleId, definitionId, definition: definicionConEquipo, escena };
+  return { moduleId, definitionId, definition: definicionConPJ, escena };
 }
 
 let fallbackEnCurso = false; // punto 18 -- evita tactical->legacy->tactical->...
@@ -450,9 +437,6 @@ export async function montarCombateTactico(container, escenaId, opts = {}) {
     motor.destroy(); // Fase 5, punto 44: cleanup COMPLETO antes de cualquier otra cosa
 
     if (!payload) return final; // caso genérico de Fase 1, sin definición real -- comportamiento sin cambios
-    for (const recurso of final.actorResources ?? []) {
-      if (recurso.primaryInstanceId && recurso.municionPrimaria) actualizarRecursosEquipo(recurso.actorId, recurso.primaryInstanceId, { municion: recurso.municionPrimaria });
-    }
 
     // Fase 5, punto 36/37: TacticalResult -> module resolver ->
     // aplicarConsecuencias. Solo se intenta si el combate terminó de

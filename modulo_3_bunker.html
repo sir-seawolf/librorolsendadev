@@ -15,43 +15,28 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO 3 — EL BÚNKER"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#premisa">Premisa</a></li><li class="toc-h2"><a href="#corporaciones-implicadas">Corporaciones Implicadas</a></li><li class="toc-h3"><a href="#chafry">Chafry</a></li><li class="toc-h3"><a href="#mort">Mort</a></li><li class="toc-h3"><a href="#serpent">Serpent</a></li><li class="toc-h3"><a href="#workhouse">Workhouse</a></li><li class="toc-h3"><a href="#tecnostealer">TecnoStealer</a></li><li class="toc-h2"><a href="#pnjs-de-las-corporaciones">PNJs de las Corporaciones</a></li><li class="toc-h3"><a href="#chafry-dra-yolanda-cresp">Chafry — Dra. Yolanda Cresp</a></li><li class="toc-h3"><a href="#mort-sargento-bray-cero-holt">Mort — Sargento Bray "Cero" Holt</a></li><li class="toc-h3"><a href="#serpent-iker-sombra-valens">Serpent — Iker "Sombra" Valens</a></li><li class="toc-h3"><a href="#workhouse-vieja-marta-oduya">Workhouse — "Vieja" Marta Oduya</a></li><li class="toc-h3"><a href="#tecnostealer-dedos-renata-vico">TecnoStealer — "Dedos" Renata Vico</a></li><li class="toc-h2"><a href="#lo-que-realmente-ocurre">Lo Que Realmente Ocurre</a></li><li class="toc-h3"><a href="#el-papel-de-chafry">El Papel de Chafry</a></li><li class="toc-h2"><a href="#estructura-del-bunker">Estructura del Búnker</a></li><li class="toc-h3"><a href="#niveles">Niveles</a></li><li class="toc-h2"><a href="#el-primer-cambio-importante">El Primer Cambio Importante</a></li><li class="toc-h3"><a href="#funcionamiento-de-los-portales">Funcionamiento de los Portales</a></li><li class="toc-h3"><a href="#tabla-de-portales-1d10-tirar-cada-vez-que-se-abre-una-puerta-tras-el-primer-cambio">Tabla de Portales (1d10, tirar cada vez que se abre una puerta tras el Primer Cambio)</a></li><li class="toc-h2"><a href="#los-tres-mundos">Los Tres Mundos</a></li><li class="toc-h3"><a href="#mundo-1-bosque-negro">Mundo 1: Bosque Negro</a></li><li class="toc-h3"><a href="#mundo-2-ciudad-subterranea">Mundo 2: Ciudad Subterránea</a></li><li class="toc-h3"><a href="#mundo-3-observatorio-estelar">Mundo 3: Observatorio Estelar</a></li><li class="toc-h2"><a href="#las-anclas">Las Anclas</a></li><li class="toc-h3"><a href="#mecanica-de-destruccion-hibrida-exponer-luego-danar">Mecánica de destrucción (híbrida: exponer, luego dañar)</a></li><li class="toc-h2"><a href="#la-entidad">La Entidad</a></li><li class="toc-h3"><a href="#comportamiento">Comportamiento</a></li><li class="toc-h3"><a href="#estadisticas-manifestacion-final-tras-el-regreso-al-nucleo">Estadísticas (manifestación final, tras el regreso al núcleo)</a></li><li class="toc-h2"><a href="#escena-final">Escena Final</a></li><li class="toc-h2"><a href="#preguntas-sin-respuesta-opcional-para-el-dj">Preguntas Sin Respuesta (Opcional para el DJ)</a></li><li class="toc-h2"><a href="#escenas-narrativas-clave">Escenas Narrativas Clave</a></li><li class="toc-h3"><a href="#1-reparto-forzoso-apertura">1. Reparto forzoso (apertura)</a></li><li class="toc-h3"><a href="#2-la-puerta-que-no-vuelve">2. La puerta que no vuelve</a></li><li class="toc-h3"><a href="#3-el-resonador-punto-medio">3. El resonador (punto medio)</a></li><li class="toc-h3"><a href="#4-el-trato-roto">4. El trato roto</a></li><li class="toc-h3"><a href="#5-lo-que-marta-no-cuenta">5. Lo que Marta no cuenta</a></li><li class="toc-h3"><a href="#6-el-nucleo-mezclado-escena-final">6. El núcleo mezclado (Escena Final)</a></li><li class="toc-h2"><a href="#notas-de-diseno">Notas de Diseño</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO 3 — EL BÚNKER</h1>
 <p><em>Transcripción del HTML original — contenido sin editar (salvo "Chafry", grafía canónica corregida ya presente en este archivo; el HTML fuente dice "Chaffrey")</em></p>
 <p><strong>Estado:</strong> BORRADOR (para revisión de concepto)<br />
 <strong>Propósito:</strong> Aventura introductoria multifacción / potencial para partida grabada con fines publicitarios<br />
 <strong>Fecha creación:</strong> 10 junio 2026</p>
 <hr />
-<h2 id="premisa">Premisa</h2>
+<h2>Premisa</h2>
 <p>Varias corporaciones reciben información sobre una anomalía localizada en un antiguo búnker.</p>
 <p>El lugar fue descubierto hace tiempo, pero nunca se consiguió cartografiar completamente.</p>
 <p>Recientemente ha vuelto a mostrar actividad.</p>
@@ -67,65 +52,65 @@
 <p>No existe una autoridad superior real sobre la operación.</p>
 <p>La cooperación es temporal y por conveniencia.</p>
 <hr />
-<h2 id="corporaciones-implicadas">Corporaciones Implicadas</h2>
-<h3 id="chafry">Chafry</h3>
+<h2>Corporaciones Implicadas</h2>
+<h3>Chafry</h3>
 <ul>
 <li><strong>Especialidad:</strong> Biotecnología, neurotecnología, modificación humana.</li>
 <li><strong>Rol en el módulo:</strong> Su representante porta un implante experimental.</li>
 <li><strong>Complicación:</strong> Desconoce la verdadera naturaleza del mismo.</li>
 </ul>
-<h3 id="mort">Mort</h3>
+<h3>Mort</h3>
 <ul>
 <li><strong>Especialidad:</strong> Seguridad, armamento, intervención militar.</li>
 <li><strong>Rol:</strong> Consideran que la anomalía es una amenaza a neutralizar.</li>
 </ul>
-<h3 id="serpent">Serpent</h3>
+<h3>Serpent</h3>
 <ul>
 <li><strong>Especialidad:</strong> Investigación tecnológica.</li>
 <li><strong>Rol:</strong> Buscan comprender el fenómeno.</li>
 </ul>
-<h3 id="workhouse">Workhouse</h3>
+<h3>Workhouse</h3>
 <ul>
 <li><strong>Especialidad:</strong> Exploración, recuperación y adaptación.</li>
 <li><strong>Rol:</strong> Su interés principal es descubrir qué hay detrás de la anomalía.</li>
 </ul>
-<h3 id="tecnostealer">TecnoStealer</h3>
+<h3>TecnoStealer</h3>
 <ul>
 <li><strong>Especialidad:</strong> Obtención y apropiación de tecnología.</li>
 <li><strong>Rol:</strong> Buscan llevarse cualquier ventaja posible.</li>
 </ul>
 <hr />
-<h2 id="pnjs-de-las-corporaciones">PNJs de las Corporaciones</h2>
+<h2>PNJs de las Corporaciones</h2>
 <p>Cinco representantes, uno por corp, cada uno con una tensión propia que puede estallar antes de que la Entidad haga nada. Cómo se destruyen las Anclas: <strong>híbrido</strong> — primero hay que exponerlas (ritual, tirada de Distorsión/Detección o procedimiento específico del mundo), y solo entonces pueden dañarse físicamente como cualquier objetivo con PV/Bld.</p>
-<h3 id="chafry-dra-yolanda-cresp">Chafry — Dra. Yolanda Cresp</h3>
+<h3>Chafry — Dra. Yolanda Cresp</h3>
 <p><em>Madera de Héroe · Humana · Mentales</em><br />
 <strong>Atributos:</strong> Int 50 · Per 45 · Vol 30 · Ca 25 · Agi 30 · Con 25 · Fue 20 · Hab 35<br />
 <strong>Profesión:</strong> Científico 2× · <strong>Vida/zona:</strong> 13<br />
 <strong>Destaca en:</strong> Biotecnología, Diagnóstico, Ciencias<br />
 <strong>Rol:</strong> Porta el implante experimental que hace de resonador de la anomalía.<br />
 <strong>Secreto:</strong> No sabe lo que lleva dentro de verdad. Chafry no le contó toda la historia antes de enviarla.</p>
-<h3 id="mort-sargento-bray-cero-holt">Mort — Sargento Bray "Cero" Holt</h3>
+<h3>Mort — Sargento Bray "Cero" Holt</h3>
 <p><em>Madera de Héroe · Humano · Físicos</em><br />
 <strong>Atributos:</strong> Fue 45 · Con 40 · Agi 30 · Hab 35 · Vol 30 · Per 25 · Int 20 · Ca 20<br />
 <strong>Profesión:</strong> Combatiente 2× · <strong>Vida/zona:</strong> 20<br />
 <strong>Destaca en:</strong> Arma CC/Distancia, Resistir, Iniciativa<br />
 <strong>Rol:</strong> Considera la anomalía una amenaza a neutralizar. Sin matices.<br />
 <strong>Secreto:</strong> Es un "Lemming" — lleva el Rack de Chips colectivo de su escuadrón. Si muere, otro ocupa su lugar sin que Mort se inmute, y él lo sabe.</p>
-<h3 id="serpent-iker-sombra-valens">Serpent — Iker "Sombra" Valens</h3>
+<h3>Serpent — Iker "Sombra" Valens</h3>
 <p><em>Madera de Héroe · Humano · Mentales</em><br />
 <strong>Atributos:</strong> Per 45 · Int 40 · Ca 35 · Vol 25 · Agi 35 · Hab 30 · Con 25 · Fue 20<br />
 <strong>Profesión:</strong> Científico 1× + Civil 1× · <strong>Vida/zona:</strong> 14<br />
 <strong>Destaca en:</strong> Investigación, Diagnóstico, Persuasión, Bajos Fondos<br />
 <strong>Rol:</strong> Oficialmente busca comprender el fenómeno.<br />
 <strong>Secreto:</strong> Ya está negociando en privado con TecnoStealer para vender lo que encuentren a los dos bandos. Serpent no ha autorizado esto.</p>
-<h3 id="workhouse-vieja-marta-oduya">Workhouse — "Vieja" Marta Oduya</h3>
+<h3>Workhouse — "Vieja" Marta Oduya</h3>
 <p><em>Madera de Héroe · Humana · Físicos</em><br />
 <strong>Atributos:</strong> Con 40 · Fue 35 · Agi 30 · Hab 35 · Vol 40 · Per 35 · Int 25 · Ca 20<br />
 <strong>Profesión:</strong> Combatiente 1× + Especialista Técnico 1× · <strong>Vida/zona:</strong> 18<br />
 <strong>Destaca en:</strong> Resistir, Supervivencia, Mecánica, Alerta<br />
 <strong>Rol:</strong> Quiere descubrir qué hay detrás de la anomalía. Experiencia real, no como los Lemmings de Mort.<br />
 <strong>Secreto:</strong> Perdió a alguien en una expedición parecida hace años. Sospecha que este búnker está conectado. No lo dirá hasta ganarse su confianza.</p>
-<h3 id="tecnostealer-dedos-renata-vico">TecnoStealer — "Dedos" Renata Vico</h3>
+<h3>TecnoStealer — "Dedos" Renata Vico</h3>
 <p><em>Madera de Héroe · Mujer Gato · Mentales</em><br />
 <strong>Atributos:</strong> Ca 40 · Per 35 · Int 30 · Vol 20 · Agi 45 · Hab 40 · Con 25 · Fue 20<br />
 <strong>Profesión:</strong> Civil 1× (Vocación activada, cuenta doble) + Especialista Técnico 1× · <strong>Vida/zona:</strong> 15<br />
@@ -134,7 +119,7 @@
 <strong>Secreto:</strong> Ya tiene comprador para lo que sea que encuentren, desde antes de entrar. No le importa ninguna corp — solo el margen.</p>
 <p><strong>Tensiones ya sembradas para la mesa:</strong> Serpent y TecnoStealer tienen un trato secreto que se traicionan mutuamente en cuanto conviene; Mort no daría la cara por nadie del grupo si el cálculo no sale a favor; Chafry es la única que no sabe que es, literalmente, el motivo por el que la Entidad los ha encontrado; Workhouse es la única con motivación personal real, no corporativa.</p>
 <hr />
-<h2 id="lo-que-realmente-ocurre">Lo Que Realmente Ocurre</h2>
+<h2>Lo Que Realmente Ocurre</h2>
 <p>El búnker se encuentra en un punto donde <strong>la realidad es especialmente fina</strong>.</p>
 <p>Preguntas sin respuesta obligatoria (el DJ puede responderlas o no):</p>
 <ul>
@@ -143,7 +128,7 @@
 <li>¿No está claro si el búnker fue construido para estudiar el fenómeno o simplemente se construyó alrededor de él.</li>
 </ul>
 <p>Las respuestas pueden quedar abiertas.</p>
-<h3 id="el-papel-de-chafry">El Papel de Chafry</h3>
+<h3>El Papel de Chafry</h3>
 <p>El implante experimental de uno de los personajes o PNJs de Chafry <strong>actúa como resonador</strong>.</p>
 <ul>
 <li>No crea la anomalía.</li>
@@ -152,9 +137,9 @@
 </ul>
 <p>La presencia del portador permite que algo del otro lado detecte al grupo.</p>
 <hr />
-<h2 id="estructura-del-bunker">Estructura del Búnker</h2>
+<h2>Estructura del Búnker</h2>
 <p>La instalación inicial es real y física.</p>
-<h3 id="niveles">Niveles</h3>
+<h3>Niveles</h3>
 <p><strong>Acceso</strong><br />
 - Entrada principal<br />
 - Garaje<br />
@@ -169,12 +154,12 @@
 - Cámaras selladas<br />
 - Núcleo de la anomalía</p>
 <hr />
-<h2 id="el-primer-cambio-importante">El Primer Cambio Importante</h2>
+<h2>El Primer Cambio Importante</h2>
 <p>Cuando intentan regresar:</p>
 <p><strong>La puerta de entrada ya no conduce al exterior.</strong></p>
 <p>Conduce a otro lugar.</p>
 <p>A partir de aquí las puertas dejan de ser fiables.</p>
-<h3 id="funcionamiento-de-los-portales">Funcionamiento de los Portales</h3>
+<h3>Funcionamiento de los Portales</h3>
 <p>Las puertas no son portales permanentes. Son heridas temporales.</p>
 <p>Una puerta puede llevar:</p>
 <ul>
@@ -183,7 +168,7 @@
 <li>a otro mundo</li>
 </ul>
 <p>Cada apertura es impredecible.</p>
-<h3 id="tabla-de-portales-1d10-tirar-cada-vez-que-se-abre-una-puerta-tras-el-primer-cambio">Tabla de Portales (1d10, tirar cada vez que se abre una puerta tras el Primer Cambio)</h3>
+<h3>Tabla de Portales (1d10, tirar cada vez que se abre una puerta tras el Primer Cambio)</h3>
 <table>
 <thead>
 <tr>
@@ -224,8 +209,8 @@
 </table>
 <p><em>Nota de ritmo para el DJ: al principio conviene forzar más resultados de búnker (para establecer el tono) antes de dejar que la tabla decida del todo. Una vez el grupo ha visitado los tres mundos al menos una vez, tirar sin trucar.</em></p>
 <hr />
-<h2 id="los-tres-mundos">Los Tres Mundos</h2>
-<h3 id="mundo-1-bosque-negro">Mundo 1: Bosque Negro</h3>
+<h2>Los Tres Mundos</h2>
+<h3>Mundo 1: Bosque Negro</h3>
 <p><strong>Características:</strong><br />
 - Vegetación invasiva<br />
 - Ruinas<br />
@@ -243,7 +228,7 @@
 <li><strong>Ruina marcada.</strong> Estructura cubierta de vegetación con un símbolo relacionado con el Ancla — pista de localización.</li>
 <li><strong>Jauría.</strong> Grupo coordinado de criaturas alteradas — más peligroso que el encuentro 1, pensado para más avanzada la exploración del mundo.</li>
 </ol>
-<h3 id="mundo-2-ciudad-subterranea">Mundo 2: Ciudad Subterránea</h3>
+<h3>Mundo 2: Ciudad Subterránea</h3>
 <p><strong>Características:</strong><br />
 - Calles vacías<br />
 - Estructuras industriales<br />
@@ -262,7 +247,7 @@
 <li><strong>Zona inestable.</strong> Estructura industrial con energía residual — riesgo de trampa, colapso o descarga si se manipula mal.</li>
 <li><strong>Habitante errático.</strong> Alguien amistoso pero mentalmente afectado por el lugar — información valiosa pero fragmentada, contradictoria, requiere paciencia (o varias tiradas sociales) para extraerla.</li>
 </ol>
-<h3 id="mundo-3-observatorio-estelar">Mundo 3: Observatorio Estelar</h3>
+<h3>Mundo 3: Observatorio Estelar</h3>
 <p><strong>Características:</strong><br />
 - Arquitectura imposible<br />
 - Cielo extraño<br />
@@ -281,7 +266,7 @@
 <li><strong>Fragmento de conocimiento.</strong> Resto de saber de los Antiguos, legible solo con Ciencias o Investigación — lore que conecta este mundo con el origen real de la anomalía.</li>
 </ol>
 <hr />
-<h2 id="las-anclas">Las Anclas</h2>
+<h2>Las Anclas</h2>
 <p>Las anclas son la clave de la aventura.</p>
 <p>Cada mundo contiene una.</p>
 <p><strong>Mientras existan:</strong><br />
@@ -289,7 +274,7 @@
 - La entidad no puede ser dañada físicamente</p>
 <p><strong>Cuando las tres son destruidas:</strong><br />
 - La entidad queda fijada a una única realidad</p>
-<h3 id="mecanica-de-destruccion-hibrida-exponer-luego-danar">Mecánica de destrucción (híbrida: exponer, luego dañar)</h3>
+<h3>Mecánica de destrucción (híbrida: exponer, luego dañar)</h3>
 <p>Un ancla no puede dañarse mientras está "velada" — solo se puede exponer, y cada mundo exige un procedimiento propio:</p>
 <table>
 <thead>
@@ -318,12 +303,12 @@
 </tbody>
 </table>
 <p>Una vez expuesta, el ancla es un objetivo físico normal durante <strong>3 asaltos</strong>: Blindaje 3, PV 40. Si no se destruye en ese tiempo, se vuelve a velar y hay que repetir la exposición (con −10 adicional al modificador de la tirada la segunda vez — la Entidad ha aprendido).</p>
-<h2 id="la-entidad">La Entidad</h2>
+<h2>La Entidad</h2>
 <p>No es un dios.</p>
 <p>No es un demonio.</p>
 <p>No es necesariamente inteligente en términos humanos.</p>
 <p>Es algo que existe entre mundos.</p>
-<h3 id="comportamiento">Comportamiento</h3>
+<h3>Comportamiento</h3>
 <ul>
 <li>Percibe al grupo desde el principio.</li>
 <li>Los sigue.</li>
@@ -332,7 +317,7 @@
 <li>Ataca mediante intermediarios.</li>
 <li>Solo al final puede manifestarse físicamente.</li>
 </ul>
-<h3 id="estadisticas-manifestacion-final-tras-el-regreso-al-nucleo">Estadísticas (manifestación final, tras el regreso al núcleo)</h3>
+<h3>Estadísticas (manifestación final, tras el regreso al núcleo)</h3>
 <p>Mientras existan Anclas, la Entidad no tiene ficha — actúa solo de forma indirecta (intermediarios, manipulación de rutas, encuentros forzados). Su poder físico depende de cuántas Anclas siguen en pie al llegar a la Escena Final:</p>
 <table>
 <thead>
@@ -383,7 +368,7 @@
 <p><strong>Ataque doble:</strong> en cualquier configuración, puede atacar a dos objetivos distintos en el mismo asalto (no está limitada a un solo cuerpo).<br />
 <strong>Intermediarios (antes de la Escena Final):</strong> usa depredadores/constructos/guardianes de cada mundo (ver Amenazas de cada mundo) como extensión de sí misma — esos encuentros no son aleatorios del todo, son ella tanteando al grupo.</p>
 <hr />
-<h2 id="escena-final">Escena Final</h2>
+<h2>Escena Final</h2>
 <p><strong>Regreso al núcleo del búnker.</strong></p>
 <p>La realidad está mezclada:<br />
 - Partes del bosque.<br />
@@ -393,7 +378,7 @@
 <p><strong>La entidad aparece físicamente.</strong></p>
 <p><strong>Combate final.</strong></p>
 <hr />
-<h2 id="preguntas-sin-respuesta-opcional-para-el-dj">Preguntas Sin Respuesta (Opcional para el DJ)</h2>
+<h2>Preguntas Sin Respuesta (Opcional para el DJ)</h2>
 <p>El director puede responderlas o no.</p>
 <ul>
 <li>¿Quién construyó realmente el búnker?</li>
@@ -402,33 +387,33 @@
 <li>¿Por qué el implante de Chafry resuena con la anomalía?</li>
 <li>¿Es la entidad única o una de muchas?</li>
 </ul>
-<h2 id="escenas-narrativas-clave">Escenas Narrativas Clave</h2>
-<h3 id="1-reparto-forzoso-apertura">1. Reparto forzoso (apertura)</h3>
+<h2>Escenas Narrativas Clave</h2>
+<h3>1. Reparto forzoso (apertura)</h3>
 <p><strong>Disparador:</strong> llegada al búnker, las cinco corps ya están ahí o llegan casi a la vez.<br />
 <strong>Qué pasa:</strong> cada representante marca territorio verbalmente — nadie da la mano sin calcular antes qué gana. Cresp es la más incómoda del grupo; no sabe por qué la enviaron a ella en concreto.<br />
 <strong>Giro:</strong> alguien (Holt, el más directo) pregunta abiertamente por qué Chafry envió a "la científica" y no a un soldado. Cresp no tiene buena respuesta. Plantar la semilla sin resolverla.</p>
-<h3 id="2-la-puerta-que-no-vuelve">2. La puerta que no vuelve</h3>
+<h3>2. La puerta que no vuelve</h3>
 <p><strong>Disparador:</strong> el grupo intenta salir tras la primera incursión.<br />
 <strong>Qué pasa:</strong> la puerta de entrada da a otro lugar. Pánico contenido, cada corp reacciona distinto (Mort quiere forzar otra salida a tiros; Vico ya está calculando cómo sacar provecho de quedarse atrapada).<br />
 <strong>Giro:</strong> es el momento de introducir la Tabla de Portales al grupo — deja claro que ya no hay vuelta atrás previsible.</p>
-<h3 id="3-el-resonador-punto-medio">3. El resonador (punto medio)</h3>
+<h3>3. El resonador (punto medio)</h3>
 <p><strong>Disparador:</strong> tras el segundo mundo visitado, o si alguien hace Diagnóstico/Detección de Distorsión sobre Cresp o su equipo.<br />
 <strong>Qué pasa:</strong> algo confirma que la anomalía reacciona más fuerte cerca de Cresp — no es casualidad. Ella lo entiende al mismo tiempo que el grupo.<br />
 <strong>Giro:</strong> Cresp tiene que decidir si lo oculta (por miedo, por orden de Chafry) o lo confiesa. Cualquiera de las dos opciones cambia cómo la trata el resto del grupo a partir de aquí.</p>
-<h3 id="4-el-trato-roto">4. El trato roto</h3>
+<h3>4. El trato roto</h3>
 <p><strong>Disparador:</strong> momento de tensión alta — recursos escasos, o justo tras destruir la primera Ancla.<br />
 <strong>Qué pasa:</strong> Valens (Serpent) y Vico (TecnoStealer) son descubiertos coordinándose en privado, o uno traiciona al otro delante de todos para salvarse.<br />
 <strong>Giro:</strong> rompe la ilusión de "cooperación temporal" — dos de las cinco corps ya se atacan entre sí antes de que la Entidad haga nada.</p>
-<h3 id="5-lo-que-marta-no-cuenta">5. Lo que Marta no cuenta</h3>
+<h3>5. Lo que Marta no cuenta</h3>
 <p><strong>Disparador:</strong> momento de calma, o si alguien logra ganarse su confianza (tirada social sostenida, no automática).<br />
 <strong>Qué pasa:</strong> Oduya (Workhouse) admite por qué esto le importa de verdad — perdió a alguien en algo parecido, y sospecha que este lugar está conectado.<br />
 <strong>Giro:</strong> es la única motivación no corporativa del grupo de PNJs — puede convertirse en aliada real de los PJ si la escuchan, o quedarse sola si nadie le presta atención.</p>
-<h3 id="6-el-nucleo-mezclado-escena-final">6. El núcleo mezclado (Escena Final)</h3>
+<h3>6. El núcleo mezclado (Escena Final)</h3>
 <p><strong>Disparador:</strong> regreso al núcleo tras destruir las Anclas (0, 1, 2 o 3 — ver tabla de la Entidad).<br />
 <strong>Qué pasa:</strong> los tres mundos coexisten en el mismo espacio. La Entidad se manifiesta físicamente por primera vez.<br />
 <strong>Giro final:</strong> cuántas Anclas quedan en pie decide si esto es una pelea que se puede ganar o una huida hacia adelante — el DJ no debería suavizarlo si el grupo llega con las tres intactas.</p>
 <hr />
-<h2 id="notas-de-diseno">Notas de Diseño</h2>
+<h2>Notas de Diseño</h2>
 <p><strong>Para una partida grabada:</strong></p>
 <ul>
 <li>Los conflictos de corporación generan tensión dramática natural (sin necesidad de antagonista obvio).</li>
@@ -447,6 +432,6 @@
 </ul>
 <hr />
 <p><em>MÓDULO REGISTRADO 10/06/26 — PENDIENTE DE DESARROLLO COMPLETO</em></p>
-</main>
+</div>
 </body>
 </html>

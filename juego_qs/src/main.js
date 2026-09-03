@@ -1,4 +1,4 @@
-import { state, suscribirEscena, suscribirFicha, migrarGuardadoAntiguoSiExiste, cambiarEscena, iniciarPartida } from "./gameState.js";
+import { state, suscribirEscena, suscribirFicha, migrarGuardadoAntiguoSiExiste, cambiarEscena } from "./gameState.js";
 import { renderFicha } from "./ui/sheet.js";
 import { montarMenu } from "./scenes/menu.js";
 import { montarSelectorModulos } from "./scenes/moduleMenu.js";
@@ -7,22 +7,13 @@ import { cargarEscena } from "./engine/sceneEngine.js";
 import { aplicarAccesibilidad, config } from "./config.js";
 import { audioManager } from "./engine/audioManager.js";
 import { montarAjustesAudio } from "./ui/audioSettings.js";
-import { cargarListaModulos, cargarModulo, moduloIdActivo, manifiestoActivo, rutaDeManifiesto } from "./engine/moduleLoader.js";
-import { resolverModuloRevision, resolverEscenaRevision } from "./engine/moduleReview.js";
+import { moduloIdActivo } from "./engine/moduleLoader.js";
 
 const appEl = document.getElementById("app");
 const scenario = document.getElementById("scenario");
 const sheetPanel = document.getElementById("sheet-panel");
 const configPanel = document.getElementById("config-panel");
 const configToggle = document.getElementById("config-toggle");
-const gameModulo = document.getElementById("game-modulo");
-const gameEscena = document.getElementById("game-escena");
-
-function actualizarCabecera(tituloEscena = null) {
-  const manifiesto = manifiestoActivo();
-  gameModulo.textContent = manifiesto?.title || "ARCHIVO DE MÓDULOS";
-  gameEscena.textContent = tituloEscena || (state.escena === "menu" ? "CENTRO DE MISIÓN" : "SELECCIÓN");
-}
 
 aplicarAccesibilidad();
 migrarGuardadoAntiguoSiExiste(); // ver docs/SAVE_MIGRATION.md — no-op si no hay nada que migrar
@@ -67,7 +58,6 @@ async function renderEscena() {
   }
 
   if (state.escena === "module_select") {
-    actualizarCabecera("SELECCIÓN");
     montarSelectorModulos(scenario);
     sheetContextActual = null;
     sheetLayoutActual = "docked";
@@ -79,7 +69,6 @@ async function renderEscena() {
   }
 
   if (state.escena === "menu") {
-    actualizarCabecera("CENTRO DE MISIÓN");
     montarMenu(scenario);
     sheetContextActual = null;
     sheetLayoutActual = "docked";
@@ -110,10 +99,6 @@ async function renderEscena() {
     // cuenta, así que hay que retirarlo antes de que monten o quedaría
     // pegado permanentemente junto al contenido real.
     scenario.innerHTML = "";
-    // Los renderers de larga duración (combate táctico, persecución) no
-    // resuelven su promesa hasta que termina la escena. La cabecera debe
-    // identificar la escena al entrar, no cuando el jugador ya ha salido.
-    actualizarCabecera(escena.title || state.escena.replaceAll("_", " "));
     await montarEscenaPorId(scenario, state.escena);
   } catch (e) {
     if (miToken !== renderToken) return;
@@ -185,32 +170,4 @@ function mostrarErrorCargaEscena(container, error) {
 
 suscribirEscena(renderEscena);
 suscribirFicha(renderFichaSiProcede);
-
-async function iniciarAplicacion() {
-  try {
-    const registro = await cargarListaModulos();
-    const moduleIdRevision = resolverModuloRevision(window.location.search, registro);
-    if (moduleIdRevision) {
-      await cargarModulo(moduleIdRevision);
-      const escenaDirecta = resolverEscenaRevision(window.location.search, manifiestoActivo());
-      if (escenaDirecta) {
-        const response = await fetch(rutaDeManifiesto("characters"));
-        if (!response.ok) throw new Error(`No se pudieron cargar los personajes (${response.status}).`);
-        const personajes = (await response.json()).pregenerados;
-        if (!personajes?.length) throw new Error("El módulo no declara personajes para la revisión directa.");
-        iniciarPartida(personajes, personajes[0].id);
-        cambiarEscena(escenaDirecta);
-        return;
-      }
-      cambiarEscena("menu");
-      return;
-    }
-  } catch (error) {
-    // Un enlace de revisión roto o una red temporalmente caída no debe dejar
-    // la aplicación en blanco: el selector conserva su recuperación normal.
-    console.warn("[arranque] no se pudo abrir el módulo solicitado:", error);
-  }
-  renderEscena();
-}
-
-iniciarAplicacion();
+renderEscena();

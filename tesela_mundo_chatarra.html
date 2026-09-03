@@ -15,36 +15,21 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — MUNDO CHATARRA (EL VERTEDERO)"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</a></li><li class="toc-h2"><a href="#1-que-es-mundo-chatarra">1. QUÉ ES MUNDO CHATARRA</a></li><li class="toc-h2"><a href="#2-identidad-del-vertedero">2. IDENTIDAD DEL VERTEDERO</a></li><li class="toc-h3"><a href="#dos-voces-en-las-paredes">Dos voces en las paredes</a></li><li class="toc-h2"><a href="#3-supervivencia-y-viaje">3. SUPERVIVENCIA Y VIAJE</a></li><li class="toc-h2"><a href="#4-geografia-y-regiones">4. GEOGRAFÍA Y REGIONES</a></li><li class="toc-h3"><a href="#las-montanas-de-chatarra-vertedero-central">Las Montañas de Chatarra (Vertedero Central)</a></li><li class="toc-h3"><a href="#el-asentamiento-sin-nombre">El asentamiento sin nombre</a></li><li class="toc-h3"><a href="#edivan">Edivan</a></li><li class="toc-h3"><a href="#el-norte-territorio-de-las-bestias">El Norte — Territorio de las Bestias</a></li><li class="toc-h3"><a href="#la-llanura-cortante">La Llanura Cortante</a></li><li class="toc-h3"><a href="#la-cuenca-hundida">La Cuenca Hundida</a></li><li class="toc-h3"><a href="#zona-volcanica-sur">Zona Volcánica (Sur)</a></li><li class="toc-h3"><a href="#generador-de-asentamientos-mas-alla-del-mapa-conocido">Generador de asentamientos — más allá del mapa conocido</a></li><li class="toc-h3"><a href="#tres-asentamientos-ya-montados">Tres asentamientos ya montados</a></li><li class="toc-h2"><a href="#5-comunidades-y-vida-cotidiana">5. COMUNIDADES Y VIDA COTIDIANA</a></li><li class="toc-h2"><a href="#6-tecnologia-recuperacion-y-fabricacion">6. TECNOLOGÍA, RECUPERACIÓN Y FABRICACIÓN</a></li><li class="toc-h2"><a href="#7-tron-runas-y-davan">7. TRON, RUNAS Y DAVAN</a></li><li class="toc-h2"><a href="#8-los-colosos">8. LOS COLOSOS</a></li><li class="toc-h3"><a href="#confirmado-para-el-narrador">Confirmado para el Narrador</a></li><li class="toc-h3"><a href="#no-confirmado">No confirmado</a></li><li class="toc-h3"><a href="#diferencia-de-escala-en-los-encuentros">Diferencia de escala en los encuentros</a></li><li class="toc-h3"><a href="#mecanica-contador-de-vibracion-0-a-10">Mecánica: Contador de Vibración (0 a 10)</a></li><li class="toc-h3"><a href="#la-cuenca-hundida-2">La Cuenca Hundida</a></li><li class="toc-h2"><a href="#9-las-bestias-del-norte">9. LAS BESTIAS DEL NORTE</a></li><li class="toc-h3"><a href="#origen-que-sabe-cada-cual">Origen: qué sabe cada cual</a></li><li class="toc-h3"><a href="#identidad-cultural">Identidad cultural</a></li><li class="toc-h3"><a href="#ficha-canonica-raza-jugable">Ficha canónica (raza jugable)</a></li><li class="toc-h3"><a href="#paso-1-funcion-de-diseno-elige-1-o-tira-1d5">Paso 1 — Función de Diseño (elige 1 o tira 1d5)</a></li><li class="toc-h3"><a href="#paso-2-tara-genetica-tira-1d10">Paso 2 — TARA Genética (tira 1d10)</a></li><li class="toc-h3"><a href="#paso-3-especie-elige-o-tira-1d20">Paso 3 — Especie (elige o tira 1d20)</a></li><li class="toc-h3"><a href="#paso-4-sistema-de-castas-elige-o-tira-1d6">Paso 4 — Sistema de Castas (elige o tira 1d6)</a></li><li class="toc-h3"><a href="#mecanicas-especiales">Mecánicas especiales</a></li><li class="toc-h2"><a href="#10-criaturas-y-peligros">10. CRIATURAS Y PELIGROS</a></li><li class="toc-h2"><a href="#11-pnj-interpretables">11. PNJ INTERPRETABLES</a></li><li class="toc-h3"><a href="#pnj-unicos">PNJ únicos</a></li><li class="toc-h3"><a href="#arquetipos-del-vertedero">Arquetipos del Vertedero</a></li><li class="toc-h2"><a href="#12-corporaciones-y-facciones">12. CORPORACIONES Y FACCIONES</a></li><li class="toc-h2"><a href="#13-mechas-talleres-y-competiciones">13. MECHAS, TALLERES Y COMPETICIONES</a></li><li class="toc-h3"><a href="#la-mecha-de-becky-ejemplo-del-arco-vi">La Mecha de Becky (ejemplo del Arco VI)</a></li><li class="toc-h2"><a href="#14-el-voto-del-equilibrio">14. EL VOTO DEL EQUILIBRIO</a></li><li class="toc-h2"><a href="#15-ganchos-y-semillas-de-campana">15. GANCHOS Y SEMILLAS DE CAMPAÑA</a></li><li class="toc-h3"><a href="#ganchos-existentes">Ganchos existentes</a></li><li class="toc-h3"><a href="#semillas-futuras">Semillas futuras</a></li><li class="toc-h2"><a href="#16-modulos-existentes-y-posibles">16. MÓDULOS EXISTENTES Y POSIBLES</a></li><li class="toc-h3"><a href="#material-existente">Material existente</a></li><li class="toc-h3"><a href="#modulos-ya-propuestos">Módulos ya propuestos</a></li><li class="toc-h3"><a href="#semillas-futuras-2">Semillas futuras</a></li><li class="toc-h2"><a href="#17-relacion-entre-el-blog-y-el-dlc">17. RELACIÓN ENTRE EL BLOG Y EL DLC</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>DLC — MUNDO CHATARRA (EL VERTEDERO)</h1>
 <p><em>Origen de la ambientación: Mundo Chatarra aparece desarrollado narrativamente en el Arco VI — Primera Visita al Planeta Vertedero (capítulos 38-44) del blog de campaña El Pecio de Seawolf — La Senda del Errante.</em></p>
 <hr />
@@ -59,7 +44,7 @@
 <p><img alt="Caravana, mecha de carga y varios asentamientos entre enormes montañas de metal recuperado" src="img/mundo_chatarra_panorama_general.png" /><br />
 <em>Mundo Chatarra: un mundo de la Urdimbre donde comunidades enteras construyen futuro con lo que otros descartaron. La imagen es una impresión de conjunto, no un mapa ni una vista completa del planeta.</em></p>
 <hr />
-<h2 id="para-el-narrador-lo-esencial-en-una-pagina">PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
+<h2>PARA EL NARRADOR — LO ESENCIAL EN UNA PÁGINA</h2>
 <p><strong>Qué es:</strong> un mundo de la Urdimbre —no una tesela— donde se acumula la tecnología que ni las corporaciones ni las civilizaciones caídas quisieron conservar. No hay portal estable ni ruta conocida: llegar exige adaptar un vehículo o sacrificar algo caro, y volver puede depender de que alguien más abra la puerta desde fuera.</p>
 <p><strong>Qué perciben los personajes al llegar:</strong> montañas de chatarra que alcanzan un cielo gris, estructuras que fueron naves hace milenios convertidas en arquitectura accidental, el olor de metal oxidado y algo orgánico que no debería estar ahí. Tecnología que ha dejado de ser tecnología y se ha convertido en geología.</p>
 <p><strong>Qué saben los personajes:</strong> nadie llega al Vertedero por casualidad — cuesta demasiado. Los que se quedan lo hacen por razones que rara vez comparten del todo.</p>
@@ -68,7 +53,7 @@
 <p><strong>Cinco imágenes recurrentes:</strong> un taller impecable en medio del óxido; una trampilla que baja a tecnología mejor conservada que la de arriba; algo enorme moviéndose despacio en el horizonte, sin prisa; una fiesta con gente de media docena de mundos bajo el casco de una nave enterrada; una mano enseñándote a soldar sin decir una palabra de más.</p>
 <p><strong>Tipos de aventura posibles:</strong> ver Punto 15 — desde conseguir una pieza concreta hasta, muy rara vez, algo relacionado con el Coloso. Las escenas pequeñas valen tanto como las extraordinarias.</p>
 <hr />
-<h2 id="1-que-es-mundo-chatarra">1. QUÉ ES MUNDO CHATARRA</h2>
+<h2>1. QUÉ ES MUNDO CHATARRA</h2>
 <p>Mundo Chatarra —el Vertedero, en la jerga de quienes lo visitan— es un mundo de la Urdimbre, no una tesela. No es un universo entero con sus propias leyes físicas: es un planeta donde ha ido a parar, durante milenios, la tecnología que ni las corporaciones ni las civilizaciones caídas quisieron conservar. Naves estrelladas, restos industriales, desechos de imperios que ya no existen. Nadie ha confirmado si alguien lo diseñó así a propósito o si simplemente es donde el abandono ha ido acumulando lo descartado durante generaciones — ambas explicaciones circulan, y ninguna se ha demostrado.</p>
 <p>No hay continentes naturales — solo cadenas de chatarra apilada que alcanzan un cielo gris. No hay océanos — solo cuencas de líquido de origen incierto. No hay estaciones reconocibles — solo una penumbra constante, atravesada de cuando en cuando por tormentas de óxido.</p>
 <p>Y sin embargo, hay vida. Siempre la hay.</p>
@@ -76,7 +61,7 @@
 <p><strong>Relación con EP-7.</strong> La estación EP-7 es, para los Errantes que operan en esta zona del mosaico, el punto de referencia más cercano al Vertedero — de donde parten las expediciones y adonde regresan, cuando regresan. Eso no significa que el trayecto entre ambos sea sencillo ni rutinario: EP-7 es, simplemente, el hangar conocido más próximo a algo que, por lo demás, no aparece en ningún mapa fiable.</p>
 <p><strong>Por qué las comunicaciones son difíciles.</strong> No es aislamiento absoluto — hay entradas, salidas y, en Edivan, hasta comercio. La dificultad real tiene dos capas: primero, no hay ruta fija ni portal estable, así que cada contacto con el exterior depende de que alguien haga el viaje; segundo, una vez dentro, la interferencia electromagnética del propio Vertedero —generada por milenios de tecnología degradada— bloquea sensores, cámaras y transmisiones de calidad. Los comunicadores de corto alcance funcionan. Todo lo demás es, como mucho, un rumor de señales rotas.</p>
 <hr />
-<h2 id="2-identidad-del-vertedero">2. IDENTIDAD DEL VERTEDERO</h2>
+<h2>2. IDENTIDAD DEL VERTEDERO</h2>
 <p>El Vertedero no es "un montón de chatarra hostil." Es varias cosas a la vez, y ninguna anula a las demás:</p>
 <ul>
 <li>Civilizaciones convertidas en estrato: cada montaña de chatarra es, en cierto sentido, un yacimiento vertical — capas de tecnología de épocas y procedencias distintas, sin orden ni catalogar.</li>
@@ -91,23 +76,23 @@
 <p>Nadie viene aquí a propósito. Pero quienes sobreviven, a veces se quedan.</p>
 <p>Una estancia larga en el Vertedero se parece a esto: un grupo que llega sin nada, encuentra un asentamiento sin nombre entre dos montañas de metal, y en tres meses ha aprendido a base de golpes y paciencia. Alguien sirve bebidas un par de semanas y termina conociendo a veinte personas por su nombre. Alguien pasa meses con un herrero que no enseña lo que promete enseñar, y aprende algo mejor sin darse cuenta. Alguien construye, con manos improvisadas y manuales pensados para otra especie, algo que no debería funcionar y funciona de todos modos. Y alguien, la última noche antes de que todo cambie, tiene una conversación que no sabe cómo terminar.</p>
 <p>No hagas que todo apunte a los Colosos, a una metatrama o al destino del planeta. La mayoría de lo que ocurre en el Vertedero no le importa a nadie fuera de él — y eso está bien.</p>
-<h3 id="dos-voces-en-las-paredes">Dos voces en las paredes</h3>
+<h3>Dos voces en las paredes</h3>
 <p>Por el Vertedero circula, junto a la firma ocasional de un chatarrero o el cartel improvisado de un taller, algo distinto: dos voces artísticas que se responden entre sí. Una satírica, irreverente, anticorporativa, que señala contradicciones con humor y no siempre acierta a hacerlo con justicia. Otra estoica, centrada en la voluntad y la responsabilidad frente al caos, que exige actuar en vez de lamentarse —y que entiende la fortaleza también como sostener peso junto a otros, no solo como resistir a solas: reparar, enseñar y mantener lo común dan tanto derecho a beneficiarse de algo como haberlo creado— y a veces confunde firmeza con dureza. Ninguna de las dos es el bando correcto. Ninguna es infalible. No han nacido en Mundo Chatarra —el mismo diálogo aparece, de tarde en tarde, en otros rincones del mosaico— y nadie ha demostrado nunca dónde empezó de verdad.</p>
 <p><img alt="Dos murales contrapuestos sobre un casco industrial: sátira colorida y figuras sobrias que reparan una estructura común" src="img/mundo_chatarra_dos_voces.png" /><br />
 <em>Dos intervenciones que se responden entre sí. Ninguna de las dos tiene la lectura oficial.</em></p>
 <p>Aparecen en soportes concretos y visibles: placas de mecha, cascos de nave, muros y pasillos de Edivan, talleres, depósitos, puentes, grandes paneles de chatarra junto a las rutas, restos industriales. La mayoría de sus obras son textura, humor, memoria comunitaria, firma territorial o simple protesta —no todo grafiti es una pista, y la mayoría no lo es—; solo alguna, contada, lleva de verdad información codificada, un encargo o una respuesta a algo que acaba de ocurrir. Corporaciones y facciones reaccionan cada una a su manera: alguna intenta comprarlas, alguna borrarlas, alguna apropiárselas, alguna protegerlas.</p>
 <p>El propio incidente de Edivan y su reconstrucción (Punto 4) es uno de sus diálogos conocidos: una obra pregunta por qué cada ruina reconstruida acaba siendo propiedad de alguien; otra responde que reclamar algo sin repararlo, sostenerlo o asumir su coste tampoco da derecho a nada. Ninguna de las dos se queda con la última palabra.</p>
 <hr />
-<h2 id="3-supervivencia-y-viaje">3. SUPERVIVENCIA Y VIAJE</h2>
+<h2>3. SUPERVIVENCIA Y VIAJE</h2>
 <p><strong>Interferencia ambiental.</strong> Comunicadores de largo alcance no funcionan — rango efectivo real: contacto visual o poco más. Sensores y cámaras fallan o "ven fantasmas": lo que se graba puede llegar incompleto o corrupto. En cualquier pifia relacionada con un dispositivo electrónico delicado, trátalo como una Manía más de las que ya cubre la Ingeniería de Oportunidad (capítulo del Taller), no como una tabla nueva.</p>
 <p><strong>Terreno inestable.</strong> Moverse con carga sobre chatarra apilada: tirada de Acrobacias o Supervivencia, dificultad según el terreno. El ruido —herramientas de corte, disparos, motores— no solo es peligroso por sí mismo: cerca de un Coloso, contribuye al Contador de Vibración (Punto 8).</p>
 <p><strong>Reparación e improvisación.</strong> El Vertedero es el escenario ideal para la Ingeniería de Oportunidad: construir, reparar o adaptar algo sin los materiales adecuados usando Mecánica o Electrónica, con el riesgo de una Manía en vez de un fallo limpio. No hace falta ningún subsistema nuevo — el Taller ya cubre exactamente esto.</p>
 <p><strong>Economía.</strong> No hay moneda estándar aceptada de forma general. El trueque —piezas funcionales, comida, agua, información sobre rutas seguras, y sobre todo trabajo— mueve más que cualquier crédito. Un forastero que se instala varios meses puede pagar a un maestro artesano en jornadas de trabajo antes que en PC, y salir mejor parado por ello.</p>
 <p><strong>Distorsión ambiental.</strong> Existen zonas donde cristales de perlas explotadas dejan un residuo detectable: cada hora de exposición suma Deriva acumulada. Una tirada de Supervivencia o Detección de Distorsión permite identificar estas zonas antes de cruzarlas. Los cristales recolectables equivalen, aproximadamente, a una perla blanca parcial (50 PD) por cada puñado reunido — un hallazgo puntual, no una fuente industrial.</p>
 <hr />
-<h2 id="4-geografia-y-regiones">4. GEOGRAFÍA Y REGIONES</h2>
+<h2>4. GEOGRAFÍA Y REGIONES</h2>
 <p>Nadie ha cartografiado el Vertedero de verdad — el propio terreno cambia con cada nueva descarga de chatarra, y ningún mapa sobrevive más de unas semanas. Lo que sigue son los nombres que los Errantes han empezado a usar, no una topografía oficial.</p>
-<h3 id="las-montanas-de-chatarra-vertedero-central">Las Montañas de Chatarra (Vertedero Central)</h3>
+<h3>Las Montañas de Chatarra (Vertedero Central)</h3>
 <p>La mayor parte del planeta. Cadenas de chatarra apilada que alcanzan el cielo gris, algunas tan inestables que se mueven solas con su propio peso. Cruzarlas sin vehículo adaptado es temerario; con vehículo adaptado, sigue siendo una apuesta.</p>
 <p><em>Aspecto:</em> metal oxidado en todas direcciones, siluetas de naves y estructuras que ya no son reconocibles como lo que fueron.<br />
 <em>Sonidos y olores:</em> crujidos constantes del metal asentándose, viento silbando entre huecos, olor a óxido acumulado durante siglos y un rastro orgánico que no debería estar ahí.<br />
@@ -164,7 +149,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="el-asentamiento-sin-nombre">El asentamiento sin nombre</h3>
+<h3>El asentamiento sin nombre</h3>
 <p>Ningún mapa lo registra — no porque esté oculto, sino porque nadie se ha molestado en anotarlo. Es el más conocido entre los Errantes que pasan por el Vertedero, y probablemente el más acogedor — pero no es la capital de nada, ni el único lugar donde vive gente, ni el centro político o comercial de Mundo Chatarra. Es, simplemente, uno de los muchos asentamientos construidos entre los estratos de chatarra, y el que el Arco VI dio a conocer mejor. Otros incluyen pueblos de recuperadores más pequeños, comunidades organizadas alrededor de un solo taller, caravanas que nunca se detienen del todo, enclaves construidos junto a un recurso concreto (agua, un yacimiento rico, una ruta segura), asentamientos ligados a competiciones de mechas (Punto 13), y lugares que aparecen, se trasladan o desaparecen sin más cuando la propia chatarra que los sostiene cambia de sitio. No conviertas este asentamiento en el único que importa — es un ejemplo práctico de cómo puede ser una comunidad del Vertedero, no la referencia obligatoria.</p>
 <p><em>Aspecto:</em> módulos habitables encajados entre dos montañas de metal, calles que son en realidad pasillos entre estructuras, generadores propios zumbando a todas horas.<br />
 <em>Sonidos y olores:</em> motores de baja potencia, conversación de fondo, comida cocinándose con lo que haya, metal caliente de la fragua de turno.<br />
@@ -214,7 +199,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="edivan">Edivan</h3>
+<h3>Edivan</h3>
 <p>Una nave colonial enterrada hace tanto tiempo que el Vertedero ha crecido sobre ella como piel sobre hueso. Caben miles de personas — es, con diferencia, lo más parecido a una ciudad que tiene el Vertedero, y el único lugar donde gente de procedencias radicalmente distintas se encuentra sin buscarse.</p>
 <p><em>Aspecto:</em> tres niveles habitables dentro del casco enterrado, cableado expuesto iluminando los pasillos como venas, suelo de metal pulido por décadas de pisadas.<br />
 <em>Sonidos y olores:</em> comida de una docena de culturas mezclándose, voces superpuestas en idiomas que no siempre coinciden, un zumbido de fondo de Distorsión ambiental de baja intensidad que nadie ha sabido clasificar del todo.<br />
@@ -227,7 +212,7 @@
 <em>Riesgo real:</em> Edivan ha demostrado, al menos una vez, que la presencia militar de paso puede acabar en desastre sin que nadie lo busque — unas detonaciones para abrir una vía de salida bastaron para que unas defensas automáticas próximas respondieran por proximidad, y el intercambio resultante colapsó buena parte de la estructura (Punto 12). No es tan segura como parece.<br />
 <em>Reconstrucción:</em> Edivan fue reconstruida después del colapso, sobre el mismo emplazamiento o en un enclave cercano y semejante —las noticias que llegan al resto del Vertedero no lo precisan, y no hace falta cerrarlo—. Sigue siendo uno de los muchos lugares del Vertedero, no su capital ni el centro de todo lo demás.</p>
 <p>No mantiene tabla de encuentros propia — trátalo como escenario de escena, no como territorio a explorar al azar.</p>
-<h3 id="el-norte-territorio-de-las-bestias">El Norte — Territorio de las Bestias</h3>
+<h3>El Norte — Territorio de las Bestias</h3>
 <p><img alt="Pequeño asentamiento de terrazas térmicas iluminadas en medio de una extensa región septentrional helada" src="img/mundo_chatarra_los_bancales_invierno.png" /><br />
 <em>El Norte a finales de otoño o en pleno invierno: un foco térmico habitado en medio de un territorio helado que se extiende hasta donde alcanza la vista.</em></p>
 <p>Zona de altura con un microclima que no encaja con el resto del planeta: volcanes termales, fuentes de agua caliente, terrazas cultivadas sobre metal oxidado. Nadie ha confirmado por qué esta zona concreta se mantiene estable — algunos dicen que es diseño, otros que es una avería afortunada en algún sistema climático enterrado, y las propias Bestias tienen su propia explicación (Punto 9).</p>
@@ -237,15 +222,15 @@
 <em>Peligro inherente:</em> fauna territorial, terreno volcánico inestable en los bordes, y en invierno, exposición real fuera de las zonas templadas.<br />
 <em>Habitantes:</em> las Bestias del Norte (Punto 9), organizadas en varios asentamientos propios, no solo en el Monasterio de los Libros.<br />
 <em>Cómo se recibe a los forasteros:</em> con reserva — no es territorio hostil por defecto, pero tampoco abierto sin más.</p>
-<h3 id="la-llanura-cortante">La Llanura Cortante</h3>
+<h3>La Llanura Cortante</h3>
 <p>Extensión de chatarra plana y afilada, azotada por vientos que arrastran fragmentos de metal a velocidad de bala. Las Bestias la conocen y la evitan cuando pueden; la mayoría de recuperadores hace lo mismo.</p>
 <p><em>Peligro inherente:</em> viento cortante — cualquier tiempo prolongado a la intemperie sin protección adecuada expone a heridas por fragmentos.<br />
 <em>Recursos:</em> precisamente por lo poco visitada que es, lo que queda sin recuperar aquí lleva más tiempo intacto que en cualquier otra zona.</p>
-<h3 id="la-cuenca-hundida">La Cuenca Hundida</h3>
+<h3>La Cuenca Hundida</h3>
 <p>Donde la chatarra se hundió hace milenios, formando algo parecido a un mar de metal denso. Uno de los seis Colosos localizados cayó aquí (Punto 8) — su posición se conoce, su estado no. Nadie ha bajado a comprobarlo. Mantenla como misterio.</p>
-<h3 id="zona-volcanica-sur">Zona Volcánica (Sur)</h3>
+<h3>Zona Volcánica (Sur)</h3>
 <p>Corrientes de metal fundido bajo la superficie, inestable y peligrosa por derecho propio. Otro de los seis Colosos localizados está aquí, dentro de un volcán activo — igual de inaccesible que el de la Cuenca, por razones mucho más obvias.</p>
-<h3 id="generador-de-asentamientos-mas-alla-del-mapa-conocido">Generador de asentamientos — más allá del mapa conocido</h3>
+<h3>Generador de asentamientos — más allá del mapa conocido</h3>
 <p>El asentamiento sin nombre es uno entre muchos, no una capital ni la referencia obligatoria de todo el Vertedero. No hay una única forma correcta de vivir aquí: cada comunidad nace de una necesidad concreta y de los recursos que tenía a mano, y sigue existiendo aunque los personajes nunca la visiten. Esta herramienta sirve para improvisar cualquiera de esas otras comunidades en el momento, o para prepararlas con calma antes de sesión.</p>
 <p>Tira en cada tabla, elige el resultado que mejor encaje, o combina varias — no hace falta usarlas todas a la vez, y un asentamiento con solo tres o cuatro rasgos definidos ya es jugable. Varios resultados describen calma, prosperidad modesta o humor cotidiano: no todo asentamiento necesita un peligro activo para ser interesante.</p>
 <p>No todo el planeta son montañas densas de chatarra reciente. Estas tablas sirven igual para el Norte y otras zonas de restos antiguos y dispersos: donde un resultado hable de "chatarra" o "montañas de metal", reinterpreta libremente como restos erosionados, geologizados o escasos si el asentamiento nace fuera de las Montañas de Chatarra centrales.</p>
@@ -377,7 +362,7 @@
 <li>Alguien nuevo se plantea quedarse</li>
 </ol>
 <p>No conviertas automáticamente una corporación en antagonista solo por aparecer en la tabla 11, ni hagas de las dos voces transversales el centro de todos los asentamientos — la tabla 12 las reserva, a propósito, a una minoría de resultados.</p>
-<h3 id="tres-asentamientos-ya-montados">Tres asentamientos ya montados</h3>
+<h3>Tres asentamientos ya montados</h3>
 <p>Ejemplos completos construidos con este generador, listos para usar o adaptar.</p>
 <h4>A. La Cuña — recuperadores, distinto del asentamiento del blog</h4>
 <p><strong>Qué lo sostiene:</strong> una ruta de paso relativamente segura entre dos brazos de las Montañas de Chatarra; quien cruza deja algo de trabajo o información a cambio de vigilancia y reparaciones rápidas.<br />
@@ -412,7 +397,7 @@
 <strong>Ganchos:</strong> (competición) participar como piloto o mecánico invitado en la próxima carrera; (social/sabotaje) investigar la sospecha antes de que estalle en una acusación pública que nadie podrá retirar después.<br />
 <strong>Obra visible:</strong> una de las dos voces transversales ha pintado, en un muro del Circuito, un mecha caído con una frase corta que puede leerse como comentario sobre la rivalidad de los talleres — o como nada en absoluto. No resuelve el sabotaje ni apunta a nadie en concreto.</p>
 <hr />
-<h2 id="5-comunidades-y-vida-cotidiana">5. COMUNIDADES Y VIDA COTIDIANA</h2>
+<h2>5. COMUNIDADES Y VIDA COTIDIANA</h2>
 <p>El Vertedero no tiene una sociedad única — tiene varias, superpuestas, que rara vez se cruzan salvo en Edivan.</p>
 <p><strong>Comida y agua.</strong> Los asentamientos estables combinan reciclaje de agua, condensadores atmosféricos, cultivos resistentes (las terrazas del Norte son el ejemplo más visible, pero no el único) y proteína industrial o sistemas alimentarios recuperados y adaptados a lo que haya. Mundo Chatarra no es una hambruna permanente — nadie pasa hambre por sistema, pero tampoco sobra nada, y cada asentamiento depende de que alguien mantenga esos equipos funcionando. Un condensador que falla o una terraza que se seca no amenaza a todo el planeta: es, casi siempre, el problema concreto de una comunidad concreta, y una buena semilla de aventura local.</p>
 <p><strong>Energía.</strong> No existe una red planetaria unificada — cada asentamiento se las arregla con lo que tiene: generadores reconstruidos, baterías recuperadas, pequeñas redes locales entre unos pocos módulos. En un asentamiento estable la energía es relativamente accesible, pero irregular y siempre dependiente del mantenimiento; los cortes y las reparaciones improvisadas forman parte tan normal de la vida cotidiana como el óxido mismo.</p>
@@ -431,7 +416,7 @@
 <p><strong>Por qué alguien decide quedarse.</strong> Razones que casi nunca se comparten del todo: una maestría a medio aprender, una relación que empieza sin planearlo, la simple certeza de que en ningún otro sitio te necesitan tanto como aquí.</p>
 <p>No hay una sociedad monolítica: hay un asentamiento sin nombre, caravanas de paso, recuperadores independientes, talleres familiares, un territorio con su propia cultura religiosa y técnica en el Norte, y zonas —la mayoría del planeta— sin ninguna autoridad estable.</p>
 <hr />
-<h2 id="6-tecnologia-recuperacion-y-fabricacion">6. TECNOLOGÍA, RECUPERACIÓN Y FABRICACIÓN</h2>
+<h2>6. TECNOLOGÍA, RECUPERACIÓN Y FABRICACIÓN</h2>
 <p>El Vertedero no necesita un sistema económico propio — usa el Taller del Errante y sus reglas de reparación de vehículos, con la Ingeniería de Oportunidad como añadido natural para cuando faltan materiales o herramientas adecuadas (Punto 3).</p>
 <p><strong>Niveles de hallazgo.</strong> No toda chatarra es igual, y ninguna tirada de búsqueda debería producir automáticamente tecnología valiosa:</p>
 <ul>
@@ -448,7 +433,7 @@
 <p><strong>Venta.</strong> Se aplican los canales ya establecidos: tienda legal (30-40%, solo bienes limpios), mercado negro o contacto Mort (40-60%, genera Calor), TecnoStealer si hay contacto o Afiliación (50-70%, la mejor tasa para tecnología recuperada). El Vertedero no tiene compradores propios de ese calibre — cualquier venta seria implica sacar la pieza de aquí primero.</p>
 <p><strong>Dificultades.</strong> Cualquier umbral antiguo tipo "Habilidad 60+" se traduce al modificador vigente según lo que la escena pida, no por aritmética: una identificación rutinaria es Normal (0) o Fácil (+10); una reparación de campo bajo presión es Difícil (−10); restaurar tecnología que nadie entiende ya puede ser Extremadamente difícil (−20), y el Narrador puede exigir la habilidad concreta sin sustitutos.</p>
 <hr />
-<h2 id="7-tron-runas-y-davan">7. TRON, RUNAS Y DAVAN</h2>
+<h2>7. TRON, RUNAS Y DAVAN</h2>
 <p>El Vertedero no tiene una industria rúnica propia ni yacimientos conocidos de Tron. Lo que sí tiene es a Davan.</p>
 <p><strong>Davan</strong> es un herrero rúnico autodidacta, sin diploma ni escuela reconocida, de nivel considerable pese a ello. No enseña runas —lo deja claro desde el principio a quien se lo pide—. Lo que enseña es más fundamental: la gramática que hace posibles las runas. Cómo se mueve la Distorsión a nivel estructural, por qué los portales se abren donde se abren, qué hace que un punto del espacio sea más permeable que otro. Sus propios muros están cubiertos de grabados que no son decoración sino lenguaje funcional — prueba de que sabe más de lo que enseña, aunque nunca se le vea inscribir una runa delante de nadie.</p>
 <p>Cobra en trabajo, no en créditos. Un alumno paciente puede pasar semanas —o meses— a su lado sin avanzar más allá de la teoría, y descubrir después que esa teoría vale más que la técnica que esperaba. Al final de una instrucción larga, puede entregar algo sin explicar qué es, solo que se entenderá cuando haga falta. No fuerces esa respuesta — es exactamente el tipo de misterio que funciona mejor sin resolver.</p>
@@ -456,9 +441,9 @@
 <p><strong>Cómo reutilizarlo en otra mesa:</strong> no hace falta reproducir la campaña de origen. Cualquier personaje con paciencia y algo que ofrecer a cambio (trabajo, mayoritariamente) puede ganarse sesiones con Davan. Lo que se aprende es transferible — la gramática de la Distorsión, no una runa concreta — así que sirve igual de bien como semilla de trasfondo que como recompensa de campaña.</p>
 <p><strong>Tron y runas, alineado con las reglas vigentes.</strong> El Vertedero no genera Tron-1 en bruto de forma conocida —no hay portales permanentes ni anomalías persistentes que lo produzcan aquí—, y no existe distribución de Tron refinado (ratio 25:1) a través de ningún canal local. Cualquier Tron que aparezca en juego llegó de fuera, en cantidades pequeñas, con alguien que lo trajo consigo. No inventes depósitos ni una industria rúnica que el propio origen del DLC no sostiene: el material es escaso por diseño, y esa escasez es parte de lo que hace memorable cualquier uso de runas o Tron aquí.</p>
 <hr />
-<h2 id="8-los-colosos">8. LOS COLOSOS</h2>
+<h2>8. LOS COLOSOS</h2>
 <p>Hay doce Colosos. Solo seis están localizados —el resto no lo está, o su situación actual no puede confirmarse—. Los protagonistas del Arco VI encontraron y observaron exactamente uno. Nada de lo que sigue implica que llegaran a conocer a los otros once: lo que el Narrador sabe y lo que un personaje concreto ha visto son dos cosas distintas, y este DLC habla desde la posición del Narrador.</p>
-<h3 id="confirmado-para-el-narrador">Confirmado para el Narrador</h3>
+<h3>Confirmado para el Narrador</h3>
 <ul>
 <li><strong>Número total establecido:</strong> doce.</li>
 <li><strong>Número localizado:</strong> seis (ver desglose más abajo). Los otros seis no tienen ubicación conocida — sus siluetas se reportan, de tarde en tarde, en tormentas de óxido, y nunca se han confirmado.</li>
@@ -468,7 +453,7 @@
 <li><strong>Capacidad de integrar o reparar materia:</strong> confirmada — tecnología incrustada en el cuerpo como si la hubiera absorbido durante siglos, paneles oxidados que son a la vez carne y metal, cables colgando como tendones.</li>
 <li><strong>Regiones con señales identificadas:</strong> además del ejemplar activo del Arco VI, hay indicios de localización —aunque no de estado ni de acceso— en una sima profunda al oeste, en un volcán activo del sur, y en dos puntos donde el rastro se detuvo hace tiempo sin explicación.</li>
 </ul>
-<h3 id="no-confirmado">No confirmado</h3>
+<h3>No confirmado</h3>
 <p>Nadie sabe, y este DLC no lo decide por ti:</p>
 <ul>
 <li>Quién los creó, o si "crear" es siquiera el verbo correcto.</li>
@@ -481,7 +466,7 @@
 </ul>
 <p>La única pista narrativa disponible sobre cualquiera de estas preguntas es la reacción de quien observa al Coloso del Arco VI de cerca por primera vez —algo parecido al reconocimiento, más que al miedo— y ni siquiera eso se ha explicado jamás. No afirmes como hecho que los Colosos son anteriores a máquina y criatura, dioses, constructores del mundo o seres conscientes. Puede que lo sean. Puede que no.</p>
 <p><strong>Por qué un grupo huye.</strong> Normalmente, simple prudencia — algo de ese tamaño moviéndose hacia tu posición no invita a quedarse a comprobar intenciones. No hace falta que ataque para que la decisión correcta sea marcharse.</p>
-<h3 id="diferencia-de-escala-en-los-encuentros">Diferencia de escala en los encuentros</h3>
+<h3>Diferencia de escala en los encuentros</h3>
 <p>No todo encuentro con el Coloso es el mismo tipo de escena:</p>
 <ul>
 <li>Señal de proximidad: vibración en el suelo, chatarra reorganizándose a lo lejos, silencio anómalo de la fauna menor.</li>
@@ -491,7 +476,7 @@
 <li>Persecución o huida: el Coloso ha girado hacia el grupo — rara vez agresiva, casi siempre evitable con sigilo o distancia.</li>
 <li>Acontecimiento mitológico excepcional: algo fuera de lo normal —se detiene, cambia de ruta sin motivo aparente, "reacciona" a algo— y se convierte en el gancho de una crónica entera, no en un encuentro de una escena.</li>
 </ul>
-<h3 id="mecanica-contador-de-vibracion-0-a-10">Mecánica: Contador de Vibración (0 a 10)</h3>
+<h3>Mecánica: Contador de Vibración (0 a 10)</h3>
 <table>
 <thead>
 <tr>
@@ -526,26 +511,26 @@
 <p><strong>Efectos de proximidad:</strong> el suelo puede colapsar a su paso (Esquivar o Acrobacias; fallo = la caída pasa directamente al personaje de Sano a Herido, o de Herido a Tullido si ya estaba Herido, y daña el equipo); un pulso electromagnético cercano puede apagar equipo no blindado (Mecánica para reiniciar).</p>
 <p><strong>Cómo sobrevivir al Coloso.</strong> No se combate. Se esquiva, se distrae (generadores de ruido a distancia, para desviar su atención hacia otro punto) o se evita por completo (estructuras de metal denso bloquean la vibración que lo guía).</p>
 <p><strong>Si la mesa insiste en combatir.</strong> No lo trates como un jefe con PV convencionales — es una amenaza de escena, no una ficha de combate. Dale partes vulnerables concretas (una junta expuesta, un panel suelto), objetivos claros (llegar a cubierto, cortar una vibración, escapar del radio de su siguiente paso) y una ruta de supervivencia real. Ganar no significa "reducir sus puntos de vida a cero" — significa sobrevivir al intento con vida, y probablemente sin haber conseguido gran cosa más. Si necesitas una amenaza puntual dentro de esa escena, los Enjambres Defensivos (Punto 10) son la que realmente tiene sentido dirigir con reglas de combate normales.</p>
-<h3 id="la-cuenca-hundida-2">La Cuenca Hundida</h3>
+<h3>La Cuenca Hundida</h3>
 <p>Uno de los seis Colosos localizados cayó aquí, hace mucho, y no volvió a la superficie. Es, de los seis, el único del que no se sabe absolutamente nada más allá de su posición aproximada — nadie ha bajado a comprobarlo. Mantenlo así: es más valioso como misterio sin resolver que como otro Coloso más con estadísticas.</p>
 <hr />
-<h2 id="9-las-bestias-del-norte">9. LAS BESTIAS DEL NORTE</h2>
+<h2>9. LAS BESTIAS DEL NORTE</h2>
 <p>Las Bestias del Norte, su cultura y el Monasterio de los Libros son parte real de Mundo Chatarra — tan canon como el asentamiento del Arco VI o el propio Coloso. Que sus protagonistas no llegaran al Norte durante esos tres meses no las convierte en opcionales ni en rumor: el Arco VI muestra una parte limitada del mundo, no un atlas completo (Punto 17).</p>
 <p><strong>"Bestias" es, casi con seguridad, un exónimo</strong> — el término que usan chatarreros y recuperadores para nombrarlas desde fuera, no necesariamente cómo se llaman ellas mismas. Qué nombre usan para sí mismas es una decisión abierta para cada mesa; muchas simplemente se identifican por su asentamiento o su casta antes que por una etiqueta de especie.</p>
-<h3 id="origen-que-sabe-cada-cual">Origen: qué sabe cada cual</h3>
+<h3>Origen: qué sabe cada cual</h3>
 <p><strong>Hecho, para el Narrador.</strong> Las Bestias son producto de experimentación corporativa: una subsidiaria tapadera de Chafry, hace generaciones, intentó replicar el éxito comercial de los Hombres y Mujeres Gato. El proyecto fracasó según los estándares de Chafry, que ordenó su destrucción. Un grupo interno las liberó durante la huida; la nave sufrió un accidente, y como último recurso lanzaron las cápsulas de suspensión al espacio. La mayoría cayeron en el norte del Vertedero. La subsidiaria ya no existe formalmente, y nadie las ha buscado desde entonces — al menos, nadie que lo haya hecho público.</p>
 <p><strong>Lo que las propias Bestias conservan.</strong> La misma historia, a grandes rasgos, sobrevive en su tradición oral — aunque no todas las familias la cuentan igual, y algunas la tratan más como mito fundacional que como registro histórico. Lo que sí conservan con precisión es lo que vino después: la caída, la adaptación, la Nave de los Libros y todo lo que construyeron a partir de ahí. Su propia historia, para ellas, empieza donde termina el expediente de Chafry.</p>
 <p><strong>Lo que solo sabe TecnoStealer.</strong> Los detalles exactos del proyecto original —qué buscaba conseguir Chafry, qué salió mal, por qué se ordenó la destrucción en vez de simplemente abandonarlo— no sobrevivieron en ningún archivo al que las Bestias tengan acceso. TecnoStealer sí ha reconstruido buena parte de esa historia, a partir de registros corporativos antiguos y su interés profesional habitual por cualquier experimento genético ajeno — y no ha compartido nada de lo que sabe. Es exactamente el tipo de ventaja silenciosa que le gusta acumular.</p>
 <p><strong>Rumores de terceros.</strong> Todo lo demás —que Chafry sigue vigilando desde la distancia, que quedan más cápsulas sin caer en algún punto del sistema, que el accidente de la nave no fue accidente— es especulación de chatarreros y viajeros, sin respaldo confirmado en ninguna dirección.</p>
 <p><strong>Los textos.</strong> La Nave de los Libros es tangible: una biblioteca recuperada de una nave desmantelada, con textos que las propias Bestias identifican —lo saben, los han leído, no es un misterio para ellas— como pertenecientes a una tradición histórica concreta de un mundo remoto, de estética marcadamente cercana al periodo Edo japonés de la Tierra. Eso es lo que ellas saben sobre sus propios textos. Lo que describes en mesa no es "una cultura Edo trasplantada" — es la cultura propia que las Bestias construyeron adoptando y reinterpretando esos valores durante generaciones: su arquitectura, sus costumbres, su indumentaria, su disciplina, su organización, tal como son ahora. La referencia histórica es su propia explicación interna, no tu atajo descriptivo como Narrador.</p>
-<h3 id="identidad-cultural">Identidad cultural</h3>
+<h3>Identidad cultural</h3>
 <p>Las Bestias no son un monolito. Hay asentamientos más allá del Monasterio de los Libros —comunidades agrícolas en las terrazas termales, talleres, algún puesto de comercio con chatarreros de confianza— y el sistema de castas (ver mecánica más abajo) genera tensiones internas reales: un Noble y un Campesino no ven el Equilibrio de la misma manera, y esa fricción es tan parte de su cultura como el propio Voto.</p>
 <p><strong>Tecnología y recuperación.</strong> Aunque su corazón cultural mira hacia dentro, las Bestias no son ajenas al resto del Vertedero — comercian con chatarreros de confianza, recuperan tecnología con las mismas reglas que cualquiera (Punto 6), y algunas castas (Artesano, Monje) desarrollan un dominio técnico notable.</p>
 <p><strong>Negociación.</strong> Valoran el respeto por sus formas más que la riqueza ofrecida. Un trato mal presentado, aunque generoso, puede fallar donde uno modesto pero respetuoso triunfa.</p>
 <p><strong>Relación con forasteros.</strong> Cautelosa por defecto, nunca hostil sin motivo. Un forastero que demuestra paciencia y respeto por el Voto del Equilibrio puede ganarse una acogida genuina.</p>
 <p><strong>Razones para combatir o evitarlo.</strong> El Voto pesa — actuar contra él tiene coste narrativo y mecánico (ver más abajo). No son pacifistas por diseño: defienden lo suyo cuando hace falta, pero prefieren, y de largo, no llegar a ese punto.</p>
 <p><strong>Gramática estética (solarpunk rural y geotérmico — clave editorial, no nombre interno).</strong> Terrazas térmicas, metal recuperado junto a madera y cerámica, máquinas reparables durante generaciones. Las imágenes ya aprobadas de Los Bancales siguen siendo el precedente visual.</p>
-<h3 id="ficha-canonica-raza-jugable">Ficha canónica (raza jugable)</h3>
+<h3>Ficha canónica (raza jugable)</h3>
 <pre><code>RAZA: BESTIAS DE MUNDO CHATARRA
 ATRIBUTOS:          Variables según función de diseño (ver Paso 1)
 BONIFICADOR DERIVA: −1/cruce
@@ -556,7 +541,7 @@ ESPECIAL:           TARA genética (Paso 2) · Sistema de castas (Paso 4) ·
 </code></pre>
 <p><strong>Humanidad:</strong> normal (80 estándar, 100 si Iniciado). Sin coste base — el coste de Humanidad lo asumió el progenitor original modificado, generaciones atrás. Si un PJ Bestia se modifica voluntariamente con implantes, paga Humanidad igual que cualquier otro.</p>
 <p><strong>Techo de atributos.</strong> El techo normal antes de aplicar Función y TARA es 50, igual que cualquier humano en creación. Las mejoras de Función (Paso 1) y TARA (Paso 2) pueden superar deliberadamente ese techo cuando se combinan sobre el mismo atributo: la combinación máxima posible, +30, puede llevar un atributo hasta 80. Ese 80 es el techo racial de creación de una Bestia del Norte — no se supera bajo ninguna circunstancia durante la creación, y no es un bono general repartible fuera de Función y TARA. Una vez creado el personaje, cualquier progresión posterior sigue las reglas normales del juego, no esta excepción de creación.</p>
-<h3 id="paso-1-funcion-de-diseno-elige-1-o-tira-1d5">Paso 1 — Función de Diseño (elige 1 o tira 1d5)</h3>
+<h3>Paso 1 — Función de Diseño (elige 1 o tira 1d5)</h3>
 <table>
 <thead>
 <tr>
@@ -587,7 +572,7 @@ ESPECIAL:           TARA genética (Paso 2) · Sistema de castas (Paso 4) ·
 </tr>
 </tbody>
 </table>
-<h3 id="paso-2-tara-genetica-tira-1d10">Paso 2 — TARA Genética (tira 1d10)</h3>
+<h3>Paso 2 — TARA Genética (tira 1d10)</h3>
 <table>
 <thead>
 <tr>
@@ -630,7 +615,7 @@ ESPECIAL:           TARA genética (Paso 2) · Sistema de castas (Paso 4) ·
 </tbody>
 </table>
 <p><em>Regla opcional: tira dos veces y aplica ambos resultados. Tara doble, más dramática.</em></p>
-<h3 id="paso-3-especie-elige-o-tira-1d20">Paso 3 — Especie (elige o tira 1d20)</h3>
+<h3>Paso 3 — Especie (elige o tira 1d20)</h3>
 <table>
 <thead>
 <tr>
@@ -674,7 +659,7 @@ ESPECIAL:           TARA genética (Paso 2) · Sistema de castas (Paso 4) ·
 </tbody>
 </table>
 <p>Mamíferos por defecto. Otras clases: −5 adicionales a una Social + justificación narrativa.</p>
-<h3 id="paso-4-sistema-de-castas-elige-o-tira-1d6">Paso 4 — Sistema de Castas (elige o tira 1d6)</h3>
+<h3>Paso 4 — Sistema de Castas (elige o tira 1d6)</h3>
 <table>
 <thead>
 <tr>
@@ -723,12 +708,12 @@ ESPECIAL:           TARA genética (Paso 2) · Sistema de castas (Paso 4) ·
 </tr>
 </tbody>
 </table>
-<h3 id="mecanicas-especiales">Mecánicas especiales</h3>
+<h3>Mecánicas especiales</h3>
 <p><strong>Voto del Equilibrio:</strong> voto personal al abandonar el norte (no acumular riqueza / no buscar venganza / proteger a los débiles). Mientras se cumple: +5 a todas las tiradas de SM. Si se rompe: −10.</p>
 <p><strong>La Nave de los Libros:</strong> un personaje monje o artesano que haya estudiado allí obtiene +10 a Identificación de objetos de origen remoto y conocimiento de la tradición cultural que las Bestias adoptaron como propia.</p>
 <p><strong>Reproducción con humanos:</strong> 50% de viabilidad (gen X). Hijos mestizos: rasgos bestiales visibles, sin TARA, pueden elegir función de diseño. Con otras razas: incompatible salvo decisión del DJ.</p>
 <hr />
-<h2 id="10-criaturas-y-peligros">10. CRIATURAS Y PELIGROS</h2>
+<h2>10. CRIATURAS Y PELIGROS</h2>
 <p>Fichas: <code>Blindaje | Habilidad% (ataque) | Daño, Pen | PV</code>. Leyenda: <code>PV</code> = Puntos de Vida; <code>Pen</code> = Penetración. Ningún encuentro de esta lista obliga a resolverse mediante combate — cada entrada incluye una vía para evitarla o resolverla sin matar.</p>
 <p><strong>Palpador de Óxido</strong><br />
 Blindaje 3 | Melé 65% (zarpazo o mordisco, Pen 2) | Daño 10 | PV 25/25/25<br />
@@ -788,8 +773,8 @@ Máquinas que se autorreparan y se reproducen entre sí, con comportamiento de c
 <em>Cómo evitarla:</em> mantener droides propios a distancia — el contacto físico arriesga una infección de IA (tirada de Voluntad o Tecnología, dificultad −10; fallo: el droide actúa de forma errática durante 1d6 turnos).<br />
 <em>Resolución no letal:</em> retirada activa antes de perder unidades — no defiende territorio fijo, así que alejarse suele bastar.</p>
 <hr />
-<h2 id="11-pnj-interpretables">11. PNJ INTERPRETABLES</h2>
-<h3 id="pnj-unicos">PNJ únicos</h3>
+<h2>11. PNJ INTERPRETABLES</h2>
+<h3>PNJ únicos</h3>
 <p><strong>Voss</strong> (mecánica del asentamiento)</p>
 <ul>
 <li>Función: dirige el taller mejor organizado del Vertedero. Repara lo que nadie más se atreve a intentar.</li>
@@ -810,7 +795,7 @@ Máquinas que se autorreparan y se reproducen entre sí, con comportamiento de c
 <li>Qué respeta: el trabajo silencioso y bien hecho — un grabado rúnico terminado puede dejarlo mudo varios minutos, su forma más alta de reconocimiento.</li>
 <li>Problema actual: adaptable a mesa — alguien puede estar buscando aprender de él con motivos que no son los que dice tener.</li>
 </ul>
-<h3 id="arquetipos-del-vertedero">Arquetipos del Vertedero</h3>
+<h3>Arquetipos del Vertedero</h3>
 <p>Herramientas rápidas para el Narrador — no personajes con identidad propia.</p>
 <p><strong>Recuperador veterano</strong></p>
 <ul>
@@ -856,7 +841,7 @@ Especial: +20 a localizar objetos o personas perdidas. Puede rastrear a través 
 Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <p><em>Edivan no es un personaje — es un lugar (Punto 4). El taller y el punto de encuentro social del asentamiento sin nombre pueden dirigirse a través de Voss y de la figura del punto de encuentro, sin necesidad de PNJ adicionales.</em></p>
 <hr />
-<h2 id="12-corporaciones-y-facciones">12. CORPORACIONES Y FACCIONES</h2>
+<h2>12. CORPORACIONES Y FACCIONES</h2>
 <p>No fuerces la presencia de toda corporación conocida — el Vertedero no le interesa a todo el mundo por igual.</p>
 <p><strong>TecnoStealer.</strong> La corporación con presencia real y confirmada en la región, en dos registros distintos. Una fragata al mando del comandante Thanos operaba cerca de Edivan cuando necesitó abrirse una vía de salida y recurrió a explosivos para despejarla; las detonaciones fueron interpretadas como un ataque por sistemas defensivos automáticos próximos, que respondieron por proximidad, sin que nadie —ni Edivan, ni ninguna facción consciente— hubiera decidido atacar a Thanos. Sus fuerzas lograron salir, pero el intercambio dejó daños graves para quien estuviera cerca. En esa forma no es una facción con la que se negocie con tranquilidad: es una amenaza militar real, dispuesta a responder con fuerza si cree estar bajo ataque. En su registro habitual, opera aquí igual que en cualquier otro sitio: tecnología recuperable de valor, compradores discretos, ninguna necesidad de control territorial (Punto 11, arquetipo de comprador). También es quien conserva, sin compartirlo con nadie, el conocimiento más completo sobre el verdadero origen de las Bestias del Norte (Punto 9). Trata ambos registros como la misma corporación operando a escalas distintas, no como dos facciones diferentes.</p>
 <p><strong>Mort y Chafry.</strong> Ninguna de las dos tiene presencia activa confirmada en el Vertedero en sí. Chafry, eso sí, es la corporación responsable del origen histórico de las Bestias del Norte (Punto 9) — un hecho remoto, no una operación en curso.</p>
@@ -866,7 +851,7 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <p><strong>Los Nakel del Vertedero.</strong> Más territoriales y esquivos que los de otros mundos conocidos, con presencia confirmada — el robo de una pieza valiosa la primera noche de cualquier expedición no anunciada es casi una tradición. Rara vez se dejan ver directamente — se les conoce por las señales que dejan, no por el contacto. Comercian con quien demuestra tener algo que de verdad valga la pena, y las armas no les impresionan tanto como las piezas funcionales.</p>
 <p><strong>Las Bestias del Norte.</strong> Ver Punto 9 — facción cultural propia, no corporativa, con sus propios asentamientos, tensiones internas y relación cautelosa con forasteros.</p>
 <hr />
-<h2 id="13-mechas-talleres-y-competiciones">13. MECHAS, TALLERES Y COMPETICIONES</h2>
+<h2>13. MECHAS, TALLERES Y COMPETICIONES</h2>
 <p>Los mechas no llegaron al Vertedero con los protagonistas del Arco VI — ya eran parte de su cultura mucho antes. Donde hay chatarra suficiente y gente dispuesta a soldarla en forma de algo que camina, tarde o temprano aparece un mecha. El Vertedero tiene generaciones de eso.</p>
 <p><strong>Para qué se usan.</strong> La mayoría, para trabajo pesado — mover chatarra que ningún vehículo con ruedas puede cruzar, abrir paso en terreno inestable, cargar lo que ni una caravana entera soportaría. Un número menor, para exhibición y competición: cuanto más impresionante el diseño, más reputación —y apuestas— atrae.</p>
 <p><strong>Qué aspecto tienen.</strong> Nunca elegante. Bípedos, cuadrúpedos, arrastrados sobre orugas improvisadas, del tamaño de una persona grande hasta estructuras de varios pisos — depende de qué chatarra tenía a mano quien lo construyó. La coherencia estética no es prioridad; la coherencia funcional, sí.</p>
@@ -878,7 +863,7 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <p><strong>Riesgos.</strong> Un mecha mal mantenido puede fallar en pleno combate o en plena faena, con consecuencias mucho peores que un vehículo normal. Las rivalidades entre talleres a veces se resuelven fuera del cuadrilátero — sabotaje incluido.</p>
 <p><strong>Aventuras posibles alrededor de un taller o torneo:</strong> ver Punto 15 — hay semillas construidas específicamente sobre esta cultura.</p>
 <p>No hace falta diseñar un subsistema de combate de mechas aparte: usa vehículos, localizaciones, Blindaje y las reglas de combate vigentes. Un mecha es, mecánicamente, un vehículo grande con las mismas reglas que cualquier otro — lo que cambia es la escala y el contexto, no el sistema.</p>
-<h3 id="la-mecha-de-becky-ejemplo-del-arco-vi">La Mecha de Becky (ejemplo del Arco VI)</h3>
+<h3>La Mecha de Becky (ejemplo del Arco VI)</h3>
 <p>Durante su estancia de tres meses, el grupo del Arco VI —con manuales técnicos, piezas recuperadas, herramientas, conocimiento colectivo, ayuda de un droide con destreza mecánica y tiempo de sobra— construyó su propio mecha: una máquina bípeda hecha de chatarra del Vertedero, componentes de una cápsula colonial recuperada, y las especificaciones base de un vehículo reforzado que ya tenían. No es el primer mecha del Vertedero, ni una tecnología que ellos introdujeron, ni el origen de las competiciones — es, sencillamente, su propio ejemplo concreto, nacido de aquella campaña.</p>
 <p>Lo que sí tiene de particular: estar construida sobre la base de un vehículo con historia propia, con manuales pensados para una especie completamente distinta a la suya (con pulgares de tres articulaciones y una capacidad de atención de quince minutos, para más señas), su aspecto irregular, y una historia de mejoras posteriores.</p>
 <p><strong>Lo que hizo falta:</strong></p>
@@ -895,13 +880,13 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <p>Fea, irregular, montada más como un amasijo que como un diseño elegante — y precisamente por eso, entrañable. Chatarra con alma, igual que todo lo demás en el Vertedero.</p>
 <p><strong>Para tu mesa:</strong> esto es un ejemplo de lo que una estancia larga puede producir, no una plantilla obligatoria ni la única forma de tener un mecha en juego. Otra mesa puede construir uno propio con otros materiales y prioridades, comprar uno de segunda mano, ganarlo en una competición, o simplemente contratar a un piloto ajeno cuando la escena lo pida. El Vertedero recompensa la inversión de tiempo, no una receta fija.</p>
 <hr />
-<h2 id="14-el-voto-del-equilibrio">14. EL VOTO DEL EQUILIBRIO</h2>
+<h2>14. EL VOTO DEL EQUILIBRIO</h2>
 <p>Ren, joven monje del Norte, ha desaparecido del Monasterio de los Libros. Intentó algo que excede lo que sus propios maestros dominan, y algo respondió — sin estar del todo invocado, sin estar del todo controlado.</p>
 <p>Kaito, mensajero del Monasterio, busca ayuda fuera: Iniciados capaces de Invocación o del Camino de los Portales, disciplinas que los monjes no practican. La oferta incluye pago, acceso a la Nave de los Libros y la posibilidad de aprender Tatuador Rúnico. El gancho real, sin embargo, es Ren mismo — su Deriva sube, su tercer ojo no debería estar ahí, y algo llamado Axarón sabe exactamente qué prometerle para mantenerlo cerca.</p>
 <p>Esta aventura tiene desarrollo completo en el módulo independiente <strong>El Voto del Equilibrio</strong> — 2-3 sesiones, tono de misterio filosófico con acción. Los PNJ principales (Kaito, Ren, Axarón) están desarrollados en el Punto 11; el resto de facciones del Vertedero (Voss, los Chatarreros, TecnoStealer) no participan directamente salvo que la mesa decida cruzar sus caminos.</p>
 <hr />
-<h2 id="15-ganchos-y-semillas-de-campana">15. GANCHOS Y SEMILLAS DE CAMPAÑA</h2>
-<h3 id="ganchos-existentes">Ganchos existentes</h3>
+<h2>15. GANCHOS Y SEMILLAS DE CAMPAÑA</h2>
+<h3>Ganchos existentes</h3>
 <ol>
 <li>El Coloso lleva tres días quieto sobre una zona concreta. Algo debajo genera vibraciones que lo mantienen inmóvil. ¿Qué hay ahí abajo?</li>
 <li>Un comunicador de largo alcance no debería funcionar aquí. Algo emite una señal repetitiva desde lo profundo de una montaña de chatarra.</li>
@@ -910,7 +895,7 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <li>Uno de los seis Colosos sin localizar podría no estarlo por mucho más tiempo — alguien dice haber visto exactamente dónde.</li>
 <li>Un cliente necesita una pieza concreta que solo existe, hasta donde se sabe, en el Vertedero.</li>
 </ol>
-<h3 id="semillas-futuras">Semillas futuras</h3>
+<h3>Semillas futuras</h3>
 <p>Cada semilla mezcla escala, complicación y lore mostrado — no todas apuntan a un Coloso, a las Bestias o al destino del planeta.</p>
 <p><strong>La rueda que falta</strong></p>
 <ul>
@@ -1058,8 +1043,8 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <li>Por qué puede recordarse: recuerda que el Vertedero es más grande que el único pueblo que casi todo el mundo conoce.</li>
 </ul>
 <hr />
-<h2 id="16-modulos-existentes-y-posibles">16. MÓDULOS EXISTENTES Y POSIBLES</h2>
-<h3 id="material-existente">Material existente</h3>
+<h2>16. MÓDULOS EXISTENTES Y POSIBLES</h2>
+<h3>Material existente</h3>
 <ul>
 <li><strong>Arco VI — Primera Visita al Planeta Vertedero</strong> (capítulos 38-44) del blog de campaña — fuente narrativa principal: llegada, el Coloso, el asentamiento, los tres meses, Edivan y el regreso a EP-7.</li>
 <li><strong>Arco V</strong> (capítulos 32-37) — contexto de preparación en EP-7, previo al viaje.</li>
@@ -1067,15 +1052,15 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <li><strong>El Voto del Equilibrio</strong> (módulo) — desarrollo completo de la aventura presentada en el Punto 14.</li>
 <li><strong>DLC Mazmorras de los Antiguos</strong> — "La Ciudad que No Existe" está en su territorio norte, cerca del Monasterio de los Libros.</li>
 </ul>
-<h3 id="modulos-ya-propuestos">Módulos ya propuestos</h3>
+<h3>Módulos ya propuestos</h3>
 <ul>
 <li><strong>El Voto del Equilibrio</strong> — ver Punto 14.</li>
 <li><strong>El derecho a reparar</strong> — módulo corto que desarrolla la semilla «Bajo Edivan» del Punto 15: la instalación hallada bajo La Costura, un barrio de Edivan, y las tres reclamaciones legítimas que despierta.</li>
 </ul>
-<h3 id="semillas-futuras-2">Semillas futuras</h3>
+<h3>Semillas futuras</h3>
 <p>Ver Punto 15 para el listado completo, con escala, complicación y lore de cada una. <strong>Bajo Edivan</strong>, dentro de ese listado, ya tiene desarrollo completo como módulo corto — ver «Módulos ya propuestos», arriba—; <strong>El eco bajo la Cuenca</strong> sigue siendo, a propósito, la única semilla sin desarrollar de todo el listado. Los módulos cortos son una línea de desarrollo tan válida como las campañas largas: no todo lo que sale de Mundo Chatarra tiene que ser una aventura extensa.</p>
 <hr />
-<h2 id="17-relacion-entre-el-blog-y-el-dlc">17. RELACIÓN ENTRE EL BLOG Y EL DLC</h2>
+<h2>17. RELACIÓN ENTRE EL BLOG Y EL DLC</h2>
 <p>El Arco VI muestra una experiencia concreta de tres meses en una parte limitada del Vertedero. Sirve como ejemplo de tono, vida cotidiana, peligros y posibilidades — no es un atlas completo del mundo.</p>
 <p>Por tanto:</p>
 <ul>
@@ -1087,6 +1072,6 @@ Precio en Almas: 1 punto para establecer el vínculo inicial.</p>
 <li>Las Bestias del Norte y el Monasterio son canon aunque no aparezcan en ese arco concreto.</li>
 </ul>
 <p>Trata el Arco VI como el punto de partida más sólido y detallado que tienes — no como el límite de lo que el Vertedero puede ofrecer en tu propia mesa.</p>
-</main>
+</div>
 </body>
 </html>

@@ -15,36 +15,21 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
-  font-size:13px;border-radius:2px;color:#0c4a6e;}
-.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
-  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
-  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
-  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
-.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
-  margin:20px 0;border-radius:2px;}
+.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
+  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
+.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
+  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
+.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
+  margin:16px 0;border-radius:0 4px 4px 0;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
-.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
-  font-size:15px;color:#1e293b;line-height:1.5;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
+.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
-</style>
-<style>
-@media print {
-  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — La última entrega de Norton"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
-}
 </style>
 </head>
 <body>
-<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
-<div class="toc-backdrop" id="tocBackdrop"></div>
-<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
-<p class="toc-title">Índice</p>
-<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h2"><a href="#reparto-y-relaciones">Reparto y relaciones</a></li><li class="toc-h3"><a href="#palo-neris-repartidor-y-corredor-de-norton">Palo Neris — repartidor y corredor de Norton</a></li><li class="toc-h3"><a href="#bosk-ferran-responsable-del-concesionario">Bosk Ferran — responsable del concesionario</a></li><li class="toc-h3"><a href="#yorik-dahl-y-dos-agentes-del-concesionario">Yorik Dahl y dos agentes del concesionario</a></li><li class="toc-h3"><a href="#doctora-lian-orbe-compradora-clinica-ibis-forge">Doctora Lian Orbe — compradora (Clínica Ibis-Forge)</a></li><li class="toc-h3"><a href="#maestra-erea-sal-compradora-galeria-de-puertas">Maestra Erea Sal — compradora (Galería de Puertas)</a></li><li class="toc-h3"><a href="#tessa-brom-compradora-persona-particular">Tessa Brom — compradora (persona particular)</a></li><li class="toc-h3"><a href="#sira-venn-o-juno-arca-segun-el-enfoque-de-los-pj">Sira Venn o Juno Arca — según el enfoque de los PJ</a></li><li class="toc-h3"><a href="#karel-tres-llaves-alternativa-opcional">Karel «Tres Llaves» — alternativa opcional</a></li><li class="toc-h3"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-entrega-no-realizada">Escena 1 — Entrega no realizada</a></li><li class="toc-h3"><a href="#escena-2-el-mismo-numero-tres-veces">Escena 2 — El mismo número tres veces</a></li><li class="toc-h3"><a href="#escena-3-la-ruta-de-palo">Escena 3 — La ruta de Palo</a></li><li class="toc-h3"><a href="#escena-4-una-pieza-tres-destinos">Escena 4 — Una pieza, tres destinos</a></li><li class="toc-h3"><a href="#escena-5-firmar-la-recepcion">Escena 5 — Firmar la recepción</a></li><li class="toc-h3"><a href="#textos-para-leer">Textos para leer</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#las-dos-voces">Las Dos Voces</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
-</nav>
-<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
-<main class="document-container">
+<div class="document-container">
 <h1>MÓDULO — La última entrega de Norton</h1>
 <p><em>Colección de one-shots de MadCity — episodio 6 de 6. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -53,7 +38,7 @@
 <p><img alt="Un repartidor de Norton atravesando distintos estratos verticales de MadCity, con la Clínica Ibis-Forge y el Mercado de los Siete Remaches visibles de fondo" src="img/madcity_norton_entrega_estratos.png" /><br />
 <em>Una entrega pequeña, atravesando capas de ciudad que normalmente no se tocan entre sí.</em></p>
 <hr />
-<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<h2>Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> un módulo regulador universal —una pieza pequeña, cara y muy solicitada— tenía que llegar hoy a tres destinos distintos. Los tres tienen justificante de compra auténtico. Los tres lo necesitan de verdad. Y solo existe una unidad real: un concesionario autorizado de Norton vendió tres veces el mismo número de serie, y pensaba sustituir dos de las tres entregas por piezas reacondicionadas sin certificar antes de que nadie lo notara. Palo Neris, el repartidor, detectó la irregularidad a mitad de ruta. Antes de poder informar, alguien lo presionó — y desapareció con la pieza auténtica escondida en algún punto de su recorrido habitual.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas. Escala local: un nodo de reparto, tres destinos con necesidades reales, un mensajero desaparecido y un fraude que nadie planeó como gran conspiración — solo como ahorro de costes que se les fue de las manos.</p>
 <p><strong>Qué saben los PJ:</strong> que Norton tiene una entrega crítica sin resolver, que hay tres reclamaciones simultáneas por la misma pieza, y que el repartidor habitual no responde desde hace horas.</p>
@@ -61,7 +46,7 @@
 <p><strong>Objetivo inmediato:</strong> encontrar a Palo, recuperar la pieza auténtica, y decidir cómo repartir (o sustituir, reparar, adaptar) entre tres necesidades legítimas sin una sola respuesta limpia.</p>
 <p><strong>Pregunta de fondo:</strong> cuando la logística falla, ¿quién carga con el problema — el que fabricó el fraude, el que lo ejecutó, o el que solo confiaba en que la entrega llegara?</p>
 <p><strong>Si nadie interviene:</strong> el concesionario entrega piezas reacondicionadas a dos de los tres compradores sin decírselo. Una de las tres necesidades (la mesa decide cuál, según lo que se haya establecido en la Escena 1) queda sin resolver a tiempo, con consecuencias reales pero no necesariamente catastróficas. Palo sigue desaparecido, y nadie más lo busca.</p>
-<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<h3>Desarrollo en cinco escenas</h3>
 <ol>
 <li>Entrega no realizada — tres reclamaciones auténticas y un mensajero ausente.</li>
 <li>El mismo número tres veces — investigar el Nodo, el concesionario, firmas y recorrido.</li>
@@ -70,7 +55,7 @@
 <li>Firmar la recepción — distribución final, exposición del fraude y consecuencias.</li>
 </ol>
 <hr />
-<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Reloj — tres plazos distintos, no uno solo:</strong></p>
 <table>
 <thead>
@@ -102,8 +87,6 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Ayuda de mesa con los tres plazos paralelos del módulo — clínica H+1:30, portal H+3:00, soporte doméstico H+5:00, y la sustitución fraudulenta en H+3:30 cruzando los tres" src="img/madcity_norton_tres_relojes.svg" /><br />
-<em>Ayuda de mesa para esta escena — imprímela o téngola a la vista mientras diriges los tres plazos a la vez.</em></p>
 <p><strong>Cómo avanza el tiempo de ficción:</strong> no lo simules minuto a minuto — avanza el reloj cuando los PJ cambien de zona de la ciudad, investiguen a fondo, o esperen una respuesta. Los tres plazos no fuerzan una elección mortal inevitable: existen salidas técnicas, económicas o legales que pueden estirar cualquiera de los tres si el grupo las encuentra a tiempo.</p>
 <ul>
 <li>Hablar con un implicado o testigo: 5-15 min.</li>
@@ -154,18 +137,18 @@
 </tbody>
 </table>
 <hr />
-<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
-<h3 id="verdad-completa">Verdad completa</h3>
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
 <p>Bosk Ferran, responsable de un concesionario autorizado de Norton, vendió el mismo número de serie de un módulo regulador universal a tres compradores distintos — presión de ventas, no intención de estafar desde el principio. Al darse cuenta de que solo tenía una unidad real, planeó sustituir dos de las tres entregas por piezas reacondicionadas sin certificar, confiando en que nadie lo notaría a tiempo.</p>
 <p>Palo Neris, encargado del reparto, detectó la irregularidad al comparar el número de serie con el registro del Nodo durante su ruta. Antes de poder informar formalmente, tres agentes de Bosk lo interceptaron y lo presionaron para que entregara la pieza sin hacer preguntas. Palo, asustado pero decidido a no dejar que la sustituyeran sin que quedara constancia, escondió la pieza auténtica en un punto conocido de su ruta habitual y desapareció, herido levemente, antes de que pudieran quitársela.</p>
 <p>Norton central no conoce el alcance real del problema — puede convertirse en aliado de los PJ si recibe pruebas sólidas del fraude, no en otro obstáculo.</p>
-<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
+<h3>Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si Palo actuó por honestidad o por robo — eso se aclara, sin ambigüedad real una vez que se le encuentra, en la Escena 3.</p>
-<h3 id="tono">Tono</h3>
+<h3>Tono</h3>
 <p>Urgente pero humano — tres necesidades reales compitiendo por una sola pieza, sin que ninguna sea más "correcta" que las otras. El fraude es mezquino, no monstruoso. La resolución debe sentirse como una entrega difícil bien gestionada, no como una tragedia inevitable.</p>
 <hr />
-<h2 id="reparto-y-relaciones">Reparto y relaciones</h2>
-<h3 id="palo-neris-repartidor-y-corredor-de-norton">Palo Neris — repartidor y corredor de Norton</h3>
+<h2>Reparto y relaciones</h2>
+<h3>Palo Neris — repartidor y corredor de Norton</h3>
 <p><em>Aspecto:</em> conoce todas las rutas y llega tarde a casi todas; hoy, además, con un corte superficial en el brazo que se ha vendado él mismo con lo que tenía a mano.</p>
 <p>PNJ funcional (2-3 profesiones), compartida con el resto de la colección — primera ficha numérica publicada, queda como base.</p>
 <p>F30/A45/P40/V40 | PV 15/15/15 | Bld 0 | Callejeo/Rutas 55% | Sigilo 45%</p>
@@ -175,7 +158,7 @@
 <li>Falla previsible: esconde la incidencia por miedo a perder la licencia de reparto, incluso ante quien intenta ayudarlo.</li>
 <li>Sin PJ: se las arregla para hacer llegar un mensaje indirecto a Norton central por su cuenta, con más lentitud y más riesgo.</li>
 </ul>
-<h3 id="bosk-ferran-responsable-del-concesionario">Bosk Ferran — responsable del concesionario</h3>
+<h3>Bosk Ferran — responsable del concesionario</h3>
 <p><em>Aspecto:</em> traje de vendedor todavía puesto a estas horas, sonrisa profesional que se le escapa cada vez más a menudo, calculadora mental siempre encendida.</p>
 <p>PNJ interpretable (3-4 profesiones). Vendió de más por presión comercial, no por plan criminal.</p>
 <p>F20/A30/P40/V35 | PV 12/12/12 | Bld 0 | Social/Ventas 55% | Tecnología (catálogo Norton) 40%</p>
@@ -184,42 +167,42 @@
 <li>No ordenará daño grave a nadie — ya está horrorizado por lo que sus agentes le hicieron a Palo.</li>
 <li>Sin PJ: completa la sustitución por piezas reacondicionadas a H+3:30 si nadie lo detiene antes.</li>
 </ul>
-<h3 id="yorik-dahl-y-dos-agentes-del-concesionario">Yorik Dahl y dos agentes del concesionario</h3>
+<h3>Yorik Dahl y dos agentes del concesionario</h3>
 <p>PNJ funcionales (2 profesiones cada uno, fuerza fija — no crece con el número de PJ). Presionaron a Palo por orden de Bosk, sin intención de matarlo; siguen órdenes, no tienen plan propio.</p>
 <p>F35/A35/P30/V30 | PV 15/15/15 | Bld 1 | Sin Armas 50% | Daño 6 (no letal por defecto)</p>
 <ul>
 <li>Suben la apuesta solo si los acorralan sin salida — la violencia aquí ya fue un error, no busca repetirse.</li>
 </ul>
-<h3 id="doctora-lian-orbe-compradora-clinica-ibis-forge">Doctora Lian Orbe — compradora (Clínica Ibis-Forge)</h3>
+<h3>Doctora Lian Orbe — compradora (Clínica Ibis-Forge)</h3>
 <p><em>Aspecto:</em> bata impecable incluso en mitad del caos, manos firmes, habla con el lenguaje corporativo perfecto justo hasta que algo la sorprende de verdad.</p>
 <p>Ficha compartida, ya publicada en <em>Garantía anulada</em>: F20/A35/P55/V50 | PV 12/12/12 | Bld 0 | Medicina 75% | Liderazgo/Gestión clínica 55% | Social 50%.</p>
 <ul>
 <li>Necesita el regulador para una intervención en las próximas horas (ver Reloj) — plazo más corto de los tres compradores.</li>
 <li>Si se ha jugado <em>Garantía anulada</em>, reconoce con gratitud a un grupo que ya la ayudó antes; si no, funciona perfectamente como compradora nueva sin necesitar ese contexto.</li>
 </ul>
-<h3 id="maestra-erea-sal-compradora-galeria-de-puertas">Maestra Erea Sal — compradora (Galería de Puertas)</h3>
+<h3>Maestra Erea Sal — compradora (Galería de Puertas)</h3>
 <p><em>Aspecto:</em> formal, precisa, uniforme del Magisterio sin una arruga; la llave física de siempre al cuello, protección reforzada en el brazo derecho.</p>
 <p>Ficha compartida, ya publicada en <em>El ascensor de los trece minutos</em> y <em>Una licencia para abrir</em>: F20/A30/P55/V60 | PV 11/11/11 | Bld 0 | Camino de Portales 70% | Investigación 55% | Voluntad alta (V60).</p>
 <ul>
 <li>Necesita el componente para mantener segura una ruta dimensional — si no llega a tiempo, debe cerrarla (ver Reloj).</li>
 <li>Mismo criterio que Lian: reconocible para quien ya jugó sus episodios, autosuficiente para quien no.</li>
 </ul>
-<h3 id="tessa-brom-compradora-persona-particular">Tessa Brom — compradora (persona particular)</h3>
+<h3>Tessa Brom — compradora (persona particular)</h3>
 <p><em>Aspecto:</em> ropa sencilla, ojeras de quien lleva noches cuidando a alguien, la mano siempre cerca del dispositivo que la mantiene funcionando.</p>
 <p>PNJ funcional (1-2 profesiones), sin ficha de combate relevante.</p>
 <ul>
 <li>Pagó por adelantado, con ahorros reales, para sustituir el componente crítico de su soporte médico doméstico.</li>
 <li>Tiene el margen de tiempo más amplio de los tres compradores, pero no infinito — y ninguna de las otras dos necesidades es "más importante" que la suya solo por ser corporativa o institucional.</li>
 </ul>
-<h3 id="sira-venn-o-juno-arca-segun-el-enfoque-de-los-pj">Sira Venn o Juno Arca — según el enfoque de los PJ</h3>
+<h3>Sira Venn o Juno Arca — según el enfoque de los PJ</h3>
 <p>Ambas ya publicadas con ficha propia en la colección (<em>Ascensor</em> y <em>Glass-Dog</em>, respectivamente). Aparece una u otra, no las dos a la vez, según cómo aborden los PJ el caso:</p>
 <ul>
 <li><strong>Sira Venn</strong> (coordinación) aparece si el grupo trata esto como una incidencia administrativa que hay que gestionar entre partes.</li>
 <li><strong>Juno Arca</strong> (investigación/seguridad) aparece si el grupo trata esto como un caso de agresión a Palo que requiere intervención de seguridad.</li>
 </ul>
-<h3 id="karel-tres-llaves-alternativa-opcional">Karel «Tres Llaves» — alternativa opcional</h3>
+<h3>Karel «Tres Llaves» — alternativa opcional</h3>
 <p>Si el grupo necesita una solución técnica improvisada (adaptador, reparación temporal), Karel puede aparecer brevemente como recurso — mismo criterio de ficha ya publicada en <em>Glass-Dog</em> y <em>Deuda del mercado bajo</em>. No es necesario para resolver el módulo.</p>
-<h3 id="relaciones-para-el-narrador">Relaciones para el Narrador</h3>
+<h3>Relaciones para el Narrador</h3>
 <ul>
 <li>Bosk teme más a Norton central que a los propios compradores.</li>
 <li>Yorik cumple órdenes, pero ya duda de seguir haciéndolo tras lo de Palo.</li>
@@ -227,16 +210,16 @@
 <li>Palo confía en quien lo trate como testigo, no como sospechoso.</li>
 </ul>
 <hr />
-<h2 id="lugares-necesarios">Lugares necesarios</h2>
+<h2>Lugares necesarios</h2>
 <p><strong>Nodo Norton 61:</strong> centro de distribución con tienda, almacén automatizado y mostrador de incidencias. Punto de partida de la investigación.</p>
 <p><strong>El concesionario de Bosk Ferran:</strong> oficina de ventas, con acceso a los registros de la triple venta.</p>
 <p><strong>La ruta habitual de Palo:</strong> puede cruzar cualquier zona ya establecida de la colección (Plaza del Primer Vuelo, Pasarela de las Mil Fachadas, Mercado de los Siete Remaches) — el reparto de MadCity conecta literalmente los escenarios de los episodios anteriores, sin que haga falta haberlos jugado para que tenga sentido aquí.</p>
 <p><img alt="Mapa esquemático de las conexiones confirmadas entre la Plaza del Primer Vuelo, la Pasarela de las Mil Fachadas y el Mercado de los Siete Remaches" src="img/madcity_mapa_plaza_pasarela_mercado.png" /><br />
 <em>Diagrama esquemático, no ilustración — el mismo mapa que atraviesan, cada uno a su manera, Glass-Dog y Deuda del mercado bajo.</em></p>
 <hr />
-<h2 id="las-cinco-escenas">Las cinco escenas</h2>
+<h2>Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro.</p>
-<h3 id="escena-1-entrega-no-realizada">Escena 1 — Entrega no realizada</h3>
+<h3>Escena 1 — Entrega no realizada</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>El mostrador de incidencias del Nodo Norton 61 tiene tres personas esperando la misma respuesta y ninguna dispuesta a irse sin ella. En el sistema, la misma entrega figura como "en curso" desde hace demasiadas horas.</p>
@@ -256,7 +239,7 @@
 <blockquote>
 <p>«No es que no me crea que los tres han pagado. Es que solo llegó una pieza.»</p>
 </blockquote>
-<h3 id="escena-2-el-mismo-numero-tres-veces">Escena 2 — El mismo número tres veces</h3>
+<h3>Escena 2 — El mismo número tres veces</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Registros de venta, firmas digitales, y un número de serie que se repite exactamente donde no debería. En algún punto de esta cadena, alguien decidió que el margen pesaba más que la palabra dada.</p>
@@ -273,7 +256,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Bosk avanza con su plan de sustitución sin que nadie lo detenga todavía.</p>
 <p><strong>Cómo termina:</strong> el grupo confirma el fraude y tiene una pista real sobre dónde buscar a Palo.</p>
 <p><strong>Después:</strong> el nivel de detalle conseguido aquí determina si la Escena 3 empieza con ventaja o con búsqueda a ciegas.</p>
-<h3 id="escena-3-la-ruta-de-palo">Escena 3 — La ruta de Palo</h3>
+<h3>Escena 3 — La ruta de Palo</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La ruta habitual de Palo cruza medio barrio — un atajo aquí, un contacto de confianza allá. En algún punto de ese recorrido, dejó una señal para quien supiera buscarla, y también una venda improvisada de sangre ya seca.</p>
@@ -281,9 +264,7 @@
 <p><strong>Qué está ocurriendo:</strong> el grupo sigue la ruta habitual de Palo para encontrarlo antes que los agentes de Bosk, que también lo buscan.</p>
 <p><strong>PNJ presentes, con su intención inmediata:</strong><br />
 - <strong>Palo Neris</strong>, escondido, asustado pero decidido — sale si reconoce que quien lo busca no viene de parte de Bosk (<em>Aspecto</em> y ficha: ver Reparto).<br />
-- <strong>Yorik Dahl y dos agentes</strong>, si Bosk los ha enviado también — buscan recuperar la pieza sin dejar más pruebas del incidente.</p>
-<div class="recuadro-combate"><p><strong>Yorik Dahl y agentes</strong> F35/A35/P30/V30 | PV 15/15/15 | Bld 1 | Sin Armas 50% | Daño 6 (no letal por defecto)</p>
-<p>Presionaron a Palo por orden de Bosk, sin intención de matarlo; siguen órdenes, no tienen plan propio. Suben la apuesta solo si los acorralan sin salida — la violencia ya fue un error, no busca repetirse. Objetivo: recuperar la pieza sin dejar más pruebas del incidente. Se retiran si quedan Heridos o si la situación amenaza con exponerlos más.</p></div>
+- <strong>Yorik Dahl y dos agentes</strong>, si Bosk los ha enviado también — buscan recuperar la pieza sin dejar más pruebas del incidente (<em>ficha: ver Reparto</em>).</p>
 <p><strong>Qué saben / qué dicen:</strong> Palo puede confirmar toda la verdad completa en cuanto se siente a salvo — no sabía de los tres compradores hasta que el grupo se lo cuenta.</p>
 <p><strong>Tiradas posibles:</strong><br />
 - <strong>Callejeo o Investigación</strong> (seguir la ruta habitual y las señales dejadas por Palo): éxito → lo localizas directamente; fallo → tardas más, dando tiempo a que los agentes de Bosk se acerquen también.<br />
@@ -292,7 +273,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> los agentes de Bosk encuentran a Palo primero y recuperan la pieza por la fuerza, dejando el fraude sin pruebas claras.</p>
 <p><strong>Cómo termina:</strong> el grupo encuentra a Palo (con o sin los agentes también presentes) y consigue, o no, la ubicación de la pieza auténtica.</p>
 <p><strong>Después:</strong> cómo trataron a Palo aquí condiciona cuánto coopera en la Escena 5, cuando haya que dar testimonio formal.</p>
-<h3 id="escena-4-una-pieza-tres-destinos">Escena 4 — Una pieza, tres destinos</h3>
+<h3>Escena 4 — Una pieza, tres destinos</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La pieza auténtica, pequeña y sin nada de espectacular a la vista, sobre una mesa cualquiera. Y alrededor, tres necesidades reales que no caben todas en una sola caja.</p>
@@ -309,7 +290,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Bosk reparte piezas reacondicionadas a dos de los tres compradores sin decírselo, resolviendo el problema en apariencia pero sin honestidad.</p>
 <p><strong>Cómo termina:</strong> queda decidido, con o sin soluciones alternativas, quién recibe qué — cualquier combinación es válida, ninguna es la correcta por defecto.</p>
 <p><strong>Después:</strong> este resultado condiciona directamente el tono de la Escena 5.</p>
-<h3 id="escena-5-firmar-la-recepcion">Escena 5 — Firmar la recepción</h3>
+<h3>Escena 5 — Firmar la recepción</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>De vuelta en el Nodo Norton 61, con el papeleo por fin correcto — o por fin honesto, que no siempre es lo mismo. Fuera, la ciudad sigue moviendo diez mil entregas más, ninguna de las cuales sabrá nunca lo cerca que estuvo esta de salir mal.</p>
@@ -321,7 +302,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> el caso se cierra tal y como quedó en la Escena 4, sin que Norton central llegue a conocer el alcance real del fraude.</p>
 <p><strong>Cómo termina:</strong> queda decidido qué le pasa a Bosk, qué recompensa recibe Palo por su honestidad, y cómo queda MadCity para quien vuelva a necesitar una entrega — que la necesitará, porque la ciudad no deja de moverse.</p>
 <p><strong>Después:</strong> este es el cierre de la colección, no de MadCity — la ciudad sigue teniendo historias por vivir después de esta.</p>
-<h3 id="textos-para-leer">Textos para leer</h3>
+<h3>Textos para leer</h3>
 <p><strong>El mostrador de incidencias</strong></p>
 <blockquote>
 <p>El mostrador de incidencias del Nodo Norton 61 tiene tres personas esperando la misma respuesta y ninguna dispuesta a irse sin ella.</p>
@@ -335,7 +316,7 @@
 <p>La ruta habitual de Palo cruza medio barrio — un atajo aquí, un contacto de confianza allá. En algún punto de ese recorrido, dejó una señal.</p>
 </blockquote>
 <hr />
-<h2 id="pistas-e-informacion">Pistas e información</h2>
+<h2>Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -368,26 +349,26 @@
 </tbody>
 </table>
 <hr />
-<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
+<h2>Recompensas y gastos</h2>
 <p>La misión no debe dejar a los PJ con pérdidas netas por gastos o equipo dañado — cúbrelo antes de repartir nada más.</p>
 <p><strong>Recompensa económica:</strong> entre 250 y 450 PC por PJ, pagados por Norton central como gestión de incidencia resuelta y prueba de fraude entregada — recompensa profesional real, separada de cualquier gasto propio del encargo, tal y como exige el límite del propio esqueleto.</p>
 <p><strong>Beneficios alternativos:</strong> relación con Norton central para futuros encargos de reparto o logística; gratitud concreta de quien recibió finalmente la pieza (Lian, Erea o Tessa, según cómo se resolvió); reconocimiento de Palo, gestionable como contacto de confianza en el resto de la colección.</p>
 <hr />
-<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
+<h2>Desenlaces combinables</h2>
 <p><strong>Fraude expuesto completamente.</strong> Bosk enfrenta consecuencias reales ante Norton central; los tres compradores conocen la verdad. Norton gana credibilidad a medio plazo, aunque un concesionario concreto quede señalado.</p>
 <p><strong>Fraude resuelto en silencio.</strong> Se corrige la situación sin escándalo público; Bosk recibe una sanción interna discreta. Menos dramático, más pragmático.</p>
 <p><strong>Solución técnica compartida.</strong> Gracias a adaptadores, reparaciones temporales o un envío acelerado, las tres necesidades quedan cubiertas sin que nadie se quede sin nada — el desenlace más difícil de conseguir, y el más satisfactorio si se logra.</p>
 <p><strong>Una necesidad queda sin resolver a tiempo.</strong> Si el grupo no llegó a todo, una de las tres partes (la que la mesa decida, según lo jugado) sufre la consecuencia real de la falta de la pieza — grave pero no necesariamente irreversible, y nunca presentado como fallo de partida.</p>
 <p><strong>Palo reconocido.</strong> Combinable con cualquiera de los anteriores: su honestidad puede convertirse en ascenso, reconocimiento formal, o simplemente en la certeza tranquila de haber hecho lo correcto.</p>
 <hr />
-<h2 id="continuidad-opcional">Continuidad opcional</h2>
+<h2>Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de la colección — todos los PNJ compartidos se presentan aquí de forma autosuficiente.</li>
 <li><strong>Si se han jugado otros episodios:</strong> Lian, Erea, Karel, Sira o Juno traen consigo el reconocimiento acumulado de sus propios módulos, como matiz de color, nunca como requisito para entender esta historia.</li>
 </ul>
 <p>Este es el cierre de la colección de seis one-shots, no un final de temporada obligatorio: MadCity sigue teniendo entregas, incidencias y necesidades por resolver después de esta, para quien quiera seguir jugando allí.</p>
 <hr />
-<h2 id="las-dos-voces">Las Dos Voces</h2>
+<h2>Las Dos Voces</h2>
 <p>Voz satírica intervenida sobre un anuncio de reparto:</p>
 <blockquote>
 <p>«Entrega garantizada. La necesidad del destinatario se vende por separado.»</p>
@@ -398,7 +379,7 @@
 </blockquote>
 <p>Una intervención, no más — ni oráculo ni pista indispensable.</p>
 <hr />
-<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
+<h2>Límites de este módulo</h2>
 <ul>
 <li>Norton no es culpable monolítico: diferenciar la red, el concesionario concreto de Bosk, y las personas implicadas.</li>
 <li>El centro del conflicto es fraude logístico, urgencia urbana y trazabilidad — no una disputa sobre propiedad técnica ni una repetición del conflicto de La Matriz en Mundo Chatarra.</li>
@@ -407,10 +388,10 @@
 <li>Debe funcionar como one-shot completamente independiente: ningún dato de los cinco módulos anteriores es necesario para jugarlo o entenderlo.</li>
 </ul>
 <hr />
-<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
+<h2>Resumen para dirigir</h2>
 <p>Tres relojes distintos (clínica, portal, soporte médico doméstico) en vez de uno solo, con tiempos de desplazamiento fijados en el Panel del Narrador. Cinco escenas autosuficientes: reclamación triple → investigación del fraude → búsqueda de Palo → reparto de soluciones → cierre formal, cada una con atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Ninguna de las tres necesidades es más legítima que las otras. La entrega es pequeña; lo que revela sobre confianza, trazabilidad y quién carga con los errores ajenos, no lo es.</p>
 <hr />
 <p><em>MadCity — colección de one-shots. Comparte lugares, PNJ y dirección visual con el resto de la colección, sin formar una campaña obligatoria. Este es el sexto y último episodio de la colección inicial — la ciudad sigue abierta para más.</em></p>
-</main>
+</div>
 </body>
 </html>

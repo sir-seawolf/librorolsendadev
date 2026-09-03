@@ -3,11 +3,9 @@
     "id": "predator_n52",
     "title": "Predator N-5.2",
     "subtitle": "Las guerras secretas",
-    "description": "Un chip robado, una corporación que lo quiere de vuelta y una huida que atraviesa El Mosaico.",
+    "description": "Un chip robado, una corporación que lo quiere de vuelta y una tarde que se tuerce en un callejón. El módulo de referencia del motor.",
     "enabled": true,
-    "status": "playable",
-    "publishable": true,
-    "visible": true
+    "status": "playable"
   },
   {
     "id": "centesima_alma",
@@ -16,7 +14,6 @@
     "description": null,
     "enabled": false,
     "status": "coming_soon",
-    "publishable": false,
     "visible": false
   },
   {
@@ -26,7 +23,6 @@
     "description": null,
     "enabled": false,
     "status": "coming_soon",
-    "publishable": false,
     "visible": false
   },
   {
@@ -36,7 +32,6 @@
     "description": "Un cazador territorial, un contrato de circo y seis horas antes de que el transporte parta. Segundo módulo independiente del motor.",
     "enabled": true,
     "status": "in_review",
-    "publishable": false,
     "visible": false
   }
 ]
