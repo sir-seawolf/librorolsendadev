@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Teseo — Ficha de Nave</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
+  :root{ --bg-dark:#0f1115; --border:#2a303c; --accent:#ff3b3b; --accent2:#1d6fa3; --muted:#94a3b8; --auto-bg:#dbeafe; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Rajdhani',sans-serif;background:#e9edf2;color:#1e293b;padding:10px;font-size:13px;}
+  .sheet{max-width:1000px;margin:0 auto;background:#fff;padding:14px 18px;border:1px solid #cbd5e1;}
+  .header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:18px;color:#000;border-bottom:3px solid var(--accent2);padding-bottom:2px;letter-spacing:1px;}
+  .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent2);font-size:11px;text-transform:uppercase;}
+  h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:3px 8px;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px;}
+  .ident{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:6px 0 10px;}
+  .ident label{display:flex;flex-direction:column;font-size:9px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+  .ident .val{font-size:13px;font-weight:600;color:#000;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px;}
+  .stat{background:#f1f5f9;border-radius:4px;padding:5px 8px;text-align:center;}
+  .stat .k{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--muted);}
+  .stat .v{font-weight:700;font-size:14px;}
+  table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:6px;}
+  th{font-family:'Share Tech Mono',monospace;font-size:8.5px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:3px 6px;text-align:left;}
+  td{padding:3px 6px;border-bottom:1px solid #eef1f5;}
+  .total{font-weight:700;background:var(--auto-bg);}
+  .equipo-list{font-size:11.5px;line-height:1.6;padding-left:18px;margin-top:2px;}
+  .equipo-list li{margin-bottom:3px;}
+  .runa-box{font-size:11px;background:#f8fafc;border-left:3px solid var(--accent2);padding:6px 10px;margin:6px 0;border-radius:0 4px 4px 0;line-height:1.4;}
+  .note{font-size:9.5px;color:var(--muted);font-style:italic;margin-top:4px;line-height:1.3;}
+  .footnote{font-size:9.5px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:10px;padding-top:5px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>La Senda de los Errantes</h1>
+    <span class="subtitle">Ficha de Nave</span>
+  </div>
+
+  <div class="ident">
+    <label>Nombre<span class="val">Teseo</span></label>
+    <label>Tipo<span class="val">Carguero industrial (Nivel 3, Grande)</span></label>
+    <label>Pertenece a<span class="val">Equipo Principal (uso colectivo)</span></label>
+    <label>Tripulación habitual<span class="val">Todo el grupo del Hacedor</span></label>
+  </div>
+
+  <h2>Estadísticas</h2>
+  <div class="stats">
+    <div class="stat"><div class="k">Huecos útiles</div><div class="v">8 / 12</div></div>
+    <div class="stat"><div class="k">Maniobra</div><div class="v">5</div></div>
+    <div class="stat"><div class="k">Plazas</div><div class="v">20</div></div>
+    <div class="stat"><div class="k">Carga</div><div class="v">3 Tn</div></div>
+    <div class="stat"><div class="k">PDE total</div><div class="v">314</div></div>
+    <div class="stat"><div class="k">Blindaje</div><div class="v">7 (Ligera Cl.1)</div></div>
+    <div class="stat"><div class="k">Velocidad</div><div class="v">150.000 km/h</div></div>
+    <div class="stat"><div class="k">Precio total</div><div class="v">1.430.000 PC</div></div>
+  </div>
+  <div class="note">Recorte de espacio: usa piezas estructurales de naves más grandes, por eso tiene menos hueco útil del que aparenta. Propulsión espacial de categoría superior a la esperada por tamaño (motor sobredimensionado, salvado). Calidad "Estándar con salvedades": sistemas de origen y tipo variado — a discreción del Narrador, un sistema no esencial puede fallar bajo estrés extremo.</div>
+
+  <h2>Armamento</h2>
+  <table><tr><th>Nombre</th><th>Puntería</th><th>Daño</th></tr>
+    <tr><td>Torretas láser Clase 1</td><td>+0</td><td>14</td></tr>
+  </table>
+
+  <h2>Escudos de energía (recurso salvado)</h2>
+  <div class="runa-box">Dos escudos independientes, salvados de una estación espacial — <b>60 PDE cada uno</b>, no sumables entre sí. El daño se descuenta primero del escudo activo; solo al llegar a 0 empieza a afectar a blindaje/estructura. No están sincronizados: cada uno se gestiona por separado. Un escudo que no llegó a 0 recupera su PDE al completo al empezar una nueva escena/combate. Un escudo agotado a 0 queda inoperativo y no regenera solo — necesita reparación.</div>
+
+  <h2>Contenido notable</h2>
+  <ul class="equipo-list">
+    <li><b>Hangar:</b> caben con holgura el Mecha "Becky" y el caza "Silver Fang", con sitio para que Kais trabaje/opere ahí.</li>
+    <li><b>Taller interior:</b> zona de reparación, 2 PD activos, gato Shimmer "Azul".</li>
+    <li><b>Botín acumulado:</b> fusiles de todo tipo, armaduras básicas (neutras y corporativas), granadas, identidades falsas, chips de o-plasticréditos.</li>
+    <li><b>Nevera-congelador:</b> implantes retirados de víctimas/enemigos, junto a un clon de emergencia de Miguel Jr. (él conoce su existencia).</li>
+    <li><b>Replicador</b> de materiales/comida (tomado de una nave mucho mayor) — da autonomía de meses sin repostar.</li>
+  </ul>
+
+  <div class="footnote">Ficha de solo lectura — La Senda de los Errantes. Blindaje, armas y cifras de escudo son una propuesta de diseño pendiente de confirmación final; el resto (identidad, historia, contenido) está fijado por Miguel.</div>
+</div>
+</body>
+</html>

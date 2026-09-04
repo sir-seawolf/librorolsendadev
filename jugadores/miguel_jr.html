@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Miguel Jr. — Ficha de Personaje</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
+  :root{ --bg-dark:#0f1115; --border:#2a303c; --accent:#ff3b3b; --accent2:#1d6fa3; --muted:#94a3b8; --auto-bg:#dbeafe; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Rajdhani',sans-serif;background:#e9edf2;color:#1e293b;padding:10px;font-size:13px;}
+  .sheet{max-width:1100px;margin:0 auto;background:#fff;padding:14px 18px;border:1px solid #cbd5e1;}
+  .header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:18px;color:#000;border-bottom:3px solid var(--accent);padding-bottom:2px;letter-spacing:1px;}
+  .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:11px;text-transform:uppercase;}
+  h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:3px 8px;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px;display:flex;justify-content:space-between;align-items:center;}
+  .row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;}
+  .col-left{flex:0 0 260px;}
+  .col-g2,.col-g3{flex:1;min-width:260px;}
+  .col-g4{flex:0 0 270px;}
+  .ident{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:6px 0 6px;}
+  .ident label{display:flex;flex-direction:column;font-size:9px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+  .ident .val{font-size:13px;font-weight:600;color:#000;}
+  .auto-cell{background:var(--auto-bg);font-weight:700;text-align:center;border-radius:3px;padding:2px 4px;border:1px solid #93b4d8;min-width:32px;display:inline-block;}
+  .attrs{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;}
+  .attr{display:flex;align-items:center;justify-content:space-between;background:#f1f5f9;padding:3px 8px;border-radius:3px;}
+  .attr span{font-weight:700;text-transform:uppercase;font-size:11px;}
+  .attr b{font-size:13px;}
+  table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:4px;}
+  th{font-family:'Share Tech Mono',monospace;font-size:8.5px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:2px 4px;text-align:center;}
+  th.skill-h{text-align:left;padding-left:6px;}
+  td{padding:2px 4px;border-bottom:1px solid #eef1f5;line-height:1.3;}
+  td.skill{text-align:left;padding-left:6px;}
+  .cat-formula{font-family:'Share Tech Mono',monospace;font-size:8px;color:#9fd;font-weight:400;}
+  .total{font-weight:700;text-align:center;background:var(--auto-bg);border:1px solid #93b4d8;border-radius:2px;}
+  .lifebox{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:6px;margin-bottom:6px;}
+  .lifegrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:4px;text-align:center;font-size:11px;}
+  .lifegrid .hd{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;}
+  .lifegrid .v{background:var(--auto-bg);font-weight:700;border-radius:2px;padding:2px;border:1px solid #93b4d8;}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-top:4px;font-size:11px;}
+  .metrics div{display:flex;justify-content:space-between;background:#f1f5f9;padding:2px 6px;border-radius:3px;}
+  .note{font-size:9px;color:var(--muted);font-style:italic;margin-top:3px;line-height:1.3;}
+  .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:10px;}
+  .loc-cell{background:#f1f5f9;padding:3px 6px;border-radius:3px;}
+  .loc-cell .lname{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--muted);}
+  .loc-cell .lval{margin-top:2px;font-weight:700;}
+  .disc-band{margin-top:6px;}
+  .disc-inner{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;}
+  .disc-inner>div{flex:1;min-width:220px;}
+  .equipo-list{font-size:11.5px;line-height:1.5;padding-left:18px;margin-top:2px;}
+  .equipo-list li{margin-bottom:2px;}
+  .runa-box{font-size:10.5px;background:#f8fafc;border-left:3px solid var(--accent2);padding:4px 8px;margin:3px 0;border-radius:0 4px 4px 0;}
+  .footnote{font-size:9.5px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:10px;padding-top:5px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>La Senda de los Errantes</h1>
+    <span class="subtitle">Ficha de personaje</span>
+  </div>
+
+  <div class="ident">
+    <label>Jugador<span class="val">Miguel Pascual (hijo)</span></label>
+    <label>Personaje<span class="val">Miguel Jr. ("el Guapo")</span></label>
+    <label>Nivel Tecnológico<span class="val">6</span></label>
+    <label>Naturaleza<span class="val">Guapo</span></label>
+    <label>Corporación<span class="val">—</span></label>
+    <label>Puntos Épicos<span class="val">2 / 2</span></label>
+  </div>
+
+  <div class="row">
+    <div class="col-left">
+      <h2>Atributos</h2>
+      <div class="attrs">
+        <div class="attr"><span>Car</span><b>35</b></div>
+        <div class="attr"><span>Agi</span><b>40</b></div>
+        <div class="attr"><span>Per</span><b>40</b></div>
+        <div class="attr"><span>Con</span><b>50</b></div>
+        <div class="attr"><span>Int</span><b>41</b></div>
+        <div class="attr"><span>Fue</span><b>40</b></div>
+        <div class="attr"><span>Vol</span><b>30</b></div>
+        <div class="attr"><span>Hab</span><b>30</b></div>
+      </div>
+      <div class="note">Con 50 = base 30 + Fibra dérmica (+20). Fue 40 = base 30 + Injerto de hueso (+10). Agi 40 = base 30 + Potenciador Liebre (+10). Int 41 = base 36 + Potenciador Cerebral (+5).</div>
+
+      <h2>Vida por zona</h2>
+      <div class="lifebox">
+        <div class="lifegrid">
+          <div class="hd"></div><div class="hd">Leve</div><div class="hd">Medio</div><div class="hd">Grave</div>
+          <div class="hd" style="text-align:left;">PV/nivel</div>
+          <div class="v">24</div><div class="v">24</div><div class="v">24</div>
+        </div>
+        <div class="note">Aturdimiento 26 · Herido 15 · Exhausto 26</div>
+      </div>
+
+      <h2>Métricas</h2>
+      <div class="metrics">
+        <div><span>Humanidad</span><b>83</b></div>
+        <div><span>Distorsión</span><b>—</b></div>
+        <div><span>Salud Mental</span><b>—</b></div>
+      </div>
+
+      <h2>Mutación</h2>
+      <div class="runa-box">Piel escamosa: −5 Carisma (sin ropa).</div>
+
+      <h2>Méritos / Defectos</h2>
+      <table><tr><th class="skill-h">Nombre</th><th>Tipo</th></tr>
+        <tr><td class="skill">Iniciativa mejorada</td><td>Mérito</td></tr>
+        <tr><td class="skill">Habilidad mejorada</td><td>Mérito</td></tr>
+        <tr><td class="skill">Pilotaje 2</td><td>Mérito</td></tr>
+        <tr><td class="skill">Daltonismo</td><td>Defecto</td></tr>
+      </table>
+
+      <h2>Distorsión (sin desarrollar)</h2>
+      <table><tr><th class="skill-h">Disciplina</th><th>Valor</th></tr>
+        <tr><td class="skill">Det/Ident. distorsión</td><td class="total">44/1</td></tr>
+        <tr><td class="skill">Manipular distorsión</td><td class="total">31/−1</td></tr>
+        <tr><td class="skill">Camino de los portales</td><td class="total">20</td></tr>
+        <tr><td class="skill">Herrero Rúnico</td><td class="total">31/1</td></tr>
+      </table>
+    </div>
+    <div class="col-g2">
+      <h2>Académicas <span class="cat-formula">base 36</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Valor</th></tr>
+        <tr><td class="skill">Juego</td><td class="total">39</td></tr>
+        <tr><td class="skill">Supervivencia</td><td class="total">57</td></tr>
+        <tr><td class="skill">Ciencias</td><td class="total">35/2</td></tr>
+        <tr><td class="skill">Programación</td><td class="total">11/5</td></tr>
+        <tr><td class="skill">Esconderse/Evadirse</td><td class="total">6/7</td></tr>
+        <tr><td class="skill">Diseño Hardware</td><td class="total">46/40</td></tr>
+      </table>
+      <h2>Atlética <span class="cat-formula">base 40</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Valor</th></tr>
+        <tr><td class="skill">Conducir</td><td class="total">52/5</td></tr>
+        <tr><td class="skill">Resistir</td><td class="total">35/5</td></tr>
+        <tr><td class="skill">Proezas</td><td class="total">35/25</td></tr>
+        <tr><td class="skill">Pilotar</td><td class="total">35/25</td></tr>
+      </table>
+    </div>
+
+    <div class="col-g3">
+      <h2>Tecnológica <span class="cat-formula">base 35</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Valor</th></tr>
+        <tr><td class="skill">Ciber-tecnología</td><td class="total">55</td></tr>
+        <tr><td class="skill">Demoliciones</td><td class="total">54</td></tr>
+        <tr><td class="skill">Electrónica</td><td class="total">90</td></tr>
+        <tr><td class="skill">Química</td><td class="total">35</td></tr>
+        <tr><td class="skill">Armería</td><td class="total">55/60</td></tr>
+        <tr><td class="skill">Mecánica</td><td class="total">30/35</td></tr>
+      </table>
+      <h2>Social</h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Valor</th></tr>
+        <tr><td class="skill">Autocontrol</td><td class="total">21 (5 inv.)</td></tr>
+      </table>
+      <div class="note">Base de rama Social no legible en la hoja original.</div>
+    </div>
+    <div class="col-g4">
+      <h2>Combate</h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Total</th></tr>
+        <tr><td class="skill">Iniciativa</td><td class="total">55</td></tr>
+        <tr><td class="skill">Alerta</td><td class="total">33</td></tr>
+        <tr><td class="skill">Esquivar</td><td class="total">35</td></tr>
+        <tr><td class="skill">Sin Armas (Pelea / Lanzar)</td><td class="total">55 / 58</td></tr>
+        <tr><td class="skill">Distancia (peq/med/grande)</td><td class="total">84/78/55</td></tr>
+        <tr><td class="skill">Arma CC (mediana)</td><td class="total">40</td></tr>
+      </table>
+      <h2>Armas</h2>
+      <table><tr><th class="skill-h">Nombre</th><th>%</th><th>Dñ</th></tr>
+        <tr><td class="skill">Tridente (eléctrico)</td><td>34</td><td>7</td></tr>
+        <tr><td class="skill">Bola/Cuchillo</td><td>65/40</td><td>9/4</td></tr>
+        <tr><td class="skill">Heatdragon (Lanza Vampira, explosivo)</td><td>37</td><td>10</td></tr>
+        <tr><td class="skill">Lanzallamas</td><td>8</td><td>—</td></tr>
+        <tr><td class="skill">Ballestor (+1 Éxito, +10 Ini, +5 Hab)</td><td>189</td><td>5</td></tr>
+      </table>
+      <div class="note">Munición: Perforación x2</div>
+      <h2>Armadura / PV por zona</h2>
+      <div class="loc-grid">
+        <div class="loc-cell"><div class="lname">Cabeza</div><div class="lval">10 (4/2)</div></div>
+        <div class="loc-cell"><div class="lname">Torso</div><div class="lval">9-5 (4/2)</div></div>
+        <div class="loc-cell"><div class="lname">Brazos</div><div class="lval">4-3 (4/2)</div></div>
+        <div class="loc-cell"><div class="lname">Piernas</div><div class="lval">2-1 (4/2)</div></div>
+        <div class="loc-cell"><div class="lname">Energía</div><div class="lval">3</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="disc-band">
+    <h2>Casco · Necro-chip · Implantes</h2>
+    <div class="disc-inner">
+      <div>
+        <div class="note">Casco: Electrónica −10 · Traje Servoasistidos 30. Necro-chip: cabeza. Dinero: 793.258 PC.</div>
+        <table><tr><th class="skill-h">Implante</th><th>Efecto</th></tr>
+          <tr><td class="skill">Conexión I.N.T.</td><td>—</td></tr>
+          <tr><td class="skill">Potenciador Liebre</td><td>+10 Ini, +10 Agi</td></tr>
+          <tr><td class="skill">Potenciador Cerebral</td><td>+5 Inteligencia</td></tr>
+          <tr><td class="skill">Injerto neuronal</td><td>+10 Ini, uso de objeto a dos manos</td></tr>
+          <tr><td class="skill">Injerto de hueso</td><td>+10 Fue, +5 pts. herida</td></tr>
+          <tr><td class="skill">Fibra dérmica</td><td>+20 Con, 2 blindaje natural</td></tr>
+          <tr><td class="skill">Esqueleto reforzado</td><td>+5 Aturdimiento</td></tr>
+          <tr><td class="skill">Procesador básico</td><td>—</td></tr>
+        </table>
+      </div>
+      <div>
+        <h2 style="margin-top:0;">Equipo</h2>
+        <ul class="equipo-list">
+          <li>Taquilla</li>
+          <li>Perla de distorsión 26/100 (collar intercambiable)</li>
+          <li>Explosivos: 3 detonadores térmicos, 12 g de explosivo, 1 granada eléctrica, 1 granada de fragmentación</li>
+          <li>1 kg de café de Nicaragua</li>
+          <li>Máscara de gas</li>
+          <li>Traje elegante de brillos morados con toques dorados</li>
+          <li>Escudo de energía: Blindaje 2</li>
+          <li>Armadura Táctica "Hotpoint": sensores avanzados, soporte vital básico, Blindaje 3, +5 Percepción, +5 Agilidad</li>
+          <li>Armadura de Asalto "Hotpoint": Blindaje 4, +10 tiradas de Fuerza, −10 tiradas de movilidad</li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="margin-top:0;">Clon de emergencia</h2>
+        <div class="runa-box">Existe un clon de respaldo de Miguel Jr., guardado en la nevera-congelador a bordo de la Teseo, junto a implantes retirados de víctimas/enemigos. Miguel Jr. conoce su existencia.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">Ficha de solo lectura para jugar — La Senda de los Errantes. Los valores vienen de la transcripción de la hoja original de mesa; algunas cifras antiguas de difícil lectura se muestran tal cual.</div>
+</div>
+</body>
+</html>

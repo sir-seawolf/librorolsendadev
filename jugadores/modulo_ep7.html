@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Módulo — La Persecución (EP-7)</title>
+<link rel="stylesheet" href="../senda_estilo.css">
+<style>
+  .fichas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:16px 0;}
+  .ficha-rapida{border:2px solid #0f1115;border-radius:6px;overflow:hidden;}
+  .ficha-rapida-cab{background:#0f1115;color:#fff;padding:6px 10px;}
+  .ficha-rapida-nombre{font-family:'Orbitron',sans-serif;font-size:13px;text-transform:uppercase;}
+  .ficha-rapida-rol{font-family:'Share Tech Mono',monospace;font-size:10px;color:#ff3b3b;}
+  .ficha-rapida-cuerpo{padding:8px 10px;}
+  .ficha-rapida-attrs{font-size:12px;margin-bottom:6px;}
+  .ficha-rapida-skills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;}
+  .ficha-rapida-pill{background:#1d6fa3;color:#fff;border-radius:3px;padding:2px 6px;font-size:10.5px;}
+  .ficha-rapida-equipo{font-size:11px;line-height:1.4;}
+</style>
+</head>
+<body>
+<div class="document-container">
+
+<h1>Módulo — La Persecución (EP-7 / Kawalapiti)</h1>
+<blockquote>«Fascinante. Arquitectura claramente influenciada por los constructores de la Gran Muralla, aunque con modificaciones post-industriales evidentes. O era Colón. Uno de los dos.»</blockquote>
+
+<hr>
+
+<h2>Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> un Inquisidor de TecnoStealer llega a EP-7 siguiendo un rastro de Distorsión ambiguo. Su presencia obliga a Declan a huir con algo que nunca debió tener —un crucifijo que esconde mucho más que un recuerdo— y ese salto de emergencia arrastra a todos, PJ incluidos, hasta Kawalapiti, donde el resto del grupo protagonista del blog ya está metido en una crisis propia: la huida al espacio de un grupo de pseudo-arcanitas. Dos persecuciones que se cruzan, una investigación que nunca ve el fondo del asunto, y una nave que exige entrar a apagarla desde dentro.</p>
+<p><strong>Duración:</strong> one-shot largo, de 5-7 horas, en dos actos. El Acto 1 (EP-7) puede jugarse en una sesión corta si hace falta partir la partida en dos días de mesa.</p>
+<p><strong>Tono:</strong> empieza como fricción entre un investigador metódico y dos veteranos que llevan media vida ignorando a la autoridad con una sonrisa, y en el Acto 2 se convierte en acción real de nave y abordaje, sin perder el pulso cómico. Archi, que se queda en EP-7 "dando explicaciones", es el motor de humor del Acto 1: sus anacronismos históricos no son solo color, esta vez son una táctica de distracción, aunque ni él lo sepa del todo. En el Acto 2 el humor viene del contraste entre la seriedad de la operación y la familiaridad cansada del grupo del Hacedor, que ya ha hecho esto demasiadas veces. El humor que funciona aquí es el que tarda medio segundo en aterrizar, no el chiste redondo.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+
+<p><strong>Decisiones declaradas de este módulo</strong> (detalle completo al final, en el Informe de fuentes):</p>
+<ul>
+<li>El Inquisidor de Capricornio conserva la máscara que absorbe la luz.</li>
+<li><strong>Lo que esconde el crucifijo de Declan no es una perla: es una Daga del LORD real</strong> —una de las aproximadamente cien que hay en juego, no necesariamente la única que importa a la trama mayor—, que el Hacedor le confió hace tiempo, sabiendo que Declan había construido la capilla. Esto es un secreto exclusivo del Narrador: <strong>nadie en la partida lo descubre</strong>, ni el Inquisidor, ni los PJ, ni siquiera Declan sabe con certeza absoluta lo que guarda. No se revela en este módulo bajo ninguna circunstancia.</li>
+<li>Las <strong>pulseras de Arquímedes</strong> permiten saltos espacio-temporales exactos, pero necesitan una <strong>perla llena</strong> como combustible por viaje, y el salto que producen es "chapucero": deja un rastro localizable por quien sepa leerlo.</li>
+<li><strong>Hestia</strong>, la IA que hoy habita EP-7 pero fue construida originalmente para la nave Teseo, nunca habla directamente. Actúa por gestos indirectos —luces, accesos, objetos que aparecen donde antes no estaban—. Es ella quien entrega a Declan y Entrerríos el par de perlas llenas que guardaba del Hacedor, dándoles los medios para saltar.</li>
+<li>Solo Declan y Entrerríos saltan con las pulseras. Los PJ llegan a Kawalapiti por medios convencionales, en la ventana de un día que les da, sin saberlo, el propio Inquisidor.</li>
+<li>En Kawalapiti está el resto del grupo protagonista del blog: el Hacedor, Kais, Isthar, Juanda, Miguel (hijo) y Robogato. Ahí se reúne todo el reparto.</li>
+<li>Las pseudo-arcanitas son de <strong>rango medio</strong>: un enfrentamiento directo con ellas es legítimo para los PJ, no algo de lo que protegerlos.</li>
+<li>El único premio de la persecución de las arcanitas es haberlas vencido. No hay botín narrativo adicional.</li>
+</ul>
+
+<p><strong>Verdad del Narrador:</strong> la Daga del LORD real que hay en el crucifijo no tiene relación alguna, dentro de este módulo, con la lectura de Distorsión que trajo al Inquisidor —esa lectura es el eco de un salto que, cuando se detectó, aún no había ocurrido—. El Inquisidor nunca llega a saber qué protegía Declan de verdad. Puede sospechar, puede tener razón sin saberlo, pero el módulo no se lo confirma nunca.</p>
+
+<p><strong>Si nadie interviene:</strong> el Inquisidor sigue igual su investigación en el Acto 1. La huida de Declan y Entrerríos ocurre igual, la disparen o no los PJ: es un evento que llega desde fuera de sus decisiones. El Acto 2 ocurre en Kawalapiti tanto si los PJ llegan a tiempo como si no —si llegan tarde, la persecución de las arcanitas ya está resuelta cuando aterrizan, y el módulo se cierra sin su participación en esa parte.</p>
+
+<h3>Desarrollo en dos actos</h3>
+<p><strong>Acto 1 — EP-7</strong></p>
+<ul>
+<li>Rastro frío — el Inquisidor llega a EP-7 haciendo preguntas discretas.</li>
+<li>La huida — Hestia actúa, Declan y Entrerríos saltan ante los ojos de todos, Archi se queda atrás dando explicaciones.</li>
+<li>Un día de margen — el Inquisidor necesita un maestro de portales para seguir el rastro del salto; Archi, sin proponérselo del todo, se lo pone más difícil de lo que debería.</li>
+</ul>
+<p><strong>Acto 2 — Kawalapiti</strong></p>
+<ul>
+<li>Reencuentro — los PJ llegan a Kawalapiti y se topan con todo el grupo del Hacedor en plena crisis con las pseudo-arcanitas.</li>
+<li>La persecución espacial — la Teseo caza la nave arcanita principal y la destruye; las arcanitas escapan en una nave de repuesto con el sistema de salto dimensional inutilizado.</li>
+<li>El abordaje — los PJ entran en la nave arcanita a impedir que transmitan lo que saben, con la autodestrucción de la nave como reloj en marcha.</li>
+<li>Salida — cierre de ambos hilos, en EP-7 y en Kawalapiti.</li>
+</ul>
+
+<hr>
+
+<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong></p>
+<ul>
+<li><strong>Acto 1:</strong> el Inquisidor llega con dos escoltas Suboficiales de TecnoStealer (ficha en Reparto). Nadie más.</li>
+<li><strong>Acto 2:</strong> las pseudo-arcanitas son un grupo fijo de rango medio (ficha en Reparto), a bordo de una única nave de repuesto. No llegan refuerzos arcanitas a media persecución.</li>
+</ul>
+<p><strong>El grupo del Hacedor no es una fuerza fija de esta ficha.</strong> Es el otro protagonista del Acto 2, con su propia agenda (acabar con la nave principal, no con la de repuesto) — no escala para rescatar a los PJ si algo sale mal en el abordaje; ese tramo es suyo.</p>
+
+<p><strong>Reloj autónomo, Acto 1:</strong></p>
+<table>
+<tr><th>Momento</th><th>Qué ocurre</th></tr>
+<tr><td>H+0</td><td>El Inquisidor y su escolta llegan al hangar principal, con la cobertura de una inspección rutinaria.</td></tr>
+<tr><td>H+1</td><td>Empieza a hacer preguntas discretas por la estación.</td></tr>
+<tr><td>H+2</td><td>Localiza a Declan por el registro de personal.</td></tr>
+<tr><td>H+2:30</td><td>Pide hablar con Declan formalmente — o la presión llega antes, si los PJ la aceleran.</td></tr>
+<tr><td>H+2:45</td><td>Hestia actúa. Declan y Entrerríos saltan (Escena 2).</td></tr>
+<tr><td>H+3</td><td>El Inquisidor exige respuestas por el salto. Archi se ofrece a "explicarlo" (Escena 3).</td></tr>
+<tr><td>H+3 a H+27</td><td>Ventana de un día: el Inquisidor busca un maestro de portales que no está con él. Los PJ, si deciden ir tras Declan, viajan a Kawalapiti en este margen.</td></tr>
+</table>
+
+<p><strong>Reloj autónomo, Acto 2 (desde que empieza la persecución espacial):</strong></p>
+<table>
+<tr><th>Turno</th><th>Qué ocurre</th></tr>
+<tr><td>1</td><td>La nave arcanita principal intenta huir; la Teseo la intercepta.</td></tr>
+<tr><td>2</td><td>La nave principal es destruida o inutilizada; las arcanitas evacúan a la nave de repuesto.</td></tr>
+<tr><td>3</td><td>La nave de repuesto lanza hasta <strong>tres drones</strong> con el mensaje que quieren enviar. Cada drone no interceptado es un fracaso parcial.</td></tr>
+<tr><td>4</td><td>La nave de repuesto es acorralada. Empieza el abordaje (Escena 6).</td></tr>
+<tr><td>5 en adelante</td><td>Cuenta atrás de autodestrucción de la nave arcanita una vez activada — 5 turnos, salvo que los PJ la desactiven o salgan antes.</td></tr>
+</table>
+
+<p><strong>Objetivo inmediato del Acto 2:</strong> que ningún drone llegue a transmitir, y que la nave arcanita quede neutralizada. El único premio es la victoria misma.</p>
+<p><strong>No hay villano fácil en el Acto 1.</strong> El Inquisidor cree, sinceramente, que está haciendo bien su trabajo. En el Acto 2 sí hay enemigo legítimo con quien combatir a fondo: las arcanitas de rango medio no son un malentendido, son la amenaza real de esta mitad del módulo.</p>
+
+<hr>
+
+<h2>Lo que ocurrió realmente</h2>
+<h3>Verdad completa</h3>
+<p>Hace meses, TecnoStealer detectó una lectura de Distorsión anómala cerca del Vertedero. El Inquisidor la marcó como pendiente de revisión. Lo que no sabe es que esa lectura es el eco —adelantado en el tiempo, una rareza propia de cómo funcionan las pulseras de Arquímedes— del salto que Declan y Entrerríos acabarán dando en la Escena 2 de esta partida, meses después, justo cuando él llega a EP-7.</p>
+<p>Declan lleva tiempo custodiando un crucifijo que el Hacedor le entregó hace tiempo, sabiendo que Declan había construido una capilla en EP-7. Dentro no hay una reliquia cualquiera: es una Daga del LORD real, una de las cerca de cien que existen. Ni Declan ni Entrerríos lo saben con certeza —lo sospechan, no lo confirman, y este módulo tampoco se lo confirma nunca a nadie—.</p>
+<p><strong>Lo que Declan no sabe todavía:</strong> la Daga real, el propio Hacedor la ha escondido en otro sitio, lejos de todo esto. Lo que hay ahora mismo en el crucifijo es otra Daga distinta, que el Hacedor le da el cambiazo a Declan en cuanto se reencuentran en Kawalapiti (Escena 4) — sin explicaciones, sin que nadie más lo note. Declan solo se da cuenta de que algo ha cambiado porque el crucifijo deja de "sentirse" igual, y entiende, sin que se lo digan del todo, que tiene que volver a sintonizarlo. Ni él ni nadie más en la partida llega a saber por qué, ni qué fue exactamente de la primera.</p>
+<p>Cuando la presión del Inquisidor se vuelve insostenible, <strong>Hestia</strong> —la IA que hoy habita EP-7 pero que fue construida originalmente para la nave Teseo, y que nunca habla directamente— actúa por su cuenta: entrega a Declan y Entrerríos el par de perlas llenas que guardaba, propiedad del Hacedor. Con ellas, las pulseras de Arquímedes permiten un salto exacto de espacio y tiempo. Saltan a Kawalapiti, buscando ayuda del Hacedor para lo del Inquisidor — sin saber que él ya está metido hasta el cuello en la persecución de un grupo de pseudo-arcanitas que acaban de huir al espacio.</p>
+<p>Los PJ, si deciden seguirlos, llegan a Kawalapiti por medios convencionales, en la ventana de un día que les da —sin saberlo— el propio Inquisidor: necesita un maestro de portales para seguir un rastro tan chapucero como el que deja este tipo de salto, y ese especialista no está con él.</p>
+<p>En Kawalapiti, todo el grupo protagonista del blog —el Hacedor, Kais, Isthar, Juanda, Miguel hijo, Robogato— se reúne con Declan y Entrerríos justo cuando la nave arcanita principal intenta escapar al espacio. La Teseo la intercepta y la destruye; las arcanitas sobrevivientes huyen en una nave de repuesto con el sistema de salto dimensional fuera de servicio —necesita 24 horas de recarga—. Intentan, en cambio, enviar hasta tres drones con lo que saben. Los PJ entran a bordo para impedirlo, con la autodestrucción de la nave como reloj en marcha.</p>
+
+<h3>Qué saben los PJ y qué no</h3>
+<p>Los PJ ven el salto de Declan y Entrerríos en directo. No saben qué hay en el crucifijo —nadie se lo dice, nadie lo abre delante de ellos— y el módulo no está obligado a dárselo nunca. En Kawalapiti, participan de pleno en la persecución de las arcanitas: eso sí lo viven, lo deciden y lo resuelven ellos.</p>
+
+<h3>Tono</h3>
+<p>El Inquisidor debe dar miedo del tipo correcto en el Acto 1: no por lo que pueda hacer con las manos, sino porque parece que ya sabe la respuesta antes de preguntar. Archi, quedándose atrás, es la válvula de humor: cree sinceramente que está ayudando al explicarle al Inquisidor la historia de las pulseras de salto con una precisión histórica que no tiene ni un ápice de verdad. En el Acto 2 el tono cambia a acción real —disparos, maniobras, un reloj corriendo— sin perder los golpes de humor que ya trae el grupo del Hacedor consigo: cansancio compartido, bromas que solo tienen sentido entre quienes llevan meses en esto.</p>
+
+<h3>Cómo entran los PJ</h3>
+<p>No son forasteros de paso: <strong>viven en EP-7</strong>. Conocen bien a Declan y Entrerríos, y son amigos del grupo del Hacedor —ya han compartido trabajo con ellos antes—. La partida arranca con cada PJ en su día a día en la estación, cuando el Inquisidor llega.</p>
+
+<hr>
+
+<h2>La aventura</h2>
+<h3>ACTO 1 — EP-7</h3>
+<h3>Escena 1 — Rastro frío</h3>
+<blockquote>EP-7 tiene forma de colmillo de lobo — un casco alargado y curvo, más ancho por dentro de lo que su silueta exterior promete. Es una estación médica de más de cien años, reconvertida a hangar y base de expediciones. Huele a metal recalentado, a algo antiséptico que ya no debería quedar, y a comida real saliendo del comedor.</blockquote>
+<p>Un transporte discreto atraca sin anunciarse. Dos figuras con armadura media bajan primero. Detrás, una tercera —máscara que no refleja ni un destello de luz, capa oscura, paso tranquilo— se detiene un momento a mirar la estación entera antes de dar el primer paso dentro.</p>
+<p><strong>Qué está ocurriendo:</strong> el Inquisidor de Capricornio ha llegado bajo cobertura de inspección de rutas comerciales. No es mentira del todo, pero no es su motivo real.</p>
+<p><strong>PNJ presentes:</strong></p>
+<ul>
+<li><strong>El Inquisidor de Capricornio</strong> — formal, curioso, casi cortés. No mencionará a Declan por su nombre hasta que tenga algo más que una corazonada.</li>
+<li><strong>Escolta (×2)</strong> — Suboficiales TecnoStealer, disciplinados, silenciosos.</li>
+<li><strong>Entrerríos</strong>, si está en el hangar — lo nota antes que nadie y va derecho a buscar a Declan.</li>
+</ul>
+<p><strong>Interpretar al Inquisidor:</strong></p>
+<blockquote>«Buenas rutas comerciales las que tienen aquí. Es solo curiosidad profesional.»<br>«¿Cuántos años dicen que tiene esta instalación?»<br>«No he venido a incomodar a nadie. Todavía no sé si tengo motivos para hacerlo.»</blockquote>
+<p><strong>Tiradas posibles:</strong></p>
+<ul>
+<li><strong>Alerta o Investigación</strong> (identificar a los recién llegados): éxito → reconocen el corte TecnoStealer y, si supera 60, la dignidad de Inquisidor.</li>
+<li><strong>Social:</strong> éxito → notan que Entrerríos se ha ido con una prisa impropia de él.</li>
+</ul>
+<div class="master-note"><strong>Reto personal — Entrerríos:</strong> es él quien identifica primero, sin que nadie se lo pida, el paso militar de la escolta bajo el uniforme de "inspección rutinaria" — su propio ojo de soldado viejo reconociendo a otro. No es una tirada de Alerta genérica de grupo: es su momento, dale la palabra a él antes que a nadie más en la mesa. Si en tu grupo Entrerríos no está jugado por un PJ presente en esta escena, usa el mismo beat con Declan reaccionando a la noticia que le trae.</div>
+<p><strong>Cómo termina:</strong> el grupo sabe que ha llegado alguien de TecnoStealer y que algo se está moviendo. Corta a la Escena 2 en cuanto la mesa esté lista — no depende de que los PJ terminen nada aquí.</p>
+
+<h3>Escena 2 — La huida</h3>
+<blockquote>En la capilla, Declan tiene el crucifijo en las manos. No es el gesto tranquilo del que reza — es el de alguien calculando cuánto tiempo le queda. De pronto, sin que nadie lo accione, un panel de la pared se ilumina. Luego otro. Un cajón que llevaba cerrado meses se abre solo.</blockquote>
+<p>Hestia —silenciosa, indirecta, sin voz— acaba de decidir algo.</p>
+<p><strong>Qué está ocurriendo:</strong> con la presión del Inquisidor a punto de llegar a la puerta, Hestia entrega a Declan y Entrerríos el par de perlas llenas que guardaba del Hacedor. Son las pulseras de Arquímedes las que convierten eso en un billete de salida: un salto espacio-temporal exacto, hacia donde está el Hacedor.</p>
+<p><strong>PNJ presentes:</strong></p>
+<ul>
+<li><strong>Declan</strong> — no tiene tiempo de explicarse del todo. Si los PJ están presentes, les dedica una frase y una disculpa, no un discurso.</li>
+<li><strong>Entrerríos</strong> — cubre la puerta hasta el último segundo.</li>
+<li><strong>Archi</strong>, si está en la partida — se ofrece, con total sinceridad y ninguna utilidad real, a "encargarse" del Inquisidor.</li>
+</ul>
+<p><strong>Interpretar a Declan:</strong></p>
+<blockquote>«No hay tiempo de hacer esto bien. Cuidaos. Volveremos.»<br>«Si preguntan, no mintáis. Solo... no sabéis nada que no sea verdad a medias.»</blockquote>
+<p><strong>Cómo se resuelve el salto:</strong> un fogonazo de aire desplazado, un sonido que no es sonido, y ya no están. El pasillo queda como si nada hubiera pasado, salvo por el silencio que deja detrás.</p>
+<p><strong>Tiradas posibles:</strong></p>
+<ul>
+<li><strong>Alerta o Electrónica</strong> (entender lo que Hestia acaba de hacer): éxito → los PJ intuyen que alguien, o algo, en la propia estación ha actuado a propósito — sin necesitar saber quién es Hestia para notarlo.</li>
+</ul>
+<div class="master-note"><strong>Reto personal — Entrerríos:</strong> "cubre la puerta hasta el último segundo" no es solo color: pídele una tirada de Alerta o Arma CC/Distancia (según cómo la juegue) para aguantar el hueco justo lo necesario. Un fallo no tiene por qué ser catastrófico —esto no es la escena de combate del módulo— pero sí puede costarle un golpe, un objeto perdido en la carrera, o que alguien de fuera vea más de lo que debería antes de que la puerta se cierre. Es su escena de acción personal del Acto 1.</div>
+<div class="master-note"><strong>Reto personal — Declan:</strong> antes de saltar, tiene tiempo para una frase, no un discurso — y elegir a quién dirigirla es su decisión, no la del Narrador. Si hay un PJ con quien tenga una relación marcada, dirígesela a él o ella directamente; si no, dirígela al grupo. Esa frase (o su silencio, si el jugador prefiere no decir nada) es lo que sus vecinos de EP-7 recuerdan de él durante todo el Acto 1 siguiente — dale peso.</div>
+<p><strong>Cómo termina:</strong> Declan y Entrerríos ya no están en EP-7. El Inquisidor, si llega a tiempo de verlo, tiene ahora un misterio mucho más grande que una perla.</p>
+<blockquote>Uno de los suboficiales de la escolta se ajusta la armadura, se aclara la garganta, y no dice nada. El otro tampoco.</blockquote>
+
+<h3>Escena 3 — Un día de margen</h3>
+<blockquote>El Inquisidor se ha quedado mirando el punto exacto del pasillo donde el aire se plegó sobre sí mismo, como si mirar lo bastante fuerte fuera a hacer que volviera a pasar.</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el Inquisidor necesita rastrear el salto. Los saltos con pulseras de Arquímedes son "chapuceros" — dejan un camino localizable — pero él no tiene a bordo un maestro de portales que sepa leerlo, y tiene que ir a buscar uno. Eso le va a costar, aproximadamente, un día.</p>
+<p><strong>PNJ presentes:</strong></p>
+<ul>
+<li><strong>El Inquisidor</strong> — quiere respuestas inmediatas, pero es lo bastante metódico como para no improvisar un rastreo que podría hacer mal.</li>
+<li><strong>Archi</strong>, si aparece — se ofrece a explicarle "todo lo que sabe" sobre el fenómeno, con una seguridad total y una precisión histórica nula. Sin quererlo, le hace perder tiempo real: le sugiere fuentes equivocadas, nombres de expertos que no existen o que llevan muertos un siglo, anécdotas que no vienen a cuento.</li>
+</ul>
+<p><strong>Interpretar a Archi</strong> (si está en la partida):</p>
+<blockquote>«Ah, esto es clásico. Los primeros saltos documentados datan de la fundación de Cartago, ¿lo sabía? Nadie lo sabe. Debería saberlo.»<br>«Necesita a un maestro de portales de verdad. Conozco a uno. Está muerto. Pero conocía a otro.»</blockquote>
+<p><strong>Tiradas posibles:</strong></p>
+<ul>
+<li><strong>Social o Persuasión</strong> (ayudar a Archi a "ayudar", si los PJ quieren participar en el despiste): éxito → el Inquisidor pierde una hora más de la cuenta sin sospechar que ha sido a propósito.</li>
+</ul>
+<p><strong>Cómo termina:</strong> el Inquisidor se marcha a buscar a su maestro de portales, con la investigación en pausa durante aproximadamente un día. Los PJ, si deciden seguir a Declan, tienen esa ventana para llegar a Kawalapiti por medios convencionales.</p>
+<p><strong>Después:</strong> corta al Acto 2. Si los PJ no van tras Declan, el módulo puede cerrarse aquí como un one-shot corto centrado solo en el Acto 1 — ver Decisión final.</p>
+
+<hr>
+
+<h3>ACTO 2 — KAWALAPITI</h3>
+<h3>Escena 4 — Reencuentro</h3>
+<blockquote>Kawalapiti recibe a los PJ con un cielo que no termina de decidir de qué color quiere ser. Antes de que puedan orientarse del todo, el suelo tiembla con algo que no es un terremoto: es una nave despegando muy cerca, muy rápido, muy mal.</blockquote>
+<p><strong>Qué está ocurriendo:</strong> esto no es un primer encuentro. Los PJ <strong>viven en EP-7</strong> y conocen de sobra al grupo del Hacedor —Kais, Isthar, Juanda, Miguel hijo, Robogato—: son amigos, ya han trabajado juntos antes, y Kawalapiti tampoco les es un mundo extraño. Llegan justo cuando la crisis con las pseudo-arcanitas estalla.</p>
+<p><strong>PNJ presentes, con su intención inmediata:</strong></p>
+<ul>
+<li><strong>El Hacedor</strong> — recibe a los PJ como lo que son, familia que acaba de llegar en mal momento. Ni un "encantado de conoceros": va directo a poner al día y a repartir tareas. «Menos mal que habéis llegado. Nos falta gente y sobra nave que atrapar.»</li>
+<li><strong>Declan y Entrerríos</strong> — aliviados de veras, no solo de ver caras conocidas: son sus vecinos de EP-7, su gente.</li>
+<li><strong>El resto del grupo</strong> (ver Reparto — Refuerzos inesperados) — ya en marcha hacia la Teseo, dando por hecho que los PJ se suman sin que haga falta pedirlo.</li>
+</ul>
+<p><strong>Un aparte que solo ve quien esté mirando:</strong> en medio del abrazo rápido entre el Hacedor y Declan, hay un gesto de manos demasiado preciso para ser casual — el Hacedor le devuelve el crucifijo a Declan un segundo después de habérselo cogido, sin decir nada al respecto. Si algún PJ tiene línea de visión directa y saca una tirada alta de Alerta o Percepción, nota el intercambio sin entender qué ha pasado. Declan tampoco lo entiende del todo: solo nota, ya con el crucifijo de vuelta en la mano, que "no se siente igual" — como un instrumento que hay que volver a afinar. No hay tiempo, en medio de la crisis, para que se pare a pensar en ello. Este módulo no explica ese momento, ni falta que hace.</p>
+<div class="master-note"><strong>Reto personal — Declan:</strong> en medio del caos de la reunión, es él —no el Hacedor, que ya está repartiendo tareas a su gente de siempre— quien tiene que poner en orden a los recién llegados que no forman parte del grupo veterano: los propios PJ. Una tirada de Liderazgo o Táctica lograda aquí no es solo color: da a todo el grupo de PJ una ventaja concreta y declarada de tu elección para el turno 1 de la Escena 5 (p.ej. +10 a la primera tirada de Pilotaje o Distancia de cada uno, o partir ya en posición de cobertura). Es su presencia calmada haciendo lo que mejor sabe hacer, con apuestas reales.</div>
+<div class="master-note"><strong>Reto personal — Entrerríos:</strong> mientras el Hacedor pone al día a los suyos, Entrerríos hace lo que haría cualquier soldado en terreno desconocido antes de entrar en combate: evaluar accesos, salidas y puntos débiles del punto de llegada. Una tirada de Alerta o Táctica le da a él (y solo a él, para que sea su momento) información concreta y útil para la Escena 6 más adelante — por ejemplo, saber de antemano por dónde es más fácil abordar la nave de repuesto, o qué punto conviene defender si algo sale mal.</div>
+<p><strong>Cómo termina:</strong> todos —PJ incluidos— suben a bordo o a naves de apoyo, con sitios y tareas ya medio asignados por la costumbre de haber hecho esto antes juntos. Corta directamente a la Escena 5.</p>
+
+<h3>Escena 5 — La persecución espacial</h3>
+<blockquote>Fuera de la atmósfera, las estrellas dejan de ser un fondo bonito y pasan a ser el único punto de referencia que queda. La nave arcanita principal es una mancha oscura que gana distancia, hasta que deja de hacerlo.</blockquote>
+<p><strong>Qué está ocurriendo:</strong> la Teseo intercepta y destruye (o inutiliza sin remedio) la nave arcanita principal. Los supervivientes evacúan a una nave de repuesto, más pequeña, con el sistema de salto dimensional fuera de servicio — necesita 24 horas de recarga que no tienen. No pueden huir por salto. Intentan, en cambio, lanzar hasta <strong>tres drones-mensaje</strong> con lo que saben.</p>
+<p><strong>PNJ presentes:</strong> el grupo del Hacedor pilotando y disparando desde la Teseo y naves de apoyo; las pseudo-arcanitas (ficha en Reparto) a bordo de su nave de repuesto.</p>
+<p><strong>Papel de los PJ:</strong> todo es legítimo aquí —disparar, maniobrar, sacar la propia nave fuera de cobertura para interceptar un drone—. Ver Combate en gravedad cero, más abajo.</p>
+<p><strong>Tiradas posibles:</strong></p>
+<ul>
+<li><strong>Pilotaje o Distancia</strong> (interceptar un drone antes de que escape del alcance): un dron interceptado por turno, como máximo, salvo maniobra excepcional.</li>
+<li><strong>Táctica</strong> (coordinarse con el grupo del Hacedor sin estorbar): éxito → una ventaja narrativa concreta para el turno siguiente.</li>
+</ul>
+<div class="master-note"><strong>Reto personal — Entrerríos:</strong> su ojo de soldado no distingue de siglos: tanto le da leer el campo de batalla de los Tercios como una pantalla de sensores, si alguien se lo explica una vez. Dale el rol de vigía/artillero: una tirada suya de Alerta o Distancia, antes de que el resto actúe, avisa con antelación de qué drone va a lanzarse y por dónde — quien lo intercepte después tira con ventaja. Es su forma de pesar en un combate de naves sin necesitar pilotar una.</div>
+<div class="master-note"><strong>Reto personal — Declan:</strong> no pilota ni dispara, pero mantiene las comunicaciones y la calma en la nave de los PJ. Una tirada suya de Táctica o Liderazgo, una vez por escena, puede repetir la tirada fallida de un compañero de interceptar un dron — su voz calmada dándole al piloto la corrección de rumbo que necesitaba.</div>
+<p><strong>Cómo termina:</strong> la nave de repuesto queda acorralada, sin salto y sin escapatoria real. Cuenten los drones interceptados —cada uno que sobrevive es un fracaso parcial que se paga después—. Corta a la Escena 6.</p>
+
+<hr>
+
+<h3>Escena 6 — El abordaje</h3>
+<blockquote>Dentro de la nave arcanita todo es ángulos cerrados y luces de emergencia. En algún punto, un panel empieza a parpadear en un patrón que cualquiera con instrucción básica reconoce: cuenta atrás.</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ abordan la nave de repuesto para impedir que transmita lo que sabe —el objetivo no es solo derrotar a las arcanitas, es silenciar la información antes de que salga—. La nave tiene un sistema de autodestrucción, y alguien lo activa en cuanto queda claro que van a perder.</p>
+<p><strong>PNJ presentes:</strong> 1-2 pseudo-arcanitas de élite y 2-3 de tripulación (ficha en Reparto) — un combate real, no una formalidad. Reparte la proporción según el número de PJ: con un grupo de 4-5, dos élite es suficiente para que el combate pese.</p>
+<p><strong>Reloj de esta escena:</strong> en cuanto se activa la autodestrucción, quedan <strong>5 turnos</strong> para neutralizar a las arcanitas, detener cualquier drone que quede a bordo, y salir o desactivar el sistema.</p>
+<p><strong>Dinámicas de la escena, con recordatorio de reglas:</strong></p>
+<div class="recuadro-combate"><strong>Las élite cargan su arma de pulsos.</strong> Un disparo instantáneo (Daño 10, Pen 3) sale ya; si una arcanita pasa un turno entero sin actuar más que cargar, el siguiente disparo sube a Daño 18/Pen 5; dos turnos cargando, Daño 28/Pen 8 — un aviso claro para que los PJ decidan si interrumpirla (derribarla, obligarla a cubrirse) antes de que suelte el disparo grande.</div>
+<div class="recuadro-combate"><strong>Su blindaje se regenera, y es alto de base.</strong> Bld 9, +2 por asalto si no reciben impacto ese asalto — concentrar el fuego en una sola arcanita rinde mucho más que repartir daño entre varias, porque a la que dejáis respirar se cura rápido.</div>
+<p><strong>Se curan entre ellas, no infinitamente.</strong> Medikit arcanita: +20 PV, 10 usos por unidad, sin recarga posible fuera de su nave — un recurso real pero agotable; si el combate se alarga, se van quedando sin curas.</p>
+<p><strong>Son más rápidas que cualquier humano sin implantes.</strong> +20 Iniciativa por sus reflejos militares duplicados — suelen actuar antes que los PJ salvo que estos lleven implantes propios o ventaja táctica.</p>
+<p><strong>La lanza a dos manos</strong> solo la lleva quien prescinda del arma de pulsos ese turno — recuerda el bonus de Fuerza si el atacante lo supera, y que cambiar de arma cuesta la acción del turno (ver Combate en gravedad cero).</p>
+<p><strong>Los drones sueltos, si quedan,</strong> son un objetivo aparte del combate principal: una tirada de Distancia o Pilotaje por turno basta para derribar uno, igual que en la Escena 5.</p>
+<p><strong>La cuenta atrás no espera al combate.</strong> Recuerda en voz alta cuántos turnos quedan cada vez que baja uno — la tensión de la escena depende de que la mesa la sienta correr, no de que se las tire en silencio.</p>
+<p><strong>Tiradas posibles:</strong></p>
+<ul>
+<li><strong>Combate directo</strong> contra las arcanitas — ficha en Reparto, sin restricciones de escala: son un enemigo legítimo.</li>
+<li><strong>Electrónica o Mecánica</strong> (desactivar la autodestrucción, si alguien lo intenta en vez de huir): Muy difícil (−20), pero posible.</li>
+<li><strong>Atletismo</strong> (evacuar a tiempo si no se desactiva): tirada final antes de que la cuenta llegue a cero, sin penalizador — es cuestión de llegar, no de acertar algo complicado.</li>
+</ul>
+<div class="master-note"><strong>Reto personal — Entrerríos ("aguantar la línea"):</strong> con F75/Bld9 regenerativo, un enfrentamiento cara a cara de Entrerríos contra una élite es un enfrentamiento que pierde. Dale, en cambio, el papel que de verdad sabe jugar: si el pasillo o punto de acceso que localizó en la Escena 4 es tan estrecho como suponía, puede plantarse ahí y aguantar a la <strong>tripulación</strong> (F50/A52, Bld5 — un enemigo a su altura) mientras el resto del grupo concentra el fuego en la élite, tal y como recomienda la propia escena. Una tirada de Arma CC o Distancia lograda contra la tripulación, turno a turno, es su combate real y ganable; que se cruce con una élite debería ser la excepción dramática, no la norma de la escena.</div>
+<div class="master-note"><strong>Reto personal — Declan ("el que no dispara pero decide quién vive"):</strong> dale un papel de apoyo con coste real, no un Medikit sin más. Mientras dura la cuenta atrás de 5 turnos, cualquier PJ herido de gravedad necesita que alguien gaste su turno de combate estabilizándolo — y Declan es quien mejor lo hace (Primeros Auxilios/Medicina). Cada turno que pasa estabilizando a un compañero es un turno que él no dispara ni ayuda a desactivar la autodestrucción: la tensión de la escena para él no es "cuánto daño hago", es "a quién ayudo y qué dejo de hacer por ello". Es una decisión dramática tanto como mecánica.</div>
+<p><strong>Cómo termina:</strong> la nave arcanita queda neutralizada —destruida tras la evacuación, o capturada si alguien logra desactivar la autodestrucción—. El único premio es haberlas vencido: no hay botín ni recompensa material (ver No hay recompensa — y no hace falta, en Decisión final).</p>
+<p><strong>Después:</strong> corta a la Escena 7, con el resultado del Acto 1 (Inquisidor) y del Acto 2 (arcanitas) ya ambos resueltos.</p>
+
+<h3>Escena 7 — Salida</h3>
+<blockquote>El grupo del Hacedor recupera el aliento con la familiaridad de quien ya lo ha hecho demasiadas veces. En algún punto de otro sistema, un Inquisidor sigue esperando a un maestro de portales que tarda más de lo que debería.</blockquote>
+<p><strong>Qué está ocurriendo:</strong> se cierran los dos hilos. En Kawalapiti, la amenaza de las arcanitas queda resuelta. En EP-7, el Inquisidor —con o sin la ayuda involuntaria de Archi— llega finalmente al final de su rastro, mucho después de que Declan y Entrerríos se hayan ido, sin nada concreto que mostrar salvo una anomalía que nunca termina de explicarse.</p>
+<p><strong>Cierre personal — Declan:</strong> un momento corto, sin tirada, para que note en voz alta (o para sí mismo) que el crucifijo "no se siente igual" — sin que nadie en la mesa, ni él, llegue a saber por qué. Es el gancho que deja abierto el módulo, no una escena que resolver.</p>
+<p><strong>Cierre personal — Entrerríos:</strong> un instante de calma de soldado viejo — comprobar el equipo, contar lo que queda, mirar atrás una vez. No necesita diálogo; un gesto basta.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<tr><th>Eje</th><th>Resultado</th></tr>
+<tr><td>Las pseudo-arcanitas</td><td>___</td></tr>
+<tr><td>Los drones interceptados (de 3)</td><td>___</td></tr>
+<tr><td>La investigación del Inquisidor</td><td>___</td></tr>
+<tr><td>El crucifijo de Declan</td><td>(nunca se resuelve — sigue siendo secreto del Narrador)</td></tr>
+<tr><td>Declan y Entrerríos</td><td>___</td></tr>
+</table>
+<p><strong>Después:</strong> ver Decisión final y Post-créditos, más abajo.</p>
+
+<hr>
+
+<h2>Escenarios</h2>
+<h3>EP-7</h3>
+<p><strong>Forma general:</strong> colmillo de lobo — un casco alargado y curvo, estación médica reconvertida con más de cien años de antigüedad.</p>
+<ul>
+<li><strong>Hangar principal</strong> — llegada de naves, incluida la del Inquisidor.</li>
+<li><strong>Comedor, con el replicador del Teseo</strong> — único en la estación, puede fabricar piezas estructurales con chatarra.</li>
+<li><strong>Capilla de Declan (nivel dos)</strong> — donde ocurre la Escena 2.</li>
+<li><strong>Ascensor soldado hacia las plantas inferiores</strong> — sigue sin explorar. Semilla para otra sesión.</li>
+<li><strong>La única vaina de salvamento</strong> de toda la estación.</li>
+</ul>
+<h3>Kawalapiti</h3>
+<p>Sin necesidad de mapear el mundo entero para esta partida — lo esencial son dos zonas:</p>
+<ul>
+<li><strong>Punto de llegada de los PJ</strong> — donde aterrizan o desembarcan, cerca de donde está reunido el grupo del Hacedor.</li>
+<li><strong>El espacio cercano a Kawalapiti</strong> — escenario de la persecución espacial (Escena 5) y del abordaje (Escena 6).</li>
+</ul>
+
+<hr>
+
+<h2>Reparto — resumen de personajes</h2>
+<h3>El Inquisidor de Capricornio</h3>
+<p>Formal, curioso, paciente y metódico. Máscara que absorbe la luz. Ficha reutilizada de <em>Puesto Fronterizo</em> y ampliada: es un Inquisidor veterano, un héroe hecho y derecho, no un personaje recién creado — 12 profesiones y el equipo e implantes propios de esa experiencia.</p>
+<p>Atributos: AGI 35, CON 38, FUE 36, HAB 42, CAR 45, INT 55, PER 52, VOL 48.<br>
+Habilidades: Arma CC Media 85%, Distancia Media 95%, Investigación 85%, Electrónica 75%, Alerta 80%, Interrogación/Sociales 70%, Táctica 60%.<br>
+PV: 20/20/20. Blindaje: 4 (armadura media reforzada) / 8 (acorazada, con refuerzo rúnico-tecnológico).<br>
+Trayectoria: 12 profesiones — 5× Combatiente, 4× Científico, 3× Civil.</p>
+<p><strong>Lleva dos armas, no una:</strong></p>
+<ul>
+<li><strong>Estoque de combate</strong> (cuerpo a cuerpo): Daño 7, Pen 3.</li>
+<li><strong>Pistola de precisión</strong> (a distancia): Daño 5, Pen 4, Cadencia 4.</li>
+</ul>
+<p><strong>Implantes:</strong></p>
+<ul>
+<li><strong>Ocular táctico</strong> — analiza objetivos, detecta engaños evidentes.</li>
+<li><strong>Reflejos aumentados</strong> — +15 a Iniciativa; no aumenta AGI directamente, es velocidad de reacción, no agilidad física.</li>
+<li><strong>Comunicador subdérmico cifrado.</strong></li>
+</ul>
+<p>No ordenará un asalto salvo agresión directa. No miente, no fabrica pruebas.<br>Solo actúa en el Acto 1. No viaja a Kawalapiti dentro de este módulo.</p>
+
+<h3>Escolta del Inquisidor (×2)</h3>
+<p>Suboficiales veteranos de verdad, no reclutas ni relleno: 3 profesiones de Combatiente y 2 de Técnico/Civil, con implantes propios de TecnoStealer.</p>
+<p>F48/A50/P45/V42 | PV 24/24/24 | Blindaje 6 (armadura media reforzada con placas subdérmicas)<br>
+Arma CC Media 75% (cuchillo mono, Daño 7, Pen 3) | Distancia Media 85% (subfusil, Daño 8, Pen 4, Cad 3) | Electrónica 50% | Mecánica 45% | Alerta 60%<br>
+Implantes: reflejos militares (+10 Iniciativa), placas subdérmicas (incluidas en el Blindaje de arriba).<br>
+Trayectoria: 5 profesiones — 3× Combatiente, 2× Técnico/Civil.</p>
+
+<h3>Declan y Entrerríos — son PJ</h3>
+<p>No llevan ficha, ni aparecen en las fichas rápidas: constrúyelos con creación de personaje estándar, como a cualquier PJ de tu mesa, no como PNJ. Lo único que necesitas de ellos aquí está en Panel del Narrador y en las escenas: su trasfondo, su relación con el crucifijo, sus frases fijadas.</p>
+<p><strong>Frase fijada de Declan:</strong> «No hay tiempo de hacer esto bien. Cuidaos. Volveremos.»</p>
+<p><strong>Entrerríos:</strong> soldado de los Tercios españoles, originario del siglo XVI, ya aclimatado a la Senda. Católico, como Declan. Guardaespaldas de Archi; ahora, también, de Declan.</p>
+
+<h3>Archi (Acto 1 — se queda en EP-7)</h3>
+<p>Arqueólogo y explorador. Anacronismos históricos con total convicción — en este módulo, convertidos sin querer en una táctica de despiste real contra el Inquisidor.</p>
+<p>PNJ funcional, sin ficha de combate.</p>
+<p><strong>Frase fijada:</strong> «Necesita a un maestro de portales de verdad. Conozco a uno. Está muerto. Pero conocía a otro.»</p>
+
+<h3>Hestia (IA — nunca aparece en persona)</h3>
+<p>Construida originalmente para la nave Teseo, hoy reside en los sistemas de EP-7. No habla nunca directamente: se comunica por gestos indirectos — luces, accesos, objetos desplazados. No tiene ficha ni se enfrenta a nadie: es un recurso puramente narrativo, el motor silencioso de la Escena 2.</p>
+
+<h3>Refuerzos del Acto 2 — el grupo del Hacedor</h3>
+<p>Sin ficha de combate propia: son protagonistas de blog muy por encima de la escala de este módulo. Pilotan y luchan en la persecución espacial (Escena 5) como fuerza narrativa, dejando el abordaje (Escena 6) —el combate real, a escala de los PJ— enteramente en manos de estos.</p>
+<ul>
+<li><strong>El Hacedor (Miguel padre)</strong> — liderazgo emocional del grupo, ingeniería e intuición técnica, runas.</li>
+<li><strong>Kais</strong> — combatiente del grupo, presencia estable en Kawalapiti.</li>
+<li><strong>Isthar</strong> — puntería imposible, lectura táctica inmediata.</li>
+<li><strong>Juanda</strong> — estratega, piloto de mecha.</li>
+<li><strong>Miguel (hijo)</strong> — piloto, combatiente táctico, impulsivo.</li>
+<li><strong>Robogato (Luis)</strong> — cuerpo felino robótico, IA de apoyo técnico y explorador.</li>
+</ul>
+
+<h3>Pseudo-arcanitas — combatientes de élite (Escenas 5 y 6)</h3>
+<p>Enemigo pesado de verdad, no un trámite: implantes el doble de potentes que los estándar, capaces de sobrepasar los límites humanos normales de creación, equipo de Nivel Tecnológico 7. 3 profesiones de Combatiente y 2 de Técnico.</p>
+<p>F75/A75/P65/V70 | PV 45/45/45 | Blindaje 9 (armadura rúnica regenerativa NT7: 6 base + 3 de runas — recupera 2 puntos de Blindaje por asalto si no recibe impactos ese asalto)<br>
+Arma de pulsos (cargable) 85% | Lanza a dos manos 80% | Pilotaje 70% | Electrónica 60% | Alerta 65%</p>
+<p><strong>Implantes (el doble de potentes que un implante estándar):</strong></p>
+<ul>
+<li><strong>Reflejos militares duplicados</strong> — +20 a Iniciativa.</li>
+<li><strong>Musculatura reforzada</strong> — es lo que les permite superar el techo humano de creación en Fuerza y Agilidad; no es un truco de mesa, es la razón mecánica de que sus atributos estén donde están.</li>
+<li><strong>Puntería asistida NT7</strong> — integrada en el bonificador ya incluido en su habilidad de Arma de pulsos.</li>
+</ul>
+<p><strong>Arma de pulsos NT7, tres niveles de carga</strong> (Penetración empieza en 3 y sube con la carga):</p>
+<ul>
+<li>Disparo instantáneo (sin cargar): Daño 10, Pen 3.</li>
+<li>Carga media (1 asalto cargando) — equivalente a un arma grande: Daño 18, Pen 5.</li>
+<li>Carga completa (2 asaltos cargando) — equivalente a un cañón ligero de nave: Daño 28, Pen 8.</li>
+</ul>
+<p><strong>Lanza a dos manos NT7:</strong> Daño 14, Pen 4. Arma a dos manos: aplica el bonificador de Fuerza al daño si la Fuerza de quien la empuña supera el umbral del arma (regla estándar de armas a dos manos grandes) — con F75, casi siempre lo supera.</p>
+<p><strong>Medikit arcanita NT7:</strong> restaura 20 PV por uso. Cada arcanita lleva 10 usos disponibles — sin recarga posible salvo que consigan llegar de vuelta a su nave.</p>
+
+<h3>Tripulación de la nave arcanita (Escena 6)</h3>
+<p>No son élite, pero tampoco reclutas de relleno: personal de a bordo con formación militar real, 3-4 profesiones, sin implantes duplicados ni equipo NT7 pero con lo suyo.</p>
+<p>F50/A52/P45/V46 | PV 24/24/24 | Blindaje 5 (armadura ligera reforzada)<br>
+Distancia Media 65% (Daño 7, Pen 3, Cad 3) | Arma CC Media 55% (Daño 6, Pen 2) | Pilotaje 50% | Alerta 45%<br>
+Implantes: reflejos estándar (+5 Iniciativa).</p>
+
+<h3>Condiciones fijas de la nave arcanita (Escenas 5-6)</h3>
+<ul>
+<li>Su sistema de salto dimensional está inutilizado: necesita 24h de recarga, no pueden huir por salto.</li>
+<li>Disponen de hasta 3 drones-mensaje para intentar informar antes de perder.</li>
+<li>Activan la autodestrucción de la nave en cuanto ven la derrota clara — 5 turnos de cuenta atrás.</li>
+</ul>
+
+<hr>
+
+<h2>Combate en gravedad cero — reglas ligeras</h2>
+<p>No es un subsistema nuevo, son ajustes puntuales para las Escenas 5 y 6:</p>
+<ul>
+<li><strong>Sin arriba ni abajo fijos.</strong> La posición relativa la decide una tirada enfrentada de Pilotaje (naves) o Acrobacias/Atletismo (a bordo, en el abordaje), no la geografía de la sala.</li>
+<li><strong>Cobertura = estructura, no suelo.</strong> Cualquier módulo, casco o consola sirve de cobertura; el espacio abierto no la da nunca.</li>
+<li><strong>El impulso cuesta acción.</strong> Cambiar de posición o reorientar la nave/el cuerpo consume la acción del turno — no es gratis por estar "ya en movimiento".</li>
+<li><strong>Los drones son un objetivo aparte del combate principal</strong>, no un enemigo con ficha: una tirada de Distancia o Pilotaje exitosa por turno basta para derribar uno, con dificultad creciente cuanto más lejos ya estén.</li>
+</ul>
+
+<hr>
+
+<h2>Decisión final</h2>
+<h3>Desenlaces combinables</h3>
+<ul>
+<li><strong>Las arcanitas, neutralizadas.</strong> Sea por captura o destrucción de su nave, el hilo se cierra en esta partida.</li>
+<li><strong>Drones interceptados.</strong> De 0 a 3 — cada uno que escapó implica que alguien, en algún lugar, sabe algo que antes no sabía. Gancho abierto, sin resolver aquí.</li>
+<li><strong>La investigación del Inquisidor, sin cerrar.</strong> Llega tarde, sin pruebas concretas, con una anomalía que archivar. Puede volver en otra aventura.</li>
+<li><strong>El crucifijo, intacto y sin abrir.</strong> Nunca se resuelve en este módulo — es, deliberadamente, la semilla más grande que deja para el futuro.</li>
+<li><strong>Declan y Entrerríos, de vuelta o no a EP-7.</strong> Según decida la mesa, podrían quedarse un tiempo en Kawalapiti o regresar de inmediato.</li>
+</ul>
+<h3>No hay recompensa — y no hace falta</h3>
+<p>Este no es un contrato. Los PJ no cobran nada, ni al Inquisidor ni al Hacedor: ya viven en EP-7, ya conocen y trabajan con el Hacedor y su grupo como amigos, y lo que está en juego —su casa, su gente, Declan y Entrerríos— es motivo de sobra sin que medie un pago. Si algún jugador espera una paga al final, esa expectativa incumplida es parte del tono: esto se hace porque es lo que se hace por los tuyos, no porque alguien lo encargue.</p>
+<h3>Continuidad opcional</h3>
+<ul>
+<li><strong>Qué hay en el crucifijo, y por qué Declan siente que debe "resintonizarlo".</strong> Sin resolver a propósito — solo el Narrador sabe que hubo un cambiazo en la Escena 4, y ni eso se confirma nunca en la partida.</li>
+<li><strong>Los drones que escaparon</strong>, si los hubo — quién los recibe y qué hace con ellos.</li>
+<li><strong>El Inquisidor vuelve</strong>, con o sin el maestro de portales, con una hipótesis distinta.</li>
+</ul>
+
+<hr>
+
+<h2>Post-créditos — MadCity</h2>
+<blockquote>La Teseo necesita piezas que Kawalapiti no tiene. Alguien menciona MadCity. Nadie parece sorprendido.</blockquote>
+<p>Escena corta y opcional, para cerrar con una sonrisa: el grupo —PJ incluidos, si la mesa lo quiere— viaja a MadCity a por repuestos. No hace falta resolver nada aquí: es gancho puro hacia los one-shots de MadCity ya existentes, reutilizando escenario ya construido en vez de inventar uno nuevo. Archi, si sigue en la partida, ya tiene una casa allí — motivo de más para que la parada se alargue.</p>
+
+<hr>
+
+<h2>Fichas rápidas — consulta en mesa</h2>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">El Inquisidor de Capricornio</div>
+<div class="ficha-rapida-rol">Acto 1 — investiga, no ataca primero</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">AGI 35 CON 38 FUE 36 HAB 42 CAR 45 INT 55 PER 52 VOL 48 · PV <b>20/20/20</b> · Bld <b>4</b> con media reforzada o <b>8</b> con acorazada (un equipo u otro, no las dos)</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Arma CC Media 85%</span><span class="ficha-rapida-pill">Distancia Media 95%</span><span class="ficha-rapida-pill">Investigación 85%</span><span class="ficha-rapida-pill">Electrónica 75%</span><span class="ficha-rapida-pill">Alerta 80%</span><span class="ficha-rapida-pill">Interrogación 70%</span><span class="ficha-rapida-pill">Táctica 60%</span></div>
+<div class="ficha-rapida-equipo"><b>Armas:</b> estoque de combate (Daño 7, Pen 3) · pistola de precisión (Daño 5, Pen 4, Cad 4). <b>Implantes:</b> ocular táctico, reflejos aumentados (+15 Iniciativa), comunicador subdérmico.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Escolta TecnoStealer</div>
+<div class="ficha-rapida-rol">×2, veteranos con implantes</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">F<b>48</b> A<b>50</b> P<b>45</b> V<b>42</b> · PV <b>24/24/24</b> · Bld <b>6</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Arma CC Media 75%</span><span class="ficha-rapida-pill">Distancia Media 85%</span><span class="ficha-rapida-pill">Electrónica 50%</span><span class="ficha-rapida-pill">Mecánica 45%</span><span class="ficha-rapida-pill">Alerta 60%</span></div>
+<div class="ficha-rapida-equipo"><b>Equipo:</b> cuchillo mono (Daño 7, Pen 3), subfusil (Daño 8, Pen 4, Cad 3). <b>Implantes:</b> reflejos militares (+10 Iniciativa), placas subdérmicas.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Pseudo-arcanitas (élite)</div>
+<div class="ficha-rapida-rol">Acto 2 — enemigo pesado, NT7</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">F<b>75</b> A<b>75</b> P<b>65</b> V<b>70</b> · PV <b>45/45/45</b> · Bld <b>9</b> (regenerativo, +2/asalto sin impactos)</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Arma de pulsos 85%</span><span class="ficha-rapida-pill">Lanza 2 manos 80%</span><span class="ficha-rapida-pill">Pilotaje 70%</span><span class="ficha-rapida-pill">Electrónica 60%</span><span class="ficha-rapida-pill">Alerta 65%</span></div>
+<div class="ficha-rapida-equipo"><b>Arma de pulsos NT7 (carga):</b> instantáneo Daño 10/Pen 3 · media Daño 18/Pen 5 · completa Daño 28/Pen 8. <b>Lanza NT7:</b> Daño 14, Pen 4 (+Fuerza, casi siempre aplica). <b>Medikit:</b> +20 PV, 10 usos. <b>Implantes:</b> reflejos militares duplicados (+20 Iniciativa), musculatura reforzada (supera el techo humano), puntería asistida.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Tripulación arcanita</div>
+<div class="ficha-rapida-rol">Escena 6 — con formación real</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">F<b>50</b> A<b>52</b> P<b>45</b> V<b>46</b> · PV <b>24/24/24</b> · Bld <b>5</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Distancia Media 65%</span><span class="ficha-rapida-pill">Arma CC Media 55%</span><span class="ficha-rapida-pill">Pilotaje 50%</span><span class="ficha-rapida-pill">Alerta 45%</span></div>
+<div class="ficha-rapida-equipo"><b>Implantes:</b> reflejos estándar (+5 Iniciativa). <b>Nave:</b> salto inutilizado (24h recarga), 3 drones-mensaje, autodestrucción a 5 turnos.</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>

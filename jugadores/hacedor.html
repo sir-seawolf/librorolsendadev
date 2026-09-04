@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>El Hacedor — Ficha de Personaje</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
+  :root{ --bg-dark:#0f1115; --border:#2a303c; --accent:#ff3b3b; --accent2:#1d6fa3; --muted:#94a3b8; --auto-bg:#dbeafe; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Rajdhani',sans-serif;background:#e9edf2;color:#1e293b;padding:10px;font-size:13px;}
+  .sheet{max-width:1100px;margin:0 auto;background:#fff;padding:14px 18px;border:1px solid #cbd5e1;}
+  .header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  h1{font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:18px;color:#000;border-bottom:3px solid var(--accent);padding-bottom:2px;letter-spacing:1px;}
+  .subtitle{font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:11px;text-transform:uppercase;}
+  h2{font-family:'Orbitron',sans-serif;background:var(--bg-dark);color:#fff;padding:3px 8px;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px;display:flex;justify-content:space-between;align-items:center;}
+  .row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;}
+  .col-left{flex:0 0 260px;}
+  .col-g2,.col-g3{flex:1;min-width:260px;}
+  .col-g4{flex:0 0 270px;}
+  .ident{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:6px 0 6px;}
+  .ident label{display:flex;flex-direction:column;font-size:9px;text-transform:uppercase;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+  .ident .val{font-size:13px;font-weight:600;color:#000;}
+  .auto-cell{background:var(--auto-bg);font-weight:700;text-align:center;border-radius:3px;padding:2px 4px;border:1px solid #93b4d8;min-width:32px;display:inline-block;}
+  .attrs{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;}
+  .attr{display:flex;align-items:center;justify-content:space-between;background:#f1f5f9;padding:3px 8px;border-radius:3px;}
+  .attr span{font-weight:700;text-transform:uppercase;font-size:11px;}
+  .attr b{font-size:13px;}
+  table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:4px;}
+  th{font-family:'Share Tech Mono',monospace;font-size:8.5px;text-transform:uppercase;background:var(--bg-dark);color:#fff;padding:2px 4px;text-align:center;}
+  th.skill-h{text-align:left;padding-left:6px;}
+  td{padding:2px 4px;border-bottom:1px solid #eef1f5;line-height:1.3;}
+  td.skill{text-align:left;padding-left:6px;}
+  .cat-formula{font-family:'Share Tech Mono',monospace;font-size:8px;color:#9fd;font-weight:400;}
+  .total{font-weight:700;text-align:center;background:var(--auto-bg);border:1px solid #93b4d8;border-radius:2px;}
+  .lifebox{background:#f8fafc;border:1px solid var(--border);border-radius:4px;padding:6px;margin-bottom:6px;}
+  .lifegrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:4px;text-align:center;font-size:11px;}
+  .lifegrid .hd{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;}
+  .lifegrid .v{background:var(--auto-bg);font-weight:700;border-radius:2px;padding:2px;border:1px solid #93b4d8;}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-top:4px;font-size:11px;}
+  .metrics div{display:flex;justify-content:space-between;background:#f1f5f9;padding:2px 6px;border-radius:3px;}
+  .note{font-size:9px;color:var(--muted);font-style:italic;margin-top:3px;line-height:1.3;}
+  .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:10px;}
+  .loc-cell{background:#f1f5f9;padding:3px 6px;border-radius:3px;}
+  .loc-cell .lname{font-family:'Share Tech Mono',monospace;font-size:8px;text-transform:uppercase;color:var(--muted);}
+  .loc-cell .lval{margin-top:2px;font-weight:700;}
+  .disc-band{margin-top:6px;}
+  .disc-inner{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;}
+  .disc-inner>div{flex:1;min-width:220px;}
+  .equipo-list{font-size:11.5px;line-height:1.5;padding-left:18px;margin-top:2px;}
+  .equipo-list li{margin-bottom:2px;}
+  .runa-box{font-size:10.5px;background:#f8fafc;border-left:3px solid var(--accent2);padding:4px 8px;margin:3px 0;border-radius:0 4px 4px 0;}
+  .footnote{font-size:9.5px;color:var(--muted);font-style:italic;border-top:1px solid #e2e8f0;margin-top:10px;padding-top:5px;}
+  .badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:9px;background:var(--accent2);color:#fff;padding:1px 6px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <h1>La Senda de los Errantes</h1>
+    <span class="subtitle">Ficha de personaje</span>
+  </div>
+
+  <div class="ident">
+    <label>Jugador<span class="val">Miguel Pascual</span></label>
+    <label>Personaje<span class="val">El Hacedor</span></label>
+    <label>Nivel Tecnológico<span class="val">7</span></label>
+    <label>Rango (Maestros de Portales)<span class="val">Nivel 2 — Acólito (precisión de portal 20%)</span></label>
+    <label>Corporación<span class="val">—</span></label>
+    <label>Puntos Épicos<span class="val">8 / 13</span></label>
+  </div>
+
+  <div class="row">
+    <div class="col-left">
+      <h2>Atributos</h2>
+      <div class="attrs">
+        <div class="attr"><span>Car</span><b>41</b></div>
+        <div class="attr"><span>Agi</span><b>50</b></div>
+        <div class="attr"><span>Per</span><b>51</b></div>
+        <div class="attr"><span>Con</span><b>90</b></div>
+        <div class="attr"><span>Int</span><b>46</b></div>
+        <div class="attr"><span>Fue</span><b>50</b></div>
+        <div class="attr"><span>Vol</span><b>36</b></div>
+        <div class="attr"><span>Hab</span><b>81</b></div>
+      </div>
+      <div class="note">Personaje Cristalizado: los implantes/mutaciones están integrados como rasgos naturales — Constitución y Habilidad muy por encima de un PJ normal.</div>
+
+      <h2>Vida por zona</h2>
+      <div class="lifebox">
+        <div class="lifegrid">
+          <div class="hd"></div><div class="hd">Leve</div><div class="hd">Medio</div><div class="hd">Grave</div>
+          <div class="hd" style="text-align:left;">PV/nivel</div>
+          <div class="v">23</div><div class="v">23</div><div class="v">23</div>
+        </div>
+        <div class="note">Aturdimiento 25 (tope 40) · Herido 23 · Exhausto 22 (tope -20)</div>
+      </div>
+
+      <h2>Métricas</h2>
+      <div class="metrics">
+        <div><span>Humanidad</span><b>100</b></div>
+        <div><span>Distorsión</span><b>—</b></div>
+        <div><span>Salud Mental</span><b>—</b></div>
+        <div><span>Alma</span><b>8</b></div>
+      </div>
+      <div class="note">Techo de Humanidad (Alma×10) = 80.</div>
+
+      <h2>Carga</h2>
+      <div class="metrics">
+        <div><span>Libre ≤(F+C)/4</span><span class="auto-cell">35</span></div>
+        <div><span>−20% (F+C)/2</span><span class="auto-cell">70</span></div>
+        <div><span>−40% (F+C)×2</span><span class="auto-cell">280</span></div>
+      </div>
+
+      <h2>Distorsión / Hechicería</h2>
+      <table><tr><th class="skill-h">Disciplina</th><th>Total</th></tr>
+        <tr><td class="skill">Detectar/identificar distorsión</td><td class="total">64</td></tr>
+        <tr><td class="skill">Manipular distorsión</td><td class="total">66</td></tr>
+        <tr><td class="skill">Camino de los portales</td><td class="total">9/1</td></tr>
+        <tr><td class="skill">Marcas Arcanas</td><td class="total">51</td></tr>
+        <tr><td class="skill">Tatuador Rúnico</td><td class="total">91</td></tr>
+        <tr><td class="skill">Herrero Rúnico</td><td class="total">85</td></tr>
+        <tr><td class="skill">Proyección de energía</td><td class="total">46</td></tr>
+        <tr><td class="skill">Protección de energía</td><td class="total">52</td></tr>
+        <tr><td class="skill">Invocación de energía</td><td class="total">46</td></tr>
+      </table>
+      <div class="note">Algunas cifras de esta hoja son antiguas y difíciles de leer en el original — se muestran tal como están transcritas.</div>
+    </div>
+
+    <div class="col-g2">
+      <h2>Académicas <span class="cat-formula">base 40</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Total</th></tr>
+        <tr><td class="skill">Ciencias</td><td class="total">43</td></tr>
+        <tr><td class="skill">Biotecnología</td><td class="total">41</td></tr>
+        <tr><td class="skill">Navegación</td><td class="total">41</td></tr>
+        <tr><td class="skill">Burocracia</td><td class="total">48</td></tr>
+        <tr><td class="skill">Buscar información</td><td class="total">41</td></tr>
+        <tr><td class="skill">Programación</td><td class="total">62</td></tr>
+        <tr><td class="skill">Diagnóstico</td><td class="total">41</td></tr>
+        <tr><td class="skill">Esconderse/Evadirse</td><td class="total">50</td></tr>
+        <tr><td class="skill">Investigación</td><td class="total">50</td></tr>
+        <tr><td class="skill">Juego</td><td class="total">41</td></tr>
+        <tr><td class="skill">Diseño Hardware</td><td class="total">46</td></tr>
+        <tr><td class="skill">Sentido del Negocio</td><td class="total">45</td></tr>
+        <tr><td class="skill">Supervivencia</td><td class="total">13/13*</td></tr>
+        <tr><td class="skill">Vigilar/Rastrear</td><td class="total">41</td></tr>
+      </table>
+      <h2>Atlética <span class="cat-formula">base 50</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Total</th></tr>
+        <tr><td class="skill">Acrobacias</td><td class="total">89</td></tr>
+        <tr><td class="skill">Conducir</td><td class="total">60</td></tr>
+        <tr><td class="skill">Resistir</td><td class="total">63</td></tr>
+        <tr><td class="skill">Proezas</td><td class="total">58</td></tr>
+        <tr><td class="skill">Pilotar</td><td class="total">51</td></tr>
+        <tr><td class="skill">Trajes Servoasistidos</td><td class="total">55</td></tr>
+        <tr><td class="skill">Sigilo</td><td class="total">60</td></tr>
+      </table>
+    </div>
+
+    <div class="col-g3">
+      <h2>Tecnológica <span class="cat-formula">base 48</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Total</th></tr>
+        <tr><td class="skill">Armería</td><td class="total">53</td></tr>
+        <tr><td class="skill">Artesanía</td><td class="total">49</td></tr>
+        <tr><td class="skill">Ciber-tecnología (especialidad)</td><td class="total">83</td></tr>
+        <tr><td class="skill">Demoliciones</td><td class="total">49</td></tr>
+        <tr><td class="skill">Disfraz</td><td class="total">49</td></tr>
+        <tr><td class="skill">Electrónica</td><td class="total">49</td></tr>
+        <tr><td class="skill">Falsificación</td><td class="total">78</td></tr>
+        <tr><td class="skill">Química</td><td class="total">49</td></tr>
+        <tr><td class="skill">Manualidades</td><td class="total">53</td></tr>
+        <tr><td class="skill">Mecánica</td><td class="total">63</td></tr>
+        <tr><td class="skill">Manos ágiles</td><td class="total">49</td></tr>
+        <tr><td class="skill">Seguridad</td><td class="total">58</td></tr>
+        <tr><td class="skill">Primeros Auxilios</td><td class="total">65</td></tr>
+      </table>
+      <h2>Social <span class="cat-formula">base 45</span></h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Total</th></tr>
+        <tr><td class="skill">Absorción</td><td class="total">51</td></tr>
+        <tr><td class="skill">Autocontrol</td><td class="total">55</td></tr>
+        <tr><td class="skill">Bajos Fondos</td><td class="total">46</td></tr>
+        <tr><td class="skill">Empatía</td><td class="total">56</td></tr>
+        <tr><td class="skill">Interrogatorio</td><td class="total">46</td></tr>
+        <tr><td class="skill">Liderazgo</td><td class="total">47</td></tr>
+        <tr><td class="skill">Manejo de Animales</td><td class="total">46</td></tr>
+        <tr><td class="skill">Persuasión</td><td class="total">48</td></tr>
+        <tr><td class="skill">Seducción</td><td class="total">46</td></tr>
+        <tr><td class="skill">Estilo (Baile)</td><td class="total">48</td></tr>
+      </table>
+    </div>
+    <div class="col-g4">
+      <h2>Combate</h2>
+      <table><tr><th class="skill-h">Habilidad</th><th>Total</th></tr>
+        <tr><td class="skill">Iniciativa</td><td class="total">45-48</td></tr>
+        <tr><td class="skill">Alerta</td><td class="total">59</td></tr>
+        <tr><td class="skill">Esquivar</td><td class="total">47</td></tr>
+        <tr><td class="skill">Sin Armas (Pelea)</td><td class="total">42</td></tr>
+        <tr><td class="skill">Distancia (mediana)</td><td class="total">41</td></tr>
+        <tr><td class="skill">Arma CC (mediana)</td><td class="total">68</td></tr>
+      </table>
+      <h2>Armas</h2>
+      <table><tr><th class="skill-h">Nombre</th><th>Dñ</th><th>Def</th></tr>
+        <tr><td class="skill">Uzi</td><td>13/9</td><td>5</td></tr>
+        <tr><td class="skill">Granada "Ruina de fuego"</td><td>6+2</td><td>—</td></tr>
+        <tr><td class="skill">Vibro filo</td><td>6+2</td><td>—</td></tr>
+      </table>
+      <div class="note">Munición: Peu-1 x2 · Desolladora/Penetración x1</div>
+      <h2>Armadura / PV por zona</h2>
+      <div class="loc-grid">
+        <div class="loc-cell"><div class="lname">Cabeza</div><div class="lval">10 (3)</div></div>
+        <div class="loc-cell"><div class="lname">Torso</div><div class="lval">8-5 (3)</div></div>
+        <div class="loc-cell"><div class="lname">Brazos</div><div class="lval">4-3 (3)</div></div>
+        <div class="loc-cell"><div class="lname">Piernas</div><div class="lval">2-1 (3)</div></div>
+        <div class="loc-cell"><div class="lname">Energía</div><div class="lval">+2</div></div>
+        <div class="loc-cell"><div class="lname">Rúnica</div><div class="lval">Sí</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disc-band">
+    <h2>Runas / Tatuajes · Necro-chip · Equipo</h2>
+    <div class="disc-inner">
+      <div>
+        <table><tr><th class="skill-h">Runa</th><th>Nivel</th></tr>
+          <tr><td class="skill">Ilusión</td><td>2</td></tr>
+          <tr><td class="skill">Sigilo/Localización</td><td>3</td></tr>
+          <tr><td class="skill">Explosión</td><td>3</td></tr>
+          <tr><td class="skill">Veneno</td><td>2</td></tr>
+          <tr><td class="skill">Protección</td><td>2</td></tr>
+          <tr><td class="skill">Elemental</td><td>2</td></tr>
+          <tr><td class="skill">Buscador</td><td>2</td></tr>
+          <tr><td class="skill">Preservación</td><td>3</td></tr>
+          <tr><td class="skill">Cierre</td><td>1</td></tr>
+        </table>
+        <div class="note">Necro-chip: localización pecho. Casco: visión nocturna/térmica.</div>
+      </div>
+      <div>
+        <h2 style="margin-top:0;">Equipo general</h2>
+        <ul class="equipo-list">
+          <li>Paracaídas gravitatorio</li>
+          <li>Taquilla Hotpoint</li>
+          <li>Alita — IA de compañía (nv3 x1, nv2 x1, nv1 x4). Es la misma entidad a la que el grupo llama cariñosamente "Kais".</li>
+          <li>Pistola multi + apuntador</li>
+          <li>Rifle (mira telescópica, desmontable, ergonómica)</li>
+          <li>2 Aerodetectores (garaje)</li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="margin-top:0;">Servo "Sombra del Caminante"</h2>
+        <div class="note">Servo I · +20 Fuerza, +20 Agilidad · Blindaje base 2 / total 4</div>
+        <ul class="equipo-list">
+          <li><b>Casco:</b> Runa de Ocultar (−30% detección visual) nº2 · Runa de Búsqueda/1 (anula mutación de búsqueda) nº1</li>
+          <li><b>Torso:</b> Runa de Preservar (−1 daño base) nº1 · Runa de Silencio (+20% Sigilo) nº2 · Runa Falsavida (se apaga sin avisos/alertas) nº2</li>
+        </ul>
+        <div class="runa-box"><b>Runa de Gran Ira: Implosión</b> (armas incluidas) — Runa activa, Nivel 4, Escuela del Combate. El Hacedor golpea el suelo con el puño: rayos dibujan un círculo rúnico de 5 m de radio (+1 m por éxito adicional invertido en alcance). Todo lo que esté dentro se eleva del suelo sin daño directo — tirada de <b>Resistir (Atlética)</b> o queda Aturdido (máquinas inmunes). Los éxitos adicionales ajustan un dial de potencia por objetivo, 5 pasos (−20/−10/0/+10/+20): negativo penaliza más a los enemigos, positivo favorece — útil si un aliado queda atrapado en el radio.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disc-band">
+    <h2>Vehículo "Becky" (moto)</h2>
+    <ul class="equipo-list">
+      <li>Cápsula-moto — Caseta(taller)/2 PD/20 HL/10 AG</li>
+      <li>Motor Av. 20/13, +40</li>
+      <li>Sensores +20 diagnóstico, +10</li>
+      <li>IA — Estanco (70)</li>
+      <li>Teledirigido — Runa Sigilo/Localización nv1, Blindaje 1</li>
+      <li>Chips: 20-Rebuscar, 30-Programación</li>
+    </ul>
+  </div>
+
+  <div class="footnote">Ficha de solo lectura para jugar — La Senda de los Errantes. Los valores vienen de la transcripción de la hoja original de mesa; algunas cifras antiguas de difícil lectura se muestran tal cual, sin inventar lo que falta.</div>
+</div>
+</body>
+</html>
