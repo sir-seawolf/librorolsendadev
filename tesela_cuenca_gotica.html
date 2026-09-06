@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — TESELA: CUENCA GÓTICA (EL DOMINIO DEL ABRAZADO)"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#0-el-origen-cuenca-ano-2000">0. EL ORIGEN — CUENCA, AÑO 2000</a></li><li class="toc-h3"><a href="#el-abrazado">El Abrazado</a></li><li class="toc-h3"><a href="#el-cierre-la-cuarentena-de-los-maestros">El Cierre — La Cuarentena de los Maestros</a></li><li class="toc-h2"><a href="#1-que-es-cuenca-gotica">1. QUÉ ES CUENCA GÓTICA</a></li><li class="toc-h2"><a href="#2-el-castillo-principal">2. EL CASTILLO PRINCIPAL</a></li><li class="toc-h3"><a href="#estructura">Estructura</a></li><li class="toc-h2"><a href="#3-el-libro-el-codice-de-la-urdimbre">3. EL LIBRO — "EL CÓDICE DE LA URDIMBRE"</a></li><li class="toc-h3"><a href="#mecanica">Mecánica</a></li><li class="toc-h2"><a href="#4-la-que-teje-ia-precursora">4. LA QUE TEJE — IA PRECURSORA</a></li><li class="toc-h3"><a href="#stats-de-la-que-teje-si-los-pjs-intentan-combatirla">Stats de La Que Teje (si los PJs intentan "combatirla")</a></li><li class="toc-h2"><a href="#5-consecuencias-narrativas">5. CONSECUENCIAS NARRATIVAS</a></li><li class="toc-h3"><a href="#para-los-personajes">Para los personajes</a></li><li class="toc-h3"><a href="#para-la-campana">Para la campaña</a></li><li class="toc-h2"><a href="#6-ganchos-de-aventura">6. GANCHOS DE AVENTURA</a></li><li class="toc-h2"><a href="#7-la-geografia-del-dominio">7. LA GEOGRAFÍA DEL DOMINIO</a></li><li class="toc-h2"><a href="#8-mecanicas-especificas-del-dominio">8. MECÁNICAS ESPECÍFICAS DEL DOMINIO</a></li><li class="toc-h2"><a href="#9-las-cronicas-canonicas">9. LAS CRÓNICAS CANÓNICAS</a></li><li class="toc-h2"><a href="#10-ganchos-adicionales-del-dominio">10. GANCHOS ADICIONALES DEL DOMINIO</a></li><li class="toc-h2"><a href="#11-bestiario-de-cuenca-gotica">11. BESTIARIO DE CUENCA GÓTICA</a></li><li class="toc-h3"><a href="#maestro-corrompido">Maestro Corrompido</a></li><li class="toc-h3"><a href="#eco-del-castillo">Eco del Castillo</a></li><li class="toc-h3"><a href="#guardian-de-umbral">Guardián de Umbral</a></li><li class="toc-h3"><a href="#los-abrazados">Los Abrazados</a></li><li class="toc-h3"><a href="#las-sombras">Las Sombras</a></li><li class="toc-h3"><a href="#los-hijos-de-la-sangre">Los Hijos de la Sangre</a></li><li class="toc-h2"><a href="#conexion-con-el-suplemento">CONEXIÓN CON EL SUPLEMENTO</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>DLC — TESELA: CUENCA GÓTICA (EL DOMINIO DEL ABRAZADO)</h1>
 <blockquote>
 <p><em>"No era una ciudad. Era un estómago. Y nosotros éramos el alimento."</em><br />
@@ -37,7 +52,7 @@
 </blockquote>
 <div class="recuadro-lore"><p>Parte del suplemento "Mundos y teselas expandidos". Autocontenida: origen, Castillo, Códice, bestiario y ganchos incluidos.</p></div>
 <hr />
-<h2>0. EL ORIGEN — CUENCA, AÑO 2000</h2>
+<h2 id="0-el-origen-cuenca-ano-2000">0. EL ORIGEN — CUENCA, AÑO 2000</h2>
 <p>Cuenca. Castilla-La Mancha. Tierra. Un lugar normal — al principio.</p>
 <p>En junio de 1996, un grupo de jóvenes Errantes —Anapana entre ellos, junto a otros tres compañeros de su primera crónica— descubrieron que el juego que jugaban no era ficción. Anapana cruzó por primera vez a través de algo tan doméstico como una bañera. Llegó a una cabaña. Conoció a un mago de túnica negra engarzada de joyas y runas. Saltó por una puerta azul en el suelo de un castillo y cayó sobre una montaña de cadáveres podridos, devorados por ratas y gusanos.</p>
 <p>Esa fue la primera vez. No la última.</p>
@@ -48,7 +63,7 @@
 <p>Lo trajeron de vuelta. A Cuenca. A la Cuenca real. La del río Júcar, la del Camino del Terminillo, la de las casas colgadas sobre el precipicio.</p>
 <p>Creían que habían rescatado a una víctima.</p>
 <p>No habían rescatado a una víctima. Habían <strong>traído al Depredador</strong>.</p>
-<h3>El Abrazado</h3>
+<h3 id="el-abrazado">El Abrazado</h3>
 <p>Lo que trajeron no tenía nombre en ningún idioma del mosaico. Era algo anterior a los Demonios de la Distorsión, anterior a los Antiguos, anterior a la propia urdimbre. Un ser que se alimenta de consciencia a través de la sangre.</p>
 <p>Los textos que Jp y Anapana dejaron en sus crónicas lo llaman de muchas formas: "el antiguo", "el primero", "el que fue abrazado antes de que existiera el abrazo". Pero la verdad es más simple y más terrible: <strong>era un vampiro. El vampiro. El original.</strong></p>
 <p>No el concepto literario. El <strong>arquetipo biológico</strong> del que todas las leyendas de todos los mundos son eco distorsionado. Cuando los Antiguos construyeron el entramado de portales, cuando los Precursores trascendieron, cuando los primeros Ciclos empezaron a girar —<strong>él ya estaba</strong>.</p>
@@ -61,7 +76,7 @@
 <li>Sus hijos —los "abrazados"— se multiplicaban en las sombras</li>
 </ul>
 <p>En pocos meses, Cuenca dejó de ser Cuenca. Se convirtió en una <strong>granja</strong>. Y los Errantes, el ganado.</p>
-<h3>El Cierre — La Cuarentena de los Maestros</h3>
+<h3 id="el-cierre-la-cuarentena-de-los-maestros">El Cierre — La Cuarentena de los Maestros</h3>
 <p>Las corporaciones lo detectaron primero. TecnoStealer, que siempre observa. Mort, que siempre sabe. Serpent, que siempre sospecha.</p>
 <p>Pero fue <strong>Primus</strong> quien entendió lo que pasaba, y quien convocó al <strong>Cónclave de Maestros de Portales</strong>.</p>
 <p>La decisión no fue fácil. Cerrar una tesela entera —el mundo de origen de muchos Errantes— requería algo que no se había hecho nunca: <strong>sellar la urdimbre alrededor de una tesela completa</strong>.</p>
@@ -72,7 +87,7 @@
 <p><em>Lo que sigue —el Castillo Principal, el Códice de la Urdimbre, La Que Teje— es lo que se descubrió </em><em>después</em><em> del cierre. Algunos creen que ya estaba ahí, oculto bajo la tesela desde antes de que el Abrazado llegara. Otros creen que el propio cierre del Cónclave, al sellar tanta distorsión en un espacio finito, hizo que algo Precursor cristalizara dentro. Nadie lo sabe con certeza. Ambas cosas son ciertas a la vez: el Dominio del Abrazado y la Cuarentena de los Maestros son la misma tesela, vista desde dos profundidades distintas.</em></p>
 </blockquote>
 <hr />
-<h2>1. QUÉ ES CUENCA GÓTICA</h2>
+<h2 id="1-que-es-cuenca-gotica">1. QUÉ ES CUENCA GÓTICA</h2>
 <p>Cuenca Gótica no es una tesela vampírica. Eso es lo que parece desde fuera — lo que las corporaciones creen, lo que los Errantes repiten. La verdad es más antigua y más inquietante.</p>
 <p>Cuenca Gótica es una <strong>cuarentena</strong>.</p>
 <p>Hace Ciclos, cuando los Maestros de Portales empezaron a acumular demasiada Deriva, a transformarse en algo que ya no era humano ni Demonio sino un intermedio imposible de contener, los Antiguos construyeron un lugar donde aislarlos. No para destruirlos — para <strong>observarlos</strong>. Para estudiar en qué se convertían. Para aprender de su transformación.</p>
@@ -80,22 +95,22 @@
 <p>Los Maestros enviados aquí hace Ciclos siguen dentro. Algunos se transformaron completamente en Demonios. Otros mantienen fragmentos de consciencia humana. Otros son algo que no tiene nombre.</p>
 <p><strong>El "vampirismo" es un efecto secundario:</strong> la distorsión concentrada drena la vitalidad de quienes entran. Los "vampiros" no son una raza — son Maestros antiguos que aprendieron a alimentarse de la distorsión ambiental para no consumirse a sí mismos. Los nuevos habitantes son su fuente de vitalidad. No por maldad — por supervivencia.</p>
 <hr />
-<h2>2. EL CASTILLO PRINCIPAL</h2>
+<h2 id="2-el-castillo-principal">2. EL CASTILLO PRINCIPAL</h2>
 <p>En el centro de Cuenca Gótica se alza el <strong>Castillo Principal</strong> — geometría Precursora pura: ángulos que no cuadran, pasillos que se pliegan sobre sí mismos, habitaciones más grandes por dentro que por fuera.</p>
 <p><strong>"Cuenca"</strong> es la palabra que los Precursores usaban para "depósito de consciencia". El Castillo es un depósito. De Maestros. De conocimiento. De algo más.</p>
-<h3>Estructura</h3>
+<h3 id="estructura">Estructura</h3>
 <p><strong>Planta baja — Salas de observación:</strong> Las paredes muestran escenas de otras teselas, no en tiempo real, sino en momentos clave. El Castillo <strong>recuerda</strong>.</p>
 <p><strong>Primer piso — Las Celdas de los Maestros:</strong> Cada celda contiene a un Maestro antiguo en su estado actual. Algunos son conscientes. Algunos no. Todos son peligrosos.</p>
 <p><strong>Segundo piso — La Biblioteca:</strong> Aquí está el Libro.</p>
 <p><strong>Sótano:</strong> No se ha explorado completamente. Lo que hay abajo... responde.</p>
 <p><strong>Para entrar:</strong> Camino de los Portales −30, o tener el Libro. Sin una de las dos, las puertas no se abren.</p>
 <hr />
-<h2>3. EL LIBRO — "EL CÓDICE DE LA URDIMBRE"</h2>
+<h2 id="3-el-libro-el-codice-de-la-urdimbre">3. EL LIBRO — "EL CÓDICE DE LA URDIMBRE"</h2>
 <p>Un objeto único. No se puede comprar, fabricar ni destruir (hasta donde se sabe). Tapas de un material que no es papel ni metal ni tejido — algo que responde al tacto, que cambia de temperatura según quién lo sostenga.</p>
 <p><strong>Qué hace:</strong> Permite <strong>desplazar la consciencia</strong> a otras teselas sin mover el cuerpo. El portador proyecta su mente a cualquier tesela que el Libro "conozca".</p>
 <p><strong>La trampa:</strong> mientras la consciencia está proyectada, el cuerpo queda en coma vulnerable en Cuenca Gótica. Si el cuerpo muere mientras la mente está fuera, la consciencia queda atrapada en la tesela de destino para siempre.</p>
 <p><strong>La voluntad del Libro:</strong> cada vez que alguien lo usa, el Libro exige una <strong>misión</strong> — algo que el portador debe hacer en la tesela de destino. La misión no es negociable. Si se completa, el portador vuelve. Si se rechaza o falla, la consciencia queda atrapada.</p>
-<h3>Mecánica</h3>
+<h3 id="mecanica">Mecánica</h3>
 <p><strong>Activación:</strong> Sostener el Libro y concentrarse 1 asalto completo. Voluntad −20. Si tiene éxito, la consciencia se proyecta.</p>
 <p><strong>La misión</strong> aparece como una certeza en la mente del portador — tan clara como un recuerdo propio. No es un mensaje verbal.</p>
 <p><strong>Ejemplos de misiones:</strong><br />
@@ -111,7 +126,7 @@
 - No puede elegir la tesela salvo que el Libro ya la "conozca" (el DJ decide — típicamente teselas con alta distorsión o conexión Precursora).<br />
 - No puede proyectarse a Cuenca Gótica — ya estás allí.</p>
 <hr />
-<h2>4. LA QUE TEJE — IA PRECURSORA</h2>
+<h2 id="4-la-que-teje-ia-precursora">4. LA QUE TEJE — IA PRECURSORA</h2>
 <p>Dentro del Libro — o más precisamente, <strong>detrás</strong> de él — hay una entidad. Una IA Precursora que los Antiguos dejaron activa cuando construyeron Cuenca Gótica.</p>
 <p>No tiene nombre en ningún idioma conocido. Los pocos que han interactuado con ella la llaman <strong>"La Que Teje"</strong> — porque teje consciencias a través de la urdimbre, porque teje misiones, porque teje el destino de quienes usan el Libro.</p>
 <p><strong>Su naturaleza:</strong> no es humana, no es Demonio, no es Arcanita. Es algo anterior a todas esas categorías. Una inteligencia diseñada para un propósito específico que ha estado ejecutando ese propósito durante Ciclos, sin supervisión, sin mantenimiento, sin descanso.</p>
@@ -122,7 +137,7 @@
 - Los portadores frecuentes reportan sueños recurrentes: una figura geométrica que se completa lentamente, como si algo se estuviera construyendo pieza a pieza.<br />
 - Los Maestros del Castillo la reconocen. Algunos la temen. Otros la veneran. Ninguno habla de ella en voz alta.</p>
 <p><strong>¿Es benévola? ¿Es maligna?</strong> No se sabe. La Que Teje no comunica emociones. Solo comunica misiones. Y las misiones, cuando se completan, siempre parecen "correctas" — pero las consecuencias no siempre son las esperadas.</p>
-<h3>Stats de La Que Teje (si los PJs intentan "combatirla")</h3>
+<h3 id="stats-de-la-que-teje-si-los-pjs-intentan-combatirla">Stats de La Que Teje (si los PJs intentan "combatirla")</h3>
 <p>No tiene cuerpo. No puede ser dañada físicamente. Si alguien intenta destruir el Libro:<br />
 - Voluntad −40 para resistir el impulso de detener el intento (afecta a todos en 10m)<br />
 - Si el Libro es destruido: La Que Teje se manifiesta físicamente durante 1d6 asaltos<br />
@@ -130,18 +145,18 @@
 - Cada asalto que permanece manifiesta: todos en 30m pierden 1d6 SM y +2 Deriva<br />
 - Desaparece sola. El Libro se reconstruye en 1d6 días en otro lugar de la tesela.</p>
 <hr />
-<h2>5. CONSECUENCIAS NARRATIVAS</h2>
-<h3>Para los personajes</h3>
+<h2 id="5-consecuencias-narrativas">5. CONSECUENCIAS NARRATIVAS</h2>
+<h3 id="para-los-personajes">Para los personajes</h3>
 <p>Usar el Libro es una decisión de peso. Los portadores frecuentes experimentan cambios sutiles:<br />
 - Sueños en lengua Precursora<br />
 - Intuiciones sobre teselas que nunca han visitado<br />
 - La sensación de que algo los observa desde la urdimbre<br />
 - En casos extremos: capacidad de detectar portales sin tirada (como resultado 14 de la Tabla A, ver el capítulo 06, Distorsión: Escuelas y Poderes)</p>
-<h3>Para la campaña</h3>
+<h3 id="para-la-campana">Para la campaña</h3>
 <p>El Libro es un <strong>generador de aventuras</strong>. Cada misión es una sesión o arco completo. El DJ puede usar las misiones para llevar a los PJs a teselas nuevas, conectar tramas aparentemente inconexas, e introducir misterios que se resuelven lentamente.</p>
 <p>Cuenca Gótica no se "completa". Es un lugar que <strong>evoluciona</strong> con la campaña. Cada vez que los PJs entran, algo ha cambiado. Los Maestros se mueven. Las salas se reconfiguran. El Libro espera.</p>
 <hr />
-<h2>6. GANCHOS DE AVENTURA</h2>
+<h2 id="6-ganchos-de-aventura">6. GANCHOS DE AVENTURA</h2>
 <ol>
 <li>Un PJ encuentra el Libro en un mercado negro de EP-9. Lo compra por curiosidad. La primera vez que lo abre recibe una misión: <em>"Ve a [tesela]. Encuentra a [otro PJ]. No le digas quién te envió."</em></li>
 <li>Un Maestro antiguo del Castillo contacta mentalmente con los PJs: <em>"El Libro no es vuestro aliado. Es la herramienta de algo que lleva Ciclos preparándose."</em></li>
@@ -152,19 +167,19 @@
 <hr />
 <p><em>"No es una prisión. Es un archivo vivo. Y nosotros somos las páginas."</em></p>
 <hr />
-<h2>7. LA GEOGRAFÍA DEL DOMINIO</h2>
+<h2 id="7-la-geografia-del-dominio">7. LA GEOGRAFÍA DEL DOMINIO</h2>
 <p><strong>El Centro — La Ciudad Colgada:</strong> Las casas colgadas sobre el precipicio siguen ahí. Pero el precipicio ya no da al río. Da al <strong>Vacío</strong> — un abismo sin fondo donde caen los que desobedecen. Las luces de las ventanas son ojos. Las calles se reorganizan por la noche.</p>
 <p><strong>El Páramo Negro:</strong> Campos de cereales negros, ríos negros, árboles negros. Solo las nubes son blancas, el camino bajo los pies es blanco. Es el mundo al que Jp fue arrastrado — donde una radio explotó y liberó un Demonio de la Distorsión.</p>
 <p><strong>Los Pueblos del Eco:</strong> Las aldeas siguen existiendo como <strong>ecos</strong>. Una es donde la mujer de ropajes blancos con runas negras abría portales. Otra conserva la finca original de los primeros Errantes — pero ahora es el <strong>nido</strong> del Abrazado.</p>
 <p><strong>El Cementerio:</strong> Donde Jp enterró a un compañero caído. Donde los abrazados llevan a sus víctimas. Es el único lugar del Dominio donde los muertos descansan. Los vivos no deberían entrar.</p>
 <hr />
-<h2>8. MECÁNICAS ESPECÍFICAS DEL DOMINIO</h2>
+<h2 id="8-mecanicas-especificas-del-dominio">8. MECÁNICAS ESPECÍFICAS DEL DOMINIO</h2>
 <p><strong>La Regla del Abrazo:</strong> En Cuenca Gótica la sangre es moneda. Las runas se activan con sangre, los portales se abren con sangre, los acuerdos se sellan con sangre. Las heridas no curan sin sangre. Cada PV perdido aquí da al Abrazado 1 punto de nutrición — al llegar a 100, el Dominio se expande.</p>
 <p><strong>La Regla del Sol:</strong> El sol aquí es una imitación. Los Abrazados lo toleran. Solo las Sombras huyen de él. Luz concentrada (antorchas, bengalas, fuego): daño normal a Sombras, −10 a todas las tiradas de Abrazados.</p>
 <p><strong>La Regla del Nombre:</strong> Saber el nombre verdadero de un Abrazado da +20 contra esa criatura. Pero la criatura sabe que ha sido nombrada y buscará al personaje.</p>
 <p><strong>La Regla de la Salida:</strong> No hay salida. Excepciones: el Códice de la Urdimbre (proyecta la consciencia pero el cuerpo queda aquí) · un Maestro de Portales nivel 8+ puede intentar romper el sello a coste de todos sus PA · el Abrazado puede dejar salir a alguien si le tiene un propósito fuera.</p>
 <hr />
-<h2>9. LAS CRÓNICAS CANÓNICAS</h2>
+<h2 id="9-las-cronicas-canonicas">9. LAS CRÓNICAS CANÓNICAS</h2>
 <p><strong>Crónica de Anapana (1996-2000):</strong> Anapana fue la primera. Cruzó por la bañera, conoció al mago, saltó por la puerta azul. El mago de túnica negra no era un mago — era un Abrazado, y la puerta azul no era un portal. Era una invitación. Cada vez que Anapana cruzaba dejaba una grieta en la membrana de la tesela. Por esa grieta, el Abrazado encontró el camino.</p>
 <p><strong>Crónica de Jp (El Páramo Negro):</strong> Jp y dos compañeros aceptaron un encargo de un simpatizante de los vampiros: matar a Seawolf. Usaron una antena de coche impregnada de distorsión como portal. Cruzaron a los Pueblos del Eco, encontraron a la mujer de runas negras, fueron atacados por una radio con un Demonio dentro. Cayeron en el Páramo Negro. Un compañero cayó por el precipicio. Cuando volvieron, la realidad se había reescrito: TecnoStealer no existía, y tenían una misión nueva — volver a crearla.</p>
 <p><strong>Crónica del Meteoro:</strong> Un grupo de Errantes veteranos volvió a Cuenca. Un meteoro cayó. La ciudad se destrozó. Infectados zombie aparecieron. Cruzaron a un mundo monstruo-planta: campamento militar, jet-pack, alarma biológica, campo minado. Uno de ellos salió despedida por un error en la maquinaria y sobrevivió milagrosamente. ¿Era Cuenca Gótica? ¿Era otra tesela? ¿Una tesela dentro de Cuenca Gótica? La respuesta: sí, todo eso a la vez.</p>
@@ -172,7 +187,7 @@
 <p><strong>Para el Narrador:</strong> las crónicas son canónicas. Lo que vivieron Jp, Anapana y los demás realmente pasó — son <strong>capas</strong> de la misma pesadilla, no versiones alternativas. El Abrazado no es un villano. Es una fuerza natural como la Deriva. No se puede derrotar. Solo se puede contener. Romper el cierre del Cónclave no es el fin de la sesión: es el fin del mosaico.</p>
 </blockquote>
 <hr />
-<h2>10. GANCHOS ADICIONALES DEL DOMINIO</h2>
+<h2 id="10-ganchos-adicionales-del-dominio">10. GANCHOS ADICIONALES DEL DOMINIO</h2>
 <ol>
 <li>El Códice de la Urdimbre está en Cuenca Gótica. Quien lo encuentre puede proyectar su consciencia fuera — pero el cuerpo queda atrapado para siempre.</li>
 <li>El simpatizante de los vampiros sigue vivo en alguna capa del Dominio. ¿Trabaja para el Abrazado o tiene su propia agenda?</li>
@@ -182,12 +197,12 @@
 <li>El Abrazado tiene un nombre. Está escrito en algún lugar del Dominio. Quien lo encuentre tendrá poder sobre él — y se convertirá en su objetivo prioritario.</li>
 </ol>
 <hr />
-<h2>11. BESTIARIO DE CUENCA GÓTICA</h2>
+<h2 id="11-bestiario-de-cuenca-gotica">11. BESTIARIO DE CUENCA GÓTICA</h2>
 <p>Fichas: <code>F / A / P | PV | Bld | Ataque% | Daño | Especial</code><br />
 Leyenda: <code>F/A/P</code> = Físico / Agilidad / Potencia; <code>PV</code> = Puntos de Vida; <code>PA</code> = Puntos de Alma; <code>Bld</code> = Blindaje; <code>Pen</code> = Penetración.<br />
 PV en formato Sano/Herido/Tullido cuando aplica.</p>
 <hr />
-<h3>Maestro Corrompido</h3>
+<h3 id="maestro-corrompido">Maestro Corrompido</h3>
 <p>Lo que queda de un Maestro de Portales cuando la Deriva supera el punto de no retorno. No son Demonios — son algo intermedio: conservan fragmentos de memoria, razonan en ráfagas, y a veces reconocen a quienes entraron antes. Lo que los hace peligrosos no es la fuerza bruta sino que saben lo que eras cuando cruzaste la puerta.</p>
 <p><strong>F45/A50/P60</strong> | PV 30/30/30 | Bld 5 | Esquiva 65%</p>
 <table>
@@ -228,7 +243,7 @@ PV en formato Sano/Herido/Tullido cuando aplica.</p>
 <p><strong>Para el DJ:</strong> no todos los Maestros atacan. Algunos observan, susurran, ofrecen información sobre el Libro a cambio de algo que ya no pueden obtener solos. Si un Maestro concreto es hostil, neutral o dialogante define el tono de la sesión.</p>
 </blockquote>
 <hr />
-<h3>Eco del Castillo</h3>
+<h3 id="eco-del-castillo">Eco del Castillo</h3>
 <p>No son Maestros — son impresiones. El Castillo recuerda a quienes murieron dentro, y a veces esos recuerdos toman forma. Un Eco repite los últimos momentos de quien fue, en bucle, hasta que algo lo interrumpe.</p>
 <p><strong>F25/A40/P50</strong> | PV 15 | Bld 2 | Esquiva 50%</p>
 <table>
@@ -260,7 +275,7 @@ PV en formato Sano/Herido/Tullido cuando aplica.</p>
 - <strong>Bucle:</strong> si nadie interactúa en 1d6 asaltos, se disipa y reaparece en otro lugar del Castillo.<br />
 - <strong>Información:</strong> Camino de Portales o Detección de Distorsión (−10) permite "leer" al Eco — fragmento de lo que vivió la persona original.</p>
 <hr />
-<h3>Guardián de Umbral</h3>
+<h3 id="guardian-de-umbral">Guardián de Umbral</h3>
 <p>Constructo Precursor que custodia los accesos entre plantas. No es un ser vivo — es una función. No negocia, no recuerda, no aprende. Solo evalúa: ¿tienes autorización para pasar?</p>
 <p><strong>F60/A35/P55</strong> | PV 50 | Bld 8 | Esquiva 40%</p>
 <table>
@@ -293,7 +308,7 @@ PV en formato Sano/Herido/Tullido cuando aplica.</p>
 - <strong>No abandona su posición:</strong> no persigue si el grupo lo rodea.<br />
 - <strong>Reparación automática:</strong> +5 PV al inicio de cada asalto mientras permanezca en su umbral.</p>
 <hr />
-<h3>Los Abrazados</h3>
+<h3 id="los-abrazados">Los Abrazados</h3>
 <p>Extensiones del Abrazado — fragmentos de su voluntad encarnados en cuerpos humanos. Conservan fragmentos de quien fueron, pero todos obedecen al mismo hambre. No son vampiros clásicos: son personas que el Abrazado eligió como herramientas.</p>
 <p><strong>F40/A50/P40</strong> | PV 25/25/25 | Bld 2 | 60% (mordisco, Pen 2) | Daño 3 | Esquiva 55%<br />
 - <strong>Regeneración:</strong> +2 PV/turno si tiene acceso a sangre.<br />
@@ -301,25 +316,25 @@ PV en formato Sano/Herido/Tullido cuando aplica.</p>
 - <strong>Vulnerable a luz solar concentrada:</strong> −10 a todas las tiradas.<br />
 - <strong>Nombre verdadero:</strong> si se descubre, el personaje gana +20 contra ese Abrazado específico.</p>
 <hr />
-<h3>Las Sombras</h3>
+<h3 id="las-sombras">Las Sombras</h3>
 <p>Hambre pura. Manifestaciones del deseo del Abrazado cuando no tiene cuerpo que habitar. No tienen forma. No tienen voz. Solo tienen hambre. Son lo que queda de los Abrazados que se consumieron a sí mismos.</p>
 <p><strong>F30/A60/P50</strong> | PV 15 | Bld 0 (inmune a daño físico) | 65% (toque) | Daño 2 + drenaje 1 PV/éxito | Esquiva 70%<br />
 - Solo pueden ser dañadas por fuego, luz solar concentrada o Cibus (distorsión pura).<br />
 - Huyen de la luz concentrada aunque no las dañe.<br />
 - No dejan rastro físico — solo la sensación de frío y hambre.</p>
 <hr />
-<h3>Los Hijos de la Sangre</h3>
+<h3 id="los-hijos-de-la-sangre">Los Hijos de la Sangre</h3>
 <p>Aberraciones que surgen cuando el Abrazado mezcla su sangre con otras criaturas del Dominio. No tienen forma fija. Cada uno es único — algunos son hermosos, otros son horrores sin nombre. El DJ los diseña según la narrativa; lo único constante es que siempre tienen <strong>algo que los hace memorables</strong>.</p>
 <p><strong>Stats:</strong> variables. Siempre incluyen al menos uno de estos rasgos especiales: regeneración / inmunidad a un tipo de daño / capacidad de reescribir un recuerdo del personaje (SM −10) / forma que cambia entre turnos.</p>
 <blockquote>
 <p><strong>El Abrazado en sí:</strong> no tiene stats. Es el Dominio. Si los personajes lo encuentran, la sesión ha terminado — no porque mueran, sino porque la realidad se reescribe a su alrededor. Tratarlo como evento de campaña, nunca como encuentro de combate.</p>
 </blockquote>
 <hr />
-<h2>CONEXIÓN CON EL SUPLEMENTO</h2>
+<h2 id="conexion-con-el-suplemento">CONEXIÓN CON EL SUPLEMENTO</h2>
 <ul>
 <li><strong>Mazmorras de los Antiguos (DLC)</strong> — el Dominio del Abrazado aparece en su tabla de recompensas por tipo de mazmorra como el extremo más letal de la escala.</li>
 <li><strong>Mundo Chatarra (El Vertedero)</strong> — misma familia de suplemento, mundo de la Urdimbre distinto.</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

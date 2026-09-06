@@ -6,12 +6,10 @@
 // interacción lo declara — y salta a `onSuccessNext`/`onFailureNext`).
 //
 // Deliberadamente mínimo (punto 20 del encargo: "no crear un motor de
-// diálogo gigante"): sin árboles infinitos, sin guardado de posición dentro
-// del árbol (si se sale de la escena a mitad de conversación, se reinicia en
-// `startNode` la próxima vez — igual que el resto de escenas no persisten
-// posición a mitad de una acción, ver docs/DESIGN.md).
+// diálogo gigante"): sin árboles infinitos. El nodo actual sí se guarda para
+// que recargar la página no reinicie una conversación ni reaplique su efecto.
 import { cargarEscena, ejecutarInteraccion, aplicarConsecuencias, cumpleRequisitos } from "../sceneEngine.js";
-import { obtenerJugador } from "../../gameState.js";
+import { obtenerJugador, obtenerProgresoEscena, guardarProgresoEscena, limpiarProgresoEscena } from "../../gameState.js";
 import { rutaAsset } from "../moduleLoader.js";
 
 function nombreDeHablante(speaker) {
@@ -26,18 +24,22 @@ export async function montarDialogo(container, escenaId) {
   const fondoStyle = escena.background ? `background-image:url('${rutaAsset(escena.background)}')` : "";
   wrap.innerHTML = `
     <div class="narrativa-fondo" style="${fondoStyle}"></div>
-    <div class="dialogo-caja" id="dialogo-caja"></div>
+    <div class="narrativa-hud dialogo-hud">
+      <div class="dialogo-caja" id="dialogo-caja"></div>
+    </div>
   `;
   container.appendChild(wrap);
   const caja = wrap.querySelector("#dialogo-caja");
 
-  function irANodo(nodoId) {
+  function irANodo(nodoId, { reanudando = false } = {}) {
     const nodo = escena.nodes[nodoId];
     if (!nodo) throw new Error(`Nodo de diálogo inexistente: "${nodoId}" en ${escenaId}`);
-    renderNodo(nodo);
+    renderNodo(nodoId, nodo, { reanudando });
   }
 
-  function renderNodo(nodo) {
+  function renderNodo(nodoId, nodo, { reanudando = false } = {}) {
+    if (nodo.consequence && !reanudando) aplicarConsecuencias(nodo.consequence, "player", { onTexto: () => {} });
+    guardarProgresoEscena(escenaId, { nodeId: nodoId });
     caja.innerHTML = `
       <div class="dialogo-hablante">${nombreDeHablante(nodo.speaker)}</div>
       <div class="dialogo-texto">${nodo.text}</div>
@@ -64,6 +66,7 @@ export async function montarDialogo(container, escenaId) {
           onTexto: (t) => { caja.querySelector(".dialogo-texto").innerHTML += `<br><em>${t}</em>`; },
           onCustom: (consecuencia) => {
             if (consecuencia._next) setTimeout(() => irANodo(consecuencia._next), consecuencia.text ? 900 : 0);
+            else if (consecuencia.transition) limpiarProgresoEscena(escenaId);
           }
         });
       });
@@ -77,11 +80,16 @@ export async function montarDialogo(container, escenaId) {
       btn.textContent = c.label;
       btn.addEventListener("click", () => {
         if (c.next) return irANodo(c.next);
-        if (c.consequence) aplicarConsecuencias(c.consequence, "player", { onTexto: () => {} });
+        if (c.consequence) {
+          if (c.consequence.transition) limpiarProgresoEscena(escenaId);
+          aplicarConsecuencias(c.consequence, "player", { onTexto: () => {} });
+        }
       });
       opcionesEl.appendChild(btn);
     });
   }
 
-  irANodo(escena.startNode);
+  const guardado = obtenerProgresoEscena(escenaId);
+  const nodeId = guardado?.nodeId && escena.nodes[guardado.nodeId] ? guardado.nodeId : escena.startNode;
+  irANodo(nodeId, { reanudando: nodeId !== escena.startNode || guardado?.nodeId === escena.startNode });
 }

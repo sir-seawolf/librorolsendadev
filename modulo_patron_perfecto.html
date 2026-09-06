@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El Patrón Perfecto</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El Patrón Perfecto"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-el-patron-que-llega">Escena 1 — El patrón que llega</a></li><li class="toc-h3"><a href="#escena-2-las-pruebas-encajan-demasiado-bien">Escena 2 — Las pruebas encajan demasiado bien</a></li><li class="toc-h3"><a href="#escena-3-quien-construyo-la-trampa">Escena 3 — Quien construyó la trampa</a></li><li class="toc-h3"><a href="#escena-4-la-sentencia">Escena 4 — La sentencia</a></li><li class="toc-h3"><a href="#escena-5-el-coste">Escena 5 — El coste</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#el-inquisidor-de-capricornio">El Inquisidor de Capricornio</a></li><li class="toc-h3"><a href="#pseudo-arcanita-de-elite">Pseudo-arcanita de élite</a></li><li class="toc-h3"><a href="#torvid-el-acusado">Torvid — el acusado</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#no-hay-recompensa-de-contrato">No hay recompensa de contrato</a></li><li class="toc-h3"><a href="#continuidad-hacia-el-pozo-de-desesperanza">Continuidad — hacia el pozo de desesperanza</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — El Patrón Perfecto</h1>
+<blockquote>
+<p>Una investigación del Inquisidor de Capricornio</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> el Inquisidor de Capricornio llega al Vertedero investigando una serie de muertes con la firma exacta de una Daga del LORD en uso. El patrón es impecable — demasiado impecable—. Alguien lo ha construido a propósito para incriminar a un inocente, y el propio Inquisidor, fiel a su método, está a punto de dictar sentencia siguiendo un rastro perfecto y falso. Los PJ son quienes pueden torcerlo a tiempo — o quienes presencian, sin poder evitarlo del todo, la primera grieta real en el hombre que hasta ahora nunca se equivocaba en voz alta.</p>
+<p><strong>Duración:</strong> one-shot de 4-5 horas, cinco escenas, autocontenido. No requiere haber jugado ningún otro módulo, aunque gana peso si la mesa ya conoce al Inquisidor (<em>Puesto Fronterizo</em>, <em>La Centésima Alma</em>).</p>
+<p><strong>Tono:</strong> oscuro, cargado de Distorsión, sin humor de alivio fácil — la tensión aquí no se rompe con un chiste, se sostiene. El horror no es un monstruo: es ver a alguien metódico y honesto construir su propia condena con datos reales y una conclusión falsa.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- El Inquisidor de Capricornio usa su ficha establecida (ver Reparto) — este módulo ocurre <strong>antes</strong> de cualquier "pozo de desesperanza" en su historia personal. De hecho, <strong>es el caso que lo origina</strong> — el módulo termina con la primera grieta real, no con el pozo completo.<br />
+- Quién fabricó las pruebas y por qué se deja deliberadamente ambiguo — Narrador únicamente, nunca confirmado en partida (ver Verdad completa). No hay revelación gratuita de LORD, Centenar o Dagas.<br />
+- El inocente acusado no es un PNJ de peso canónico previo — es alguien local, creado para este módulo, precisamente para que su destino dependa por completo de la mesa sin arrastrar continuidad ajena.<br />
+- Escenario: El Vertedero (tesela ya establecida en el canon de rol), sin usar a Davan ni a ningún PNJ ya fijado de esa tesela — se introduce un herrero rúnico nuevo, sin relación con personajes previos.</p>
+<p><strong>Verdad completa (Narrador):</strong> las muertes son reales, y el patrón que dejan —cada víctima pierde exactamente un Punto de Alma, en el orden y el ritmo propios de una Daga activa— también lo es, pero está fabricado: una <strong>pseudo-arcanita de élite</strong> (ficha en Reparto, reutilizada de nivel NT7) ha estado matando con un arma capaz de imitar esa firma, y ha ido dejando, junto a cada cuerpo, un rastro que apunta con precisión quirúrgica hacia <strong>Torvid</strong>, el herrero rúnico local. Por qué lo hace, el módulo no lo dice nunca: puede ser un ajuste de cuentas personal, una prueba de algo mayor, un capricho — el Narrador puede decidirlo para sí mismo, pero no debe explicárselo a la mesa ni confirmarlo por boca de nadie en la partida.</p>
+<p><strong>Si nadie interviene:</strong> el Inquisidor completa su investigación con lo que tiene, llega a la conclusión que el patrón le ofrece, y actúa en consecuencia contra Torvid al final de la Escena 4 — sin brutalidad gratuita, con la misma frialdad procedimental de siempre, que es precisamente lo que lo hace tan difícil de ver.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>El patrón que llega — el Inquisidor investiga las muertes, cruza con los PJ.</li>
+<li>Las pruebas encajan demasiado bien — la investigación conjunta, y las primeras grietas si alguien mira con cuidado.</li>
+<li>Quien construyó la trampa — la pseudo-arcanita de élite, vista o enfrentada a medias.</li>
+<li>La sentencia — el Inquisidor se dispone a actuar contra Torvid; última oportunidad de los PJ.</li>
+<li>El coste — cierre, con o sin salvar a Torvid, y la primera grieta real en el Inquisidor.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> una pseudo-arcanita de élite (ficha en Reparto), sola — no lleva escolta ni tripulación en este módulo; opera encubierta, no en fuerza. El Inquisidor no trae escolta esta vez tampoco: viene solo, como corresponde a una investigación que él considera rutinaria hasta el final.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>El Inquisidor llega al Vertedero, ya con tres muertes documentadas y el patrón identificado.</td>
+</tr>
+<tr>
+<td>H+1</td>
+<td>Empieza a interrogar y a reunir pruebas — con o sin los PJ.</td>
+</tr>
+<tr>
+<td>H+3</td>
+<td>El patrón señala con claridad a Torvid. El Inquisidor lo confronta formalmente.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>Salvo que se le presente algo mejor, dicta y ejecuta su sentencia (Escena 4).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El error característico, en la práctica de este módulo:</strong> el Inquisidor no está siendo negligente. Está siendo exactamente tan riguroso como siempre — el problema es que el patrón que sigue fue diseñado por alguien que sabe exactamente cómo piensa un Inquisidor de Capricornio. Interpretarlo como descuidado o como víctima fácil de un truco barato rompe el personaje: debe sentirse, en todo momento, como el investigador más competente de la sala, equivocándose de todos modos.</p>
+<p><strong>No hay villano fácil, y tampoco hay redención barata.</strong> El Inquisidor no es el enemigo. La pseudo-arcanita sí lo es, pero apenas aparece — este módulo no va sobre derrotarla, va sobre si los PJ consiguen desmontar su obra a tiempo.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-el-patron-que-llega">Escena 1 — El patrón que llega</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Marea alta sobre el Vertedero — se nota en el zumbido irregular de los talleres y en cómo las runas prenden más fácil de lo normal, y también más difícil de controlar. No perdona errores de cálculo en un buen día; en marea alta, menos todavía. El transporte del Inquisidor aterriza sin ceremonia, entre chatarra reciclada y el ruido de fondo que nunca cesa del todo.</p>
+</blockquote>
+<p><em>(Situar la escena en Hebra y Ciclo es opcional. Basta con la marea declarada arriba para que la mesa la sienta sin necesitar una fecha.)</em></p>
+<p><strong>Qué está ocurriendo:</strong> el Inquisidor llega con tres muertes ya documentadas, cada una con la firma exacta de una Daga activa. Empieza a preguntar, con la misma calma metódica de siempre.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>El Inquisidor de Capricornio</strong> — formal, seguro de su método, todavía sin ninguna grieta visible.<br />
+- <strong>Torvid</strong>, el herrero rúnico — trabajando como cualquier otro día, sin saber todavía que las pruebas ya apuntan hacia él.</p>
+<p><strong>Interpretar al Inquisidor:</strong></p>
+<blockquote>
+<p>«Tres muertes, un mismo patrón. Alguien con una Daga activa está aquí, o ha estado. Necesito confirmarlo antes de necesitar nada más.»<br />
+«No vengo a acusar a nadie. Todavía no tengo a quién acusar.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Investigación o Alerta para notar que el Inquisidor ya tiene un caso construido, no solo preguntas abiertas.</p>
+<p><strong>Cómo termina:</strong> el grupo entra en la investigación, con o sin invitación formal del Inquisidor — corta a la Escena 2.</p>
+<h3 id="escena-2-las-pruebas-encajan-demasiado-bien">Escena 2 — Las pruebas encajan demasiado bien</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Cada testimonio, cada resto de escena, cada dato técnico apunta en la misma dirección, con una limpieza que empieza a resultar sospechosa solo para quien se pare a notarlo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> la investigación conjunta reúne pruebas que, juntas, señalan a Torvid con una claridad casi perfecta. Los PJ pueden empezar a notar que es <em>demasiado</em> perfecta.</p>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Investigación</strong> (Difícil, −10): éxito → una de las pruebas tiene un detalle que no encaja del todo — no basta para desmontar el caso, pero es una grieta real donde seguir tirando.<br />
+- <strong>Percepción o Alerta</strong>: éxito → alguien, en algún momento, ha estado observando la investigación desde lejos.</p>
+<p><strong>Interpretar a Torvid</strong> (el acusado, todavía sin saberlo del todo):</p>
+<blockquote>
+<p>«No sé de qué me habláis. Yo hago runas, no mato a nadie.»<br />
+«¿Por qué iba a hacer algo así? Llevo aquí quince años. Esta es mi gente.»</p>
+</blockquote>
+<p><strong>Cómo termina:</strong> el Inquisidor, con las pruebas que tiene, empieza a mirar a Torvid como sospechoso principal. Corta a la Escena 3 si los PJ tiran del hilo que encontraron; si no, directamente a la Escena 4.</p>
+<h3 id="escena-3-quien-construyo-la-trampa">Escena 3 — Quien construyó la trampa</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El hilo suelto lleva a algo que no debería estar ahí: un rastro de presencia reciente, deliberadamente casi borrado, en el punto exacto donde nadie debería haber estado.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ que tiraron del hilo se cruzan, de lejos o de cerca, con la pseudo-arcanita de élite responsable de todo esto. No busca pelea si puede evitarla — su obra ya está casi terminada, y un enfrentamiento abierto la delataría antes de tiempo.</p>
+<p><strong>PNJ presentes:</strong> la pseudo-arcanita de élite (ficha en Reparto) — si el combate estalla, es un enemigo real, sin restricciones de escala.</p>
+<p><strong>Tiradas posibles:</strong> Sigilo o Rastreo para seguirla sin ser detectados; Combate directo si la confrontación es inevitable.</p>
+<p><strong>Cómo termina:</strong> si los PJ consiguen algo de ella —una prueba, una herida que deja rastro, una fuga que confirma que hay alguien detrás—, tienen munición real para la Escena 4. Si no la encuentran o la pierden, el módulo sigue igual: solo que sin esa ventaja.</p>
+<h3 id="escena-4-la-sentencia">Escena 4 — La sentencia</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El Inquisidor no alza la voz. Nunca lo hace. Eso es, precisamente, lo que hace que este momento sea insoportable de ver.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con el patrón cerrado a su satisfacción, el Inquisidor se dispone a actuar contra Torvid —no con violencia gratuita, con el mismo procedimiento frío de siempre—. Es la última oportunidad de los PJ para presentarle algo que desmonte su conclusión.</p>
+<p><strong>Cómo desmontar su hipótesis:</strong><br />
+- Presentar la prueba encontrada en la Escena 3, si la hay.<br />
+- Argumentar la coincidencia demasiado perfecta como prueba en sí misma de manipulación — un argumento que él, mejor que nadie, puede llegar a valorar.<br />
+- No conseguir nada a tiempo: el módulo no se rompe si esto pasa, cambia de naturaleza.</p>
+<p><strong>Tirada:</strong> Persuasión o Interrogación/Sociales, Muy difícil (−20) — el Inquisidor es riguroso por diseño, no se le convence con un intento mediocre. Si los PJ traen la prueba de la Escena 3, la dificultad baja a Difícil (−10): un dato real pesa más que cualquier discurso. Un único intento por PJ; una pifia no empeora la sentencia, solo confirma que no han aportado nada nuevo.</p>
+<p><strong>Cómo termina:</strong> dos caminos, ambos válidos:<br />
+- <strong>Los PJ lo consiguen:</strong> el Inquisidor se detiene, revisa, y por primera vez en su carrera documentada duda de su propio método en voz alta delante de otros. Torvid se salva, pero la sombra de haber estado a un paso de ser condenado no se borra sola.<br />
+- <strong>Los PJ no lo consiguen a tiempo:</strong> el Inquisidor actúa. Torvid paga el precio de un patrón perfecto y falso. El Inquisidor no lo sabrá con certeza hasta después —y cuando lo sepa, la grieta será mucho más profunda.</p>
+<h3 id="escena-5-el-coste">Escena 5 — El coste</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Sea cual sea el resultado, algo se ha quebrado que no estaba quebrado esta mañana.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre. Si Torvid se salvó, el Inquisidor se marcha con una pregunta nueva que no tenía al llegar: si un patrón puede fabricarse tan bien, ¿cuántos otros casos cerrados no lo fueron con la misma limpieza falsa? Si Torvid no se salvó, la pregunta llega más tarde, más dura, y sin nadie a quien preguntársela.</p>
+<p><strong>Cómo termina:</strong> este módulo no resuelve quién fabricó el patrón ni por qué —eso queda para el Narrador, nunca para la mesa—. Lo que sí deja fijado, pase lo que pase con Torvid, es la primera grieta real del Inquisidor: el origen narrativo de su futuro pozo de desesperanza, sin necesidad de dramatizarlo entero aquí.</p>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="el-inquisidor-de-capricornio">El Inquisidor de Capricornio</h3>
+<p>Ficha establecida — reutilizada tal cual de sus apariciones anteriores (ficha actual, ~12 profesiones), previa al pozo.</p>
+<p>Atributos: AGI 35, CON 38, FUE 36, HAB 42, CAR 45, INT 55, PER 52, VOL 48.<br />
+Habilidades: Arma CC Media 85%, Distancia Media 95%, Investigación 85%, Electrónica 75%, Alerta 80%, Interrogación/Sociales 70%, Táctica 60%.<br />
+PV 20/20/20 (Sano/Herido/Tullido; el +1 sobre la fórmula estándar es decisión de diseño, sin origen concreto fijado) | Blindaje: 4 si lleva la armadura media reforzada, 8 si lleva la acorazada — son dos equipos distintos, no dos zonas del cuerpo; solo puede llevar uno de los dos a la vez.<br />
+Armas: estoque de combate (Daño 7, Pen 3), pistola de precisión (Daño 5, Pen 4, Cad 4).<br />
+Implantes: ocular táctico, reflejos aumentados (+15 Iniciativa), comunicador subdérmico cifrado.</p>
+<ul>
+<li>No usa violencia contra Torvid salvo resistencia activa — su "sentencia" es procedimental, no un ajusticiamiento en caliente.</li>
+</ul>
+<h3 id="pseudo-arcanita-de-elite">Pseudo-arcanita de élite</h3>
+<p>Ficha reutilizada de una aparición anterior de la facción, NT7. Opera sola en este módulo, encubierta.</p>
+<p>F75/A75/P65/V70 | PV 45/45/45 (Sano/Herido/Tullido) | Blindaje 9 en todo el cuerpo (armadura rúnica regenerativa: 6 base + 3 de runas — recupera 2 puntos por asalto si no recibe impactos ese asalto)<br />
+Arma de pulsos (cargable) 85%: sin cargar Daño 10/Pen 3 · carga media Daño 18/Pen 5 · carga completa Daño 28/Pen 8 (ver Combate en gravedad cero del módulo de origen para el ritmo de carga)<br />
+Lanza a dos manos 80%: Daño 14, Pen 4 (aplica bonificador de Fuerza si supera el umbral del arma — con F75, casi siempre lo hace)<br />
+Sigilo 60% | Electrónica 60%<br />
+Implantes: reflejos militares duplicados (+20 Iniciativa), musculatura reforzada (supera el techo humano).</p>
+<ul>
+<li>No busca combate abierto en este módulo — su objetivo es que el patrón se cierre, no matar PJ.</li>
+<li>Si se ve acorralada, combate con todo lo que tiene (ver ficha completa en el módulo de EP-7/Kawalapiti para el detalle del arma de pulsos por niveles de carga).</li>
+</ul>
+<h3 id="torvid-el-acusado">Torvid — el acusado</h3>
+<p>Herrero rúnico del Vertedero, sin ficha de combate necesaria para este módulo (PNJ funcional, no combatiente). Quince años en el asentamiento, bien considerado por sus vecinos.</p>
+<p><strong>Frase fijada:</strong> «¿Por qué iba a hacer algo así? Llevo aquí quince años. Esta es mi gente.»</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>Torvid se salva.</strong> El Inquisidor se detiene a tiempo. Empieza a dudar de sus propios casos cerrados — la primera grieta real.</li>
+<li><strong>Torvid no se salva.</strong> El coste humano queda fijado; el Inquisidor, cuando lo sepa, cae mucho más rápido y mucho más hondo.</li>
+<li><strong>La pseudo-arcanita escapa sin identificar.</strong> Queda como amenaza abierta — puede reaparecer en otro módulo con otro patrón perfecto.</li>
+<li><strong>La pseudo-arcanita es identificada o herida.</strong> Da a los PJ una pista real sobre quién construye este tipo de trampas, sin confirmar nunca el porqué.</li>
+</ul>
+<h3 id="no-hay-recompensa-de-contrato">No hay recompensa de contrato</h3>
+<p>Como en otros módulos de esta línea: esto no se hace por encargo ni por paga. Se hace porque los PJ estaban ahí cuando el patrón empezaba a cerrarse sobre alguien inocente.</p>
+<h3 id="continuidad-hacia-el-pozo-de-desesperanza">Continuidad — hacia el pozo de desesperanza</h3>
+<p>Este módulo es, deliberadamente, el origen documentado de la grieta que lleva al Inquisidor a su pozo de desesperanza. Ese pozo ya tiene una aventura propia —<em>Resurgir</em>— para la mesa que quiera continuarlo directamente; también puede quedar, sin jugarlo, como hueco en blanco entre apariciones.</p>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">El Inquisidor de Capricornio</div>
+<div class="ficha-rapida-rol">Investiga, todavía sin grieta</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">AGI 35 CON 38 FUE 36 HAB 42 CAR 45 INT 55 PER 52 VOL 48 · PV <b>20/20/20</b> · Bld <b>4</b> con media reforzada o <b>8</b> con acorazada (un equipo u otro, no las dos)</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Arma CC Media 85%</span><span class="ficha-rapida-pill">Distancia Media 95%</span><span class="ficha-rapida-pill">Investigación 85%</span><span class="ficha-rapida-pill">Electrónica 75%</span><span class="ficha-rapida-pill">Alerta 80%</span><span class="ficha-rapida-pill">Interrogación 70%</span><span class="ficha-rapida-pill">Táctica 60%</span></div>
+<div class="ficha-rapida-equipo"><b>Armas:</b> estoque de combate (Daño 7, Pen 3) · pistola de precisión (Daño 5, Pen 4, Cad 4). <b>Implantes:</b> ocular táctico, reflejos aumentados (+15 Iniciativa), comunicador subdérmico.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Pseudo-arcanita de élite</div>
+<div class="ficha-rapida-rol">Encubierta, no busca combate abierto</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">F<b>75</b> A<b>75</b> P<b>65</b> V<b>70</b> · PV <b>45/45/45</b> · Bld <b>9</b> en todo el cuerpo (regenerativo, +2/asalto sin impactos)</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Arma de pulsos 85%</span><span class="ficha-rapida-pill">Lanza 2 manos 80%</span><span class="ficha-rapida-pill">Sigilo 60%</span><span class="ficha-rapida-pill">Electrónica 60%</span></div>
+<div class="ficha-rapida-equipo"><b>Arma de pulsos:</b> sin cargar Daño 10/Pen 3 · media Daño 18/Pen 5 · completa Daño 28/Pen 8. <b>Lanza:</b> Daño 14, Pen 4. <b>Implantes:</b> reflejos militares duplicados (+20 Iniciativa), musculatura reforzada (supera el techo humano).</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Torvid</div>
+<div class="ficha-rapida-rol">El acusado — sin ficha de combate</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Herrero rúnico del Vertedero, PNJ funcional. Quince años en el asentamiento.</div>
+<div class="ficha-rapida-equipo"><b>Frase:</b> «¿Por qué iba a hacer algo así? Llevo aquí quince años. Esta es mi gente.»</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

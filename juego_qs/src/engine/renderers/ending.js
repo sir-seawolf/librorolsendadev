@@ -1,4 +1,4 @@
-import { state, cambiarEscena, borrarGuardado, obtenerJugador, nivelHeridaDe } from "../../gameState.js";
+import { state, cambiarEscena, cerrarPartidaDefinitiva, obtenerJugador, nivelHeridaDe } from "../../gameState.js";
 import { cargarEscena } from "../sceneEngine.js";
 
 // Renderer genérico de finales: la escena JSON define un mapa `endings` de
@@ -76,9 +76,8 @@ export async function montarFinal(container, escenaId) {
   wrap.querySelector("#btn-menu-final").addEventListener("click", () => {
     state.finalTipo = null;
     if (esDefinitivo) {
-      borrarGuardado();
-      state.partyMembers = {};
-      state.playerCharacterId = null;
+      cerrarPartidaDefinitiva(destino);
+      return;
     }
     // La aventura sigue: nunca se borra la partida ni se vacía el party
     // por una huida, una conversación o un límite de contenido pendiente.

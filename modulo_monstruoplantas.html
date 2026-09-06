@@ -15,23 +15,38 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "DLC — MUNDO DE LA URDIMBRE: MONSTRUOPLANTAS"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#el-jardin-desequilibrado">El Jardín Desequilibrado</a></li><li class="toc-h2"><a href="#1-presentacion-del-mundo-leelo-antes-de-dirigir">1. Presentación del mundo — léelo antes de dirigir</a></li><li class="toc-h2"><a href="#2-naturaleza-cosmologica-y-acceso-al-mundo">2. Naturaleza cosmológica y acceso al mundo</a></li><li class="toc-h3"><a href="#acceso-al-mundo-portales">Acceso al mundo — portales</a></li><li class="toc-h3"><a href="#espaciopuertos">Espaciopuertos</a></li><li class="toc-h2"><a href="#3-la-guerra-y-el-puesto-fronterizo">3. La guerra y el Puesto Fronterizo</a></li><li class="toc-h3"><a href="#vida-alrededor-del-portal-semanal">Vida alrededor del portal semanal</a></li><li class="toc-h2"><a href="#4-que-hacen-alli-los-personajes">4. Qué hacen allí los personajes</a></li><li class="toc-h2"><a href="#5-geografia-y-regiones">5. Geografía y regiones</a></li><li class="toc-h3"><a href="#valle-central-jungla-maxima-densidad-lianas">VALLE CENTRAL (Jungla — Máxima Densidad Lianas)</a></li><li class="toc-h3"><a href="#bosque-mutante-jungla-arboles-gigantoides">BOSQUE MUTANTE (Jungla — Árboles Gigantoides)</a></li><li class="toc-h3"><a href="#pared-calcarea-region-excepcional-emplazamiento-del-puesto-fronterizo">PARED CALCÁREA (Región Excepcional — Emplazamiento del Puesto Fronterizo)</a></li><li class="toc-h3"><a href="#glaciares-region-excepcional-zonas-polares">GLACIARES (Región Excepcional — Zonas Polares)</a></li><li class="toc-h3"><a href="#desierto-region-excepcional-zonas-aridas">DESIERTO (Región Excepcional — Zonas Áridas)</a></li><li class="toc-h3"><a href="#pantanos-de-bioluminiscencia-region-excepcional">PANTANOS DE BIOLUMINISCENCIA (Región Excepcional)</a></li><li class="toc-h3"><a href="#zonas-radiactivas-liberadas-zona-alterada-por-la-guerra">ZONAS RADIACTIVAS LIBERADAS (Zona Alterada por la Guerra)</a></li><li class="toc-h2"><a href="#6-como-cambia-el-frente">6. Cómo cambia el frente</a></li><li class="toc-h2"><a href="#7-facciones-y-fuerzas-presentes">7. Facciones y fuerzas presentes</a></li><li class="toc-h3"><a href="#mandos-locales-principales">MANDOS LOCALES PRINCIPALES</a></li><li class="toc-h3"><a href="#facciones-rival-en-terreno">FACCIONES RIVAL EN TERRENO</a></li><li class="toc-h2"><a href="#8-fauna-flora-e-infectados">8. Fauna, flora e infectados</a></li><li class="toc-h3"><a href="#lianas-regenerantes">LIANAS REGENERANTES</a></li><li class="toc-h3"><a href="#depredadores-mutantes">DEPREDADORES MUTANTES</a></li><li class="toc-h3"><a href="#flora-toxica">FLORA TÓXICA</a></li><li class="toc-h3"><a href="#otra-fauna-de-monstruoplantas">OTRA FAUNA DE MONSTRUOPLANTAS</a></li><li class="toc-h3"><a href="#microorganismos-ambientales">MICROORGANISMOS AMBIENTALES</a></li><li class="toc-h3"><a href="#infectados-del-jardinero-3-fases">INFECTADOS DEL JARDINERO (3 fases)</a></li><li class="toc-h3"><a href="#infeccion-y-guerra-consecuencias">Infección y guerra: consecuencias</a></li><li class="toc-h2"><a href="#9-supervivencia">9. Supervivencia</a></li><li class="toc-h3"><a href="#exposicion-ambiental-0-5">EXPOSICIÓN AMBIENTAL (0-5)</a></li><li class="toc-h3"><a href="#equipo-especializado">EQUIPO ESPECIALIZADO</a></li><li class="toc-h2"><a href="#10-recursos-y-extraccion">10. Recursos y extracción</a></li><li class="toc-h3"><a href="#fauna-muestras-vivas">FAUNA — MUESTRAS VIVAS</a></li><li class="toc-h3"><a href="#flora-muestras-y-productos">FLORA — MUESTRAS Y PRODUCTOS</a></li><li class="toc-h3"><a href="#tecnologia-material-recuperable">TECNOLOGÍA — MATERIAL RECUPERABLE</a></li><li class="toc-h3"><a href="#precios-referencia">PRECIOS REFERENCIA</a></li><li class="toc-h2"><a href="#11-ruinas-y-lugares-de-aventura">11. Ruinas y lugares de aventura</a></li><li class="toc-h3"><a href="#campamentos-restos-y-encuentros">Campamentos, restos y encuentros</a></li><li class="toc-h3"><a href="#ruinas-legendarias-puntos-de-aventura">Ruinas legendarias — puntos de aventura</a></li><li class="toc-h2"><a href="#12-ganchos">12. Ganchos</a></li><li class="toc-h3"><a href="#ganchos-iniciales-primeras-misiones-puesto-fronterizo">GANCHOS INICIALES (Primeras Misiones — Puesto Fronterizo)</a></li><li class="toc-h3"><a href="#formas-de-jugar-monstruoplantas">Formas de jugar Monstruoplantas</a></li><li class="toc-h2"><a href="#13-tablas-de-encuentro-y-apoyo">13. Tablas de encuentro y apoyo</a></li><li class="toc-h3"><a href="#eventos-ambientales-recurrentes">EVENTOS AMBIENTALES RECURRENTES</a></li><li class="toc-h2"><a href="#14-conexion-con-modulos">14. Conexión con módulos</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>DLC — MUNDO DE LA URDIMBRE: MONSTRUOPLANTAS</h1>
-<h2>El Jardín Desequilibrado</h2>
+<h2 id="el-jardin-desequilibrado">El Jardín Desequilibrado</h2>
 <blockquote>
 <p><em>"Fue un jardín una vez. Los Antiguos lo cuidaban. Luego vinieron otros a estudiarlo. Luego vinieron más a saquearlo. Ahora el planeta responde a todos por igual — con muerte."</em></p>
 </blockquote>
@@ -39,7 +54,7 @@
 <p><img alt="Puesto fronterizo corporativo en una colina desmontada entre la jungla de Monstruoplantas, con muros provisionales y vehículos de apoyo" src="img/monstruoplantas_puesto_panorama.webp" /><br />
 <em>Un puesto fronterizo entre muchos. La guerra puede decidir esta colina sin decidir el destino del planeta.</em></p>
 <hr />
-<h2>1. Presentación del mundo — léelo antes de dirigir</h2>
+<h2 id="1-presentacion-del-mundo-leelo-antes-de-dirigir">1. Presentación del mundo — léelo antes de dirigir</h2>
 <p>Monstruoplantas es un mundo planetario situado dentro de la Urdimbre, no una tesela. Fue, según los restos que se conservan, un jardín cultivado por los Antiguos. Desde entonces lo han estudiado, explotado, bombardeado y disputado generaciones de corporaciones, expediciones y ejércitos, sin que ninguna fuerza lo haya controlado por completo.</p>
 <p>Aproximadamente el <strong>60% de la superficie es jungla</strong> — el entorno dominante del planeta, no un bioma más entre varios. El resto se reparte en regiones excepcionales (glaciares, desierto, pantanos, una gran pared calcárea) y en zonas alteradas directamente por la guerra (las radiactivas liberadas por los bombardeos).</p>
 <p>Sobre ese terreno, varias corporaciones sostienen un frente de guerra fronterizo que no deja de moverse. El territorio conquistado avanza y retrocede de una sesión a otra. Una posición segura hoy puede quedar aislada, o detrás de líneas enemigas, en cuestión de días.</p>
@@ -48,9 +63,9 @@
 <p><strong>Idea central para dirigir esta ambientación:</strong> la frontera humana cambia constantemente, pero la jungla siempre recupera el terreno.</p>
 <p>El planeta no debe presentarse como consciente. Algunos de sus habitantes hablan de él como si lo fuera — un rumor recurrente, nunca confirmado — pero lo que hay detrás es adaptación ecológica agresiva, no voluntad (ver "Cómo cambia el frente", más adelante).</p>
 <hr />
-<h2>2. Naturaleza cosmológica y acceso al mundo</h2>
+<h2 id="2-naturaleza-cosmologica-y-acceso-al-mundo">2. Naturaleza cosmológica y acceso al mundo</h2>
 <p>Monstruoplantas es un <strong>mundo planetario de la Urdimbre</strong>, con superficie, atmósfera, clima y geografía propios — no una tesela ni un fragmento del Mosaico. Se llega a él, se vive en él y se sale de él como de cualquier planeta, aunque el mecanismo concreto de acceso siga sin resolverse del todo (ver abajo).</p>
-<h3>Acceso al mundo — portales</h3>
+<h3 id="acceso-al-mundo-portales">Acceso al mundo — portales</h3>
 <p>Monstruoplantas tiene varios accesos mediante portal, repartidos por el planeta. No existe un único portal que sea la llave de Monstruoplantas: cada acceso tiene su propio ciclo y sus propias condiciones.</p>
 <ul>
 <li>El portal situado junto al Puesto Fronterizo se abre aproximadamente una vez por semana. Durante cada apertura entran y salen personas, correo, órdenes, suministros, reemplazos, mercancías y heridos. Perder una apertura puede dejar al Puesto aislado hasta el siguiente ciclo (ver "Vida alrededor del portal semanal", en La guerra y el Puesto Fronterizo).</li>
@@ -60,7 +75,7 @@
 <li>Las comunicaciones de largo alcance siguen siendo difíciles: un núcleo radiactivo del planeta interfiere con satélites y transmisiones.</li>
 <li>Es posible sacar del planeta a personas y fauna. La tecnología recuperada suele quedarse atrás o exige un protocolo especial de extracción.</li>
 </ul>
-<h3>Espaciopuertos</h3>
+<h3 id="espaciopuertos">Espaciopuertos</h3>
 <p>Monstruoplantas tiene varios espaciopuertos. Volar es posible, pero extremadamente difícil, caro y poco fiable: la jungla, la meteorología, la fauna, las interferencias, las zonas de guerra activas, la falta de superficies seguras, los corredores cambiantes, los ataques y el mantenimiento complicado lo convierten en una opción para quien puede permitírsela, no en transporte habitual.</p>
 <p>Un espaciopuerto proporciona lo que un aterrizaje improvisado no puede: pistas o zonas de operación despejadas, hangares, defensas, mantenimiento, balizas, comunicaciones, corredores de aproximación, ventanas de vuelo seguras y concentración de suministros. Su importancia es militar, logística y regional — ninguno de ellos controla el planeta entero.</p>
 <p><strong>Gestión corporativa:</strong><br />
@@ -68,18 +83,18 @@
 - Chafry posee y administra al menos un espaciopuerto propio.<br />
 - Workhouse no conquista ni administra espaciopuertos por iniciativa militar propia — la guerra territorial no es su negocio. Cuando participa en una operación, usa la logística y las instalaciones de quien la contrata.</p>
 <hr />
-<h2>3. La guerra y el Puesto Fronterizo</h2>
+<h2 id="3-la-guerra-y-el-puesto-fronterizo">3. La guerra y el Puesto Fronterizo</h2>
 <p>El Puesto Fronterizo no es todo el planeta: es una plaza concreta dentro de un frente enorme y cambiante, uno más entre muchos puntos disputados de Monstruoplantas.</p>
 <p><em>Puesto Fronterizo es un módulo completo ambientado en este mundo.</em></p>
 <p>Para dirigir el tono de la zona, piensa en una región fronteriza durante una guerra prolongada: posiciones que cambian de manos, fortificaciones provisionales, campamentos militares, patrullas, rutas de suministro, hospitales de campaña, evacuaciones, zonas bombardeadas, unidades aisladas que ya no saben si siguen en territorio propio.</p>
 <p>La inspiración visual y operativa recuerda a las guerras de jungla del siglo XX, trasladada a la ciencia ficción y fantasía de La Senda: vegetación densa, barro, visibilidad limitada, posiciones fortificadas, vehículos y robots, tropas corporativas, peligro ambiental constante, enemigos a pocos metros sin llegar a verse. No hace falta copiar acontecimientos históricos concretos ni convertir esto en una alegoría política: es una referencia de atmósfera, no de trama.</p>
 <p><img alt="Combate corporativo bajo la lluvia en la jungla de Monstruoplantas, tropas avanzando entre vegetación densa" src="img/monstruoplantas_guerra_jungla.webp" /><br />
 <em>En Monstruoplantas se libran numerosas batallas cada día. Esta es una de ellas — ni la única, ni necesariamente la más importante.</em></p>
-<h3>Vida alrededor del portal semanal</h3>
+<h3 id="vida-alrededor-del-portal-semanal">Vida alrededor del portal semanal</h3>
 <p>El portal semanal marca el pulso del Puesto Fronterizo: acumulación de correo y mercancías en los días previos, llegada de relevos, evacuación limitada de heridos, mercado y contrabando alrededor de la apertura, órdenes que llegan tarde, suministros equivocados, gente que espera su turno para marcharse, tensión creciente si el portal no llega a abrirse, y celebraciones, discusiones o peleas que coinciden con el momento de la apertura.</p>
 <p>Estos elementos son oportunidades de aventura y de ambiente — no acontecimientos que alteren todo Monstruoplantas cuando ocurren.</p>
 <hr />
-<h2>4. Qué hacen allí los personajes</h2>
+<h2 id="4-que-hacen-alli-los-personajes">4. Qué hacen allí los personajes</h2>
 <p>Monstruoplantas admite campañas muy distintas entre sí, de escalas muy distintas. No hay una progresión obligatoria de lo cotidiano a lo mítico: una aventura no necesita salvar el planeta para ser importante o memorable.</p>
 <p><strong>Cotidianas o personales</strong><br />
 - Una pelea por el rancho.<br />
@@ -125,7 +140,7 @@
 - Conocer una pequeña parte de un misterio mayor.</p>
 <p>Estos ejemplos se suman a los ganchos ya desarrollados (ver Ganchos) — no los sustituyen.</p>
 <hr />
-<h2>5. Geografía y regiones</h2>
+<h2 id="5-geografia-y-regiones">5. Geografía y regiones</h2>
 <p>Aproximadamente el 60% de Monstruoplantas es jungla: es el entorno dominante del planeta, y la mayor parte de lo que ocurre fuera del Puesto Fronterizo ocurre en ella. El resto del planeta se organiza así:</p>
 <ul>
 <li><strong>Entorno dominante:</strong> la jungla — Valle Central y Bosque Mutante son sus formas más intensas, pero cualquier trayecto largo la atraviesa.</li>
@@ -134,7 +149,7 @@
 <li><strong>Zona alterada por la guerra:</strong> las Zonas Radiactivas Liberadas, que no existían como tales antes de los bombardeos corporativos.</li>
 </ul>
 <p>Cada tabla de encuentros cubre exactamente 01-100 sin huecos ni solapamientos, y combina fauna, flora, infectados, peligros ambientales, gente y escenas tranquilas — no todos los resultados exigen combate.</p>
-<h3>VALLE CENTRAL (Jungla — Máxima Densidad Lianas)</h3>
+<h3 id="valle-central-jungla-maxima-densidad-lianas">VALLE CENTRAL (Jungla — Máxima Densidad Lianas)</h3>
 <p><strong>Descripción:</strong> Lianas entrelazadas. Movimiento a mitad de velocidad normal por la densidad vegetal. Visibilidad reducida a unos 10 metros.</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
 <table>
@@ -187,7 +202,7 @@
 </tr>
 </tbody>
 </table>
-<h3>BOSQUE MUTANTE (Jungla — Árboles Gigantoides)</h3>
+<h3 id="bosque-mutante-jungla-arboles-gigantoides">BOSQUE MUTANTE (Jungla — Árboles Gigantoides)</h3>
 <p><strong>Descripción:</strong> Árboles 100+ metros. Raíces forman "cuevas". Luz filtrada.<br />
 Escalada: Atletismo Difícil (−10). Combate en las copas: Extremadamente difícil (−20) por la inestabilidad de las ramas — bajar a terreno estable elimina el penalizador.</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
@@ -241,7 +256,7 @@ Escalada: Atletismo Difícil (−10). Combate en las copas: Extremadamente difí
 </tr>
 </tbody>
 </table>
-<h3>PARED CALCÁREA (Región Excepcional — Emplazamiento del Puesto Fronterizo)</h3>
+<h3 id="pared-calcarea-region-excepcional-emplazamiento-del-puesto-fronterizo">PARED CALCÁREA (Región Excepcional — Emplazamiento del Puesto Fronterizo)</h3>
 <p><strong>Descripción:</strong> Acantilados calcáreos. Puesto Fronterizo agarrado aquí. Cavernas con agua dulce (rara).</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
 <table>
@@ -294,7 +309,7 @@ Escalada: Atletismo Difícil (−10). Combate en las copas: Extremadamente difí
 </tr>
 </tbody>
 </table>
-<h3>GLACIARES (Región Excepcional — Zonas Polares)</h3>
+<h3 id="glaciares-region-excepcional-zonas-polares">GLACIARES (Región Excepcional — Zonas Polares)</h3>
 <p><strong>Descripción:</strong> Hielo permanente, grietas profundas, vientos letales. Fauna adaptada al frío extremo.<br />
 Temperatura: −40°C (ver Frío Extremo, en Supervivencia).</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
@@ -348,7 +363,7 @@ Temperatura: −40°C (ver Frío Extremo, en Supervivencia).</p>
 </tr>
 </tbody>
 </table>
-<h3>DESIERTO (Región Excepcional — Zonas Áridas)</h3>
+<h3 id="desierto-region-excepcional-zonas-aridas">DESIERTO (Región Excepcional — Zonas Áridas)</h3>
 <p><strong>Descripción:</strong> Sin vegetación. Insectos gigantes como depredadores. Día 60°C, noche −20°C.<br />
 Temperatura: día 60°C, noche −20°C (ver Calor Extremo, en Supervivencia).</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
@@ -402,7 +417,7 @@ Temperatura: día 60°C, noche −20°C (ver Calor Extremo, en Supervivencia).</
 </tr>
 </tbody>
 </table>
-<h3>PANTANOS DE BIOLUMINISCENCIA (Región Excepcional)</h3>
+<h3 id="pantanos-de-bioluminiscencia-region-excepcional">PANTANOS DE BIOLUMINISCENCIA (Región Excepcional)</h3>
 <p><strong>Descripción:</strong> Agua luminiscente de noche. Ácido leve. Fauna acuática. Suelo inestable.<br />
 Movimiento en agua: notablemente más lento — cruzar cuesta el doble de tiempo, y no es buen terreno para huir corriendo (exposición acumulada por contacto prolongado — ver Contaminación Biológica, en Supervivencia).</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
@@ -456,7 +471,7 @@ Movimiento en agua: notablemente más lento — cruzar cuesta el doble de tiempo
 </tr>
 </tbody>
 </table>
-<h3>ZONAS RADIACTIVAS LIBERADAS (Zona Alterada por la Guerra)</h3>
+<h3 id="zonas-radiactivas-liberadas-zona-alterada-por-la-guerra">ZONAS RADIACTIVAS LIBERADAS (Zona Alterada por la Guerra)</h3>
 <p><strong>Descripción:</strong> Bombardeos liberaron radiación masiva. Fauna local muerta/mutada. Infectados del Jardinero patrullan la zona.<br />
 Radiación: intensidad alta (ver Radiación, en Supervivencia).</p>
 <p><strong>Tabla de Encuentros (1d100)</strong></p>
@@ -507,7 +522,7 @@ Radiación: intensidad alta (ver Radiación, en Supervivencia).</p>
 </tbody>
 </table>
 <hr />
-<h2>6. Cómo cambia el frente</h2>
+<h2 id="6-como-cambia-el-frente">6. Cómo cambia el frente</h2>
 <p>El Jardín no es un enemigo con voluntad propia — es un ecosistema que responde a lo que se hace en él. Esto no exige una barra, un contador ni un subsistema: es una herramienta narrativa para que el Narrador improvise consecuencias coherentes.</p>
 <p>Algunos habitantes creen que el Jardín "sabe" lo que ocurre, que piensa o que recuerda — un rumor recurrente, sin ninguna prueba que lo sostenga. Para dirigir este DLC, cada respuesta del entorno se explica por adaptación, selección y recolonización ecológica, no por voluntad ni memoria. Eso no impide que los propios personajes o los PNJ interpreten lo sucedido de forma supersticiosa: la explicación ecológica es la que usa el Narrador para decidir qué pasa, no necesariamente la que dan los habitantes del mundo.</p>
 <p><strong>Cómo cambia el frente</strong></p>
@@ -546,7 +561,7 @@ Radiación: intensidad alta (ver Radiación, en Supervivencia).</p>
 </tbody>
 </table>
 <hr />
-<h2>7. Facciones y fuerzas presentes</h2>
+<h2 id="7-facciones-y-fuerzas-presentes">7. Facciones y fuerzas presentes</h2>
 <p>Cualquier corporación puede tener intereses en Monstruoplantas: tropas propias, contratistas, investigadores, suministros o agentes encubiertos. La presencia cambia según el sector del frente y el momento de la campaña — algunas corporaciones combaten directamente, otras financian expediciones sin ensuciarse las manos, otras compran criaturas, recursos, información o tecnología a quien se las lleve. Pueden existir alianzas temporales entre corporaciones rivales, y dos corporaciones aliadas aquí pueden enfrentarse en otro punto de la Urdimbre. Además del personal corporativo, en el planeta operan ejércitos regulares, robots de combate, mercenarios y fuerzas independientes.</p>
 <p>Los PNJ siguientes son ejemplos útiles para dirigir, no la totalidad de las fuerzas presentes en el planeta.</p>
 <p><strong>Por qué alguien trabajaría para cada corporación (o con ella):</strong><br />
@@ -555,7 +570,7 @@ Radiación: intensidad alta (ver Radiación, en Supervivencia).</p>
 - <strong>Serpent:</strong> información, contactos, discreción y capacidad para conseguir lo que los canales oficiales no dan — a cambio de tratar con gente que vende lo que sabe al mejor postor, incluido lo que sabe de ti.<br />
 - <strong>Primus:</strong> disciplina, logística, protocolo, protección real y capacidad militar seria — a cambio de rigidez y poca tolerancia al riesgo o a la improvisación.<br />
 - <strong>Workhouse:</strong> disponibilidad inmediata de trabajadores y especialistas, adaptación rápida a cualquier contrato — a cambio de condiciones duras y desiguales para quien trabaja bajo su contrato.</p>
-<h3>MANDOS LOCALES PRINCIPALES</h3>
+<h3 id="mandos-locales-principales">MANDOS LOCALES PRINCIPALES</h3>
 <p><strong>Comandante Varice</strong> (TecnoStealer)<br />
 Función: manda la guarnición TecnoStealer del Puesto y gestiona sus cuotas de extracción.<br />
 Primera impresión: cínico, cicatrices de radiación, exige resultados sin rodeos.<br />
@@ -595,7 +610,7 @@ Respeta: a quien no intenta forzarlo ni sobornarlo.<br />
 Le molesta: la prisa y las exigencias.<br />
 Secreto: sostiene que el portal es obra de los Antiguos y que él es su custodio heredado, posiblemente inmortal y no humano — nadie ha podido confirmarlo (ver Acceso al mundo).<br />
 Contacto: ante el portal, presencia inmóvil siempre.</p>
-<h3>FACCIONES RIVAL EN TERRENO</h3>
+<h3 id="facciones-rival-en-terreno">FACCIONES RIVAL EN TERRENO</h3>
 <p><strong>Pseudo-Arkanitas "La Búsqueda Restaurada"</strong><br />
 Objetivo: recuperar tecnología y conocimiento Arcanita — lo consideran una herencia propia, no un botín cualquiera.<br />
 Tácticas: rápidas y decididas cuando creen que algo les pertenece por derecho; fuera de eso, pueden negociar, competir, mentir, retirarse, contratar ayuda o colaborar temporalmente si conviene a ambas partes.<br />
@@ -637,9 +652,9 @@ Le molesta: que le hagan perder tiempo o gente sin necesidad.<br />
 Problema actual: el contingente ha sufrido bajas recientes y necesita reemplazos o ayuda antes del próximo informe a Workhouse.<br />
 Contacto: campamento Workhouse junto al Puesto.</p>
 <hr />
-<h2>8. Fauna, flora e infectados</h2>
+<h2 id="8-fauna-flora-e-infectados">8. Fauna, flora e infectados</h2>
 <p>Cada criatura de este apartado incluye, en dos o tres frases, lo necesario para dirigirla sin inventar sobre la marcha: señales de presencia, comportamiento y objetivo habitual, qué la vuelve hostil, cuándo se retira, cómo evitarla o distraerla, y qué recursos o consecuencias puede dejar. Son animales, organismos o colonias biológicas — no enemigos tácticos que luchan siempre hasta morir. Un encuentro con fauna puede resolverse por evasión, retirada, ofrecerle comida, distracción, conocimiento del territorio, protección adecuada, captura o simplemente esperando a que pierda interés, no solo a golpes.</p>
-<h3>LIANAS REGENERANTES</h3>
+<h3 id="lianas-regenerantes">LIANAS REGENERANTES</h3>
 <p><strong>Liana Estándar</strong><br />
 F65/A10/P5 | PV 30 | Blindaje 3 (Corteza) | Constricción 60% | Daño 8 (asfixia) |<br />
 <strong>Cómo actúa:</strong> detecta vibración y calor a corta distancia, no por vista. Intenta sujetar a quien entra en su alcance (unos 3 m) o se queda quieto cerca. Si la Constricción tiene éxito, atrapa al objetivo: 8 de daño (asfixia) al empezar cada uno de los turnos de la liana mientras siga sujeto.<br />
@@ -652,7 +667,7 @@ F75/A5/P8 | PV 45 | Blindaje 4 | Constricción 70%, Veneno 40% | Daño 12 + Vene
 - Regenera en 2 asaltos en vez de 3.<br />
 - Mientras sujeta a la víctima, esta debe superar Resistir Difícil (−10) cada asalto o sufre los 2 puntos de daño de Veneno además del de Constricción.<br />
 - Ácido leve: mientras dura la constricción sostenida, el Blindaje de la víctima se reduce en 1 cada 2 asaltos, hasta limpiar o reparar la protección.</p>
-<h3>DEPREDADORES MUTANTES</h3>
+<h3 id="depredadores-mutantes">DEPREDADORES MUTANTES</h3>
 <p><strong>Cazador Cuádrupedo — Estándar</strong><br />
 F50/A60/P45 | PV 25/25/25 | Blindaje 2 (Piel) | Melé 75% (Colmillos) | Daño 9, Pen 1 |<br />
 <strong>Aprendizaje:</strong> tras ser atacado por primera vez por un adversario concreto, obtiene +5 en sus acciones contra ese adversario el resto del encuentro. Si vuelve a percibir el mismo patrón una segunda vez, sube a +10 contra él — máximo +10 por adversario. Se pierde al terminar el encuentro.<br />
@@ -670,7 +685,7 @@ F80/A50/P60 | PV 60/60/60 | Blindaje 4 | Melé 80% | Daño 16, Pen 2 |<br />
 <strong>Carga:</strong> se mueve el doble de su movimiento normal para cerrar distancia y ataca ese mismo turno con una tirada de Melé normal — no hay impacto automático por cargar. Si cierra la distancia completa en el asalto en que empieza a moverse, obtiene Posición ventajosa (+10, Mecánicas del Sistema) a esa tirada de ataque.<br />
 <strong>Vulnerabilidad:</strong> el lomo tiene Blindaje 2 en vez de 4 — solo accesible si algo lo distrae o lo rodea.<br />
 <strong>Territorio:</strong> raramente aparece en encuentros aleatorios — es la amenaza dominante de su región, y deja señales previas reconocibles: árboles arañados en altura, huesos y restos apilados, silencio repentino de otros depredadores menores. Un grupo que las reconozca puede evitarlo, retirarse, distraerlo, abandonar su territorio o usar el terreno (grietas, desniveles) a su favor en vez de enfrentarlo.</p>
-<h3>FLORA TÓXICA</h3>
+<h3 id="flora-toxica">FLORA TÓXICA</h3>
 <p><strong>Seta Venenosa Rastrera</strong><br />
 F10/A5/P3 | PV 8 | Blindaje 0 | No ataca | Veneno 60% (contacto) |<br />
 <strong>Vías de exposición:</strong> contacto directo con la seta, o inhalación de sus esporas si se libera la nube. No hay riesgo por mera proximidad si no se pisa ni se altera.<br />
@@ -682,7 +697,7 @@ F70/A15/P25 | PV 80 | Blindaje 4 (Corteza) | Secreción Ácida (contacto directo
 <strong>Secreción pasiva:</strong> quien permanece en contacto sostenido con la corteza sufre 3 de daño por asalto mientras dure el contacto — se evita no tocándolo.<br />
 <strong>Salpicadura (reacción):</strong> un ataque cuerpo a cuerpo con éxito contra el árbol libera ácido de vuelta — Resistir Fácil (+10) o 2 de daño.<br />
 <strong>Raíces:</strong> si alguien permanece varios asaltos junto al tronco o lo ataca desde muy cerca, las raíces pueden intentar enrollarlo — mismo procedimiento de sujeción y escape que las Lianas Regenerantes (Fuerza enfrentada a 50).</p>
-<h3>OTRA FAUNA DE MONSTRUOPLANTAS</h3>
+<h3 id="otra-fauna-de-monstruoplantas">OTRA FAUNA DE MONSTRUOPLANTAS</h3>
 <p>Estas criaturas viven repartidas por distintos biomas del planeta y aparecen en sus tablas de encuentros.</p>
 <p><strong>Bestia Ártica</strong> — Glaciares<br />
 F55/A50/P50 | PV 30/30/30 | Blindaje 3 (grasa y pelaje denso) | Melé 65% (garras y mordisco) | Daño 10, Pen 1 | Esquiva 35% |<br />
@@ -722,12 +737,12 @@ F60/A50/P45 | PV 35/35/35 | Blindaje 3 (piel correosa) | Melé 72% (mordisco) | 
 <strong>Combatir en el agua lo favorece:</strong> además de la lentitud que ya afecta a cualquiera que se mueva por el agua de los Pantanos (ver Geografía y regiones), conoce su territorio y ataca con ventaja a quien esté dentro del agua.<br />
 <strong>Evitarlo:</strong> conocer su territorio (Supervivencia o guía local) permite rodearlo; dejarle comida o alejarse de las señales bajo la superficie evita el enfrentamiento.<br />
 <strong>Recurso:</strong> piel correosa, valorada como material impermeable.</p>
-<h3>MICROORGANISMOS AMBIENTALES</h3>
+<h3 id="microorganismos-ambientales">MICROORGANISMOS AMBIENTALES</h3>
 <p><strong>Infección Ambiental — Agua Pantanosa</strong><br />
 Contacto sostenido (3+ asaltos) o herida abierta expuesta: Resistir Difícil (−10) o infección leve (−5 a todas las habilidades, 1d6 horas). Una pifia agrava la infección a grave (−10 a todas las habilidades, 24h). Se trata con Medicina −10 (enfermedad no trivial), sin penalizador con instalaciones médicas adecuadas.</p>
 <p><strong>Degradación Material — Suelo Activo</strong><br />
 Blindaje 1-2: −1 efectividad cada 4 asaltos. Blindaje 3+: resiste indefinidamente. Equipamiento: revisión cada 8 horas.</p>
-<h3>INFECTADOS DEL JARDINERO (3 fases)</h3>
+<h3 id="infectados-del-jardinero-3-fases">INFECTADOS DEL JARDINERO (3 fases)</h3>
 <p>Los llamados "zombis" de Monstruoplantas no son víctimas de tecnología corporativa: son huéspedes controlados por un parásito propio del Jardín. Soldados y habitantes del planeta lo llaman <strong>el Jardinero</strong>, y a los infectados, <strong>jardineros</strong> cuando el contexto lo deja claro. Puede existir un nombre técnico corporativo más largo, pero no hace falta inventarlo para dirigir esta ambientación.</p>
 <p>El Jardinero invade el sistema nervioso de animales o personas y se sirve de su movilidad, sus reflejos, sus hábitos, su entrenamiento y su conocimiento residual para moverse, atacar y propagarse. Los soldados son huéspedes frecuentes porque la guerra le proporciona cadáveres, heridos y campamentos enteros — pero el parásito no distingue entre personal corporativo, civiles o fauna local. No está claro, y este DLC no lo resuelve, cuánto queda de la conciencia original del huésped una vez infectado.</p>
 <p><strong>Fase Terminal</strong> (Lento, resistente, casi no siente daño)<br />
@@ -748,7 +763,7 @@ F50/A65/P60 | PV 24/24/24 | Blindaje 3 (Traje corp reforzado) | Melé 85%, Dista
 <strong>Memoria residual:</strong> puede repetir palabras, códigos o procedimientos que recuerda del huésped — usar un arma o comunicador que este conociera, dar una contraseña, seguir a medias un protocolo militar. No queda claro si es la persona quien habla o la colonia que la controla.<br />
 <strong>Captura:</strong> se puede capturar viva reduciéndola a Inconsciente en vez de Muerta (heridas no letales, sedantes, redes) — matarla destruye la información que porta. Indicios de memoria residual: repite una frase o código una y otra vez, reacciona a un nombre o rango militar, o se detiene un instante ante una orden familiar antes de continuar atacando.<br />
 <strong>Información capturable:</strong> ver Infección y guerra: consecuencias, a continuación.</p>
-<h3>Infección y guerra: consecuencias</h3>
+<h3 id="infeccion-y-guerra-consecuencias">Infección y guerra: consecuencias</h3>
 <ul>
 <li>Los cadáveres abandonados en el campo pueden convertirse en nuevos huéspedes.</li>
 <li>Los hospitales de campaña son lugares de alto riesgo — concentran heridos, y por tanto huéspedes potenciales.</li>
@@ -760,10 +775,10 @@ F50/A65/P60 | PV 24/24/24 | Blindaje 3 (Traje corp reforzado) | Melé 85%, Dista
 </ul>
 <p>La información que porta un infectado no se recupera extrayendo un chip: puede obtenerse mediante observación, captura, medicina, biología, interrogación o Distorsión apropiada, y mediante el análisis del cerebro o de la colonia del Jardinero. No existe un procedimiento fijo para hacerlo — el Narrador decide qué se puede rescatar en cada caso concreto.</p>
 <hr />
-<h2>9. Supervivencia</h2>
+<h2 id="9-supervivencia">9. Supervivencia</h2>
 <p>En Monstruoplantas, Supervivencia y Resistir cubren fases distintas del mismo peligro. <strong>Supervivencia</strong> sirve para anticiparse: detectar el peligro, preparar la ruta, encontrar refugio, racionar agua, proteger el equipo, calcular tiempos y elegir cómo atravesar una región — una buena tirada puede evitar una tirada posterior de Resistir, mejorar la Habilidad efectiva con la que se resiste, ampliar el intervalo entre tiradas, reducir la Exposición acumulada o permitir elegir una ruta menos peligrosa. <strong>Resistir</strong> se usa cuando el personaje ya está sometido al peligro — frío, calor, fatiga, contaminación, infección, radiación, privación — con los modificadores de dificultad de este capítulo. Ninguna preparación con Supervivencia concede inmunidad automática, y Resistir no sustituye a no haberse preparado.</p>
 <p><strong>Medicina, en este capítulo:</strong> un tratamiento común no lleva modificador; una enfermedad o tratamiento difícil aplica −10; una condición extrema o la ausencia grave de medios aplica −20; el equipo, la medicación o unas instalaciones adecuadas pueden conceder +10, +20, o eliminar el penalizador según el caso. Son modificadores a la Habilidad efectiva de Medicina, no requisitos mínimos de habilidad.</p>
-<h3>EXPOSICIÓN AMBIENTAL (0-5)</h3>
+<h3 id="exposicion-ambiental-0-5">EXPOSICIÓN AMBIENTAL (0-5)</h3>
 <p>Cada peligro acumulativo lleva su propio contador de Exposición, de 0 a 5. Solo se registra mientras exista una exposición real: salir del peligro detiene la acumulación, y no se piden tiradas repetidas cuando la escena ya está resuelta o el personaje cuenta con protección suficiente.</p>
 <ul>
 <li>Un fallo normal en Resistir suma 1 punto de Exposición.</li>
@@ -808,7 +823,7 @@ La Deriva no es el peligro central de Monstruoplantas: aparece solo en zonas con
 - Las reducciones raciales que se aplican a los cruces de portal no se aplican automáticamente a esta exposición ambiental; el Narrador decide si corresponden. Las inmunidades expresas, como la del Droideum, se respetan siempre.<br />
 - Si una mención de Deriva en una escena concreta no aporta nada al lugar, puede eliminarse. Si se conserva, debe quedar puntual y concreta — no generalizada a todo un bioma.<br />
 - Prevención: evitar la zona señalada. Si una escena concreta exige protección ante una anomalía específica, esa protección debe ser una solución propia de esa anomalía (un dispositivo, un ritual, un conocimiento concreto) — no existe un equipo genérico que proteja de la Deriva en general.</p>
-<h3>EQUIPO ESPECIALIZADO</h3>
+<h3 id="equipo-especializado">EQUIPO ESPECIALIZADO</h3>
 <table>
 <thead>
 <tr>
@@ -846,9 +861,9 @@ La Deriva no es el peligro central de Monstruoplantas: aparece solo en zonas con
 </tbody>
 </table>
 <hr />
-<h2>10. Recursos y extracción</h2>
+<h2 id="10-recursos-y-extraccion">10. Recursos y extracción</h2>
 <p>Toda extracción requiere llevar especímenes vivos o tejido fresco. Viaje de regreso al Puesto Fronterizo toma 4-12 horas según bioma (riesgo de encuentros, degradación de muestras).</p>
-<h3>FAUNA — MUESTRAS VIVAS</h3>
+<h3 id="fauna-muestras-vivas">FAUNA — MUESTRAS VIVAS</h3>
 <p>Capturar una criatura viva no se reduce a una única tirada de Atletismo: puede resolverse mediante preparación previa (Supervivencia), sedación, trampas, equipo adecuado, conocimiento de su comportamiento (ver Fauna, flora e infectados) o combate no letal cuando la criatura lo permita.</p>
 <p><strong>Especímenes de Lianas</strong><br />
 Precio: 400-800 PC (Chafry, TecnoStealer, Pseudo-Arkanitas)<br />
@@ -874,7 +889,7 @@ Dificultad: Alta — capturar un Vector dirigente vivo, más Medicina −10 para
 Peso: 0.5 kg<br />
 Preservación: Contenedor de gel nutritivo pasivo. Viabilidad: limitada (se degrada progresivamente, −1% de información recuperable al día).<br />
 Notas: Contiene patrones biológicos y recuerdos residuales de la colonia — rutas, hábitos, respuestas aprendidas y, en ocasiones, información parcial del huésped original. No se lee con un lector de datos: requiere análisis biológico especializado.</p>
-<h3>FLORA — MUESTRAS Y PRODUCTOS</h3>
+<h3 id="flora-muestras-y-productos">FLORA — MUESTRAS Y PRODUCTOS</h3>
 <p><strong>Fruto Mutante Árbol Tóxico</strong><br />
 Precio: 300-600 PC<br />
 Dificultad: Moderada-Alta — Resistir Difícil (−10), o sin tirada con Blindaje 2+<br />
@@ -899,7 +914,7 @@ Dificultad: Variable — Búsqueda Difícil (−10), según la ruina<br />
 Peso: 1-10 kg<br />
 Preservación: Contenedor energía pasiva (500 PC). Viabilidad: indefinida.<br />
 Notas: Valor extremo. Pseudo-Arkanitas pagan una prima pero buscan robarlo.</p>
-<h3>TECNOLOGÍA — MATERIAL RECUPERABLE</h3>
+<h3 id="tecnologia-material-recuperable">TECNOLOGÍA — MATERIAL RECUPERABLE</h3>
 <p><strong>Blindaje Reforzado</strong><br />
 Precio: 100-300 PC<br />
 Dificultad: Baja — Búsqueda Fácil (+10)<br />
@@ -915,12 +930,12 @@ Precio: 300-600 PC<br />
 Dificultad: Moderada<br />
 Peso: 1-2 kg<br />
 Notas: Funcionalidad variable. Venta requiere documentación falsa.</p>
-<h3>PRECIOS REFERENCIA</h3>
+<h3 id="precios-referencia">PRECIOS REFERENCIA</h3>
 <p>PC = Plasticrédito, la moneda universal de la Urdimbre. Salario base soldado: 500 PC/mes. Viaje ida/vuelta: 200 PC.<br />
 Ganancia típica: (Recurso base − gastos − seguro) × supervivencia esperada.</p>
 <hr />
-<h2>11. Ruinas y lugares de aventura</h2>
-<h3>Campamentos, restos y encuentros</h3>
+<h2 id="11-ruinas-y-lugares-de-aventura">11. Ruinas y lugares de aventura</h2>
+<h3 id="campamentos-restos-y-encuentros">Campamentos, restos y encuentros</h3>
 <p>No todo lo que se explora en Monstruoplantas es ancestral. El frente cambiante deja tras de sí:</p>
 <ul>
 <li>Campamentos corporativos evacuados.</li>
@@ -936,7 +951,7 @@ Ganancia típica: (Recurso base − gastos − seguro) × supervivencia esperada
 <li>Restos o pistas que apuntan a ruinas más antiguas.</li>
 </ul>
 <p>Estas localizaciones se combinan libremente con los encuentros de cada bioma (ver Geografía y regiones) y con las ruinas legendarias descritas a continuación.</p>
-<h3>Ruinas legendarias — puntos de aventura</h3>
+<h3 id="ruinas-legendarias-puntos-de-aventura">Ruinas legendarias — puntos de aventura</h3>
 <p>El ciclo actual: las Pseudo-Arkanitas están activas en el planeta; las Arcanitas reales están desaparecidas u ocultas, y su investigación sigue en curso. Las ruinas de los Antiguos deben conservarse como semillas importantes — este DLC no desarrolla todavía su módulo completo ni cierra su verdad.</p>
 <p><strong>Ruina Occidental</strong> — sector oeste del Bosque Mutante, vía Pared Calcárea<br />
 Lo que se sabe o se rumorea: una instalación Pseudo-Arkanita abandonada hace generaciones, con parte de su estructura de metal y cristal todavía en pie. Un mapa parcial y dañado puede obtenerse reparando el comunicador del Gancho 2.<br />
@@ -949,8 +964,8 @@ Peligros conocidos: Depredadores Acuáticos y otra fauna de los Pantanos cerca d
 Facciones interesadas: quien la encuentre cambia lo que sabe, no necesariamente lo que hace — no está garantizado que su descubrimiento provoque una guerra ni que ponga a los personajes en el centro de una negociación planetaria; eso depende de qué encuentren y a quién se lo cuenten.<br />
 Indicios que puede ofrecer una expedición: restos de una expedición anterior que no volvió, materiales extraños arrastrados por la corriente, estructuras parcialmente visibles bajo el agua. Puede contener algo extraordinario cuando se desarrolle su módulo — este DLC no lo promete como recompensa automática.</p>
 <hr />
-<h2>12. Ganchos</h2>
-<h3>GANCHOS INICIALES (Primeras Misiones — Puesto Fronterizo)</h3>
+<h2 id="12-ganchos">12. Ganchos</h2>
+<h3 id="ganchos-iniciales-primeras-misiones-puesto-fronterizo">GANCHOS INICIALES (Primeras Misiones — Puesto Fronterizo)</h3>
 <p><strong>Gancho 1: "Extracción Rápida de Lianas"</strong><br />
 - <strong>Contrata:</strong> Comandante Varice (TecnoStealer).<br />
 - <strong>Encargo:</strong> 3 segmentos de Liana Mayor vivos.<br />
@@ -988,7 +1003,7 @@ Indicios que puede ofrecer una expedición: restos de una expedición anterior q
 - <strong>Pago:</strong> 700 PC, más información clasificada sobre Pseudo-Arkanitas si se aporta evidencia relevante.<br />
 - <strong>Qué le pasó a la patrulla</strong> (a elección del Narrador): sigue viva pero aislada por un accidente; se perdió sin más; desertó y no quiere que la encuentren; oculta una negligencia que costó vidas; quedó atrapada por fauna local; sufrió un brote del Jardinero; cruzó una línea del frente que cambió mientras estaban fuera. Una emboscada Pseudo-Arkanita es una posibilidad más entre estas, no el resultado obligatorio.<br />
 - <strong>Continuaciones:</strong> dependen de lo ocurrido — un rescate agradecido, una deserción que hay que decidir si delatar, un encubrimiento que compromete a los propios personajes si lo descubren, o el cierre limpio de un encargo cumplido.</p>
-<h3>Formas de jugar Monstruoplantas</h3>
+<h3 id="formas-de-jugar-monstruoplantas">Formas de jugar Monstruoplantas</h3>
 <p>Monstruoplantas admite formas de campaña muy distintas, y ninguna es más "correcta" que otra ni tiene una duración obligatoria:</p>
 <ul>
 <li><strong>Vida cotidiana en el Puesto:</strong> problemas locales, relaciones, el ritmo del portal semanal, sin salir apenas de la Pared Calcárea.</li>
@@ -1002,9 +1017,9 @@ Indicios que puede ofrecer una expedición: restos de una expedición anterior q
 </ul>
 <p>Una campaña puede mantenerse durante muchas sesiones resolviendo problemas cotidianos, militares o locales sin que eso la haga incompleta — no todas las historias en Monstruoplantas tienen que terminar en una ruina mayor o una revelación sobre los Antiguos.</p>
 <hr />
-<h2>13. Tablas de encuentro y apoyo</h2>
+<h2 id="13-tablas-de-encuentro-y-apoyo">13. Tablas de encuentro y apoyo</h2>
 <p>Las tablas de encuentros por bioma están en Geografía y regiones. Esta sección reúne los eventos ambientales que pueden interrumpir cualquier trayecto, en cualquier bioma.</p>
-<h3>EVENTOS AMBIENTALES RECURRENTES</h3>
+<h3 id="eventos-ambientales-recurrentes">EVENTOS AMBIENTALES RECURRENTES</h3>
 <p><strong>Tormenta de Nanopartículas — "Lluvia de Silicio"</strong> (rara — una o dos veces por ciclo, en zonas radiactivas liberadas o cerca de epicentros Arcanita antiguos)<br />
 Señales previas: el cielo cambia de color, el vello se eriza, un detector de radiación empieza a chisporrotear antes de que llegue la nube visible — quien va atento tiene tiempo de reaccionar.<br />
 Tiempo para reaccionar: varios minutos desde la primera señal hasta que la tormenta cierra la visibilidad, suficiente para buscar refugio si se actúa con rapidez.<br />
@@ -1019,7 +1034,7 @@ Si continúan expuestos: viento y lluvia intensos — Resistir o Atletismo Difí
 Si hay combate durante el tifón: se aplican como máximo los modificadores vigentes de visibilidad (niebla u oscuridad, hasta −20 según cuánto se vea) y Posición ventajosa según el terreno — nada por encima del marco habitual.<br />
 Después: el terreno puede cambiar (ramas caídas, cauces desviados, algo desenterrado o arrastrado a la vista), lo que puede dar pie a un hallazgo o a una ruta nueva.</p>
 <hr />
-<h2>14. Conexión con módulos</h2>
+<h2 id="14-conexion-con-modulos">14. Conexión con módulos</h2>
 <ul>
 <li><strong>Puesto Fronterizo (módulo)</strong> — entrada, PNJ, seguridad local, ganchos iniciales.</li>
 <li><strong>La jaula llegó vacía (módulo)</strong> — desarrollo completo del gancho «Cazador Vivo» (Punto 12) cuando el comprador es un circo itinerante: expedición profesional de captura en la Pared Calcárea, con equipo rival y plazo fijo.</li>
@@ -1028,6 +1043,6 @@ Después: el terreno puede cambiar (ramas caídas, cauces desviados, algo desent
 <li><strong>De Ratones y Hombres (módulo)</strong> — conexión con Mundo Máquina y sus máquinas contaminadas.</li>
 <li><strong>Otros DLC y localizaciones</strong> — Mazmorras de los Antiguos, Mundo Chatarra y Cuenca Gótica; se citan como referencias estructurales, sin fijar aquí su naturaleza cosmológica.</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

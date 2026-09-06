@@ -15,21 +15,36 @@
 .comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
   font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
   margin-bottom:8px;-webkit-print-color-adjust:exact;}
-.margin-note{float:right;width:38%;margin:6px 0 12px 18px;clear:right;background:#f0f9ff;
-  border:1px solid #bae6fd;border-left:4px solid var(--accent-subtle,#38bdf8);padding:10px 12px;
-  font-size:13px;border-radius:0 4px 4px 0;color:#0c4a6e;}
-.margin-note::before{content:"NOTA";font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:var(--accent-subtle,#38bdf8);display:block;margin-bottom:4px;letter-spacing:1px;}
-.character-quote{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px 10px 16px;
-  margin:16px 0;border-radius:0 4px 4px 0;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
 .character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
-  color:#b45309;letter-spacing:1px;display:block;margin-bottom:3px;}
-.character-quote .cq-line{font-style:italic;font-size:14.5px;color:#1e293b;}
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
 @media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El Glass-Dog que nadie vio"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
 </style>
 </head>
 <body>
-<div class="document-container">
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</a></li><li class="toc-h2"><a href="#lo-que-ocurrio-realmente">Lo que ocurrió realmente</a></li><li class="toc-h3"><a href="#verdad-completa">Verdad completa</a></li><li class="toc-h3"><a href="#que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</a></li><li class="toc-h3"><a href="#tono">Tono</a></li><li class="toc-h3"><a href="#textura-de-fiesta-1d6-para-ambientar-sin-planificar">Textura de fiesta (1d6, para ambientar sin planificar)</a></li><li class="toc-h2"><a href="#reparto-y-relaciones">Reparto y relaciones</a></li><li class="toc-h3"><a href="#el-glass-dog">El Glass-Dog</a></li><li class="toc-h3"><a href="#aldric-ferro-organizador-del-transporte">Aldric Ferro — organizador del transporte</a></li><li class="toc-h3"><a href="#dra-yuen-castel-tecnica-de-contencion">Dra. Yuen Castel — técnica de contención</a></li><li class="toc-h3"><a href="#bram-solt-musculo-contratado">Bram Solt — músculo contratado</a></li><li class="toc-h3"><a href="#karel-tres-llaves-tecnico-nakel-y-mediador">Karel «Tres Llaves» — técnico Nakel y mediador</a></li><li class="toc-h3"><a href="#juno-arca-sargento-de-seguridad-local">Juno Arca — sargento de seguridad local</a></li><li class="toc-h3"><a href="#relaciones-para-el-narrador">Relaciones para el Narrador</a></li><li class="toc-h2"><a href="#lugares-necesarios">Lugares necesarios</a></li><li class="toc-h2"><a href="#las-cinco-escenas">Las cinco escenas</a></li><li class="toc-h3"><a href="#escena-1-una-figura-que-sangra-luz">Escena 1 — Una figura que sangra luz</a></li><li class="toc-h3"><a href="#escena-2-demasiados-perros-de-cristal">Escena 2 — Demasiados perros de cristal</a></li><li class="toc-h3"><a href="#escena-3-carrera-por-las-fachadas">Escena 3 — Carrera por las fachadas</a></li><li class="toc-h3"><a href="#escena-4-todo-el-mundo-tiene-dueno">Escena 4 — Todo el mundo tiene dueño</a></li><li class="toc-h3"><a href="#escena-5-el-primer-vuelo">Escena 5 — El primer vuelo</a></li><li class="toc-h3"><a href="#textos-para-leer">Textos para leer</a></li><li class="toc-h2"><a href="#pistas-e-informacion">Pistas e información</a></li><li class="toc-h2"><a href="#recompensas-y-gastos">Recompensas y gastos</a></li><li class="toc-h2"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h2"><a href="#continuidad-opcional">Continuidad opcional</a></li><li class="toc-h2"><a href="#las-dos-voces">Las Dos Voces</a></li><li class="toc-h2"><a href="#limites-de-este-modulo">Límites de este módulo</a></li><li class="toc-h2"><a href="#resumen-para-dirigir">Resumen para dirigir</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
 <h1>MÓDULO — El Glass-Dog que nadie vio</h1>
 <p><em>Colección de one-shots de MadCity — episodio 1 de 6. Estado: BORRADOR, pendiente de playtest.</em></p>
 <blockquote>
@@ -38,7 +53,7 @@
 <p><img alt="La Plaza del Primer Vuelo durante el Día del Glass-Dog, proyecciones de Glass-Dog falsos entre la multitud" src="img/madcity_glass_dog_plaza_primer_vuelo.png" /><br />
 <em>La Plaza del Primer Vuelo en plena fiesta — en algún punto de esa multitud de luces falsas, una es real.</em></p>
 <hr />
-<h2>Resumen operativo — léelo antes de dirigir</h2>
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
 <p><strong>Premisa:</strong> hoy es 25 de mayo, el Día del Glass-Dog en MadCity. La Plaza del Primer Vuelo se llena de plataformas, puestos, drones civiles y proyecciones aéreas para la fiesta. Nadie sabe que, dentro de un contenedor declarado como "equipo de proyección", viaja un Glass-Dog real — transportado de matute para un comprador privado. Un accidente durante el montaje abre el contenedor. La criatura escapa entre docenas de falsos Glass-Dog (drones, hologramas, disfraces), y casi nadie llega a entender que uno de ellos es de carne y hueso.</p>
 <p><strong>Duración:</strong> una sesión de 4-6 horas. Cinco escenas, escala local: una criatura, tres traficantes, un rincón de la Plaza y de la Pasarela de las Mil Fachadas. Esto no decide el destino de MadCity.</p>
 <p><strong>Qué saben los PJ:</strong> que hoy es fiesta grande, que ha habido "un accidente técnico" durante el montaje, y que algo se ha colado entre las proyecciones — la mayoría cree que es un fallo de drones, no un animal real.</p>
@@ -46,7 +61,7 @@
 <p><strong>Objetivo inmediato:</strong> encontrar a la criatura y decidir qué hacer con ella antes de que empiece el vuelo ceremonial de proyecciones — momento en que se activan barreras, tráfico aéreo regulado y sistemas de seguridad que pueden atraparla o herirla.</p>
 <p><strong>Pregunta de fondo:</strong> ¿a quién pertenece algo que nadie sabía que existía hasta que apareció asustado en medio de una fiesta?</p>
 <p><strong>Si nadie interviene:</strong> los traficantes la recuperan antes que nadie, la sedan y la sacan de la Plaza en un carro de mantenimiento disfrazado de atrezo. Nadie en la fiesta llega a confirmar que fue real.</p>
-<h3>Desarrollo en cinco escenas</h3>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
 <ol>
 <li>Una figura que sangra luz — accidente y primer avistamiento ambiguo.</li>
 <li>Demasiados perros de cristal — investigación entre puestos, proyecciones y testigos contradictorios.</li>
@@ -55,7 +70,7 @@
 <li>El primer vuelo — resolución durante la ceremonia.</li>
 </ol>
 <hr />
-<h2>Panel del Narrador — léelo antes de sentarte a la mesa</h2>
+<h2 id="panel-del-narrador-leelo-antes-de-sentarte-a-la-mesa">Panel del Narrador — léelo antes de sentarte a la mesa</h2>
 <p><strong>Reloj — cuatro horas hasta el vuelo ceremonial:</strong></p>
 <table>
 <thead>
@@ -106,16 +121,16 @@
 <p><strong>No hay villano.</strong> Aldric debe un dinero que no es suyo y esto era su forma de pagarlo; Yuen no quiere que la criatura sufra; Bram solo quiere cobrar y volver a casa. La violencia solo aparece si alguien fuerza una confrontación directa.</p>
 <p><strong>El Glass-Dog, en mesa:</strong> no negocia ni razona — es un animal asustado. Se aparta de los ruidos fuertes y las luces intensas, busca huecos oscuros y estrechos, y solo muerde si lo acorralan sin salida. Su piel sangra un hilo de luz tenue por la herida del choque: es su rastro, y también lo que lo delata entre las proyecciones falsas si alguien se fija de cerca.</p>
 <hr />
-<h2>Lo que ocurrió realmente</h2>
-<h3>Verdad completa</h3>
+<h2 id="lo-que-ocurrio-realmente">Lo que ocurrió realmente</h2>
+<h3 id="verdad-completa">Verdad completa</h3>
 <p>Aldric Ferro organizó el transporte de un Glass-Dog vivo, capturado meses atrás por una red de captura ilegal en las zonas bajas, para un comprador privado de los niveles altos que colecciona rarezas biológicas. El contenedor se declaró como "equipo de proyección" para pasar sin preguntas durante el montaje de la fiesta — un truco habitual, no una novedad para quien organiza estas cosas.</p>
 <p>Un choque con una plataforma de carga durante el montaje abrió el contenedor. El Glass-Dog escapó en pánico justo cuando decenas de drones decorativos y hologramas con forma de Glass-Dog empezaban a probar sus rutas de vuelo para la ceremonia — así que casi nadie que lo vio pasar entiende que era distinto de las docenas de falsos.</p>
 <p>No ha vuelto para anunciar el fin de un Ciclo. Es una criatura asustada, herida levemente por el choque, en una ciudad enorme y ruidosa. Que la población interprete otra cosa forma parte de MadCity, y este módulo no debe confirmarlo ni desmentirlo del todo.</p>
-<h3>Qué saben los PJ y qué no</h3>
+<h3 id="que-saben-los-pj-y-que-no">Qué saben los PJ y qué no</h3>
 <p>Pueden llegar a saber todo lo anterior investigando. Lo que no deben poder resolver desde el principio es si el avistamiento significa algo — eso lo decide la mesa en la Escena 5, no este documento.</p>
-<h3>Tono</h3>
+<h3 id="tono">Tono</h3>
 <p>Fiesta, humor urbano, un poco de persecución de acción física, y una decisión final con peso emocional pero sin villano que castigar. Aldric, Yuen y Bram deben resultar comprensibles, no despreciables.</p>
-<h3>Textura de fiesta (1d6, para ambientar sin planificar)</h3>
+<h3 id="textura-de-fiesta-1d6-para-ambientar-sin-planificar">Textura de fiesta (1d6, para ambientar sin planificar)</h3>
 <p>Úsala dos o tres veces entre las Escenas 1 y 2, no en cada turno:</p>
 <table>
 <thead>
@@ -152,10 +167,10 @@
 </tbody>
 </table>
 <hr />
-<h2>Reparto y relaciones</h2>
-<h3>El Glass-Dog</h3>
+<h2 id="reparto-y-relaciones">Reparto y relaciones</h2>
+<h3 id="el-glass-dog">El Glass-Dog</h3>
 <p>Ficha vigente, sin modificar por ser "especial" (Bestiario): <strong>F35/A55/P40 | PV 20/20/20 | Bld 1 | 65% | Daño 7</strong>. Piel translúcida, ventaja en Sigilo en poca visibilidad. Herida leve por el choque (Herido desde el inicio del módulo, no Sano). Prioriza huir; solo ataca si lo acorralan sin salida.</p>
-<h3>Aldric Ferro — organizador del transporte</h3>
+<h3 id="aldric-ferro-organizador-del-transporte">Aldric Ferro — organizador del transporte</h3>
 <p><em>Aspecto:</em> traje de fiesta un poco demasiado bueno para pasar por técnico, corbata aflojada, suda a pesar del clima controlado de la Plaza, mira el reloj cada pocos segundos.</p>
 <p>PNJ interpretable (4 profesiones). Debe dinero a un prestamista de Escorpio y esta venta era su forma de saldarlo. Nervioso, rápido de palabra, más asustado del prestamista que de la ley.</p>
 <p>F25/A30/P45/V40 | PV 14/14/14 | Bld 1 | Social/Regateo 55% | Sigilo 30%</p>
@@ -164,7 +179,7 @@
 <li>No matará a nadie ni pondrá en peligro deliberado a la multitud — necesita que esto pase desapercibido, no que se convierta en un incidente.</li>
 <li>Sin PJ: consigue recuperar a la criatura hacia H+3:00 y sale de la Plaza por una ruta de mantenimiento.</li>
 </ul>
-<h3>Dra. Yuen Castel — técnica de contención</h3>
+<h3 id="dra-yuen-castel-tecnica-de-contencion">Dra. Yuen Castel — técnica de contención</h3>
 <p><em>Aspecto:</em> bata técnica reconvertida de safari corporativo, maletín de contención colgado al hombro, mira más al animal que a las personas cuando habla.</p>
 <p>PNJ interpretable (3 profesiones). Contratada por Aldric solo para el transporte; no participó en la captura y no le gusta lo que ve cuando la criatura sangra luz de verdad por el susto.</p>
 <p>F20/A35/P50/V35 | PV 12/12/12 | Bld 0 | Medicina/Biología 60% | Tranquilizante de largo alcance (no letal) 50%</p>
@@ -172,14 +187,14 @@
 <li>Quiere terminar el trabajo sin que el animal sufra más de lo necesario.</li>
 <li>Puede convertirse en la grieta del grupo de traficantes si alguien le ofrece una salida mejor para la criatura.</li>
 </ul>
-<h3>Bram Solt — músculo contratado</h3>
+<h3 id="bram-solt-musculo-contratado">Bram Solt — músculo contratado</h3>
 <p><em>Aspecto:</em> corpulento, chaleco genérico de "seguridad de evento" sin acreditación real, se mueve como quien está acostumbrado a que la gente se aparte sola.</p>
 <p>PNJ funcional (2 profesiones). Sin implicación emocional; quiere cobrar y volver a casa.</p>
 <p>F45/A40/P30/V30 | PV 19/19/19 | Bld 2 | Sin Armas 55% | Daño 6 (no letal por defecto) | Atletismo/Persecución 50%</p>
 <ul>
 <li>No sacará un arma letal por una fiesta llena de gente — sube la apuesta solo si lo acorralan.</li>
 </ul>
-<h3>Karel «Tres Llaves» — técnico Nakel y mediador</h3>
+<h3 id="karel-tres-llaves-tecnico-nakel-y-mediador">Karel «Tres Llaves» — técnico Nakel y mediador</h3>
 <p><em>Aspecto:</em> rápido, impaciente, mucho más limpio de lo que permite su taller habitual; hoy viste de fiesta a medias, con herramientas todavía en los bolsillos.</p>
 <p>PNJ interpretable (4-5 profesiones), compartido con el resto de la colección. Reconoce las señales de un animal real en cuanto lo ve de cerca — cicatrices de captura, no de fabricación.</p>
 <p>F30/A45/P55/V45 | PV 15/15/15 | Bld 0 | Mecánica/Reparación 65% | Alerta 55% | Sigilo 40%</p>
@@ -188,7 +203,7 @@
 <li>Falla previsible: oculta lo que sabe para proteger a su gente, incluso cuando compartirlo ayudaría.</li>
 <li>Sin PJ: intenta localizar y esconder a la criatura por su cuenta, sin éxito garantizado.</li>
 </ul>
-<h3>Juno Arca — sargento de seguridad local</h3>
+<h3 id="juno-arca-sargento-de-seguridad-local">Juno Arca — sargento de seguridad local</h3>
 <p><em>Aspecto:</em> correcta, cansada, uniforme impecable a pesar de las horas; no levanta la voz porque no lo necesita.</p>
 <p>PNJ interpretable (4 profesiones), compartida con el resto de la colección.</p>
 <p>F35/A35/P45/V45 | PV 17/17/17 | Bld 2 (uniforme) | Armas cortas 50% (no letal) | Daño 5 | Liderazgo/Mando 45%</p>
@@ -197,7 +212,7 @@
 <li>Respeta explicaciones verificables; tarda en aceptar lo extraordinario si hay una explicación administrativa a mano ("fallo de drones").</li>
 <li>Acompañada de dos agentes o drones de seguridad pública: sistemas automáticos, Detección 50%, activan barreras y alarmas, no atacan salvo que se les provoque directamente.</li>
 </ul>
-<h3>Relaciones para el Narrador</h3>
+<h3 id="relaciones-para-el-narrador">Relaciones para el Narrador</h3>
 <ul>
 <li>Aldric teme más al prestamista que perdió su inversión que a la seguridad de MadCity.</li>
 <li>Yuen puede cambiar de bando si alguien le ofrece una salida real para la criatura, no solo un sermón.</li>
@@ -206,7 +221,7 @@
 <li>Juno prioriza el orden público sobre la verdad completa del incidente, salvo que alguien se lo demuestre.</li>
 </ul>
 <hr />
-<h2>Lugares necesarios</h2>
+<h2 id="lugares-necesarios">Lugares necesarios</h2>
 <p><strong>Plaza del Primer Vuelo:</strong> plataformas, balcones, puestos temporales, rutas de drones civiles, zona de proyecciones aéreas. Aquí ocurre el accidente y el vuelo ceremonial final.</p>
 <p><strong>Pasarela de las Mil Fachadas:</strong> conexión peatonal entre edificios reformados por comunidades distintas — balcones, azoteas bajas, rutas de mantenimiento. Escenario de la persecución de la Escena 3.</p>
 <p><strong>Ruta de mantenimiento tras la Plaza:</strong> conductos y pasillos de servicio por donde Aldric planeaba sacar el contenedor. Sirve de escondite y de vía de escape para los traficantes.</p>
@@ -214,9 +229,9 @@
 <p><img alt="Mapa esquemático de las conexiones confirmadas entre la Plaza del Primer Vuelo, la Pasarela de las Mil Fachadas y el Mercado de los Siete Remaches" src="img/madcity_mapa_plaza_pasarela_mercado.png" /><br />
 <em>Diagrama esquemático, no ilustración — Plaza y Mercado no tienen conexión directa; solo vía Pasarela o, con transbordo, por la Línea Vertical 25.</em></p>
 <hr />
-<h2>Las cinco escenas</h2>
+<h2 id="las-cinco-escenas">Las cinco escenas</h2>
 <p>Cada escena está pensada para dirigirse sola, sin buscar en otra parte del documento durante el juego — las fichas relevantes están repetidas dentro. El resto del módulo (Reparto completo, Pistas, Desenlaces) es para preparar antes o ampliar después.</p>
-<h3>Escena 1 — Una figura que sangra luz</h3>
+<h3 id="escena-1-una-figura-que-sangra-luz">Escena 1 — Una figura que sangra luz</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Chispas de un choque técnico. Un contenedor abierto entre dos plataformas de carga. Y algo translúcido que cruza corriendo entre los puestos, dejando un hilo de luz tenue por donde ha pasado — casi indistinguible de un dron decorativo que ha fallado.</p>
@@ -237,7 +252,7 @@
 <blockquote>
 <p>«¿Eso ha sido parte del espectáculo?»</p>
 </blockquote>
-<h3>Escena 2 — Demasiados perros de cristal</h3>
+<h3 id="escena-2-demasiados-perros-de-cristal">Escena 2 — Demasiados perros de cristal</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La Plaza entera parpadea de proyecciones con forma de Glass-Dog — docenas, todas idénticas a simple vista. En algún punto de esa multitud de luces falsas, una es real, sangra de verdad, y tiene mucho más miedo que cualquiera de las otras.</p>
@@ -255,7 +270,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> los traficantes localizan la pista correcta hacia el final de la escena y se adelantan hacia la Pasarela.</p>
 <p><strong>Cómo termina:</strong> el grupo sabe (o no) hacia dónde se dirige el Glass-Dog y llega a la Escena 3 con ventaja, a la par, o por detrás de los traficantes, según cómo les haya ido aquí.</p>
 <p><strong>Después:</strong> si llegaron tarde, la persecución de la Escena 3 empieza ya en marcha, con Bram más cerca de acorralarla.</p>
-<h3>Escena 3 — Carrera por las fachadas</h3>
+<h3 id="escena-3-carrera-por-las-fachadas">Escena 3 — Carrera por las fachadas</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>La Pasarela de las Mil Fachadas serpentea entre balcones reformados de una docena de estilos distintos — una fachada corporativa de líneas limpias desemboca en una barandilla remendada con piezas de tres procedencias, y más allá un taller Nakel ha colonizado un antiguo vestíbulo sin borrar del todo su planta original. Algo translúcido salta de tejado en tejado, dejando gotas de luz tenue en cada apoyo — y no muy lejos, alguien más lo sigue con demasiada calma para ser un curioso.</p>
@@ -273,7 +288,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Bram la acorrala en un balcón sin salida; Yuen prepara el tranquilizante.</p>
 <p><strong>Cómo termina:</strong> alguien llega primero al Glass-Dog acorralado — los PJ, los traficantes, o ambos a la vez.</p>
 <p><strong>Después:</strong> quién llegó primero, y cómo, decide si la Escena 4 empieza como negociación, rescate o enfrentamiento directo.</p>
-<h3>Escena 4 — Todo el mundo tiene dueño</h3>
+<h3 id="escena-4-todo-el-mundo-tiene-dueno">Escena 4 — Todo el mundo tiene dueño</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Un balcón sin salida, muy por encima de la Plaza. El Glass-Dog acorralado contra la barandilla, temblando. Y de golpe, demasiada gente convergiendo en el mismo sitio estrecho: quien lo persigue, quien quiere protegerlo, y quizás quien tiene que poner orden.</p>
@@ -292,7 +307,7 @@
 <p><strong>Si los PJ no hacen nada:</strong> Aldric consigue sedarla con ayuda de Yuen y sacarla por la ruta de mantenimiento.</p>
 <p><strong>Cómo termina:</strong> queda decidido si la criatura llega libre, capturada o herida a la Escena 5 — cualquier resultado es válido, no hay un final correcto aquí.</p>
 <p><strong>Después:</strong> este resultado condiciona directamente qué desenlace de la lista (ver Desenlaces combinables) se juega en la Escena 5.</p>
-<h3>Escena 5 — El primer vuelo</h3>
+<h3 id="escena-5-el-primer-vuelo">Escena 5 — El primer vuelo</h3>
 <p><strong>Atmósfera:</strong></p>
 <blockquote>
 <p>Empieza el vuelo ceremonial. Miles de proyecciones con forma de Glass-Dog se elevan sobre la Plaza a la vez, y en algún punto de esa multitud de luces, puede que haya una diferencia que solo el grupo conoce.</p>
@@ -307,7 +322,7 @@
 <blockquote>
 <p>«Mañana nadie se va a creer lo que hemos visto esta noche. Y probablemente esté bien así.»</p>
 </blockquote>
-<h3>Textos para leer</h3>
+<h3 id="textos-para-leer">Textos para leer</h3>
 <p>Lecturas breves, opcionales. Léelas o parafraséalas cuando ayuden, no en cada ocasión.</p>
 <p><strong>Primera visión de la Plaza</strong></p>
 <blockquote>
@@ -326,7 +341,7 @@
 <p>Miles de proyecciones con forma de Glass-Dog se elevan a la vez sobre la Plaza. Durante un instante, todo el cielo es la misma silueta repetida hasta el horizonte.</p>
 </blockquote>
 <hr />
-<h2>Pistas e información</h2>
+<h2 id="pistas-e-informacion">Pistas e información</h2>
 <table>
 <thead>
 <tr>
@@ -364,26 +379,26 @@
 </tbody>
 </table>
 <hr />
-<h2>Recompensas y gastos</h2>
+<h2 id="recompensas-y-gastos">Recompensas y gastos</h2>
 <p>La misión no debe dejar a los PJ con pérdidas netas por gastos médicos o equipo dañado durante la persecución — cúbrelo antes de repartir nada más.</p>
 <p><strong>Recompensa económica:</strong> entre 150 y 350 PC por PJ, coherente con un encargo urbano corto sin contratante corporativo fijo — procede de agradecimiento comunitario, una pequeña recompensa de los organizadores de la fiesta, o de Karel si se implicó y la mesa lo justifica. No hay un pagador obligado: este es un incidente urbano, no un contrato formal.</p>
 <p><strong>Beneficios alternativos:</strong> reputación local en la Plaza y con Karel; acceso a la red de contactos de Karel para futuros encargos de MadCity; conocimiento de una ruta de mantenimiento discreta por la Pasarela.</p>
 <hr />
-<h2>Desenlaces combinables</h2>
+<h2 id="desenlaces-combinables">Desenlaces combinables</h2>
 <p><strong>Liberada.</strong> El Glass-Dog escapa a zonas altas o bajas de MadCity donde nadie puede alcanzarlo. La ciudad se queda con la leyenda, no con la certeza.</p>
 <p><strong>Santuario.</strong> Alguien —Karel, una asociación local, los propios PJ— organiza un cuidado responsable. Menos leyenda, más continuidad concreta como gancho futuro.</p>
 <p><strong>Entregada a una autoridad.</strong> Juno o una institución se la queda. Legal, pero incómodo si los PJ dudan de que reciba buen trato.</p>
 <p><strong>Recapturada por los traficantes.</strong> Si los PJ no intervienen a tiempo, Aldric salda su deuda y la criatura desaparece de MadCity para siempre. Final agridulce, no fallo de partida.</p>
 <p><strong>Espectáculo disfrazado.</strong> La verdad se mezcla con el mito: la ciudad decide que "fue un efecto especial muy logrado", y solo los PJ (y quizás Karel) saben lo que pasó realmente.</p>
 <hr />
-<h2>Continuidad opcional</h2>
+<h2 id="continuidad-opcional">Continuidad opcional</h2>
 <ul>
 <li><strong>Versión independiente:</strong> no exige haber jugado ningún otro módulo de la colección.</li>
 <li><strong>Si se han jugado otros episodios:</strong> la reputación conseguida en la Plaza facilita el contacto inicial con seguridad local o con Karel en otros one-shots de MadCity.</li>
 </ul>
 <p>Ejemplo de puerta abierta: Karel menciona que conoce a alguien que necesita material de otro mundo — enlace natural hacia cualquier otro DLC, sin obligar a aceptarlo.</p>
 <hr />
-<h2>Las Dos Voces</h2>
+<h2 id="las-dos-voces">Las Dos Voces</h2>
 <p>Voz satírica sobre un cartel turístico de la fiesta:</p>
 <blockquote>
 <p>«Si vuelve a volar, habrá entradas para la segunda sesión.»</p>
@@ -394,7 +409,7 @@
 </blockquote>
 <p>Una intervención, no más — ni oráculo ni pista indispensable.</p>
 <hr />
-<h2>Límites de este módulo</h2>
+<h2 id="limites-de-este-modulo">Límites de este módulo</h2>
 <ul>
 <li>No confirmar que el avistamiento sea profético ni desmentirlo del todo.</li>
 <li>No obligar a los PJ a liberar ni a entregar a la criatura: cualquier desenlace de la lista de arriba es válido.</li>
@@ -403,10 +418,10 @@
 <li>No revelar ni insinuar el secreto de Proctor.</li>
 </ul>
 <hr />
-<h2>Resumen para dirigir</h2>
+<h2 id="resumen-para-dirigir">Resumen para dirigir</h2>
 <p>Reloj de cuatro horas hasta el vuelo ceremonial, con tiempos de desplazamiento fijados en el Panel del Narrador. Cinco escenas autosuficientes: accidente → investigación → persecución → confrontación → resolución pública, cada una con su atmósfera, tiradas con éxito/fallo concretos y transición a la siguiente. Tres traficantes con motivos comprensibles, un Glass-Dog real y herido que solo quiere escapar, y una ciudad que no sabe distinguir lo real de la decoración. Ningún desenlace es el correcto.</p>
 <hr />
 <p><em>MadCity — colección de one-shots. Comparte lugares, PNJ y dirección visual con el resto de la colección, sin formar una campaña obligatoria.</em></p>
-</div>
+</main>
 </body>
 </html>

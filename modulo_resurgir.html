@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — Resurgir</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — Resurgir"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-el-rastro-que-nadie-sigue">Escena 1 — El rastro que nadie sigue</a></li><li class="toc-h3"><a href="#escena-2-lo-que-ha-hecho-para-llegar-hasta-aqui">Escena 2 — Lo que ha hecho para llegar hasta aquí</a></li><li class="toc-h3"><a href="#escena-3-el-silencio">Escena 3 — El Silencio</a></li><li class="toc-h3"><a href="#escena-4-el-punto-de-quiebre">Escena 4 — El punto de quiebre</a></li><li class="toc-h3"><a href="#escena-5-lo-que-queda">Escena 5 — Lo que queda</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#el-inquisidor-de-capricornio-en-el-pozo">El Inquisidor de Capricornio — en el pozo</a></li><li class="toc-h3"><a href="#el-inquisidor-de-capricornio-post-resurgimiento-si-se-activa-en-la-escena-5">El Inquisidor de Capricornio — post-resurgimiento (si se activa en la Escena 5)</a></li><li class="toc-h3"><a href="#celula-de-reconocimiento-pseudo-arcanita-escena-3">Célula de reconocimiento pseudo-arcanita (Escena 3)</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#no-hay-recompensa-de-contrato">No hay recompensa de contrato</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — Resurgir</h1>
+<blockquote>
+<p>El pozo de desesperanza del Inquisidor de Capricornio, jugado</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> el Inquisidor de Capricornio lleva una Hebra sin responder a TecnoStealer. Nadie sabe dónde está, y quien lo conoce empieza a temerse por qué: la amenaza que quedó abierta al final de <em>El Eco del Huevo</em> —una represalia arcanita mayor, "no serán seis, serán sesenta"— sigue sin resolverse, y él ha decidido, solo, que nadie más va a pararla a tiempo si no lo hace él mismo. Los PJ lo encuentran al final de ese camino, empujado mucho más allá de donde debería, en el instante exacto en que decide si vuelve o se pierde del todo.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas. Gana muchísimo peso si la mesa ya jugó <em>El Patrón Perfecto</em> y/o <em>El Eco del Huevo</em>, pero no los exige — todo lo necesario se resume en el camino.</p>
+<p><strong>Tono:</strong> el más oscuro de los tres módulos del Inquisidor, y el único con una salida verdaderamente esperanzadora al final. No es una aventura sobre derrotar nada — es sobre si alguien puede alcanzar a otro antes de que se pierda.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- Esto <strong>es</strong> el pozo de desesperanza del Inquisidor, ya fijado en su trasfondo — su entrada (una investigación que sale catastróficamente mal, con coste humano real) se asume ya ocurrida, con o sin haber jugado <em>El Patrón Perfecto</em> como esa investigación concreta.<br />
+- El detonante que lo mantiene fuera de la red es la amenaza sin resolver de <em>El Eco del Huevo</em>: la represalia arcanita mayor amenazada al cierre de ese módulo. No hace falta haberlo jugado — basta con saber que "algo grande viene, y nadie más parece estar deteniéndolo".<br />
+- <strong>El Inquisidor no muere, no queda irreparablemente humillado y no se convierte en villano dogmático en ningún desenlace de este módulo</strong> — principio heredado de todo su material anterior, más importante aquí que en ningún otro punto de su arco.<br />
+- El desenlace —resurgimiento logrado o un cuasi-fracaso sombrío pero no definitivo— queda en manos de la mesa, no impuesto por el guion.<br />
+- Ambientado, si la mesa quiere marcarlo, durante <strong>el Silencio</strong> (la marea rara del calendario del Mosaico) — resonancia deliberada entre la ausencia de Distorsión que no se sostiene y un hombre que tampoco se sostiene ya del todo.</p>
+<p><strong>Verdad completa (Narrador):</strong> el Inquisidor no ha enloquecido ni se ha corrompido. Ha decidido, con la misma lógica fría de siempre, que si las instituciones y los patrones fallan —como acaba de fallarle a él mismo—, la única garantía que le queda es actuar solo, sin nadie a quien rendir cuentas ni cuyo error pueda arrastrarlo otra vez. Lleva una Hebra investigando la represalia arcanita por su cuenta, empujando su acceso al Alma más allá de lo cómodo para sostener el ritmo —el exceso queda bloqueado, no perdido, tal y como fija la mecánica de Humanidad/Alma, pero el coste emocional de vivir en ese límite es real—. Está cerca de encontrar el origen de la represalia. También está cerca de dejar de ser alguien reconocible.</p>
+<p><strong>Si nadie interviene:</strong> el Inquisidor localiza y confronta solo el origen de la represalia arcanita. Puede conseguirlo —es, con diferencia, el investigador más competente en juego— pero al precio de cruzar una línea de la que no hay vuelta fácil: aislamiento total, un método que ya no admite errores ajenos ni piedad propia. El módulo no dramatiza ese desenlace por defecto: existe para que la mesa lo evite, no para narrarlo con detalle si nadie llega a tiempo.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>El rastro que nadie sigue — los PJ descubren que el Inquisidor lleva una Hebra desaparecido, y por qué.</li>
+<li>Lo que ha hecho para llegar hasta aquí — el camino que ha dejado detrás, y lo que ha costado.</li>
+<li>El Silencio — lo encuentran, a solas, en el filo de su investigación.</li>
+<li>El punto de quiebre — el momento real de la partida: qué dicen y hacen los PJ cuando lo tienen delante.</li>
+<li>Lo que queda — resurgimiento, o la sombra de haberlo estado a punto de perder.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> una célula de reconocimiento pseudo-arcanita (tripulación estándar, ficha en Reparto) vigilando el mismo objetivo que el Inquisidor — no son la represalia mayor en sí, son su avanzadilla. La represalia mayor completa <strong>no aparece en este módulo</strong>: es demasiado grande para esta escala, y no hace falta verla para que la amenaza sea real.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>Los PJ reciben o encuentran la primera pista de que el Inquisidor lleva desaparecido una Hebra.</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>Reconstruyen su camino reciente — Escena 2.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>Lo localizan, a solas, cerca de completar su investigación — Escena 3.</td>
+</tr>
+<tr>
+<td>H+5</td>
+<td>El Inquisidor está a un paso de actuar solo contra el origen de la represalia — última ventana para la Escena 4.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El error característico, en este módulo específicamente:</strong> ya no es solo que confíe en patrones bien construidos. Es que, tras El Patrón Perfecto, ha dejado de confiar en compartir la investigación con nadie —incluida la propia corporación—. Eso lo hace más peligroso para sí mismo que para cualquier otro: nadie le cubre las espaldas, y él ya no cree que deba pedírselo a nadie.</p>
+<p><strong>Objetivo real de la partida:</strong> que los PJ le den al Inquisidor una razón —no una orden, no un argumento lógico, una razón real— para no completar esto solo.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-el-rastro-que-nadie-sigue">Escena 1 — El rastro que nadie sigue</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Una Hebra es mucho tiempo para que alguien tan metódico no responda a nada. Los canales habituales de TecnoStealer llevan semanas sin noticias, y quien pregunta recibe la misma respuesta vacía: "está en investigación de campo".</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ —por relación previa con el Inquisidor, por encargo de alguien preocupado, o por haber tropezado con las mismas pistas que él sigue— empiezan a tirar del hilo de su desaparición.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>La Inquisidora de Acuario</strong> — su colega más cercana a una amistad real. Es quien da el encargo, en persona o por mensaje: preocupada, pero disciplinada como cualquier Inquisidor — no monta un escándalo, hace lo que él haría: reunir a gente competente y dejar que investiguen. Si la mesa prefiere otro gancho (relación previa de los PJ con el Inquisidor, o tropezar con la pista por su cuenta), ella no hace falta que aparezca — es la opción por defecto, no la única.</p>
+<p><strong>Interpretar a la Inquisidora de Acuario</strong> (si aparece):</p>
+<blockquote>
+<p>«No es propio de él. Cualquier Inquisidor se toma un respiro de vez en cuando. Una Hebra entera sin una sola señal, no.»<br />
+«No os pido que lo traigáis de vuelta a la fuerza. Os pido que averigüéis si hace falta traerlo de vuelta.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Investigación o Bajos Fondos (Difícil, −10) para reconstruir su última ubicación confirmada; Alerta (Difícil, −10) para notar que quien pregunta por él en TecnoStealer también parece nervioso.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene un punto de partida real — su última ubicación conocida, y la sospecha de que esto tiene que ver con la amenaza que quedó abierta tras <em>El Eco del Huevo</em>.</p>
+<h3 id="escena-2-lo-que-ha-hecho-para-llegar-hasta-aqui">Escena 2 — Lo que ha hecho para llegar hasta aquí</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Cada parada de su camino deja el mismo tipo de huella: alguien a quien presionó más de lo que él mismo habría permitido antes, un recurso usado hasta el límite, una decisión tomada solo porque ya no confiaba en que otro la tomara bien.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ reconstruyen el camino reciente del Inquisidor — testigos, contactos presionados, señales de que ha estado empujando su propio límite (de Alma, de Humanidad, de paciencia) mucho más allá de lo habitual en él.</p>
+<p><strong>Tiradas posibles:</strong> Investigación o Social (Difícil, −10) para hablar con quienes se cruzaron con él recientemente; Percepción (Muy difícil, −20) puede revelar que, en más de un sitio, dejó también algo de ayuda no pedida a cambio de la presión —no ha dejado de ser quien era del todo.</p>
+<p><strong>Cómo termina:</strong> el grupo entiende la magnitud de lo que está haciendo, y por qué — sin que nadie se lo explique en un monólogo, solo por lo que ven.</p>
+<h3 id="escena-3-el-silencio">Escena 3 — El Silencio</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El aire no lleva Distorsión esta noche, y eso, más que cualquier otra cosa, es lo que pone los pelos de punta a quien lleva tiempo en la Senda. En un claro sin nada que debiera protegerlo, el Inquisidor está solo, revisando datos que ya casi terminan de encajar.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ lo encuentran. No está en peligro inmediato —está a punto de tomar una decisión—. La célula de reconocimiento arcanita (ficha en Reparto) también está cerca, vigilando lo mismo que él, sin haberlo detectado todavía.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>El Inquisidor</strong> — ficha establecida (ver Reparto), pero interprétalo agotado, no debilitado: sigue siendo exactamente igual de competente, solo que ya no tiene a nadie comprobando su trabajo.<br />
+- <strong>Célula de reconocimiento pseudo-arcanita</strong> — no busca combate todavía, solo observa. Un enfrentamiento aquí es posible pero no obligatorio.</p>
+<p><strong>Interpretar al Inquisidor:</strong></p>
+<blockquote>
+<p>«No os esperaba. No debería sorprenderme que me hayáis encontrado — sigo dejando patrones, incluso cuando no quiero.»<br />
+«Ya casi lo tengo. Un poco más, y sabré dónde golpear antes de que lo hagan ellos.»<br />
+«No os pedí que vinierais. Eso no significa que no me alegre, exactamente. Significa que no sé qué hacer con ello.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong><br />
+- <strong>Sigilo o Rastreo</strong> (acercarse sin que la célula de reconocimiento note nada): éxito → los PJ llegan hasta el Inquisidor sin interrupciones, la escena entera es suya. Fallo → la célula los detecta a ellos, no al Inquisidor todavía, y decide si intervenir o seguir observando (criterio del Narrador, no combate automático).<br />
+- <strong>Social o Persuasión</strong> para que el Inquisidor hable, en vez de seguir trabajando mientras contesta a medias — no hace falta ganar esta tirada para llegar a la Escena 4, solo para que la conversación empiece en mejores términos.</p>
+<p><strong>Qué dispara el combate, si lo hay:</strong> la célula de reconocimiento no ataca por iniciativa propia — solo si los PJ fallan el Sigilo/Rastreo Y además hacen algo que la obligue a reaccionar (acercarse demasiado, alzar la voz, sacar un arma). Fallar el Sigilo por sí solo no es un combate garantizado, es que ya no pasan desapercibidos.</p>
+<p><strong>Cómo termina:</strong> la conversación real —la Escena 4— puede empezar aquí mismo o un momento después, si la célula de reconocimiento obliga a moverse primero.</p>
+<h3 id="escena-4-el-punto-de-quiebre">Escena 4 — El punto de quiebre</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>No hace falta un reloj visible para sentir que esto se decide ahora. El Inquisidor tiene ya casi todo lo que necesita para actuar solo. Lo único que falta es que alguien le dé un motivo real para no hacerlo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el corazón del módulo. No es una escena de combate ni de tiradas encadenadas — es una conversación con peso real, en la que los PJ deciden qué decirle y cómo.</p>
+<p><strong>Qué puede llegar a moverlo</strong> (ninguna es automática, ninguna es la única vía):<br />
+- Que alguien le demuestre, con datos, que actuar solo lo hace más lento o más torpe, no más seguro — un argumento en su propio idioma.<br />
+- Que alguien le ofrezca ayuda real y concreta para la investigación, no solo compañía — algo que pueda aceptar sin sentir que está delegando lo que ya no confía en delegar.<br />
+- Que alguien, simplemente, le diga que ya ha pagado bastante por un error que no fue solo suyo — y consiga que él, por una vez, no lo rebata con lógica.</p>
+<p><strong>Si los PJ fuerzan la confrontación por las malas:</strong> el Inquisidor no ataca primero —sigue siendo quien es—, pero tampoco cede solo por presión. Forzarlo empeora la escena, no la resuelve; recuérdalo si algún jugador intenta amenazarlo o coaccionarlo.</p>
+<p><strong>Cómo termina:</strong> el Inquisidor toma una decisión — seguir solo, o aceptar que los PJ (y, por extensión, algo más que su propio juicio) formen parte de lo que queda de esta investigación. Ninguna de las dos opciones cierra la partida todavía.</p>
+<h3 id="escena-5-lo-que-queda">Escena 5 — Lo que queda</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Sea cual sea la decisión, algo ha cambiado que no va a deshacerse solo con el tiempo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre.</p>
+<ul>
+<li><strong>Si acepta ayuda:</strong> el resurgimiento ocurre aquí, en la propia partida, no fuera de ella. La ficha post-resurgimiento (ver Reparto) queda activa desde este momento para cualquier aparición futura del personaje.</li>
+<li><strong>Si no la acepta del todo:</strong> no es un fracaso total ni un giro a villano — es una sombra que se queda con él un poco más, con la investigación aún sin cerrar y la puerta todavía abierta para otra oportunidad, en otra partida.</li>
+</ul>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El Inquisidor</td>
+<td>___</td>
+</tr>
+<tr>
+<td>La célula de reconocimiento arcanita</td>
+<td>___</td>
+</tr>
+<tr>
+<td>La amenaza mayor de <em>El Eco del Huevo</em></td>
+<td>___ (sigue sin resolverse del todo, a propósito)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="el-inquisidor-de-capricornio-en-el-pozo">El Inquisidor de Capricornio — en el pozo</h3>
+<p>Ficha idéntica a la establecida en sus apariciones anteriores, sin cambios mecánicos — el pozo es un estado emocional y narrativo, no una penalización de ficha.</p>
+<p>Atributos: AGI 35, CON 38, FUE 36, HAB 42, CAR 45, INT 55, PER 52, VOL 48.<br />
+Habilidades: Arma CC Media 85%, Distancia Media 95%, Investigación 85%, Electrónica 75%, Alerta 80%, Interrogación/Sociales 70%, Táctica 60%.<br />
+PV 20/20/20 (Sano/Herido/Tullido; el +1 sobre la fórmula estándar es decisión de diseño, sin origen concreto fijado) | Blindaje: 4 si lleva la armadura media reforzada, 8 si lleva la acorazada — son dos equipos distintos, no dos zonas del cuerpo; solo puede llevar uno de los dos a la vez.<br />
+Armas: estoque de combate (Daño 7, Pen 3), pistola de precisión (Daño 5, Pen 4, Cad 4).<br />
+Implantes: ocular táctico, reflejos aumentados (+15 Iniciativa), comunicador subdérmico cifrado.</p>
+<h3 id="el-inquisidor-de-capricornio-post-resurgimiento-si-se-activa-en-la-escena-5">El Inquisidor de Capricornio — post-resurgimiento (si se activa en la Escena 5)</h3>
+<p>Predestinado pleno (9 Puntos Épicos), acceso al Alma ya no limitado por el suelo(Humanidad/10) estándar, nueva habilidad <strong>Lectura de patrones falsos 55%</strong>. Resto de atributos y habilidades, sin cambios respecto a la ficha establecida — la diferencia es el margen que ahora tiene detrás, no un salto de números.</p>
+<h3 id="celula-de-reconocimiento-pseudo-arcanita-escena-3">Célula de reconocimiento pseudo-arcanita (Escena 3)</h3>
+<p>Ficha de tripulación estándar, reutilizada de apariciones anteriores de la facción.</p>
+<p>F50/A52/P45/V46 | PV 24/24/24 | Blindaje 5<br />
+Distancia Media 65% (Daño 7, Pen 3, Cad 3) | Arma CC Media 55% (Daño 6, Pen 2) | Pilotaje 50% | Alerta 45%</p>
+<ul>
+<li>Solo observa, no ataca salvo ser detectada u obligada a combatir.</li>
+<li>No es la represalia mayor — es su avanzadilla. Derrotarla no resuelve la amenaza de fondo.</li>
+</ul>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>Resurgimiento logrado.</strong> El Inquisidor acepta ayuda, la ficha post-resurgimiento queda activa. Su próxima aparición parte de aquí.</li>
+<li><strong>Casi, pero no del todo.</strong> No cede del todo, pero tampoco se pierde — la puerta queda abierta para otra partida que retome el hilo.</li>
+<li><strong>La célula de reconocimiento escapa o es neutralizada</strong> — cualquiera de las dos deja la amenaza mayor de <em>El Eco del Huevo</em> exactamente donde estaba: sin resolver, deliberadamente.</li>
+</ul>
+<h3 id="no-hay-recompensa-de-contrato">No hay recompensa de contrato</h3>
+<p>Igual que en <em>El Patrón Perfecto</em>: esto no es un encargo. Es alcanzar a alguien antes de que se pierda, porque estaba a su alcance hacerlo.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>La amenaza mayor de <em>El Eco del Huevo</em></strong> sigue abierta — este módulo no la resuelve, solo evita que el Inquisidor la enfrente completamente solo.</li>
+<li><strong>El Inquisidor post-resurgimiento</strong>, si se activó, es ya el personaje disponible para cualquier aparición futura — con su nueva habilidad de leer patrones falsos como cicatriz útil, no como superpoder.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">El Inquisidor — en el pozo</div>
+<div class="ficha-rapida-rol">Agotado, no debilitado</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">AGI 35 CON 38 FUE 36 HAB 42 CAR 45 INT 55 PER 52 VOL 48 · PV <b>20/20/20</b> · Bld <b>4</b> con media reforzada o <b>8</b> con acorazada (un equipo u otro, no las dos)</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Arma CC Media 85%</span><span class="ficha-rapida-pill">Distancia Media 95%</span><span class="ficha-rapida-pill">Investigación 85%</span><span class="ficha-rapida-pill">Electrónica 75%</span><span class="ficha-rapida-pill">Alerta 80%</span><span class="ficha-rapida-pill">Interrogación 70%</span><span class="ficha-rapida-pill">Táctica 60%</span></div>
+<div class="ficha-rapida-equipo"><b>Armas:</b> estoque de combate (Daño 7, Pen 3) · pistola de precisión (Daño 5, Pen 4, Cad 4). <b>Implantes:</b> ocular táctico, reflejos aumentados (+15 Iniciativa), comunicador subdérmico.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">El Inquisidor — post-resurgimiento</div>
+<div class="ficha-rapida-rol">Solo si triunfa la Escena 4</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Mismos atributos y habilidades que arriba. Predestinado pleno (9 Puntos Épicos) — el Alma accesible ya no está limitada por suelo(Humanidad/10).</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Lectura de patrones falsos 55% (rama Científica)</span></div>
+<div class="ficha-rapida-equipo">Mismo equipo e implantes que la ficha en el pozo.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Célula de reconocimiento arcanita</div>
+<div class="ficha-rapida-rol">Escena 3 — vigila, no ataca por iniciativa</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">F<b>50</b> A<b>52</b> P<b>45</b> V<b>46</b> · PV <b>24/24/24</b> · Bld <b>5</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Distancia Media 65%</span><span class="ficha-rapida-pill">Arma CC Media 55%</span><span class="ficha-rapida-pill">Pilotaje 50%</span><span class="ficha-rapida-pill">Alerta 45%</span></div>
+<div class="ficha-rapida-equipo"><b>Armas:</b> Distancia Media (Daño 7, Pen 3, Cad 3) · Arma CC Media (Daño 6, Pen 2).</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

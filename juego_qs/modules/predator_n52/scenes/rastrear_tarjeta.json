@@ -21,6 +21,7 @@
   "interactions": [
     {
       "id": "rastrear_tarjeta",
+      "audioEvent": "scan",
       "trigger": {
         "action": "rastrear"
       },
@@ -37,6 +38,7 @@
       },
       "rollNota": "QS L.22 pide 'Electrónica + Tecnológica'; ningún pregenerado tiene 'Electrónica' como habilidad propia en su ficha (solo Tecnológica), así que se usa Tecnológica sola — desviación documentada en docs/QS_RULE_MAP.md.",
       "onSuccess": {
+        "audioEvent": "success",
         "setFlags": [
           "direccion_arthur_localizada"
         ],
@@ -74,18 +76,76 @@
       "success": "chip_reader_confirm"
     }
   },
-  "presentationNote": "La imagen compuesta existente sigue siendo el fallback y la base del habitáculo. Exterior, lluvia y primer plano se superponen mediante encuadre declarativo. Los ocupantes permanecen definidos como capas independientes, pero se ocultan en producción hasta disponer de siluetas transparentes apropiadas: los retratos cuadrados no representan cuerpos dentro del vehículo.",
+  "presentationNote": "La imagen compuesta existente sigue siendo el fallback. La ciudad nocturna se desplaza en un bucle suave detrás de los cristales transparentes; la lluvia vive sobre el vidrio y el recorte estable del habitáculo conserva salpicadero, asientos y siluetas en primer plano.",
   "presentation": {
     "schemaVersion": 1,
     "width": 1672,
     "height": 941,
     "layers": [
       {
-        "id": "vehicle-cabin-base",
-        "resource": "assets/backgrounds/interior_vehiculo_noche.png",
-        "fallback": "assets/backgrounds/interior_vehiculo_noche.png",
+        "id": "window-exterior",
+        "resource": "assets/generated/raycast/environments/skyline_ciudad_02.png",
+        "optional": true,
         "depth": 0,
-        "semantic": "architecture",
+        "semantic": "background",
+        "position": {
+          "x": -36,
+          "y": 0
+        },
+        "size": {
+          "width": 1744,
+          "height": 941
+        },
+        "fit": "cover",
+        "parallax": {
+          "x": 0.92,
+          "y": 0.96
+        },
+        "pointer": {
+          "x": 3,
+          "y": 1
+        },
+        "oscillation": {
+          "x": 34,
+          "y": 1,
+          "periodMs": 16000
+        }
+      },
+      {
+        "id": "window-rain",
+        "resource": "assets/generated/effects/fx_rain.png",
+        "optional": true,
+        "depth": 10,
+        "semantic": "lighting",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "size": {
+          "width": 1672,
+          "height": 941
+        },
+        "fit": "cover",
+        "parallax": {
+          "x": 0.98,
+          "y": 0.98
+        },
+        "pointer": {
+          "x": 1,
+          "y": 0.5
+        },
+        "oscillation": {
+          "x": 1.5,
+          "y": 12,
+          "periodMs": 6200
+        }
+      },
+      {
+        "id": "vehicle-cabin-base",
+        "resource": "assets/backgrounds/interior_vehiculo_habitaculo_transparente.png",
+        "fallback": "assets/backgrounds/interior_vehiculo_noche.png",
+        "depth": 30,
+        "semantic": "foreground",
         "position": {
           "x": 0,
           "y": 0
@@ -100,91 +160,13 @@
           "y": 1
         },
         "pointer": {
-          "x": 0.25,
-          "y": 0.15
+          "x": 0,
+          "y": 0
         },
         "oscillation": {
-          "x": 0.25,
-          "y": 0.2,
+          "x": 0,
+          "y": 0,
           "periodMs": 12000
-        }
-      },
-      {
-        "id": "window-exterior",
-        "resource": "assets/generated/raycast/environments/skyline_ciudad_02.png",
-        "optional": true,
-        "depth": 10,
-        "semantic": "background",
-        "position": {
-          "x": 0,
-          "y": 0
-        },
-        "size": {
-          "width": 1672,
-          "height": 941
-        },
-        "fit": "cover",
-        "frame": {
-          "clip": {
-            "top": 0.08,
-            "right": 0.18,
-            "bottom": 0.42,
-            "left": 0.18
-          },
-          "focus": {
-            "x": 0.5,
-            "y": 0.46
-          }
-        },
-        "parallax": {
-          "x": 0.9,
-          "y": 0.92
-        },
-        "pointer": {
-          "x": 4,
-          "y": 2
-        },
-        "oscillation": {
-          "x": 2,
-          "y": 0.8,
-          "periodMs": 11000
-        }
-      },
-      {
-        "id": "window-rain",
-        "resource": "assets/generated/effects/fx_rain.png",
-        "optional": true,
-        "depth": 20,
-        "semantic": "lighting",
-        "position": {
-          "x": 0,
-          "y": 0
-        },
-        "size": {
-          "width": 1672,
-          "height": 941
-        },
-        "fit": "cover",
-        "frame": {
-          "clip": {
-            "top": 0.08,
-            "right": 0.18,
-            "bottom": 0.42,
-            "left": 0.18
-          }
-        },
-        "parallax": {
-          "x": 0.94,
-          "y": 0.94
-        },
-        "pointer": {
-          "x": 2,
-          "y": 1
-        },
-        "oscillation": {
-          "x": 0.8,
-          "y": 1.2,
-          "periodMs": 9000
         }
       },
       {
@@ -245,43 +227,6 @@
           "all": [
             "prototipo_mort_robado"
           ]
-        }
-      },
-      {
-        "id": "dashboard-foreground",
-        "resource": "assets/backgrounds/interior_vehiculo_noche.png",
-        "fallback": "assets/backgrounds/interior_vehiculo_noche.png",
-        "depth": 60,
-        "semantic": "foreground",
-        "position": {
-          "x": 0,
-          "y": 0
-        },
-        "size": {
-          "width": 1672,
-          "height": 941
-        },
-        "fit": "cover",
-        "frame": {
-          "clip": {
-            "top": 0.58,
-            "right": 0,
-            "bottom": 0,
-            "left": 0
-          }
-        },
-        "parallax": {
-          "x": 1,
-          "y": 1
-        },
-        "pointer": {
-          "x": 0.45,
-          "y": 0.25
-        },
-        "oscillation": {
-          "x": 0.4,
-          "y": 0.3,
-          "periodMs": 12000
         }
       }
     ]
