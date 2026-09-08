@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — Raciones para mañana</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — Raciones para mañana"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-antes-de-que-falte-nada">Escena 1 — Antes de que falte nada</a></li><li class="toc-h3"><a href="#escena-2-lo-que-dice-la-maquina">Escena 2 — Lo que dice la máquina</a></li><li class="toc-h3"><a href="#escena-3-la-racion-de-esta-noche">Escena 3 — La ración de esta noche</a></li><li class="toc-h3"><a href="#escena-4-lo-que-queda-ahi-fuera">Escena 4 — Lo que queda ahí fuera</a></li><li class="toc-h3"><a href="#escena-5-raciones-para-manana">Escena 5 — Raciones para mañana</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#merle-en-plena-crisis">Merle — en plena crisis</a></li><li class="toc-h3"><a href="#hollis-bragg-nuevo">Hollis Bragg (nuevo)</a></li><li class="toc-h3"><a href="#selma-cray-nueva">Selma Cray (nueva)</a></li><li class="toc-h3"><a href="#cabo-denny-fhost-y-su-escuadra-serpent-reutilizados-del-dlc-de-mundo-maquina">Cabo Denny Fhost y su escuadra Serpent — reutilizados del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#enjambre-perforador-opcional-reutilizado-del-dlc-de-mundo-maquina">Enjambre Perforador (opcional) — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — Raciones para mañana</h1>
+<blockquote>
+<p>One-shot de Mundo Máquina — el refugio de Merle, y una cuenta atrás que no se mide en balas.</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> el sintetizador que alimenta al refugio de Merle lleva semanas averiándose con más frecuencia, y nadie dentro sabe todavía si es desgaste, sabotaje o contaminación. Los PJ llegan a diagnosticarlo y, si pueden, repararlo a tiempo — pero la avería no es la única crisis que van a encontrar allí dentro: el miedo a quedarse sin comida ya ha empezado a partir a la comunidad en dos posturas legítimas sobre cómo repartir lo poco que queda mientras dure la reparación.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas. No exige haber jugado ningún otro módulo de la tesela — Merle aparece aquí en su versión de referencia, sin cambios respecto a cualquier otra partida en la que salga.</p>
+<p><strong>Tono:</strong> drama comunitario con diagnóstico técnico de fondo — una cuenta atrás por escasez, no por explosivos. Empieza deliberadamente despacio: nadie pasa hambre todavía en la primera escena, y ese silencio es el punto. Sin villanos: ni la máquina que falla, ni quien defiende racionar por esfuerzo, ni quien defiende racionar por igual actúan de mala fe.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- <strong>La avería es desgaste puro — sin sabotaje ni tecnovirus.</strong> La sospecha de contaminación es una pista falsa razonable, no un engaño barato: hay motivos reales para plantearla al principio, y se descarta sin dramatismo en cuanto se comprueba.<br />
+- <strong>Ninguna de las dos posturas sobre el racionamiento es la correcta por diseño.</strong> Hollis Bragg y Selma Cray tienen razones legítimas, y quien decide es la mesa, no el guion.<br />
+- <strong>Merle preside el refugio, pero no impone nada ella sola</strong> — quiere que la decisión se tome entre todos, PJ incluidos si se quedan a ayudar.<br />
+- <strong>Cabo Denny Fhost y su escuadra no son villanos:</strong> compiten por el mismo alijo de piezas por el motivo de siempre — volver con algo que enseñar, sin bajas que lamentar.<br />
+- <strong>Este módulo no revela nada nuevo sobre la IA original, el tecnovirus ni el Silo Génesis.</strong> No hace falta para que funcione.<br />
+- <strong>El desenlace del reparto y el estado final del sintetizador quedan enteramente en manos de la mesa.</strong></p>
+<p><strong>Verdad completa (Narrador):</strong> el sintetizador del refugio de Merle no ha sido saboteado y no lleva tecnovirus — falla por el motivo más aburrido y más real que existe: treinta años sin una sola pieza de recambio original. El sello de la cámara de síntesis se ha resecado hasta agrietarse, y el filtro catalizador que limpia lo que produce está tan colapsado que ya deja pasar impurezas — de ahí el pitido, el parpadeo y el olor metálico que algún residente, con motivos reales para desconfiar de cualquier cosa que huela a Máquina, ha empezado a llamar contaminación. El conflicto de fondo de este módulo no está en la máquina: está en que el refugio —una treintena de personas, cifra que no cambia con el número de PJ en la mesa— ya discute en voz baja cómo repartir lo poco que queda mientras dure la reparación. Las dos posturas que han surgido —priorizar a quien trabaja más duro, o repartir por igual pase lo que pase— son igual de legítimas, sostenidas por gente que quiere, cada una a su manera, que su comunidad siga existiendo.</p>
+<p><strong>Si nadie interviene:</strong> sin diagnóstico ni piezas, el sintetizador sigue perdiendo rendimiento —un poco más cada ciclo, como lleva haciendo desde hace meses— hasta que las reservas del refugio se agotan del todo. Hollis Bragg, sin esperar a que nadie lo apruebe, empieza a repartir raciones extra a las cuadrillas de trabajo por su cuenta; Selma Cray se opone abiertamente, y la discusión deja de ser solo verbal antes de que la comida llegue a faltar de verdad. El módulo no dramatiza ese desenlace por defecto: existe para que la mesa llegue a tiempo de evitarlo, no para narrarlo con detalle si no lo hace.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>Antes de que falte nada — los PJ llegan al refugio de Merle y conocen una rutina que empieza a resquebrajarse.</li>
+<li>Lo que dice la máquina — el diagnóstico real del sintetizador, y la pista falsa de la contaminación.</li>
+<li>La ración de esta noche — el conflicto de racionamiento estalla en la cena comunitaria.</li>
+<li>Lo que queda ahí fuera — la búsqueda de piezas, con o sin competencia.</li>
+<li>Raciones para mañana — el reparto final y el estado del sintetizador.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> la escuadra de bajo rango del Cabo Denny Fhost (ficha en Reparto), que compite por el mismo alijo de piezas que los PJ, y —solo si la mesa elige que los PJ remuevan chatarra en el Desierto Circundante— 1d6 unidades de Enjambre Perforador (ficha del Punto 10 del DLC de Mundo Máquina). Ninguna de las dos escala con el número de PJ en la mesa: la escuadra de Fhost tiene siempre la misma composición, y el Enjambre nunca se reduce ni se amplía por ser más o menos jugadores.</p>
+<p>El refugio dispone de reservas para unos cinco días más, al ritmo de racionamiento ya reducido, cuando los PJ llegan — ese margen, no las horas de la sesión, es el reloj real de este módulo.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Día 0</td>
+<td>Los PJ llegan al refugio y aceptan el encargo — Escena 1.</td>
+</tr>
+<tr>
+<td>Día 0-1</td>
+<td>Diagnóstico del sintetizador: se descarta la contaminación y se identifican las piezas necesarias — Escena 2.</td>
+</tr>
+<tr>
+<td>Día 1, noche</td>
+<td>La discusión de racionamiento estalla en la cena comunitaria — Escena 3.</td>
+</tr>
+<tr>
+<td>Día 2</td>
+<td>Búsqueda de piezas, con o sin la escuadra de Denny Fhost de por medio — Escena 4.</td>
+</tr>
+<tr>
+<td>Día 3</td>
+<td>Si nadie ha vuelto todavía, Hollis empieza a repartir raciones extra a las cuadrillas de trabajo sin esperar aprobación.</td>
+</tr>
+<tr>
+<td>Día 3-4</td>
+<td>Asamblea final: con las piezas que haya, el refugio decide cómo repartir lo que queda — Escena 5.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>La pista falsa, y cómo no reventarla:</strong> la sospecha de contaminación es razonable —los síntomas se parecen, y algún residente ya lo ha dicho en voz alta— pero no es un engaño narrativo con revelación sorpresa. En cuanto los PJ hagan la prueba correcta (Escena 2), la respuesta es simplemente que no, con alivio, no con dramatismo. El interés de este módulo nunca estuvo en el misterio técnico: estuvo siempre en qué hace la gente cuando cree, aunque sea por poco tiempo, que se está quedando sin comida.</p>
+<p><strong>Objetivo real de la partida:</strong> que los PJ ayuden a diagnosticar y remendar el sintetizador a tiempo, y que la comunidad de Merle decida cómo repartir lo poco que hay sin partirse por la mitad — sin que el módulo les diga cuál de las dos posturas es la buena.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-antes-de-que-falte-nada">Escena 1 — Antes de que falte nada</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Nadie pasa hambre todavía. Esa es, en cualquier refugio, la parte más traicionera de quedarse sin comida: durante mucho tiempo todo sigue pareciendo exactamente igual, hasta el día en que deja de parecerlo de golpe. Y para entonces ya es demasiado tarde para fingir que nadie lo vio venir.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Merle (ficha en el DLC de Mundo Máquina, Punto 16) ha pedido ayuda —por un contacto previo de los PJ, por encargo de un tercero, o directamente por radio si ya la conocen— porque el sintetizador que alimenta a su gente lleva semanas fallando con más frecuencia de la que nadie se atreve a admitir en voz alta. Los PJ llegan a un lugar que, a primera vista, funciona: turnos organizados, un huerto hidropónico improvisado, niños jugando entre pasillos que un día tuvieron otro uso. Solo mirando con atención se nota que la ración de esta noche es algo más pequeña que la de la semana pasada, y que nadie lo comenta en voz alta.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong> — quien llama a los PJ, mide cada palabra, ya cansada de fingir delante de su gente que todo va bien.</p>
+<p><strong>Interpretar a Merle:</strong></p>
+<blockquote>
+<p>«No os pido un milagro. Os pido que miréis la máquina antes de que tenga que decidir yo sola a quién le doy de comer esta semana y a quién no.»<br />
+«Aquí nadie ha muerto de hambre todavía. Me gustaría que siguiera siendo verdad cuando os vayáis.»<br />
+«Hay quien ya sospecha que esto es cosa de la Máquina —de la buena o de la mala, para ellos es lo mismo—. Yo no lo sé. Por eso os llamo a vosotros, y no a un cura.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Alerta o Percepción (Normal) para notar el tamaño reducido de la ración y la tensión contenida bajo la normalidad aparente; Social (Normal) para que algún residente hable con más franqueza que Merle sobre cuánto tiempo lleva pasando esto.</p>
+<p><strong>Cómo termina:</strong> los PJ aceptan el encargo real —diagnosticar el sintetizador antes de que el problema deje de ser solo mecánico—. Merle les advierte, de pasada y sin dar nombres todavía, que dentro del refugio ya hay quien tiene opiniones muy firmes sobre qué hacer mientras tanto.</p>
+<h3 id="escena-2-lo-que-dice-la-maquina">Escena 2 — Lo que dice la máquina</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El sintetizador lleva el mismo zumbido desde antes de que naciera nadie que hoy come gracias a él. Cuando ese zumbido cambia de tono, no hace falta entender de electrónica para que a alguien se le encoja algo por dentro — solo hace falta haberlo escuchado todos los días de su vida.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ examinan la máquina, una unidad de síntesis alimentaria de antes de la guerra, mantenida a base de ingenio y piezas de otros aparatos durante décadas. Los primeros síntomas —parpadeos, un pitido intermitente, un olor metálico nuevo— recuerdan, superficialmente, a los descritos para la contaminación tecnológica (Punto 13 del DLC de Mundo Máquina): es una sospecha razonable, no una tontería, y algún residente ya la ha mencionado en voz baja. Un examen más cuidadoso descarta esa posibilidad —no hay vector de contagio real, ni rastro de código ajeno— y revela la causa de verdad: un sello de la cámara de síntesis reseco hasta agrietarse, y un filtro catalizador tan colapsado que ya deja pasar impurezas. Desgaste puro, sin nada detrás.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong>, si acompaña a los PJ durante el diagnóstico — conoce la máquina de memoria, aunque no sepa repararla.</p>
+<p><strong>Interpretar a Merle:</strong></p>
+<blockquote>
+<p>«Ese pitido no lo había oído nunca. Deciros que no me dio un vuelco el estómago sería mentira.»<br />
+«Si es la Máquina —la contaminada, digo— decídmelo ya. Prefiero saberlo aunque sea lo peor.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Electrónica o Programación (Difícil, −10) para descartar contaminación con seguridad —sin vector real presente, la prueba da negativo, tal y como fija la propia regla de contaminación tecnológica—; Investigación o Electrónica (Difícil, −10) para identificar las dos piezas exactas que hacen falta: un sello de cámara y un filtro catalizador, ambos de un modelo doméstico común, no militar ni exótico.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen un diagnóstico real y una lista de piezas concreta. La pista falsa de la contaminación queda descartada sin dramatismo —es alivio, no revelación— y el problema pasa a ser, sin vuelta atrás, encontrar esas piezas a tiempo.</p>
+<h3 id="escena-3-la-racion-de-esta-noche">Escena 3 — La ración de esta noche</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Compartir la comida ha unido a más gente de la que jamás ha separado — hasta que empieza a escasear. Entonces hace exactamente lo contrario, y lo hace deprisa.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> en la cena comunitaria de esa noche, alguien dice en voz alta lo que llevaba días murmurándose. Hollis Bragg propone repartir la ración según el esfuerzo físico de cada cual, al menos mientras dure la crisis. Selma Cray responde de inmediato, sin levantar la voz pero sin ceder terreno. La discusión no es un espectáculo montado para los PJ: es genuina, y detrás de ambas posturas hay gente real —quien carga piezas y hace guardia por un lado, los niños, los mayores y los heridos por otro—.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Hollis Bragg</strong> (nuevo, ver Reparto) — capataz de las cuadrillas de mantenimiento y salvamento del refugio.<br />
+- <strong>Selma Cray</strong> (nueva, ver Reparto) — quien cuida de facto a quienes no pueden trabajar a ese ritmo.<br />
+- <strong>Merle</strong>, presidiendo sin imponer.</p>
+<p><strong>Interpretar a Hollis Bragg:</strong></p>
+<blockquote>
+<p>«No os pido que os guste. Os pido que hagáis cuentas: si quien carga las piezas y hace guardia come igual que un crío de seis años, dentro de una semana no queda nadie con fuerzas para nada, y entonces sí que se acabó todo para todos.»<br />
+«Nadie se va a quedar sin comer del todo. Solo digo que quien tira del carro necesita más para seguir tirando.»</p>
+</blockquote>
+<p><strong>Interpretar a Selma Cray:</strong></p>
+<blockquote>
+<p>«En cuanto empezamos a medir a la gente por lo que puede cargar, ya hemos decidido quién vale más que quién. Y de ahí no se vuelve fácilmente.»<br />
+«Mi hijo no puede cargar piezas. Eso no significa que valga menos que quien sí puede.»<br />
+«No os pido que le deis la razón a nadie. Os pido que penséis en quién se queda callado en esta sala porque ya sabe que va a perder esta discusión.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Social o Persuasión (Difícil, −10) para moderar la discusión sin que degenere en algo peor esa misma noche; Empatía (Normal) para notar quién, entre los presentes, no ha dicho una palabra y por qué. Ninguna tirada obliga a los PJ a tomar partido: pueden mediar, aplazar, apoyar a una postura, proponer una tercera, o simplemente escuchar.</p>
+<p><strong>Cómo termina:</strong> el refugio no decide nada esa noche —Merle consigue aplazar el acuerdo hasta saber si el sintetizador tiene arreglo—, pero la línea de fractura queda clara para todos, PJ incluidos. Lo que hagan o digan aquí pesará en la Escena 5.</p>
+<h3 id="escena-4-lo-que-queda-ahi-fuera">Escena 4 — Lo que queda ahí fuera</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El desierto no esconde nada a propósito — sencillamente ha dejado de importarle qué se encuentra en él y qué no. Quien busca aquí compite con el óxido, con el tiempo, y a veces con alguien más que busca exactamente lo mismo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> con la lista de piezas en la mano, los PJ tienen al menos dos vías razonables —pueden combinarlas, o inventar una tercera—:</p>
+<ul>
+<li><strong>El Distrito Comercial Automatizado:</strong> el almacén trasero de un supermercado automático conserva reservas domésticas todavía selladas (Punto 9 del DLC de Mundo Máquina) — casi la garantía de encontrar piezas de calidad, pero la escuadra de bajo rango del <strong>Cabo Denny Fhost</strong> (ficha en Reparto) ha llegado con la misma idea, buscando algo que llevarse a cambio de su propio encargo.</li>
+<li><strong>El Desierto Circundante:</strong> la chatarra de maquinaria oxidada (Punto 9) puede servir de recambio improvisado —más rápido, sin competencia humana, pero de calidad incierta y sin la protección de un edificio cerrado—. Si los PJ remueven chatarra el tiempo suficiente para llamar la atención, el Narrador puede introducir 1d6 unidades de Enjambre Perforador (ficha del Punto 10, sin reducir por número de PJ).</li>
+</ul>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Cabo Denny Fhost y su escuadra Serpent</strong> (ficha en Reparto), solo si los PJ eligen el Distrito Comercial — no buscan pelea, y prefieren cualquier salida que no la incluya.</p>
+<p><strong>Interpretar a Cabo Denny Fhost:</strong></p>
+<blockquote>
+<p>«No hemos venido a quitaros nada que sea vuestro. Hemos venido a llevarnos algo que no es de nadie desde hace treinta años.»<br />
+«Puedo repartir. Puedo competir. Lo que no puedo es volver otra vez con las manos vacías — eso no depende de mí.»<br />
+«Si esto se pone feo, perdemos los dos. A mí ya me sobra gente enterrada por menos.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Investigación o Percepción (Difícil, −10) para localizar las piezas exactas entre las reservas seguras del Distrito Comercial; Social o Persuasión (Difícil, −10) para negociar un reparto con Denny Fhost en vez de competir por todo; Sigilo (Difícil, −10) para adelantarse sin que la escuadra lo note. En el Desierto: Rastreo (Normal) para encontrar chatarra de calidad suficiente; Alerta (Difícil, −10) para detectar un Enjambre Perforador antes de que emerja, si el Narrador decide que aparece.</p>
+<p><strong>Cómo termina:</strong> los PJ vuelven con piezas de buena calidad, con un remiendo improvisado que durará semanas en vez de años, con menos de lo que necesitaban, o con algún tipo de acuerdo o roce con la escuadra de Denny Fhost. Cualquier combinación es válida, y todas alimentan la Escena 5 de forma distinta.</p>
+<h3 id="escena-5-raciones-para-manana">Escena 5 — Raciones para mañana</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Ninguna máquina arreglada devuelve el tiempo que llevaba rota. Lo que sí puede devolver, si alguien se ocupa de ello a tiempo, es la costumbre de comer sin mirar antes cuánto le queda al vecino en el plato.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre. Con las piezas que traigan los PJ —o sin ellas— el sintetizador se repara del todo, se remienda a medias, o sigue fallando; eso decide cuánto margen real tiene el refugio a partir de ahora. Con o sin arreglo, la comunidad se reúne para decidir, por fin, cómo repartir lo que hay mientras tanto. Hollis Bragg y Selma Cray exponen sus posturas una última vez, y Merle —con o sin la opinión de los PJ, según lo que hayan hecho hasta aquí— cierra la asamblea con una decisión que no tiene por qué gustarle a todo el mundo para ser la correcta.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong>, <strong>Hollis Bragg</strong>, <strong>Selma Cray</strong> — los tres, presentes en la asamblea final.</p>
+<p><strong>Interpretar a Merle:</strong></p>
+<blockquote>
+<p>«No hay una decisión que deje contento a todo el mundo. La única pregunta que me importa es si, dentro de un mes, seguimos siendo la misma gente que éramos antes de esto.»<br />
+«Gracias por no limitaros a arreglar la máquina y marcharos. Eso también contaba.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> ninguna obligatoria — es una escena de cierre, no de tiradas encadenadas. Un Social o Persuasión (Normal) puede inclinar la decisión final si los PJ deciden intervenir en la asamblea, sin ser necesario para llegar al final de la escena.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El sintetizador</td>
+<td>___ (reparado del todo, remendado a medias, o sigue fallando)</td>
+</tr>
+<tr>
+<td>El racionamiento</td>
+<td>___ (por esfuerzo, igualitario, mixto, o sin decidir)</td>
+</tr>
+<tr>
+<td>La escuadra de Denny Fhost</td>
+<td>___ (repartió, compitió, se enfrentó, o ni se cruzaron)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="merle-en-plena-crisis">Merle — en plena crisis</h3>
+<p>Ficha idéntica a la establecida en el DLC de Mundo Máquina (Punto 16), sin cambios de personalidad ni de trasfondo — esta crisis es, precisamente, el problema que su propia ficha ya anunciaba.</p>
+<ul>
+<li>Función: superviviente humana, habitante de refugio; aquí, además, quien pide ayuda y sostiene a su gente mientras dura la crisis.</li>
+<li>Qué quiere: proteger a su gente y conseguir piezas concretas para el sintetizador que los mantiene con vida.</li>
+<li>Qué ofrece: rutas seguras, aviso de patrullas, información de primera mano sobre la Zona Residencial — y, en este módulo, la confianza de dejar que unos forasteros entren en el problema más delicado de su comunidad.</li>
+<li>Qué teme: que un forastero traiga la Alerta de Red hasta su refugio — y, ahora también, que la propia comunidad se rompa por dentro antes de que nada de fuera llegue a tocarla.</li>
+<li>Qué respeta: a quien pide en vez de exigir, y a quien no dispara primero.</li>
+<li>Sin ficha de combate — no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="hollis-bragg-nuevo">Hollis Bragg (nuevo)</h3>
+<ul>
+<li>Función: capataz de las cuadrillas de mantenimiento, vigilancia y salvamento del refugio.</li>
+<li>Primera impresión: brusco, práctico, más cansado que autoritario.</li>
+<li>Qué quiere: que quienes sostienen físicamente al refugio —turnos de guardia, piezas cargadas, reparaciones hechas— no se derrumben antes que nadie más.</li>
+<li>Qué ofrece: trabajo bien hecho, y una defensa honesta de por qué el esfuerzo debería pesar en el reparto.</li>
+<li>Qué teme: que ceder ahora signifique que, dentro de poco, no quede nadie con fuerzas para sostener nada.</li>
+<li>Qué respeta: a quien también carga con su parte, sea PJ o no.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="selma-cray-nueva">Selma Cray (nueva)</h3>
+<ul>
+<li>Función: cuida de facto a quienes no pueden trabajar al ritmo que exige la crisis — niños, mayores, heridos.</li>
+<li>Primera impresión: serena, directa, no se deja intimidar por el tono de nadie.</li>
+<li>Qué quiere: que nadie decida, ni siquiera sin querer, quién de su gente vale más que quién.</li>
+<li>Qué ofrece: una defensa tan honesta como la de Hollis, sin un ápice de ingenuidad.</li>
+<li>Qué teme: que el refugio normalice medir a las personas por lo que producen, y que esa costumbre no se pueda deshacer después.</li>
+<li>Qué respeta: a quien escucha a quien no puede levantar la voz tan alto como Hollis.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="cabo-denny-fhost-y-su-escuadra-serpent-reutilizados-del-dlc-de-mundo-maquina">Cabo Denny Fhost y su escuadra Serpent — reutilizados del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a la ficha establecida (Punto 16). En este módulo no cumplen ninguna misión corporativa de peso — están aquí por la misma razón que cualquier cuadrilla de bajo rango: volver con algo que enseñar, sin bajas que lamentar. Ficha completa en Fichas rápidas.</p>
+<h3 id="enjambre-perforador-opcional-reutilizado-del-dlc-de-mundo-maquina">Enjambre Perforador (opcional) — reutilizado del DLC de Mundo Máquina</h3>
+<p>Ficha del Punto 10, sin cambios. Aparece solo si los PJ escogen remover chatarra en el Desierto Circundante el tiempo suficiente para llamar su atención — nunca de forma automática, y nunca en mayor número por haber más PJ en la mesa.</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>Reparación completa.</strong> Los PJ consiguen piezas de calidad y el sintetizador vuelve a funcionar a pleno rendimiento — la crisis inmediata termina, aunque el aparato sigue siendo, treinta años más viejo, tan frágil como antes.</li>
+<li><strong>Remiendo temporal.</strong> Con chatarra del desierto o piezas parciales, el sintetizador aguanta semanas o meses, no años — deja la puerta abierta a que esta misma comunidad vuelva a necesitar ayuda más adelante.</li>
+<li><strong>Sin arreglo a tiempo.</strong> El refugio debe reducir raciones de verdad o plantearse una reubicación — no es el fin de la comunidad, pero sí el principio de una decisión mucho más dura que la de esta sesión.</li>
+<li><strong>El racionamiento se resuelve</strong> a favor de Hollis, a favor de Selma, con una fórmula mixta que invente la propia mesa, o queda sin decidir del todo — los tres nombres reaparecen con esa decisión ya tomada en cualquier partida futura ambientada en este refugio.</li>
+<li><strong>La escuadra de Denny Fhost</strong> se marcha con su parte del alijo, se marcha con las manos vacías, o llega a un acuerdo de reparto con los PJ — ninguna de las opciones convierte al otro bando en villano.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>No hay contrato corporativo detrás de este encargo. Merle no puede pagar en créditos lo que no tiene, pero su agradecimiento se traduce en lo que sí puede ofrecer: rutas seguras confirmadas, aviso temprano de patrullas e información fiable sobre la Zona Residencial para cualquier partida futura. Si la mesa quiere algo más tangible, el refugio puede ceder piezas domésticas de repuesto —no de combate— sobrantes de la reparación, un gesto proporcional a lo poco que tiene, no un tesoro. Ningún PJ debería salir de este módulo pagando de su bolsillo por haber ayudado.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>Merle</strong> reaparece sin cambios en cualquier partida futura de la tesela — su ficha, aquí y en cualquier otro módulo, es la misma.</li>
+<li>Si la mesa juega también el módulo hermano ambientado en la manzana silenciosa de la Zona Residencial, el gancho de entrada de ese módulo puede ser, precisamente, que Merle pida investigar si esa manzana es un lugar seguro para reubicar parte de su gente — esta crisis es el motivo que la empuja a preguntarlo.</li>
+<li><strong>Hollis Bragg</strong> y <strong>Selma Cray</strong> quedan disponibles, con la postura que haya prevalecido en la Escena 5, para cualquier partida posterior ambientada en este refugio.</li>
+<li><strong>Cabo Denny Fhost</strong> conserva, si algo se negoció con él aquí, memoria de ese trato en cualquier aparición futura del personaje.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Escuadra Serpent — Cabo Denny Fhost</div>
+<div class="ficha-rapida-rol">Compite por el mismo alijo de piezas, no busca pelea</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Fhost: Sigilo 70%, Bld <b>3</b>, Melé <b>80%</b> (eléctrico), Daño 5, Pen 2 · PV <b>15/15/15</b>. Soldados (x3): Sigilo 60%, Bld <b>2</b>, Melé <b>70%</b>, Daño 5, Pen 2 · PV <b>15/15/15</b>. Zapador: Sigilo 60%, Bld <b>2</b>, Melé <b>50%</b>, Daño 7, Pen 5 · PV <b>15/15/15</b>.</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Rack Médico 2-3 MKB por unidad</span><span class="ficha-rapida-pill">1 Crack, 1 Frack, 1 Chaff cada uno</span></div>
+<div class="ficha-rapida-equipo"><b>Apoyo:</b> Hotpoy Taller, buggy radiocontrolado, Blindaje 10, sin armas — solo huida y distracción.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Enjambre Perforador (opcional)</div>
+<div class="ficha-rapida-rol">Solo si los PJ remueven chatarra en el Desierto</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>1</b> · PV <b>4</b> por unidad · Grupo habitual 1d6, sin reducir por número de PJ</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 55%</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 3, Pen 2. Detectan vibración (Sigilo cercano sufre −20). Buscan tecnología, no personas — evitarlos o distraerlos es tan válido como combatir.</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

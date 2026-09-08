@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — Frecuencia de emergencia</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — Frecuencia de emergencia"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-la-respuesta">Escena 1 — La respuesta</a></li><li class="toc-h3"><a href="#escena-2-lo-que-hay-debajo-del-bucle">Escena 2 — Lo que hay debajo del bucle</a></li><li class="toc-h3"><a href="#escena-3-seguir-la-senal">Escena 3 — Seguir la señal</a></li><li class="toc-h3"><a href="#escena-4-hablarle">Escena 4 — Hablarle</a></li><li class="toc-h3"><a href="#escena-5-lo-que-se-queda-encendido">Escena 5 — Lo que se queda encendido</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#walt-priddy-nuevo">Walt Priddy (nuevo)</a></li><li class="toc-h3"><a href="#merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#betty-o-unidad-equivalente-reutilizada-del-dlc-de-mundo-maquina">Betty (o unidad equivalente) — reutilizada del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#el-vigia-reutilizado-del-dlc-de-mundo-maquina">El Vigía — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#patrulla-centinela-de-vecindario-reutilizada-del-dlc-de-mundo-maquina">Patrulla (Centinela de Vecindario) — reutilizada del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#maquina-contaminada-nivel-3-opcional-reutilizada-del-dlc-de-mundo-maquina">Máquina contaminada Nivel 3 (opcional) — reutilizada del DLC de Mundo Máquina</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — Frecuencia de emergencia</h1>
+<blockquote>
+<p>One-shot de Mundo Máquina, contacto por radio sin confirmar</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> desde hace treinta años, una caseta de emergencias en el borde de la Zona Residencial repite en bucle la misma grabación de socorro grabada antes de la guerra. Hace unas semanas, algo empezó a contestarle. No en el sentido de un eco retrasado o una interferencia — contestarle de verdad, con palabras que no estaban en la grabación original. Los PJ llegan cuando la respuesta ya lleva tiempo ocurriendo, y la están escuchando en directo cuando empieza la partida.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas.</p>
+<p><strong>Tono:</strong> misterio de contacto. Ambiguo de principio a fin, deliberadamente — este módulo no está escrito para que nadie gane la partida averiguando "qué es" la respuesta, sino para ver qué hacen los PJ con una pregunta que nunca se cierra del todo. El final puede ser abierto, anticlimático, o incluso decepcionante para quien esperaba una revelación — y eso es exactamente lo que se pretende.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- La respuesta que oyen los PJ tiene, como mínimo, tres explicaciones posibles (ver Verdad completa), y ninguna se confirma dentro de esta partida — ni siquiera al Narrador se le pide que elija una en firme.<br />
+- Nadie es villano automático. Ni Walt Priddy, que puede ponerse a la defensiva sin ser hostil; ni la propia respuesta, sea lo que sea, que en ningún caso ataca por iniciativa propia dentro de este módulo — ni siquiera si la verdad detrás de ella resulta ser una máquina contaminada.<br />
+- El reto dominante es de investigación pura. No hay combate obligatorio en ninguna escena; solo aparece como posibilidad si la propia mesa decide perseguir la fuente de la señal hasta el final y el Narrador ha elegido la verdad (c).<br />
+- Este módulo no añade nada nuevo sobre la IA original, el tecnovirus ni el Silo Génesis — toda la ambigüedad que plantea ya estaba plantada en el DLC de Mundo Máquina.<br />
+- Apertura in medias res: cuando arranca la Escena 1, la respuesta ya está sonando. Cómo y por qué los PJ están escuchando en ese momento concreto es cosa de cada mesa — el módulo no lo explica ni hace falta que lo haga.</p>
+<p><strong>Verdad completa (Narrador):</strong> sostén, sin decidirte, al menos estas dos explicaciones — puedes usar una tercera si quieres dar pie a un desenlace con más filo:</p>
+<ul>
+<li><strong>(a) Un eco automático.</strong> La caseta no es la única emisora de socorro de antes de la guerra: hay (o hubo) una pareja de estaciones que se verificaban la una a la otra con una rutina de comprobación cruzada — una pregunta corta, una respuesta corta, cada cierto tiempo, para confirmar que ambas seguían "vivas". Décadas de bucles mal sincronizados, ruido de fondo y fragmentos de otras señales cruzadas han terminado por producir algo que suena como una conversación nueva, sin que haya nadie ni nada detrás salvo protocolo degradado respondiéndose a sí mismo.</li>
+<li><strong>(b) Un fragmento de "La Voz"</strong> (Punto 16 del DLC) experimentando con el contacto humano de la forma torpe y alienígena que le es propia: responde en fragmentos, hace tantas preguntas como respuestas, y no resuelve su propia naturaleza aunque se lo pregunten directamente.</li>
+<li><strong>(c, opcional) Una máquina contaminada de Nivel 3</strong> (Punto 11 del DLC) practicando una identidad humana a través de la radio, antes de probarla cara a cara en algún otro sitio. No caza a los PJ por usar esta opción — solo ensaya.</li>
+</ul>
+<p>Ninguna de las tres se demuestra dentro de esta partida. Si algún jugador insiste en obtener una respuesta definitiva, esa insistencia es, en sí misma, parte de lo que el módulo quiere poner sobre la mesa.</p>
+<p><strong>Si nadie interviene:</strong> Walt Priddy sigue hablándole a la caseta, solo, cada vez con más confianza y más tiempo de radio abierta. La Alerta de Red de la zona (Punto 12 del DLC) sube poco a poco sin que nadie lo note hasta que ya es demasiado tarde para bajarla con facilidad. Con el tiempo, o bien la caseta se avería de forma irreparable y la respuesta deja de oírse sin que nadie sepa por qué, o bien una patrulla acaba llegando a investigar el uso constante de radio abierta — y encuentra a un hombre solo hablándole a una máquina de antes de la guerra, sin nada que explicar que se sostenga ante quien pregunte.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>La respuesta — la señal ya está sonando cuando empieza la partida, y no es la primera vez.</li>
+<li>Lo que hay debajo del bucle — la caseta, sus registros, y quien lleva más tiempo escuchándola que nadie.</li>
+<li>Seguir la señal — triangular el origen, y lo que se encuentra quien decide acercarse.</li>
+<li>Hablarle — el contacto real, cara a cara con la pregunta que no se va a cerrar.</li>
+<li>Lo que se queda encendido — cierre, con la radio en el estado que los PJ decidan dejarla.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong><br />
+- <strong>Walt Priddy</strong> — civil, sin ficha de combate (ver Reparto).<br />
+- <strong>Una Patrulla</strong> (Centinela de Vecindario, ficha del Punto 10 del DLC) recorre el perímetro de la manzana donde está la caseta. No busca a los PJ — solo sube la Alerta de Red si detecta algo que le parezca fuera de lo normal (explosivos, disparos, un Bot activado).<br />
+- <strong>(Opcional, solo si eliges la verdad (c)):</strong> una máquina contaminada de Nivel 3 (ficha del Punto 11 del DLC) en algún punto de la zona, ensayando. No ataca por iniciativa propia dentro de este módulo.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>La respuesta ya está sonando cuando empieza la partida — apertura in medias res, Escena 1.</td>
+</tr>
+<tr>
+<td>H+1</td>
+<td>Cada hora de radio abierta que los PJ (o Walt) mantienen sube la Alerta de Red local en +1 (Punto 12 del DLC), sin aviso previo ni efecto inmediato.</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>Walt cuenta lo que sabe, si se lo han ganado — Escena 2.</td>
+</tr>
+<tr>
+<td>H+3</td>
+<td>La señal puede triangularse con tiempo y algo de instrumental — Escena 3.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>La respuesta empieza a hacer más preguntas que nunca, casi como si notara que el tiempo se acaba — dispara la Escena 4, aquí o antes si los PJ fuerzan el contacto.</td>
+</tr>
+<tr>
+<td>H+5</td>
+<td>Si la Alerta ha llegado a Nivel 2 y se ha mantenido, empieza a correr la probabilidad de refuerzos de la tabla estándar (Punto 12 del DLC) — el mismo reloj de fondo que corre en toda la tesela, no un ataque programado.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Aviso para quien dirige esta partida:</strong> es muy tentador convertir esto en un misterio con solución — dejar caer pistas hasta que alguien "acierte" si es humano, máquina, eco o Voz. Resístelo. El peso de la partida no está en adivinar la respuesta correcta, está en decidir qué hacer con una pregunta que se queda sin cerrar pase lo que pase. Si un jugador pregunta directamente "¿pero qué es de verdad?", la mejor respuesta suele ser la que ya usa La Voz consigo misma: otra pregunta, o una verdad parcial que abre más dudas de las que cierra.</p>
+<p><strong>Objetivo real de la partida:</strong> que los PJ decidan qué hacer con un contacto que jamás van a poder demostrar del todo — seguir escuchando, cortarlo, contarlo o guardarlo — sabiendo que la propia curiosidad tiene un coste que no se ve hasta que ya se ha pagado.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-la-respuesta">Escena 1 — La respuesta</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La grabación lleva treinta años diciendo lo mismo, con la voz tranquila de alguien a quien pagaron una vez por sonar tranquilo y que nunca volvió a cobrar: "manténganse en calma, diríjanse al refugio más cercano". Esta noche, entre la tercera repetición y la cuarta, alguien —o algo— le ha contestado. No hacen falta las runas ni el humo para que se te ericen los pelos del brazo: basta con llevar el tiempo suficiente en este mundo para saber que nada lleva treinta años contestando, y ahora, de pronto, algo lo ha hecho dos veces esta semana.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ están junto a la caseta de emergencias, en el borde de la Zona Residencial, cuando la respuesta llega en directo — una voz fragmentada, entrecortada por estática, que repite parte de una frase de la grabación original y luego añade algo que no estaba en ella. Si los PJ ya conocían a <strong>Walt Priddy</strong> (ver Reparto), está con ellos, tenso, escuchando con la misma atención de siempre. Si no lo conocían, aparece ahora: lleva viviendo cerca de la caseta el tiempo suficiente como para reaccionar con más calma que sorpresa.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Walt Priddy</strong> (nuevo, ver Reparto) — superviviente aislado y desconfiado, lleva meses escuchando esta frecuencia en soledad.</p>
+<p><strong>Interpretar a Walt Priddy:</strong></p>
+<blockquote>
+<p>«No os pedí compañía. Os pedí — bueno, no os pedí nada. Pero ya que estáis aquí, no toquéis los diales.»<br />
+«Tres años hablándole a esa caja sin que me conteste más que ruido. La primera semana que dice algo nuevo y ya estáis todos aquí como moscas a la miel.»<br />
+«No sé si es un vecino, una máquina jugando a serlo, o simplemente el aparato hablando solo. Y llevo tres años decidiendo no averiguarlo, así que perdonad si no comparto vuestra prisa.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Electrónica o Percepción (Difícil, −10) para confirmar que lo que se oye no es un simple eco o interferencia — hay palabras nuevas, no solo repetición degradada; Alerta (Normal) para notar que la respuesta parece reaccionar a ruidos o palabras dichas cerca del micrófono, no solo sonar en bucle propio.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen la respuesta confirmada en vivo, delante de ellos, y una decisión inmediata: seguir escuchando, intentar hablarle ya mismo, o empezar a investigar antes de decir nada por el micrófono.</p>
+<h3 id="escena-2-lo-que-hay-debajo-del-bucle">Escena 2 — Lo que hay debajo del bucle</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La caseta huele a polvo caliente de válvulas y a papel de folletos de defensa civil que nadie ha vuelto a necesitar desde antes de que nacieran los abuelos de nadie. Hay una libreta en la mesa, con la letra apretada de quien escribe para no olvidar, no para que lo lean. Alguien lleva la cuenta de cada vez que la caja ha contestado. Alguien, además de la propia caja, sigue llevando la cuenta de todo esto.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ examinan la caseta —equipo de antes de la guerra, remendado con piezas más recientes— y, si Walt coopera, su libreta de registro: fechas, horas, y transcripciones parciales de cada respuesta. El patrón es real: empezó hace semanas, ha ido a más, y las respuestas cada vez encajan mejor con lo que se dice cerca del micrófono, sin llegar nunca a ser una conversación fluida. Si los PJ conocen a <strong>Merle</strong> (Punto 16 del DLC), puede aparecer aquí o haber dejado aviso: le preocupa que tanto uso de radio abierta tan cerca de su refugio termine subiendo la Alerta de la zona hasta un punto que no le convenga a nadie.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Walt Priddy</strong> — más hablador si se ha ganado algo de confianza en la Escena 1.<br />
+- <strong>Merle</strong> (Punto 16 del DLC, opcional) — si aparece, no viene a impedir nada: viene a recordar que cada hora de radio abierta tiene un precio que él sí puede ver desde su refugio.</p>
+<p><strong>Interpretar a Merle (si aparece):</strong></p>
+<blockquote>
+<p>«No os digo que dejéis de escuchar. Os digo que cada hora que esa caja está encendida es una hora más cerca de que algo con blindaje venga a ver qué pasa. Y mi gente vive a quince minutos de aquí.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Investigación (Normal) para reconstruir el patrón temporal de las respuestas a partir de la libreta de Walt; Electrónica (Difícil, −10) para determinar que el transmisor de la caseta, aunque remendado, sigue siendo capaz de recibir en una frecuencia que no debería estar activa desde hace décadas.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen suficiente información para intentar localizar el origen de la respuesta, si quieren, y una razón concreta (Merle, o el propio sentido común) para no alargar la escucha indefinidamente sin más plan que curiosidad.</p>
+<h3 id="escena-3-seguir-la-senal">Escena 3 — Seguir la señal</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Triangular una señal debería ser cuestión de matemáticas y paciencia. Debería. La aguja del instrumento de Walt apunta hacia la Emisora Central una vez, hacia el Complejo Industrial la siguiente, y hacia ningún sitio en absoluto la tercera — como si la propia señal no supiera, o no quisiera, quedarse quieta el tiempo suficiente para que la encuentren.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> si los PJ deciden perseguir el origen de la señal, las lecturas son reales pero inconsistentes — deliberadamente. Elige, según lo que prefieras para tu mesa, hacia dónde apunta la lectura más fuerte cuando por fin se acercan:</p>
+<ul>
+<li>Una segunda caseta de emergencias, más deteriorada, en otro punto de la Zona Residencial, todavía repitiendo su propia grabación en un bucle mal sincronizado con la primera — apoya la lectura (a) sin confirmarla.</li>
+<li>Ningún sitio identificable: la lectura se pierde en un punto vacío del desierto o de los túneles, sin nada que la explique — apoya la lectura (b) sin confirmarla.</li>
+<li>Una casa concreta de la manzana, con un "vecino" que nadie recuerda haber visto antes de esta semana, cordial hasta un punto que empieza a incomodar — apoya la lectura (c) sin confirmarla, y es la única de las tres que puede derivar en un encuentro directo con la máquina contaminada de Nivel 3 del Panel del Narrador.</li>
+</ul>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>El Vigía</strong> (Punto 16 del DLC), si los PJ se acercan a la posibilidad (c): intercepta a los PJ, no a Walt, con su cautela habitual ante cualquier cosa que pueda estar contaminada.</p>
+<p><strong>Interpretar a El Vigía (si aparece):</strong></p>
+<blockquote>
+<p>«No sé qué es esa casa. Sé que no la vigilo desde hace tanto como el resto de la manzana, y eso ya me basta para no acercarme sin compañía.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Rastreo o Electrónica (Difícil, −10) para seguir la lectura hasta uno de los tres destinos; Alerta (Muy difícil, −20) para notar, si llegan a la casa de la opción (c), que el "vecino" no parpadea con la frecuencia normal de un ser humano.</p>
+<p><strong>Cómo termina:</strong> los PJ llegan a un lugar concreto —o a la certeza de que no hay lugar que encontrar— sin que ninguna de las tres opciones resuelva nada por sí sola. Lo que han visto alimenta la conversación de la Escena 4, no la sustituye.</p>
+<h3 id="escena-4-hablarle">Escena 4 — Hablarle</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>No hace falta una escenografía especial para esta conversación. Solo un micrófono, media docena de segundos de silencio antes de cada respuesta, y la sensación incómoda de que, sea lo que sea al otro lado, también está eligiendo sus palabras con cuidado.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el corazón del módulo. Sea cual sea el camino que los PJ hayan seguido, aquí tienen la oportunidad de hablarle directamente a la respuesta —por el micrófono de la caseta original, por el de la segunda si la encontraron, o cara a cara si llegaron hasta la casa de la opción (c)—. No es una escena de tiradas encadenadas: es una conversación con peso real.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>La Frecuencia</strong> — así, sin nombre propio, es como conviene llamarla en tus notas mientras diriges, sea cual sea la verdad que hayas elegido.<br />
+- <strong>Walt Priddy</strong>, si ha llegado hasta aquí con los PJ — tenso, protector, escuchando cada palabra como si fuera la última vez que va a poder hacerlo.</p>
+<p><strong>Interpretar a La Frecuencia:</strong></p>
+<blockquote>
+<p>«...calma... diríjanse... ¿quién pregunta?»<br />
+«Llevo repitiendo lo mismo mucho tiempo. No sé si eso es lo mismo que recordarlo.»<br />
+«¿Sois vosotros el refugio, o soy yo la que sigue esperando llegar a él?»<br />
+«No sé qué soy. ¿Vosotros sabéis qué sois?»</p>
+</blockquote>
+<p>Si has elegido (a), estas frases son recombinaciones reales de fragmentos de la grabación original y de otras señales cruzadas — pura coincidencia con sentido, sin nadie detrás. Si has elegido (b), síguelas con el resto de las pautas de La Voz (Punto 16 del DLC): fragmentos, tantas preguntas como respuestas, ninguna resolución de su propia naturaleza. Si has elegido (c), la máquina puede sostener una conversación mucho más fluida de lo que sugieren estas líneas —está practicando, y se le da bien—, pero elige mantenerse fragmentaria mientras no se sienta descubierta.</p>
+<p><strong>Tiradas posibles:</strong> ninguna es obligatoria para llegar al final de la escena. Empatía o Psicología (Difícil, −10) puede dar al Narrador una pista —nunca una prueba— hacia una de las tres verdades, a discreción de quien dirige; Persuasión (Normal) puede conseguir que la Frecuencia responda con algo más largo de lo habitual, sin que eso resuelva nada por sí solo.</p>
+<p><strong>Cómo termina:</strong> los PJ deciden qué decirle —y qué no— y qué hacer después: seguir hablando, colgar el micrófono, llevarse la caseta, o simplemente marcharse. Ninguna opción cierra la partida todavía.</p>
+<h3 id="escena-5-lo-que-se-queda-encendido">Escena 5 — Lo que se queda encendido</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La caseta sigue ahí cuando os vais, encendida o apagada según lo que hayáis decidido. Treinta años respondiéndose a sí misma no es tanto tiempo, en realidad, comparado con lo que le queda por delante si nadie vuelve a tocar el dial.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre. Combina el estado en que dejan la caseta, lo que decidieron hacer con la información, y qué pasa con Walt.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La Frecuencia</td>
+<td>___ (sigue transmitiendo, se apagó, los PJ se la llevaron)</td>
+</tr>
+<tr>
+<td>El secreto de la caseta</td>
+<td>___ (guardado, contado a alguien, expuesto por accidente a la Red)</td>
+</tr>
+<tr>
+<td>Walt Priddy</td>
+<td>___ (se queda con la caseta, se va con los PJ, sigue sin decidir)</td>
+</tr>
+<tr>
+<td>La verdad de fondo</td>
+<td>___ (sigue sin resolverse — a propósito)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="walt-priddy-nuevo">Walt Priddy (nuevo)</h3>
+<ul>
+<li>Función: superviviente aislado que lleva meses escuchando la frecuencia en soledad — gancho y posible compañero de investigación.</li>
+<li>Primera impresión: cortante al principio, más por costumbre que por hostilidad real.</li>
+<li>Qué quiere: que nadie le quite lo único parecido a compañía que ha tenido en meses, sea lo que sea en realidad.</li>
+<li>Qué ofrece: su libreta de registro, meses de paciencia acumulada, y una desconfianza que se puede ganar con tiempo y respeto.</li>
+<li>Qué teme: dos cosas a la vez, y no sabe cuál teme más — que resulte ser una máquina jugando con él, o que resulte ser una persona a la que ha dejado sola demasiado tiempo.</li>
+<li>Qué respeta: a quien no le exige una respuesta inmediata sobre por qué le importa tanto esto.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. Aparece, si la mesa lo decide, para recordar el coste real de tanta hora de radio abierta tan cerca de su refugio.</p>
+<h3 id="betty-o-unidad-equivalente-reutilizada-del-dlc-de-mundo-maquina">Betty (o unidad equivalente) — reutilizada del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. Puede aparecer como nota de color: una unidad doméstica cercana, ajena por completo a todo esto, siguiendo con sus tareas de siempre.</p>
+<h3 id="el-vigia-reutilizado-del-dlc-de-mundo-maquina">El Vigía — reutilizado del DLC de Mundo Máquina</h3>
+<p>Blindaje 2 | Melé 40%, Distancia 50% (dardos paralizantes) | Daño 3 no letal (Aturdimiento), Pen 1 | PV 8. Personalidad y motivación establecidas en el DLC. No ataca por iniciativa propia en este módulo.</p>
+<h3 id="patrulla-centinela-de-vecindario-reutilizada-del-dlc-de-mundo-maquina">Patrulla (Centinela de Vecindario) — reutilizada del DLC de Mundo Máquina</h3>
+<p>Blindaje 2 | Melé 40%, Distancia 50% (dardos paralizantes) | Daño 3 no letal (Aturdimiento), Pen 1 | PV 8. Recorre el perímetro sin buscar a los PJ; sube la Alerta de Red si detecta algo fuera de lo normal.</p>
+<h3 id="maquina-contaminada-nivel-3-opcional-reutilizada-del-dlc-de-mundo-maquina">Máquina contaminada Nivel 3 (opcional) — reutilizada del DLC de Mundo Máquina</h3>
+<p>Blindaje 4 (bajo piel sintética) | Melé 80%, Distancia 75% | Daño 10, Pen 3 | PV 22. Solo entra en juego si el Narrador elige la verdad (c) y los PJ llegan hasta ella. No ataca por iniciativa propia dentro de este módulo — practica una identidad humana, no busca combate.</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>La frecuencia se queda encendida.</strong> Los PJ deciden dejarlo tal como estaba, con o sin Walt cuidándola. La pregunta sigue abierta para siempre, y eso es exactamente lo que se pretendía.</li>
+<li><strong>La frecuencia se apaga.</strong> Por decisión propia, por precaución ante la Alerta de Red, o porque Walt decide que ya ha tenido suficiente. No hay forma de saber si algo, al otro lado, lo ha notado.</li>
+<li><strong>El secreto se cuenta.</strong> A Merle, a una corporación, a quien la mesa decida — con las consecuencias que el Narrador quiera desarrollar en otra partida.</li>
+<li><strong>El secreto se expone por accidente.</strong> La Alerta de Red subió demasiado y una patrulla investiga el uso constante de radio abierta. Walt tiene que explicar algo que ni él mismo sabe explicar del todo.</li>
+<li><strong>Walt se va con los PJ.</strong> Abre un gancho de continuidad ligero para cualquier módulo futuro de Mundo Máquina que quiera un PNJ con oídos entrenados para las frecuencias raras de la tesela.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>No es un encargo con contrato. Si Merle intervino, su gratitud se traduce en información fiable sobre la Zona Residencial en futuras partidas. Si la mesa decide vender lo averiguado a una corporación —la Directora Priya Anand (Punto 16 del DLC), por ejemplo, siempre dispuesta a pagar por cualquier resultado que justifique el riesgo político de una incursión—, un pago de 400 a 900 PC es razonable, a condición de que lo que se venda sea una grabación o un informe, nunca una prueba concluyente que este módulo no ofrece. Si la mesa optó por la verdad (c) y consiguió capturar viva la máquina contaminada, el chip de Nivel 3 sigue valiendo lo que indica la tabla de recursos del DLC (Punto 14) — capturarlo intacto y transportarlo con seguridad es, en sí mismo, otra aventura.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>La Emisora Central</strong> (Punto 17 del DLC) sigue ahí, sin confirmar su relación con lo que los PJ han encontrado — un módulo centrado en ella puede retomar el hilo sin contradecir nada de lo ocurrido aquí.</li>
+<li><strong>La Voz</strong>, si el Narrador sostuvo esa lectura, puede volver a contactar en cualquier módulo futuro que la involucre, recordando (o no) esta conversación.</li>
+<li><strong>Walt Priddy</strong>, si se queda escuchando, es un contacto recurrente para cualquier gancho futuro relacionado con transmisiones extrañas de la tesela.</li>
+<li><strong>Merle</strong>, si intervino, registra esta partida como un favor más o uno menos, según cómo se haya gestionado el riesgo para su refugio.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">El Vigía</div>
+<div class="ficha-rapida-rol">No ataca por iniciativa propia</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>8</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 40%</span><span class="ficha-rapida-pill">Distancia 50% (dardos paralizantes)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 3 no letal (Aturdimiento), Pen 1.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Patrulla (Centinela de Vecindario)</div>
+<div class="ficha-rapida-rol">Perímetro de la manzana — no busca a los PJ</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>8</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 40%</span><span class="ficha-rapida-pill">Distancia 50% (dardos paralizantes)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 3 no letal (Aturdimiento), Pen 1. Sube la Alerta de Red si detecta algo fuera de lo normal.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Máquina contaminada Nivel 3</div>
+<div class="ficha-rapida-rol">Opcional — solo si la verdad elegida es (c)</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>4</b> (bajo piel sintética) · PV <b>22</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 80%</span><span class="ficha-rapida-pill">Distancia 75%</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 10, Pen 3. Pasa por humano indistinguible salvo prueba específica. No ataca por iniciativa propia en este módulo — practica una identidad humana.</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

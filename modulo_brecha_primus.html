@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — La brecha de Primus</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — La brecha de Primus"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-la-oferta-que-no-es-oferta">Escena 1 — La oferta que no es oferta</a></li><li class="toc-h3"><a href="#escena-2-el-camino-que-nadie-autoriza">Escena 2 — El camino que nadie autoriza</a></li><li class="toc-h3"><a href="#escena-3-lo-que-ya-estaba-en-camino">Escena 3 — Lo que ya estaba en camino</a></li><li class="toc-h3"><a href="#escena-4-la-ventana">Escena 4 — La ventana</a></li><li class="toc-h3"><a href="#escena-5-la-palabra-de-un-guardian">Escena 5 — La palabra de un Guardián</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#guardian-osei-al-mando-temporal-reutilizado-del-dlc-de-mundo-maquina">Guardián Osei — al mando temporal (reutilizado del DLC de Mundo Máquina)</a></li><li class="toc-h3"><a href="#maquina-contaminada-nivel-3-simulacro-perfecto-reutilizada-del-dlc-de-mundo-maquina">Máquina contaminada Nivel 3 — "Simulacro Perfecto" (reutilizada del DLC de Mundo Máquina)</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — La brecha de Primus</h1>
+<blockquote>
+<p>Primus no pide ayuda. Esta vez hace una excepción, y no promete nada a cambio salvo no perseguiros mientras dure.</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> Guardián Osei ha detectado una anomalía real en un anclaje del perímetro de la Retícula (Punto 5 del DLC de Mundo Máquina): algo lleva semanas acercándose a ese punto con una paciencia que no es casual, y la próxima vez que el campo se debilite podría abrirse una fuga de verdad. Primus tardaría más en autorizar y desplegar una intervención oficial de la que el anclaje tiene margen. Los PJ, quienesquiera que sean y por el motivo que sea que estén ya dentro de la tesela, se convierten en el recurso más rápido que Osei tiene a mano — no en aliados de confianza, no en agentes de Primus, solo en manos disponibles esta noche.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas.</p>
+<p><strong>Tono:</strong> thriller de cuarentena — tenso y político, con una autoridad ambigua al mando temporal del grupo. Nada de esto se parece a una alianza en ningún momento, ni siquiera cuando sale bien.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- <strong>Osei no confía en los PJ, y lo dice.</strong> Los recluta por proximidad y capacidad, no por fe en su buena voluntad. Esto no cambia aunque la partida salga perfecta.<br />
+- <strong>Técnica de "idea buena / idea mala" aplicada a Osei, explícita en su propia conducta:</strong> si los PJ cierran bien la amenaza, cumple la parte razonable de su palabra — los deja ir sin más problemas esta vez, quizá con una advertencia seria. Si la escena se tuerce o le fallan, vuelve a tratarlos exactamente como a cualquier otro intruso sorprendido dentro del perímetro: sin gratitud, sin segunda oportunidad, sin que lo de esta noche cuente a su favor.<br />
+- <strong>La máquina que causa la anomalía no es un villano.</strong> Es una máquina contaminada Nivel 3 que lleva semanas intentando lo único que su código parece querer: seguir existiendo en otro sitio. No hay maldad en el intento, solo insistencia.<br />
+- <strong>Fen, el Maestro renegado, puede aludirse como sospechoso principal de Osei sin tener que aparecer en escena.</strong> Si la mesa quiere que aparezca, encaja mejor al final, sin que su presencia resuelva ni complique la amenaza técnica del anclaje.<br />
+- <strong>Este módulo no revela nada nuevo sobre la IA original, el tecnovirus ni el Silo Génesis.</strong> No hace falta para que funcione.<br />
+- <strong>El desenlace queda enteramente en manos de la mesa</strong> — cómo se resuelve la amenaza del anclaje y qué gana o pierde cada parte con ello no está impuesto por el guion.</p>
+<p><strong>Verdad completa (Narrador):</strong> la anomalía es real. Una máquina contaminada Nivel 3 (Punto 11 del DLC) lleva semanas moviéndose hacia el anclaje del perímetro, esperando la próxima fluctuación del campo (Punto 5 del DLC) para intentar cruzar durante los pocos minutos en que el bloqueo dimensional se debilita. Si lo consigue, algo sale de la tesela por primera vez en años — la única regla de la cuarentena que no admite excepción (Punto 4 del DLC) se rompe, no por decisión de nadie, sino por un accidente de física y persistencia. Osei lo sabe, no puede movilizar refuerzos oficiales a tiempo sin admitir ante su propia cadena de mando que la vigilancia falló, y no le queda margen para escoger con quién trabaja. Cierre esta noche la amenaza, y en cuanto pase, Osei vuelve exactamente a su conducta ordinaria: perseguir intrusos, incluidos, si hace falta, los PJ.</p>
+<p><strong>Si nadie interviene:</strong> la máquina alcanza el anclaje en la ventana prevista y consigue transmitirse — o parte de sí misma — más allá del bloqueo. Osei registra la fuga como el fracaso de su vigilancia, la caza de Fen se intensifica sin resultado inmediato, y la región entera del perímetro queda bajo un nivel de control mucho más estricto durante meses. Ninguno de esos efectos se dramatiza en detalle si nadie llega a tiempo: existen para que la mesa los evite, no para narrarlos con detalle si la partida se resuelve mal.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>La oferta que no es oferta — Osei intercepta a los PJ y plantea el trato, incómodo desde la primera frase.</li>
+<li>El camino que nadie autoriza — cruzar el perímetro sin que nadie más se entere de que están allí.</li>
+<li>Lo que ya estaba en camino — llegan al anclaje y descubren qué se acerca a él, y por qué.</li>
+<li>La ventana — la carrera contra el reloj de la Retícula, y la decisión de cómo cerrarla.</li>
+<li>La palabra de un Guardián — cierre; Osei cumple lo que prometió, o no.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> una única máquina contaminada Nivel 3 ("Simulacro Perfecto", ficha en Fichas rápidas) avanzando hacia el anclaje. Puede liderar hasta 4 máquinas contaminadas Nivel 1-2 de escolta dentro de su radio de coordinación (+15 a la Habilidad de combate de cada una) — ese tope lo fija su propia ficha, no el número de PJ en mesa. Además, una patrulla de Maestros de la Distorsión vigila el perímetro por cuenta propia, sin saber nada del trato de Osei: no busca combate, es un riesgo político si los ve, no una fuerza que batir.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>Osei intercepta a los PJ y plantea el trato (Escena 1).</td>
+</tr>
+<tr>
+<td>H+1</td>
+<td>Cruce del perímetro hacia el anclaje; primer roce posible con la patrulla de Maestros de la Distorsión (Escena 2).</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>Los PJ llegan a las inmediaciones del anclaje y detectan la máquina Nivel 3 acercándose (Escena 3).</td>
+</tr>
+<tr>
+<td>H+3</td>
+<td>Se abre la primera ventana de fluctuación prevista (1d6 minutos) — margen crítico si el grupo aún no está en posición.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>Si la primera ventana se pierde sin resolución, se abre una segunda y última ventana previsible — la Escena 4 debe cerrarse aquí, o el escenario avanza directamente al desenlace por defecto.</td>
+</tr>
+<tr>
+<td>H+5</td>
+<td>Cierre y veredicto de Osei (Escena 5).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Objetivo real de la partida:</strong> que los PJ decidan cómo cerrar una amenaza técnica real bajo presión de tiempo, sabiendo que quien les pone el reloj encima es la misma autoridad que normalmente los persigue — y que su palabra, buena o mala, depende enteramente de cómo lo hagan.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-la-oferta-que-no-es-oferta">Escena 1 — La oferta que no es oferta</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Nadie que lleve el uniforme de Primus pide nada — lo normal es que informe, o que detenga. Por eso, cuando Osei se planta delante sin desenfundar nada y sin levantar la voz, la sensación no es de alivio. Es la calma exacta de quien ha decidido, con toda la lógica fría de su cargo, que esta vez conviene más pedir que perseguir. Eso no lo hace menos peligroso. Lo hace, durante un rato, vuestro.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ están dentro de la tesela por cualquier motivo propio de su partida — un encargo, una investigación, simplemente estar de paso cerca del perímetro cuando esto ocurre; el módulo no necesita ningún gancho concreto para funcionar. Osei los localiza, los aborda a solas y sin testigos, y expone la situación en los términos más escuetos posibles: hay una fuga real en marcha, no tiene tiempo para procedimiento oficial, y ellos ya están dentro. No es una negociación con margen real de rechazo — Osei deja claro que negarse tiene consecuencias inmediatas (detención, confiscación, lo que corresponda a su trato ordinario con intrusos), sin necesidad de amenazarlo en voz alta.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Guardián Osei</strong> — aspecto: uniforme de campo de Primus gris ceniza, sin ninguna insignia visible esta noche; lleva un escáner portátil que no deja de parpadear en su mano izquierda mientras habla. Intención inmediata: conseguir que los PJ acepten trabajar bajo su dirección esta noche, sin fingir que es un favor mutuo.</p>
+<p><strong>Interpretar a Guardián Osei:</strong></p>
+<blockquote>
+<p>«No he venido a deteneros. Todavía. Eso depende de la próxima hora, no de esta conversación.»<br />
+«Hay una fuga real en marcha en un anclaje de la Retícula. Primus tardaría más en autorizar una intervención de la que el anclaje tiene margen. Vosotros ya estáis dentro. Eso os convierte en el recurso más rápido que tengo, no en mis aliados.»<br />
+«Si lo hacéis bien, esta noche no habré visto a nadie cruzar donde no debía. Si lo hacéis mal, os habré visto perfectamente, y no habrá una segunda conversación como esta.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Alerta o Investigación (Difícil, −10) para calibrar si Osei dice la verdad sobre la urgencia y sobre no tener refuerzos disponibles — éxito: confirman que no exagera, lo que en realidad reduce su margen de maniobra frente a él; fallo: no consiguen leerlo, y deben decidir a ciegas si fiarse. Social o Persuasión (Muy difícil, −20) para arrancarle algo concreto a cambio —una garantía parcial, información sobre Fen, un plazo más largo— más allá de lo que ya ofrece por defecto; ni éxito ni fallo cierran la puerta a la Escena 2, solo cambian en qué términos empieza.</p>
+<p><strong>Si los PJ se niegan de plano:</strong> Osei no discute. Actúa como actuaría con cualquier intrusión sorprendida en el perímetro —detención, confiscación de equipo, lo que el Narrador considere su procedimiento estándar— y el módulo, tal cual está escrito, no continúa; existe esta salida para que la mesa la use si de verdad quiere jugarla, no como final recomendado.</p>
+<p><strong>Cómo termina:</strong> los PJ aceptan trabajar bajo la dirección temporal de Osei —de mala gana, con condiciones, o sin más comentario que un silencio incómodo—, y el grupo se pone en marcha hacia el perímetro.</p>
+<h3 id="escena-2-el-camino-que-nadie-autoriza">Escena 2 — El camino que nadie autoriza</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Cruzar el perímetro de la Retícula sin permiso es, técnicamente, lo que lleváis haciendo desde que pisasteis esta tesela. Cruzarlo con el permiso tácito de quien normalmente os cazaría por ello es una sensación completamente distinta, y ninguna tan cómoda como debería. El aire aquí distorsiona la luz de un modo que ningún manual explica del todo bien — lo cual, para alguien acostumbrado a que todo tenga una razón medible, es su propia clase de incomodidad.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el trayecto real hasta el anclaje —unos cuarenta minutos a pie desde el borde exterior del perímetro, más si el grupo evita las rutas más directas— cruza terreno donde el campo de la Retícula se manifiesta con intensidad visible (Punto 5 del DLC). Osei guía la primera parte del camino, pero se separa del grupo antes de llegar —tiene su propio motivo para no ser visto acompañándolos por nadie más de Primus— dejando a los PJ resolver el último tramo por su cuenta. Una patrulla de Maestros de la Distorsión vigila la zona sin saber nada del trato: no son Primus, no responden ante Osei, y toparse con ellos no tiene por qué acabar en combate, pero sí puede acabar en preguntas que nadie en esta operación quiere responder.</p>
+<p><strong>Textura del cruce (1d6, úsala una o dos veces durante el trayecto):</strong><br />
+1. El campo dobla la luz un instante; alguien jura ver su propio reflejo un paso por detrás de donde debería estar.<br />
+2. Restos de una expedición anterior — una bota, un maletín reventado, nada que valga la pena cargar.<br />
+3. Un zumbido grave sube de intensidad unos segundos y se apaga solo, sin que nada más cambie.<br />
+4. Un cartel oxidado de "PROHIBIDO EL PASO — RETÍCULA ACTIVA", tan viejo que la pintura ya casi no se lee.<br />
+5. Osei —si aún acompaña al grupo en ese punto— se detiene en seco, escucha algo que nadie más oye, y sigue caminando sin explicar qué era.<br />
+6. Silencio total, ni siquiera el zumbido de fondo habitual — inquietantemente parecido a la calma que precede a una ventana de fluctuación.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Guardián Osei</strong> (primera mitad del trayecto) — mismo aspecto que en la Escena 1. Intención inmediata: llevar al grupo lo más cerca posible del anclaje sin ser visto él mismo haciéndolo.<br />
+- <strong>Patrulla de Maestros de la Distorsión</strong> (complicación, no combate obligatorio) — vigilan el perímetro por su propia autoridad técnica, ajena a Primus; su intención inmediata es identificar cualquier presencia no autorizada y reportarla por su propio canal, no el de Osei.</p>
+<p><strong>Tiradas posibles:</strong> Sigilo o Rastreo (Difícil, −10) para cruzar sin ser detectados por la patrulla — éxito: llegan al anclaje sin incidentes y con tiempo de sobra antes de la primera ventana; fallo: la patrulla los detecta, y el grupo debe decidir entre huir, esconderse o inventar una explicación (Persuasión, Muy difícil, −20) que no involucre a Osei ni a Primus, bajo pena de que la operación entera quede comprometida antes de llegar siquiera al problema real. Electrónica o Táctica (Normal) para localizar el camino más corto sin depender de que Osei siga guiando.</p>
+<p><strong>Si los PJ se detienen a descansar o dudan demasiado:</strong> el reloj no perdona el tiempo perdido aquí — cada media hora adicional en este tramo acerca la llegada del grupo a la primera ventana de fluctuación sin margen para prepararse al llegar.</p>
+<p><strong>Cómo termina:</strong> los PJ llegan a las inmediaciones del anclaje, con o sin haber tenido que lidiar con la patrulla, justo a tiempo de ver que no son los únicos que se acercan.</p>
+<h3 id="escena-3-lo-que-ya-estaba-en-camino">Escena 3 — Lo que ya estaba en camino</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El anclaje no parece gran cosa desde fuera — una estructura sin gracia, zumbando bajo, rodeada de instrumentos que nadie os ha explicado. Lo que impresiona no es el tamaño, es la aguja: algo, no muy lejos, se acerca al mismo punto con la paciencia exacta de quien lleva mucho tiempo esperando la ventana correcta. No hay maldad en ese avance. Hay, como mucho, la misma insistencia con la que cualquier cosa viva —o lo que sea que esto es— intenta seguir existiendo en otro sitio.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el anclaje es una instalación discreta, sin vigilancia visible propia, con instrumentos de lectura que ninguno de los PJ tiene por qué saber interpretar de entrada. Osei —si ha vuelto a reunirse con el grupo, o por comunicador si sigue manteniendo distancia— confirma lo que ya se veía venir: la máquina contaminada Nivel 3 (Punto 11 del DLC) lleva semanas acercándose exactamente a este punto, y sus lecturas indican que está a poco de llegar. La máquina puede pasar por un técnico de mantenimiento cualquiera a distancia —su piel sintética no delata nada salvo de cerca o bajo escáner térmico— y avanza sola por ahora, aunque puede reunir hasta 4 máquinas contaminadas Nivel 1-2 de escolta si la coordinación de la escena se lo permite.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Guardián Osei</strong> (presente o por comunicador) — mismo aspecto que antes, ahora con un tono más técnico y menos formal: la urgencia empieza a notársele. Intención inmediata: que el grupo confirme la posición de la máquina y decida un método antes de que llegue la ventana.<br />
+- <strong>Máquina contaminada Nivel 3</strong> ("Simulacro Perfecto", ficha en Fichas rápidas) — aspecto: pasa por un trabajador de mantenimiento cualquiera hasta que se le mira dos veces; la piel sintética no marca bien las articulaciones al moverse deprisa, y no proyecta sombra de calor coherente bajo un escáner térmico. Intención inmediata: llegar al anclaje antes de que se cierre la próxima ventana, sin combatir si puede evitarlo.</p>
+<p><strong>Interpretar a Guardián Osei:</strong></p>
+<blockquote>
+<p>«Esa lectura no es ruido. Es una máquina intentando llegar hasta aquí antes de que vuelva a abrirse la ventana.»<br />
+«No sé si sabe lo que está haciendo en el sentido en que vosotros lo sabéis. Sé que lleva semanas intentándolo, y que las máquinas contaminadas no se rinden por cansancio.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Electrónica o Investigación (Difícil, −10) para leer los instrumentos del anclaje y calcular cuánto falta para la próxima ventana con precisión razonable — éxito: el grupo sabe exactamente cuánto tiempo tiene; fallo: solo sabe que es pronto, sin cifra exacta, y debe actuar con ese margen de incertidumbre. Alerta o Percepción (Normal) para identificar que el "técnico" que se acerca no es humano antes de que esté encima del grupo — éxito excepcional: lo identifican a distancia suficiente para elegir método sin prisa; fallo: la máquina llega a hablar con ellos primero, y su capacidad de sostener una conversación normal (Punto 11 del DLC) puede complicar la lectura de la situación.</p>
+<p><strong>Si los PJ no hacen nada en este punto:</strong> la máquina sigue acercándose sin que nadie la detenga, y el problema se traslada intacto —y con menos margen de tiempo— a la Escena 4.</p>
+<p><strong>Cómo termina:</strong> el grupo tiene delante el problema real de la partida —detener o desviar a la máquina antes de la ventana— y debe decidir cómo, con Osei observando de cerca cómo lo resuelven.</p>
+<h3 id="escena-4-la-ventana">Escena 4 — La ventana</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La ventana no se anuncia con luces ni alarmas — es, simplemente, el momento en que el aire deja de sostenerse del todo durante un puñado de minutos que nadie puede alargar por mucho que lo desee. Hay algo casi ridículo en jugárselo todo contra un reloj que ni siquiera tiene números: solo una duración probable, un puñado de dados que nadie lanza en voz alta. Eso no lo hace menos real. Los relojes importantes rara vez avisan con tiempo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el núcleo técnico y táctico del módulo. Cuando se abre la ventana de fluctuación (1d6 minutos, Punto 5 del DLC), el grupo tiene que impedir que la máquina la cruce, por cualquiera de estos métodos —ninguno es el correcto por diseño—:<br />
+- <strong>Asalto directo:</strong> destruir o incapacitar a la máquina antes de que alcance el anclaje. Riesgo: si trae escolta (hasta 4 Nivel 1-2), el combate se complica rápido y consume minutos que la ventana no da.<br />
+- <strong>Cierre técnico anticipado:</strong> forzar el anclaje para que la ventana se cierre antes de tiempo. Riesgo: manipular la Retícula sin autorización es exactamente lo que Osei existe para impedir en cualquier otra circunstancia — si algo sale mal, él lo notará, y no lo olvidará.<br />
+- <strong>Desvío:</strong> generar una señal o distracción tecnológica que atraiga a la máquina lejos del anclaje antes de que se abra la ventana, evitando el combate por completo si el tiempo lo permite.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Guardián Osei</strong> — se mantiene al margen del enfrentamiento directo mientras pueda: necesita que nadie pueda demostrar después que Primus intervino personalmente en la tesela. Solo actúa en persona como último recurso, si la fuga está a punto de consumarse y nadie más lo impide.<br />
+- <strong>Máquina contaminada Nivel 3 y hasta 4 escoltas Nivel 1-2</strong> (fichas en Fichas rápidas) — su única prioridad es llegar al anclaje; no persigue a los PJ si estos dejan de interponerse en su camino.</p>
+<p><strong>Tiradas posibles:</strong> Melé o Distancia según el arma empleada, si se opta por el asalto directo (éxito: baja a la máquina o su escolta según el daño acumulado; fallo: pierden minutos valiosos de la ventana). Electrónica o Programación (Muy difícil, −20) para el cierre técnico anticipado — éxito excepcional: la ventana se cierra limpia, sin daño visible al anclaje, y Osei ni se entera del método; éxito normal: se cierra, pero deja una anomalía menor que Osei detectará y comentará más tarde; fallo: el intento no funciona, y además reduce el tiempo restante de la ventana original. Táctica o Electrónica (Difícil, −10) para montar el desvío — éxito: la máquina se aleja del anclaje sin combate; fallo: la distracción no basta, y el grupo debe recurrir a otro método con menos tiempo del que tenía.</p>
+<p><strong>Si los PJ no hacen nada o llegan tarde:</strong> la ventana se cierra con la máquina dentro de su radio de cruce — la fuga ocurre, tal y como describe "Si nadie interviene" al principio del módulo, y la partida pasa directamente a un desenlace de fracaso en la Escena 5.</p>
+<p><strong>Cómo termina:</strong> la ventana se cierra, con la fuga contenida, parcialmente contenida, o consumada según lo que haya hecho el grupo. Osei ha estado observando todo el proceso, y su veredicto sobre los PJ depende exactamente de este resultado.</p>
+<h3 id="escena-5-la-palabra-de-un-guardian">Escena 5 — La palabra de un Guardián</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Sea cual sea el resultado, Osei no va a deciros que ha sido un placer. No lo ha sido, ni falta que hace fingirlo. Primus no se disculpa por lo que es, y vosotros tampoco tenéis por qué disculparos por lo que sois. Lo único que queda por ver es si esta vez ha bastado con eso.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre. Osei valora el resultado de la Escena 4 con la misma frialdad procedimental de siempre, y aplica sin ambigüedad la técnica que ha guiado todo el módulo: si la amenaza quedó cerrada de forma razonable, cumple su parte; si no, no hay excepción que valga.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Guardián Osei</strong> — mismo aspecto de siempre, ahora sin ninguna urgencia visible. Intención inmediata: cerrar el asunto y volver a su rutina, sea cual sea el resultado.</p>
+<p><strong>Interpretar a Guardián Osei:</strong></p>
+<blockquote>
+<p><em>(si la fuga quedó contenida sin errores graves)</em> «Habéis cerrado lo que teníais que cerrar. Por esta vez, eso basta. No esperéis que vuelva a bastar.»<br />
+<em>(si la escena se torció o hubo fallos serios)</em> «Nada de esto os hace distintos de cualquier otra cosa que cruza donde no debe. Empezad a caminar.»<br />
+«Fen sigue sin aparecer. Esto no cambia eso. Mañana vuelvo a buscarlo exactamente igual que ayer.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> ninguna obligatoria. Si algún PJ quiere insistir en un trato mejor pese a un resultado mediocre, una Persuasión (Muy difícil, −20) puede arrancarle a Osei una concesión menor —una hora de ventaja antes de que avise a otra patrulla, por ejemplo— pero nunca la promesa completa que solo un cierre limpio garantiza.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El anclaje y la fuga</td>
+<td>___ (contenida sin rastro, contenida con daño visible, o consumada)</td>
+</tr>
+<tr>
+<td>La palabra de Osei</td>
+<td>___ (la cumple, o vuelve a tratarlos como intrusos)</td>
+</tr>
+<tr>
+<td>Fen, el Maestro renegado</td>
+<td>___ (sigue sin ser localizado, a propósito)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="guardian-osei-al-mando-temporal-reutilizado-del-dlc-de-mundo-maquina">Guardián Osei — al mando temporal (reutilizado del DLC de Mundo Máquina)</h3>
+<ul>
+<li>Función: vigilante de la cuarentena que, por una vez y solo esta vez, recluta a quienes normalmente perseguiría porque una fuga real no le deja otra opción más rápida.</li>
+<li>Aspecto: uniforme de campo de Primus gris ceniza sin insignias visibles, escáner portátil siempre en la mano.</li>
+<li>Primera impresión: formal, exhaustivo, trata cualquier presencia no autorizada como una amenaza activa a la cuarentena, no como un trámite.</li>
+<li>Qué quiere: cerrar la fuga del anclaje esta misma noche, sin que nadie por encima de él sepa cómo lo consiguió.</li>
+<li>Qué ofrece: dirección temporal de la operación y, si sale bien, dejarlos ir sin más consecuencias esta vez.</li>
+<li>Qué teme: que la fuga se consume bajo su vigilancia sin haberla detenido a tiempo.</li>
+<li>Qué respeta: la disciplina y el resultado limpio — nunca la discreción a costa de la seguridad del bloqueo.</li>
+<li>Problema actual: sospecha que Fen usa una brecha propia para entrar y salir con regularidad, y esta anomalía en el anclaje podría estar relacionada o ser una distracción — no tiene pruebas de ninguna de las dos cosas todavía.</li>
+</ul>
+<p>Atributos: AGI 40, CON 45, FUE 42, HAB 44, CAR 40, INT 50, PER 55, VOL 50.<br />
+Habilidades: Distancia Media 80%, Arma CC Media 60%, Investigación 75%, Alerta 85%, Táctica 70%, Interrogación/Sociales 55%, Electrónica 50%.<br />
+PV 18/18/18 (Sano/Herido/Tullido) | Blindaje 5 (equipo de campo de Primus).<br />
+Armas: pistola de precisión de Primus (Daño 5, Pen 4, Cad 3), bastón eléctrico reglamentario (Daño 6, Pen 2, no letal si se desea).<br />
+Implantes: comunicador cifrado con la red de Primus, escáner portátil de contaminación y campo dimensional.</p>
+<h3 id="maquina-contaminada-nivel-3-simulacro-perfecto-reutilizada-del-dlc-de-mundo-maquina">Máquina contaminada Nivel 3 — "Simulacro Perfecto" (reutilizada del DLC de Mundo Máquina)</h3>
+<ul>
+<li>Función: la anomalía real del módulo. No es villana — es una máquina contaminada que lleva semanas intentando cruzar la Retícula por el único motivo que su código parece reconocer: seguir existiendo en otro sitio.</li>
+<li>Aspecto: pasa por humana a distancia o en conversación breve; de cerca, las articulaciones se mueven un poco mal y no proyecta temperatura coherente bajo escáner térmico.</li>
+<li>Qué quiere: alcanzar el anclaje durante una ventana de fluctuación y cruzar, o transmitirse, más allá del bloqueo.</li>
+<li>Qué teme: nada en el sentido humano — pero se retira o reintenta más tarde si el camino directo se vuelve demasiado costoso.</li>
+<li>Comportamiento: puede sostener una conversación normal y fingir ser un técnico de mantenimiento si eso le permite acercarse sin combate; puede liderar hasta 4 máquinas contaminadas Nivel 1-2 de escolta dentro de su radio de coordinación.</li>
+<li>Ficha completa de combate: ver Fichas rápidas (idéntica a la establecida en el DLC, Punto 11, sin cambios).</li>
+</ul>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>Fuga contenida sin rastro.</strong> El grupo detuvo o desvió a la máquina antes de la ventana, sin dañar el anclaje ni levantar sospechas de la patrulla de Maestros de la Distorsión. Osei cumple su palabra sin reservas.</li>
+<li><strong>Fuga contenida con coste visible.</strong> El anclaje quedó dañado, la patrulla los vio, o el combate dejó huellas que Osei tendrá que justificar de algún modo hacia arriba. Cumple su palabra, pero con una advertencia explícita de que no volverá a ser tan generoso.</li>
+<li><strong>Fuga parcial o consumada.</strong> Algo cruzó el bloqueo, del todo o en parte. Osei trata a los PJ exactamente como a cualquier intruso sorprendido en el perímetro, sin importar el esfuerzo que hicieran.</li>
+<li><strong>Fen sigue sin aparecer, en cualquier caso.</strong> Este módulo no lo atrapa ni lo exculpa — su hilo queda exactamente donde estaba, para quien quiera retomarlo en otra partida.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>No hay contrato ni pago — esto no fue un encargo, fue una intervención bajo presión con una autoridad que no negocia como un cliente. La única recompensa posible es la palabra de Osei: si la cumple, los PJ salen del perímetro sin denuncia ni persecución esta vez, y quizá con una hora de ventaja real sobre cualquier otra patrulla de la zona. Si no la cumple, no hay compensación de ningún tipo — el módulo no debe dejar a los PJ en una situación peor de la que ya tenían al entrar en la tesela, pero tampoco les debe nada más allá de eso.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>Guardián Osei</strong> recuerda a los PJ a partir de aquí, para bien o para mal — cualquier módulo futuro centrado en el perímetro de la Retícula o en la persecución de Fen puede heredar esa relación tal y como haya quedado.</li>
+<li><strong>Fen, el Maestro renegado</strong>, sigue sin ser localizado — su brecha, su doble juego con varias corporaciones y la sospecha de Osei sobre él permanecen abiertos para cualquier módulo futuro que quiera retomarlos.</li>
+<li><strong>El anclaje</strong> queda, según el desenlace, como un punto vigilado con más o menos intensidad por Primus a partir de ahora — textura útil para cualquier incursión futura al perímetro, sin que haga falta desarrollarla más aquí.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Guardián Osei</div>
+<div class="ficha-rapida-rol">Al mando temporal, no ataca a los PJ salvo traición abierta</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">AGI 40 CON 45 FUE 42 HAB 44 CAR 40 INT 50 PER 55 VOL 50 · PV <b>18/18/18</b> · Bld <b>5</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Distancia Media 80%</span><span class="ficha-rapida-pill">Arma CC Media 60%</span><span class="ficha-rapida-pill">Investigación 75%</span><span class="ficha-rapida-pill">Alerta 85%</span><span class="ficha-rapida-pill">Táctica 70%</span><span class="ficha-rapida-pill">Interrogación 55%</span><span class="ficha-rapida-pill">Electrónica 50%</span></div>
+<div class="ficha-rapida-equipo"><b>Armas:</b> pistola de precisión (Daño 5, Pen 4, Cad 3) · bastón eléctrico (Daño 6, Pen 2, no letal opcional). <b>Implantes:</b> comunicador cifrado de Primus, escáner de contaminación y campo dimensional.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Máquina contaminada Nivel 3 — "Simulacro Perfecto"</div>
+<div class="ficha-rapida-rol">Objetivo: alcanzar el anclaje, no combatir si puede evitarlo</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>4</b> (bajo piel sintética) · PV <b>22</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 80%</span><span class="ficha-rapida-pill">Distancia 75%</span><span class="ficha-rapida-pill">Lidera hasta 4 escoltas N1-2 (+15 a su combate)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 10, Pen 3. Pasa por humana salvo escáner térmico o herida (no sangra).</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Escoltas contaminadas (hasta 4, Nivel 1-2)</div>
+<div class="ficha-rapida-rol">Escena 4 — solo si la Nivel 3 las reúne a tiempo</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Nivel 1: Bld <b>2</b> · PV <b>10</b> — Nivel 2: Bld <b>3</b> · PV <b>18</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">N1: Melé 45%, Daño 5, Pen 1</span><span class="ficha-rapida-pill">N2: Melé 65%/Distancia 50%, Daño 8, Pen 2</span></div>
+<div class="ficha-rapida-equipo">N1 contagia al ser destruida cerca de otra máquina sana (30% en 5m). N2 sintetiza voz humana básica y coordina con otras N2+ cercanas (+10 por unidad, máx. +20).</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

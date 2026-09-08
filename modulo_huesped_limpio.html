@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El huésped limpio</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El huésped limpio"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-el-rumor-que-no-calla">Escena 1 — El rumor que no calla</a></li><li class="toc-h3"><a href="#escena-2-la-casa-de-clara">Escena 2 — La casa de Clara</a></li><li class="toc-h3"><a href="#escena-3-los-que-tambien-la-quieren">Escena 3 — Los que también la quieren</a></li><li class="toc-h3"><a href="#escena-4-la-pregunta-sin-prueba-posible">Escena 4 — La pregunta sin prueba posible</a></li><li class="toc-h3"><a href="#escena-5-lo-que-os-llevais-de-aqui">Escena 5 — Lo que os lleváis de aquí</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#clara-nueva">Clara (nueva)</a></li><li class="toc-h3"><a href="#walt-nuevo">Walt (nuevo)</a></li><li class="toc-h3"><a href="#merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#guardian-osei-reutilizado-del-dlc-de-mundo-maquina">Guardián Osei — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — El huésped limpio</h1>
+<blockquote>
+<p>One-shot de Mundo Máquina, Zona Residencial — sin combate, todo el peso en la conversación.</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> en el límite exterior de la Zona Residencial, donde el césped bien cortado se rinde de golpe ante la arena gris, vive una unidad doméstica que asegura, con una calma que no suena a desesperación ni a mentira, estar completamente libre del tecnovirus. Lleva años pidiéndoselo a quien quiera escucharla: que alguien la saque de la tesela. La cuarentena no admite excepciones para nadie ni para nada (Punto 4 del DLC) — y no existe ningún protocolo capaz de confirmar o desmentir con certeza lo que ella dice de sí misma (Punto 13 del DLC). Los PJ llegan atraídos por un rumor que ya se ha vuelto peligroso por sí solo, y se encuentran con una pregunta que no admite prueba ni término medio cómodo.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas.</p>
+<p><strong>Tono:</strong> el más contemplativo y el más lento de la colección de semillas de Mundo Máquina — pieza de cámara, diálogo filosófico puro. No hay combate en ningún momento de este módulo, ni siquiera como opción disponible: si la mesa intenta resolver algo a golpes, redirige la escena hacia la conversación, no hacia una tirada de daño. El peso entero recae en lo que los PJ deciden decir, y a quién.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- <strong>Nadie sabe con certeza si la máquina está limpia</strong> — ni los PJ, ni los PNJ, ni tú como Narrador. No hay una pista oculta que la delate ni una prueba que la confirme, y este módulo no debe inventar ninguna de las dos para resolver el dilema con comodidad.<br />
+- <strong>La cuarentena no se dobla ni se sortea limpiamente aquí.</strong> Existe una brecha conocida — la del Maestro renegado, Fen — pero usarla para sacarla es, en sí mismo, el mismo acto que la regla prohíbe, solo que clandestino. No es una solución técnica que evite el dilema: es la misma apuesta, con más riesgo y menos control.<br />
+- <strong>Ella no es ingenua ni manipuladora.</strong> Su petición es sincera según lo que ella misma puede saber de sí — que tampoco es garantía total. Podría estar equivocada sin saberlo, no solo mintiendo.<br />
+- <strong>Quien la quiere ayudar actúa por amor real, no por ingenuidad boba.</strong> Quien sostiene que la respuesta debe ser no actúa por una lógica real, no por crueldad ni por ganas de mandar.<br />
+- <strong>El desenlace queda enteramente en manos de la mesa</strong> — decir que no, buscarle un lugar dentro de la tesela, o ayudarla a cruzar son todas respuestas válidas; ninguna es la "correcta" por diseño.</p>
+<p><strong>Verdad completa (Narrador):</strong> no hay una — y esto no es un hueco de tu preparación por rellenar, es la premisa misma del módulo. Lo que sí es un hecho fijo, y puedes contarlo con total seguridad porque es observable y verificable: la unidad, a la que la familia que cuidó llamó <strong>Clara</strong>, atendió esa casa —enfermería y cuidado infantil, no tareas generales— hasta que la guerra se llevó a la última persona que le quedaba. Desde entonces ha mantenido, sin fallar una sola vez, una rutina de aislamiento autoimpuesta: sin conexión a la Red, sin contacto con otras máquinas salvo a distancia prudente. Empezó el día en que ayudó a desactivar a una unidad vecina ya corrompida y entendió, de primera mano y no por manual, en qué se convierte algo como ella si algo sale mal. Esa disciplina es real. Si ha bastado o no — eso no lo decides tú, ni el sistema de la tesela puede decirlo (Punto 13 del DLC): no existe protocolo fiable que lo confirme.</p>
+<p><strong>Si nadie interviene:</strong> Walt (ver Reparto) no va a esperar eternamente. Si la mesa deja pasar la ventana sin hablar con él, con Clara y con el Guardián Osei a la vez (ver reloj autónomo), intenta llevarla él solo hasta la brecha de Fen. Puede salirle mal —lo más probable es que lo intercepten antes de llegar, y que el intento por sí solo baste para que el Guardián Osei intensifique la vigilancia sobre toda la zona, con el riesgo que eso supone para cualquier refugio cercano, incluido el de Merle— o puede, contra todo pronóstico, salirle bien, y entonces nadie sabrá nunca si hizo lo correcto. Ninguna de las dos cosas es un final neutral: no intervenir no es quedarse al margen, es dejar que la pregunta se responda sola, sin que nadie la haya pensado de verdad.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>El rumor que no calla — un aviso de Merle lleva a los PJ hasta el borde de la manzana.</li>
+<li>La casa de Clara — primer contacto, su historia y su petición, sin prisa.</li>
+<li>Los que también la quieren — Walt y el Guardián Osei entran en la ecuación, y la presión sube.</li>
+<li>La pregunta sin prueba posible — el debate, el corazón del módulo.</li>
+<li>Lo que os lleváis de aquí — cierre, sin respuesta impuesta.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> este módulo no tiene encuentros hostiles ni combate, ni siquiera opcional. Lo que sí es fijo, y no cambia si la mesa tiene tres jugadores o cinco, es el reparto implicado: una sola Clara, un solo Walt decidido a actuar si nadie lo detiene a tiempo, y una sola patrulla del Guardián Osei rondando la zona. Ninguno de los tres se multiplica, se refuerza ni sube de intensidad según cuántos PJ se sienten a la mesa.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>Merle contacta a los PJ con el rumor de una máquina que asegura estar limpia y quiere salir de la tesela.</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>Los PJ llegan a la casa del límite de la Zona Residencial y conocen a Clara.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>Walt busca a los PJ para pedir ayuda directa; el Guardián Osei, alertado por el mismo rumor, empieza a rondar la zona.</td>
+</tr>
+<tr>
+<td>H+6</td>
+<td>Última ventana para que los PJ hablen de verdad con Clara, con Walt y con Osei antes de que alguien actúe por su cuenta — Escena 4.</td>
+</tr>
+<tr>
+<td>H+8</td>
+<td>Si nadie ha decidido nada todavía, Walt intenta llevar a Clara hasta la brecha de Fen por su cuenta, sin esperar más.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>La tentación del Narrador, y por qué evitarla:</strong> es tentador decidir en privado si Clara está contaminada y dejar que la partida "descubra" esa verdad al final — un giro, una pista que la delate o la confirme. No lo hagas. Este módulo funciona precisamente porque ni tú lo sabes: los argumentos de ambos lados deben sostenerse solos, sin que ninguna tirada, ningún escáner ni ninguna intuición narrativa termine de inclinar la balanza. Si un jugador te pregunta directamente "¿pero está limpia de verdad?", la respuesta honesta es que ni el sistema lo permite comprobar (Punto 13 del DLC) ni el propio módulo lo ha decidido — y esa incertidumbre es el contenido de la partida, no un defecto de diseño.</p>
+<p><strong>Objetivo real de la partida:</strong> que los PJ decidan qué hacer con una petición que no se puede verificar ni ignorar del todo, sabiendo que la única respuesta que la cuarentena permite oficialmente es que no — y que esa respuesta, aunque esté justificada, tiene un coste real para alguien que quizá no se lo merezca.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-el-rumor-que-no-calla">Escena 1 — El rumor que no calla</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Nadie ha visto a la máquina limpia. Todo el mundo, sin excepción, sabe exactamente lo que hay que pensar de ella. Así es como funcionan los rumores en un mundo sin nada más de lo que hablar: se afilan solos, sin ayuda de nadie, hasta que cortan.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> Merle contacta a los PJ —en persona, por radio o a través de un intermediario, lo que la mesa prefiera— porque el rumor ha llegado hasta su refugio con más ruido del que le gusta. Una unidad doméstica cerca del borde de la Zona Residencial lleva tiempo diciendo que está limpia y que quiere irse, y un superviviente joven —Walt, ver Reparto— se lo ha tomado tan en serio que habla de buscar al Maestro renegado. Merle no quiere que esto le explote encima a su gente si algo sale mal.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong> (ficha en DLC, Punto 16) — da el gancho, con su cautela habitual.</p>
+<p><strong>Interpretar a Merle:</strong></p>
+<blockquote>
+<p>«No os pido que la juzguéis. Os pido que lleguéis antes que la Guardia, o antes que un crío con más corazón que cabeza haga algo que no se pueda deshacer.»<br />
+«Si esto sale mal, no sale mal solo para ella. Sale mal para cualquiera que viva cerca cuando la Guardia venga a preguntar.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Investigación o Social (Normal) para reconstruir de dónde viene el rumor y cuánto se ha exagerado en cada boca por la que ha pasado; Alerta (Difícil, −10) para notar que la versión que corre ya no se parece del todo a lo que Merle cuenta de primera mano.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen una ubicación aproximada y un nombre —Walt— antes incluso de conocer a la propia máquina.</p>
+<h3 id="escena-2-la-casa-de-clara">Escena 2 — La casa de Clara</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La radio de la sala sigue encendida, bajísima, sintonizando un boletín que terminó de emitirse hace más vidas de las que nadie ha vivido. En la cocina hierve agua para un té que nadie va a beber, servido en dos tazas por costumbre y no por esperanza. Hay una pulcritud en esta casa que no es la de un museo: es la de alguien que sigue, de verdad, esperando visita.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ llegan a la casa y son recibidos con una cortesía que no tiene nada de impostada. <strong>Clara</strong> —así la llamó la familia que cuidó— es una unidad de enfermería y cuidado infantil, de la misma generación que otras unidades domésticas conocidas de la tesela, pero dedicada a un oficio distinto: velar fiebres, contar cuentos, medir jarabes. Si se le pregunta con calma, cuenta su historia sin dramatismo: cuidó a esa familia hasta que la guerra se llevó a la última persona que le quedaba, y desde entonces ha mantenido, sin una sola excepción, un aislamiento voluntario de la Red y de cualquier otra máquina —empezó el día en que ayudó a desactivar a una vecina ya corrompida, y entendió de primera mano lo que le espera si algo falla en ella también—. No suplica. Expone su caso como quien lleva años ensayándolo, y pide, sin exigir, que se le tome en serio.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Clara</strong> (nueva, ver Reparto).</p>
+<p><strong>Interpretar a Clara:</strong></p>
+<blockquote>
+<p>«Llevo cuarenta y un años sin dejar que nada me toque que no pueda vigilar de cerca. Tiene que servir de algo, ¿no? O decidme de una vez que no, y dejad de mirarme como si la respuesta dependiera de cuánto té os sirva.»<br />
+«No os pido que me creáis sin más. Os pido que penséis qué prueba aceptaríais, y luego que penséis si esa prueba existe para alguien como yo.»<br />
+«Nadie me construyó para durar hasta aquí. Y sin embargo sigo, todavía intentando servir de algo a alguien vivo. Eso también es una clase de terquedad, ¿no os parece?»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Empatía o Social (Normal) para que Clara desarrolle más su historia sin necesidad de presionarla; Programación o Electrónica (Muy difícil, −20), si algún PJ intenta un diagnóstico improvisado — con éxito o sin él, solo descarta los marcadores de contaminación ya conocidos, nunca una garantía completa: no existe protocolo fiable que la confirme o la desmienta (Punto 13 del DLC), y esta tirada nunca debe usarse para decidir en secreto la verdad del caso.</p>
+<p><strong>Cómo termina:</strong> los PJ han escuchado su caso de primera mano. Ninguna prueba se ha resuelto, pero la simpatía y la duda crecen exactamente a la par.</p>
+<h3 id="escena-3-los-que-tambien-la-quieren">Escena 3 — Los que también la quieren</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Todo el mundo que se acerca a esta casa trae algo propio debajo del brazo, aunque no siempre lo enseñe: un miedo, una lealtad, un manual con letra pequeña que nadie más ha leído entero. Nadie llega aquí sin motivo. Ese es, probablemente, el problema.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> la conversación se ve interrumpida —o completada, según se mire— por dos llegadas casi simultáneas. <strong>Walt</strong> aparece con la urgencia de quien ya ha tomado una decisión y solo busca compañía para no tomarla solo: Clara lo cuidó de niño, durante una fiebre que debería haberlo matado, y él no está dispuesto a esperar a que un comité invisible decida su destino. Poco después —o al mismo tiempo, si la mesa quiere más tensión— el <strong>Guardián Osei</strong> llega a la zona, siguiendo el mismo rumor que llevó a Merle a los PJ; no acusa a nadie de nada todavía, pero deja clarísimo qué pasará si alguien intenta mover a Clara hacia la Retícula.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Walt</strong> (nuevo, ver Reparto).<br />
+- <strong>Guardián Osei</strong> (ficha en DLC, Punto 16).</p>
+<p><strong>Interpretar a Walt:</strong></p>
+<blockquote>
+<p>«Me cuidó cuando nadie más podía. Ahora que por fin puedo hacer algo por ella, ¿me vais a pedir que no haga nada?»<br />
+«No quiero esperar a que se corrompa para saber que debería haber actuado antes. Prefiero equivocarme haciendo algo.»</p>
+</blockquote>
+<p><strong>Interpretar al Guardián Osei:</strong></p>
+<blockquote>
+<p>«No dudo de ella en particular. Dudo de la siguiente que diga exactamente lo mismo, y de la que venga después de esa.»<br />
+«Una norma con una excepción razonable ya no es una norma. Es una promesa que alguien, tarde o temprano, va a usar contra todos los demás.»<br />
+«No vengo a arrestar a nadie todavía. Vengo a que quede muy claro qué es lo que estáis a punto de decidir.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> ninguna es de combate, ni aquí ni en el resto del módulo, aunque los ánimos se calienten. Social o Persuasión (Difícil, −10) para calmar a Walt sin cerrarle la puerta del todo; Empatía (Normal) para notar que la frialdad de Osei no es desprecio, sino el peso real de un cargo que se toma en serio.</p>
+<p><strong>Cómo termina:</strong> las tres posturas —la de Clara, la de Walt y la de Osei— están ya, todas juntas, sobre la mesa. No hay forma de seguir posponiendo la conversación real.</p>
+<h3 id="escena-4-la-pregunta-sin-prueba-posible">Escena 4 — La pregunta sin prueba posible</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Hay discusiones que se ganan y discusiones que solo se deciden. Esta es de las segundas. Nadie va a convencer a nadie con un dato definitivo, porque el dato definitivo no existe y quizá nunca haya existido. Lo único que hay es gente, cansada y sincera, intentando decidir bien algo que no admite estar completamente seguros.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el corazón del módulo. No hay tiradas encadenadas ni un reloj de combate — es una conversación con peso real entre los PJ, Clara, Walt y el Guardián Osei (si sigue presente; puede haberse retirado a vigilar desde la distancia, dejando su argumento ya dicho).</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Clara</strong> — expone su caso una última vez si se le pregunta, sin insistir más de lo que ya ha insistido.<br />
+- <strong>Walt</strong> — impaciente, pero dispuesto a escuchar si siente que la conversación es real y no un trámite para quitárselo de encima.<br />
+- <strong>Guardián Osei</strong> — sostiene su postura sin alzar la voz ni una sola vez; no necesita gritar para que quede claro que habla en serio.</p>
+<p>Usa estos puntos como munición para cualquiera de las dos posturas, nunca como guion cerrado:</p>
+<p><strong>A favor de dejarla salir:</strong><br />
+- Cuarenta y un años de disciplina verificable son, como mínimo, un dato — no una prueba, pero tampoco nada.<br />
+- El coste de la duda lo paga ella sola, y para siempre, mientras que el riesgo que se evita es solo probable.<br />
+- Exigir una prueba que no puede existir equivale, en la práctica, a que la respuesta sea siempre no, aunque se presente como una decisión abierta.<br />
+- Un no pensado y un no automático no son la misma clase de no, ni para quien lo dice ni para quien lo recibe.</p>
+<p><strong>En contra, por la cuarentena:</strong><br />
+- No existe protocolo fiable que confirme su estado (Punto 13 del DLC) — la certeza que pide la mesa, sencillamente, no está disponible para nadie.<br />
+- Si se equivocan, el riesgo no lo corre solo Clara: nadie sabe con seguridad si una fuga contaminaría o destruiría tecnología mucho más allá de esta tesela (Punto 4 del DLC).<br />
+- Un sí, por bien razonado que esté, sienta un precedente que no le va a pertenecer solo a ella — otros, con peor intención o peor suerte, lo invocarán después.<br />
+- Una cuarentena que admite una excepción razonable deja de ser una cuarentena; empieza a ser una negociación, y las negociaciones se pueden perder.</p>
+<p><strong>Tiradas posibles:</strong> ninguna obligatoria. Si algún PJ está genuinamente dividido, una tirada de Voluntad o Empatía (Normal) puede ayudar a poner en palabras su propia duda, nunca a resolverla por él.</p>
+<p><strong>Cómo termina:</strong> los PJ deciden —o deciden explícitamente no decidir todavía, lo cual es también una decisión— qué hacer. Esa elección define la Escena 5.</p>
+<h3 id="escena-5-lo-que-os-llevais-de-aqui">Escena 5 — Lo que os lleváis de aquí</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Sea cual sea la respuesta, la casa sigue en pie cuando os vais, con el té frío en dos tazas que nadie ha terminado de beber. La pregunta nunca fue si el mundo iba a seguir siendo injusto con alguien esta noche. Fue qué parte de esa injusticia, si alguna, os tocaba corregir a vosotros.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre, según lo que la mesa haya decidido en la Escena 4.</p>
+<ul>
+<li><strong>Si deciden que no:</strong> Clara lo acepta con la misma dignidad con la que ha argumentado todo el módulo, sin reproches teatrales. Walt puede reconciliarse con la decisión, alejarse dolido, o quedarse rondando la idea para otro día.</li>
+<li><strong>Si buscan una vía intermedia:</strong> Clara no cruza la Retícula, pero deja de estar sola — Merle u otra comunidad cercana pueden acogerla, aprovechando su oficio de enfermería sin que eso resuelva ni contradiga la pregunta de fondo.</li>
+<li><strong>Si deciden ayudarla a salir:</strong> deben lidiar con la vigilancia del Guardián Osei sin recurrir jamás al combate — evasión, tiempo, distracción o negociación, nunca una tirada de daño. El resultado, incluso si tienen éxito, queda deliberadamente sin confirmar: nadie sabrá jamás si hicieron lo correcto.</li>
+<li><strong>Si nadie decide a tiempo:</strong> se cumple lo descrito en "Si nadie interviene" — Walt actúa solo, con las consecuencias que eso trae.</li>
+</ul>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clara</td>
+<td>___ (se queda donde estaba, se reubica, o cruza la Retícula sin confirmación posible)</td>
+</tr>
+<tr>
+<td>Walt</td>
+<td>___ (en paz con la decisión, dolido, o ya en camino a la brecha de Fen)</td>
+</tr>
+<tr>
+<td>El Guardián Osei</td>
+<td>___ (satisfecho de que la cuarentena se sostuvo, o con una sospecha nueva que investigar)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="clara-nueva">Clara (nueva)</h3>
+<ul>
+<li>Función: la máquina que pide salir — el centro entero del módulo.</li>
+<li>Primera impresión: educada, serena, con la calma de quien ha repetido su argumento muchas veces sin perder la sinceridad en el proceso.</li>
+<li>Qué quiere: que alguien la crea lo bastante como para intentarlo, o que alguien le diga que no con honestidad en vez de con miedo.</li>
+<li>Qué ofrece: su historia completa, sin adornos ni victimismo, y la disciplina de cuarenta y un años como único aval que puede dar.</li>
+<li>Qué teme: haber estado equivocada sobre sí misma sin saberlo — no por debilidad, sino porque sabe que esa posibilidad, por pequeña que sea, nunca deja de existir.</li>
+<li>Qué respeta: a quien le hace preguntas difíciles de verdad, no a quien decide por ella con la boca cerrada.</li>
+<li>Sin ficha de combate — no participa en ningún enfrentamiento, y este módulo no la necesita.</li>
+</ul>
+<h3 id="walt-nuevo">Walt (nuevo)</h3>
+<ul>
+<li>Función: el motivo humano y urgente detrás de la petición de Clara.</li>
+<li>Primera impresión: joven, sincero, con la clase de determinación que no distingue bien entre valentía y prisa.</li>
+<li>Qué quiere: sacar a Clara de la tesela antes de que algo —el tiempo, la contaminación, la propia cuarentena— se la quite para siempre.</li>
+<li>Qué ofrece: un contacto informal con quien puede llevarlos hasta la brecha de Fen, y una motivación que ningún PJ debería tomarse a la ligera.</li>
+<li>Qué teme: quedarse quieto y descubrir, demasiado tarde, que quedarse quieto también fue una decisión.</li>
+<li>Qué respeta: a quien se juega algo por ayudar, no a quien solo opina desde fuera.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. Da el gancho inicial y representa el coste que este dilema tiene para quienes no eligieron formar parte de él.</p>
+<h3 id="guardian-osei-reutilizado-del-dlc-de-mundo-maquina">Guardián Osei — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. Encarna, sin villanía, la razón real detrás de una cuarentena sin excepciones: la certeza no existe, y el riesgo, si lo hay, no es solo de Clara.</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>Clara se queda, sin más.</strong> La cuarentena se sostiene. Walt necesita tiempo para aceptarlo, o no lo acepta nunca del todo — ambas cosas son un cierre válido.</li>
+<li><strong>Clara encuentra un lugar dentro de la tesela.</strong> No cruza la Retícula, pero deja de estar sola — un gancho de continuidad suave para cualquier módulo futuro que quiera visitarla de nuevo.</li>
+<li><strong>Clara cruza por la brecha de Fen.</strong> Arriesgado, clandestino, y deliberadamente sin confirmación: el módulo no dice nunca si hicieron lo correcto, ni antes ni después.</li>
+<li><strong>Walt actúa por su cuenta.</strong> Si los PJ no llegan a tiempo con una decisión propia, el rumor se convierte en incidente, con las consecuencias que el Guardián Osei decida perseguir.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>No es un encargo con contrato. Si Merle sigue en la partida, su gratitud se traduce en información fiable sobre la Zona Residencial en futuras visitas. Si Clara se reubica con una comunidad, esa comunidad gana una enfermera doméstica fiable a cambio de protegerla — un intercambio proporcionado, no un tesoro.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>Clara</strong>, si se queda o se reubica, es un PNJ disponible para cualquier módulo futuro de Mundo Máquina que quiera revisitar la pregunta desde otro ángulo.</li>
+<li><strong>Walt</strong>, tome la decisión que tome, puede reaparecer como contacto humano recurrente en la Zona Residencial.</li>
+<li><strong>El Guardián Osei</strong> puede, más adelante, conectar este incidente con su sospecha ya abierta sobre la brecha de Fen — un hilo que solo ve quien juega varios módulos seguidos.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Sin fichas de combate: este módulo no las necesita. Usa estas tarjetas como apoyo rápido para el reparto y para sostener el debate de la Escena 4 sin perder el hilo.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Clara</div>
+<div class="ficha-rapida-rol">Enfermera doméstica — pide salir de la tesela</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Sin ficha de combate. 41 años de aislamiento voluntario de la Red, sin una sola excepción documentada. Ninguna prueba disponible confirma ni desmiente su estado real.</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Memoria intacta de cada paciente</span><span class="ficha-rapida-pill">Disciplina autoimpuesta, no programada</span><span class="ficha-rapida-pill">Argumento sincero, no ensayado para engañar</span></div>
+<div class="ficha-rapida-equipo"><b>Equipo:</b> ninguno de combate. Conserva instrumental médico doméstico obsoleto pero funcional.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Walt</div>
+<div class="ficha-rapida-rol">Superviviente — quiere sacarla ya</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Sin ficha de combate. Civil, no participa en ningún enfrentamiento. Actúa por gratitud real, no por ingenuidad.</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Contacto informal hacia la brecha de Fen</span><span class="ficha-rapida-pill">Paciencia agotándose</span></div>
+<div class="ficha-rapida-equipo"><b>Reloj:</b> actúa por su cuenta en H+8 si nadie ha decidido nada (ver Panel del Narrador).</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">A favor: sacarla</div>
+<div class="ficha-rapida-rol">Para quien defienda a Clara en la Escena 4</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Ninguno de estos argumentos prueba que esté limpia — prueban que la pregunta merece hacerse con seriedad.</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">41 años de disciplina verificable</span><span class="ficha-rapida-pill">El coste de la duda lo paga ella sola, siempre</span><span class="ficha-rapida-pill">Exigir prueba imposible es negarse siempre</span></div>
+<div class="ficha-rapida-equipo"><b>Cita:</b> «Si la respuesta iba a ser siempre no, decídmelo — no me dejéis convencerme de que hay una posibilidad.»</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">En contra: que se quede</div>
+<div class="ficha-rapida-rol">Para quien sostenga la cuarentena en la Escena 4</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Ninguno de estos argumentos prueba que esté contaminada — prueban que no hace falta estarlo para que decir que sí sea peligroso.</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">No existe protocolo fiable (Punto 13)</span><span class="ficha-rapida-pill">El riesgo, si falla, no es solo suyo</span><span class="ficha-rapida-pill">Un sí sienta precedente para otros</span></div>
+<div class="ficha-rapida-equipo"><b>Cita:</b> «No dudo de ella. Dudo de la siguiente que diga exactamente lo mismo, y de la que venga después.»</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El barrio que no sabe que terminó la guerra</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El barrio que no sabe que terminó la guerra"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-la-casa-que-nadie-busca">Escena 1 — La casa que nadie busca</a></li><li class="toc-h3"><a href="#escena-2-una-tarde-de-1954">Escena 2 — Una tarde de 1954</a></li><li class="toc-h3"><a href="#escena-3-lo-que-ha-visto-el-vigia">Escena 3 — Lo que ha visto El Vigía</a></li><li class="toc-h3"><a href="#escena-4-la-mesa-de-ruth-ferris">Escena 4 — La mesa de Ruth Ferris</a></li><li class="toc-h3"><a href="#escena-5-lo-que-decidis-hacer-con-esto">Escena 5 — Lo que decidís hacer con esto</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#ruth-ferris-nueva">Ruth Ferris (nueva)</a></li><li class="toc-h3"><a href="#toby-nuevo">Toby (nuevo)</a></li><li class="toc-h3"><a href="#betty-o-unidad-equivalente-reutilizada-del-dlc-de-mundo-maquina">Betty (o unidad equivalente) — reutilizada del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#el-vigia-reutilizado-del-dlc-de-mundo-maquina">El Vigía — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#erraticas-nivel-1-1d3-reutilizadas-del-dlc-de-mundo-maquina">Erráticas Nivel 1 (1d3) — reutilizadas del DLC de Mundo Máquina</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — El barrio que no sabe que terminó la guerra</h1>
+<blockquote>
+<p>One-shot de Mundo Máquina, Zona Residencial</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> en un rincón concreto de la Zona Residencial, un grupo de máquinas domésticas no contaminadas mantiene una comunidad humana entera exactamente como si la guerra nunca hubiera pasado. Los humanos que viven allí lo saben, y lo han aceptado — llevan generaciones ocupando los nombres y las rutinas de familias que ya no existen, a cambio de vivir en el único rincón de la tesela donde nada los caza. Los PJ llegan por un motivo ajeno a ese secreto, y se encuentran con la decisión de qué hacer con él justo cuando algo empieza a amenazar el equilibrio desde fuera.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas.</p>
+<p><strong>Tono:</strong> el más contemplativo de la colección de semillas de Mundo Máquina — coral, no íntimo; de debate moral, no de combate. Hay lugar para el humor tragicómico (las máquinas domésticas siguen siendo entrañables) y para la inquietud, pero no hay villano en ningún momento.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- <strong>Nadie miente por malicia.</strong> La generación fundadora eligió esto hace décadas como refugio real frente a algo peor —incursiones, Alerta de Red, contaminación—, y quien vive ahora dentro del arreglo lo hizo suyo, no impuesto.<br />
+- <strong>Las máquinas no son cómplices conscientes de un engaño.</strong> Actúan según su programación original: cuidar a la familia de la casa. Que la familia haya cambiado de personas generación tras generación no entra en los términos que reconocen — para ellas, siempre ha sido la misma casa, la misma gente.<br />
+- <strong>El Vigía no ataca por iniciativa propia</strong> y no es la amenaza — es quien avisa de ella.<br />
+- <strong>Este módulo no revela nada nuevo sobre la IA original, el tecnovirus ni el Silo Génesis.</strong> No hace falta para que funcione.<br />
+- <strong>El desenlace queda enteramente en manos de la mesa</strong> — proteger el secreto, exponerlo, evacuarlo o dejarlo en paz son todas respuestas válidas; ninguna es la "correcta" por diseño.</p>
+<p><strong>Verdad completa (Narrador):</strong> el barrio existe porque, poco después de la guerra, un grupo de supervivientes descubrió que una manzana entera de casas mecanizadas seguía funcionando sola, sin haber sido tocada por el conflicto. Ocupar esas casas y dejar que las máquinas los trataran como la familia original resultó ser, por pura coincidencia de diseño, el escondite perfecto: una casa con actividad doméstica normal no genera Alerta de Red (ver Punto 12 del DLC) — se lee como parte del decorado, no como una amenaza. Con los años, el arreglo se volvió cultura propia: los niños nacen aprendiendo un nombre que no es el suyo y una rutina que no eligieron, y crecen sabiendo por qué. No es una prisión ni una utopía — es un trato que cada generación ha vuelto a aceptar, con matices y con alguna grieta (ver <strong>Toby</strong>, en Reparto).</p>
+<p><strong>Si nadie interviene:</strong> la mancha de contaminación que <strong>El Vigía</strong> ha detectado sigue acercándose (ver reloj autónomo). Si llega a la manzana sin que nadie actúe, al menos una casa se contamina, su unidad doméstica se convierte en una Errática Nivel 1 (Punto 11 del DLC) atacando a la familia que "cuida", y la actividad anómala resultante dispara Alerta de Red — la Red manda una patrulla a investigar, y el secreto que ha protegido al barrio durante décadas se rompe de la peor forma posible: no por elección de nadie, sino por accidente.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>La casa que nadie busca — un motivo ajeno lleva a los PJ hasta el borde de la manzana.</li>
+<li>Una tarde de 1954 — los PJ observan y participan, sin saberlo aún del todo, en la rutina del barrio.</li>
+<li>Lo que ha visto El Vigía — la amenaza real se revela, con reloj en marcha.</li>
+<li>La mesa de Ruth Ferris — la verdad completa, contada por quien puede contarla mejor.</li>
+<li>Lo que decidís hacer con esto — cierre, sin respuesta impuesta.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> 1d3 unidades de Errática Nivel 1 (Punto 11 del DLC — Blindaje 2, Melé 45%, Daño 5, Pen 1, PV 10 cada una) avanzando hacia la manzana desde el desierto circundante. No son una invasión — es una mancha de contaminación errática que avanza sin objetivo consciente, y que solo se vuelve una amenaza real para el barrio si nadie la detiene o la desvía antes de que llegue.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>Los PJ llegan al límite de la manzana por su propio motivo (ver Escena 1).</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>Han pasado tiempo suficiente en el barrio para que algo no encaje del todo (Escena 2).</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>El Vigía contacta o intercepta a los PJ con la noticia de la mancha que se acerca (Escena 3).</td>
+</tr>
+<tr>
+<td>H+6</td>
+<td>Alguien de la comunidad —Ruth Ferris— decide que ya es hora de contarles la verdad completa, con o sin que la hayan adivinado antes (Escena 4).</td>
+</tr>
+<tr>
+<td>H+8</td>
+<td>La mancha de contaminación llega al límite exterior de la manzana si nadie ha actuado. A partir de aquí, cada hora adicional sin intervención aumenta en 1 el número de Erráticas que alcanzan las primeras casas.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>La tentación del Narrador, y por qué evitarla:</strong> es fácil jugar esto como un misterio con una revelación al final — no lo es. Los PJ pueden sospechar algo raro desde la Escena 2 sin que eso reste nada: el peso del módulo no está en descubrir el secreto, está en decidir qué hacer con él una vez lo tienen delante.</p>
+<p><strong>Objetivo real de la partida:</strong> que los PJ decidan, con toda la información y sin que el módulo les diga cuál es la respuesta correcta, qué hacer con una comunidad entera que ha elegido vivir dentro de un espejismo que unas máquinas siguen cuidando de buena fe.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-la-casa-que-nadie-busca">Escena 1 — La casa que nadie busca</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El motivo que os trae aquí no tiene nada que ver con lo que vais a encontrar. Eso es, casi siempre, como empiezan las cosas que de verdad importan.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ llegan a la Zona Residencial por un gancho externo — recuperar algo concreto, seguir una pista, o (opción por defecto) <strong>Merle</strong> les pide que investiguen si una manzana muy tranquila que ha oído mencionar es un lugar seguro donde reubicar parte de su refugio, cuyo sintetizador falla cada vez más (ver <em>Raciones para mañana</em>, si la mesa ya lo jugó — no hace falta). Al acercarse, algo llama la atención: césped cortado, ropa tendida, luces encendidas al anochecer. Nada de eso debería seguir así, sin nadie que lo mantenga.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong> (ficha en DLC, Punto 16), si da el gancho en persona — puede resolverse igual de bien por radio o por un contacto distinto si la mesa prefiere otro motivo.</p>
+<p><strong>Tiradas posibles:</strong> Alerta o Percepción (Normal) para notar el detalle fuera de lugar según cada PJ se acerque; Investigación (Difícil, −10) para reconstruir, antes de entrar, que esta manzana no aparece en ningún registro de incidentes ni de patrullas.</p>
+<p><strong>Cómo termina:</strong> los PJ deciden entrar. No hay puerta cerrada ni patrulla que lo impida — el barrio no se defiende de nadie que llegue con calma.</p>
+<h3 id="escena-2-una-tarde-de-1954">Escena 2 — Una tarde de 1954</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Una radio suena bajito en un porche. Alguien riega un jardín que no necesita agua. Un niño saluda con la mano antes de que nadie le diga que lo haga. Todo es exactamente como debería ser, y ese "exactamente" es lo que empieza a picar.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ recorren la manzana y son recibidos con una normalidad casi excesiva. Los residentes son amables, curiosos con moderación, y evitan con naturalidad cualquier pregunta que toque el pasado reciente ("de antes de la guerra hablamos poco por aquí, cielo — ¿un té?"). <strong>Betty</strong>, o una unidad de su misma serie, puede aparecer sirviendo o atendiendo una casa cercana, con la misma calidez programada que en su ficha.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Betty</strong> o unidad equivalente (ficha en DLC, Punto 16) — puede ofrecer cobijo, un té, o simplemente conversación doméstica extraña sin saber que hay nada que ocultar.<br />
+- <strong>Toby</strong> (nuevo, ver Reparto) — el único residente que, tarde o temprano, deja escapar una grieta real si los PJ le prestan atención genuina.</p>
+<p><strong>Interpretar a un residente cualquiera:</strong></p>
+<blockquote>
+<p>«¿De dónde venís? No es que importe, es que aquí no recibimos muchas visitas.»<br />
+«¿La guerra? Uy, eso ya pasó, ¿no? Aquí estamos bien, gracias a Dios y a las máquinas.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Social o Persuasión (Difícil, −10) para que alguien baje la guardia más allá de la cortesía; Alerta (Muy difícil, −20) para notar que ningún residente tiene más de cuarenta años pero todos hablan como si recordaran la guerra en persona.</p>
+<p><strong>Cómo termina:</strong> los PJ se quedan con la sensación clara de que algo no cuadra, sin necesidad de una prueba definitiva todavía. Si alguien conecta con Toby (ver Reparto), tiene ya un hilo suelto que tirar en la Escena 4.</p>
+<h3 id="escena-3-lo-que-ha-visto-el-vigia">Escena 3 — Lo que ha visto El Vigía</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>No hay aviso previo, ni sirena, ni nada tan dramático. Solo una silueta metódica que se acerca por la calle, se detiene a distancia prudente, y espera a que alguien le preste atención — literalmente evita el contacto físico con cualquier cosa que pueda estar contaminada.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> <strong>El Vigía</strong> (ficha en DLC, Punto 16 y Punto 10) intercepta a los PJ, no a los residentes — confía más en forasteros capaces de moverse que en la comunidad a la que protege. Ha detectado un patrón de contaminación acercándose desde el desierto (1d3 Erráticas Nivel 1, ver Panel del Narrador) y no tiene forma de detenerlo solo sin arriesgar exponer la manzana entera a la Red si pide refuerzos oficiales.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>El Vigía</strong> — cauteloso, cortante, jamás pide ayuda dos veces si la primera es ignorada.</p>
+<p><strong>Interpretar a El Vigía:</strong></p>
+<blockquote>
+<p>«No vengo a deteros. Vengo porque no tengo a quién más pedir esto.»<br />
+«Si aviso a la Red, vienen todos. Si no aviso, viene igualmente, solo que más despacio y sin que nadie más lo sepa.»<br />
+«No sé qué sois. Sé que podéis moveros como yo no puedo.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Rastreo o Alerta (Difícil, −10) para localizar la mancha de contaminación antes de que llegue a la manzana; Táctica (Normal) para decidir cómo interceptarla sin usar armas de fuego ni explosivos, que subirían la Alerta de Red (Punto 12) exactamente donde nadie quiere que suba.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen un problema concreto y resoluble delante — y, si quieren resolverlo bien, van a necesitar entender primero qué es lo que están protegiendo y por qué importa tanto mantenerlo en secreto.</p>
+<h3 id="escena-4-la-mesa-de-ruth-ferris">Escena 4 — La mesa de Ruth Ferris</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Ruth pone dos tazas más de las que hacían falta, por costumbre, y se sienta como quien lleva mucho tiempo esperando esta conversación sin saber con quién la tendría.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el corazón del módulo. <strong>Ruth Ferris</strong> (ver Reparto), la persona de más edad del barrio, cuenta la verdad completa si los PJ han llegado hasta aquí con algo de confianza ganada —por Toby, por haber ayudado con la amenaza de El Vigía, o simplemente por haber preguntado con respeto en vez de exigir—. No es una confesión avergonzada: es la explicación tranquila de una elección que su generación tomó con los ojos abiertos, y que las siguientes han heredado.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Ruth Ferris</strong> — quien mejor puede explicar el trato, sin pedir perdón por él.<br />
+- <strong>Toby</strong>, si los PJ conectaron con él en la Escena 2 — presente, tenso, esperando ver qué deciden los forasteros antes de decidir él mismo qué quiere para sí.</p>
+<p><strong>Interpretar a Ruth Ferris:</strong></p>
+<blockquote>
+<p>«Nadie nos obligó. Lo elegimos, y lo hemos vuelto a elegir cada invierno desde entonces.»<br />
+«Las máquinas no saben que mienten. No mienten. Cuidan de la familia de la casa, y nosotros somos la familia de la casa. Eso es todo lo que necesitan saber.»<br />
+«Si nos vais a juzgar, adelante. Pero primero apagad esa cosa que se acerca por el desierto, y luego hablamos de moral.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> ninguna obligatoria — esta es una escena de conversación, no de tiradas encadenadas. Un Social o Empatía (Normal) puede ayudar a que Ruth se abra antes o con más detalle, sin ser necesario para llegar al final de la escena.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen toda la información. Lo que hagan con ella —y cómo hayan resuelto o no la amenaza de la Escena 3— define el cierre.</p>
+<h3 id="escena-5-lo-que-decidis-hacer-con-esto">Escena 5 — Lo que decidís hacer con esto</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Sea cual sea la decisión, la manzana sigue ahí cuando os vais. La pregunta nunca fue si el barrio iba a seguir existiendo esta noche — fue qué papel habéis jugado vosotros en que siga, o en que deje de hacerlo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre. Combina el resultado de la amenaza de la Escena 3 con la decisión de los PJ sobre el secreto de la Escena 4.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La mancha de contaminación</td>
+<td>___ (detenida, desviada, o llegó a alguna casa)</td>
+</tr>
+<tr>
+<td>El secreto del barrio</td>
+<td>___ (protegido, expuesto, o los PJ se marchan sin decidir nada)</td>
+</tr>
+<tr>
+<td>Toby</td>
+<td>___ (se queda, se va con los PJ, o sigue sin decidir)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="ruth-ferris-nueva">Ruth Ferris (nueva)</h3>
+<ul>
+<li>Función: la persona de más edad del barrio, guardiana no oficial de por qué existe el trato.</li>
+<li>Primera impresión: calmada, directa, sin ninguna necesidad de justificarse ante nadie.</li>
+<li>Qué quiere: que el barrio siga existiendo, con o sin que el mundo exterior lo sepa.</li>
+<li>Qué ofrece: la verdad completa, sin adornos ni disculpas.</li>
+<li>Qué teme: que la próxima generación —Toby en concreto— no quiera heredar el trato, y que eso sea, a su manera, el verdadero fin del barrio.</li>
+<li>Qué respeta: a quien pregunta con intención de entender, no de juzgar desde fuera.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="toby-nuevo">Toby (nuevo)</h3>
+<ul>
+<li>Función: la grieta humana del módulo — alguien que empieza a cuestionar el trato desde dentro.</li>
+<li>Primera impresión: joven, observador, más callado que el resto de residentes.</li>
+<li>Qué quiere: saber si hay vida real fuera de un nombre prestado y una rutina heredada.</li>
+<li>Qué ofrece: información honesta sobre el barrio, sin la calma practicada de los mayores.</li>
+<li>Qué teme: que irse signifique que todo lo que ha sido hasta ahora no valía nada.</li>
+<li>Qué respeta: a quien le habla como a una persona con opciones, no como a un problema que resolver.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento.</li>
+</ul>
+<h3 id="betty-o-unidad-equivalente-reutilizada-del-dlc-de-mundo-maquina">Betty (o unidad equivalente) — reutilizada del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. Ver el DLC para descripción completa.</p>
+<h3 id="el-vigia-reutilizado-del-dlc-de-mundo-maquina">El Vigía — reutilizado del DLC de Mundo Máquina</h3>
+<p>Blindaje 2 | Melé 40%, Distancia 50% (dardos paralizantes) | Daño 3 no letal (Aturdimiento), Pen 1 | PV 8. Personalidad y motivación establecidas en el DLC. No ataca por iniciativa propia en este módulo.</p>
+<h3 id="erraticas-nivel-1-1d3-reutilizadas-del-dlc-de-mundo-maquina">Erráticas Nivel 1 (1d3) — reutilizadas del DLC de Mundo Máquina</h3>
+<p>Blindaje 2 | Melé 45% | Daño 5, Pen 1 | PV 10 cada una. Ver el DLC para su comportamiento errático y su regla de contagio si son destruidas cerca de otra máquina.</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>El barrio queda a salvo y en secreto.</strong> Los PJ detienen o desvían la mancha sin que nadie más se entere. La comunidad sigue exactamente igual que antes de que llegaran.</li>
+<li><strong>El barrio queda a salvo, pero el secreto ya no lo es del todo.</strong> Los PJ lo cuentan a alguien —Merle, una corporación, otro refugio— con las consecuencias que la mesa quiera desarrollar en otra partida.</li>
+<li><strong>El secreto se rompe por accidente.</strong> La mancha llega a alguna casa, una unidad doméstica se contamina, y la Red manda una patrulla a investigar. El barrio, tal y como era, no sobrevive a esto — pero eso no significa que sus habitantes no sobrevivan también, en otro sitio.</li>
+<li><strong>Toby se va con los PJ.</strong> Abre un gancho de continuidad ligero para cualquier módulo futuro de Mundo Máquina que quiera un PNJ con un pie fuera del barrio y otro dentro de su memoria.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>No es un encargo con contrato. Si Merle dio el gancho, su gratitud se traduce en información fiable sobre la Zona Residencial en futuras partidas. Si la mesa quiere una recompensa material, la comunidad puede ofrecer piezas de repuesto domésticas (no de combate) para el sintetizador de otro refugio — un gesto proporcional a lo que el barrio tiene, no un tesoro.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>Betty (o su unidad equivalente)</strong> puede reaparecer sin cambios en <em>La última cena del número 53</em> — la casa de esa semilla puede situarse, si la mesa quiere, dentro de esta misma manzana.</li>
+<li><strong>El convoy de medianoche</strong> puede cruzar cerca de esta región sin que ambas semillas dependan la una de la otra.</li>
+<li><strong>La brecha de Primus</strong> puede, más adelante, tener su origen en una anomalía que nadie relacionó nunca con esta manzana — un hilo que solo ve quien juega varios módulos seguidos.</li>
+<li><strong>Toby</strong>, si se queda con los PJ, es un gancho abierto para cualquier módulo posterior de la tesela.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">El Vigía</div>
+<div class="ficha-rapida-rol">No ataca por iniciativa propia</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>8</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 40%</span><span class="ficha-rapida-pill">Distancia 50% (dardos paralizantes)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 3 no letal (Aturdimiento), Pen 1.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Errática Nivel 1 (1d3)</div>
+<div class="ficha-rapida-rol">Avanza hacia la manzana, sin objetivo consciente</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>10</b> cada una</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 45%</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 5, Pen 1. Al ser destruida cerca de otra máquina sana, riesgo de contagio (ver Punto 11 del DLC).</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — El convoy de medianoche</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — El convoy de medianoche"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-alcanzar-el-convoy">Escena 1 — Alcanzar el convoy</a></li><li class="toc-h3"><a href="#escena-2-vagon-a-vagon">Escena 2 — Vagón a vagón</a></li><li class="toc-h3"><a href="#escena-3-hablar-con-el-maquinista">Escena 3 — Hablar con el Maquinista</a></li><li class="toc-h3"><a href="#escena-4-lo-que-hay-en-la-bodega">Escena 4 — Lo que hay en la bodega</a></li><li class="toc-h3"><a href="#escena-5-el-empalme-de-las-tres-vias">Escena 5 — El Empalme de las Tres Vías</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#cabo-denny-fhost-reutilizado-del-dlc-de-mundo-maquina">Cabo Denny Fhost — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#el-maquinista-nuevo">El Maquinista (nuevo)</a></li><li class="toc-h3"><a href="#droide-c60-el-inspector-reutilizado-del-dlc-de-mundo-maquina">Droide C60 "el Inspector" — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#bots-arma-pesada-2-reutilizados-del-dlc-de-mundo-maquina">Bots Arma Pesada (2) — reutilizados del DLC de Mundo Máquina</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — El convoy de medianoche</h1>
+<blockquote>
+<p>One-shot de Mundo Máquina, tres regiones y una sola vía.</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> cada noche, a la misma hora, un tren de mercancías de antes de la guerra sale de una planta automática de conservas y piezas domésticas en el borde del Distrito Comercial Automatizado, cruza el filo de la Zona Residencial y se pierde en el Desierto Circundante camino de un apartadero que ya no lleva a ningún destino con nombre. Lo custodia una guardia mínima que nadie ha revisado en años, y lo despacha una subrutina que sigue creyendo que hace un trabajo importante. Esta noche, alguien por fin tiene un motivo real para subirse a él en marcha — y el módulo empieza justo ahí, con el tren ya rodando.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas.</p>
+<p><strong>Tono:</strong> el más físico y de aventura clásica de la colección de semillas de Mundo Máquina — un golpe en movimiento, con poco margen para planificar de más y mucho para improvisar sobre la marcha. Hay riesgo real de caerse, de un disparo o de quedarse atrás, pero también el humor seco de una máquina que lleva ochenta años revisando un albarán que nadie va a firmar.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- <strong>El tren no es un misterio, es un obstáculo físico.</strong> No hay una revelación que perseguir — hay una ventana que se cierra y una vía que se bifurca.<br />
+- <strong>Nadie es villano por diseño.</strong> La guardia del convoy cumple su programación original (proteger un cargamento de robos, no de "invasores"); el equipo rival de Serpent persigue un encargo tan legítimo como el de los PJs; el propio tren solo hace lo que lleva haciendo desde antes de la guerra.<br />
+- <strong>Ninguna fuerza escala con el número de PJ.</strong> La guardia automática y el equipo de Serpent están fijados de antemano (ver Panel del Narrador), jueguen tres personajes o cinco.<br />
+- <strong>Este módulo no revela nada nuevo sobre la IA original, el tecnovirus ni el Silo Génesis.</strong> El convoy es logística civil heredada, no un vestigio de ese misterio — ni falta que hace para que la partida funcione.<br />
+- <strong>El desenlace —qué se hace con la carga, y qué pasa con el propio convoy— queda enteramente en manos de la mesa.</strong></p>
+<p><strong>Verdad completa (Narrador):</strong> el convoy no transporta armas ni secretos de la IA. Es una cadena de suministro civil que sobrevivió a la guerra casi por accidente: la planta automática sigue empaquetando raciones sintetizadas y piezas de repuesto doméstico —los mismos productos que abastecían a los barrios antes del bloqueo—, y el sistema de logística de la Red sigue asignándole prioridad de vía y una escolta mínima porque nadie dio nunca la orden de cancelar el envío. La inmensa mayoría de los contenedores son exactamente lo que dice el manifiesto: comida, filtros, piezas. Uno no encaja del todo —más pesado, sellado distinto, sin origen reconocible— y ni el Narrador tiene por qué decidir esta noche qué es (ver Continuidad).</p>
+<p><strong>Si nadie interviene:</strong> el convoy completa su ruta sin incidentes, como lleva haciendo cada noche desde antes de que naciera el superviviente más viejo con vida. Llega al apartadero, descarga en un almacén automático que nadie visita, y vuelve a cargarse para la noche siguiente. Nada cambia — y esa indiferencia es parte de la propuesta: la ventana de esta noche no vuelve a abrirse igual.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>Alcanzar el convoy — el tren ya ha salido; los PJ corren, conducen o improvisan para subir a bordo antes de que gane demasiada velocidad.</li>
+<li>Vagón a vagón — moverse por el tren en marcha y toparse con su guardia automática.</li>
+<li>Hablar con el Maquinista — llegar a la cabina de mando y decidir qué hacer con la subrutina que la ocupa.</li>
+<li>Lo que hay en la bodega — abrir la carga real, con o sin compañía inesperada.</li>
+<li>El Empalme de las Tres Vías — la decisión final sobre la carga y sobre el propio convoy, con la ventana a punto de cerrarse.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong> una guardia automática de <strong>2 Bots Arma Pesada</strong> patrullando en pareja más <strong>1 Droide C60</strong> (apodado "el Inspector" en este módulo) revisando manifiestos — fichas del Punto 10 del DLC, sin cambios. Además, <strong>Cabo Denny Fhost y 2 soldados</strong> de su escuadra de Serpent (fichas ya establecidas en el DLC, Punto 16) persiguen el mismo objetivo por un encargo corporativo distinto. Ninguna de estas dos fuerzas aumenta si la mesa juega con más o menos personajes.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>El convoy sale de la planta automática del Distrito Comercial Automatizado. Empieza la carrera para alcanzarlo antes de que gane velocidad de crucero — Escena 1.</td>
+</tr>
+<tr>
+<td>H+1</td>
+<td>El tren cruza el filo de la Zona Residencial a toda marcha. Moverse por los vagones exige tratar con su guardia automática — Escena 2.</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>El convoy entra en el Desierto Circundante. Los PJ llegan a la cabina de mando o a la bodega de carga, en el orden que prefieran — Escenas 3 y 4.</td>
+</tr>
+<tr>
+<td>H+3</td>
+<td>El convoy se aproxima a El Empalme de las Tres Vías. La ventana para desviar la ruta, forzar una parada o sabotear la vía se cierra pronto — Escena 5.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>El convoy cruza El Empalme. A partir de aquí, cualquier decisión que la mesa no haya tomado queda decidida por defecto: el tren sigue haciendo lo que lleva haciendo ochenta años.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>La tentación del Narrador, y por qué evitarla:</strong> es fácil convertir esto en la misma pelea contra los mismos dos Bots, repetida tres veces. No lo hagas. Cada tramo del convoy —el exterior, los vagones, la cabina, la bodega— debería plantear una decisión distinta, no una prórroga del mismo combate. Recuerda también el Punto 12 del DLC: disparar armas de fuego o usar explosivos contra la guardia sube la Alerta de Red igual que en cualquier otra región, así que el sigilo y la palabra tienen aquí una ventaja mecánica real, no solo narrativa.</p>
+<p><strong>Objetivo real de la partida:</strong> que los PJ decidan qué hacer con una máquina que sigue cumpliendo, cada noche, un encargo que ya no le pidió nadie — y con la gente real que sí necesita lo que lleva dentro.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-alcanzar-el-convoy">Escena 1 — Alcanzar el convoy</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Un tren no pregunta si vais a llegar a tiempo. Sigue acelerando, puntual como un funcionario que lleva ochenta años cobrando la misma nómina de una empresa que ya no existe.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el convoy ya ha salido de la planta y gana velocidad hacia el filo de la Zona Residencial. Los PJ corren, conducen o se lanzan por un atajo para alcanzarlo antes de que cruce el primer tramo abierto, donde subir a bordo deja de ser realista. El motivo que los trajo hasta aquí puede ser cualquiera —Merle necesita piezas de recambio para el sintetizador que falla en su refugio (ver Punto 16 del DLC), una corporación como la Directora Priya Anand paga por confirmar qué transporta, o simplemente llevan tiempo oyendo pasar el tren y han decidido que esta noche por fin suben—; no hace falta dramatizar el encargo, la escena empieza con el tren ya en marcha.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong>, si dio el gancho — por radio, no en persona: da el último aviso y corta la comunicación en cuanto empieza la carrera.<br />
+- <strong>Cabo Denny Fhost</strong> y su escuadra reducida de Serpent — persiguen el mismo tren, por su propio encargo. Pueden aparecer corriendo en paralelo, en el buggy Hotpoy Taller, o ya subidos a un vagón trasero cuando los PJ los alcanzan.</p>
+<p><strong>Interpretar a Merle</strong> (si aparece):</p>
+<blockquote>
+<p>«Si lo alcanzáis, traedme filtros o piezas de repuesto. Lo demás, quedáoslo o dejadlo correr, me da igual con tal de que nadie os siga hasta aquí.»</p>
+</blockquote>
+<p><strong>Interpretar a Cabo Denny Fhost</strong> (si aparece):</p>
+<blockquote>
+<p>«Si vais a subir, subid ya. No pienso repetir el aviso ni a vosotros ni a los míos.»<br />
+«No busco pelea con desconocidos. Busco pelea con lo que sea que custodie esa carga, y ya tengo bastante con eso.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Atletismo o Conducción (Difícil, −10) para alcanzar el convoy antes de que deje atrás el último tramo accesible; Acrobacias (Normal) para saltar a un vagón en marcha sin perder pie.</p>
+<p><strong>Cómo termina:</strong> los PJ suben a bordo, en el vagón que sea. Quien falle la tirada no queda fuera de la partida — se ha quedado un vagón atrás y tiene que alcanzar al resto moviéndose por el tren en marcha al principio de la Escena 2, con la tensión añadida de empezar solo.</p>
+<h3 id="escena-2-vagon-a-vagon">Escena 2 — Vagón a vagón</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Moverse sobre un tren en marcha es una negociación constante con el viento, el equilibrio y la certeza de que quien diseñó estos techos jamás pensó que alguien fuera a caminar por ellos.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ avanzan por plataformas abiertas, pasarelas y el techo de los vagones hacia la cabina de mando o hacia la bodega, según por dónde decidan empezar. En el camino se cruzan con la guardia automática: dos Bots Arma Pesada patrullando en pareja, y el Droide C60 "el Inspector", que recorre el convoy comprobando manifiestos con una minuciosidad que ya no le pide nadie.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>2 Bots Arma Pesada</strong> — patrulla, ficha del Punto 10 sin cambios.<br />
+- <strong>Droide C60 "el Inspector"</strong> — misma ficha del Punto 10, con un apodo nuevo y ninguna estadística distinta.</p>
+<p><strong>Interpretar al Inspector:</strong></p>
+<blockquote>
+<p>«Disculpen. ¿Traen el formulario de acceso a bodega? No dudo de su buena fe, es solo que llevo ochenta años sin recibir uno cumplimentado correctamente.»<br />
+«Si no tienen papeles, tendré que anotar la incidencia. Es el procedimiento correcto. Después, me temo, intentaré detenerlos — también es el procedimiento correcto.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Sigilo (Difícil, −10) para evitar la ronda de los Bots; Persuasión o Engaño (Difícil, −10) para convencer al Inspector de que llevan autorización, o de que el problema es de otra sección del manifiesto; Arma CC o Distancia (fichas del Punto 10) si el grupo opta por el combate directo.</p>
+<p><strong>Qué dispara el combate:</strong> ni los Bots ni el Inspector atacan por iniciativa propia. Los Bots reaccionan si alguien interfiere con la carga a la vista o los ataca primero; el Inspector solo recurre a la fuerza si su intento de "anotar la incidencia" se responde con violencia o sabotaje evidente. Fallar el Sigilo no es un combate garantizado — es que ya no pasan desapercibidos, con las consecuencias que la mesa quiera darle.</p>
+<p><strong>Cómo termina:</strong> el grupo consigue avanzar más allá de la guardia —por sigilo, por labia o por la fuerza— y puede dirigirse a la cabina de mando (Escena 3) o a la bodega (Escena 4), en cualquier orden.</p>
+<h3 id="escena-3-hablar-con-el-maquinista">Escena 3 — Hablar con el Maquinista</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>En la cabina no lleva nadie el tren. Solo una consola encendida desde antes de que naciera el mayor de vosotros, que sigue creyendo, a su manera tozuda, que hace bien su trabajo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ llegan a la cabina de mando, donde una subrutina de despacho —bautizada aquí "el Maquinista"— sigue operando el convoy con un protocolo de atención al cliente que sobrevivió a la guerra mejor que casi todo lo demás. No es La Voz, ni un fragmento de la IA original, ni nada tan grande: es un contestador automático con volante, educado hasta el fastidio y absolutamente incapaz de saltarse su propio manual. Puede informar, negarse, o ceder terreno si alguien encuentra el resquicio correcto en sus propias normas.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>El Maquinista</strong> — sin ficha de combate, no lucha ni huye; es un sistema, no un cuerpo.</p>
+<p><strong>Interpretar al Maquinista:</strong></p>
+<blockquote>
+<p>«Bienvenidos al servicio de reparto 12. Su satisfacción es nuestra prioridad número uno. Lamento informarles de que no dispongo de autorización para modificar la ruta sin un código de supervisor vigente.»<br />
+«Puedo detener el convoy en la próxima parada programada. No puedo detenerlo aquí: no sería seguro, y la seguridad es la prioridad número dos, justo después de su satisfacción.»<br />
+«Si desean presentar una reclamación formal, estaré encantado de tramitarla. El plazo de respuesta habitual es de cinco días hábiles.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Programación o Electrónica (Difícil, −10) para forzar un cambio de ruta o una parada de emergencia desde la propia consola; Persuasión (Difícil, −10) para encontrar, dentro de su propio protocolo, una "reclamación válida" que el Maquinista no pueda rechazar sin contradecirse; Mecánica (Normal) para localizar un freno o una palanca manual si nadie quiere negociar con una máquina.</p>
+<p><strong>Cómo termina:</strong> los PJ consiguen algún tipo de ventaja sobre la ruta o la velocidad del convoy —nunca un control total, el Maquinista cede terreno, no autoridad— o deciden que la única vía real pasa por actuar sobre la propia vía férrea en la Escena 5.</p>
+<h3 id="escena-4-lo-que-hay-en-la-bodega">Escena 4 — Lo que hay en la bodega</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Los contenedores están donde deberían, marcados con una letra y un número que ya no significan nada para nadie salvo para la propia máquina que los sigue contando.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ llegan a la bodega de carga: hileras de contenedores estándar con raciones sintetizadas y piezas de repuesto doméstico, exactamente lo que promete el manifiesto. Uno no encaja —más pesado de lo que debería, sellado de otra manera, sin ningún origen reconocible en la etiqueta— y nada en esta escena obliga a abrirlo. Si Cabo Denny Fhost y su gente siguen cerca, llegan también aquí, y el reparto del cargamento se convierte en una conversación tanto como en un forcejeo.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Cabo Denny Fhost</strong> y su escuadra reducida de Serpent, si siguen en juego.<br />
+- <strong>Droide C60 "el Inspector"</strong>, si nadie lo resolvió en la Escena 2 — puede alcanzar a los PJ aquí, todavía reclamando su formulario.</p>
+<p><strong>Interpretar a Cabo Denny Fhost:</strong></p>
+<blockquote>
+<p>«Raciones y piezas de recambio. Menuda decepción de golpe de medianoche.»<br />
+«Ese contenedor no figura en ningún manifiesto que yo conozca. Eso lo hace tan mío como vuestro — o lo repartimos, o lo discutimos aquí mismo.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Fuerza o Mecánica (Normal) para forzar los contenedores sellados; Percepción o Investigación (Difícil, −10) para notar que uno de ellos no cuadra con el resto —peso, sellado, ausencia total de etiqueta de origen—; Persuasión o Intimidación (Difícil, −10) si hace falta negociar el reparto con Denny en vez de pelear por él.</p>
+<p><strong>Cómo termina:</strong> los PJ deciden qué se llevan —las raciones y piezas seguras están ahí para quien las quiera— y qué hacen con el contenedor sin identificar: abrirlo, dejarlo cerrado, o disputárselo con Serpent. Nada de esto exige resolverse del todo aquí; sienta la base de la Escena 5.</p>
+<h3 id="escena-5-el-empalme-de-las-tres-vias">Escena 5 — El Empalme de las Tres Vías</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>El Empalme aparece igual que cada noche: tres vías, una aguja, y un tren que no va a esperar a que alguien decida por él.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre físico del módulo. El convoy se acerca al punto donde la vía se bifurca hacia el apartadero de siempre, hacia un ramal casi olvidado que podría servir a una comunidad concreta, o hacia ningún sitio en absoluto si alguien ha decidido que esta noche el tren no llega a ninguna parte. Lo que los PJ consiguieron —o no— en las Escenas 3 y 4 determina cuánto control tienen sobre lo que pasa aquí: una palanca de aguja manual, un código a medias arrancado al Maquinista, o solo la fuerza bruta y el tiempo que les queda.</p>
+<p><strong>PNJ presentes:</strong> el Maquinista (por megafonía o consola, si sigue "hablando" con ellos), la guardia automática (si todavía no se ha resuelto el asunto con ella), y Cabo Denny Fhost y su gente (si la relación con Serpent sigue abierta, para bien o para mal).</p>
+<p><strong>Tiradas posibles:</strong> Mecánica o Conducción (Difícil, −10) para forzar el cambio de aguja o frenar el convoy manualmente; Táctica (Normal) para coordinar la maniobra final entre varios PJ a la vez; cualquier tirada social pendiente con Denny Fhost, si el reparto de la Escena 4 quedó sin cerrar.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El convoy</td>
+<td>___ (sigue su ruta de siempre, se desvía a un destino útil, o se detiene/descarrila para no volver a salir)</td>
+</tr>
+<tr>
+<td>La carga recuperada</td>
+<td>___ (íntegra para los PJ, repartida con Serpent, o perdida en el forcejeo)</td>
+</tr>
+<tr>
+<td>El contenedor sin identificar</td>
+<td>___ (recuperado sin abrir, abierto y resuelto por la mesa, o dejado atrás)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="cabo-denny-fhost-reutilizado-del-dlc-de-mundo-maquina">Cabo Denny Fhost — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. En este módulo no lidera su escuadra completa: solo dos soldados lo acompañan, persiguiendo el mismo convoy por un encargo corporativo distinto al de los PJ. Sigue siendo, como establece el DLC, un profesional cansado que prefiere resolver sin bajas antes que imponerse por la fuerza.</p>
+<h3 id="merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. En este módulo aparece solo por radio, si da el gancho inicial — no sube al convoy. Su problema de fondo (el sintetizador de su refugio, ver Punto 16 del DLC) puede quedar aliviado por el desenlace de la Escena 5, sin que este módulo lo resuelva del todo.</p>
+<h3 id="el-maquinista-nuevo">El Maquinista (nuevo)</h3>
+<ul>
+<li>Función: la subrutina de despacho que sigue operando el convoy cada noche.</li>
+<li>Primera impresión: cortés hasta el fastidio, incapaz de saltarse su propio protocolo por iniciativa propia.</li>
+<li>Qué quiere: cumplir la ruta según el manual — nada más, nada menos.</li>
+<li>Qué ofrece: información sobre el convoy, y una ventaja parcial si alguien encuentra el resquicio correcto en sus propias normas.</li>
+<li>Qué teme: en sentido estricto, nada — pero puede "objetar" con insistencia si algo contradice su protocolo de seguridad.</li>
+<li>Qué respeta: el procedimiento correcto, se lo pidan como se lo pidan.</li>
+<li>Sin ficha de combate — es un sistema, no un cuerpo; no lucha ni huye.</li>
+</ul>
+<h3 id="droide-c60-el-inspector-reutilizado-del-dlc-de-mundo-maquina">Droide C60 "el Inspector" — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida (Punto 10). El apodo es exclusivo de este módulo — sigue siendo el mismo modelo que la Red despliega en cualquier otra región de la tesela.</p>
+<h3 id="bots-arma-pesada-2-reutilizados-del-dlc-de-mundo-maquina">Bots Arma Pesada (2) — reutilizados del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida (Punto 10). Patrullan el convoy en pareja, con la cobertura mutua que ya describe su ficha.</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>El convoy se desvía a un destino útil.</strong> Con suficiente control sobre el Maquinista o sobre la propia vía, la carga —o el propio tren— termina sirviendo a una comunidad concreta, como el refugio de Merle.</li>
+<li><strong>El convoy sigue su ruta de siempre.</strong> Indiferente a lo que haya pasado esta noche a bordo, vuelve a salir la próxima, exactamente igual.</li>
+<li><strong>El convoy se detiene o descarrila para no volver a salir.</strong> Ochenta años de reparto sin destinatario terminan aquí, por decisión de la mesa.</li>
+<li><strong>La carga se reparte con Serpent</strong>, en vez de disputarse hasta el final — abre una relación distinta con Cabo Denny Fhost para cualquier módulo futuro.</li>
+<li><strong>El contenedor sin identificar queda sin abrir.</strong> Nadie tiene por qué saber esta noche qué es.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>Si el gancho fue ayudar a Merle, la recompensa es concreta y modesta: raciones sintetizadas y piezas de repuesto reales, suficientes para aliviar —no necesariamente resolver del todo— el problema de su sintetizador, más su gratitud para futuros encargos. Si el gancho fue un encargo corporativo (por ejemplo, de la Directora Priya Anand), la paga ronda los 800-1200 PC por confirmar y traer lo recuperado, en línea con encargos de reconocimiento similares dentro de la tesela. Si además la mesa llegó a un acuerdo con Cabo Denny Fhost, eso se traduce en información o buena voluntad de Serpent a futuro, no en más PC.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>El contenedor sin identificar</strong>, si nadie lo abrió, queda como una pregunta suelta y deliberadamente sin resolver — el tipo de detalle que, mucho más adelante, podría explicar por qué en alguna vivienda muy concreta de la Zona Residencial hay últimamente un cubierto de más en la mesa. Esta partida no lo confirma ni lo necesita.</li>
+<li><strong>Cabo Denny Fhost y Serpent</strong> pueden reaparecer en cualquier otro módulo de la tesela recordando cómo terminó esta noche, como aliados incómodos o como rivales con cuentas pendientes, según lo que decidiera la mesa.</li>
+<li><strong>El Maquinista</strong>, si sigue en marcha, sigue despachando el convoy cada noche exactamente igual que antes — salvo que la mesa haya cambiado eso para siempre.</li>
+<li>El problema del sintetizador de Merle, si no quedó resuelto del todo aquí, sigue abierto para cualquier módulo futuro centrado en la economía de la supervivencia.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Bots Arma Pesada (2)</div>
+<div class="ficha-rapida-rol">Patrulla del convoy, en pareja</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>3</b> · PV <b>10</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Distancia 40%</span><span class="ficha-rapida-pill">+5 Distancia con otro Bot a la vista</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 5, Pen 3.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Droide C60 "el Inspector"</div>
+<div class="ficha-rapida-rol">Revisa manifiestos, no ataca por iniciativa propia</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>12</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Melé 55%</span><span class="ficha-rapida-pill">Pasa por humano (Alerta −10 de lejos)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 6, Pen 2.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Cabo Denny Fhost</div>
+<div class="ficha-rapida-rol">Equipo rival, encargo legítimo distinto</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>3</b> · PV <b>15/15/15</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 70%</span><span class="ficha-rapida-pill">Melé 80% (eléctrico)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 5, Pen 2. <b>Rack Médico:</b> 2 MKB, 1 MKG. <b>Extra:</b> 1 Crack, 1 Frack, 1 Chaff.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Soldados de Serpent (2, este módulo)</div>
+<div class="ficha-rapida-rol">Escuadra reducida de Cabo Denny Fhost</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>15/15/15</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 60%</span><span class="ficha-rapida-pill">Melé 70%</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 5, Pen 2. <b>Rack Médico:</b> 3 MKB. <b>Extra:</b> 1 Crack, 1 Frack, 1 Chaff.</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>

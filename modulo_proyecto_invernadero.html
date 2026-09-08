@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÓDULO — Proyecto Invernadero</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "MÓDULO — Proyecto Invernadero"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</a></li><li class="toc-h3"><a href="#desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</a></li><li class="toc-h2"><a href="#panel-del-narrador">Panel del Narrador</a></li><li class="toc-h2"><a href="#la-aventura">La aventura</a></li><li class="toc-h3"><a href="#escena-1-la-llamada-que-no-pediste">Escena 1 — La llamada que no pediste</a></li><li class="toc-h3"><a href="#escena-2-el-ultimo-jardin">Escena 2 — El último jardín</a></li><li class="toc-h3"><a href="#escena-3-los-guardianes">Escena 3 — Los guardianes</a></li><li class="toc-h3"><a href="#escena-4-la-extraccion">Escena 4 — La extracción</a></li><li class="toc-h3"><a href="#escena-5-lo-que-quede-del-jardin">Escena 5 — Lo que quede del jardín</a></li><li class="toc-h2"><a href="#reparto-resumen-de-personajes">Reparto — resumen de personajes</a></li><li class="toc-h3"><a href="#directora-priya-anand-reutilizada-del-dlc-de-mundo-maquina">Directora Priya Anand — reutilizada del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#cabo-denny-fhost-y-su-equipo-reutilizados-del-dlc-de-mundo-maquina">Cabo Denny Fhost y su equipo — reutilizados del DLC de Mundo Máquina</a></li><li class="toc-h3"><a href="#dahlia-renner-nueva">Dahlia Renner (nueva)</a></li><li class="toc-h3"><a href="#guardianes-de-el-invernadero-grupo-fijo-nuevo">Guardianes de El Invernadero (grupo fijo, nuevo)</a></li><li class="toc-h3"><a href="#noor-iyer-nueva">Noor Iyer (nueva)</a></li><li class="toc-h3"><a href="#merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</a></li><li class="toc-h2"><a href="#decision-final">Decisión final</a></li><li class="toc-h3"><a href="#desenlaces-combinables">Desenlaces combinables</a></li><li class="toc-h3"><a href="#recompensa">Recompensa</a></li><li class="toc-h3"><a href="#continuidad">Continuidad</a></li><li class="toc-h2"><a href="#fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>MÓDULO — Proyecto Invernadero</h1>
+<blockquote>
+<p>La única guerra de esta tesela en la que ambos bandos son gente, y el premio es un jardín.</p>
+</blockquote>
+<hr />
+<h2 id="resumen-operativo-leelo-antes-de-dirigir">Resumen operativo — léelo antes de dirigir</h2>
+<p><strong>Premisa:</strong> una corporación ha localizado El Invernadero —la reserva biológica aislada de la tesela, uno de los pocos lugares donde sobrevivió vida vegetal y animal a la guerra— y esta vez está dispuesta a lo que haga falta para no volver con las manos vacías. La Directora Priya Anand, bajo presión después de dos incursiones fallidas seguidas, contrata (o recluta, según cómo se lo tomen) a los PJ para apoyar al equipo de extracción del Cabo Denny Fhost. Al otro lado están los guardianes humanos que llevan generaciones protegiendo el reducto: gente sin ejército ni blindaje corporativo, pero con toda la razón del mundo para no ceder. Los PJ deciden de qué lado están, si es que eligen alguno.</p>
+<p><strong>Duración:</strong> one-shot de 4-6 horas, cinco escenas.</p>
+<p><strong>Tono:</strong> el más abiertamente conflictivo de la colección de semillas de Mundo Máquina — el único con combate serio previsible entre bandos humanos, no contra máquinas. Hay lugar para la negociación, el chantaje emocional y el humor incómodo de la burocracia corporativa hablando de vidas como de inventario, pero el peso real de la partida es moral, no táctico.</p>
+<p><strong>Número recomendado de PJ:</strong> de tres a cinco.</p>
+<p><strong>Decisiones declaradas de este módulo:</strong><br />
+- <strong>Ningún bando es el villano.</strong> Priya Anand necesita resultados que justifiquen el coste político de la operación ante sus superiores; Denny Fhost quiere volver con su gente completa y algo que enseñar; los guardianes defienden lo último que queda de algo que la guerra les arrebató a todos. Los tres motivos son legítimos, incluso cuando chocan.<br />
+- <strong>El peligro de El Invernadero no es mecánico.</strong> Es el único lugar de la tesela donde eso es cierto: aquí el riesgo es un ecosistema que no soportaría mucho más daño, restos de armas de bioingeniería todavía activos, y personas dispuestas a pelear por ello.<br />
+- <strong>Este módulo no revela nada nuevo sobre la IA original, el tecnovirus ni el Silo Génesis.</strong> No hace falta para que funcione.<br />
+- <strong>El desenlace queda enteramente en manos de la mesa</strong> — trabajar para la corporación, ponerse del lado de los guardianes, negociar un reparto, sabotear a ambos o quedarse al margen son todas respuestas válidas; ninguna es la "correcta" por diseño.</p>
+<p><strong>Verdad completa (Narrador):</strong> Priya Anand no miente cuando dice que esto es importante para ella: dos incursiones seguidas han vuelto sin nada, la brecha del Maestro renegado se desgasta un poco más con cada uso, y su superior ya pregunta por qué sigue financiando esto. Esta vez ha enviado al Cabo Denny Fhost con más recursos de los habituales —contenedores de bioseguridad, una promesa de extracción garantizada a través de la brecha si el trabajo sale bien, y una bióloga de campo, Noor Iyer, para asegurarse de que lo que traigan de vuelta valga algo—. Fhost no quiere una masacre; quiere terminar el encargo sin perder a nadie más. Los guardianes, liderados por Dahlia Renner, no tienen forma de ganar un enfrentamiento directo contra un equipo así armado: solo pueden encarecerlo lo suficiente para que no merezca la pena, o encontrar a alguien dispuesto a inclinar la balanza sin que nadie tenga que morir por ello.</p>
+<p><strong>Si nadie interviene:</strong> Fhost cumple el encargo. Se lleva muestras biológicas viables y al menos un resto recuperable de las armas de bioingeniería de la guerra, con bajas en ambos bandos —ninguna masacre, pero ninguna victoria limpia tampoco—. El Invernadero sobrevive, dañado y con una generación menos de confianza en que el mundo exterior lo deje en paz. Priya Anand consigue el resultado que necesitaba. Nadie queda satisfecho del todo, y eso es exactamente lo que este módulo existe para que la mesa pueda evitar, cambiar o simplemente presenciar con los ojos abiertos.</p>
+<h3 id="desarrollo-en-cinco-escenas">Desarrollo en cinco escenas</h3>
+<ol>
+<li>La llamada que no pediste — Priya Anand ofrece (o presiona) a los PJ, sin preámbulo.</li>
+<li>El último jardín — los PJ llegan a las inmediaciones de El Invernadero y ven, por primera vez, lo que está en juego.</li>
+<li>Los guardianes — Dahlia Renner y su gente hacen contacto: su versión, sus motivos, sus límites.</li>
+<li>La extracción — el equipo de Fhost se mueve. El conflicto, con o sin combate, llega a su punto álgido.</li>
+<li>Lo que quede del jardín — cierre, en manos de la mesa.</li>
+</ol>
+<hr />
+<h2 id="panel-del-narrador">Panel del Narrador</h2>
+<p><strong>Fuerzas fijas, no escalan con el número de PJ:</strong></p>
+<ul>
+<li><strong>Equipo de extracción de Cabo Denny Fhost</strong> (reutilizado del DLC de Mundo Máquina, ficha íntegra en Fichas rápidas): Soldado Zapador, tres Soldados, Hotpoy Taller (buggy de apoyo) y el propio Fhost. Esta vez viajan con contenedores de bioseguridad y con Noor Iyer, bióloga de campo sin ficha de combate. Sus números de combate no cambian respecto a su aparición anterior en la tesela — lo que ha cambiado es la presión bajo la que actúan, no su fuerza bruta.</li>
+<li><strong>Guardianes de El Invernadero</strong> (nuevos, ficha en Fichas rápidas): Dahlia Renner y cuatro guardianes. Conocen cada palmo del perímetro, tienen trampas ya colocadas y ventaja de terreno, pero llevan armas heredadas, no equipo corporativo. No van a ganar un tiroteo abierto contra el equipo de Fhost, y lo saben — su fuerza real es la paciencia y el conocimiento del lugar, no el fuego.</li>
+</ul>
+<p><strong>El peligro real, y no es mecánico:</strong> los restos de las armas de bioingeniería de la guerra siguen presentes en El Invernadero —esporas, contenedores agrietados, cultivos latentes—. Quien los manipule sin Ciencias o Biotecnología (Difícil, −10) previa sufre una exposición: 1d6 de Daño directo, sin curación rápida posible (ni Primeros Auxilios ni nada artificial la acelera, solo el tiempo). No tienen iniciativa, no atacan, no persiguen — son objetos peligrosos, no enemigos. No hace falta ninguna regla nueva más allá de esta.</p>
+<p><strong>Reloj autónomo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H+0</td>
+<td>Directora Priya Anand contacta a los PJ, en persona o por proxy, con la oferta — Escena 1.</td>
+</tr>
+<tr>
+<td>H+1</td>
+<td>El equipo de Cabo Denny Fhost llega al límite exterior de El Invernadero e inicia un reconocimiento discreto, sin entrar todavía.</td>
+</tr>
+<tr>
+<td>H+2</td>
+<td>Los PJ llegan a las inmediaciones del reducto y perciben lo que hay en juego — Escena 2.</td>
+</tr>
+<tr>
+<td>H+3</td>
+<td>Los guardianes, con Dahlia Renner al frente, hacen contacto con los PJ — Escena 3.</td>
+</tr>
+<tr>
+<td>H+4</td>
+<td>Presionado por Priya para no fallar una tercera vez, Fhost ordena iniciar la extracción real — Escena 4.</td>
+</tr>
+<tr>
+<td>H+5</td>
+<td>Punto de no retorno: alguien va a actuar dentro de El Invernadero, con o sin los PJ.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Objetivo real de la partida:</strong> que los PJ decidan, con toda la información y sin que el módulo les diga cuál es la respuesta correcta, qué bando —si alguno— merece lo que está a punto de ganar o perder.</p>
+<p><strong>Complicación opcional, si la mesa la quiere:</strong> un enfrentamiento ruidoso (disparos prolongados, explosivos, un contenedor de bioingeniería abierto de mala manera) puede llamar la atención de Guardián Osei, vigilancia de la cuarentena. No es un combatiente fijo de esta escena — es una consecuencia posible, no garantizada, que el Narrador reserva para cuando la partida necesite un motivo extra para bajar el volumen.</p>
+<hr />
+<h2 id="la-aventura">La aventura</h2>
+<h3 id="escena-1-la-llamada-que-no-pediste">Escena 1 — La llamada que no pediste</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>La cortesía corporativa tiene una textura propia: nunca sube la voz, nunca dice la palabra que haría falta, y aun así consigue que entiendas perfectamente qué pasará si dices que no.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> sin preámbulo, un canal seguro —gestionado por el Maestro renegado a cambio de su propio corte— pone a los PJ en contacto directo con la Directora Priya Anand. No pide permiso para empezar a hablar de negocios. Ofrece un pago sustancioso (1800-2500 PC) por apoyar al equipo del Cabo Denny Fhost en una extracción en El Invernadero, con una ventaja añadida: una plaza garantizada en la próxima ventana de salida de la tesela si el trabajo sale bien. No amenaza abiertamente, pero dice, sin rodeos, que dos incursiones fallidas ya le han costado demasiado y que esta va a salir adelante, con o sin la ayuda de los PJ.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Directora Priya Anand</strong> (ficha establecida, ver Reparto) — vía comunicación remota, nunca presente en persona.</p>
+<p><strong>Interpretar a Priya Anand:</strong></p>
+<blockquote>
+<p>«No os pido que me caigáis bien. Os pido que hagáis un trabajo, lo cobréis, y volváis a casa con una plaza de salida asegurada. Eso es más de lo que consigue la mayoría de la gente atrapada ahí dentro.»<br />
+«Dos intentos en blanco. El tercero no puede serlo, o dejo de tener autorización para financiar ninguno más — y entonces ni vosotros ni nadie vuelve a tener esta oportunidad.»<br />
+«No os pido que disparéis a nadie. Os pido resultados. Cómo los consigáis es cosa vuestra, siempre que no me salpiquen.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Persuasión o Bajos Fondos (Normal) para negociar mejores condiciones o más información antes de comprometerse; Alerta o Investigación (Difícil, −10) para notar que su tono impaciente no es fanfarronería — de verdad está más cerca de perder esto que de ganarlo.</p>
+<p><strong>Cómo termina:</strong> los PJ saben que la operación existe y hacia dónde se dirige, acepten trabajar para Priya, decidan investigar por su cuenta, o se planteen avisar a quien vaya a salir perjudicado. Cualquiera de las tres los pone en marcha hacia El Invernadero.</p>
+<h3 id="escena-2-el-ultimo-jardin">Escena 2 — El último jardín</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Después de tanto desierto gris, el verde duele un poco en los ojos, como una luz encendida de golpe en un cuarto a oscuras. Nadie avisa de que vas a echar de menos algo que no sabías que habías perdido, hasta que lo tienes delante otra vez.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> los PJ llegan a las inmediaciones de El Invernadero: un reducto pequeño y frágil, vegetación real entre chatarra y desierto, un contraste que golpea a cualquiera que lleve tiempo en la tesela. Hay señales de vigilancia mutua ya en marcha —marcas de aviso discretas dejadas por los guardianes, y el rastro reciente, más torpe, del reconocimiento del equipo de Fhost—. <strong>Merle</strong>, si la mesa lo trae (por radio, por haberlo cruzado antes, o simplemente porque su nombre circula entre quien comercia cerca de la Zona Residencial), puede aparecer aquí: mantiene un pequeño trueque con los guardianes —hierbas y remedios que ningún sintetizador reproduce— y conoce el lugar lo bastante para advertir a los PJ sin necesidad de acompañarlos dentro.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Merle</strong> (ficha en el DLC de Mundo Máquina) — opcional, aparece solo para advertir y orientar, no entra en El Invernadero con los PJ.</p>
+<p><strong>Interpretar a Merle</strong> (si aparece):</p>
+<blockquote>
+<p>«Ahí dentro no hay máquinas que os vayan a matar. Hay gente que lleva más tiempo del que imagináis decidiendo hasta dónde está dispuesta a llegar por lo que protege.»<br />
+«Yo les cambio hierbas por medicina de verdad, la que ningún sintetizador sabe hacer. No les debo lealtad, pero tampoco les debo la mentira de fingir que no me importa lo que les pase.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Supervivencia o Vigilar/Rastrear (Difícil, −10) para distinguir las marcas de aviso de los guardianes del rastro corporativo reciente; Ciencias o Biotecnología (Normal) para reconocer, sin tocar nada, que parte de la vegetación crece de forma anómala —zonas donde antiguas armas de bioingeniería dejaron su huella, hermosa y peligrosa a la vez.</p>
+<p><strong>Cómo termina:</strong> los PJ entienden que llegan en medio de algo que ya estaba en marcha por ambos lados, y que cualquier decisión que tomen a partir de aquí tiene consecuencias reales para gente concreta, no abstracta.</p>
+<h3 id="escena-3-los-guardianes">Escena 3 — Los guardianes</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>No hacen falta muchas personas para defender algo, si están dispuestas a que les cueste caro. Los guardianes de El Invernadero no tienen ejército: tienen paciencia, memoria, y la clase de terquedad que solo se cultiva guardando lo último que queda de algo.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> <strong>Dahlia Renner</strong> y varios de sus guardianes interceptan a los PJ —o son interceptados por ellos— antes de que lleguen al corazón del reducto. No disparan primero. Explican, con calma cansada, qué es este lugar, qué queda de las armas de bioingeniería enterradas bajo la vegetación, y por qué no van a dejar que nadie se lo lleve sin más, corporación o no. Si los PJ ya trabajan para Priya, Dahlia no finge sorpresa: lo esperaba, y lo dice sin rencor especial hacia ellos en concreto.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Dahlia Renner</strong> (nueva, ver Reparto).<br />
+- <strong>Guardianes de El Invernadero</strong> (grupo fijo, ver Fichas rápidas) — presentes pero sin intención de combate en esta escena, salvo que los PJ o el equipo de Fhost lo provoquen.</p>
+<p><strong>Interpretar a Dahlia Renner:</strong></p>
+<blockquote>
+<p>«No os voy a pedir que elijáis bando todavía. Os voy a pedir que miréis esto antes de decidir nada.»<br />
+«No tenemos con qué ganarles un tiroteo. Lo sabemos. Lo que tenemos es que no vamos a irnos, así que a ellos les va a costar más de lo que están dispuestos a pagar.»<br />
+«La gente de la corporación no es mala persona por trabajar para quien trabaja. Eso no cambia lo que van a hacer si les dejamos.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Persuasión o Empatía (Difícil, −10) para ganarse una confianza real, no solo cortesía; Ciencias o Biotecnología (Normal) para que Dahlia, si los PJ lo demuestran, comparta lo que sabe sobre los restos de armas más peligrosos del reducto —información útil para cualquier bando que quiera evitar una tragedia por accidente.</p>
+<p><strong>Cómo termina:</strong> los PJ tienen la versión completa de los guardianes: sus motivos, sus límites, y la certeza de que no van a rendirse aunque no puedan ganar. Lo que hagan con eso —contárselo a Fhost, usarlo contra Priya, sumarse a la defensa, o guardárselo— queda en sus manos.</p>
+<h3 id="escena-4-la-extraccion">Escena 4 — La extracción</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Toda guerra pequeña se parece a una grande vista de cerca: dos bandos convencidos de tener razón, alguien en medio que solo quiere que nadie dispare primero, y un jardín que no ha pedido opinión a ninguno de los tres.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> presionado por Priya para no volver a fallar, el Cabo Denny Fhost ordena a su equipo iniciar la extracción real: contenedores de bioseguridad, muestras marcadas, y la intención declarada de llevarse también algún resto recuperable de las armas de bioingeniería, pese a las reticencias visibles de <strong>Noor Iyer</strong>, su propia bióloga de campo. Aquí se decide casi todo: si los PJ han preparado el terreno (negociación, sabotaje, un plan que evite el enfrentamiento directo), la escena puede resolverse sin un solo disparo. Si no, esto es lo más cerca que este módulo llega de un combate abierto entre bandos humanos.</p>
+<p><strong>PNJ presentes:</strong><br />
+- <strong>Cabo Denny Fhost y su equipo</strong> (ficha en Fichas rápidas) — cumplen el encargo, no buscan una masacre.<br />
+- <strong>Noor Iyer</strong> (nueva, ver Reparto) — bióloga de campo, sin ficha de combate, moralmente incómoda con la orden de "recolectar todo lo posible".<br />
+- <strong>Dahlia Renner y los guardianes</strong> (si no se evitó el enfrentamiento) — defienden el reducto con lo que tienen.</p>
+<p><strong>Interpretar al Cabo Denny Fhost:</strong></p>
+<blockquote>
+<p>«No quiero perder a nadie más aquí dentro. Tampoco puedo volver otra vez con las manos vacías. Buscadme una tercera opción, si la tenéis, porque yo no la veo.»<br />
+«No me impresiona quien hace ruido. Me impresiona quien resuelve esto sin que nadie tenga que sangrar por ello.»</p>
+</blockquote>
+<p><strong>Interpretar a Noor Iyer:</strong></p>
+<blockquote>
+<p>«Vengo a catalogar lo que queda antes de que se pierda para siempre, no a arrasarlo. Si esto se convierte en eso, no pienso quedarme callada.»<br />
+«Dadme una razón científica, verificable, para frenar esto, y se la llevo a Priya yo misma. No hace falta que sea un milagro. Basta con que sea cierto.»</p>
+</blockquote>
+<p><strong>Tiradas posibles:</strong> Persuasión, Liderazgo o Táctica (Difícil, −10) para negociar una retirada, un reparto o una tregua antes de que empiecen los disparos; Sigilo o Vigilar/Rastrear (enfrentada contra los guardianes o el equipo de Fhost, según el plan de los PJ) si alguien intenta sabotear o interceptar en silencio; si el combate estalla, se resuelve con las reglas normales de combate y las fichas de Fichas rápidas —recuerda que ninguna fuerza escala con el número de PJ.</p>
+<p><strong>Cómo termina:</strong> la extracción tiene éxito, fracasa, se detiene por negociación, o queda a medias. Sea cual sea el resultado, alguien —guardianes, equipo de Fhost, o ambos— sale de aquí con algo que perder de más.</p>
+<h3 id="escena-5-lo-que-quede-del-jardin">Escena 5 — Lo que quede del jardín</h3>
+<p><strong>Atmósfera:</strong></p>
+<blockquote>
+<p>Los jardines no dan las gracias. Siguen creciendo, o dejan de hacerlo, según lo que alguien decida a su alrededor — y esa indiferencia, bien mirada, es casi un descanso.</p>
+</blockquote>
+<p><strong>Qué está ocurriendo:</strong> el cierre. Combina el resultado de la Escena 4 con las decisiones que los PJ tomaron por el camino —a quién ayudaron, qué le contaron a quién, qué se llevaron o dejaron atrás—.</p>
+<p><strong>Cómo termina:</strong> rellena la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Eje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El Invernadero</td>
+<td>___ (intacto, dañado, o parcialmente perdido)</td>
+</tr>
+<tr>
+<td>Los guardianes y Dahlia Renner</td>
+<td>___</td>
+</tr>
+<tr>
+<td>El equipo de Cabo Denny Fhost</td>
+<td>___</td>
+</tr>
+<tr>
+<td>Directora Priya Anand y su superior</td>
+<td>___ (satisfechos, o con un tercer fallo que cuestionar)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reparto-resumen-de-personajes">Reparto — resumen de personajes</h2>
+<h3 id="directora-priya-anand-reutilizada-del-dlc-de-mundo-maquina">Directora Priya Anand — reutilizada del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. En este módulo, su presión viene de un hecho ya fijado en su trasfondo: dos incursiones seguidas han vuelto con las manos vacías, y su superior empieza a preguntar por qué sigue financiando esto. Esta es, para ella, la que no puede volver a fallar. Sin ficha de combate — nunca entra en la tesela.</p>
+<h3 id="cabo-denny-fhost-y-su-equipo-reutilizados-del-dlc-de-mundo-maquina">Cabo Denny Fhost y su equipo — reutilizados del DLC de Mundo Máquina</h3>
+<p>Personalidad y ficha idénticas a su aparición anterior en la tesela (ver Fichas rápidas). Esta vez cuentan con contenedores de bioseguridad y con una plaza de extracción garantizada si el trabajo sale bien — lo que los hace más decididos a terminar el encargo, no más crueles. Fhost sigue queriendo, por encima de todo, volver con su gente completa.</p>
+<h3 id="dahlia-renner-nueva">Dahlia Renner (nueva)</h3>
+<ul>
+<li>Función: lidera a los guardianes humanos de El Invernadero.</li>
+<li>Primera impresión: calmada incluso bajo presión, directa, con la paciencia de quien ha tenido esta misma conversación con otros forasteros antes y sabe cómo suele terminar.</li>
+<li>Qué quiere: que El Invernadero siga en pie, oculto y protegido, una generación más.</li>
+<li>Qué ofrece: acceso limitado y supervisado a quien demuestre que no quiere destruirlo, e información real sobre los restos de armas de bioingeniería más peligrosos del reducto.</li>
+<li>Qué teme: que esta vez la corporación no se vaya con las manos vacías, y que lo que se lleve sea la posibilidad misma de que El Invernadero sobreviva otro año más.</li>
+<li>Qué respeta: a quien pregunta antes de tomar, y a quien entiende que un "no" es una respuesta completa.</li>
+<li>Problema actual: sus recursos defensivos son reales, pero muy inferiores a los de un equipo corporativo bien financiado — no puede ganar un enfrentamiento directo, solo encarecerlo.</li>
+</ul>
+<h3 id="guardianes-de-el-invernadero-grupo-fijo-nuevo">Guardianes de El Invernadero (grupo fijo, nuevo)</h3>
+<p>Cuatro guardianes sin nombre propio, reclutados entre quienes crecieron protegiendo el reducto. Conocen cada trampa y cada sendero; no tienen equipo corporativo. Ficha en Fichas rápidas.</p>
+<h3 id="noor-iyer-nueva">Noor Iyer (nueva)</h3>
+<ul>
+<li>Función: bióloga de campo contratada por la corporación, integrada en el equipo del Cabo Denny Fhost.</li>
+<li>Primera impresión: metódica, incómoda con la prisa ajena, más interesada en catalogar que en poseer.</li>
+<li>Qué quiere: salvar y documentar el mayor número de especies posible antes de que se pierdan para siempre, sea cual sea el bando que se lleve la victoria.</li>
+<li>Qué ofrece: conocimiento real sobre la fragilidad del ecosistema y sobre qué restos de bioingeniería son manejables y cuáles letales; puede aliarse con los PJ si le ofrecen una vía de estudio que no implique arrasar el lugar.</li>
+<li>Qué teme: que la orden de "recolectar todo lo posible" signifique destruir en vez de conservar.</li>
+<li>Qué respeta: el conocimiento aplicado con paciencia; a quien la trata como científica y no como un obstáculo o un arma.</li>
+<li>Problema actual: su contrato con la corporación no le da margen de maniobra si Fhost recibe la orden de acelerar.</li>
+<li>Sin ficha de combate — civil, no participa en ningún enfrentamiento directo.</li>
+</ul>
+<h3 id="merle-reutilizado-del-dlc-de-mundo-maquina">Merle — reutilizado del DLC de Mundo Máquina</h3>
+<p>Sin cambios respecto a su ficha establecida. En este módulo mantiene un pequeño trueque con los guardianes —hierbas y remedios que ningún sintetizador reproduce— y puede advertir a los PJ sobre El Invernadero sin acompañarlos dentro. Sin ficha de combate.</p>
+<hr />
+<h2 id="decision-final">Decisión final</h2>
+<h3 id="desenlaces-combinables">Desenlaces combinables</h3>
+<ul>
+<li><strong>El Invernadero queda intacto.</strong> Los PJ evitan el enfrentamiento —por negociación, sabotaje o convenciendo a Priya de que no merece la pena el riesgo político— y el reducto sigue exactamente como estaba.</li>
+<li><strong>Extracción parcial, sin tragedia mayor.</strong> El equipo de Fhost se lleva algo, los guardianes conservan lo esencial, y nadie muere por ello. El resultado incómodo, pero sostenible, que más se parece a la vida real.</li>
+<li><strong>La extracción se completa por la fuerza.</strong> Fhost cumple el encargo, con bajas en uno o ambos bandos. El Invernadero sobrevive dañado, y la confianza de sus guardianes en el mundo exterior queda peor que antes.</li>
+<li><strong>Los PJ se ponen del lado de los guardianes.</strong> Ayudan a repeler o desviar la extracción; Priya Anand tiene un tercer fallo que explicar, con las consecuencias que eso implique para su puesto y para futuras incursiones a esta tesela.</li>
+<li><strong>Los PJ negocian un reparto.</strong> Ni victoria ni derrota clara para ningún bando — muestras concretas a cambio de garantías de no volver, o algo equivalente que la mesa quiera desarrollar.</li>
+</ul>
+<h3 id="recompensa">Recompensa</h3>
+<p>Si los PJ trabajan para Priya Anand y la extracción tiene éxito o un resultado aceptable para ella: 1800-2500 PC, más la plaza de extracción garantizada ya prometida. Si se ponen del lado de los guardianes o quedan al margen sin ayudar a la corporación: no hay pago corporativo, pero Dahlia Renner puede ofrecer acceso puntual a remedios biológicos que ningún sintetizador reproduce, o la gratitud de una comunidad que no olvida quién estuvo dispuesto a arriesgarse por ella. En ningún caso los PJ deberían terminar la partida en números rojos por haber aceptado el encargo.</p>
+<h3 id="continuidad">Continuidad</h3>
+<ul>
+<li><strong>Un tercer fallo de Priya Anand</strong>, si ocurre, puede cerrarle (temporalmente o del todo) el acceso a financiación para nuevas incursiones a la tesela — un hilo que cualquier módulo futuro centrado en corporaciones y Mundo Máquina puede recoger.</li>
+<li><strong>Noor Iyer</strong>, si los PJ conectaron con ella, queda como posible aliada o fuente de información científica fiable para partidas futuras dentro o fuera de la tesela.</li>
+<li><strong>El Invernadero entero puede convertirse en el punto de partida de una campaña propia</strong>, si la mesa quiere seguir tirando del hilo: qué pasa si la corporación vuelve con más recursos, qué son exactamente esas armas de bioingeniería que siguen latentes bajo la vegetación, y si los guardianes pueden resistir una vez más. Este one-shot no lo exige — solo deja la puerta abierta.</li>
+</ul>
+<hr />
+<h2 id="fichas-rapidas-consulta-en-mesa">Fichas rápidas — consulta en mesa</h2>
+<p>Solo números y equipo — la descripción y la personalidad de cada uno están en Reparto.</p>
+<div class="fichas-grid">
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Dahlia Renner</div>
+<div class="ficha-rapida-rol">Líder de los guardianes de El Invernadero</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>1</b> · PV <b>14/14/14</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 55%</span><span class="ficha-rapida-pill">Distancia Media 65% (rifle de caza)</span><span class="ficha-rapida-pill">Persuasión 55%</span><span class="ficha-rapida-pill">Primeros Auxilios 50%</span></div>
+<div class="ficha-rapida-equipo"><b>Arma:</b> rifle de caza (Daño 6, Pen 3, Cad 2). Conoce cada trampa y sendero del perímetro — ventaja narrativa, no numérica.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Guardianes de El Invernadero (x4)</div>
+<div class="ficha-rapida-rol">Grupo fijo — defienden, no atacan por iniciativa fuera del reducto</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>1</b> · PV <b>12/12/12</b> cada uno</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 45%</span><span class="ficha-rapida-pill">Distancia Media 50% (armas heredadas)</span></div>
+<div class="ficha-rapida-equipo"><b>Armas:</b> escopetas y rifles de caza heredados (Daño 5, Pen 2, Cad 1). Rack Médico casero: 2 MKB entre todo el grupo. Sin explosivos ni granadas.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Cabo Denny Fhost</div>
+<div class="ficha-rapida-rol">Equipo de extracción corporativo — reutilizado del DLC</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>3</b> · PV <b>15/15/15</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 70%</span><span class="ficha-rapida-pill">Arma CC Media 80% (eléctrico)</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 5, Pen 2. Rack Médico: 2 MKB, 1 MKG. 1 Crack, 1 Frack, 1 Chaff.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Soldado Zapador</div>
+<div class="ficha-rapida-rol">Equipo de Fhost — reutilizado del DLC</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>15/15/15</b></div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 60%</span><span class="ficha-rapida-pill">Arma CC Media 50%</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 7, Pen 5. Rack Médico: 3 MKB. 1 Crack, 1 Frack, 1 Chaff. Porta los contenedores de bioseguridad.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Soldados de Fhost (x3)</div>
+<div class="ficha-rapida-rol">Equipo de Fhost — reutilizados del DLC</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>2</b> · PV <b>15/15/15</b> cada uno</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Sigilo 60%</span><span class="ficha-rapida-pill">Arma CC Media 70%</span></div>
+<div class="ficha-rapida-equipo"><b>Daño:</b> 5, Pen 2. Rack Médico: 3 MKB. 1 Crack, 1 Frack, 1 Chaff.</div>
+</div>
+</div>
+
+<div class="ficha-rapida">
+<div class="ficha-rapida-cab">
+<div class="ficha-rapida-nombre">Hotpoy Taller</div>
+<div class="ficha-rapida-rol">Buggy de apoyo — reutilizado del DLC</div>
+</div>
+<div class="ficha-rapida-cuerpo">
+<div class="ficha-rapida-attrs">Bld <b>10</b> · sin armas</div>
+<div class="ficha-rapida-skills"><span class="ficha-rapida-pill">Solo huida y distracción</span></div>
+<div class="ficha-rapida-equipo">Vehículo radiocontrolado, sin capacidad ofensiva.</div>
+</div>
+</div>
+
+</div>
+</main>
+</body>
+</html>
