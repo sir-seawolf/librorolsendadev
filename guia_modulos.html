@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de módulos — cómo se conectan</title>
+<link rel="stylesheet" href="senda_estilo.css">
+
+<style>
+.comic-placeholder{border:2px dashed var(--accent2,#1d6fa3);
+  background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 10px,#eef2f7 10px,#eef2f7 20px);
+  color:#475569;text-align:center;padding:24px 16px;margin:18px 0;border-radius:6px;
+  font-family:'Share Tech Mono',monospace;}
+.comic-placeholder.double{padding:60px 16px;}
+.comic-placeholder .cl-tag{display:inline-block;background:var(--accent2,#1d6fa3);color:#fff;
+  font-size:11px;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;-webkit-print-color-adjust:exact;}
+.margin-note{float:right;width:38%;margin:4px 0 12px 20px;clear:right;background:#f0f9ff;
+  border:1px solid #bae6fd;padding:30px 12px 12px;position:relative;
+  font-size:13px;border-radius:2px;color:#0c4a6e;}
+.margin-note::before{content:"Nota";position:absolute;top:0;left:0;right:0;
+  font-family:'Share Tech Mono',monospace;font-size:9.5px;text-transform:uppercase;
+  background:var(--accent-subtle,#38bdf8);color:#fff;padding:4px 12px;letter-spacing:1.5px;
+  border-radius:1px 1px 0 0;-webkit-print-color-adjust:exact;}
+.character-quote{background:#fffbeb;border:1px solid #fde68a;padding:14px 16px;
+  margin:20px 0;border-radius:2px;}
+.character-quote .cq-pnj{font-family:'Orbitron',sans-serif;font-size:12px;text-transform:uppercase;
+  color:#b45309;letter-spacing:1px;display:block;margin-bottom:5px;}
+.character-quote .cq-line{font-family:'Source Serif 4',Georgia,serif;font-style:italic;
+  font-size:15px;color:#1e293b;line-height:1.5;}
+@media print{.comic-placeholder,.margin-note,.character-quote{break-inside:avoid;}}
+</style>
+<style>
+@media print {
+  @page { margin: 20mm 16mm 20mm; @bottom-left { content: "Guía de módulos — cómo se conectan"; font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } @bottom-right { content: "Página " counter(page); font-family:"Share Tech Mono",monospace; font-size:8.5px; color:#64748b; } }
+}
+</style>
+</head>
+<body>
+<button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+<nav class="doc-toc" id="docToc" aria-label="Índice del documento">
+<p class="toc-title">Índice</p>
+<ul><li class="toc-h2"><a href="#solo-dos-modulos-piden-algo-antes">Solo dos módulos piden algo antes</a></li><li class="toc-h2"><a href="#personajes-que-reaparecen">Personajes que reaparecen</a></li><li class="toc-h2"><a href="#colecciones-con-orden-propio">Colecciones con orden propio</a></li></ul>
+</nav>
+<script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
+<main class="document-container">
+<h1>Guía de módulos — cómo se conectan</h1>
+<p>Cada módulo de La Senda de los Errantes funciona por su cuenta: puedes sentarte a dirigir cualquiera de ellos sin haber jugado ningún otro, y la partida tendrá sentido completo. Esta guía no es un orden de campaña obligatorio — es un mapa de quién reaparece dónde, para quien juega varias mesas seguidas y quiere que las coincidencias no sean casualidad.</p>
+<h2 id="solo-dos-modulos-piden-algo-antes">Solo dos módulos piden algo antes</h2>
+<p>De todos los publicados, solo dos se benefician de haber jugado otro primero — y ambos incluyen su propia versión para mesas que no lo hicieron:</p>
+<ul>
+<li><strong>El Federal que Hizo Demasiadas Preguntas</strong> gana matices si se jugó antes <strong>La Trampilla Vigilada</strong>, pero se sostiene solo.</li>
+<li><strong>La Caída de la Red Única</strong> gana un detalle concreto si se jugó <strong>La Trampilla Vigilada</strong>, pero también se sostiene solo.</li>
+</ul>
+<p>Todo lo demás es continuidad opcional: si conoces otros módulos, algunas escenas resuenan distinto; si no, la aventura es completa igualmente.</p>
+<h2 id="personajes-que-reaparecen">Personajes que reaparecen</h2>
+<ul>
+<li><strong>El Inquisidor de Capricornio</strong> — investigador de TecnoStealer, aparece en varios módulos siguiendo su propia investigación. Cada aparición es una instantánea distinta; ninguna cuenta su historia completa por sí sola.</li>
+<li><strong>Norton</strong> — presencia económica de fondo en varios rincones del Mosaico, con protagonismo propio en su propio episodio.</li>
+<li><strong>Totovía</strong> — Primus retirado y anfitrión ocasional, aparece como apoyo opcional en varios módulos ambientados en Oasis y en Mazmorras de los Antiguos.</li>
+<li><strong>Elin Farrow</strong> — investigadora recurrente en la colección de Oasis.</li>
+<li><strong>El reparto de MadCity</strong> (varios nombres recurrentes) — se reparten entre los seis one-shots de esa colección, ninguno imprescindible en todas las mesas.</li>
+</ul>
+<h2 id="colecciones-con-orden-propio">Colecciones con orden propio</h2>
+<p>Algunos módulos forman colecciones pensadas para jugarse en cualquier orden, con pequeños ecos entre sí: la colección de <strong>Oasis</strong> (antes del despertar), la colección de <strong>MadCity</strong>, y el ciclo de <strong>Kawalapiti</strong>. Cada colección lo indica en su propio material — no hace falta memorizar un orden externo para disfrutarlas.</p>
+<hr />
+<p><em>Vuelve a la lista completa de aventuras y suplementos.</em></p>
+</main>
+</body>
+</html>
