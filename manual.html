@@ -30,35 +30,35 @@
 </style>
 
 <style>
-:root{ --idx-w: 280px; }
+:root{ --idx-w: 280px; --manual-accent:#c99436; }
 body{ margin:0; }
 .libro-idx{position:fixed;top:0;left:0;width:var(--idx-w);height:100vh;background:#0f1115;color:#e2e8f0;overflow-y:auto;z-index:1000;font-family:'Rajdhani',sans-serif;padding:16px 0;box-shadow:2px 0 12px rgba(0,0,0,.3);}
-.libro-idx h2{font-family:'Orbitron',sans-serif;font-size:14px;color:#fff;text-transform:uppercase;letter-spacing:1px;padding:0 18px 10px;margin:0 0 8px;border-bottom:2px solid #e8001c;}
-.libro-idx h2 em{color:#e8001c;font-style:normal;}
+.libro-idx h2{font-family:'Orbitron',sans-serif;font-size:14px;color:#fff;text-transform:uppercase;letter-spacing:1px;padding:0 18px 10px;margin:0 0 8px;border-bottom:2px solid var(--manual-accent);}
+.libro-idx h2 em{color:var(--manual-accent);font-style:normal;}
 .libro-idx a{display:block;color:#cbd5e1;text-decoration:none;padding:6px 18px;font-size:13px;border-left:3px solid transparent;transition:all .15s;}
-.libro-idx a:hover{background:#1a1f2b;color:#fff;border-left-color:#e8001c;}
+.libro-idx a:hover{background:#1a1f2b;color:#fff;border-left-color:var(--manual-accent);}
 .libro-idx a.sub{padding-left:34px;font-size:12px;color:#94a3b8;}
-.libro-idx .idx-num{font-family:'Share Tech Mono',monospace;font-size:10px;color:#e8001c;margin-right:6px;}
+.libro-idx .idx-num{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--manual-accent);margin-right:6px;}
 .libro-main{margin-left:var(--idx-w);}
 .libro-cap{padding:0 8px;}
 .libro-cap-sep{border:none;border-top:1px dashed #cbd5e1;margin:0;}
 .cap-anchor{scroll-margin-top:10px;}
-.libro-portada{margin-left:var(--idx-w);background:#0f1115;color:#fff;text-align:center;padding:120px 40px;border-bottom:4px solid #e8001c;}
+.libro-portada{margin-left:var(--idx-w);background:#0f1115;color:#fff;text-align:center;padding:120px 40px;border-bottom:4px solid var(--manual-accent);}
 .libro-portada .pt-la{font-family:'Orbitron',sans-serif;font-size:16px;letter-spacing:6px;text-transform:uppercase;color:#94a3b8;}
 .libro-portada .pt-main{font-family:'Orbitron',sans-serif;font-size:64px;font-weight:900;letter-spacing:-2px;text-transform:uppercase;line-height:.95;margin:8px 0;}
-.libro-portada .pt-main em{color:#e8001c;font-style:normal;}
+.libro-portada .pt-main em{color:var(--manual-accent);font-style:normal;}
 .libro-portada .pt-sub{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#64748b;margin-top:16px;}
-.toggle-idx{position:fixed;top:10px;right:10px;z-index:1100;background:#e8001c;color:#fff;border:none;border-radius:4px;padding:8px 12px;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:11px;text-transform:uppercase;}
+.manual-index-button{display:none;background:var(--manual-accent);color:#111827;border:0;border-radius:3px;padding:6px 9px;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:9px;text-transform:uppercase;white-space:nowrap;}
 @media print{
-  .libro-idx{display:none;} .toggle-idx{display:none;}
+  .libro-idx{display:none;} .manual-index-button{display:none;}
   .libro-main,.libro-portada{margin-left:0;}
   .libro-cap{page-break-before:always;}
   .libro-cap:first-child{page-break-before:avoid;}
   .libro-portada{page-break-after:always;}
   .libro-toc-print{display:block;page-break-after:always;margin:0;padding:60px 40px;font-family:'Rajdhani',sans-serif;}
-  .libro-toc-print h2{font-family:'Orbitron',sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:2px;border-bottom:3px solid #e8001c;padding-bottom:10px;margin-bottom:20px;}
+  .libro-toc-print h2{font-family:'Orbitron',sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:2px;border-bottom:3px solid var(--manual-accent);padding-bottom:10px;margin-bottom:20px;}
   .libro-toc-print .toc-entry{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dotted #ccc;font-size:14px;}
-  .libro-toc-print .toc-num{font-family:'Share Tech Mono',monospace;color:#e8001c;margin-right:10px;min-width:30px;}
+  .libro-toc-print .toc-num{font-family:'Share Tech Mono',monospace;color:var(--manual-accent);margin-right:10px;min-width:30px;}
   .libro-toc-print .toc-title{flex:1;}
 }
 @media screen{.libro-toc-print{display:none !important;}}
@@ -71,7 +71,8 @@ body{ margin:0; }
   .libro-portada{padding:60px 20px;}
   .libro-cap{padding:0 4px;}
   .libro-cap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .toggle-idx{display:block !important;}
+  .manual-index-button{display:block;}
+  .libro-portada .pt-sub{font-size:10px;letter-spacing:2px;line-height:1.5;}
   .libro-guia-rapida{padding:0 10px !important;}
   .libro-guia-rapida table{display:block;overflow-x:auto;}
 }
@@ -90,8 +91,17 @@ body{ margin:0; }
   .libro-cap:first-of-type{page-break-before:always;}
 }
 </style>
-</head><body>
-<button class="toggle-idx" onclick="document.querySelector('.libro-idx').classList.toggle('open')">Indice</button>
+</head><body class="documento-manual">
+<header class="module-chrome manual-chrome">
+<div class="module-chrome-inner">
+<a class="module-back" href="juego.html"><span aria-hidden="true">←</span> Juego de rol</a>
+<button class="manual-index-button" type="button" aria-label="Abrir o cerrar el índice" onclick="document.querySelector('.libro-idx').classList.toggle('open')">Índice</button>
+<nav class="manual-quicklinks" aria-label="Accesos del manual">
+<a href="#guia-rapida">Guía</a><a href="#cap02">Crear PJ</a><a href="#cap03">Reglas</a><a href="#cap11">Dirigir</a>
+</nav>
+<span class="module-chrome-label">La Senda · Manual de juego</span>
+</div>
+</header>
 <nav class="libro-idx"><h2>La Senda de <em>Los Errantes</em></h2>
 <a href="#cap-prologo-el-origen-revisado" class="">PRÓLOGO — El origen</a>
 <a href="#cap-cap00-introduccion-definitivo" class="">INTRODUCCIÓN</a>
@@ -120,7 +130,7 @@ body{ margin:0; }
 <div class="libro-portada"><div class="pt-la">La Senda de</div>
 <div class="pt-main">Los <em>Errantes</em></div>
 <div><picture><source srcset="img/Portada_rol_Errantes.webp" type="image/webp"><img src="img/Portada_rol_Errantes.jpg" style="max-width:80%;margin:30px auto;display:block;border-radius:8px;"></picture></div>
-<div class="pt-sub">Manual de juego - borrador de trabajo</div></div>
+<div class="pt-sub">Manual de juego · Sistema y referencia</div></div>
 <div class="libro-toc-print"><h2>Índice</h2>
 <div class="toc-entry"><span class="toc-num"></span><span class="toc-title">PRÓLOGO — El origen</span></div>
 <div class="toc-entry"><span class="toc-num"></span><span class="toc-title">INTRODUCCIÓN</span></div>
@@ -147,7 +157,7 @@ body{ margin:0; }
 <div class="toc-entry"><span class="toc-num">A11</span><span class="toc-title">GENERADOR DE ASENTAMIENTOS Y ESTACIONES</span></div>
 </div>
 
-<div class="libro-guia-rapida" style="page-break-before:always;max-width:700px;margin:40px auto;padding:0 20px;">
+<div class="libro-guia-rapida" id="guia-rapida" style="page-break-before:always;max-width:700px;margin:40px auto;padding:0 20px;">
 <h2 style="font-family:'Orbitron',sans-serif;text-transform:uppercase;font-size:14px;margin-bottom:12px;">Guía rápida — ¿Dónde busco qué?</h2>
 <p style="font-size:11px;color:#94a3b8;margin-bottom:10px;font-style:italic;">Este manual se lee en orden la primera vez. En la mesa, usa esta guía para saltar a lo que necesites.</p>
 <table style="width:100%;border-collapse:collapse;font-size:10px;table-layout:fixed;">

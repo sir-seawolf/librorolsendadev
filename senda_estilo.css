@@ -120,7 +120,8 @@ body {
    registro de expediciones. */
 body.documento-modulo,
 body.documento-quickstart,
-body.documento-dlc {
+body.documento-dlc,
+body.documento-manual {
     background-color: #e9edf2;
     background-image: linear-gradient(rgba(42,48,60,.035) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(42,48,60,.035) 1px, transparent 1px);
@@ -129,6 +130,7 @@ body.documento-dlc {
 body.documento-modulo { --document-accent: var(--accent-neon); }
 body.documento-quickstart { --document-accent: var(--accent2); }
 body.documento-dlc { --document-accent: var(--color-lore); }
+body.documento-manual { --document-accent: #c99436; overflow-x: hidden; }
 .module-chrome {
     position: sticky; top: 0; z-index: 50;
     color: var(--text-main); background: rgba(15,17,21,.97);
@@ -151,13 +153,19 @@ body.documento-dlc { --document-accent: var(--color-lore); }
     font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase;
 }
 .kit-quicklinks { display: flex; align-items: center; gap: 5px; }
-.kit-quicklinks a {
+.kit-quicklinks a,
+.manual-quicklinks a {
     color: var(--text-muted); text-decoration: none; padding: 4px 8px;
     border-bottom: 1px solid transparent; font-family: 'Share Tech Mono', monospace;
     font-size: 9.5px; letter-spacing: .8px; text-transform: uppercase;
 }
-.kit-quicklinks a:hover { color: #fff; border-bottom-color: var(--accent-subtle); }
-.kit-quicklinks a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.kit-quicklinks a:hover,
+.manual-quicklinks a:hover { color: #fff; border-bottom-color: var(--document-accent); }
+.kit-quicklinks a:focus-visible,
+.manual-quicklinks a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.manual-quicklinks { display: flex; align-items: center; gap: 5px; }
+.documento-manual .module-chrome { margin-left: var(--idx-w, 280px); }
+.documento-manual .module-chrome-inner { max-width: 1180px; padding-left: 24px; }
 .documento-modulo .document-container,
 .documento-quickstart .document-container,
 .documento-dlc .document-container {
@@ -191,7 +199,13 @@ body.documento-dlc { --document-accent: var(--color-lore); }
     .kit-chrome .module-chrome-inner { gap: 7px; padding-right: 7px; }
     .kit-chrome .module-back::after { content: "Juego"; }
     .kit-quicklinks { gap: 0; }
-    .kit-quicklinks a { padding-inline: 5px; font-size: 8.5px; }
+    .kit-quicklinks a,
+    .manual-quicklinks a { padding-inline: 5px; font-size: 8.5px; }
+    .documento-manual .module-chrome { margin-left: 0; }
+    .manual-chrome .module-chrome-inner { padding-left: 12px; gap: 7px; }
+    .manual-chrome .module-back::after { content: "Juego"; }
+    .manual-quicklinks { display: none; }
+    body.documento-manual .manual-index-button { display: block !important; margin-left: auto; }
     .documento-modulo .document-container,
     .documento-quickstart .document-container,
     .documento-dlc .document-container { margin: 0 auto; border-top-width: 3px; }
@@ -203,7 +217,8 @@ body.documento-dlc { --document-accent: var(--color-lore); }
     .module-chrome { display: none !important; }
     body.documento-modulo,
     body.documento-quickstart,
-    body.documento-dlc { background: #fff; }
+    body.documento-dlc,
+    body.documento-manual { background: #fff; }
     .documento-modulo .document-container,
     .documento-quickstart .document-container,
     .documento-dlc .document-container { margin: 0; border-top: 0; box-shadow: none; }
