@@ -595,9 +595,17 @@ img { max-width: 100%; height: auto; }
    difiere de --bg-dark/--text-main pensadas para el documento claro.
    ============================================================ */
 body.landing {
+    --landing-void: #0a0b0f;
+    --landing-panel: #12141a;
+    --landing-line: #2a303c;
+    --landing-copy: #e2e8f0;
+    --landing-muted: #94a3b8;
+    --landing-red: #ff3b3b;
+    --landing-blue: #38bdf8;
+    --landing-violet: #9333ea;
     font-family: 'Rajdhani', sans-serif;
-    background: #0a0b0f;
-    color: #e2e8f0;
+    background: var(--landing-void);
+    color: var(--landing-copy);
     min-height: 100vh;
     background-image: linear-gradient(rgba(255,59,59,.035) 1px,transparent 1px),
                        linear-gradient(90deg,rgba(255,59,59,.035) 1px,transparent 1px);
@@ -620,6 +628,12 @@ body.landing {
 }
 .landing .topnav a { color: #94a3b8; text-decoration: none; padding: 4px 10px; }
 .landing .topnav a:hover { color: #fff; }
+.landing .topnav a[aria-current="page"] { color: #fff; }
+.landing .topnav a[aria-current="page"]::after {
+    content: ""; display: block; height: 2px; margin-top: 3px;
+    background: var(--landing-red); box-shadow: 0 0 8px rgba(255,59,59,.5);
+}
+.landing .topnav > div { display: flex; align-items: center; min-width: 0; }
 .landing .topnav .brand { color: #ff3b3b; font-weight: 700; font-size: 12px; }
 @media print { .landing .topnav { display: none; } }
 .landing .hero {
@@ -627,7 +641,24 @@ body.landing {
     min-height: 100vh; text-align: center; padding: 80px 20px 40px;
     background: radial-gradient(ellipse at center,#1a1c25 0%,#0a0b0f 70%);
 }
-.landing .hero img { max-width: 320px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 0 60px rgba(255,59,59,.15); }
+.landing .hero-portal { position: relative; max-width: 320px; margin: 0 0 30px; }
+.landing .hero-portal img { display: block; width: 100%; border-radius: 12px; box-shadow: 0 0 60px rgba(255,59,59,.15); }
+.landing .hero-portal::before,
+.landing .hero-portal::after {
+    content: ""; position: absolute; width: 42px; height: 42px; pointer-events: none;
+}
+.landing .hero-portal::before { top: -9px; left: -9px; border-top: 1px solid var(--landing-red); border-left: 1px solid var(--landing-red); }
+.landing .hero-portal::after { right: -9px; bottom: 24px; border-right: 1px solid var(--landing-blue); border-bottom: 1px solid var(--landing-blue); }
+.landing .hero-portal figcaption {
+    display: flex; justify-content: space-between; gap: 16px; margin-top: 9px;
+    font-family: 'Share Tech Mono', monospace; font-size: 9px; line-height: 1.35;
+    letter-spacing: 1px; text-transform: uppercase; color: #64748b;
+}
+.landing .hero-portal figcaption b { color: var(--landing-blue); font-weight: 400; text-align: right; }
+.landing .hero-kicker {
+    margin: 0 0 12px; font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    line-height: 1.4; letter-spacing: 1.7px; text-transform: uppercase; color: var(--landing-blue);
+}
 .landing h1 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 4px; border: none; padding: 0; color: inherit; }
 .landing h1 em { font-style: normal; white-space: nowrap; }
 .landing .sub { font-family: 'Share Tech Mono', monospace; color: #94a3b8; font-size: 14px; margin-bottom: 40px; }
@@ -654,7 +685,7 @@ body.landing {
         gap: 60px; text-align: left; max-width: 1320px; margin: 0 auto;
         padding: 40px 60px;
     }
-    .tema-index .hero img {
+    .tema-index .hero-portal {
         max-width: none; width: 34%; flex: 0 0 34%; margin-bottom: 0;
     }
     .tema-index .hero-info { flex: 1 1 auto; min-width: 0; }
@@ -677,6 +708,41 @@ body.landing {
     outline: 3px solid #fff;
     outline-offset: 3px;
 }
+
+/* Acceso principal al archivo de aventuras. Es una linea de ruta, no una
+   cuarta tarjeta: funciona como firma visual del sitio y hace visible la
+   jerarquia DLC > mundo > modulo que ya existe en dlcs.html. */
+.landing .expedition-route {
+    position: relative; display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: 16px; width: min(100%, 708px); margin: -18px auto 34px;
+    padding: 15px 17px; color: var(--landing-copy); text-decoration: none;
+    background: rgba(18,20,26,.78); border: 1px solid var(--landing-line);
+    border-left: 3px solid var(--landing-violet); overflow: hidden;
+}
+.landing .expedition-route::after {
+    content: ""; position: absolute; left: 43px; right: 50px; bottom: 0; height: 1px;
+    background: linear-gradient(90deg, var(--landing-violet), transparent);
+}
+.landing .route-index {
+    font-family: 'Orbitron', sans-serif; font-size: 10px; color: var(--landing-violet);
+}
+.landing .route-copy { display: flex; flex-direction: column; min-width: 0; text-align: left; }
+.landing .route-label {
+    font-family: 'Share Tech Mono', monospace; color: var(--landing-muted);
+    font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase;
+}
+.landing .route-copy strong {
+    color: #fff; font-family: 'Orbitron', sans-serif; font-size: 12px;
+    letter-spacing: .7px; text-transform: uppercase;
+}
+.landing .route-copy small { color: var(--landing-muted); font-size: 12px; line-height: 1.35; }
+.landing .route-arrow {
+    color: var(--landing-violet); font-family: 'Share Tech Mono', monospace;
+    font-size: 22px; transform: translateX(0); transition: transform .18s ease;
+}
+.landing .expedition-route:hover { border-color: var(--landing-violet); background: rgba(147,51,234,.09); }
+.landing .expedition-route:hover .route-arrow { transform: translateX(4px); }
+.landing .expedition-route:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
 /* Puertas (index.html) */
 .landing .puertas { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
@@ -826,6 +892,18 @@ body.landing {
 .landing.tema-dlcs .sub { margin-bottom: 44px; }
 
 @media (max-width: 600px) {
+    .landing .topnav { padding-inline: 10px; }
+    .landing .topnav .brand { flex: 0 0 auto; }
+    .landing .topnav > div {
+        max-width: calc(100vw - 105px); overflow-x: auto; overscroll-behavior-inline: contain;
+        scrollbar-width: none;
+    }
+    .landing .topnav > div::-webkit-scrollbar { display: none; }
+    .landing .topnav a { padding-inline: 6px; }
+    .landing .hero { padding-inline: 14px; }
+    .landing .hero-portal { width: min(76vw, 280px); }
+    .landing .expedition-route { grid-template-columns: auto 1fr auto; gap: 11px; padding: 13px 12px; }
+    .landing .route-copy small { display: none; }
     .landing .puertas { flex-direction: column; align-items: center; }
     .landing .puerta { width: 260px; }
     .landing .nav a { font-size: 11px; padding: 10px 16px; letter-spacing: 1px; }
