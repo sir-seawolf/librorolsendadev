@@ -36,7 +36,13 @@
 }
 </style>
 </head>
-<body>
+<body class="documento-modulo">
+<header class="module-chrome">
+<div class="module-chrome-inner">
+<a class="module-back" href="dlcs.html"><span aria-hidden="true">←</span> Registro de expediciones</a>
+<span class="module-chrome-label">La Senda · Archivo del Narrador</span>
+</div>
+</header>
 <button type="button" class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="docToc"><span class="toc-toggle-ico"></span><span class="toc-toggle-txt">Índice</span></button>
 <div class="toc-backdrop" id="tocBackdrop"></div>
 <nav class="doc-toc" id="docToc" aria-label="Índice del documento">
@@ -46,7 +52,7 @@
 <script>(function(){var b=document.getElementById("tocToggle"),n=document.getElementById("docToc"),bd=document.getElementById("tocBackdrop");if(!b||!n)return;function cerrar(){n.classList.remove("open");b.setAttribute("aria-expanded","false");if(bd)bd.classList.remove("show");}function abrir(){n.classList.add("open");b.setAttribute("aria-expanded","true");if(bd)bd.classList.add("show");}b.addEventListener("click",function(){n.classList.contains("open")?cerrar():abrir();});if(bd)bd.addEventListener("click",cerrar);[].forEach.call(n.querySelectorAll("a"),function(a){a.addEventListener("click",cerrar);});document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar();});})();</script>
 <main class="document-container">
 <h1>MÓDULO — El Federal que hizo demasiadas preguntas</h1>
-<p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Continuación narrativa opcional de "La Trampilla Vigilada" — jugable sin ella. Estado: BORRADOR, pendiente de playtest.</em></p>
+<p><em>Ambientado en Oasis (tesela recién despertada) — módulo independiente, colgado del DLC Oasis. Continuación narrativa opcional de "La Trampilla Vigilada" — jugable sin ella.</em></p>
 <blockquote>
 <p>«Las opciones de Primus no son solo matarlo o no. Eso es, precisamente, lo que las hace más difíciles de ver venir.»</p>
 </blockquote>
