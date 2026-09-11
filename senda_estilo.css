@@ -119,16 +119,20 @@ body {
    jugable sigue siendo el MD: esta franja solo orienta y permite volver al
    registro de expediciones. */
 body.documento-modulo,
-body.documento-quickstart {
+body.documento-quickstart,
+body.documento-dlc {
     background-color: #e9edf2;
     background-image: linear-gradient(rgba(42,48,60,.035) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(42,48,60,.035) 1px, transparent 1px);
     background-size: 32px 32px;
 }
+body.documento-modulo { --document-accent: var(--accent-neon); }
+body.documento-quickstart { --document-accent: var(--accent2); }
+body.documento-dlc { --document-accent: var(--color-lore); }
 .module-chrome {
     position: sticky; top: 0; z-index: 50;
     color: var(--text-main); background: rgba(15,17,21,.97);
-    border-bottom: 2px solid var(--accent-neon);
+    border-bottom: 2px solid var(--document-accent, var(--accent-neon));
     box-shadow: 0 8px 24px rgba(15,17,21,.16);
 }
 .module-chrome-inner {
@@ -139,7 +143,7 @@ body.documento-quickstart {
     color: #fff; text-decoration: none; font-family: 'Share Tech Mono', monospace;
     font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
 }
-.module-back span { color: var(--accent-neon); margin-right: 7px; }
+.module-back span { color: var(--document-accent, var(--accent-neon)); margin-right: 7px; }
 .module-back:hover { color: var(--accent-subtle); }
 .module-back:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 .module-chrome-label {
@@ -155,8 +159,9 @@ body.documento-quickstart {
 .kit-quicklinks a:hover { color: #fff; border-bottom-color: var(--accent-subtle); }
 .kit-quicklinks a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .documento-modulo .document-container,
-.documento-quickstart .document-container {
-    position: relative; margin: 32px auto 64px; border-top: 4px solid var(--accent-neon);
+.documento-quickstart .document-container,
+.documento-dlc .document-container {
+    position: relative; margin: 32px auto 64px; border-top: 4px solid var(--document-accent, var(--accent-neon));
     box-shadow: 0 18px 55px rgba(31,41,55,.12);
 }
 .documento-modulo .document-container::before {
@@ -171,6 +176,12 @@ body.documento-quickstart {
     font-family: 'Share Tech Mono', monospace; font-size: 10px;
     font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
 }
+.documento-dlc .document-container::before {
+    content: "Atlas del Mosaico · Mundo y ambientación";
+    display: block; margin-bottom: 18px; color: var(--color-lore);
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
+}
 @media (max-width: 600px) {
     .module-chrome-inner { min-height: 50px; padding: 9px 12px 9px 104px; }
     .module-back { font-size: 0; }
@@ -182,18 +193,23 @@ body.documento-quickstart {
     .kit-quicklinks { gap: 0; }
     .kit-quicklinks a { padding-inline: 5px; font-size: 8.5px; }
     .documento-modulo .document-container,
-    .documento-quickstart .document-container { margin: 0 auto; border-top-width: 3px; }
+    .documento-quickstart .document-container,
+    .documento-dlc .document-container { margin: 0 auto; border-top-width: 3px; }
     .documento-modulo .document-container::before,
-    .documento-quickstart .document-container::before { margin: 6px 0 14px; font-size: 8.5px; }
+    .documento-quickstart .document-container::before,
+    .documento-dlc .document-container::before { margin: 6px 0 14px; font-size: 8.5px; }
 }
 @media print {
     .module-chrome { display: none !important; }
     body.documento-modulo,
-    body.documento-quickstart { background: #fff; }
+    body.documento-quickstart,
+    body.documento-dlc { background: #fff; }
     .documento-modulo .document-container,
-    .documento-quickstart .document-container { margin: 0; border-top: 0; box-shadow: none; }
+    .documento-quickstart .document-container,
+    .documento-dlc .document-container { margin: 0; border-top: 0; box-shadow: none; }
     .documento-modulo .document-container::before,
-    .documento-quickstart .document-container::before { display: none; }
+    .documento-quickstart .document-container::before,
+    .documento-dlc .document-container::before { display: none; }
 }
 
 h1 {
