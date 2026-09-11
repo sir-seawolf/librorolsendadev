@@ -118,7 +118,8 @@ body {
    md2html.py la activa por el nombre de la fuente MODULO_*. El contenido
    jugable sigue siendo el MD: esta franja solo orienta y permite volver al
    registro de expediciones. */
-body.documento-modulo {
+body.documento-modulo,
+body.documento-quickstart {
     background-color: #e9edf2;
     background-image: linear-gradient(rgba(42,48,60,.035) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(42,48,60,.035) 1px, transparent 1px);
@@ -145,7 +146,16 @@ body.documento-modulo {
     color: var(--text-muted); font-family: 'Orbitron', sans-serif;
     font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase;
 }
-.documento-modulo .document-container {
+.kit-quicklinks { display: flex; align-items: center; gap: 5px; }
+.kit-quicklinks a {
+    color: var(--text-muted); text-decoration: none; padding: 4px 8px;
+    border-bottom: 1px solid transparent; font-family: 'Share Tech Mono', monospace;
+    font-size: 9.5px; letter-spacing: .8px; text-transform: uppercase;
+}
+.kit-quicklinks a:hover { color: #fff; border-bottom-color: var(--accent-subtle); }
+.kit-quicklinks a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.documento-modulo .document-container,
+.documento-quickstart .document-container {
     position: relative; margin: 32px auto 64px; border-top: 4px solid var(--accent-neon);
     box-shadow: 0 18px 55px rgba(31,41,55,.12);
 }
@@ -155,20 +165,35 @@ body.documento-modulo {
     font-family: 'Share Tech Mono', monospace; font-size: 10px;
     font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
 }
+.documento-quickstart .document-container::before {
+    content: "Kit de inicio · Reglas, personajes y aventura";
+    display: block; margin-bottom: 18px; color: var(--accent2);
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
+}
 @media (max-width: 600px) {
     .module-chrome-inner { min-height: 50px; padding: 9px 12px 9px 104px; }
     .module-back { font-size: 0; }
     .module-back::after { content: "Expediciones"; font-size: 10px; }
     .module-back span { font-size: 10px; }
     .module-chrome-label { display: none; }
-    .documento-modulo .document-container { margin: 0 auto; border-top-width: 3px; }
-    .documento-modulo .document-container::before { margin: 6px 0 14px; font-size: 8.5px; }
+    .kit-chrome .module-chrome-inner { gap: 7px; padding-right: 7px; }
+    .kit-chrome .module-back::after { content: "Juego"; }
+    .kit-quicklinks { gap: 0; }
+    .kit-quicklinks a { padding-inline: 5px; font-size: 8.5px; }
+    .documento-modulo .document-container,
+    .documento-quickstart .document-container { margin: 0 auto; border-top-width: 3px; }
+    .documento-modulo .document-container::before,
+    .documento-quickstart .document-container::before { margin: 6px 0 14px; font-size: 8.5px; }
 }
 @media print {
     .module-chrome { display: none !important; }
-    body.documento-modulo { background: #fff; }
-    .documento-modulo .document-container { margin: 0; border-top: 0; box-shadow: none; }
-    .documento-modulo .document-container::before { display: none; }
+    body.documento-modulo,
+    body.documento-quickstart { background: #fff; }
+    .documento-modulo .document-container,
+    .documento-quickstart .document-container { margin: 0; border-top: 0; box-shadow: none; }
+    .documento-modulo .document-container::before,
+    .documento-quickstart .document-container::before { display: none; }
 }
 
 h1 {
