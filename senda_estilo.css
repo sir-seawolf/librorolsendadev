@@ -114,6 +114,63 @@ body {
 .doc-toc li.toc-h3 a { padding-left: 36px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
 @media print { .toc-toggle, .toc-backdrop, .doc-toc { display: none !important; } }
 
+/* ===== Cabecera web común de módulos =====
+   md2html.py la activa por el nombre de la fuente MODULO_*. El contenido
+   jugable sigue siendo el MD: esta franja solo orienta y permite volver al
+   registro de expediciones. */
+body.documento-modulo {
+    background-color: #e9edf2;
+    background-image: linear-gradient(rgba(42,48,60,.035) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(42,48,60,.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+.module-chrome {
+    position: sticky; top: 0; z-index: 50;
+    color: var(--text-main); background: rgba(15,17,21,.97);
+    border-bottom: 2px solid var(--accent-neon);
+    box-shadow: 0 8px 24px rgba(15,17,21,.16);
+}
+.module-chrome-inner {
+    max-width: 1040px; min-height: 54px; margin: 0 auto; padding: 10px 24px 10px 126px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.module-back {
+    color: #fff; text-decoration: none; font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+}
+.module-back span { color: var(--accent-neon); margin-right: 7px; }
+.module-back:hover { color: var(--accent-subtle); }
+.module-back:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.module-chrome-label {
+    color: var(--text-muted); font-family: 'Orbitron', sans-serif;
+    font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.documento-modulo .document-container {
+    position: relative; margin: 32px auto 64px; border-top: 4px solid var(--accent-neon);
+    box-shadow: 0 18px 55px rgba(31,41,55,.12);
+}
+.documento-modulo .document-container::before {
+    content: "Expedición · Documento del Narrador";
+    display: block; margin-bottom: 18px; color: var(--accent-neon);
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
+}
+@media (max-width: 600px) {
+    .module-chrome-inner { min-height: 50px; padding: 9px 12px 9px 104px; }
+    .module-back { font-size: 0; }
+    .module-back::after { content: "Expediciones"; font-size: 10px; }
+    .module-back span { font-size: 10px; }
+    .module-chrome-label { display: none; }
+    .documento-modulo .document-container { margin: 0 auto; border-top-width: 3px; }
+    .documento-modulo .document-container::before { margin: 6px 0 14px; font-size: 8.5px; }
+}
+@media print {
+    .module-chrome { display: none !important; }
+    body.documento-modulo { background: #fff; }
+    .documento-modulo .document-container { margin: 0; border-top: 0; box-shadow: none; }
+    .documento-modulo .document-container::before { display: none; }
+}
+
 h1 {
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
