@@ -778,6 +778,31 @@ body.landing {
 .landing .desc { max-width: 640px; text-align: center; color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 32px; }
 .landing .puertas-label { font-family: 'Share Tech Mono', monospace; color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
 
+/* Tres coordenadas para entender el juego antes de elegir una puerta. La
+   línea continua representa una misma Senda: sistema, mundos y campaña no
+   son tarjetas independientes, sino partes de la misma experiencia. */
+.landing .senda-brief { width: min(100%, 708px); margin: 0 auto 27px; text-align: left; }
+.landing .senda-brief-label {
+    margin: 0 0 8px; color: var(--landing-blue); font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 1.7px; text-transform: uppercase;
+}
+.landing .senda-brief-track {
+    position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    padding-top: 8px; background: var(--landing-line); border-top: 1px solid var(--landing-line);
+}
+.landing .senda-brief-track::before {
+    content: ""; position: absolute; top: -1px; left: 0; width: 34%; height: 1px;
+    background: linear-gradient(90deg, var(--landing-red), var(--landing-blue));
+}
+.landing .senda-brief-track p {
+    margin: 0; padding: 11px 13px; min-width: 0; background: rgba(10,11,15,.94);
+}
+.landing .senda-brief-track b {
+    display: block; margin-bottom: 3px; color: #fff; font-family: 'Orbitron', sans-serif;
+    font-size: 10px; letter-spacing: .8px; text-transform: uppercase;
+}
+.landing .senda-brief-track span { display: block; color: var(--landing-muted); font-size: 12px; line-height: 1.35; }
+
 /* Pantallas panoramicas: el hero del INDEX (unico con imagen + .hero-info)
    dejaba de usar dos tercios del ancho porque todo se apilaba en una columna
    centrada de ~900px sobre un fondo de 100vh. A partir de 1400px el rosetón
@@ -1017,6 +1042,9 @@ body.landing {
     .landing .hero-portal { width: min(76vw, 280px); }
     .landing .expedition-route { grid-template-columns: auto 1fr auto; gap: 11px; padding: 13px 12px; }
     .landing .route-copy small { display: none; }
+    .landing .senda-brief-track { grid-template-columns: 1fr; }
+    .landing .senda-brief-track p { display: grid; grid-template-columns: 112px 1fr; gap: 8px; align-items: baseline; padding: 9px 11px; }
+    .landing .senda-brief-track b { margin: 0; }
     .landing .puertas { flex-direction: column; align-items: center; }
     .landing .puerta { width: 260px; }
     .landing .nav a { font-size: 11px; padding: 10px 16px; letter-spacing: 1px; }
