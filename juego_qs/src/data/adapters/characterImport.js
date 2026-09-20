@@ -36,11 +36,17 @@ export function normalizeCharacter(externalJson) {
     throw new CharacterImportError("El JSON externo no tiene la forma esperada por el motor.", errores);
   }
 
+  const retratoDeclarado = externalJson.retrato?.trim() ?? "";
   return {
-    id: externalJson.id,
-    nombre: externalJson.nombre,
+    schemaVersion: 1,
+    sistema: externalJson.sistema ?? "senda_qs",
+    id: externalJson.id.trim(),
+    nombre: externalJson.nombre.trim(),
     rol: externalJson.rol ?? "",
-    retrato: externalJson.retrato ?? "assets/characters/placeholder.png",
+    // Las primeras fichas importadas recibían esta ruta ficticia aunque el
+    // archivo nunca existió. Normalizarla a vacío migra esas bibliotecas sin
+    // conservar una imagen rota.
+    retrato: retratoDeclarado === "assets/characters/placeholder.png" ? "" : retratoDeclarado,
     cita: externalJson.cita ?? "",
     atributos: { ...externalJson.atributos },
     pvBase: externalJson.pvBase,
@@ -72,21 +78,59 @@ function validarCampos(externalJson) {
     if (externalJson[campo] === undefined) errores.push(`Falta el campo obligatorio "${campo}".`);
   });
 
+  if (externalJson.id !== undefined && (typeof externalJson.id !== "string" || !/^[a-z0-9][a-z0-9_-]{1,47}$/i.test(externalJson.id.trim()))) {
+    errores.push('"id" debe tener 2-48 caracteres y usar solo letras, números, guion o guion bajo.');
+  }
+  if (externalJson.nombre !== undefined && (typeof externalJson.nombre !== "string" || !externalJson.nombre.trim() || externalJson.nombre.trim().length > 80)) {
+    errores.push('"nombre" debe ser texto no vacío de hasta 80 caracteres.');
+  }
+
+  const contieneMarcado = valor => typeof valor === "string" && /[<>\u0000-\u001f]/.test(valor);
+  function revisarTexto(valor, ruta = "personaje") {
+    if (contieneMarcado(valor)) errores.push(`Texto no permitido en "${ruta}".`);
+    else if (Array.isArray(valor)) valor.forEach((v, i) => revisarTexto(v, `${ruta}[${i}]`));
+    else if (valor && typeof valor === "object") Object.entries(valor).forEach(([k, v]) => { revisarTexto(k, `${ruta}.clave`); revisarTexto(v, `${ruta}.${k}`); });
+  }
+  revisarTexto(externalJson);
+
   const atributosEsperados = ["AGI", "CON", "FUE", "HAB", "CAR", "INT", "PER", "VOL"];
-  if (externalJson.atributos) {
+  if (externalJson.atributos && (typeof externalJson.atributos !== "object" || Array.isArray(externalJson.atributos))) {
+    errores.push('"atributos" debe ser un objeto.');
+  } else if (externalJson.atributos) {
     atributosEsperados.forEach(a => {
-      if (typeof externalJson.atributos[a] !== "number") errores.push(`Atributo "${a}" ausente o no numérico.`);
+      const valor = externalJson.atributos[a];
+      if (!Number.isFinite(valor) || valor < 0 || valor > 200) errores.push(`Atributo "${a}" ausente o fuera del intervalo 0-200.`);
     });
   }
 
-  if (externalJson.niveles) {
+  if (!Number.isFinite(externalJson.pvBase) || externalJson.pvBase <= 0 || externalJson.pvBase > 999) {
+    errores.push('"pvBase" debe ser un número entre 1 y 999.');
+  }
+
+  if (externalJson.niveles && (typeof externalJson.niveles !== "object" || Array.isArray(externalJson.niveles))) {
+    errores.push('"niveles" debe ser un objeto.');
+  } else if (externalJson.niveles) {
     ["sano", "herido", "tullido"].forEach(n => {
-      if (typeof externalJson.niveles[n] !== "number") errores.push(`Nivel de vida "${n}" ausente o no numérico.`);
+      const valor = externalJson.niveles[n];
+      if (!Number.isFinite(valor) || valor < 0 || valor > 999) errores.push(`Nivel de vida "${n}" ausente o fuera del intervalo 0-999.`);
     });
   }
 
-  if (externalJson.habilidades && typeof externalJson.habilidades !== "object") {
+  if (externalJson.habilidades && (typeof externalJson.habilidades !== "object" || Array.isArray(externalJson.habilidades))) {
     errores.push('"habilidades" debe ser un objeto { nombre: valor }.');
+  } else if (externalJson.habilidades) {
+    Object.entries(externalJson.habilidades).forEach(([nombre, valor]) => {
+      if (!nombre.trim() || nombre.length > 80 || !Number.isFinite(valor) || valor < 0 || valor > 200) errores.push(`Habilidad "${nombre}" inválida.`);
+    });
+  }
+
+  if (externalJson.equipo !== undefined && !Array.isArray(externalJson.equipo)) {
+    errores.push('"equipo" debe ser una lista.');
+  }
+
+  const protocoloRetrato = typeof externalJson.retrato === "string" ? externalJson.retrato.trim().match(/^([a-z][a-z0-9+.-]*):/i)?.[1]?.toLowerCase() : null;
+  if (externalJson.retrato !== undefined && (typeof externalJson.retrato !== "string" || externalJson.retrato.length > 300 || /["'<>\\]/.test(externalJson.retrato) || (protocoloRetrato && !["http", "https"].includes(protocoloRetrato)))) {
+    errores.push('"retrato" debe ser una ruta o URL http(s) segura.');
   }
 
   return errores;

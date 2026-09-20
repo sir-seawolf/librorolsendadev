@@ -64,6 +64,11 @@ export const predatorTacticalEncounter = {
     locationLabel: "Callejón de servicio · Sector N-5.2"
   },
 
+  // Plaza narrativa del protagonista. Si se elige un personaje que no está
+  // en el reparto táctico base (Reyes, Drago o uno importado), el adaptador
+  // genérico conserva esta posición y sustituye sus datos por los de la ficha.
+  playerActorSlotId: "kova",
+
   // Battlefield: sin coordenadas en la fuente legacy (la cobertura real
   // es un nivel entero por combatiente, no un objeto en el mundo) --
   // layout construido de cero para esta fase y verificado contra el

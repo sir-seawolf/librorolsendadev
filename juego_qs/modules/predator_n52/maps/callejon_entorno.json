@@ -24,6 +24,12 @@
   "start": { "x": 1.5, "y": 1.5, "angle": 0 },
   "pursuer": { "x": 8.5, "y": 1.5, "speed": 0.028, "catchDistance": 0.7 },
   "player": { "speed": 0.045, "turnSpeed": 0.035 },
+  "presentation": {
+    "camera": "thirdPerson",
+    "internalResolution": { "width": 640, "height": 360 },
+    "playerAvatar": "raycast/actors/runner_back_v1.png",
+    "objectiveLabel": "REFUGIO / VEHÍCULO"
+  },
   "availableParty": ["player", "bishop", "salim"],
   "onCatch": { "transition": "combate_inicial", "registerDecision": "Persecución: alcanzado por el perseguidor." },
   "skyline": [

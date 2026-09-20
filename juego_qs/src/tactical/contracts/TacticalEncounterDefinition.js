@@ -166,6 +166,14 @@ export function validateEncounterDefinition(def) {
     validarObjetivo(def.objectives.defeat, p("objectives.defeat"), errores);
   }
 
+  if (def.playerActorSlotId !== undefined) {
+    if (typeof def.playerActorSlotId !== "string" || !def.playerActorSlotId) {
+      errores.push(`${p("playerActorSlotId")}: debe ser un identificador no vacío`);
+    } else if (!def.actors?.party?.some(actor => actor.id === def.playerActorSlotId)) {
+      errores.push(`${p("playerActorSlotId")}: no referencia ningún actor de actors.party`);
+    }
+  }
+
   validarComposicionEscena(def, p, errores);
 
   if (def.transitions !== undefined) {

@@ -26,9 +26,10 @@ import { moduloIdActivo } from "../engine/moduleLoader.js";
 import { validateEncounterDefinition } from "./contracts/TacticalEncounterDefinition.js";
 import { resolverTacticalDefinition, TacticalDefinitionNotFoundError } from "./tacticalDefinitionResolver.js";
 import { resolverOutcomeTactico } from "./tacticalOutcomeResolver.js";
-import { actualizarRecursosEquipo, cambiarEscena, cargar as cargarUltimoPuntoGuardado, hayPartidaGuardada, esJugador } from "../gameState.js";
+import { actualizarRecursosEquipo, cambiarEscena, cargar as cargarUltimoPuntoGuardado, hayPartidaGuardada, obtenerJugador } from "../gameState.js";
 import { cargarCadencia } from "../combat/combat.js";
 import { cargarCatalogoEquipoActivo, hidratarPartyDesdeEquipo } from "./bridge/equipmentLoadoutAdapter.js";
+import { integrarJugadorEnDefinicion } from "./bridge/playerCharacterAdapter.js";
 
 const TACTICAL_DEBUG = false; // punto 20 -- discreto, nunca ruidoso en producción normal
 function log(evento, ...datos) {
@@ -256,27 +257,12 @@ async function resolverPayloadTactico(escenaId, opts) {
     throw new TacticalRendererUnavailableError(escenaId, "tactical-phaser", `TACTICAL_ENCOUNTER_INVALID (${definitionId}): ${errors.join("; ")}`);
   }
 
-  // CORRECCIÓN (encargo de cierre vertical, 2026-08-22 -- Hallazgo 1 del
-  // playtest real): las TacticalEncounterDefinition de los módulos son
-  // DATO estático ("cero lógica", ver predatorTacticalEncounter.js) y
-  // declaran esPJ:false para todo party.actors -- ningún actor llegaba
-  // NUNCA marcado como PJ, así que `controlMode:"pj_manual"`
-  // (`session.esControladoPorJugador()`, TacticalSession.js) no dejaba
-  // manual a NADIE, ni siquiera al personaje elegido por quien juega:
-  // reproducido en vivo, "Turno de Kova (IA)..." incluso en pj_manual.
-  // El dato estático del módulo no puede saber qué pregenerado eligió
-  // la persona -- eso solo lo sabe gameState (`esJugador()`, ya
-  // genérico, sin nombres de personaje). Se corrige aquí, en la capa de
-  // INTEGRACIÓN (permitido: "resolver una definición por moduleId" ya
-  // es su función, ver tacticalDefinitionResolver.js) -- nunca dentro
-  // de src/tactical/core, y sin mutar el objeto ESTÁTICO del módulo
-  // (se clonan `definition.actors` y cada actor de `party`; mutar el
-  // original filtraría esPJ:true a la siguiente partida con otro PJ,
-  // porque el resolver devuelve la MISMA referencia importada siempre).
-  const definicionConPJ = {
-    ...definition,
-    actors: { ...definition.actors, party: definition.actors.party.map(a => ({ ...a, esPJ: esJugador(a.id) })) }
-  };
+  // La definición del módulo es dato estático y no sabe qué personaje eligió
+  // la persona. La capa de integración marca el PJ y, cuando el id elegido no
+  // figura en el reparto del encuentro, ocupa la plaza declarada por el módulo
+  // (`playerActorSlotId`). El adaptador clona siempre: el registro devuelve la
+  // misma referencia entre partidas y no debe contaminar la siguiente sesión.
+  const definicionConPJ = integrarJugadorEnDefinicion(definition, obtenerJugador());
 
   let definicionConEquipo = definicionConPJ;
   try {

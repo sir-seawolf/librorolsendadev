@@ -12,7 +12,12 @@ const SLOT_CONFIG = [
 const ESTADO_LABEL = { equipado: "Equipado", guardado: "En mochila", en_uso: "En uso" };
 
 function escapar(texto) {
-  return String(texto).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  return String(texto).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+}
+
+function inicialesDe(nombre) {
+  const partes = String(nombre ?? "").trim().split(/\s+/).filter(Boolean);
+  return (partes.length > 1 ? partes[0][0] + partes.at(-1)[0] : partes[0]?.slice(0, 2) || "PJ").toUpperCase();
 }
 
 export function categoriaEquipo(referencia) {
@@ -76,7 +81,7 @@ export function mostrarGestorInventario(miembroInicialId = state.playerCharacter
         <div class="inventario-estacion">
           <section class="inventario-personaje" aria-label="Dotación de ${escapar(miembro?.base?.nombre ?? "personaje")}">
             <div class="inventario-identidad"><strong>${escapar(miembro?.base?.nombre ?? "")}</strong><span>${escapar(miembro?.base?.rol ?? "")}</span></div>
-            <div class="inventario-figura" style="--retrato-personaje:url('${escapar(retrato)}')" aria-hidden="true"></div>
+            <div class="inventario-figura" aria-hidden="true"><span>${escapar(inicialesDe(miembro?.base?.nombre))}</span>${retrato ? `<img src="${escapar(retrato)}" alt="">` : ""}</div>
             <div class="inventario-ranuras">
               ${SLOT_CONFIG.map(slot => {
                 const asignados = itemsDeSlot(items, slot.id);
@@ -100,6 +105,13 @@ export function mostrarGestorInventario(miembroInicialId = state.playerCharacter
           <div class="inventario-anuncio" aria-live="polite">${escapar(mensaje)}</div>
         </section>
       </section>`;
+
+    const imagenRetrato = overlay.querySelector(".inventario-figura img");
+    if (imagenRetrato) {
+      const retirarImagenRota = () => imagenRetrato.remove();
+      imagenRetrato.addEventListener("error", retirarImagenRota, { once: true });
+      if (imagenRetrato.complete && imagenRetrato.naturalWidth === 0) retirarImagenRota();
+    }
 
     overlay.querySelector(".inventario-cerrar").addEventListener("click", cerrar);
     overlay.querySelectorAll("[data-miembro]").forEach(btn => btn.addEventListener("click", () => { miembroId = btn.dataset.miembro; instanciaSeleccionada = null; mensaje = `Mostrando la dotación de ${state.partyMembers[miembroId].base.nombre}.`; render(); }));

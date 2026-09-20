@@ -53,11 +53,13 @@ export class Raycaster {
   constructor(canvas, mapa, {
     anchoInterno = 320, altoInterno = 200, fov = Math.PI / 3, wallTypes = null,
     rutaManifiestoTexturas = "src/data/assets/textures.json",
-    resolverAsset = (ruta) => ruta
+    resolverAsset = (ruta) => ruta,
+    renderStyle = "classic"
   } = {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
-    this.ctx.imageSmoothingEnabled = false; // nearest-neighbour: estética retro, más barato
+    this.renderStyle = renderStyle;
+    this.ctx.imageSmoothingEnabled = renderStyle !== "classic";
     this.mapa = mapa;
     this.anchoInterno = anchoInterno;
     this.altoInterno = altoInterno;
@@ -146,8 +148,11 @@ export class Raycaster {
     const { ctx, anchoInterno, altoInterno, fov } = this;
     ctx.fillStyle = "#1a1a1a"; // techo (también fallback si no hay skyline)
     ctx.fillRect(0, 0, anchoInterno, altoInterno / 2);
-    ctx.fillStyle = "#26221f"; // suelo
-    ctx.fillRect(0, altoInterno / 2, anchoInterno, altoInterno / 2);
+    if (this.renderStyle === "thirdPerson") this._dibujarSueloTerceraPersona(angulo);
+    else {
+      ctx.fillStyle = "#26221f"; // suelo clásico / fallback
+      ctx.fillRect(0, altoInterno / 2, anchoInterno, altoInterno / 2);
+    }
 
     // Skyline/panorama por encima de las paredes (punto 9 del encargo): se
     // pinta ANTES de las columnas de pared, ocupando siempre la misma franja
@@ -219,6 +224,39 @@ export class Raycaster {
         ctx.fillStyle = sombrear(colorBase, sombra);
         ctx.fillRect(col, yTop, 1, alturaLinea);
       }
+    }
+  }
+
+  _dibujarSueloTerceraPersona(angulo) {
+    const { ctx, anchoInterno, altoInterno } = this;
+    const horizonte = Math.floor(altoInterno / 2);
+    const altoSuelo = altoInterno - horizonte;
+    const deriva = Math.sin(angulo) * anchoInterno * 0.025;
+
+    // Perspectiva procedural barata y suave: cada franja ensancha la calzada
+    // desde el punto de fuga. No es una regla de mapa y no altera colisiones.
+    for (let fila = 0; fila < altoSuelo; fila++) {
+      const t = fila / altoSuelo;
+      const luminosidad = Math.round(17 + t * 15);
+      ctx.fillStyle = `rgb(${luminosidad},${luminosidad + 3},${luminosidad + 5})`;
+      ctx.fillRect(0, horizonte + fila, anchoInterno, 1);
+
+      const anchoCalzada = anchoInterno * (0.18 + t * 0.88);
+      const izquierda = (anchoInterno - anchoCalzada) / 2 + deriva * (1 - t);
+      ctx.fillStyle = `rgba(79,105,113,${0.025 + t * 0.045})`;
+      ctx.fillRect(izquierda, horizonte + fila, anchoCalzada, 1);
+    }
+
+    // Reflejos y marcas discontinuas convergen en el horizonte. La variación
+    // de fase con el ángulo evita que parezcan una cuadrícula estática.
+    const fase = Math.abs(Math.sin(angulo * 1.7)) * 18;
+    for (let i = 0; i < 7; i++) {
+      const t = (i + 1) / 7;
+      const y = horizonte + t * t * altoSuelo + fase * t;
+      const ancho = 1 + t * 5;
+      const alto = 2 + t * 11;
+      ctx.fillStyle = i % 2 ? "rgba(101,183,199,.2)" : "rgba(215,154,53,.16)";
+      ctx.fillRect(anchoInterno / 2 - ancho / 2 + deriva * (1 - t), y, ancho, alto);
     }
   }
 

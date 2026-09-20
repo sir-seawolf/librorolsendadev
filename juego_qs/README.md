@@ -70,16 +70,24 @@ Cubren: reglas de tirada (éxito/fallo/crítico/pifia), progresión de
 habilidades, party/delegación/disponibilidad, y validez estructural de las
 escenas JSON.
 
-## Estado del prototipo
+## Estado actual
 
-Arranque en dos niveles: **selector de módulos** → **menú del módulo**
-elegido → selección de personaje → callejón → perseguidores →
-HUIR/LUCHAR/ESCONDERSE → (si te escondes) rastrear la tarjeta-llave → la
-casa de Arthur Dicking (Escena 2 del QS, investigación + diálogo con
-Cinthia Mollis) → resolución, con varios finales distintos alcanzables. Ver
-`docs/DESIGN.md` → "Qué queda deliberadamente sin hacer en esta iteración"
-para el alcance exacto, y `docs/MODULE_ARCHITECTURE.md` para cómo está
-organizado por dentro.
+**Predator N-5.2 es jugable de principio a fin.** El recorrido comienza en
+el selector de módulos y continúa por el callejón, la persecución y la red
+de investigación de Arthur Dicking. Las rutas de Cinthia, Pitágoras, CHAFRY
+y Drake Street convergen en Los Almacenes y continúan por el satélite
+minero, Portal Primus y el cierre en Mundo Máquina.
+
+El inventario vigente contiene 24 escenas publicables y 2 escenas aisladas
+de desarrollo. No quedan finales provisionales `checkpoint_*` ni brechas
+narrativas estructurales conocidas. El estado ejecutivo y el backlog
+vigentes se mantienen en `docs/PREDATOR_CONTENT_PENDING_BACKLOG.md`; la
+auditoría de brechas del 22 de agosto se conserva solo como histórico.
+
+La deuda actual se concentra en mejoras no bloqueantes: importación desde
+el formulario real de la ficha autocalculada, persistencia exacta a mitad de
+combate o persecución, recursos visuales todavía provisionales y la creación
+de un segundo módulo completo.
 
 No se ha modificado ningún archivo fuente del manual, el Quick Starter, los
 módulos o las fichas originales.

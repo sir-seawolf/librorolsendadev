@@ -1,4 +1,5 @@
 import { moduloIdActivo, manifiestoActivo, MODULE_ID_MIGRACION_GUARDADO_ANTIGUO } from "./engine/moduleLoader.js";
+import { sincronizarRuntimeImportado } from "./data/characterVault.js";
 
 // Estado central del motor. Un único objeto mutable + suscriptores simples.
 //
@@ -395,6 +396,10 @@ export function gastarPuntoEpico(miembroId = "player") {
 // por rules/dice.js más contexto (escena, actor, habilidad, progreso).
 export function registrarTirada(entrada) {
   state.historialTiradas.push({ orden: state.historialTiradas.length + 1, ...entrada });
+  // Una tirada con progresión ya ha mutado las habilidades runtime antes de
+  // llegar aquí. Refrescar la ficha ahora hace visible el nuevo valor sin
+  // esperar a otra acción o cambio de escena.
+  if (entrada.progreso) notificarFicha();
   guardar();
 }
 
@@ -471,6 +476,7 @@ export function guardar() {
   // de una partida que guardar todavía.
   if (!state.moduloId) return;
   try {
+    Object.values(state.partyMembers).forEach(miembro => sincronizarRuntimeImportado(miembro));
     localStorage.setItem(claveGuardado(state.moduloId), JSON.stringify(state));
   } catch (e) {
     // localStorage puede no estar disponible (file://) — no bloquear el prototipo por esto.

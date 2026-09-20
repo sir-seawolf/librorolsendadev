@@ -1,8 +1,24 @@
 import { state, iniciarPartida, cambiarEscena, cargar, hayPartidaGuardada, borrarGuardado } from "../gameState.js";
 import { manifiestoActivo, rutaDeManifiesto, rutaAsset } from "../engine/moduleLoader.js";
 import { normalizeCharacter, desdeExportFichaAutocalculada } from "../data/adapters/characterImport.js";
+import { listarPersonajesImportados, guardarPersonajeImportado, eliminarPersonajeImportado } from "../data/characterVault.js";
 
 const personajesCachePorModulo = new Map();
+
+function escaparHtml(texto) {
+  return String(texto ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function inicialesDe(nombre) {
+  const partes = String(nombre ?? "").trim().split(/\s+/).filter(Boolean);
+  return (partes.length > 1 ? partes[0][0] + partes.at(-1)[0] : partes[0]?.slice(0, 2) || "PJ").toUpperCase();
+}
+
 async function cargarPersonajes() {
   const ruta = rutaDeManifiesto("characters");
   if (personajesCachePorModulo.has(ruta)) return personajesCachePorModulo.get(ruta);
@@ -33,10 +49,12 @@ export function montarMenu(container) {
       <button class="btn-menu" id="btn-borrar" ${continuarDisponible ? "" : "disabled"}>Borrar partida</button>
     </div>
     ${entradasDev.length ? `
-    <div class="menu-dev-entradas">
-      <div class="menu-dev-etiqueta">Desarrollo</div>
-      ${entradasDev.map(e => `<button class="btn-menu btn-menu-dev" data-dev-scene="${e.id}" title="${e.nota || ""}">${e.label}</button>`).join("")}
-    </div>` : ""}
+    <details class="menu-dev-entradas">
+      <summary>Herramientas de desarrollo</summary>
+      <div class="menu-dev-lista">
+        ${entradasDev.map(e => `<button class="btn-menu btn-menu-dev" data-dev-scene="${e.id}" title="${e.nota || ""}">${e.label}</button>`).join("")}
+      </div>
+    </details>` : ""}
     <p class="volver-modulos"><a href="#" id="link-cambiar-modulo">&larr; Cambiar de módulo</a></p>
   `;
   container.appendChild(wrap);
@@ -72,31 +90,48 @@ export function montarMenu(container) {
 }
 
 async function montarSeleccion(container) {
-  const personajes = await cargarPersonajes();
+  const pregenerados = await cargarPersonajes();
+  const importados = listarPersonajesImportados();
+  let personajes = [...pregenerados, ...importados.filter(p => !pregenerados.some(base => base.id === p.id))];
   const permiteImportar = manifiestoActivo().allowImportedCharacters === true;
   const wrap = document.createElement("div");
   wrap.className = "menu-screen";
   wrap.innerHTML = `
-    <div class="menu-subtitulo">ELEGIR PREGENERADO</div>
-    <div class="seleccion-grid">
-      ${personajes.map(p => `
-        <div class="card-pj" data-id="${p.id}">
-          <img src="${rutaAsset(p.retrato)}" alt="${p.nombre}">
-          <div class="cp-nombre">${p.nombre}</div>
-          <div class="cp-rol">${p.rol}</div>
-          ${p.fortaleza ? `<div class="cp-fortaleza">${p.fortaleza}</div>` : ""}
-        </div>`).join("")}
-    </div>
+    <div class="menu-subtitulo">ELEGIR PERSONAJE</div>
+    <p class="seleccion-intro">Elige un agente del módulo o continúa con un personaje importado.</p>
     ${permiteImportar ? `
     <div class="importar-personaje">
-      <label class="btn-menu" for="input-importar-personaje">Importar personaje (.json)</label>
+      <div class="importar-copy"><strong>Tu biblioteca</strong><span>Importa una ficha JSON. Se conservará en este navegador junto con sus mejoras.</span></div>
+      <label class="btn-menu btn-importar" for="input-importar-personaje">Importar JSON</label>
       <input id="input-importar-personaje" type="file" accept="application/json,.json" hidden>
       <p id="estado-importacion" role="status" aria-live="polite"></p>
+      <div class="importar-confirmacion" id="confirmar-sustitucion" hidden>
+        <span></span>
+        <div><button class="btn-menu" id="btn-confirmar-sustitucion" type="button">Sustituir</button><button class="btn-menu" id="btn-cancelar-sustitucion" type="button">Cancelar</button></div>
+      </div>
     </div>` : ""}
+    <div class="seleccion-grid">
+      ${personajes.map(p => `
+        <article class="card-pj-wrap">
+        <button class="card-pj" type="button" data-id="${escaparHtml(p.id)}" aria-label="Jugar con ${escaparHtml(p.nombre)}">
+          <span class="cp-retrato" aria-hidden="true"><span class="cp-retrato-iniciales">${escaparHtml(inicialesDe(p.nombre))}</span>${p.retrato ? `<img src="${escaparHtml(rutaAsset(p.retrato))}" alt="">` : ""}</span>
+          <span class="cp-identidad"><span class="cp-nombre">${escaparHtml(p.nombre)}</span>${p.origen === "importado" ? `<span class="cp-origen">Guardado</span>` : ""}</span>
+          <span class="cp-rol">${escaparHtml(p.rol)}</span>
+          ${p.fortaleza ? `<span class="cp-fortaleza">${escaparHtml(p.fortaleza)}</span>` : ""}
+        </button>
+        ${p.origen === "importado" ? `<button class="btn-eliminar-pj" type="button" data-delete-id="${escaparHtml(p.id)}" data-delete-name="${escaparHtml(p.nombre)}" aria-label="Eliminar a ${escaparHtml(p.nombre)} de la biblioteca">Eliminar de la biblioteca</button>` : ""}
+        </article>`).join("")}
+    </div>
     <button class="btn-menu" id="btn-volver" style="width:320px;margin-top:10px">Volver</button>
   `;
   container.innerHTML = "";
   container.appendChild(wrap);
+
+  wrap.querySelectorAll(".cp-retrato img").forEach(img => {
+    const retirarImagenRota = () => img.remove();
+    img.addEventListener("error", retirarImagenRota, { once: true });
+    if (img.complete && img.naturalWidth === 0) retirarImagenRota();
+  });
 
   wrap.querySelectorAll(".card-pj").forEach(card => {
     card.addEventListener("click", () => {
@@ -104,22 +139,70 @@ async function montarSeleccion(container) {
       cambiarEscena(manifiestoActivo().startScene);
     });
   });
-  wrap.querySelector("#input-importar-personaje")?.addEventListener("change", async (event) => {
+  wrap.querySelectorAll(".btn-eliminar-pj").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const nombre = btn.dataset.deleteName || "este personaje";
+      if (!globalThis.confirm(`¿Eliminar a ${nombre} de la biblioteca? Esta acción no borra una partida ya guardada.`)) return;
+      if (!eliminarPersonajeImportado(btn.dataset.deleteId)) {
+        estadoImportacion.textContent = "No se pudo eliminar el personaje. Revisa el almacenamiento local.";
+        return;
+      }
+      montarSeleccion(container);
+    });
+  });
+  const inputImportar = wrap.querySelector("#input-importar-personaje");
+  const estadoImportacion = wrap.querySelector("#estado-importacion");
+  const confirmarSustitucion = wrap.querySelector("#confirmar-sustitucion");
+  let importadoPendiente = null;
+
+  function limpiarSustitucion() {
+    importadoPendiente = null;
+    if (confirmarSustitucion) confirmarSustitucion.hidden = true;
+    if (inputImportar) inputImportar.value = "";
+  }
+
+  function jugarConImportado(importado) {
+    if (!guardarPersonajeImportado(importado)) throw new Error("El navegador no permitió guardar la ficha. Revisa el almacenamiento local e inténtalo de nuevo.");
+    personajes = [...personajes.filter(personaje => personaje.id !== importado.id), importado];
+    iniciarPartida(personajes, importado.id);
+    cambiarEscena(manifiestoActivo().startScene);
+  }
+
+  inputImportar?.addEventListener("change", async (event) => {
     const archivo = event.target.files?.[0];
     if (!archivo) return;
-    const estado = wrap.querySelector("#estado-importacion");
+    limpiarSustitucion();
     try {
       const importado = normalizarArchivoPersonaje(JSON.parse(await archivo.text()));
-      if (personajes.some(personaje => personaje.id === importado.id)) {
-        throw new Error(`Ya existe un personaje con el id "${importado.id}".`);
+      if (pregenerados.some(personaje => personaje.id === importado.id)) {
+        throw new Error(`El id "${importado.id}" está reservado por un personaje del módulo. Usa otro id en la ficha.`);
       }
-      iniciarPartida([...personajes, importado], importado.id);
-      cambiarEscena(manifiestoActivo().startScene);
+      if (importados.some(personaje => personaje.id === importado.id)) {
+        importadoPendiente = importado;
+        confirmarSustitucion.querySelector("span").textContent = `Ya existe ${importado.nombre} en la biblioteca. ¿Quieres sustituir su ficha guardada?`;
+        confirmarSustitucion.hidden = false;
+        estadoImportacion.textContent = "Confirma la sustitución para continuar.";
+        return;
+      }
+      jugarConImportado(importado);
     } catch (error) {
       const detalles = error.detalles?.length ? ` ${error.detalles.join(" ")}` : "";
-      estado.textContent = `No se pudo importar el personaje: ${error.message}${detalles}`;
+      estadoImportacion.textContent = `No se pudo importar el personaje: ${error.message}${detalles}`;
       event.target.value = "";
     }
+  });
+  wrap.querySelector("#btn-confirmar-sustitucion")?.addEventListener("click", () => {
+    if (!importadoPendiente) return;
+    try {
+      jugarConImportado(importadoPendiente);
+    } catch (error) {
+      estadoImportacion.textContent = `No se pudo sustituir el personaje: ${error.message}`;
+      limpiarSustitucion();
+    }
+  });
+  wrap.querySelector("#btn-cancelar-sustitucion")?.addEventListener("click", () => {
+    estadoImportacion.textContent = "Sustitución cancelada. La ficha guardada no ha cambiado.";
+    limpiarSustitucion();
   });
   wrap.querySelector("#btn-volver").addEventListener("click", () => montarMenu(replace(container)));
 }

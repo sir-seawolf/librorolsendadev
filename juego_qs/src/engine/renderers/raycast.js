@@ -70,12 +70,27 @@ async function cargarSprite(clave) {
 export async function montarPersecucion(container, escenaId) {
   const escena = await cargarEscena(escenaId);
   const mapa = await cargarMapa(escena.map);
+  const presentacion = mapa.presentation ?? {};
+  const esTerceraPersona = presentacion.camera === "thirdPerson";
 
   const wrap = document.createElement("div");
-  wrap.className = "persecucion-wrap";
+  wrap.className = `persecucion-wrap${esTerceraPersona ? " persecucion-tercera-persona" : ""}`;
   wrap.innerHTML = `
     <div class="raycast-viewport">
       <canvas id="raycast-canvas"></canvas>
+      ${esTerceraPersona ? `
+        <div class="chase-instrumentacion" aria-label="Estado de la persecución">
+          <div class="chase-ruta"><span>RUTA DE EVASIÓN</span><strong>${presentacion.objectiveLabel ?? "REFUGIO / VEHÍCULO"}</strong></div>
+          <div class="chase-amenaza">
+            <span>CONTACTO</span>
+            <div class="chase-amenaza-track" role="progressbar" aria-label="Proximidad del perseguidor" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="hud-threat-fill"></i></div>
+            <strong id="hud-dist">—</strong>
+          </div>
+        </div>
+        <div class="chase-velocidad" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <img class="chase-avatar" src="${rutaAsset(`assets/generated/${presentacion.playerAvatar}`)}" alt="Personaje huyendo, visto desde atrás">
+        <div class="chase-direccion" aria-hidden="true"><i></i><span>RUTA</span></div>
+      ` : ""}
       ${config.visualEffects.vignette ? '<div class="raycast-vignette"></div>' : ""}
       ${config.visualEffects.rain ? '<div class="raycast-rain"></div>' : ""}
       <div class="touch-controls" id="touch-controls" hidden>
@@ -89,7 +104,7 @@ export async function montarPersecucion(container, escenaId) {
     <div class="interaction-prompt" id="prompt" hidden></div>
     <div class="persecucion-hud">
       <div class="hud-datos">
-        <div><span class="hud-etiqueta">PERSEGUIDOR</span><strong id="hud-dist">—</strong></div>
+        ${esTerceraPersona ? "" : '<div><span class="hud-etiqueta">PERSEGUIDOR</span><strong id="hud-dist">—</strong></div>'}
         <div><span class="hud-etiqueta">OBJETIVO</span><strong id="hud-objetivo">Refugio o vehículo</strong></div>
         <div><span class="hud-etiqueta">ESTADO</span><strong id="hud-estado">En movimiento</strong></div>
       </div>
@@ -101,11 +116,16 @@ export async function montarPersecucion(container, escenaId) {
 
   const canvas = wrap.querySelector("#raycast-canvas");
   const promptEl = wrap.querySelector("#prompt");
+  const resolucion = presentacion.internalResolution ?? {};
   const raycaster = new Raycaster(canvas, mapa.grid, {
+    anchoInterno: resolucion.width ?? 320,
+    altoInterno: resolucion.height ?? 200,
     wallTypes: mapa.wallTypes,
     rutaManifiestoTexturas: rutaDeManifiesto("assets") + "textures.json",
-    resolverAsset: rutaAsset
+    resolverAsset: rutaAsset,
+    renderStyle: esTerceraPersona ? "thirdPerson" : "classic"
   });
+  wrap.querySelector(".chase-avatar")?.addEventListener("error", event => event.currentTarget.remove(), { once: true });
 
   // Skyline (punto 9 del encargo 0.2 visual): opcional en el mapa
   // (`mapa.skyline`), motor-genérico — cualquier módulo puede declararlo o
@@ -241,7 +261,14 @@ export async function montarPersecucion(container, escenaId) {
     if (!esMuro(nx, jugador.y)) jugador.x = nx;
     if (!esMuro(jugador.x, ny)) jugador.y = ny;
 
-    if (config.visualEffects.headBob && moviendo) {
+    wrap.classList.toggle("is-moving", moviendo);
+    wrap.classList.toggle("is-running", moviendo && corriendo);
+    if (esTerceraPersona) {
+      const giroActivo = (teclas["arrowright"] ? 1 : 0) - ((teclas["arrowleft"] || teclas["q"]) ? 1 : 0) + entradaTactil.turn;
+      wrap.style.setProperty("--runner-lean", `${Math.max(-1, Math.min(1, giroActivo)) * 5}deg`);
+      wrap.style.setProperty("--runner-bob", moviendo ? `${Math.sin(bobFase) * (corriendo ? 5 : 3)}px` : "0px");
+      if (moviendo) bobFase += corriendo ? 0.32 : 0.23;
+    } else if (config.visualEffects.headBob && moviendo) {
       bobFase += 0.25;
       canvas.style.transform = `translateY(${Math.sin(bobFase) * 3}px)`;
     } else if (config.visualEffects.headBob) {
@@ -269,6 +296,13 @@ export async function montarPersecucion(container, escenaId) {
     }
 
     wrap.querySelector("#hud-dist").textContent = `${distTotal.toFixed(1)} m`;
+    const threatFill = wrap.querySelector("#hud-threat-fill");
+    if (threatFill) {
+      const amenaza = Math.max(0, Math.min(100, 100 - ((distTotal - (mapa.pursuer?.catchDistance ?? 0.7)) / 8) * 100));
+      threatFill.style.transform = `scaleX(${amenaza / 100})`;
+      threatFill.parentElement.setAttribute("aria-valuenow", String(Math.round(amenaza)));
+      wrap.classList.toggle("threat-critical", amenaza >= 72);
+    }
     wrap.querySelector("#hud-estado").textContent = perseguidor.pausaTicks > 0
       ? "PERSEGUIDOR DESPISTADO"
       : (corriendo ? "CORRIENDO" : "EN MOVIMIENTO");
@@ -449,7 +483,8 @@ function dibujarMinimapa(wrap, mapa, jugador, perseguidor) {
     mm = document.createElement("canvas");
     mm.id = "minimapa";
     mm.width = 100; mm.height = 100;
-    mm.style.cssText = "position:absolute;right:10px;top:10px;background:rgba(0,0,0,.6);border:1px solid #333;";
+    mm.className = "raycast-minimapa";
+    mm.setAttribute("aria-label", "Plano de la ruta de evasión");
     wrap.appendChild(mm);
   }
   const ctx = mm.getContext("2d");

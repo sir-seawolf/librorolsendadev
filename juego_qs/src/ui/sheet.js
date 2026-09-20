@@ -18,6 +18,11 @@ function escaparHtml(texto) {
     .replaceAll("'", "&#39;");
 }
 
+function inicialesDe(nombre) {
+  const partes = String(nombre ?? "").trim().split(/\s+/).filter(Boolean);
+  return (partes.length > 1 ? partes[0][0] + partes.at(-1)[0] : partes[0]?.slice(0, 2) || "PJ").toUpperCase();
+}
+
 export function renderInventario(items = []) {
   if (!items.length) return '<li class="ficha-inventario-vacio">Sin objetos</li>';
   return items.map(item => `<li>${escaparHtml(item)}</li>`).join("");
@@ -65,7 +70,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
     container.innerHTML = `
       ${botonToggle}
       <div class="ficha-compacta" id="btn-ficha-expandir" role="button" tabindex="0" aria-label="Mostrar ficha completa">
-        <div class="fc-nombre">${base.nombre}</div>
+        <div class="fc-nombre">${escaparHtml(base.nombre)}</div>
         <div class="fc-recursos">
           <div class="fc-vida-bar" role="img" aria-label="${nivel}; ${vidaRestante} de ${totalVida} puntos de vida" title="${nivel.toUpperCase()} · ${vidaRestante}/${totalVida}">${segmentosVida}</div>
           <div class="fc-pe" role="img" aria-label="${m.puntosEpicosActuales} de ${base.puntosEpicos} Puntos Épicos" title="PE ${m.puntosEpicosActuales}/${base.puntosEpicos}">${epicosMini}</div>
@@ -106,7 +111,7 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
     bloqueContextual = `
       <div class="ficha-bloque">
         <div class="ficha-titulo">Atlética / Esquivar</div>
-        <div>${base.habilidades["Atlética"]} / ${base.habilidades["Esquivar"]}</div>
+        <div>${m.habilidades["Atlética"] ?? "—"} / ${m.habilidades["Esquivar"] ?? "—"}</div>
         <div class="ficha-titulo">Persecución</div>
         <div>${ep ? `Perseguidor a ${ep.distanciaActual?.toFixed?.(1) ?? "—"} m` : "—"}</div>
         <div class="ficha-titulo">Objetivo</div>
@@ -114,12 +119,13 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
       </div>`;
   }
 
+  const retrato = base.retrato ? rutaAsset(base.retrato) : "";
   container.innerHTML = `
     ${botonToggle}
     <div class="ficha">
-      <img class="ficha-retrato" src="${rutaAsset(base.retrato)}" alt="${base.nombre}">
-      <div class="ficha-nombre">${base.nombre}</div>
-      <div class="ficha-rol">${base.rol}</div>
+      <div class="ficha-retrato" role="img" aria-label="Retrato de ${escaparHtml(base.nombre)}"><span>${escaparHtml(inicialesDe(base.nombre))}</span>${retrato ? `<img src="${escaparHtml(retrato)}" alt="">` : ""}</div>
+      <div class="ficha-nombre">${escaparHtml(base.nombre)}</div>
+      <div class="ficha-rol">${escaparHtml(base.rol)}</div>
 
       <div class="ficha-bloque">
         <div class="ficha-titulo">Vida (${nivel.toUpperCase()})</div>
@@ -143,6 +149,12 @@ export function renderFicha(container, contexto = "callejon", layout = "docked")
       <button class="btn-historial" id="btn-abrir-historial">Historial de tiradas</button>
     </div>
   `;
+  const imagenRetrato = container.querySelector(".ficha-retrato img");
+  if (imagenRetrato) {
+    const retirarImagenRota = () => imagenRetrato.remove();
+    imagenRetrato.addEventListener("error", retirarImagenRota, { once: true });
+    if (imagenRetrato.complete && imagenRetrato.naturalWidth === 0) retirarImagenRota();
+  }
 
   const colapsar = () => {
     establecerFichaColapsada(true, layout);
